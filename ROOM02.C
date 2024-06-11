@@ -1,7 +1,7 @@
 /*
 =========================================================
- Room Number:   01
- Room Name:     bedRoom
+ Room Number:   02
+ Room Name:     corridor
 
 =========================================================
 */
@@ -9,22 +9,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "game.h"
-#include "room01.h"
+#include "room02.h"
 
 //Funtion to return the name of object by color code
-void r01_get_object(int colorCode, char *s)
+void r02_get_object(int colorCode, char *s)
 {
     //check the object
     switch(colorCode)
     {
-        case Guitarra:
-            strcpy(s, "Guitarra");
+        case espejo:
+            strcpy(s, "Espejo");
             break;
-        case Minicadena:
-            strcpy(s, "Minicadena");
+        case cuadro:
+            strcpy(s, "Cuadro");
             break;
-        case Puerta:
-            strcpy(s, "Puerta");
+        case habitacion:
+            strcpy(s, "Habitacion");
             break;
         default:
             strcpy(s, "");
@@ -32,21 +32,21 @@ void r01_get_object(int colorCode, char *s)
 }
 
 //function to perform object action
-void r01_do_object_action(int action, int colorCode)
+void r02_do_object_action(int action, int colorCode)
 {
     //check the object
     switch(colorCode)
     {
-        case Guitarra:
+        case espejo:
             switch (action)
             {
                 case GO:
                     exit(2);
                 case LOOK:
                     exit(3);
-             }
+            }
             break;
-        case Minicadena:
+        case cuadro:
             switch (action)
             {
                 case GO:
@@ -55,16 +55,15 @@ void r01_do_object_action(int action, int colorCode)
                     exit(5);
             }
             break;
-       case Puerta:
+        case habitacion:
             switch (action)
             {
                 case GO:
-                    change_room(1);
+                    change_room(0);
                     break;
                 case LOOK:
-                    exit(6);
+                    exit(7);
             }
             break;
     }
 }
-
