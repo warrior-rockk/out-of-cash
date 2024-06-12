@@ -32,13 +32,13 @@ void r01_get_object(int colorCode, char *s)
 }
 
 //function to perform object action
-void r01_do_object_action(int action, int colorCode)
+void r01_do_object_action(enum verbs verb, int colorCode)
 {
     //check the object
     switch(colorCode)
     {
         case Guitarra:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     exit(2);
@@ -47,16 +47,16 @@ void r01_do_object_action(int action, int colorCode)
              }
             break;
         case Minicadena:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     exit(4);
                 case LOOK:
-                    exit(5);
+                    say("Es mi minicadena ultimo modelo");
             }
             break;
        case Puerta:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     change_room(1);

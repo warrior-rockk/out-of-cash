@@ -19,7 +19,7 @@ typedef struct tRoom
     //function pointer to get object
     void (*room_get_object)(int, char *s);
     //function pointer to do object action
-    void (*room_do_object_action)(int, int);
+    void (*room_do_object_action)(enum verbs, int);
 } tRoom;
 
 //hud structure
@@ -39,13 +39,21 @@ typedef struct tCursor
     //name of the pointed object
     char objectName[OBJECT_NAME_MAX_CHARS];
     //selected action/verb
-    int action;
+    //int action;
+    enum verbs selectedVerb;
 } tCursor;
+
+//message structure
+typedef struct tMsg
+{
+    char *msg;
+} tMsg;
 
 //global structures
 tRoom room[2];
 tHUD hud;
 tCursor cursor;
+tMsg msg;
 
 //global vars
 PALETTE gamePalette;
@@ -55,7 +63,7 @@ int actualRoom = 0;
 
 //function declarations
 void abort_on_error();
-void load_dat_resources();
+void load_resources();
 
 void init_cursor();
 void cursor_update();
@@ -64,6 +72,8 @@ void hud_draw();
 void status_bar_draw();
 void cursor_draw();
 void debug_draw();
+void msg_update();
+void msg_draw();
 
 int main()
 {
@@ -72,7 +82,8 @@ int main()
     install_mouse();
     install_keyboard();
     install_sound(0, MIDI_AUTODETECT, 0);
-    
+
+    //set video mode
     set_color_depth(8);
     set_gfx_mode(GFX_AUTODETECT, 320, 240, 0, 0);
 
@@ -80,7 +91,7 @@ int main()
     buffer = create_bitmap(RES_X, RES_Y);
 
     //load resources
-    load_dat_resources();
+    load_resources();
     
     //play_midi(room[actualRoom].song, -1);
 
@@ -92,6 +103,7 @@ int main()
         clear(buffer);
 
         //update
+        msg_update();
         //room_update();
         cursor_update();
         //game_update();
@@ -101,6 +113,7 @@ int main()
         hud_draw();
         status_bar_draw();
         cursor_draw();
+        msg_draw();
         debug_draw();
 
         //blits to screen
@@ -123,9 +136,8 @@ int main()
     
     return 0;
 }
-
 //function to load resources from dat file
-void load_dat_resources()
+void load_resources()
 {
     dataFile = load_datafile("data.dat");
     if (!dataFile)
@@ -154,7 +166,8 @@ void load_dat_resources()
 void init_cursor()
 {
     strcpy(cursor.objectName,"");
-    cursor.action = GO;
+    //cursor.action = GO;
+    cursor.selectedVerb = GO;
     position_mouse(RES_X>>1, RES_Y>>1);
 }
 
@@ -180,7 +193,7 @@ void cursor_update()
         //test room actions
         if (mouse_b & 1)
         {
-            room[actualRoom].room_do_object_action(cursor.action, hsColor);
+            room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
         }
     }
     //check color of HUD
@@ -191,7 +204,13 @@ void cursor_update()
         //if action is valid and mouse click
         if (hsColor > 0 && hsColor <= NUM_VERBS && mouse_b & 1)
         {
-                cursor.action = hsColor - 1;
+                cursor.selectedVerb = hsColor - 1;
+        }
+
+        //mouse left on hud: default verb
+        if (mouse_b & 2)
+        {
+            cursor.selectedVerb = GO;
         }
     }
 
@@ -205,19 +224,37 @@ void debug_draw()
 {
     textprintf_ex(buffer, font, 0, 10, makecol(255,255,255), -1, "Mouse x: %i @ Mouse y: %i", mouse_x, mouse_y);
     textprintf_ex(buffer, font, 0, 26, makecol(255,255,255), -1, "Mouse: %i", mouse_b);
-    textprintf_ex(buffer, font, 0, 34, makecol(255,255,255), -1, "Action: %i", cursor.action);
+    textprintf_ex(buffer, font, 0, 34, makecol(255,255,255), -1, "Action: %i", cursor.selectedVerb);
 }
 
 //draws the status bar
 void status_bar_draw()
 {
-    textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbs[cursor.action], cursor.objectName);
+    textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
 }
 
 //function to change the actual room
 void change_room(int roomNum)
 {
     actualRoom = roomNum;
+}
+
+//function to say something
+void say(char *message)
+{
+    strcpy(msg.msg, message);
+}
+
+//function to update message
+void msg_update()
+{
+    msg.msg = "";
+}
+
+//funcion to draw message
+void msg_draw()
+{
+    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
 }
 
 void abort_on_error()

@@ -7,11 +7,6 @@
 #define RES_X    320
 #define RES_Y    240
 
-//Verbs
-#define GO          0
-#define LOOK        1
-#define TAKE        2
-
 #define NUM_VERBS   3
 
 //Status bar
@@ -22,8 +17,19 @@
 //HUD
 #define HUD_Y   179
 
+//Text
+#define SAY_X                   RES_X / 2
+#define SAY_Y                   162 / 2
+
+//Enumerations
+enum verbs {
+    GO,
+    LOOK,
+    TAKE
+};
+
 //Global variables
-static char verbs[3][10] = {
+static const char verbName[3][10] = {
     "Ir a",
     "Mirar",
     "Coger"
@@ -31,5 +37,6 @@ static char verbs[3][10] = {
 
 //global functions
 void change_room(int roomNum);
+void say(char *message);
 
 #endif

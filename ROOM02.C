@@ -32,13 +32,13 @@ void r02_get_object(int colorCode, char *s)
 }
 
 //function to perform object action
-void r02_do_object_action(int action, int colorCode)
+void r02_do_object_action(enum verbs verb, int colorCode)
 {
     //check the object
     switch(colorCode)
     {
         case espejo:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     exit(2);
@@ -47,7 +47,7 @@ void r02_do_object_action(int action, int colorCode)
             }
             break;
         case cuadro:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     exit(4);
@@ -56,7 +56,7 @@ void r02_do_object_action(int action, int colorCode)
             }
             break;
         case habitacion:
-            switch (action)
+            switch (verb)
             {
                 case GO:
                     change_room(0);
