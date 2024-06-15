@@ -67,3 +67,9 @@ void r02_do_object_action(enum verbs verb, int colorCode)
             break;
     }
 }
+
+//funcion to update room
+void r02_room_update()
+{
+    ;
+}

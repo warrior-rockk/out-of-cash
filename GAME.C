@@ -1,4 +1,8 @@
+#define DEBUGMODE
+#define MAIN_FILE
+
 #include <stdio.h>
+#include <string.h>
 #include <allegro.h>
 #include "game.h"
 //include game data
@@ -20,6 +24,8 @@ typedef struct tRoom
     void (*room_get_object)(int, char *s);
     //function pointer to do object action
     void (*room_do_object_action)(enum verbs, int);
+    //function pointer to update room
+    void (*room_update)(void);
 } tRoom;
 
 //hud structure
@@ -44,16 +50,19 @@ typedef struct tCursor
 } tCursor;
 
 //message structure
-typedef struct tMsg
-{
-    char *msg;
-} tMsg;
+//typedef struct tMsg
+//{
+//    char *msg;
+//    int msgId;
+//    int tickStamp;
+//} tMsg;
 
 //global structures
 tRoom room[2];
 tHUD hud;
 tCursor cursor;
-tMsg msg;
+//tMsg msg;
+char msg[MAX_SENTENCE_LENGTH];
 
 //global vars
 PALETTE gamePalette;
@@ -61,11 +70,16 @@ BITMAP *buffer;
 DATAFILE *dataFile;
 int actualRoom = 0;
 
+//interrupt timer variable
+static volatile int tick = 0;
+int gameTick = 0;
+
 //function declarations
 void abort_on_error();
 void load_resources();
 
-void init_cursor();
+void cursor_init();
+void tick_init();
 void cursor_update();
 void room_draw();
 void hud_draw();
@@ -75,10 +89,18 @@ void debug_draw();
 void msg_update();
 void msg_draw();
 
+//timer function callback
+void incTick(void)
+{
+    tick = 1;
+}
+END_OF_FUNCTION(incTick);
+
 int main()
 {
     //initialize and install modules
     allegro_init();
+    install_timer();
     install_mouse();
     install_keyboard();
     install_sound(0, MIDI_AUTODETECT, 0);
@@ -95,17 +117,27 @@ int main()
     
     //play_midi(room[actualRoom].song, -1);
 
-    init_cursor();
-    
+    cursor_init();
+    tick_init();
+
     //main game loop
     while (!key[KEY_ESC])
     {
         clear(buffer);
 
+        //check 1seg tick
+        if (tick == 1)
+        {
+            //sets global game tick var
+            gameTick = 1;
+            //reset 1sec interrupt var
+            tick = 0;
+        }
+
         //update
         msg_update();
-        //room_update();
         cursor_update();
+        room[actualRoom].room_update();
         //game_update();
 
         //draw
@@ -118,6 +150,9 @@ int main()
 
         //blits to screen
         blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
+
+        //reset global timer tick
+        gameTick = 0;
     }
 
     //free resources
@@ -158,12 +193,14 @@ void load_resources()
 
     room[0].room_get_object = &r01_get_object;
     room[0].room_do_object_action = &r01_do_object_action;
+    room[0].room_update = &r01_room_update;
     room[1].room_get_object = &r02_get_object;
     room[1].room_do_object_action = &r02_do_object_action;
+    room[1].room_update = &r02_room_update;
 }
 
 //function to initialize cursor
-void init_cursor()
+void cursor_init()
 {
     strcpy(cursor.objectName,"");
     //cursor.action = GO;
@@ -225,6 +262,7 @@ void debug_draw()
     textprintf_ex(buffer, font, 0, 10, makecol(255,255,255), -1, "Mouse x: %i @ Mouse y: %i", mouse_x, mouse_y);
     textprintf_ex(buffer, font, 0, 26, makecol(255,255,255), -1, "Mouse: %i", mouse_b);
     textprintf_ex(buffer, font, 0, 34, makecol(255,255,255), -1, "Action: %i", cursor.selectedVerb);
+    textprintf_ex(buffer, font, 0, 34+8, makecol(255,255,255), -1, "Tick: %i", tick);
 }
 
 //draws the status bar
@@ -236,25 +274,27 @@ void status_bar_draw()
 //function to change the actual room
 void change_room(int roomNum)
 {
+    fade_out(10);
     actualRoom = roomNum;
+    fade_in(gamePalette, 10);
 }
 
 //function to say something
 void say(char *message)
 {
-    strcpy(msg.msg, message);
+    strcpy(msg, message);
 }
 
 //function to update message
 void msg_update()
 {
-    msg.msg = "";
+    strcpy(msg,"");
 }
 
 //funcion to draw message
 void msg_draw()
 {
-    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
+    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg);
 }
 
 void abort_on_error()
@@ -276,4 +316,17 @@ void hud_draw()
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
 }
 
+//function to init the tick timer
+void tick_init()
+{
+    tick = 0;
+    LOCK_VARIABLE(tick);
+    LOCK_FUNCTION(incTick);
+    install_int(incTick, 1000);
+}
+
+void mytrace(char *s, ...)
+{
+    TRACE(s);
+}
 END_OF_MAIN()

@@ -11,5 +11,5 @@ enum r02_objectCode{
 //declare room functions
 void r02_get_object(int colorCode, char *s);
 void r02_do_object_action(enum verbs verb, int colorCode);
-
+void r02_room_update();
 #endif

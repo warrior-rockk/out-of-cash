@@ -11,6 +11,13 @@
 #include "game.h"
 #include "room01.h"
 
+//global room variable
+enum r01_objectCode roomObject = 0;
+enum verbs roomVerb = 0;
+int step = 0;
+int stepTime = 0;
+int stepLastTime = 0;
+
 //Funtion to return the name of object by color code
 void r01_get_object(int colorCode, char *s)
 {
@@ -52,7 +59,9 @@ void r01_do_object_action(enum verbs verb, int colorCode)
                 case GO:
                     exit(4);
                 case LOOK:
-                    say("Es mi minicadena ultimo modelo");
+                    roomObject = colorCode;
+                    roomVerb = verb;
+                    break;
             }
             break;
        case Puerta:
@@ -65,6 +74,51 @@ void r01_do_object_action(enum verbs verb, int colorCode)
                     exit(6);
             }
             break;
+    }
+}
+
+//funcion to update room
+void r01_room_update()
+{
+    //reset sequence if nothing
+    if (roomObject <= 0 || roomVerb <= 0)
+    {
+        step = 0;
+        stepTime = 0;
+        stepLastTime = 0;
+    }
+    else
+    {
+        //sequence timer
+        if (gameTick > 0)
+        {
+          stepTime++;
+        }
+        //do sequence step
+        switch (step)
+        {
+            case 0:
+                say("Es mi minicadena ultimo modelo");
+                if (stepTime >= 2)
+                {
+                     step++;
+                     stepTime = 0;
+                }
+                break;
+            case 1:
+                say("Otra cosa");
+                if (stepTime >= 2)
+                {
+                   step++;
+                   stepTime = 0;
+                }
+                break;
+            case 2:
+                 roomObject = 0;
+                 roomVerb = 0;
+                 change_room(1);
+                 break;
+        }
     }
 }
 

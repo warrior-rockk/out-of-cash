@@ -2,7 +2,6 @@
 #define H_GAME
 
 //Definitions
-
 //Screen
 #define RES_X    320
 #define RES_Y    240
@@ -20,6 +19,7 @@
 //Text
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
+#define MAX_SENTENCE_LENGTH     50
 
 //Enumerations
 enum verbs {
@@ -29,6 +29,8 @@ enum verbs {
 };
 
 //Global variables
+
+extern int gameTick;
 static const char verbName[3][10] = {
     "Ir a",
     "Mirar",
@@ -38,5 +40,6 @@ static const char verbName[3][10] = {
 //global functions
 void change_room(int roomNum);
 void say(char *message);
+void mytrace(char *s, ...);
 
 #endif
