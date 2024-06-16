@@ -39,7 +39,7 @@ static const char verbName[3][10] = {
 
 //global functions
 void change_room(int roomNum);
-void say(char *message);
+int say(char *message);
 void mytrace(char *s, ...);
-
+void default_verb_action(enum verbs roomVerb);
 #endif

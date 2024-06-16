@@ -15,8 +15,8 @@
 enum r01_objectCode roomObject = 0;
 enum verbs roomVerb = 0;
 int step = 0;
+int lastStep = 0;
 int stepTime = 0;
-int stepLastTime = 0;
 
 //Funtion to return the name of object by color code
 void r01_get_object(int colorCode, char *s)
@@ -38,54 +38,29 @@ void r01_get_object(int colorCode, char *s)
     }
 }
 
+
 //function to perform object action
 void r01_do_object_action(enum verbs verb, int colorCode)
 {
-    //check the object
-    switch(colorCode)
+    //if no previous action/object selected
+    if (roomObject == 0 && roomVerb == 0)
     {
-        case Guitarra:
-            switch (verb)
-            {
-                case GO:
-                    exit(2);
-                case LOOK:
-                    exit(3);
-             }
-            break;
-        case Minicadena:
-            switch (verb)
-            {
-                case GO:
-                    exit(4);
-                case LOOK:
-                    roomObject = colorCode;
-                    roomVerb = verb;
-                    break;
-            }
-            break;
-       case Puerta:
-            switch (verb)
-            {
-                case GO:
-                    change_room(1);
-                    break;
-                case LOOK:
-                    exit(6);
-            }
-            break;
+        //saves the room vars to start script sequence
+        roomObject = colorCode;
+        roomVerb = verb;
     }
 }
 
 //funcion to update room
 void r01_room_update()
 {
-    //reset sequence if nothing
+    //if nothing selected
     if (roomObject <= 0 || roomVerb <= 0)
     {
+        //reset sequence vars
         step = 0;
+        lastStep = 0;
         stepTime = 0;
-        stepLastTime = 0;
     }
     else
     {
@@ -94,30 +69,40 @@ void r01_room_update()
         {
           stepTime++;
         }
-        //do sequence step
-        switch (step)
+        //reset step timer on step change
+        if (step != lastStep)
         {
-            case 0:
-                say("Es mi minicadena ultimo modelo");
-                if (stepTime >= 2)
+            stepTime = 0;
+            lastStep = step;
+        }
+
+        //sequence actions
+        switch (roomObject)
+        {
+            case Minicadena:
+                switch(roomVerb)
                 {
-                     step++;
-                     stepTime = 0;
-                }
-                break;
-            case 1:
-                say("Otra cosa");
-                if (stepTime >= 2)
-                {
-                   step++;
-                   stepTime = 0;
-                }
-                break;
-            case 2:
-                 roomObject = 0;
-                 roomVerb = 0;
-                 change_room(1);
-                 break;
+                    case LOOK:
+                        switch (step)
+                        {
+                            case 0:
+                                step+= say("Es mi minicadena ultimo modelo");
+                                break;
+                            case 1:
+                                step+= say("Otra cosa");
+                                break;
+                            case 2:
+                                roomObject = 0;
+                                roomVerb = 0;
+                                change_room(1);
+                                break;
+                        }
+                        break;
+                    default:
+                        default_verb_action(roomVerb);
+                        roomObject = 0;
+                        roomVerb = 0;
+            }
         }
     }
 }

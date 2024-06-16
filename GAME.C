@@ -45,24 +45,30 @@ typedef struct tCursor
     //name of the pointed object
     char objectName[OBJECT_NAME_MAX_CHARS];
     //selected action/verb
-    //int action;
     enum verbs selectedVerb;
+    //flags
+    int enabled;
+    int click;
+    int leftClick;
+    int memClick;
+    int memLeftClick;
 } tCursor;
 
 //message structure
-//typedef struct tMsg
-//{
-//    char *msg;
-//    int msgId;
-//    int tickStamp;
-//} tMsg;
+typedef struct tMsg
+{
+    char msg[MAX_SENTENCE_LENGTH];
+    int msgTime;
+    int msgFinished;
+    int msgActive;
+} tMsg;
 
 //global structures
 tRoom room[2];
 tHUD hud;
 tCursor cursor;
-//tMsg msg;
-char msg[MAX_SENTENCE_LENGTH];
+tMsg msg;
+//char msg[MAX_SENTENCE_LENGTH];
 
 //global vars
 PALETTE gamePalette;
@@ -86,6 +92,7 @@ void hud_draw();
 void status_bar_draw();
 void cursor_draw();
 void debug_draw();
+void msg_init();
 void msg_update();
 void msg_draw();
 
@@ -119,7 +126,8 @@ int main()
 
     cursor_init();
     tick_init();
-
+    msg_init();
+    
     //main game loop
     while (!key[KEY_ESC])
     {
@@ -136,8 +144,9 @@ int main()
 
         //update
         msg_update();
-        cursor_update();
         room[actualRoom].room_update();
+        cursor_update();
+
         //game_update();
 
         //draw
@@ -203,23 +212,49 @@ void load_resources()
 void cursor_init()
 {
     strcpy(cursor.objectName,"");
-    //cursor.action = GO;
     cursor.selectedVerb = GO;
     position_mouse(RES_X>>1, RES_Y>>1);
+    cursor.enabled = 1;
+    cursor.click = 0;
+    cursor.leftClick = 0;
+    cursor.memClick = 0;
+    cursor.memLeftClick = 0;
 }
 
 //draws the pointer cursor
 void cursor_draw()
 {
-    draw_sprite(buffer, cursor.image, mouse_x - (cursor.image->w>>1), mouse_y - (cursor.image->h>>1));
+    if (cursor.enabled == 1)
+        draw_sprite(buffer, cursor.image, mouse_x - (cursor.image->w>>1), mouse_y - (cursor.image->h>>1));
 }
 
 //updates the cursor
 void cursor_update()
 {
+    //updates button clicks
+    cursor.click = 0;
+    if ((mouse_b & 1) && cursor.memClick == 0)
+    {
+        cursor.click = 1;
+        cursor.memClick = 1;
+    }
+    if (!(mouse_b & 1))
+        cursor.memClick = 0;
+
+    cursor.leftClick = 0;
+    if ((mouse_b & 2) && cursor.memLeftClick == 0)
+    {
+        cursor.leftClick = 1;
+        cursor.memLeftClick = 1;
+    }
+    if (!(mouse_b & 2))
+        cursor.memLeftClick = 0;
+        
     int hsColor;
 
-    //check color of room hotspot
+    if (cursor.enabled == 1)
+    {
+    //if cursor on room position, check color of room hotspot
     if (mouse_y < STATUS_BAR_Y)
     {
         //obtains the hotspot room color
@@ -228,12 +263,12 @@ void cursor_update()
         room[actualRoom].room_get_object(hsColor, cursor.objectName);
 
         //test room actions
-        if (mouse_b & 1)
+        if (cursor.click)
         {
             room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
         }
     }
-    //check color of HUD
+    //if cursor on HUD position, check color of HUD
     else
     {
         //obtains the hotspot HUD color
@@ -245,22 +280,22 @@ void cursor_update()
         }
 
         //mouse left on hud: default verb
-        if (mouse_b & 2)
+        if (cursor.leftClick)
         {
             cursor.selectedVerb = GO;
         }
     }
-
+    }
+    
     //debug
     textprintf_ex(buffer, font, 0, 18, makecol(255,255,255), -1, "Color: %i", hsColor);
-
 }
 
 //draws debug info
 void debug_draw()
 {
     textprintf_ex(buffer, font, 0, 10, makecol(255,255,255), -1, "Mouse x: %i @ Mouse y: %i", mouse_x, mouse_y);
-    textprintf_ex(buffer, font, 0, 26, makecol(255,255,255), -1, "Mouse: %i", mouse_b);
+    textprintf_ex(buffer, font, 0, 26, makecol(255,255,255), -1, "Mouse: %i", cursor.click);
     textprintf_ex(buffer, font, 0, 34, makecol(255,255,255), -1, "Action: %i", cursor.selectedVerb);
     textprintf_ex(buffer, font, 0, 34+8, makecol(255,255,255), -1, "Tick: %i", tick);
 }
@@ -274,27 +309,83 @@ void status_bar_draw()
 //function to change the actual room
 void change_room(int roomNum)
 {
-    fade_out(10);
+    //fade_out(10);
     actualRoom = roomNum;
-    fade_in(gamePalette, 10);
+    //fade_in(gamePalette, 10);
 }
 
-//function to say something
-void say(char *message)
+//function to init msg structure
+void msg_init()
 {
-    strcpy(msg, message);
+    //clear msg and vars
+    strcpy(msg.msg, "");
+    msg.msgTime = 0;
+    msg.msgFinished = 0;
+    msg.msgActive = 0;
+}
+
+//function to say something. Returns 1 when finished
+int say(char *message)
+{
+    //copy message to structure
+    strcpy(msg.msg, message);
+
+    //if not msg finished, set msg active
+    if (msg.msgFinished == 0)
+        msg.msgActive = 1;
+
+    //return finished state
+    return msg.msgFinished;
 }
 
 //function to update message
 void msg_update()
 {
-    strcpy(msg,"");
+    //if msg finished, reset the flags
+    if (msg.msgFinished == 1)
+    {
+        msg.msgActive = 0;
+        msg.msgFinished = 0;
+    }
+
+    //if msg active, calculate the relation of string length/characters per second
+    //and manage the msg time and finished flag
+    if (msg.msgActive == 1)
+    {
+        //disables cursor
+        cursor.enabled = 0;
+        
+        int msgLength = strlen(msg.msg);
+
+        if (msgLength > 0)
+        {
+            int msgDuration = msgLength / 6; //6 chars per second?
+            //1 second duration minimum
+            if (msgDuration == 0)
+                msgDuration = 1;
+
+            if (msg.msgTime >= msgDuration || cursor.click == 1)
+            {
+                msg.msgFinished = 1;
+            }
+            else
+                msg.msgTime += gameTick > 0;
+        }
+    }
+    else
+    {
+        //if not active, reset time and clear msg string
+        msg.msgTime = 0;
+        strcpy(msg.msg,"");
+        //enable cursor
+        cursor.enabled = 1;
+    }
 }
 
 //funcion to draw message
 void msg_draw()
 {
-    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg);
+    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
 }
 
 void abort_on_error()
@@ -314,6 +405,25 @@ void room_draw()
 void hud_draw()
 {
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
+}
+
+//function to perform default verb action when nothing is scripted
+void default_verb_action(enum verbs roomVerb)
+{
+    switch(roomVerb)
+    {
+        case GO:
+            say("No puedo ir ahi");
+            break;
+        case LOOK:
+            say("Nada destacable");
+            break;
+        case TAKE:
+            say("No puedo coger eso");
+            break;
+        default:
+            say("No tengo nada programado");
+    }
 }
 
 //function to init the tick timer
