@@ -415,10 +415,24 @@ void hud_draw()
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)
 {
+    int rndNumber;
+    rndNumber = rand() % 3;
+    
     switch(roomVerb)
     {
         case GO:
-            say("No puedo ir ahi");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No puedo ir ahi");
+                    break;
+                case 1:
+                    say("No se como llegar");
+                    break;
+                case 2:
+                    say("No me apetece andar");
+                    break;
+            }
             break;
         case LOOK:
             say("Nada destacable");

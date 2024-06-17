@@ -14,6 +14,7 @@
 //global room variable
 enum r01_objectCode roomObject = 0;
 enum verbs roomVerb = 0;
+int roomActionActive = 0;
 int step = 0;
 int lastStep = 0;
 int stepTime = 0;
@@ -43,9 +44,10 @@ void r01_get_object(int colorCode, char *s)
 void r01_do_object_action(enum verbs verb, int colorCode)
 {
     //if no previous action/object selected
-    if (roomObject == 0 && roomVerb == 0)
+    if (roomActionActive == 0)
     {
         //saves the room vars to start script sequence
+        roomActionActive = 1;
         roomObject = colorCode;
         roomVerb = verb;
     }
@@ -55,7 +57,7 @@ void r01_do_object_action(enum verbs verb, int colorCode)
 void r01_room_update()
 {
     //if nothing selected
-    if (roomObject <= 0 || roomVerb <= 0)
+    if (roomActionActive == 0)
     {
         //reset sequence vars
         step = 0;
@@ -94,6 +96,7 @@ void r01_room_update()
                             case 2:
                                 roomObject = 0;
                                 roomVerb = 0;
+                                roomActionActive = 0;
                                 change_room(1);
                                 break;
                         }
@@ -102,7 +105,16 @@ void r01_room_update()
                         default_verb_action(roomVerb);
                         roomObject = 0;
                         roomVerb = 0;
-            }
+                        roomActionActive = 0;
+                        break;
+                }
+                break;
+            default:
+                default_verb_action(roomVerb);
+                roomObject = 0;
+                roomVerb = 0;
+                roomActionActive = 0;
+                break;
         }
     }
 }
