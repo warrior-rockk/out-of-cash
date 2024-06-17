@@ -268,7 +268,7 @@ void cursor_update()
         room[actualRoom].room_get_object(hsColor, cursor.objectName);
 
         //test room actions
-        if (cursor.click)
+        if (cursor.click && cursor.objectName[0] != '\0')
         {
             room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
         }
