@@ -63,12 +63,18 @@ typedef struct tMsg
     int msgActive;
 } tMsg;
 
+//game config structure
+typedef struct tGameConfig
+{
+    int textSpeed;
+} tGameConfig;
+
 //global structures
 tRoom room[2];
 tHUD hud;
 tCursor cursor;
 tMsg msg;
-//char msg[MAX_SENTENCE_LENGTH];
+tGameConfig gameConfig;
 
 //global vars
 PALETTE gamePalette;
@@ -84,8 +90,10 @@ int gameTick = 0;
 void abort_on_error();
 void load_resources();
 
+void game_init();
 void cursor_init();
 void tick_init();
+void tick_update();
 void cursor_update();
 void room_draw();
 void hud_draw();
@@ -99,7 +107,8 @@ void msg_draw();
 //timer function callback
 void incTick(void)
 {
-    tick = 1;
+    //increment on 100ms
+    tick++;;
 }
 END_OF_FUNCTION(incTick);
 
@@ -123,7 +132,7 @@ int main()
     load_resources();
     
     //play_midi(room[actualRoom].song, -1);
-
+    game_init();
     cursor_init();
     tick_init();
     msg_init();
@@ -133,16 +142,8 @@ int main()
     {
         clear(buffer);
 
-        //check 1seg tick
-        if (tick == 1)
-        {
-            //sets global game tick var
-            gameTick = 1;
-            //reset 1sec interrupt var
-            tick = 0;
-        }
-
         //update
+        tick_update();
         msg_update();
         room[actualRoom].room_update();
         cursor_update();
@@ -160,8 +161,6 @@ int main()
         //blits to screen
         blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
 
-        //reset global timer tick
-        gameTick = 0;
     }
 
     //free resources
@@ -206,6 +205,12 @@ void load_resources()
     room[1].room_get_object = &r02_get_object;
     room[1].room_do_object_action = &r02_do_object_action;
     room[1].room_update = &r02_room_update;
+}
+
+//function to init game
+void game_init()
+{
+    gameConfig.textSpeed = 6; //6 chars per second?
 }
 
 //function to initialize cursor
@@ -359,7 +364,7 @@ void msg_update()
 
         if (msgLength > 0)
         {
-            int msgDuration = msgLength / 6; //6 chars per second?
+            int msgDuration = msgLength / gameConfig.textSpeed;
             //1 second duration minimum
             if (msgDuration == 0)
                 msgDuration = 1;
@@ -432,7 +437,22 @@ void tick_init()
     tick = 0;
     LOCK_VARIABLE(tick);
     LOCK_FUNCTION(incTick);
-    install_int(incTick, 1000);
+    install_int(incTick, 100);  //100ms
+}
+
+//check 1seg tick
+void tick_update()
+{
+    //reset global timer tick
+    gameTick = 0;
+
+    if (tick >= 10) //100ms tick
+    {
+        //sets global game tick var
+        gameTick = 1;
+        //reset timer interrupt var
+        tick = 0;
+    }
 }
 
 void mytrace(char *s, ...)
