@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game.h"
+#include "engine.h"
 #include "room02.h"
 
 //Funtion to return the name of object by color code
