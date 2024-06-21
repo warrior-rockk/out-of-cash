@@ -39,7 +39,6 @@ void r01_get_object(int colorCode, char *s)
     }
 }
 
-
 //function to perform object action
 void r01_do_object_action(enum verbs verb, int colorCode)
 {

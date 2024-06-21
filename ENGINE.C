@@ -25,6 +25,7 @@ void change_room(int roomNum)
     actualRoom = roomNum;
     //fade_in(gamePalette, 10);
 }
+
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)
 {
@@ -48,10 +49,32 @@ void default_verb_action(enum verbs roomVerb)
             }
             break;
         case LOOK:
-            say("Nada destacable");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("Nada destacable");
+                    break;
+                case 1:
+                    say("No veo nada en especial");
+                    break;
+                case 2:
+                    say("Aqui no hay nada que ver");
+                    break;
+            }
             break;
         case TAKE:
-            say("No puedo coger eso");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No puedo coger eso");
+                    break;
+                case 1:
+                    say("No lo necesito");
+                    break;
+                case 2:
+                    say("Ya llevo demasiadas cosas");
+                    break;
+            }
             break;
         default:
             say("No tengo nada programado");
