@@ -31,43 +31,6 @@ void r02_get_object(int colorCode, char *s)
     }
 }
 
-//function to perform object action
-void r02_do_object_action(enum verbs verb, int colorCode)
-{
-    //check the object
-    switch(colorCode)
-    {
-        case espejo:
-            switch (verb)
-            {
-                case GO:
-                    exit(2);
-                case LOOK:
-                    exit(3);
-            }
-            break;
-        case cuadro:
-            switch (verb)
-            {
-                case GO:
-                    exit(4);
-                case LOOK:
-                    exit(5);
-            }
-            break;
-        case habitacion:
-            switch (verb)
-            {
-                case GO:
-                    change_room(0);
-                    break;
-                case LOOK:
-                    exit(7);
-            }
-            break;
-    }
-}
-
 //funcion to update room
 void r02_room_update()
 {

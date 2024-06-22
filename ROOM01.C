@@ -11,14 +11,6 @@
 #include "engine.h"
 #include "room01.h"
 
-//global room variable
-enum r01_objectCode roomObject = 0;
-enum verbs roomVerb = 0;
-int roomActionActive = 0;
-int step = 0;
-int lastStep = 0;
-int stepTime = 0;
-
 //Funtion to return the name of object by color code
 void r01_get_object(int colorCode, char *s)
 {
@@ -39,81 +31,84 @@ void r01_get_object(int colorCode, char *s)
     }
 }
 
-
-//function to perform object action
-void r01_do_object_action(enum verbs verb, int colorCode)
-{
-    //if no previous action/object selected
-    if (roomActionActive == 0)
-    {
-        //saves the room vars to start script sequence
-        roomActionActive = 1;
-        roomObject = colorCode;
-        roomVerb = verb;
-    }
-}
-
 //funcion to update room
 void r01_room_update()
 {
     //if nothing selected
-    if (roomActionActive == 0)
+    if (!roomAction.active)
     {
         //reset sequence vars
-        step = 0;
-        lastStep = 0;
-        stepTime = 0;
+        roomAction.step = 0;
+        roomAction.lastStep = 0;
+        roomAction.stepTime = 0;
     }
     else
     {
         //sequence timer
-        if (gameTick > 0)
+        if (gameTick)
         {
-          stepTime++;
+          roomAction.stepTime++;
         }
         //reset step timer on step change
-        if (step != lastStep)
+        if (roomAction.step != roomAction.lastStep)
         {
-            stepTime = 0;
-            lastStep = step;
+            roomAction.stepTime = 0;
+            roomAction.lastStep = roomAction.step;
         }
 
         //sequence actions
-        switch (roomObject)
+        switch (roomAction.object)
         {
             case Minicadena:
-                switch(roomVerb)
+                switch(roomAction.verb)
                 {
                     case LOOK:
-                        switch (step)
+                        switch (roomAction.step)
                         {
                             case 0:
-                                step+= say("Es mi minicadena ultimo modelo");
+                                roomAction.step+= say("Es mi minicadena ultimo modelo");
                                 break;
                             case 1:
-                                step+= say("Otra cosa");
+                                roomAction.step+= say("Otra cosa");
                                 break;
-                            case 2:
-                                roomObject = 0;
-                                roomVerb = 0;
-                                roomActionActive = 0;
-                                change_room(1);
+                            default:
+                                end_script();
+                                break;
+                        }
+                        break;
+                    case TAKE:
+                        switch (roomAction.step)
+                        {
+                            case 0:
+                                roomAction.step+= say("No puedo llevarmelo. Pesa mucho");
+                                break;
+                            default:
+                                end_script();
                                 break;
                         }
                         break;
                     default:
-                        default_verb_action(roomVerb);
-                        roomObject = 0;
-                        roomVerb = 0;
-                        roomActionActive = 0;
+                        default_verb_action(roomAction.verb);
+                        end_script();
                         break;
                 }
                 break;
+            case Puerta:
+                switch(roomAction.verb)
+                {
+                    case GO:
+                        change_room(1);
+                        end_script();
+                        break;
+                    default:
+                        default_verb_action(roomAction.verb);
+                        end_script();
+                        break;    
+                }
+                break;
             default:
-                default_verb_action(roomVerb);
-                roomObject = 0;
-                roomVerb = 0;
-                roomActionActive = 0;
+                default_verb_action(roomAction.verb);
+                end_script();
                 break;
         }
     }

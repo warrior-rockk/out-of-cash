@@ -40,8 +40,6 @@ typedef struct tRoom
     MIDI    *song;
     //function pointer to get object
     void (*room_get_object)(int, char *s);
-    //function pointer to do object action
-    void (*room_do_object_action)(enum verbs, int);
     //function pointer to update room
     void (*room_update)(void);
 } tRoom;
@@ -84,6 +82,7 @@ tHUD hud;
 tCursor cursor;
 tGameConfig gameConfig;
 tMsg msg;
+struct roomAction roomAction;
 
 //global vars
 PALETTE gamePalette;

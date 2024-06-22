@@ -1,5 +1,4 @@
 //Adventure game engine global header
-
 #ifndef H_ENGINE
 #define H_ENGINE
 
@@ -27,10 +26,21 @@ static const char verbName[3][10] = {
     "Coger"
 };
 
+//global room action structure
+extern struct roomAction
+{
+    int active;
+    int object;
+    enum verbs verb;
+    int step;
+    int lastStep;
+    int stepTime;
+} roomAction;
+
 //global functions
 int say(char *message);
 void change_room(int roomNum);
 void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
-
+void end_script();
 #endif

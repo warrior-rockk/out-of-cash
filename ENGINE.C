@@ -11,7 +11,7 @@ int say(char *message)
     strcpy(msg.msg, message);
 
     //if not msg finished, set msg active
-    if (msg.msgFinished == 0)
+    if (!msg.msgFinished)
         msg.msgActive = 1;
 
     //return finished state
@@ -56,4 +56,11 @@ void default_verb_action(enum verbs roomVerb)
         default:
             say("No tengo nada programado");
     }
+}
+
+void end_script()
+{
+    roomAction.object = 0;
+    roomAction.verb = 0;
+    roomAction.active = 0;
 }

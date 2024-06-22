@@ -108,10 +108,8 @@ void load_resources()
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
 
     room[0].room_get_object = &r01_get_object;
-    room[0].room_do_object_action = &r01_do_object_action;
     room[0].room_update = &r01_room_update;
     room[1].room_get_object = &r02_get_object;
-    room[1].room_do_object_action = &r02_do_object_action;
     room[1].room_update = &r02_room_update;
 }
 
@@ -119,7 +117,13 @@ void load_resources()
 void game_init()
 {
     actualRoom = 0;
-    gameConfig.textSpeed = 6; //6 chars per second?
+    gameConfig.textSpeed = 8; //8 chars per second?
+    roomAction.active = 0;
+    roomAction.object = 0;
+    roomAction.verb = 0;
+    roomAction.step = 0;
+    roomAction.lastStep = 0;
+    roomAction.stepTime = 0;
 }
 
 //function to initialize cursor
@@ -138,7 +142,7 @@ void cursor_init()
 //draws the pointer cursor
 void cursor_draw()
 {
-    if (cursor.enabled == 1)
+    if (cursor.enabled)
         draw_sprite(buffer, cursor.image, mouse_x - (cursor.image->w>>1), mouse_y - (cursor.image->h>>1));
 }
 
@@ -156,7 +160,7 @@ void cursor_update()
         cursor.memClick = 0;
 
     cursor.leftClick = 0;
-    if ((mouse_b & 2) && cursor.memLeftClick == 0)
+    if ((mouse_b & 2) && !cursor.memLeftClick)
     {
         cursor.leftClick = 1;
         cursor.memLeftClick = 1;
@@ -166,7 +170,7 @@ void cursor_update()
         
     int hsColor;
 
-    if (cursor.enabled == 1)
+    if (cursor.enabled)
     {
     //if cursor on room position, check color of room hotspot
     if (mouse_y < STATUS_BAR_Y)
@@ -179,7 +183,15 @@ void cursor_update()
         //test room actions
         if (cursor.click && cursor.objectName[0] != '\0')
         {
-            room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
+            //room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
+            //if no previous action/object selected
+            if (!roomAction.active)
+            {
+                //saves the room vars to start script sequence
+                roomAction.active = 1;
+                roomAction.object = hsColor;
+                roomAction.verb = cursor.selectedVerb;
+            }
         }
     }
     //if cursor on HUD position, check color of HUD
@@ -235,7 +247,7 @@ void msg_init()
 void msg_update()
 {
     //if msg finished, reset the flags
-    if (msg.msgFinished == 1)
+    if (msg.msgFinished)
     {
         msg.msgActive = 0;
         msg.msgFinished = 0;
@@ -243,7 +255,7 @@ void msg_update()
 
     //if msg active, calculate the relation of string length/characters per second
     //and manage the msg time and finished flag
-    if (msg.msgActive == 1)
+    if (msg.msgActive)
     {
         //disables cursor
         cursor.enabled = 0;
@@ -257,7 +269,7 @@ void msg_update()
             if (msgDuration == 0)
                 msgDuration = 1;
 
-            if (msg.msgTime >= msgDuration || cursor.click == 1)
+            if (msg.msgTime >= msgDuration || cursor.click)
             {
                 msg.msgFinished = 1;
             }
