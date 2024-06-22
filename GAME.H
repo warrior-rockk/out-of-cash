@@ -103,6 +103,7 @@ void cursor_init();
 void tick_init();
 void tick_update();
 void cursor_update();
+void room_action_update();
 void room_draw();
 void hud_draw();
 void status_bar_draw();

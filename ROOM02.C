@@ -34,5 +34,34 @@ void r02_get_object(int colorCode, char *s)
 //funcion to update room
 void r02_room_update()
 {
-    ;
+    //if nothing selected
+    if (roomAction.active)
+    {
+        //sequence actions
+        switch (roomAction.object)
+        {
+            case habitacion:
+                switch(roomAction.verb)
+                {
+                    case LOOK:
+                        switch (roomAction.step)
+                        {
+                            case 0:
+                                begin_script();
+                                roomAction.step+= say("Es la entrada a mi habitacion");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                        break;
+                    case GO:
+                        begin_script();
+                        change_room(0);
+                        end_script();
+                        break;
+                }
+                break;
+        }
+    }
 }

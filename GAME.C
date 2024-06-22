@@ -54,6 +54,7 @@ int main()
         tick_update();
         msg_update();
         room[actualRoom].room_update();
+        room_action_update();
         cursor_update();
 
         //game_update();
@@ -298,6 +299,39 @@ void abort_on_error()
     allegro_exit();
     printf("No se encuentra el archivo");
     exit(-1);
+}
+
+//updates the room action structure
+void room_action_update()
+{
+    //if nothing selected
+    if (!roomAction.active)
+    {
+        //reset sequence vars
+        roomAction.step = 0;
+        roomAction.lastStep = 0;
+        roomAction.stepTime = 0;
+    }
+    else
+    {
+        //sequence timer
+        if (gameTick)
+        {
+          roomAction.stepTime++;
+        }
+        //reset step timer on step change
+        if (roomAction.step != roomAction.lastStep)
+        {
+            roomAction.stepTime = 0;
+            roomAction.lastStep = roomAction.step;
+        }
+
+        if (!roomAction.scriptAssigned)
+        {
+            default_verb_action(roomAction.verb);
+            end_script();
+        }
+    }
 }
 
 //draws the actual room to buffer

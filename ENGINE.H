@@ -31,6 +31,7 @@ extern struct roomAction
 {
     int active;
     int object;
+    int scriptAssigned;
     enum verbs verb;
     int step;
     int lastStep;
@@ -42,5 +43,6 @@ int say(char *message);
 void change_room(int roomNum);
 void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
+void begin_script();
 void end_script();
 #endif

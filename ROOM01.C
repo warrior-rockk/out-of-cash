@@ -35,27 +35,8 @@ void r01_get_object(int colorCode, char *s)
 void r01_room_update()
 {
     //if nothing selected
-    if (!roomAction.active)
+    if (roomAction.active)
     {
-        //reset sequence vars
-        roomAction.step = 0;
-        roomAction.lastStep = 0;
-        roomAction.stepTime = 0;
-    }
-    else
-    {
-        //sequence timer
-        if (gameTick)
-        {
-          roomAction.stepTime++;
-        }
-        //reset step timer on step change
-        if (roomAction.step != roomAction.lastStep)
-        {
-            roomAction.stepTime = 0;
-            roomAction.lastStep = roomAction.step;
-        }
-
         //sequence actions
         switch (roomAction.object)
         {
@@ -66,6 +47,7 @@ void r01_room_update()
                         switch (roomAction.step)
                         {
                             case 0:
+                                begin_script();
                                 roomAction.step+= say("Es mi minicadena ultimo modelo");
                                 break;
                             case 1:
@@ -80,6 +62,7 @@ void r01_room_update()
                         switch (roomAction.step)
                         {
                             case 0:
+                                begin_script();
                                 roomAction.step+= say("No puedo llevarmelo. Pesa mucho");
                                 break;
                             default:
@@ -87,28 +70,17 @@ void r01_room_update()
                                 break;
                         }
                         break;
-                    default:
-                        default_verb_action(roomAction.verb);
-                        end_script();
-                        break;
                 }
                 break;
             case Puerta:
                 switch(roomAction.verb)
                 {
                     case GO:
+                        begin_script();
                         change_room(1);
                         end_script();
                         break;
-                    default:
-                        default_verb_action(roomAction.verb);
-                        end_script();
-                        break;    
                 }
-                break;
-            default:
-                default_verb_action(roomAction.verb);
-                end_script();
                 break;
         }
     }

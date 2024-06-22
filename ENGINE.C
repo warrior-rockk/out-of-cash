@@ -58,9 +58,15 @@ void default_verb_action(enum verbs roomVerb)
     }
 }
 
+void begin_script()
+{
+    roomAction.scriptAssigned = 1;
+}
+
 void end_script()
 {
     roomAction.object = 0;
     roomAction.verb = 0;
     roomAction.active = 0;
+    roomAction.scriptAssigned = 0;
 }
