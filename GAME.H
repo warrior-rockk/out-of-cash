@@ -100,10 +100,11 @@ int gameTick;
 int actualRoom;
 
 //function declarations
-void abort_on_error();
+void abort_on_error(const char *msg);
 void load_resources();
 
 void game_init();
+void game_exit();
 void cursor_init();
 void tick_init();
 void debug_init();

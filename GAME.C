@@ -23,14 +23,19 @@ int main()
 {
     //initialize and install modules
     allegro_init();
-    install_timer();
-    install_mouse();
-    install_keyboard();
-    install_sound(0, MIDI_AUTODETECT, 0);
+    if (install_timer() != 0)
+        abort_on_error("Error iniciando el modulo timer");
+    if (install_mouse() < 0)
+        abort_on_error("Error iniciando el mouse");
+    if (install_keyboard() != 0)
+        abort_on_error("Error iniciando el teclado");
+    if (install_sound(0, MIDI_AUTODETECT, 0) != 0)
+        abort_on_error("Error iniciando el sonido");
 
     //set video mode
     set_color_depth(8);
-    set_gfx_mode(GFX_AUTODETECT, 320, 240, 0, 0);
+    if (set_gfx_mode(GFX_AUTODETECT, 320, 240, 0, 0) != 0)
+        abort_on_error("Error seteando modo grafico");
 
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
@@ -71,28 +76,16 @@ int main()
 
     }
 
-    //free resources
-    destroy_bitmap(room[0].image);
-    destroy_bitmap(room[0].hsImage);
-    destroy_midi(room[0].song);
-    destroy_bitmap(room[1].image);
-    destroy_bitmap(room[1].hsImage);
-    destroy_midi(room[1].song);
-    destroy_bitmap(hud.image);
-    destroy_bitmap(cursor.image);
-
-    unload_datafile(dataFile);
-
-    allegro_exit();
+    game_exit();
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 //function to load resources from dat file
 void load_resources()
 {
     dataFile = load_datafile("data.dat");
     if (!dataFile)
-        abort_on_error();
+        abort_on_error("Archivo data.dat invalido o inexistente");
 
     //gamePalette     = (PALETTE *)dataFile[0].dat;
     set_palette((RGB*)dataFile[dGamePal].dat);
@@ -124,6 +117,15 @@ void game_init()
     roomAction.step = 0;
     roomAction.lastStep = 0;
     roomAction.stepTime = 0;
+}
+
+//function that handles game exit
+void game_exit()
+{
+    //free resources
+    unload_datafile(dataFile);
+    //quit allegro modules
+    allegro_exit();
 }
 
 //function to initialize cursor
@@ -308,11 +310,19 @@ void msg_draw()
     textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
 }
 
-void abort_on_error()
+//function to abort program with critical error
+void abort_on_error(const char *msg)
 {
-    allegro_exit();
-    printf("No se encuentra el archivo");
-    exit(-1);
+    //exit to return text mode
+    //allegro_exit();
+    //printf(msg);
+    #ifndef DEBUGMODE
+    allegro_message(msg);
+    #else
+    allegro_message(msg);
+    allegro_message(allegro_error);
+    #endif
+    exit(EXIT_FAILURE);
 }
 
 //updates the room action structure
