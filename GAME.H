@@ -19,6 +19,10 @@
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
 
+//Debug
+#define DEBUG_Y                 10
+#define DEBUG_FONT_HEIGHT       8
+
 //structures
 
 //message structure
@@ -83,6 +87,7 @@ tCursor cursor;
 tGameConfig gameConfig;
 tMsg msg;
 struct roomAction roomAction;
+struct debugVars debugVars;
 
 //global vars
 PALETTE gamePalette;
@@ -101,6 +106,7 @@ void load_resources();
 void game_init();
 void cursor_init();
 void tick_init();
+void debug_init();
 void tick_update();
 void cursor_update();
 void room_action_update();

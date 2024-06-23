@@ -4,6 +4,9 @@
 #include "engine.h"
 #include "game.h"
 
+//local vars
+static int lastRndNumber;
+
 //function to say something. Returns 1 when finished
 int say(char *message)
 {
@@ -28,8 +31,14 @@ void change_room(int roomNum)
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)
 {
+    //get non-repeat random number
     int rndNumber;
-    rndNumber = rand() % 3;
+    do
+    {
+        rndNumber = rand() % 3;
+    }
+    while (rndNumber == lastRndNumber);
+    lastRndNumber = rndNumber;
     
     switch(roomVerb)
     {
@@ -69,4 +78,11 @@ void end_script()
     roomAction.verb = 0;
     roomAction.active = 0;
     roomAction.scriptAssigned = 0;
+}
+
+void show_debug(char *varName, int var)
+{
+    strcpy(debugVars.varName[debugVars.numVars], varName);
+    debugVars.var[debugVars.numVars] = var;
+    debugVars.numVars++;
 }

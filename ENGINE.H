@@ -38,6 +38,14 @@ extern struct roomAction
     int stepTime;
 } roomAction;
 
+//global debug vars structure
+extern struct debugVars
+{
+    int var[5];
+    char varName[5][10];
+    int numVars;
+} debugVars;
+
 //global functions
 int say(char *message);
 void change_room(int roomNum);
@@ -45,4 +53,5 @@ void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
 void begin_script();
 void end_script();
+void show_debug(char *varName, int var);
 #endif

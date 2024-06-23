@@ -14,6 +14,7 @@
 //Funtion to return the name of object by color code
 void r01_get_object(int colorCode, char *s)
 {
+        
     //check the object
     switch(colorCode)
     {

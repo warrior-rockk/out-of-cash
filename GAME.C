@@ -1,12 +1,11 @@
 #define DEBUGMODE
-#define MAIN_FILE
 
 #include <stdio.h>
 #include <string.h>
 #include <allegro.h>
 #include "engine.h"
 #include "game.h"
-//include game data
+//game data resources
 #include "data.h"
 //includes all rooms
 #include "room01.h"
@@ -38,7 +37,7 @@ int main()
 
     //load resources
     load_resources();
-    
+
     //play_midi(room[actualRoom].song, -1);
     game_init();
     cursor_init();
@@ -118,7 +117,7 @@ void load_resources()
 void game_init()
 {
     actualRoom = 0;
-    gameConfig.textSpeed = 8; //8 chars per second?
+    gameConfig.textSpeed = 10; //8 chars per second?
     roomAction.active = 0;
     roomAction.object = 0;
     roomAction.verb = 0;
@@ -138,6 +137,12 @@ void cursor_init()
     cursor.leftClick = 0;
     cursor.memClick = 0;
     cursor.memLeftClick = 0;
+}
+
+//funcion to init the debug vars
+void debug_init()
+{
+    debugVars.numVars = 0;
 }
 
 //draws the pointer cursor
@@ -215,16 +220,19 @@ void cursor_update()
     }
     
     //debug
-    textprintf_ex(buffer, font, 0, 18, makecol(255,255,255), -1, "Color: %i", hsColor);
+    show_debug("Color", hsColor);
 }
 
 //draws debug info
 void debug_draw()
 {
-    textprintf_ex(buffer, font, 0, 10, makecol(255,255,255), -1, "Mouse x: %i @ Mouse y: %i", mouse_x, mouse_y);
-    textprintf_ex(buffer, font, 0, 26, makecol(255,255,255), -1, "Mouse: %i", cursor.click);
-    textprintf_ex(buffer, font, 0, 34, makecol(255,255,255), -1, "Action: %i", cursor.selectedVerb);
-    textprintf_ex(buffer, font, 0, 34+8, makecol(255,255,255), -1, "Tick: %i", tick);
+    //writes all the debug vars
+    for (int i = 0; i < debugVars.numVars; i++)
+    {
+        textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debugVars.varName[i], debugVars.var[i]);
+    }
+    //reset debug vars
+    debugVars.numVars = 0;
 }
 
 //draws the status bar
@@ -265,10 +273,16 @@ void msg_update()
 
         if (msgLength > 0)
         {
-            int msgDuration = msgLength / gameConfig.textSpeed;
+            int msgDuration = (msgLength / gameConfig.textSpeed);
             //1 second duration minimum
             if (msgDuration == 0)
                 msgDuration = 1;
+
+            //convert to 100ms base
+            msgDuration *= 10;
+
+            //show_debug("msgLength", msgLength);
+            //show_debug("msgDuration", msgDuration);
 
             if (msg.msgTime >= msgDuration || cursor.click)
             {
@@ -363,7 +377,7 @@ void tick_update()
     //reset global timer tick
     gameTick = 0;
 
-    if (tick >= 10) //100ms tick
+    if (tick) //100ms tick
     {
         //sets global game tick var
         gameTick = 1;
