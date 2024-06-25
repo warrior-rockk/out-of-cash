@@ -23,6 +23,16 @@
 #define DEBUG_Y                 10
 #define DEBUG_FONT_HEIGHT       8
 
+//enums
+enum gameState{
+    LOGO_STATE,
+    TITLE_STATE,
+    INTRO_STATE,
+    PLAYING_STATE,
+    PAUSE_STATE,
+    MENU_STATE
+} gameState;
+
 //structures
 
 //message structure
@@ -100,6 +110,7 @@ int gameTick;
 int actualRoom;
 
 //function declarations
+void incTick(void);
 void abort_on_error(const char *msg);
 void load_resources();
 

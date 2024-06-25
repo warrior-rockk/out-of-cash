@@ -24,9 +24,9 @@ int say(char *message)
 //function to change the actual room
 void change_room(int roomNum)
 {
-    //fade_out(10);
+    fade_out(6);
     actualRoom = roomNum;
-    //fade_in(gamePalette, 10);
+    fade_in(gamePalette, 6);
 }
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)

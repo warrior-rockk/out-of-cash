@@ -11,14 +11,6 @@
 #include "room01.h"
 #include "room02.h"
 
-//timer function callback
-void incTick(void)
-{
-    //increment on 100ms
-    tick++;;
-}
-END_OF_FUNCTION(incTick);
-
 int main()
 {
     //initialize and install modules
@@ -34,72 +26,109 @@ int main()
 
     //set video mode
     set_color_depth(8);
-    if (set_gfx_mode(GFX_AUTODETECT, 320, 240, 0, 0) != 0)
+    if (set_gfx_mode(GFX_AUTODETECT, RES_X, RES_Y, 0, 0) != 0)
         abort_on_error("Error seteando modo grafico");
 
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
 
+    //set game initial state
+    gameState = TITLE_STATE;
+    
     //load resources
     load_resources();
 
     //play_midi(room[actualRoom].song, -1);
-    game_init();
+
+    //init general modules
     cursor_init();
     tick_init();
-    msg_init();
-    
+
     //main game loop
     while (!key[KEY_ESC])
     {
+        //general update
         clear(buffer);
-
-        //update
         tick_update();
-        msg_update();
-        room[actualRoom].room_update();
-        room_action_update();
-        cursor_update();
 
-        //game_update();
+        //check actual game state
+        switch (gameState)
+        {
+            case TITLE_STATE:
+                //placeholder test
+                textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "ADVENTURE GAME");
+                cursor.enabled = 1;
+                cursor_update();
+                cursor_draw();
+                if (cursor.click)
+                {
+                    game_init();
+                    gameState = PLAYING_STATE;
+                }
+                break;
+            case PLAYING_STATE:
+                //update
+                msg_update();
+                room[actualRoom].room_update();
+                room_action_update();
+                cursor_update();
+                //game_update();
 
-        //draw
-        room_draw();
-        hud_draw();
-        status_bar_draw();
-        cursor_draw();
-        msg_draw();
+                //draw
+                room_draw();
+                hud_draw();
+                status_bar_draw();
+                cursor_draw();
+                msg_draw();
+
+                break;
+        }
+        //general draw
         debug_draw();
 
         //blits to screen
         blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
-
     }
 
+    //quits the game
     game_exit();
-    
     return EXIT_SUCCESS;
 }
+
+
+//timer function callback
+void incTick(void)
+{
+    //increment on 100ms
+    tick++;;
+}
+END_OF_FUNCTION(incTick);
+
 //function to load resources from dat file
 void load_resources()
 {
+    //loads data file
     dataFile = load_datafile("data.dat");
     if (!dataFile)
         abort_on_error("Archivo data.dat invalido o inexistente");
 
-    //gamePalette     = (PALETTE *)dataFile[0].dat;
+    //sets and get the palette
     set_palette((RGB*)dataFile[dGamePal].dat);
+    get_palette(gamePalette);
     
-    room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
-    room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
+    //loads game resources
     hud.image          = (BITMAP *)dataFile[dHud].dat;
     hud.hsImage        = (BITMAP *)dataFile[dHudhs].dat;
     cursor.image       = (BITMAP *)dataFile[dCursor].dat;
+    //loads room resources
+    room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
+    room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
     room[0].song       = (MIDI *)dataFile[dSong01].dat;
     room[1].image      = (BITMAP *)dataFile[dRoom02].dat;
     room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
 
+    //assign room function pointers
     room[0].room_get_object = &r01_get_object;
     room[0].room_update = &r01_room_update;
     room[1].room_get_object = &r02_get_object;
@@ -109,14 +138,20 @@ void load_resources()
 //function to init game
 void game_init()
 {
+    gameConfig.textSpeed = 10; //8 chars per second? This going to be on config
+
+    //init game vars
     actualRoom = 0;
-    gameConfig.textSpeed = 10; //8 chars per second?
+
     roomAction.active = 0;
     roomAction.object = 0;
     roomAction.verb = 0;
     roomAction.step = 0;
     roomAction.lastStep = 0;
     roomAction.stepTime = 0;
+
+    //call init game modules
+    msg_init();
 }
 
 //function that handles game exit
@@ -131,14 +166,17 @@ void game_exit()
 //function to initialize cursor
 void cursor_init()
 {
-    strcpy(cursor.objectName,"");
-    cursor.selectedVerb = GO;
-    position_mouse(RES_X>>1, RES_Y>>1);
-    cursor.enabled = 1;
+    //clear cursor flags
+    cursor.enabled = 0;
     cursor.click = 0;
     cursor.leftClick = 0;
     cursor.memClick = 0;
     cursor.memLeftClick = 0;
+    //clear verb flags
+    strcpy(cursor.objectName,"");
+    cursor.selectedVerb = GO;
+    //move cursor to screen center
+    position_mouse(RES_X>>1, RES_Y>>1);
 }
 
 //funcion to init the debug vars
@@ -157,7 +195,7 @@ void cursor_draw()
 //updates the cursor
 void cursor_update()
 {
-    //updates button clicks
+    //handles rigth button click
     cursor.click = 0;
     if ((mouse_b & 1) && cursor.memClick == 0)
     {
@@ -167,6 +205,7 @@ void cursor_update()
     if (!(mouse_b & 1))
         cursor.memClick = 0;
 
+    //handles left button click
     cursor.leftClick = 0;
     if ((mouse_b & 2) && !cursor.memLeftClick)
     {
@@ -175,54 +214,59 @@ void cursor_update()
     }
     if (!(mouse_b & 2))
         cursor.memLeftClick = 0;
-        
+
     int hsColor;
 
+    //check cursor behaviour
     if (cursor.enabled)
     {
-    //if cursor on room position, check color of room hotspot
-    if (mouse_y < STATUS_BAR_Y)
-    {
-        //obtains the hotspot room color
-        hsColor = getpixel(room[actualRoom].hsImage, mouse_x, mouse_y);
-        //gets the object name
-        room[actualRoom].room_get_object(hsColor, cursor.objectName);
+        switch (gameState)
+        {
+            case PLAYING_STATE:
+                //if cursor on room position, check color of room hotspot
+                if (mouse_y < STATUS_BAR_Y)
+                {
+                    //obtains the hotspot room color
+                    hsColor = getpixel(room[actualRoom].hsImage, mouse_x, mouse_y);
+                    //gets the object name
+                    room[actualRoom].room_get_object(hsColor, cursor.objectName);
 
-        //test room actions
-        if (cursor.click && cursor.objectName[0] != '\0')
-        {
-            //room[actualRoom].room_do_object_action(cursor.selectedVerb, hsColor);
-            //if no previous action/object selected
-            if (!roomAction.active)
-            {
-                //saves the room vars to start script sequence
-                roomAction.active = 1;
-                roomAction.object = hsColor;
-                roomAction.verb = cursor.selectedVerb;
-            }
-        }
-    }
-    //if cursor on HUD position, check color of HUD
-    else
-    {
-        //obtains the hotspot HUD color
-        hsColor = getpixel(hud.hsImage, mouse_x, mouse_y - HUD_Y);
-        //if action is valid and mouse click
-        if (hsColor > 0 && hsColor <= NUM_VERBS && mouse_b & 1)
-        {
-                cursor.selectedVerb = hsColor - 1;
-        }
+                    //if cursor click on valid object
+                    if (cursor.click && cursor.objectName[0] != '\0')
+                    {
+                        //if no previous action/object selected
+                        if (!roomAction.active)
+                        {
+                            //saves the room vars to start script sequence
+                            roomAction.active = 1;
+                            roomAction.object = hsColor;
+                            roomAction.verb = cursor.selectedVerb;
+                        }
+                    }
+                }
+                //if cursor on HUD position, check color of HUD
+                else
+                {
+                    //obtains the hotspot HUD color
+                    hsColor = getpixel(hud.hsImage, mouse_x, mouse_y - HUD_Y);
 
-        //mouse left on hud: default verb
-        if (cursor.leftClick)
-        {
-            cursor.selectedVerb = GO;
+                    //if mouse click and action is valid
+                    if (hsColor > 0 && hsColor <= NUM_VERBS && mouse_b & 1)
+                    {
+                        cursor.selectedVerb = hsColor - 1;
+                    }
+
+                    //if mouse left on hud: default verb
+                    if (cursor.leftClick)
+                    {
+                        cursor.selectedVerb = GO;
+                    }
+                }
+                //debug
+                show_debug("Color", hsColor);
+                break;
         }
     }
-    }
-    
-    //debug
-    show_debug("Color", hsColor);
 }
 
 //draws debug info
@@ -369,8 +413,6 @@ void hud_draw()
 {
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
 }
-
-
 
 //function to init the tick timer
 void tick_init()
