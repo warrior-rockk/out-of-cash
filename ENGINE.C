@@ -26,8 +26,14 @@ void change_room(int roomNum)
 {
     fade_out(6);
     actualRoom = roomNum;
+}
+
+//function to do game fade in
+void game_fade_in()
+{
     fade_in(gamePalette, 6);
 }
+
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)
 {

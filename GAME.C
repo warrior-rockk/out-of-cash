@@ -67,6 +67,8 @@ int main()
                 }
                 break;
             case PLAYING_STATE:
+                check_room_changed();
+
                 //update
                 msg_update();
                 room[actualRoom].room_update();
@@ -130,9 +132,11 @@ void load_resources()
 
     //assign room function pointers
     room[0].room_get_object = &r01_get_object;
+    room[0].room_init = &r01_room_init;
     room[0].room_update = &r01_room_update;
     room[1].room_get_object = &r02_get_object;
     room[1].room_update = &r02_room_update;
+    room[1].room_init = &r02_room_init;
 }
 
 //function to init game
@@ -142,7 +146,8 @@ void game_init()
 
     //init game vars
     actualRoom = 0;
-
+    lastRoom = 0;
+    
     roomAction.active = 0;
     roomAction.object = 0;
     roomAction.verb = 0;
@@ -152,6 +157,17 @@ void game_init()
 
     //call init game modules
     msg_init();
+}
+
+//function to check if actual room as changed
+void check_room_changed()
+{
+    if (actualRoom != lastRoom)
+    {
+        lastRoom = actualRoom;
+        //call new room init
+        room[actualRoom].room_init();
+    }
 }
 
 //function that handles game exit

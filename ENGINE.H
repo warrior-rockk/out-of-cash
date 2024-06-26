@@ -49,6 +49,7 @@ extern struct debugVars
 //global functions
 int say(char *message);
 void change_room(int roomNum);
+void game_fade_in();
 void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
 void begin_script();

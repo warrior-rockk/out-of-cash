@@ -31,6 +31,13 @@ void r02_get_object(int colorCode, char *s)
     }
 }
 
+//function to init room
+void r02_room_init()
+{
+    game_fade_in();
+    say("Ya estoy aqui");
+}
+
 //funcion to update room
 void r02_room_update()
 {

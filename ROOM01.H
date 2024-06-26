@@ -10,6 +10,7 @@ enum r01_objectCode{
 
 //declare room functions
 void r01_get_object(int colorCode, char *s);
+void r01_room_init();
 void r01_room_update();
 
 #endif

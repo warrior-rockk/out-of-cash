@@ -43,6 +43,7 @@ typedef struct tMsg
     int msgFinished;
     int msgActive;
 } tMsg;
+
 //room structure
 typedef struct tRoom
 {
@@ -54,6 +55,8 @@ typedef struct tRoom
     MIDI    *song;
     //function pointer to get object
     void (*room_get_object)(int, char *s);
+    //function pointer to init room
+    void (*room_init)(void);
     //function pointer to update room
     void (*room_update)(void);
 } tRoom;
@@ -108,6 +111,7 @@ DATAFILE *dataFile;
 static volatile int tick;
 int gameTick;
 int actualRoom;
+int lastRoom;
 
 //function declarations
 void incTick(void);
@@ -121,6 +125,7 @@ void tick_init();
 void debug_init();
 void tick_update();
 void cursor_update();
+void check_room_changed();
 void room_action_update();
 void room_draw();
 void hud_draw();
