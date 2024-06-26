@@ -3,7 +3,7 @@
 #define H_ENGINE
 
 //Definitions
-#define NUM_VERBS   3
+#define NUM_VERBS   9
 
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
@@ -14,16 +14,28 @@
 //Enumerations
 enum verbs {
     GO,
+    TAKE,
+    MOVE,
     LOOK,
-    TAKE
+    USE,
+    GIVE,
+    OPEN,
+    CLOSE,
+    TALK
 };
 
 //Global variables
 extern int gameTick;
-static const char verbName[3][10] = {
+static const char verbName[NUM_VERBS][10] = {
     "Ir a",
+    "Coger",
+    "Mover",
     "Mirar",
-    "Coger"
+    "Usar",
+    "Dar",
+    "Abrir",
+    "Cerrar",
+    "Hablar"
 };
 
 //global room action structure

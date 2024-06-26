@@ -119,8 +119,18 @@ void load_resources()
     get_palette(gamePalette);
     
     //loads game resources
-    hud.image          = (BITMAP *)dataFile[dHud].dat;
-    hud.hsImage        = (BITMAP *)dataFile[dHudhs].dat;
+    hud.image               = (BITMAP *)dataFile[dHud].dat;
+    hud.hsImage             = (BITMAP *)dataFile[dHudhs].dat;
+    hud.verbSelImage[GO]    = (BITMAP *)dataFile[dHudGoSel].dat;
+    hud.verbSelImage[TAKE]  = (BITMAP *)dataFile[dHudTakeSel].dat;
+    hud.verbSelImage[MOVE]  = (BITMAP *)dataFile[dHudMoveSel].dat;
+    hud.verbSelImage[LOOK]  = (BITMAP *)dataFile[dHudLookSel].dat;
+    hud.verbSelImage[USE]   = (BITMAP *)dataFile[dHudUseSel].dat;
+    hud.verbSelImage[GIVE]  = (BITMAP *)dataFile[dHudGiveSel].dat;
+    hud.verbSelImage[OPEN]  = (BITMAP *)dataFile[dHudOpenSel].dat;
+    hud.verbSelImage[CLOSE] = (BITMAP *)dataFile[dHudCloseSel].dat;
+    hud.verbSelImage[TALK]  = (BITMAP *)dataFile[dHudTalkSel].dat;
+
     cursor.image       = (BITMAP *)dataFile[dCursor].dat;
     //loads room resources
     room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
@@ -155,6 +165,25 @@ void game_init()
     roomAction.lastStep = 0;
     roomAction.stepTime = 0;
 
+    hud.posXVerbSelImage[GO] = 2;
+    hud.posYVerbSelImage[GO] = 4;
+    hud.posXVerbSelImage[TAKE] = 2;
+    hud.posYVerbSelImage[TAKE] = 22;
+    hud.posXVerbSelImage[MOVE] = 2;
+    hud.posYVerbSelImage[MOVE] = 40;
+    hud.posXVerbSelImage[LOOK] = 40;
+    hud.posYVerbSelImage[LOOK] = 4;
+    hud.posXVerbSelImage[USE] = 40;
+    hud.posYVerbSelImage[USE] = 22;
+    hud.posXVerbSelImage[GIVE] = 40;
+    hud.posYVerbSelImage[GIVE] = 40;
+    hud.posXVerbSelImage[OPEN] = 78;
+    hud.posYVerbSelImage[OPEN] = 4;
+    hud.posXVerbSelImage[CLOSE] = 78;
+    hud.posYVerbSelImage[CLOSE] = 22;
+    hud.posXVerbSelImage[TALK] = 78;
+    hud.posYVerbSelImage[TALK] = 40;
+    
     //call init game modules
     msg_init();
 }
@@ -427,7 +456,10 @@ void room_draw()
 //draws the hud to buffer
 void hud_draw()
 {
+    //draws main image
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
+    //blits highlight selected verb (using image because haven't smaller font)
+    draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
 }
 
 //function to init the tick timer

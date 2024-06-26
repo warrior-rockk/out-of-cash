@@ -1,8 +1,8 @@
 # TO-DO
 
 - [X] Fix msg duration consistency
-- [ ] Highlight default verbs
-- [ ] Iterate verb selection
+- [X] Highlight default verbs
+- [X] Iterate verb selection
 - [X] Game state / game loop (second iteration)
 - [X] Room enter / room init events
 - [X] On-screen debug system

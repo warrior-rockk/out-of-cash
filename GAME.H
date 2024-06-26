@@ -68,6 +68,10 @@ typedef struct tHUD
     BITMAP *image;
     //HUD hotspot image
     BITMAP *hsImage;
+    //selected verbs images
+    BITMAP *verbSelImage[NUM_VERBS];
+    int posXVerbSelImage[NUM_VERBS];
+    int posYVerbSelImage[NUM_VERBS];
 } tHUD;
 
 //cursor structure
