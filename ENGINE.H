@@ -35,7 +35,7 @@ static const char verbName[NUM_VERBS][10] = {
     "Dar",
     "Abrir",
     "Cerrar",
-    "Hablar"
+    "Hablar a"
 };
 
 //global room action structure
@@ -62,6 +62,7 @@ extern struct debugVars
 int say(char *message);
 void change_room(int roomNum);
 void game_fade_in();
+void game_fade_out();
 void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
 void begin_script();

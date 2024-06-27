@@ -10,3 +10,5 @@
 - [X] Fix on exit error
 - [X] Handle game errors
 - [X] Use fades for transitions
+- [ ] Use byte-bools and stdbool.h
+- [ ] Bit mask macros for flags

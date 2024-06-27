@@ -13,36 +13,12 @@
 
 int main()
 {
-    //initialize and install modules
-    allegro_init();
-    if (install_timer() != 0)
-        abort_on_error("Error iniciando el modulo timer");
-    if (install_mouse() < 0)
-        abort_on_error("Error iniciando el mouse");
-    if (install_keyboard() != 0)
-        abort_on_error("Error iniciando el teclado");
-    if (install_sound(0, MIDI_AUTODETECT, 0) != 0)
-        abort_on_error("Error iniciando el sonido");
-
-    //set video mode
-    set_color_depth(8);
-    if (set_gfx_mode(GFX_AUTODETECT, RES_X, RES_Y, 0, 0) != 0)
-        abort_on_error("Error seteando modo grafico");
-
-     //screen buffer creation
-    buffer = create_bitmap(RES_X, RES_Y);
-
-    //set game initial state
-    gameState = TITLE_STATE;
-    
-    //load resources
-    load_resources();
-
-    //play_midi(room[actualRoom].song, -1);
-
-    //init general modules
+    //initialization
+    main_init();
     cursor_init();
     tick_init();
+
+    //play_midi(room[actualRoom].song, -1);
 
     //main game loop
     while (!key[KEY_ESC])
@@ -62,7 +38,9 @@ int main()
                 cursor_draw();
                 if (cursor.click)
                 {
+                    game_fade_out();
                     game_init();
+                    cursor_init();
                     gameState = PLAYING_STATE;
                 }
                 break;
@@ -90,6 +68,8 @@ int main()
 
         //blits to screen
         blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
+        //do pending fade in
+        game_do_fade_in();
     }
 
     //quits the game
@@ -97,6 +77,37 @@ int main()
     return EXIT_SUCCESS;
 }
 
+//general initialization
+void main_init()
+{
+    //initialize and install modules
+    allegro_init();
+    if (install_timer() != 0)
+        abort_on_error("Error iniciando el modulo timer");
+    if (install_mouse() < 0)
+        abort_on_error("Error iniciando el mouse");
+    if (install_keyboard() != 0)
+        abort_on_error("Error iniciando el teclado");
+    if (install_sound(0, MIDI_AUTODETECT, 0) != 0)
+        abort_on_error("Error iniciando el sonido");
+
+    //set video mode
+    set_color_depth(8);
+    if (set_gfx_mode(GFX_AUTODETECT, RES_X, RES_Y, 0, 0) != 0)
+        abort_on_error("Error seteando modo grafico");
+
+     //screen buffer creation
+    buffer = create_bitmap(RES_X, RES_Y);
+
+    //load resources
+    load_resources();
+
+    //set game initial state
+    gameState = TITLE_STATE;
+
+    //clear flags
+    fadein = 0;
+}
 
 //timer function callback
 void incTick(void)
@@ -156,7 +167,7 @@ void game_init()
 
     //init game vars
     actualRoom = 0;
-    lastRoom = 0;
+    lastRoom = -1;     //to force first room_init
     
     roomAction.active = 0;
     roomAction.object = 0;
@@ -165,27 +176,38 @@ void game_init()
     roomAction.lastStep = 0;
     roomAction.stepTime = 0;
 
-    hud.posXVerbSelImage[GO] = 2;
-    hud.posYVerbSelImage[GO] = 4;
-    hud.posXVerbSelImage[TAKE] = 2;
-    hud.posYVerbSelImage[TAKE] = 22;
-    hud.posXVerbSelImage[MOVE] = 2;
-    hud.posYVerbSelImage[MOVE] = 40;
-    hud.posXVerbSelImage[LOOK] = 40;
-    hud.posYVerbSelImage[LOOK] = 4;
-    hud.posXVerbSelImage[USE] = 40;
-    hud.posYVerbSelImage[USE] = 22;
-    hud.posXVerbSelImage[GIVE] = 40;
-    hud.posYVerbSelImage[GIVE] = 40;
-    hud.posXVerbSelImage[OPEN] = 78;
-    hud.posYVerbSelImage[OPEN] = 4;
-    hud.posXVerbSelImage[CLOSE] = 78;
-    hud.posYVerbSelImage[CLOSE] = 22;
-    hud.posXVerbSelImage[TALK] = 78;
-    hud.posYVerbSelImage[TALK] = 40;
+    //initialize x and y position of highlight verb images
+    hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[GO]    = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[TAKE]  = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[TAKE]  = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[MOVE]  = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[MOVE]  = VERB_SEL_COL_3_Y;
+    hud.posXVerbSelImage[LOOK]  = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[LOOK]  = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[USE]   = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[USE]   = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[GIVE]  = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[GIVE]  = VERB_SEL_COL_3_Y;
+    hud.posXVerbSelImage[OPEN]  = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[OPEN]  = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[CLOSE] = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[CLOSE] = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
     
     //call init game modules
     msg_init();
+}
+
+//function to do pending fade in
+void game_do_fade_in()
+{
+    if (fadein)
+    {
+        fade_in(gamePalette, FADE_DEFAULT_SPEED);
+        fadein = 0;
+    }
 }
 
 //function to check if actual room as changed
@@ -396,7 +418,8 @@ void msg_update()
 //funcion to draw message
 void msg_draw()
 {
-    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
+    if (!fadein)
+        textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
 }
 
 //function to abort program with critical error

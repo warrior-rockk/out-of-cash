@@ -28,10 +28,17 @@ void change_room(int roomNum)
     actualRoom = roomNum;
 }
 
+//function to do game fade out
+void game_fade_out()
+{
+    fadein = 0;
+    fade_out(FADE_DEFAULT_SPEED);
+}
+
 //function to do game fade in
 void game_fade_in()
 {
-    fade_in(gamePalette, 6);
+    fadein = 1;
 }
 
 //function to perform default verb action when nothing is scripted

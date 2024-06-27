@@ -13,7 +13,13 @@
 #define STATUS_BAR_Y            166
 
 //HUD
-#define HUD_Y   179
+#define HUD_Y                   179
+#define VERB_SEL_ROW_1_X        2
+#define VERB_SEL_ROW_2_X        40
+#define VERB_SEL_ROW_3_X        78
+#define VERB_SEL_COL_1_Y        4
+#define VERB_SEL_COL_2_Y        22
+#define VERB_SEL_COL_3_Y        40
 
 //Text
 #define SAY_X                   RES_X / 2
@@ -22,6 +28,9 @@
 //Debug
 #define DEBUG_Y                 10
 #define DEBUG_FONT_HEIGHT       8
+
+//Fade
+#define FADE_DEFAULT_SPEED   6
 
 //enums
 enum gameState{
@@ -68,7 +77,7 @@ typedef struct tHUD
     BITMAP *image;
     //HUD hotspot image
     BITMAP *hsImage;
-    //selected verbs images
+    //selected verbs images and screen positions
     BITMAP *verbSelImage[NUM_VERBS];
     int posXVerbSelImage[NUM_VERBS];
     int posYVerbSelImage[NUM_VERBS];
@@ -110,6 +119,7 @@ struct debugVars debugVars;
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;
+int fadein;
 
 //interrupt timer variable
 static volatile int tick;
@@ -118,12 +128,15 @@ int actualRoom;
 int lastRoom;
 
 //function declarations
+void main_init();
+
 void incTick(void);
 void abort_on_error(const char *msg);
 void load_resources();
 
 void game_init();
 void game_exit();
+void game_do_fade_in();
 void cursor_init();
 void tick_init();
 void debug_init();

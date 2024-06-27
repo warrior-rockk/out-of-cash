@@ -36,6 +36,7 @@ void r01_get_object(int colorCode, char *s)
 void r01_room_init()
 {
     game_fade_in();
+    say("Acabo de entrar aqui y aqui");
 }
 
 //funcion to update room
