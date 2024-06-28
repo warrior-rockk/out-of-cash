@@ -1,6 +1,7 @@
 #ifndef H_GAME
 #define H_GAME
 
+#include <stdbool.h>
 #include "allegro.h"
 
 //Definitions
@@ -49,8 +50,8 @@ typedef struct tMsg
 {
     char msg[MAX_SENTENCE_LENGTH];
     int msgTime;
-    int msgFinished;
-    int msgActive;
+    bool msgFinished;
+    bool msgActive;
 } tMsg;
 
 //room structure
@@ -93,17 +94,17 @@ typedef struct tCursor
     //selected action/verb
     enum verbs selectedVerb;
     //flags
-    int enabled;
-    int click;
-    int leftClick;
-    int memClick;
-    int memLeftClick;
+    bool enabled;
+    bool click;
+    bool leftClick;
+    bool memClick;
+    bool memLeftClick;
 } tCursor;
 
 //game config structure
 typedef struct tGameConfig
 {
-    int textSpeed;
+    uint8_t textSpeed;
 } tGameConfig;
 
 //global structure vars
@@ -123,13 +124,12 @@ int fadein;
 
 //interrupt timer variable
 static volatile int tick;
-int gameTick;
+bool gameTick;
 int actualRoom;
 int lastRoom;
 
 //function declarations
 void main_init();
-
 void incTick(void);
 void abort_on_error(const char *msg);
 void load_resources();

@@ -10,5 +10,7 @@
 - [X] Fix on exit error
 - [X] Handle game errors
 - [X] Use fades for transitions
-- [ ] Use byte-bools and stdbool.h
+- [ ] Use byte-bools and stdbool.h (game.h, )
+- [ ] Use uint8_t when value < 256 (game.h, )
 - [ ] Bit mask macros for flags
+- [ ] Game struct and game update

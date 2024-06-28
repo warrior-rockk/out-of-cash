@@ -2,6 +2,8 @@
 #ifndef H_ENGINE
 #define H_ENGINE
 
+#include <stdbool.h>
+
 //Definitions
 #define NUM_VERBS   9
 
@@ -25,7 +27,7 @@ enum verbs {
 };
 
 //Global variables
-extern int gameTick;
+extern bool gameTick;
 static const char verbName[NUM_VERBS][10] = {
     "Ir a",
     "Coger",

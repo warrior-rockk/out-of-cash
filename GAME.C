@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <allegro.h>
+#include "allegro.h"
 #include "engine.h"
 #include "game.h"
 //game data resources
@@ -33,7 +33,7 @@ int main()
             case TITLE_STATE:
                 //placeholder test
                 textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "ADVENTURE GAME");
-                cursor.enabled = 1;
+                cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
                 if (cursor.click)
@@ -234,11 +234,11 @@ void game_exit()
 void cursor_init()
 {
     //clear cursor flags
-    cursor.enabled = 0;
-    cursor.click = 0;
-    cursor.leftClick = 0;
-    cursor.memClick = 0;
-    cursor.memLeftClick = 0;
+    cursor.enabled = false;
+    cursor.click = false;
+    cursor.leftClick = false;
+    cursor.memClick = false;
+    cursor.memLeftClick = false;
     //clear verb flags
     strcpy(cursor.objectName,"");
     cursor.selectedVerb = GO;
@@ -263,24 +263,24 @@ void cursor_draw()
 void cursor_update()
 {
     //handles rigth button click
-    cursor.click = 0;
-    if ((mouse_b & 1) && cursor.memClick == 0)
+    cursor.click = false;
+    if ((mouse_b & 1) && !cursor.memClick)
     {
-        cursor.click = 1;
-        cursor.memClick = 1;
+        cursor.click = true;
+        cursor.memClick = true;
     }
     if (!(mouse_b & 1))
-        cursor.memClick = 0;
+        cursor.memClick = false;
 
     //handles left button click
     cursor.leftClick = 0;
     if ((mouse_b & 2) && !cursor.memLeftClick)
     {
-        cursor.leftClick = 1;
-        cursor.memLeftClick = 1;
+        cursor.leftClick = true;
+        cursor.memLeftClick = true;
     }
     if (!(mouse_b & 2))
-        cursor.memLeftClick = 0;
+        cursor.memLeftClick = false;
 
     int hsColor;
 
@@ -360,8 +360,8 @@ void msg_init()
     //clear msg and vars
     strcpy(msg.msg, "");
     msg.msgTime = 0;
-    msg.msgFinished = 0;
-    msg.msgActive = 0;
+    msg.msgFinished = false;
+    msg.msgActive = false;
 }
 
 
@@ -371,8 +371,8 @@ void msg_update()
     //if msg finished, reset the flags
     if (msg.msgFinished)
     {
-        msg.msgActive = 0;
-        msg.msgFinished = 0;
+        msg.msgActive = false;
+        msg.msgFinished = false;
     }
 
     //if msg active, calculate the relation of string length/characters per second
@@ -380,7 +380,7 @@ void msg_update()
     if (msg.msgActive)
     {
         //disables cursor
-        cursor.enabled = 0;
+        cursor.enabled = false;
         
         int msgLength = strlen(msg.msg);
 
@@ -399,7 +399,7 @@ void msg_update()
 
             if (msg.msgTime >= msgDuration || cursor.click)
             {
-                msg.msgFinished = 1;
+                msg.msgFinished = true;
             }
             else
                 msg.msgTime += gameTick > 0;
@@ -411,7 +411,7 @@ void msg_update()
         msg.msgTime = 0;
         strcpy(msg.msg,"");
         //enable cursor
-        cursor.enabled = 1;
+        cursor.enabled = true;
     }
 }
 
@@ -498,12 +498,12 @@ void tick_init()
 void tick_update()
 {
     //reset global timer tick
-    gameTick = 0;
+    gameTick = false;
 
     if (tick) //100ms tick
     {
         //sets global game tick var
-        gameTick = 1;
+        gameTick = true;
         //reset timer interrupt var
         tick = 0;
     }
