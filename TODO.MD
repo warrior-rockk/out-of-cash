@@ -15,3 +15,8 @@
 - [ ] Bit mask macros for flags
 - [X] Game struct
 - [ ] Game update
+- [X] Player?
+- [ ] Control song playing / room transition / song continues
+- [ ] Game GUI
+- [ ] Save / Load
+- [ ] Game Config

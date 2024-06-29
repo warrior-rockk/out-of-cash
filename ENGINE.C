@@ -22,7 +22,7 @@ int say(char *message)
 void change_room(int roomNum)
 {
     fade_out(FADE_DEFAULT_SPEED);
-    actualRoom = roomNum;
+    game.actualRoom = roomNum;
 }
 
 //function to do game fade out

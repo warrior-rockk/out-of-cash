@@ -44,7 +44,7 @@ static const char verbName[NUM_VERBS][10] = {
 };
 
 //global room script structure
-extern struct roomScript
+struct roomScript
 {
     bool active;
     bool scriptAssigned;
@@ -56,7 +56,7 @@ extern struct roomScript
 } roomScript;
 
 //global debug vars structure (only ints on this iteration)
-extern struct debugVars
+struct debugVars
 {
     int var[DEBUG_MAX_VARS];
     char varName[DEBUG_MAX_VARS][10];

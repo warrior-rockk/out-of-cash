@@ -9,6 +9,9 @@
 #define RES_X    320
 #define RES_Y    240
 
+//Game
+#define NUM_GAME_ROOMS          2
+
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
 #define STATUS_BAR_Y            166
@@ -46,20 +49,22 @@ enum gameState{
 //structures
 
 //game structure
-typedef struct tGame
+struct game
 {
-    bool fadeIn;
     enum gameState state;
-} tGame;
+    int actualRoom;
+    int lastRoom;
+    bool fadeIn;
+} game;
 
 //message structure
-typedef struct tMsg
+struct msg
 {
     char msg[MAX_SENTENCE_LENGTH];
     int msgTime;
     bool msgFinished;
     bool msgActive;
-} tMsg;
+} msg;
 
 //room structure
 typedef struct tRoom
@@ -79,7 +84,7 @@ typedef struct tRoom
 } tRoom;
 
 //hud structure
-typedef struct tHUD
+struct hud
 {
     //HUD image
     BITMAP *image;
@@ -89,10 +94,10 @@ typedef struct tHUD
     BITMAP *verbSelImage[NUM_VERBS];
     int posXVerbSelImage[NUM_VERBS];
     int posYVerbSelImage[NUM_VERBS];
-} tHUD;
+} hud;
 
 //cursor structure
-typedef struct tCursor
+struct cursor
 {
     //cursor image
     BITMAP *image;
@@ -106,34 +111,26 @@ typedef struct tCursor
     bool leftClick;
     bool memClick;
     bool memLeftClick;
-} tCursor;
+} cursor;
 
 //game config structure
-typedef struct tGameConfig
+struct gameConfig
 {
     uint8_t textSpeed;
-} tGameConfig;
+} gameConfig;
 
-//global structure vars
-tRoom room[2];
-tHUD hud;
-tCursor cursor;
-tGameConfig gameConfig;
-tMsg msg;
-tGame game;
-struct roomScript roomScript;
-struct debugVars debugVars;
+//keys struct
+struct gameKeys{
+    bool pausePressed;
+} gameKeys;
 
 //global vars
+static volatile int tick;
+tRoom room[NUM_GAME_ROOMS];
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;
-
-//interrupt timer variable
-static volatile int tick;
 bool gameTick;
-int actualRoom;
-int lastRoom;
 
 //function declarations
 void main_init();
@@ -142,8 +139,10 @@ void abort_on_error(const char *msg);
 void load_resources();
 
 void game_init();
+void game_update();
 void game_exit();
 void game_do_fade_in();
+void game_write();
 void cursor_init();
 void tick_init();
 void debug_init();

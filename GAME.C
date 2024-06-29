@@ -18,8 +18,6 @@ int main()
     cursor_init();
     tick_init();
 
-    //play_midi(room[actualRoom].song, -1);
-
     //main game loop
     while (!key[KEY_ESC])
     {
@@ -32,7 +30,7 @@ int main()
         {
             case TITLE_STATE:
                 //placeholder test
-                textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "ADVENTURE GAME");
+                game_write("ADVENTURE GAME");
                 cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
@@ -46,13 +44,12 @@ int main()
                 break;
             case PLAYING_STATE:
                 check_room_changed();
-
                 //update
                 msg_update();
-                room[actualRoom].room_update();
+                room[game.actualRoom].room_update();
                 room_action_update();
                 cursor_update();
-                //game_update();
+                game_update();
 
                 //draw
                 room_draw();
@@ -61,6 +58,13 @@ int main()
                 cursor_draw();
                 msg_draw();
 
+                break;
+            case PAUSE_STATE:
+                game_update();
+
+                //draw
+                room_draw();
+                game_write("PAUSA");
                 break;
         }
         //general draw
@@ -166,8 +170,8 @@ void game_init()
     gameConfig.textSpeed = 10; //8 chars per second? This going to be on config
 
     //init game vars
-    actualRoom = 0;
-    lastRoom = -1;     //to force first room_init
+    game.actualRoom = 0;
+    game.lastRoom = -1;     //to force first room_init
     
     roomScript.active = 0;
     roomScript.object = 0;
@@ -200,6 +204,32 @@ void game_init()
     msg_init();
 }
 
+//game update function
+void game_update()
+{
+    //pause handler
+    if (key[KEY_SPACE])
+    {
+        if (!gameKeys.pausePressed)
+        {
+            game.state = game.state != PAUSE_STATE ? PAUSE_STATE : PLAYING_STATE;
+            gameKeys.pausePressed = true;
+        }
+    }
+    else
+    {
+        gameKeys.pausePressed = false;
+    }
+}
+
+//function to write text on screen
+void game_write(char *text)
+{
+    textprintf_centre_ex(buffer, font, SAY_X-1, SAY_Y-1, makecol(1,1,1), -1, "%s", text);
+    textprintf_centre_ex(buffer, font, SAY_X+1, SAY_Y+1, makecol(1,1,1), -1, "%s", text);
+    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", text);
+}
+
 //function to do pending fade in
 void game_do_fade_in()
 {
@@ -213,11 +243,13 @@ void game_do_fade_in()
 //function to check if actual room as changed
 void check_room_changed()
 {
-    if (actualRoom != lastRoom)
+    if (game.actualRoom != game.lastRoom)
     {
-        lastRoom = actualRoom;
+        game.lastRoom = game.actualRoom;
         //call new room init
-        room[actualRoom].room_init();
+        room[game.actualRoom].room_init();
+        //play room song
+        //play_midi(room[game.actualRoom].song, -1);
     }
 }
 
@@ -294,9 +326,9 @@ void cursor_update()
                 if (mouse_y < STATUS_BAR_Y)
                 {
                     //obtains the hotspot room color
-                    hsColor = getpixel(room[actualRoom].hsImage, mouse_x, mouse_y);
+                    hsColor = getpixel(room[game.actualRoom].hsImage, mouse_x, mouse_y);
                     //gets the object name
-                    room[actualRoom].room_get_object(hsColor, cursor.objectName);
+                    room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
 
                     //if cursor click on valid object
                     if (cursor.click && cursor.objectName[0] != '\0')
@@ -420,7 +452,9 @@ void msg_draw()
 {
     //don't draw the text if fade in on progress
     if (!game.fadeIn)
-        textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
+    {
+        game_write(msg.msg);
+    }
 }
 
 //function to abort program with critical error
@@ -474,7 +508,7 @@ void room_action_update()
 //draws the actual room to buffer
 void room_draw()
 {
-    blit(room[actualRoom].image, buffer, 0, 0, 0, 0, room[actualRoom].image->w, room[actualRoom].image->h);
+    blit(room[game.actualRoom].image, buffer, 0, 0, 0, 0, room[game.actualRoom].image->w, room[game.actualRoom].image->h);
 }
 
 //draws the hud to buffer
