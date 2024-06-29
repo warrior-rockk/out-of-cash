@@ -1,6 +1,8 @@
 #ifndef H_ROOM02
 #define H_ROOM02
 
+#include <allegro.h>
+
 //room enumerations
 enum r02_objectCode{
     espejo      = 139,
@@ -9,7 +11,7 @@ enum r02_objectCode{
 };
 
 //declare room functions
-void r02_get_object(int colorCode, char *s);
+void r02_get_object(uint8_t colorCode, char *s);
 void r02_room_init();
 void r02_room_update();
 #endif

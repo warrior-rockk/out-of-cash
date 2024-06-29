@@ -12,7 +12,7 @@
 #include "room02.h"
 
 //Funtion to return the name of object by color code
-void r02_get_object(int colorCode, char *s)
+void r02_get_object(uint8_t colorCode, char *s)
 {
     //check the object
     switch(colorCode)
@@ -42,20 +42,20 @@ void r02_room_init()
 void r02_room_update()
 {
     //if nothing selected
-    if (roomAction.active)
+    if (roomScript.active)
     {
         //sequence actions
-        switch (roomAction.object)
+        switch (roomScript.object)
         {
             case habitacion:
-                switch(roomAction.verb)
+                switch(roomScript.verb)
                 {
                     case LOOK:
-                        switch (roomAction.step)
+                        switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
-                                roomAction.step+= say("Es la entrada a mi habitacion");
+                                roomScript.step+= say("Es la entrada a mi habitacion");
                                 break;
                             default:
                                 end_script();

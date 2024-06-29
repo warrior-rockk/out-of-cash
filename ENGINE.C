@@ -4,9 +4,6 @@
 #include "engine.h"
 #include "game.h"
 
-//local vars
-static int lastRndNumber;
-
 //function to say something. Returns 1 when finished
 int say(char *message)
 {
@@ -15,7 +12,7 @@ int say(char *message)
 
     //if not msg finished, set msg active
     if (!msg.msgFinished)
-        msg.msgActive = 1;
+        msg.msgActive = true;
 
     //return finished state
     return msg.msgFinished;
@@ -24,31 +21,33 @@ int say(char *message)
 //function to change the actual room
 void change_room(int roomNum)
 {
-    fade_out(6);
+    fade_out(FADE_DEFAULT_SPEED);
     actualRoom = roomNum;
 }
 
 //function to do game fade out
 void game_fade_out()
 {
-    fadein = 0;
+    game.fadeIn = false;
     fade_out(FADE_DEFAULT_SPEED);
 }
 
 //function to do game fade in
 void game_fade_in()
 {
-    fadein = 1;
+    game.fadeIn = true;
 }
 
 //function to perform default verb action when nothing is scripted
 void default_verb_action(enum verbs roomVerb)
 {
-    //get non-repeat random number
+    static int lastRndNumber;
     int rndNumber;
+
+    //get random number distinct to last
     do
     {
-        rndNumber = rand() % 3;
+        rndNumber = rand() % NUM_RAND_ANSWERS;
     }
     while (rndNumber == lastRndNumber);
     lastRndNumber = rndNumber;
@@ -80,19 +79,22 @@ void default_verb_action(enum verbs roomVerb)
     }
 }
 
+//actions when script begins
 void begin_script()
 {
-    roomAction.scriptAssigned = 1;
+    roomScript.scriptAssigned = true;
 }
 
+//actions when script ends
 void end_script()
 {
-    roomAction.object = 0;
-    roomAction.verb = 0;
-    roomAction.active = 0;
-    roomAction.scriptAssigned = 0;
+    roomScript.object = 0;
+    roomScript.verb = 0;
+    roomScript.active = false;
+    roomScript.scriptAssigned = false;
 }
 
+//global debug vars function
 void show_debug(char *varName, int var)
 {
     strcpy(debugVars.varName[debugVars.numVars], varName);

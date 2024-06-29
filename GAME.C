@@ -28,7 +28,7 @@ int main()
         tick_update();
 
         //check actual game state
-        switch (gameState)
+        switch (game.state)
         {
             case TITLE_STATE:
                 //placeholder test
@@ -41,7 +41,7 @@ int main()
                     game_fade_out();
                     game_init();
                     cursor_init();
-                    gameState = PLAYING_STATE;
+                    game.state = PLAYING_STATE;
                 }
                 break;
             case PLAYING_STATE:
@@ -103,10 +103,10 @@ void main_init()
     load_resources();
 
     //set game initial state
-    gameState = TITLE_STATE;
+    game.state = TITLE_STATE;
 
     //clear flags
-    fadein = 0;
+    game.fadeIn = 0;
 }
 
 //timer function callback
@@ -169,12 +169,12 @@ void game_init()
     actualRoom = 0;
     lastRoom = -1;     //to force first room_init
     
-    roomAction.active = 0;
-    roomAction.object = 0;
-    roomAction.verb = 0;
-    roomAction.step = 0;
-    roomAction.lastStep = 0;
-    roomAction.stepTime = 0;
+    roomScript.active = 0;
+    roomScript.object = 0;
+    roomScript.verb = 0;
+    roomScript.step = 0;
+    roomScript.lastStep = 0;
+    roomScript.stepTime = 0;
 
     //initialize x and y position of highlight verb images
     hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
@@ -203,10 +203,10 @@ void game_init()
 //function to do pending fade in
 void game_do_fade_in()
 {
-    if (fadein)
+    if (game.fadeIn)
     {
         fade_in(gamePalette, FADE_DEFAULT_SPEED);
-        fadein = 0;
+        game.fadeIn = 0;
     }
 }
 
@@ -287,7 +287,7 @@ void cursor_update()
     //check cursor behaviour
     if (cursor.enabled)
     {
-        switch (gameState)
+        switch (game.state)
         {
             case PLAYING_STATE:
                 //if cursor on room position, check color of room hotspot
@@ -302,12 +302,12 @@ void cursor_update()
                     if (cursor.click && cursor.objectName[0] != '\0')
                     {
                         //if no previous action/object selected
-                        if (!roomAction.active)
+                        if (!roomScript.active)
                         {
                             //saves the room vars to start script sequence
-                            roomAction.active = 1;
-                            roomAction.object = hsColor;
-                            roomAction.verb = cursor.selectedVerb;
+                            roomScript.active = 1;
+                            roomScript.object = hsColor;
+                            roomScript.verb = cursor.selectedVerb;
                         }
                     }
                 }
@@ -418,7 +418,8 @@ void msg_update()
 //funcion to draw message
 void msg_draw()
 {
-    if (!fadein)
+    //don't draw the text if fade in on progress
+    if (!game.fadeIn)
         textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", msg.msg);
 }
 
@@ -441,30 +442,30 @@ void abort_on_error(const char *msg)
 void room_action_update()
 {
     //if nothing selected
-    if (!roomAction.active)
+    if (!roomScript.active)
     {
         //reset sequence vars
-        roomAction.step = 0;
-        roomAction.lastStep = 0;
-        roomAction.stepTime = 0;
+        roomScript.step = 0;
+        roomScript.lastStep = 0;
+        roomScript.stepTime = 0;
     }
     else
     {
         //sequence timer
         if (gameTick)
         {
-          roomAction.stepTime++;
+          roomScript.stepTime++;
         }
         //reset step timer on step change
-        if (roomAction.step != roomAction.lastStep)
+        if (roomScript.step != roomScript.lastStep)
         {
-            roomAction.stepTime = 0;
-            roomAction.lastStep = roomAction.step;
+            roomScript.stepTime = 0;
+            roomScript.lastStep = roomScript.step;
         }
 
-        if (!roomAction.scriptAssigned)
+        if (!roomScript.scriptAssigned)
         {
-            default_verb_action(roomAction.verb);
+            default_verb_action(roomScript.verb);
             end_script();
         }
     }

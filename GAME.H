@@ -41,9 +41,16 @@ enum gameState{
     PLAYING_STATE,
     PAUSE_STATE,
     MENU_STATE
-} gameState;
+};
 
 //structures
+
+//game structure
+typedef struct tGame
+{
+    bool fadeIn;
+    enum gameState state;
+} tGame;
 
 //message structure
 typedef struct tMsg
@@ -64,7 +71,7 @@ typedef struct tRoom
     //room song
     MIDI    *song;
     //function pointer to get object
-    void (*room_get_object)(int, char *s);
+    void (*room_get_object)(uint8_t, char *s);
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
@@ -113,14 +120,14 @@ tHUD hud;
 tCursor cursor;
 tGameConfig gameConfig;
 tMsg msg;
-struct roomAction roomAction;
+tGame game;
+struct roomScript roomScript;
 struct debugVars debugVars;
 
 //global vars
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;
-int fadein;
 
 //interrupt timer variable
 static volatile int tick;

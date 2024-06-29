@@ -12,7 +12,7 @@
 #include "room01.h"
 
 //Funtion to return the name of object by color code
-void r01_get_object(int colorCode, char *s)
+void r01_get_object(uint8_t colorCode, char *s)
 {
         
     //check the object
@@ -43,23 +43,23 @@ void r01_room_init()
 void r01_room_update()
 {
     //if nothing selected
-    if (roomAction.active)
+    if (roomScript.active)
     {
         //sequence actions
-        switch (roomAction.object)
+        switch (roomScript.object)
         {
             case Minicadena:
-                switch(roomAction.verb)
+                switch(roomScript.verb)
                 {
                     case LOOK:
-                        switch (roomAction.step)
+                        switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
-                                roomAction.step+= say("Es mi minicadena ultimo modelo");
+                                roomScript.step+= say("Es mi minicadena ultimo modelo");
                                 break;
                             case 1:
-                                roomAction.step+= say("Otra cosa");
+                                roomScript.step+= say("Otra cosa");
                                 break;
                             default:
                                 end_script();
@@ -67,11 +67,11 @@ void r01_room_update()
                         }
                         break;
                     case TAKE:
-                        switch (roomAction.step)
+                        switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
-                                roomAction.step+= say("No puedo llevarmelo. Pesa mucho");
+                                roomScript.step+= say("No puedo llevarmelo. Pesa mucho");
                                 break;
                             default:
                                 end_script();
@@ -81,7 +81,7 @@ void r01_room_update()
                 }
                 break;
             case Puerta:
-                switch(roomAction.verb)
+                switch(roomScript.verb)
                 {
                     case GO:
                         begin_script();
