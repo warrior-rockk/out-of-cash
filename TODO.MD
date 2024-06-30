@@ -20,3 +20,4 @@
 - [ ] Game GUI
 - [ ] Save / Load
 - [ ] Game Config
+- [ ] Fix ints for movement

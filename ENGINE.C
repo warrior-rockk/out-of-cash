@@ -55,21 +55,21 @@ void default_verb_action(enum verbs roomVerb)
     switch(roomVerb)
     {
         case GO:
+            move_player(mouse_x, mouse_y);
+            break;
+        case LOOK:
             switch (rndNumber)
             {
                 case 0:
-                    say("No puedo ir ahi");
+                    say("Nada destacable");
                     break;
                 case 1:
-                    say("No se como llegar");
+                    say("No veo nada");
                     break;
                 case 2:
-                    say("No me apetece andar");
+                    say("No hay nada que ver");
                     break;
             }
-            break;
-        case LOOK:
-            say("Nada destacable");
             break;
         case TAKE:
             say("No puedo coger eso");
@@ -100,4 +100,13 @@ void show_debug(char *varName, int var)
     strcpy(debugVars.varName[debugVars.numVars], varName);
     debugVars.var[debugVars.numVars] = var;
     debugVars.numVars++;
+}
+
+//function to move the player
+void move_player(int x, int y)
+{
+    //set the flag and positions
+    player.moving = true;
+    player.destX = x;
+    player.destY = y;
 }

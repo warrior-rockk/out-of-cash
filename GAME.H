@@ -124,12 +124,26 @@ struct gameKeys{
     bool pausePressed;
 } gameKeys;
 
+//player struct
+struct player{
+    BITMAP *image[11];
+    int x;
+    int y;
+    int vX;
+    int vY;
+    int destX;
+    int destY;
+    bool moving;
+    int frame;
+} player;
+
 //global vars
 static volatile int tick;
 tRoom room[NUM_GAME_ROOMS];
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;
+DATAFILE *playerDataFile;
 bool gameTick;
 
 //function declarations
@@ -158,5 +172,8 @@ void debug_draw();
 void msg_init();
 void msg_update();
 void msg_draw();
+
+void player_update();
+void player_draw();
 
 #endif

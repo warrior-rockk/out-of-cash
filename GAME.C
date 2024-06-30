@@ -5,8 +5,10 @@
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
+#include "utils.h"
 //game data resources
 #include "data.h"
+#include "ego.h"
 //includes all rooms
 #include "room01.h"
 #include "room02.h"
@@ -24,7 +26,9 @@ int main()
         //general update
         clear(buffer);
         tick_update();
-
+        show_debug("X",mouse_x);
+        show_debug("Y",mouse_y);
+        
         //check actual game state
         switch (game.state)
         {
@@ -43,16 +47,17 @@ int main()
                 }
                 break;
             case PLAYING_STATE:
-                check_room_changed();
                 //update
+                game_update();
                 msg_update();
                 room[game.actualRoom].room_update();
                 room_action_update();
                 cursor_update();
-                game_update();
-
+                player_update();
+                
                 //draw
                 room_draw();
+                player_draw();
                 hud_draw();
                 status_bar_draw();
                 cursor_draw();
@@ -128,11 +133,15 @@ void load_resources()
     dataFile = load_datafile("data.dat");
     if (!dataFile)
         abort_on_error("Archivo data.dat invalido o inexistente");
+    //loads player data file
+    playerDataFile = load_datafile("ego.dat");
+    if (!dataFile)
+        abort_on_error("Archivo ego.dat invalido o inexistente");
 
     //sets and get the palette
     set_palette((RGB*)dataFile[dGamePal].dat);
     get_palette(gamePalette);
-    
+
     //loads game resources
     hud.image               = (BITMAP *)dataFile[dHud].dat;
     hud.hsImage             = (BITMAP *)dataFile[dHudhs].dat;
@@ -162,6 +171,20 @@ void load_resources()
     room[1].room_get_object = &r02_get_object;
     room[1].room_update = &r02_room_update;
     room[1].room_init = &r02_room_init;
+
+    //test player
+    player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
+    player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
+    player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
+    player.image[3]     = (BITMAP *)playerDataFile[dEgo04].dat;
+    player.image[4]     = (BITMAP *)playerDataFile[dEgo05].dat;
+    player.image[5]     = (BITMAP *)playerDataFile[dEgo06].dat;
+    player.image[6]     = (BITMAP *)playerDataFile[dEgo07].dat;
+    player.image[7]     = (BITMAP *)playerDataFile[dEgo08].dat;
+    player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
+    player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
+    player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
+    
 }
 
 //function to init game
@@ -199,6 +222,9 @@ void game_init()
     hud.posYVerbSelImage[CLOSE] = VERB_SEL_COL_2_Y;
     hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
     hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
+
+    player.x = 170;
+    player.y = 100;
     
     //call init game modules
     msg_init();
@@ -220,6 +246,11 @@ void game_update()
     {
         gameKeys.pausePressed = false;
     }
+
+    check_room_changed();
+
+    //debug
+    show_debug("Moving", player.moving);
 }
 
 //function to write text on screen
@@ -314,7 +345,7 @@ void cursor_update()
     if (!(mouse_b & 2))
         cursor.memLeftClick = false;
 
-    int hsColor;
+    uint8_t hsColor;
 
     //check cursor behaviour
     if (cursor.enabled)
@@ -331,7 +362,7 @@ void cursor_update()
                     room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
 
                     //if cursor click on valid object
-                    if (cursor.click && cursor.objectName[0] != '\0')
+                    if (cursor.click && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
                         //if no previous action/object selected
                         if (!roomScript.active)
@@ -383,6 +414,7 @@ void debug_draw()
 //draws the status bar
 void status_bar_draw()
 {
+
     textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
 }
 
@@ -518,6 +550,66 @@ void hud_draw()
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
     //blits highlight selected verb (using image because haven't smaller font)
     draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
+}
+
+//function to update the player
+void player_update()
+{
+    bool in_range_x;
+    bool in_range_y;
+    
+    if (player.moving)
+    {
+        //check destination in range
+        in_range_x = in_range(player.x, player.destX, 2);
+        in_range_y = in_range(player.y, player.destY, 2);
+
+        //decompose movement
+        if (!in_range_x)
+        {
+            player.vX = player.x < player.destX ? 1 : -1;
+        }
+        else
+            player.vX = 0;
+            
+        if (!in_range_y)
+        {
+            //if (in_range_x)
+                player.vY = player.y < player.destY ? 1 : -1;
+        }
+        else
+            player.vY = 0;
+
+        //player on destination
+        if (in_range_x && in_range_y)
+        {
+            player.moving = false;
+            player.vX = 0;
+            player.vY = 0;
+            player.x = player.destX;
+            player.y = player.destY;
+        }
+    }
+
+    //update position
+    player.x += player.vX;
+    player.y += player.vY;
+}
+
+//function to draw the player
+void player_draw()
+{
+    if (player.moving)
+    {
+        if (gameTick)
+        {
+            player.frame = player.frame == 4 ? 3 : 4;
+        }
+    }
+    else
+        player.frame = 1;
+        
+    draw_sprite(buffer, player.image[player.frame], player.x-(player.image[player.frame]->w>>1), player.y-(player.image[player.frame]->h>>1));
 }
 
 //function to init the tick timer
