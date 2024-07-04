@@ -5,6 +5,7 @@
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
+#include "player.h"
 #include "utils.h"
 //game data resources
 #include "data.h"
@@ -191,7 +192,8 @@ void load_resources()
 void game_init()
 {
     gameConfig.textSpeed = 10; //8 chars per second? This going to be on config
-
+    gameConfig.playerSpeed = ftofix(0.3);
+    
     //init game vars
     game.actualRoom = 0;
     game.lastRoom = -1;     //to force first room_init
@@ -223,8 +225,8 @@ void game_init()
     hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
     hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
 
-    player.x = 170;
-    player.y = 100;
+    player.x = itofix(170);
+    player.y = itofix(100);
     
     //call init game modules
     msg_init();
@@ -550,66 +552,6 @@ void hud_draw()
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
     //blits highlight selected verb (using image because haven't smaller font)
     draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
-}
-
-//function to update the player
-void player_update()
-{
-    bool in_range_x;
-    bool in_range_y;
-    
-    if (player.moving)
-    {
-        //check destination in range
-        in_range_x = in_range(player.x, player.destX, 2);
-        in_range_y = in_range(player.y, player.destY, 2);
-
-        //decompose movement
-        if (!in_range_x)
-        {
-            player.vX = player.x < player.destX ? 1 : -1;
-        }
-        else
-            player.vX = 0;
-            
-        if (!in_range_y)
-        {
-            //if (in_range_x)
-                player.vY = player.y < player.destY ? 1 : -1;
-        }
-        else
-            player.vY = 0;
-
-        //player on destination
-        if (in_range_x && in_range_y)
-        {
-            player.moving = false;
-            player.vX = 0;
-            player.vY = 0;
-            player.x = player.destX;
-            player.y = player.destY;
-        }
-    }
-
-    //update position
-    player.x += player.vX;
-    player.y += player.vY;
-}
-
-//function to draw the player
-void player_draw()
-{
-    if (player.moving)
-    {
-        if (gameTick)
-        {
-            player.frame = player.frame == 4 ? 3 : 4;
-        }
-    }
-    else
-        player.frame = 1;
-        
-    draw_sprite(buffer, player.image[player.frame], player.x-(player.image[player.frame]->w>>1), player.y-(player.image[player.frame]->h>>1));
 }
 
 //function to init the tick timer

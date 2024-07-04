@@ -63,9 +63,21 @@ void r02_room_update()
                         }
                         break;
                     case GO:
-                        begin_script();
-                        change_room(0);
-                        end_script();
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                move_player(mouse_x, mouse_y);
+                                roomScript.step++;
+                                break;
+                            case 1:
+                                roomScript.step+=!is_player_moving();
+                                break;
+                            case 2:
+                                change_room(0);
+                                end_script();
+                                break;
+                        }
                         break;
                 }
                 break;

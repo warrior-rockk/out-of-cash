@@ -74,4 +74,5 @@ void begin_script();
 void end_script();
 void show_debug(char *varName, int var);
 void move_player(int x, int y);
+bool is_player_moving();
 #endif

@@ -2,7 +2,8 @@
 #define H_GAME
 
 #include <stdbool.h>
-#include "allegro.h"
+#include <allegro.h>
+#include "engine.h"
 
 //Definitions
 //Screen
@@ -117,25 +118,13 @@ struct cursor
 struct gameConfig
 {
     uint8_t textSpeed;
+    fixed   playerSpeed;
 } gameConfig;
 
 //keys struct
 struct gameKeys{
     bool pausePressed;
 } gameKeys;
-
-//player struct
-struct player{
-    BITMAP *image[11];
-    int x;
-    int y;
-    int vX;
-    int vY;
-    int destX;
-    int destY;
-    bool moving;
-    int frame;
-} player;
 
 //global vars
 static volatile int tick;
@@ -173,7 +162,6 @@ void msg_init();
 void msg_update();
 void msg_draw();
 
-void player_update();
-void player_draw();
+
 
 #endif

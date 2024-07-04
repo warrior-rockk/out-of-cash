@@ -20,4 +20,10 @@
 - [ ] Game GUI
 - [ ] Save / Load
 - [ ] Game Config
-- [ ] Fix ints for movement
+- [X] Fix ints for movement
+- [ ] Headers reestructuration (prevent circular includes) and improve engine structure
+- [ ] Animation system
+- [ ] Talk system
+- [ ] Player scale map
+- [ ] Init room position and dynamic position based on previous room
+

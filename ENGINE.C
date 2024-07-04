@@ -3,6 +3,7 @@
 #include <strings.h>
 #include "engine.h"
 #include "game.h"
+#include "player.h"
 
 //function to say something. Returns 1 when finished
 int say(char *message)
@@ -109,4 +110,10 @@ void move_player(int x, int y)
     player.moving = true;
     player.destX = x;
     player.destY = y;
+}
+
+//function to return if player is moving
+bool is_player_moving()
+{
+    return player.moving;
 }
