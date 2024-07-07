@@ -26,6 +26,14 @@ void change_room(int roomNum)
     game.actualRoom = roomNum;
 }
 
+//function to change the actual room and set player position on new room
+void change_room_pos(int roomNum, int x, int y)
+{
+    game.room_pos_x = x;
+    game.room_pos_y = y;
+    change_room(roomNum);
+}
+
 //function to do game fade out
 void game_fade_out()
 {

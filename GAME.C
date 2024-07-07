@@ -165,6 +165,12 @@ void load_resources()
     room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
 
+    //room start positions
+    room[0].start_pos_x = 170;
+    room[0].start_pos_y = 100;
+    room[1].start_pos_x = 179;
+    room[1].start_pos_y = 117;
+    
     //assign room function pointers
     room[0].room_get_object = &r01_get_object;
     room[0].room_init = &r01_room_init;
@@ -224,9 +230,6 @@ void game_init()
     hud.posYVerbSelImage[CLOSE] = VERB_SEL_COL_2_Y;
     hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
     hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
-
-    player.x = itofix(170);
-    player.y = itofix(100);
     
     //call init game modules
     msg_init();
@@ -281,8 +284,21 @@ void check_room_changed()
         game.lastRoom = game.actualRoom;
         //call new room init
         room[game.actualRoom].room_init();
+
         //play room song
         //play_midi(room[game.actualRoom].song, -1);
+
+        //set player position on enter room (default or assigned)
+        if (game.room_pos_x != 0 && game.room_pos_y != 0)
+        {
+            player.x = itofix(game.room_pos_x);
+            player.y = itofix(game.room_pos_y);
+        }
+        else
+        {
+            player.x = itofix(room[game.actualRoom].start_pos_x);
+            player.y = itofix(room[game.actualRoom].start_pos_y);
+        }
     }
 }
 
@@ -439,6 +455,7 @@ void msg_update()
     {
         msg.msgActive = false;
         msg.msgFinished = false;
+        player.talking = false;
     }
 
     //if msg active, calculate the relation of string length/characters per second
@@ -469,6 +486,8 @@ void msg_update()
             }
             else
                 msg.msgTime += gameTick > 0;
+
+            player.talking = true;
         }
     }
     else

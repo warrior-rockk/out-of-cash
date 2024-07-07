@@ -13,6 +13,7 @@ struct player{
     int destX;
     int destY;
     bool moving;
+    bool talking;
     int frame;
 } player;
 

@@ -95,7 +95,7 @@ void r01_room_update()
                                 roomScript.step+=!is_player_moving();
                                 break;
                             case 2:
-                                change_room(1);
+                                change_room_pos(1,174,38);
                                 end_script();
                                 break;
                         }

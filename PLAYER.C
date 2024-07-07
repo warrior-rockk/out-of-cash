@@ -51,11 +51,19 @@ void player_update()
 //function to draw the player
 void player_draw()
 {
+    //animation state
     if (player.moving)
     {
         if (gameTick)
         {
             player.frame = player.frame == 4 ? 3 : 4;
+        }
+    }
+    else if(player.talking)
+    {
+        if (gameTick)
+        {
+            player.frame = player.frame == 9 ? 8 : 9;
         }
     }
     else

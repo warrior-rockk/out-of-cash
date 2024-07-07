@@ -74,7 +74,8 @@ void r02_room_update()
                                 roomScript.step+=!is_player_moving();
                                 break;
                             case 2:
-                                change_room(0);
+                                //change_room(0);
+                                change_room_pos(0, 201, 145);
                                 end_script();
                                 break;
                         }

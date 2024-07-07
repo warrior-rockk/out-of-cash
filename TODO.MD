@@ -25,5 +25,6 @@
 - [ ] Animation system
 - [ ] Talk system
 - [ ] Player scale map
-- [ ] Init room position and dynamic position based on previous room
+- [X] Init room position and dynamic position based on previous room (room has default start
+position but can be overwritten by change_room start position
 

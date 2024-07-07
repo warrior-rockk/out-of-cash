@@ -66,6 +66,7 @@ struct debugVars
 //global functions
 int say(char *message);
 void change_room(int roomNum);
+void change_room_pos(int roomNum, int x, int y);
 void game_fade_in();
 void game_fade_out();
 void default_verb_action(enum verbs roomVerb);

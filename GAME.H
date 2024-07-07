@@ -55,6 +55,9 @@ struct game
     enum gameState state;
     int actualRoom;
     int lastRoom;
+    //enter room position assigned by change_room_pos()
+    int room_pos_x;
+    int room_pos_y;
     bool fadeIn;
 } game;
 
@@ -76,6 +79,9 @@ typedef struct tRoom
     BITMAP  *hsImage;
     //room song
     MIDI    *song;
+    //default start player position on room
+    int start_pos_x;
+    int start_pos_y;
     //function pointer to get object
     void (*room_get_object)(uint8_t, char *s);
     //function pointer to init room
