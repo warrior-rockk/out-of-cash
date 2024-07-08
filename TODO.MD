@@ -25,6 +25,9 @@
 - [ ] Animation system
 - [ ] Talk system
 - [ ] Player scale map
+- [X] Temporaly? collision map
+- [ ] Real A* Pathfinding
 - [X] Init room position and dynamic position based on previous room (room has default start
 position but can be overwritten by change_room start position
+- [ ] Room draw layers
 

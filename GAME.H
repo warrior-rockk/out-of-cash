@@ -18,13 +18,13 @@
 #define STATUS_BAR_Y            166
 
 //HUD
-#define HUD_Y                   179
+#define HUD_Y                   162 //179
 #define VERB_SEL_ROW_1_X        2
 #define VERB_SEL_ROW_2_X        40
 #define VERB_SEL_ROW_3_X        78
-#define VERB_SEL_COL_1_Y        4
-#define VERB_SEL_COL_2_Y        22
-#define VERB_SEL_COL_3_Y        40
+#define VERB_SEL_COL_1_Y        21
+#define VERB_SEL_COL_2_Y        39
+#define VERB_SEL_COL_3_Y        57
 
 //Text
 #define SAY_X                   RES_X / 2
@@ -77,6 +77,8 @@ typedef struct tRoom
     BITMAP  *image;
     //room hotspot image
     BITMAP  *hsImage;
+    //room walk image
+    BITMAP  *wImage;
     //room song
     MIDI    *song;
     //default start player position on room

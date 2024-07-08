@@ -12,6 +12,7 @@ struct player{
     fixed vY;
     int destX;
     int destY;
+    int scale;
     bool moving;
     bool talking;
     int frame;

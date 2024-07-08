@@ -160,10 +160,12 @@ void load_resources()
     //loads room resources
     room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
     room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
+    room[0].wImage     = (BITMAP *)dataFile[dRoom01w].dat;
     room[0].song       = (MIDI *)dataFile[dSong01].dat;
     room[1].image      = (BITMAP *)dataFile[dRoom02].dat;
     room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
+    room[1].wImage     = (BITMAP *)dataFile[dRoom02w].dat;
 
     //room start positions
     room[0].start_pos_x = 170;
@@ -487,6 +489,7 @@ void msg_update()
             else
                 msg.msgTime += gameTick > 0;
 
+            //set talking flag
             player.talking = true;
         }
     }

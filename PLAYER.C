@@ -32,6 +32,23 @@ void player_update()
         else
             player.vY = itofix(0);
 
+        //check walk map
+        if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
+        {
+            player.vX = itofix(0);
+        }
+
+        if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)) == 0)
+        {
+            player.vY = itofix(0);
+        }
+
+        //player blocked
+        if (player.vX == itofix(0) && player.vY == itofix(0))
+        {
+            player.moving = false;
+        }
+
         //player on destination
         if (in_range_x && in_range_y)
         {
@@ -51,6 +68,9 @@ void player_update()
 //function to draw the player
 void player_draw()
 {
+    //player.scale = ftofix(0.5);
+    player.scale = 2;
+
     //animation state
     if (player.moving)
     {
@@ -68,6 +88,13 @@ void player_draw()
     }
     else
         player.frame = 1;
-        
-    draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
+
+    if (player.scale == 1)
+        draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
+    else
+    {
+        int scaleW = player.image[player.frame]->w / player.scale;
+        int scaleH = player.image[player.frame]->h / player.scale;
+        stretch_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1),scaleW,scaleH);
+    }
 }
