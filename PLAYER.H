@@ -3,6 +3,9 @@
 
 #include <stdbool.h>
 
+#define PLAYER_FAST_SPEED   1
+
+//scale values of scale map
 #define SCALE_1_COLOR   32
 #define SCALE_2_COLOR   33
 #define SCALE_3_COLOR   34
@@ -24,6 +27,7 @@ struct player{
     int destY;
     fixed scale;
     bool moving;
+    bool moveFast;
     bool talking;
     int frame;
 } player;

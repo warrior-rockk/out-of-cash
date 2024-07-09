@@ -17,6 +17,9 @@
 #define STATUS_BAR_X            RES_X / 2
 #define STATUS_BAR_Y            166
 
+//Cursor
+#define DBL_CLICK_MAX_TIME      4 //400ms
+
 //HUD
 #define HUD_Y                   162 //179
 #define VERB_SEL_ROW_1_X        2
@@ -116,12 +119,17 @@ struct cursor
     char objectName[OBJECT_NAME_MAX_CHARS];
     //selected action/verb
     enum verbs selectedVerb;
+    //counters
+    int dblClickTimer;
     //flags
     bool enabled;
     bool click;
+    bool dblClick;
     bool leftClick;
     bool memClick;
     bool memLeftClick;
+    bool memDblClick;
+    bool evalueDblClick;
 } cursor;
 
 //game config structure

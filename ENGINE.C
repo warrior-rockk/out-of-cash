@@ -116,6 +116,7 @@ void move_player(int x, int y)
 {
     //set the flag and positions
     player.moving = true;
+    player.moveFast = cursor.dblClick;
     player.destX = x;
     player.destY = y;
 }

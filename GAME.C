@@ -323,6 +323,7 @@ void cursor_init()
     //clear cursor flags
     cursor.enabled = false;
     cursor.click = false;
+    cursor.dblClick = false;
     cursor.leftClick = false;
     cursor.memClick = false;
     cursor.memLeftClick = false;
@@ -349,16 +350,39 @@ void cursor_draw()
 //updates the cursor
 void cursor_update()
 {
+    //handles doble click
+    cursor.dblClick = false;
+    if (cursor.evalueDblClick)
+    {
+        if ( (mouse_b & 1) && !cursor.memClick)
+        {
+            cursor.dblClick = true;
+            cursor.memDblClick = true;
+        }
+        //timeout double click
+        if (cursor.dblClickTimer >= DBL_CLICK_MAX_TIME)
+        {
+            cursor.evalueDblClick = false;
+            cursor.dblClickTimer = 0;
+        }
+        else
+            cursor.dblClickTimer += gameTick;
+    }
+
     //handles rigth button click
     cursor.click = false;
-    if ((mouse_b & 1) && !cursor.memClick)
+    if ((mouse_b & 1) && !cursor.memClick && !cursor.dblClick)
     {
         cursor.click = true;
         cursor.memClick = true;
+        cursor.evalueDblClick = true;
     }
     if (!(mouse_b & 1))
+    {
         cursor.memClick = false;
-
+        cursor.memDblClick = false;
+    }
+    
     //handles left button click
     cursor.leftClick = 0;
     if ((mouse_b & 2) && !cursor.memLeftClick)
@@ -368,7 +392,7 @@ void cursor_update()
     }
     if (!(mouse_b & 2))
         cursor.memLeftClick = false;
-
+    
     uint8_t hsColor;
 
     //check cursor behaviour
@@ -385,8 +409,8 @@ void cursor_update()
                     //gets the object name
                     room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
 
-                    //if cursor click on valid object
-                    if (cursor.click && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
+                    //if cursor click on valid object or double click with GO verb
+                    if ((cursor.click || (cursor.dblClick && cursor.selectedVerb == GO)) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
                         //if no previous action/object selected
                         if (!roomScript.active)
@@ -397,6 +421,7 @@ void cursor_update()
                             roomScript.verb = cursor.selectedVerb;
                         }
                     }
+
                 }
                 //if cursor on HUD position, check color of HUD
                 else

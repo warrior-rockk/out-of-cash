@@ -17,6 +17,7 @@ void player_update()
 {
     bool in_range_x;
     bool in_range_y;
+    fixed actualSpeed;
     
     if (player.moving)
     {
@@ -24,18 +25,20 @@ void player_update()
         in_range_x = in_range(fixtoi(player.x), player.destX, 2);
         in_range_y = in_range(fixtoi(player.y), player.destY, 2);
 
+        //assign actual speed
+        actualSpeed = player.moveFast ? ftofix(PLAYER_FAST_SPEED) : gameConfig.playerSpeed;
+
         //decompose movement
         if (!in_range_x)
         {
-            player.vX = fixtoi(player.x) < player.destX ? gameConfig.playerSpeed : -gameConfig.playerSpeed;
+            player.vX = fixtoi(player.x) < player.destX ? actualSpeed : -actualSpeed;
         }
         else
             player.vX = itofix(0);
             
         if (!in_range_y)
         {
-            //if (in_range_x)
-                player.vY = fixtoi(player.y) < player.destY ? gameConfig.playerSpeed : -gameConfig.playerSpeed;
+            player.vY = fixtoi(player.y) < player.destY ? actualSpeed : -actualSpeed;
         }
         else
             player.vY = itofix(0);
