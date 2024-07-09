@@ -27,8 +27,8 @@ int main()
         //general update
         clear(buffer);
         tick_update();
-        show_debug("X",mouse_x);
-        show_debug("Y",mouse_y);
+        //show_debug("X",mouse_x);
+        //show_debug("Y",mouse_y);
         
         //check actual game state
         switch (game.state)
@@ -44,6 +44,7 @@ int main()
                     game_fade_out();
                     game_init();
                     cursor_init();
+                    player_init();
                     game.state = PLAYING_STATE;
                 }
                 break;

@@ -4,6 +4,14 @@
 #include "engine.h"
 #include "utils.h"
 
+//function to init player
+void player_init()
+{
+    player.talking = false;
+    player.moving = false;
+    player.frame = 1;
+}
+
 //function to update the player
 void player_update()
 {
@@ -68,14 +76,15 @@ void player_update()
 //function to draw the player
 void player_draw()
 {
-    //player.scale = ftofix(0.5);
-    player.scale = 2;
+
+
 
     //animation state
     if (player.moving)
     {
         if (gameTick)
         {
+            //walk animation
             player.frame = player.frame == 4 ? 3 : 4;
         }
     }
@@ -83,18 +92,44 @@ void player_draw()
     {
         if (gameTick)
         {
+            //talk animation
             player.frame = player.frame == 9 ? 8 : 9;
         }
     }
     else
+        //idle animation
         player.frame = 1;
 
-    if (player.scale == 1)
+    //get scale map value
+    switch (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
+    {
+        case SCALE_1_COLOR:
+            player.scale = ftofix(SCALE_1_VALUE);
+            break;
+        case SCALE_2_COLOR:
+            player.scale = ftofix(SCALE_2_VALUE);
+            break;
+        case SCALE_3_COLOR:
+            player.scale = ftofix(SCALE_3_VALUE);
+            break;
+        case SCALE_4_COLOR:
+            player.scale = ftofix(SCALE_4_VALUE);
+            break;
+        default:
+            player.scale = ftofix(1.0);
+            break;
+    }
+
+    //if no player scale modification
+    if (player.scale == itofix(1))
+        //draw normal
         draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
     else
     {
-        int scaleW = player.image[player.frame]->w / player.scale;
-        int scaleH = player.image[player.frame]->h / player.scale;
-        stretch_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1),scaleW,scaleH);
+        //calculate scale weight and height
+        fixed scaleW = fixmul(itofix(player.image[player.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(player.image[player.frame]->h),player.scale);
+        //draw streched and reposition
+        stretch_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
 }
