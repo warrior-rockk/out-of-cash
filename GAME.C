@@ -60,6 +60,7 @@ int main()
                 //draw
                 room_draw();
                 player_draw();
+                room_front_draw();
                 hud_draw();
                 status_bar_draw();
                 cursor_draw();
@@ -162,11 +163,13 @@ void load_resources()
     room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
     room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
     room[0].wImage     = (BITMAP *)dataFile[dRoom01w].dat;
+    room[0].fImage     = (BITMAP *)dataFile[dRoom01f].dat;
     room[0].song       = (MIDI *)dataFile[dSong01].dat;
     room[1].image      = (BITMAP *)dataFile[dRoom02].dat;
     room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
     room[1].wImage     = (BITMAP *)dataFile[dRoom02w].dat;
+    room[1].fImage     = (BITMAP *)dataFile[dRoom01f].dat;
 
     //room start positions
     room[0].start_pos_x = 170;
@@ -566,6 +569,12 @@ void room_action_update()
 void room_draw()
 {
     blit(room[game.actualRoom].image, buffer, 0, 0, 0, 0, room[game.actualRoom].image->w, room[game.actualRoom].image->h);
+}
+
+//draws the actual room front layer to buffer
+void room_front_draw()
+{
+    masked_blit(room[game.actualRoom].fImage, buffer, 0, 0, 0, 0, room[game.actualRoom].fImage->w, room[game.actualRoom].fImage->h);
 }
 
 //draws the hud to buffer

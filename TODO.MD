@@ -29,5 +29,6 @@
 - [ ] Real A* Pathfinding?
 - [X] Init room position and dynamic position based on previous room (room has default start
 position but can be overwritten by change_room start position
-- [ ] Room draw layers
+- [X] Room draw layers (sustitute bitmap to objects to save memory?
+- [ ] Double click for quick walk
 

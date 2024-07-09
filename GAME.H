@@ -77,8 +77,10 @@ typedef struct tRoom
     BITMAP  *image;
     //room hotspot image
     BITMAP  *hsImage;
-    //room walk image
+    //room walk/scalemap image
     BITMAP  *wImage;
+    //room front layer
+    BITMAP *fImage;
     //room song
     MIDI    *song;
     //default start player position on room
@@ -162,6 +164,7 @@ void cursor_update();
 void check_room_changed();
 void room_action_update();
 void room_draw();
+void room_front_draw();
 void hud_draw();
 void status_bar_draw();
 void cursor_draw();
