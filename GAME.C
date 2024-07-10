@@ -327,9 +327,9 @@ void cursor_init()
     cursor.enabled = false;
     cursor.click = false;
     cursor.dblClick = false;
-    cursor.leftClick = false;
+    cursor.rightClick = false;
     cursor.memClick = false;
-    cursor.memLeftClick = false;
+    cursor.memRightClick = false;
     //clear verb flags
     strcpy(cursor.objectName,"");
     cursor.selectedVerb = GO;
@@ -388,14 +388,14 @@ void cursor_button_handler()
     }
     
     //handles left button click
-    cursor.leftClick = 0;
-    if ((mouse_b & 2) && !cursor.memLeftClick)
+    cursor.rightClick = 0;
+    if ((mouse_b & 2) && !cursor.memRightClick)
     {
-        cursor.leftClick = true;
-        cursor.memLeftClick = true;
+        cursor.rightClick = true;
+        cursor.memRightClick = true;
     }
     if (!(mouse_b & 2))
-        cursor.memLeftClick = false;
+        cursor.memRightClick = false;
 }
 
 //updates function for cursor. Do call for click handler and check cursor actions
@@ -422,7 +422,7 @@ void cursor_update()
                     room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
 
                     //check left click action on room
-                    if (cursor.leftClick)
+                    if (cursor.rightClick)
                     {
                         //if valid object, get default object verb
                         if (cursor.objectName[0] != '\0')
@@ -432,8 +432,8 @@ void cursor_update()
                             cursor.selectedVerb = GO;
                     }
                     
-                    //if cursor click on valid object or double click with GO verb or leftClick (default verb assigned)
-                    if ((cursor.click || cursor.dblClick || cursor.leftClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
+                    //if cursor click on valid object or double click with GO verb or rightClick (default verb assigned)
+                    if ((cursor.click || cursor.dblClick || cursor.rightClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
                         //if no previous action/object selected
                         if (!roomScript.active)
@@ -459,7 +459,7 @@ void cursor_update()
                     }
 
                     //if mouse left on hud: default verb
-                    if (cursor.leftClick)
+                    if (cursor.rightClick)
                     {
                         cursor.selectedVerb = GO;
                     }

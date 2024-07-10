@@ -127,9 +127,9 @@ struct cursor
     bool enabled;
     bool click;
     bool dblClick;
-    bool leftClick;
+    bool rightClick;
     bool memClick;
-    bool memLeftClick;
+    bool memRightClick;
     bool memDblClick;
     bool evalueDblClick;
 } cursor;
