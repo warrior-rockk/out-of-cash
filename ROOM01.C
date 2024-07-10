@@ -32,6 +32,20 @@ void r01_get_object(uint8_t colorCode, char *s)
     }
 }
 
+//function to return default object verb
+enum verbs r01_get_default_object_verb(uint8_t colorCode)
+{
+    //check the object
+    switch(colorCode)
+    {
+        case Puerta:
+            return OPEN;
+            break;
+        default:
+            return LOOK;
+    }
+}
+
 //function to init room
 void r01_room_init()
 {

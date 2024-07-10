@@ -179,9 +179,12 @@ void load_resources()
     
     //assign room function pointers
     room[0].room_get_object = &r01_get_object;
+    room[0].room_get_default_object_verb = &r01_get_default_object_verb;
     room[0].room_init = &r01_room_init;
     room[0].room_update = &r01_room_update;
+
     room[1].room_get_object = &r02_get_object;
+    room[1].room_get_default_object_verb = &r01_get_default_object_verb;
     room[1].room_update = &r02_room_update;
     room[1].room_init = &r02_room_init;
 
@@ -347,10 +350,10 @@ void cursor_draw()
         draw_sprite(buffer, cursor.image, mouse_x - (cursor.image->w>>1), mouse_y - (cursor.image->h>>1));
 }
 
-//updates the cursor
-void cursor_update()
+//function that handles rise clicks
+void cursor_button_handler()
 {
-    //handles doble click
+    //handles doble click (fast walk)
     cursor.dblClick = false;
     if (cursor.evalueDblClick)
     {
@@ -375,7 +378,8 @@ void cursor_update()
     {
         cursor.click = true;
         cursor.memClick = true;
-        cursor.evalueDblClick = true;
+        //if verb is GO, evaluate doble click for fast walk
+        cursor.evalueDblClick = cursor.selectedVerb == GO;
     }
     if (!(mouse_b & 1))
     {
@@ -392,10 +396,18 @@ void cursor_update()
     }
     if (!(mouse_b & 2))
         cursor.memLeftClick = false;
-    
-    uint8_t hsColor;
+}
+
+//updates function for cursor. Do call for click handler and check cursor actions
+void cursor_update()
+{
+
+    //call buttons handler
+    cursor_button_handler();
 
     //check cursor behaviour
+    uint8_t hsColor;
+
     if (cursor.enabled)
     {
         switch (game.state)
@@ -409,8 +421,19 @@ void cursor_update()
                     //gets the object name
                     room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
 
-                    //if cursor click on valid object or double click with GO verb
-                    if ((cursor.click || (cursor.dblClick && cursor.selectedVerb == GO)) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
+                    //check left click action on room
+                    if (cursor.leftClick)
+                    {
+                        //if valid object, get default object verb
+                        if (cursor.objectName[0] != '\0')
+                            cursor.selectedVerb = room[game.actualRoom].room_get_default_object_verb(hsColor);
+                        else
+                            //otherwise, select go verb
+                            cursor.selectedVerb = GO;
+                    }
+                    
+                    //if cursor click on valid object or double click with GO verb or leftClick (default verb assigned)
+                    if ((cursor.click || cursor.dblClick || cursor.leftClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
                         //if no previous action/object selected
                         if (!roomScript.active)

@@ -91,6 +91,8 @@ typedef struct tRoom
     int start_pos_y;
     //function pointer to get object
     void (*room_get_object)(uint8_t, char *s);
+    //function pointer to get default object verb
+    enum verbs (*room_get_default_object_verb)(uint8_t);
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
@@ -168,6 +170,7 @@ void cursor_init();
 void tick_init();
 void debug_init();
 void tick_update();
+void cursor_button_handler();
 void cursor_update();
 void check_room_changed();
 void room_action_update();

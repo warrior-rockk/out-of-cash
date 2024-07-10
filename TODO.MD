@@ -31,4 +31,5 @@
 position but can be overwritten by change_room start position
 - [X] Room draw layers (sustitute bitmap to objects to save memory?
 - [X] Double click for quick walk
+- [X] Default right click action
 

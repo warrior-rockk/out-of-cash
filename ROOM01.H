@@ -12,6 +12,7 @@ enum r01_objectCode{
 
 //declare room functions
 void r01_get_object(uint8_t colorCode, char *s);
+enum verbs r01_get_default_object_verb(uint8_t colorCode);
 void r01_room_init();
 void r01_room_update();
 
