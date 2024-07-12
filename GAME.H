@@ -99,6 +99,16 @@ typedef struct tRoom
     void (*room_update)(void);
 } tRoom;
 
+//object structure
+typedef struct tObject
+{
+    //object image
+    BITMAP  *image;
+    //position
+    int x;
+    int y;
+} tObject;
+
 //hud structure
 struct hud
 {
@@ -149,10 +159,12 @@ struct gameKeys{
 //global vars
 static volatile int tick;
 tRoom room[NUM_GAME_ROOMS];
+tObject object[10];
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;
 DATAFILE *playerDataFile;
+DATAFILE *objectsDataFile;
 bool gameTick;
 
 //function declarations

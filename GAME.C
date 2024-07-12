@@ -10,9 +10,18 @@
 //game data resources
 #include "data.h"
 #include "ego.h"
+#include "objects.h"
 //includes all rooms
 #include "room01.h"
 #include "room02.h"
+
+//testing drawn objects
+void test_object_draw()
+{
+    object[0].x = 279;
+    object[0].y = 89;
+    draw_sprite(buffer, object[0].image, object[0].x-(object[0].image->w>>1), object[0].y - (object[0].image->h>>1));
+}
 
 int main()
 {
@@ -27,8 +36,8 @@ int main()
         //general update
         clear(buffer);
         tick_update();
-        //show_debug("X",mouse_x);
-        //show_debug("Y",mouse_y);
+        show_debug("X",mouse_x);
+        show_debug("Y",mouse_y);
         
         //check actual game state
         switch (game.state)
@@ -59,6 +68,7 @@ int main()
                 
                 //draw
                 room_draw();
+                test_object_draw();
                 player_draw();
                 room_front_draw();
                 hud_draw();
@@ -72,6 +82,9 @@ int main()
 
                 //draw
                 room_draw();
+                test_object_draw();
+                player_draw();
+                room_front_draw();
                 game_write("PAUSA");
                 break;
         }
@@ -140,7 +153,11 @@ void load_resources()
     playerDataFile = load_datafile("ego.dat");
     if (!dataFile)
         abort_on_error("Archivo ego.dat invalido o inexistente");
-
+    //loads objects data file
+    objectsDataFile = load_datafile("objects.dat");
+    if (!dataFile)
+        abort_on_error("Archivo objects.dat invalido o inexistente");
+        
     //sets and get the palette
     set_palette((RGB*)dataFile[dGamePal].dat);
     get_palette(gamePalette);
@@ -200,7 +217,11 @@ void load_resources()
     player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
     player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
     player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
-    
+
+    //test objects
+    object[0].image     = (BITMAP *)objectsDataFile[dObjCassette].dat;
+    object[1].image     = (BITMAP *)objectsDataFile[dObjGuitar].dat;
+    object[2].image     = (BITMAP *)objectsDataFile[dObjBathDoor].dat;
 }
 
 //function to init game
@@ -474,11 +495,14 @@ void cursor_update()
 //draws debug info
 void debug_draw()
 {
-    //writes all the debug vars
-    for (int i = 0; i < debugVars.numVars; i++)
-    {
-        textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debugVars.varName[i], debugVars.var[i]);
-    }
+    #ifdef DEBUGMODE
+        //writes all the debug vars
+        for (int i = 0; i < debugVars.numVars; i++)
+        {
+            textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debugVars.varName[i], debugVars.var[i]);
+        }
+    #endif //DEBUGMODE
+
     //reset debug vars
     debugVars.numVars = 0;
 }
