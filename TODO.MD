@@ -35,4 +35,5 @@ position but can be overwritten by change_room start position
 - [ ] Room objects
 - [ ] Inventory
 - [ ] Refactor code
+- [X] Flip on walk and look objects
 

@@ -79,9 +79,6 @@ void player_update()
 //function to draw the player
 void player_draw()
 {
-
-
-
     //animation state
     if (player.moving)
     {
@@ -123,16 +120,47 @@ void player_draw()
             break;
     }
 
-    //if no player scale modification
-    if (player.scale == itofix(1))
-        //draw normal
-        draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
-    else
+    //check player flip
+    if (player.vX < fixtoi(0) || player.lookDir == DIR_LEFT)
     {
+        player.flip = true;
+    }
+    else if (player.vX > fixtoi(0) || player.lookDir == DIR_RIGHT)
+    {
+        player.flip = false;
+    }
+
+    //draw player (flipped, escaled, original)
+    if (player.flip && player.scale == itofix(1))
+    {
+        //flipped
+        draw_sprite_h_flip(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
+    }
+    else if (!player.flip && player.scale != itofix(1))
+    {
+        //scaled
+
         //calculate scale weight and height
         fixed scaleW = fixmul(itofix(player.image[player.frame]->w),player.scale);
         fixed scaleH = fixmul(itofix(player.image[player.frame]->h),player.scale);
         //draw streched and reposition
         stretch_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+    }
+    else if (player.flip && player.scale != itofix(1))
+    {
+        //flipped and scaled
+        clear(player.tempImage);
+        draw_sprite_h_flip(player.tempImage, player.image[player.frame], 0 , 0);
+
+        //calculate scale weight and height
+        fixed scaleW = fixmul(itofix(player.image[player.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(player.image[player.frame]->h),player.scale);
+        //draw streched and reposition
+        stretch_sprite(buffer, player.tempImage, fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+    }
+    else
+    {
+        //original
+        draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
     }
 }

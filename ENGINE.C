@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
+#include <stdint.h>
 #include "engine.h"
 #include "game.h"
 #include "player.h"
@@ -125,4 +126,10 @@ void move_player(int x, int y)
 bool is_player_moving()
 {
     return player.moving;
+}
+
+//function to change the direction of player
+void change_player_dir(uint8_t dir)
+{
+    player.lookDir = dir;
 }

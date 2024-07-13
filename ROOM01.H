@@ -7,7 +7,8 @@
 enum r01_objectCode{
     Guitarra    = 150,
     Minicadena  = 225,
-    Puerta      = 236
+    Puerta      = 236,
+    Casete     = 216
 };
 
 //declare room functions

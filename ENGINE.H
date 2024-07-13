@@ -16,6 +16,11 @@
 //Debug
 #define DEBUG_MAX_VARS          5
 
+//Directions
+#define DIR_NONE                0
+#define DIR_RIGHT               1
+#define DIR_LEFT                2
+
 //Enumerations
 enum verbs {
     GO,
@@ -76,4 +81,5 @@ void end_script();
 void show_debug(char *varName, int var);
 void move_player(int x, int y);
 bool is_player_moving();
+void change_player_dir(uint8_t dir);
 #endif

@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include "engine.h"
 #include "room01.h"
 
@@ -26,6 +27,9 @@ void r01_get_object(uint8_t colorCode, char *s)
             break;
         case Puerta:
             strcpy(s, "Puerta");
+            break;
+        case Casete:
+            strcpy(s, "Casete");
             break;
         default:
             strcpy(s, "");

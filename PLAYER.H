@@ -19,6 +19,7 @@
 //player struct
 struct player{
     BITMAP *image[11];
+    BITMAP *tempImage;
     fixed x;
     fixed y;
     fixed vX;
@@ -29,6 +30,8 @@ struct player{
     bool moving;
     bool moveFast;
     bool talking;
+    bool flip;
+    uint8_t lookDir;
     int frame;
 } player;
 

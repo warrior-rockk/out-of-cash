@@ -217,7 +217,8 @@ void load_resources()
     player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
     player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
     player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
-
+    player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
+    clear(player.tempImage);
     //test objects
     object[0].image     = (BITMAP *)objectsDataFile[dObjCassette].dat;
     object[1].image     = (BITMAP *)objectsDataFile[dObjGuitar].dat;
@@ -463,6 +464,12 @@ void cursor_update()
                             roomScript.active = 1;
                             roomScript.object = hsColor;
                             roomScript.verb = cursor.selectedVerb;
+
+                            //change player look dir
+                            if (mouse_x < fixtoi(player.x))
+                                change_player_dir(DIR_LEFT);
+                            else
+                                change_player_dir(DIR_RIGHT);
                         }
                     }
 
