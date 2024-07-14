@@ -93,21 +93,15 @@ typedef struct tRoom
     void (*room_get_object)(uint8_t, char *s);
     //function pointer to get default object verb
     enum verbs (*room_get_default_object_verb)(uint8_t);
+    //function pointer to get num room objects
+    uint8_t (*room_get_num_objects)(void);
+    //function pointer to get object info
+    tObject* (*room_get_object_info)(uint8_t numObject);
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
     void (*room_update)(void);
 } tRoom;
-
-//object structure
-typedef struct tObject
-{
-    //object image
-    BITMAP  *image;
-    //position
-    int x;
-    int y;
-} tObject;
 
 //hud structure
 struct hud
@@ -159,7 +153,6 @@ struct gameKeys{
 //global vars
 static volatile int tick;
 tRoom room[NUM_GAME_ROOMS];
-tObject object[10];
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *dataFile;

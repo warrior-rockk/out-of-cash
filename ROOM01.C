@@ -50,6 +50,21 @@ enum verbs r01_get_default_object_verb(uint8_t colorCode)
     }
 }
 
+//function to return room num objects
+uint8_t r01_get_num_room_objects()
+{
+    return r01_num_objects;
+}
+
+//function to return room object info
+tObject* r01_get_object_info(uint8_t numObject)
+{
+    if (numObject < r01_num_objects)
+        return &r01_object[numObject];
+    else
+        return NULL;
+}
+
 //function to init room
 void r01_room_init()
 {

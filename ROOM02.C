@@ -32,6 +32,32 @@ void r02_get_object(uint8_t colorCode, char *s)
     }
 }
 
+//function to return default object verb
+enum verbs r02_get_default_object_verb(uint8_t colorCode)
+{
+    //check the object
+    switch(colorCode)
+    {
+        default:
+            return LOOK;
+    }
+}
+
+//function to return room num objects
+uint8_t r02_get_num_room_objects()
+{
+    return r02_num_objects;
+}
+
+//function to return room object info
+tObject* r02_get_object_info(uint8_t numObject)
+{
+    if (numObject < r02_num_objects)
+        return &r02_object[numObject];
+    else
+        return NULL;
+}
+
 //function to init room
 void r02_room_init()
 {

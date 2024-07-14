@@ -15,14 +15,6 @@
 #include "room01.h"
 #include "room02.h"
 
-//testing drawn objects
-void test_object_draw()
-{
-    object[0].x = 279;
-    object[0].y = 89;
-    draw_sprite(buffer, object[0].image, object[0].x-(object[0].image->w>>1), object[0].y - (object[0].image->h>>1));
-}
-
 int main()
 {
     //initialization
@@ -68,7 +60,7 @@ int main()
                 
                 //draw
                 room_draw();
-                test_object_draw();
+                //test_object_draw();
                 player_draw();
                 room_front_draw();
                 hud_draw();
@@ -82,7 +74,7 @@ int main()
 
                 //draw
                 room_draw();
-                test_object_draw();
+                //test_object_draw();
                 player_draw();
                 room_front_draw();
                 game_write("PAUSA");
@@ -186,7 +178,7 @@ void load_resources()
     room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
     room[1].song       = (MIDI *)dataFile[dSong01].dat;
     room[1].wImage     = (BITMAP *)dataFile[dRoom02w].dat;
-    room[1].fImage     = (BITMAP *)dataFile[dRoom01f].dat;
+    room[1].fImage     = NULL; //(BITMAP *)dataFile[dRoom01f].dat;
 
     //room start positions
     room[0].start_pos_x = 170;
@@ -197,13 +189,17 @@ void load_resources()
     //assign room function pointers
     room[0].room_get_object = &r01_get_object;
     room[0].room_get_default_object_verb = &r01_get_default_object_verb;
+    room[0].room_get_num_objects = &r01_get_num_room_objects;
+    room[0].room_get_object_info = &r01_get_object_info;
     room[0].room_init = &r01_room_init;
     room[0].room_update = &r01_room_update;
 
     room[1].room_get_object = &r02_get_object;
-    room[1].room_get_default_object_verb = &r01_get_default_object_verb;
-    room[1].room_update = &r02_room_update;
+    room[1].room_get_default_object_verb = &r02_get_default_object_verb;
+    room[1].room_get_num_objects = &r02_get_num_room_objects;
+    room[1].room_get_object_info = &r02_get_object_info;
     room[1].room_init = &r02_room_init;
+    room[1].room_update = &r02_room_update;
 
     //test player
     player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
@@ -219,10 +215,6 @@ void load_resources()
     player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
     player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
     clear(player.tempImage);
-    //test objects
-    object[0].image     = (BITMAP *)objectsDataFile[dObjCassette].dat;
-    object[1].image     = (BITMAP *)objectsDataFile[dObjGuitar].dat;
-    object[2].image     = (BITMAP *)objectsDataFile[dObjBathDoor].dat;
 }
 
 //function to init game
@@ -647,13 +639,34 @@ void room_action_update()
 //draws the actual room to buffer
 void room_draw()
 {
+    //draw room image
     blit(room[game.actualRoom].image, buffer, 0, 0, 0, 0, room[game.actualRoom].image->w, room[game.actualRoom].image->h);
+    
+    //draw room objects
+    tObject *obj;
+    BITMAP *objImage;
+    for (int i = 0; i < room[game.actualRoom].room_get_num_objects(); i++)
+    {
+        //get pointer to object structure
+        obj = room[game.actualRoom].room_get_object_info(i);
+        //check null pointer
+        if (obj == NULL)
+            abort_on_error("Error accediendo a indice de objecto no existente");
+        else
+        {
+            //get pointer to bitmap object
+            objImage = (BITMAP *)objectsDataFile[obj->objId].dat;
+            //draw the object
+            draw_sprite(buffer, objImage, obj->x-(objImage->w>>1), obj->y - (objImage->h>>1));
+        }
+    }
 }
 
 //draws the actual room front layer to buffer
 void room_front_draw()
 {
-    masked_blit(room[game.actualRoom].fImage, buffer, 0, 0, 0, 0, room[game.actualRoom].fImage->w, room[game.actualRoom].fImage->h);
+    if (room[game.actualRoom].fImage != NULL)
+        masked_blit(room[game.actualRoom].fImage, buffer, 0, 0, 0, 0, room[game.actualRoom].fImage->w, room[game.actualRoom].fImage->h);
 }
 
 //draws the hud to buffer

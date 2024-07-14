@@ -60,6 +60,16 @@ struct roomScript
     int stepTime;
 } roomScript;
 
+//object structure
+typedef struct tObject
+{
+    //object id (corresponds to index of objects datafile header)
+    int objId;
+    //position
+    int x;
+    int y;
+} tObject;
+
 //global debug vars structure (only ints on this iteration)
 struct debugVars
 {
