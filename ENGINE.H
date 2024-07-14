@@ -68,6 +68,8 @@ typedef struct tObject
     //position
     int x;
     int y;
+    //properties
+    bool active;
 } tObject;
 
 //global debug vars structure (only ints on this iteration)

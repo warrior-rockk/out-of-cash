@@ -36,4 +36,5 @@ position but can be overwritten by change_room start position
 - [ ] Inventory
 - [ ] Refactor code
 - [X] Flip on walk and look objects
+- [ ] Rethink object room array index for better identification
 

@@ -652,7 +652,8 @@ void room_draw()
         //check null pointer
         if (obj == NULL)
             abort_on_error("Error accediendo a indice de objecto no existente");
-        else
+        //check object active
+        else if (obj->active)
         {
             //get pointer to bitmap object
             objImage = (BITMAP *)objectsDataFile[obj->objId].dat;

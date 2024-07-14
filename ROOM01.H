@@ -21,9 +21,11 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
     [0].objId = dObjCassette,
     [0].x = 279,
     [0].y = 89,
+    [0].active = true,
     [1].objId = dObjGuitar,
     [1].x = 100,
-    [1].y = 50
+    [1].y = 50,
+    [1].active = true
 };
 
 //declare room functions

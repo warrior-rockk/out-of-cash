@@ -20,7 +20,8 @@ void r01_get_object(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case Guitarra:
-            strcpy(s, "Guitarra");
+            if (r01_object[1].active)
+                strcpy(s, "Guitarra");
             break;
         case Minicadena:
             strcpy(s, "Minicadena");
@@ -29,7 +30,8 @@ void r01_get_object(uint8_t colorCode, char *s)
             strcpy(s, "Puerta");
             break;
         case Casete:
-            strcpy(s, "Casete");
+            if (r01_object[0].active)
+                strcpy(s, "Casete");
             break;
         default:
             strcpy(s, "");
@@ -129,6 +131,28 @@ void r01_room_update()
                                 break;
                             case 2:
                                 change_room_pos(1,174,38);
+                                end_script();
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case Casete:
+                switch(roomScript.verb)
+                {
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                move_player(mouse_x, mouse_y);
+                                roomScript.step++;
+                                break;
+                            case 1:
+                                roomScript.step+=!is_player_moving();
+                                break;
+                            case 2:
+                                r01_object[0].active = false;
                                 end_script();
                                 break;
                         }
