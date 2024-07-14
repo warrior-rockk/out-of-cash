@@ -43,16 +43,10 @@ enum verbs r02_get_default_object_verb(uint8_t colorCode)
     }
 }
 
-//function to return room num objects
-uint8_t r02_get_num_room_objects()
-{
-    return r02_num_objects;
-}
-
 //function to return room object info
 tObject* r02_get_object_info(uint8_t numObject)
 {
-    if (numObject < r02_num_objects)
+    if (numObject < R02_ROOM_NUM_OBJS)
         return &r02_object[numObject];
     else
         return NULL;

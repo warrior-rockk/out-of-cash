@@ -93,8 +93,8 @@ typedef struct tRoom
     void (*room_get_object)(uint8_t, char *s);
     //function pointer to get default object verb
     enum verbs (*room_get_default_object_verb)(uint8_t);
-    //function pointer to get num room objects
-    uint8_t (*room_get_num_objects)(void);
+    //room num objects
+    uint8_t room_num_objects;
     //function pointer to get object info
     tObject* (*room_get_object_info)(uint8_t numObject);
     //function pointer to init room

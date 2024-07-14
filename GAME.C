@@ -189,14 +189,16 @@ void load_resources()
     //assign room function pointers
     room[0].room_get_object = &r01_get_object;
     room[0].room_get_default_object_verb = &r01_get_default_object_verb;
-    room[0].room_get_num_objects = &r01_get_num_room_objects;
+    //room[0].room_get_num_objects = &r01_get_num_room_objects;
+    room[0].room_num_objects = R01_ROOM_NUM_OBJS;
     room[0].room_get_object_info = &r01_get_object_info;
     room[0].room_init = &r01_room_init;
     room[0].room_update = &r01_room_update;
 
     room[1].room_get_object = &r02_get_object;
     room[1].room_get_default_object_verb = &r02_get_default_object_verb;
-    room[1].room_get_num_objects = &r02_get_num_room_objects;
+    //room[1].room_get_num_objects = &r02_get_num_room_objects;
+    room[1].room_num_objects = R02_ROOM_NUM_OBJS;
     room[1].room_get_object_info = &r02_get_object_info;
     room[1].room_init = &r02_room_init;
     room[1].room_update = &r02_room_update;
@@ -645,7 +647,7 @@ void room_draw()
     //draw room objects
     tObject *obj;
     BITMAP *objImage;
-    for (int i = 0; i < room[game.actualRoom].room_get_num_objects(); i++)
+    for (int i = 0; i < room[game.actualRoom].room_num_objects; i++)
     {
         //get pointer to object structure
         obj = room[game.actualRoom].room_get_object_info(i);

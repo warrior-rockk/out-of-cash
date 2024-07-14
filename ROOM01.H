@@ -15,7 +15,6 @@ enum r01_objectCode{
 };
 
 //declare room object data
-static const uint8_t r01_num_objects = R01_ROOM_NUM_OBJS;
 static tObject r01_object[R01_ROOM_NUM_OBJS] =
 {
     [0].objId = dObjCassette,
@@ -31,7 +30,6 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
 //declare room functions
 void r01_get_object(uint8_t colorCode, char *s);
 enum verbs r01_get_default_object_verb(uint8_t colorCode);
-uint8_t r01_get_num_room_objects();
 tObject* r01_get_object_info(uint8_t numObject);
 void r01_room_init();
 void r01_room_update();
