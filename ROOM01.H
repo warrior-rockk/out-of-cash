@@ -6,6 +6,9 @@
 
 #define R01_ROOM_NUM_OBJS   2
 
+#define R01_CASSETTE_OBJ_ID  0
+#define R01_GUITAR_OBJ_ID    1
+
 //room enumerations
 enum r01_hotspotCode{
     Guitarra    = 150,

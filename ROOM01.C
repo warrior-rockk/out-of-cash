@@ -20,7 +20,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case Guitarra:
-            if (r01_object[1].active)
+            if (r01_object[R01_GUITAR_OBJ_ID].active)
                 strcpy(s, "Guitarra");
             break;
         case Minicadena:
@@ -30,7 +30,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
             strcpy(s, "Puerta");
             break;
         case Casete:
-            if (r01_object[0].active)
+            if (r01_object[R01_GUITAR_OBJ_ID].active)
                 strcpy(s, "Casete");
             break;
         default:
@@ -146,7 +146,7 @@ void r01_room_update()
                                 roomScript.step+=!is_player_moving();
                                 break;
                             case 2:
-                                r01_object[0].active = false;
+                                r01_object[R01_CASSETTE_OBJ_ID].active = false;
                                 end_script();
                                 break;
                         }
