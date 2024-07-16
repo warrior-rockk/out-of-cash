@@ -7,14 +7,14 @@
 #define R01_ROOM_NUM_OBJS   2
 
 //room enumerations
-enum r01_objectCode{
+enum r01_hotspotCode{
     Guitarra    = 150,
     Minicadena  = 225,
     Puerta      = 236,
     Casete      = 216
 };
 
-//declare room object data
+//declare room objects data
 static tObject r01_object[R01_ROOM_NUM_OBJS] =
 {
     [0].objId = dObjCassette,
@@ -28,8 +28,8 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
 };
 
 //declare room functions
-void r01_get_object(uint8_t colorCode, char *s);
-enum verbs r01_get_default_object_verb(uint8_t colorCode);
+void r01_get_hotspot_name(uint8_t colorCode, char *s);
+enum verbs r01_get_default_hotspot_verb(uint8_t colorCode);
 tObject* r01_get_object_info(uint8_t numObject);
 void r01_room_init();
 void r01_room_update();

@@ -187,16 +187,16 @@ void load_resources()
     room[1].start_pos_y = 117;
     
     //assign room function pointers
-    room[0].room_get_object = &r01_get_object;
-    room[0].room_get_default_object_verb = &r01_get_default_object_verb;
+    room[0].room_get_hotspot_name = &r01_get_hotspot_name;
+    room[0].room_get_default_hotspot_verb = &r01_get_default_hotspot_verb;
     //room[0].room_get_num_objects = &r01_get_num_room_objects;
     room[0].room_num_objects = R01_ROOM_NUM_OBJS;
     room[0].room_get_object_info = &r01_get_object_info;
     room[0].room_init = &r01_room_init;
     room[0].room_update = &r01_room_update;
 
-    room[1].room_get_object = &r02_get_object;
-    room[1].room_get_default_object_verb = &r02_get_default_object_verb;
+    room[1].room_get_hotspot_name = &r02_get_hotspot_name;
+    room[1].room_get_default_hotspot_verb = &r02_get_default_hotspot_verb;
     //room[1].room_get_num_objects = &r02_get_num_room_objects;
     room[1].room_num_objects = R02_ROOM_NUM_OBJS;
     room[1].room_get_object_info = &r02_get_object_info;
@@ -435,14 +435,14 @@ void cursor_update()
                     //obtains the hotspot room color
                     hsColor = getpixel(room[game.actualRoom].hsImage, mouse_x, mouse_y);
                     //gets the object name
-                    room[game.actualRoom].room_get_object(hsColor, cursor.objectName);
+                    room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
                     //check left click action on room
                     if (cursor.rightClick)
                     {
                         //if valid object, get default object verb
                         if (cursor.objectName[0] != '\0')
-                            cursor.selectedVerb = room[game.actualRoom].room_get_default_object_verb(hsColor);
+                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
                         else
                             //otherwise, select go verb
                             cursor.selectedVerb = GO;

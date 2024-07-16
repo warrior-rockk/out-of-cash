@@ -89,10 +89,10 @@ typedef struct tRoom
     //default start player position on room
     int start_pos_x;
     int start_pos_y;
-    //function pointer to get object
-    void (*room_get_object)(uint8_t, char *s);
-    //function pointer to get default object verb
-    enum verbs (*room_get_default_object_verb)(uint8_t);
+    //function pointer to get hotspot name
+    void (*room_get_hotspot_name)(uint8_t, char *s);
+    //function pointer to get default hotspot verb
+    enum verbs (*room_get_default_hotspot_verb)(uint8_t);
     //room num objects
     uint8_t room_num_objects;
     //function pointer to get object info
