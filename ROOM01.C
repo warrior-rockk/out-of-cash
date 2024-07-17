@@ -147,12 +147,8 @@ void r01_room_update()
                                 roomScript.step+=!is_player_moving();
                                 break;
                             case 2:
-<<<<<<< HEAD
-                                r01_object[0].active = false;
-                                set_game_flag(GOT_CASSETTE);
-=======
                                 r01_object[R01_CASSETTE_OBJ_ID].active = false;
->>>>>>> 754948fe3c32e2305e6633c48239827f013a784f
+                                set_game_flag(GOT_CASSETTE);
                                 end_script();
                                 break;
                         }
