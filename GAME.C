@@ -43,6 +43,10 @@ int main()
                 if (cursor.click)
                 {
                     game_fade_out();
+
+                    //test game load
+                    game_load();
+
                     game_init();
                     cursor_init();
                     player_init();
@@ -291,6 +295,36 @@ void game_write(char *text)
     textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", text);
 }
 
+//function to save game
+void game_save()
+{
+    FILE* saveFile;
+
+    saveFile = fopen("savegame.001", "wb");
+    if (saveFile == NULL)
+        abort_on_error("No se puede crear el archivo de guardado");
+        
+    if (!fwrite(&game, sizeof(struct game), 1, saveFile))
+        abort_on_error("Error escribiendo el archivo de guardado");
+
+    fclose(saveFile);
+}
+
+//function to load game
+void game_load()
+{
+    FILE* loadFile;
+
+    loadFile = fopen("savegame.001", "r");
+    if (loadFile == NULL)
+        abort_on_error("No se puede abrir el archivo de guardado");
+
+    if (!fread(&game, sizeof(struct game), 1, loadFile))
+        abort_on_error("Error leyendo el archivo de guardado");
+
+    fclose(loadFile);
+}
+
 //function to do pending fade in
 void game_do_fade_in()
 {
@@ -330,6 +364,8 @@ void check_room_changed()
 //function that handles game exit
 void game_exit()
 {
+    //test save game
+    game_save();
     //free resources
     unload_datafile(dataFile);
     //quit allegro modules

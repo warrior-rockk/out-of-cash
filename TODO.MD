@@ -18,7 +18,7 @@
 - [X] Player?
 - [ ] Control song playing / room transition / song continues
 - [ ] Game GUI
-- [ ] Save / Load
+- [X] Save / Load (first iteration)
 - [ ] Game Config
 - [X] Fix ints for movement
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure

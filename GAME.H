@@ -172,6 +172,8 @@ void game_update();
 void game_exit();
 void game_do_fade_in();
 void game_write();
+void game_save();
+void game_load();
 void cursor_init();
 void tick_init();
 void debug_init();

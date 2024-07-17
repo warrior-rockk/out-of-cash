@@ -66,7 +66,10 @@ void r01_room_init()
 {
     game_fade_in();
     if (is_game_flag(GOT_CASSETTE))
+    {
+        r01_object[R01_CASSETTE_OBJ_ID].active = false;
         say("Habia cogido el casete");
+    }
 }
 
 //funcion to update room
