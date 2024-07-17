@@ -12,7 +12,7 @@
 - [X] Use fades for transitions
 - [X] Use byte-bools and stdbool.h
 - [X] Use uint8_t when value < 256
-- [ ] Bit mask macros for flags
+- [X] Bit mask macros for flags
 - [X] Game struct
 - [ ] Game update
 - [X] Player?
@@ -36,6 +36,10 @@ position but can be overwritten by change_room start position
 - [ ] Inventory
 - [ ] Refactor code
 - [X] Flip on walk and look objects
-- [ ] Rethink object room array index for better identification (maybe defines for object
+- [X] Rethink object room array index for better identification (maybe defines for object
 array indexes and change get_object_name using this defines...)
+- [ ] Room definition/script tool
+- [X] Game flags system
 
+
+    

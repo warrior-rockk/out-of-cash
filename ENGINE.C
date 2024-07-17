@@ -3,6 +3,7 @@
 #include <strings.h>
 #include <stdint.h>
 #include "engine.h"
+#include "utils.h"
 #include "game.h"
 #include "player.h"
 
@@ -18,6 +19,24 @@ int say(char *message)
 
     //return finished state
     return msg.msgFinished;
+}
+
+//function to set game flag
+void set_game_flag(uint8_t flagNum)
+{
+    SET_BIT(game.flags[flagNum % 8], flagNum/8);
+}
+
+//function to clear game flag
+void clear_game_flag(uint8_t flagNum)
+{
+    CLEAR_BIT(game.flags[flagNum % 8], flagNum/8);
+}
+
+//function to check game flag
+bool is_game_flag(uint8_t flagNum)
+{
+    return CHECK_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to change the actual room

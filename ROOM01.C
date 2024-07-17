@@ -65,7 +65,8 @@ tObject* r01_get_object_info(uint8_t numObject)
 void r01_room_init()
 {
     game_fade_in();
-    say("Acabo de entrar aqui y aqui");
+    if (is_game_flag(GOT_CASSETTE))
+        say("Habia cogido el casete");
 }
 
 //funcion to update room
@@ -147,6 +148,7 @@ void r01_room_update()
                                 break;
                             case 2:
                                 r01_object[0].active = false;
+                                set_game_flag(GOT_CASSETTE);
                                 end_script();
                                 break;
                         }

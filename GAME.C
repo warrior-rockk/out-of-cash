@@ -29,8 +29,8 @@ int main()
         clear(buffer);
         tick_update();
         show_debug("X",mouse_x);
-        show_debug("Y",mouse_y);
-        
+        //show_debug("Y",mouse_y);
+        show_debug("gotCas",game.flags[GOT_CASSETTE]);
         //check actual game state
         switch (game.state)
         {

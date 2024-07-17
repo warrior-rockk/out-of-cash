@@ -3,6 +3,7 @@
 #define H_ENGINE
 
 #include <stdbool.h>
+#include "gameflags.h"
 
 //Definitions
 #define NUM_VERBS               9
@@ -82,6 +83,9 @@ struct debugVars
 
 //global functions
 int say(char *message);
+void set_game_flag(uint8_t flagNum);
+void clear_game_flag(uint8_t flagNum);
+bool is_game_flag(uint8_t flagNum);
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);
 void game_fade_in();

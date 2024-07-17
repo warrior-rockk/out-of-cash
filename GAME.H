@@ -62,6 +62,7 @@ struct game
     int room_pos_x;
     int room_pos_y;
     bool fadeIn;
+    uint8_t flags[32];  //32 bytes = 255 bit flags
 } game;
 
 //message structure
