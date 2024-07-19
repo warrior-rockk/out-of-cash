@@ -143,9 +143,9 @@ void r01_room_update()
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
+                                break;
                             case 1:
-                                r01_object[R01_CASSETTE_OBJ_ID].active = false;
-                                set_game_flag(GOT_CASSETTE);
+                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE);
                                 end_script();
                                 break;
                         }

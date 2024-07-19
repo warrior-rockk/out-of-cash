@@ -73,6 +73,13 @@ void script_move_player_to_target()
     script_move_player(roomScript.hsX, roomScript.hsY);
 }
 
+//function to take and object (inactives the object and sets the game flag
+void script_take_object(bool *objActive, uint8_t gameFlag)
+{
+    *objActive = false;
+    set_game_flag(gameFlag);
+}
+
 //function to set game flag
 void set_game_flag(uint8_t flagNum)
 {
