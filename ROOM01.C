@@ -89,7 +89,6 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                //roomScript.step+= say("Es mi minicadena ultimo modelo");
                                 script_say("Es mi minicadena ultimo modelo");
                                 break;
                             case 1:
@@ -108,7 +107,7 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                roomScript.step+= say("No puedo llevarmelo. Pesa mucho");
+                                script_say("No puedo llevarmelo. Pesa mucho");
                                 break;
                             default:
                                 end_script();
@@ -125,13 +124,9 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                move_player(roomScript.hsX,200);
-                                roomScript.step++;
+                                script_move_player(roomScript.hsX,200);
                                 break;
                             case 1:
-                                roomScript.step+=!is_player_moving();
-                                break;
-                            case 2:
                                 change_room_pos(1,174,38);
                                 end_script();
                                 break;
@@ -147,13 +142,8 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                move_player_to_target();
-                                roomScript.step++;
-                                break;
+                                script_move_player_to_target();
                             case 1:
-                                roomScript.step+=!is_player_moving();
-                                break;
-                            case 2:
                                 r01_object[R01_CASSETTE_OBJ_ID].active = false;
                                 set_game_flag(GOT_CASSETTE);
                                 end_script();

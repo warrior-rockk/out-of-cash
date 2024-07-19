@@ -76,7 +76,7 @@ void r02_room_update()
                         {
                             case 0:
                                 begin_script();
-                                roomScript.step+= say("Es la entrada a mi habitacion");
+                                script_say("Es la entrada a mi habitacion");
                                 break;
                             default:
                                 end_script();
@@ -88,14 +88,9 @@ void r02_room_update()
                         {
                             case 0:
                                 begin_script();
-                                move_player(mouse_x, mouse_y);
-                                roomScript.step++;
+                                script_move_player_to_target();
                                 break;
                             case 1:
-                                roomScript.step+=!is_player_moving();
-                                break;
-                            case 2:
-                                //change_room(0);
                                 change_room_pos(0, 201, 145);
                                 end_script();
                                 break;

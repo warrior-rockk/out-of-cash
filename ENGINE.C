@@ -44,6 +44,34 @@ void script_wait(int time)
     }
 }
 
+//function to move player and autoincrements script step
+void script_move_player(int x, int y)
+{
+    static bool memMoving;
+
+    //if player is not moving
+    if (!is_player_moving())
+    {
+        if (!memMoving)
+        {
+            //mem flag and call move_player
+            memMoving = true;
+            move_player(x, y);
+        }
+        else
+        {
+            //increment step when finish moving
+            memMoving = false;
+            roomScript.step++;
+        }
+    }
+}
+
+//function to move player to target and autoincrements script step
+void script_move_player_to_target()
+{
+    script_move_player(roomScript.hsX, roomScript.hsY);
+}
 
 //function to set game flag
 void set_game_flag(uint8_t flagNum)
@@ -170,11 +198,8 @@ void move_player(int x, int y)
 //function to move the player to pointer target
 void move_player_to_target()
 {
-    //set the flag and positions
-    player.moving = true;
-    player.moveFast = cursor.dblClick;
-    player.destX = roomScript.hsX;
-    player.destY = roomScript.hsY;
+    //move the player to the roomScript pointed
+    move_player(roomScript.hsX, roomScript.hsY);
 }
 
 //function to return if player is moving
