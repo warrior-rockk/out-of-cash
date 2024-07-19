@@ -89,10 +89,14 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                roomScript.step+= say("Es mi minicadena ultimo modelo");
+                                //roomScript.step+= say("Es mi minicadena ultimo modelo");
+                                script_say("Es mi minicadena ultimo modelo");
                                 break;
                             case 1:
-                                roomScript.step+= say("Otra cosa");
+                                script_wait(4);
+                                break;
+                            case 2:
+                                script_say("Otra cosa");
                                 break;
                             default:
                                 end_script();

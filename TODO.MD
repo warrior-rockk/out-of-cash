@@ -42,7 +42,7 @@ array indexes and change get_object_name using this defines...)
 - [X] Game flags system
 - [X] Move_player_to_target()
 - [ ] Get Object function generic
-- [ ] Talk pause
+- [X] Talk wait
 
 
     

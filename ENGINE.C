@@ -21,6 +21,30 @@ int say(char *message)
     return msg.msgFinished;
 }
 
+//function to say something from script. Increments script step on finish
+void script_say(char *message)
+{
+    if (say(message))
+    {
+        roomScript.step++;
+    }
+}
+
+//function to wait on script. Increments script step on finish
+void script_wait(int time)
+{
+    if (roomScript.stepTime > time)
+    {
+        cursor.enabled = true;
+        roomScript.step++;
+    }
+    else
+    {
+        cursor.enabled = false;
+    }
+}
+
+
 //function to set game flag
 void set_game_flag(uint8_t flagNum)
 {

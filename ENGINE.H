@@ -85,6 +85,8 @@ struct debugVars
 
 //global functions
 int say(char *message);
+void script_say(char *message);
+void script_wait(int time);
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);
 bool is_game_flag(uint8_t flagNum);
