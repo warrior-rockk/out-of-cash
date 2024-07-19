@@ -121,6 +121,8 @@ void end_script()
     roomScript.verb = 0;
     roomScript.active = false;
     roomScript.scriptAssigned = false;
+    roomScript.hsX = 0;
+    roomScript.hsY = 0;
 }
 
 //global debug vars function
@@ -139,6 +141,16 @@ void move_player(int x, int y)
     player.moveFast = cursor.dblClick;
     player.destX = x;
     player.destY = y;
+}
+
+//function to move the player to pointer target
+void move_player_to_target()
+{
+    //set the flag and positions
+    player.moving = true;
+    player.moveFast = cursor.dblClick;
+    player.destX = roomScript.hsX;
+    player.destY = roomScript.hsY;
 }
 
 //function to return if player is moving

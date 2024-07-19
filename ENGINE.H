@@ -59,6 +59,8 @@ struct roomScript
     int step;
     int lastStep;
     int stepTime;
+    int hsX;
+    int hsY;
 } roomScript;
 
 //object structure
@@ -96,6 +98,7 @@ void begin_script();
 void end_script();
 void show_debug(char *varName, int var);
 void move_player(int x, int y);
+void move_player_to_target();
 bool is_player_moving();
 void change_player_dir(uint8_t dir);
 #endif

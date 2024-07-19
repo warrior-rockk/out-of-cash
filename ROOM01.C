@@ -30,7 +30,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
             strcpy(s, "Puerta");
             break;
         case Casete:
-            if (r01_object[R01_GUITAR_OBJ_ID].active)
+            if (r01_object[R01_CASSETTE_OBJ_ID].active)
                 strcpy(s, "Casete");
             break;
         default:
@@ -121,7 +121,7 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                move_player(mouse_x, mouse_y);
+                                move_player(roomScript.hsX,200);
                                 roomScript.step++;
                                 break;
                             case 1:
@@ -143,7 +143,7 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                move_player(mouse_x, mouse_y);
+                                move_player_to_target();
                                 roomScript.step++;
                                 break;
                             case 1:

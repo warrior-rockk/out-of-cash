@@ -40,6 +40,9 @@ position but can be overwritten by change_room start position
 array indexes and change get_object_name using this defines...)
 - [ ] Room definition/script tool
 - [X] Game flags system
+- [X] Move_player_to_target()
+- [ ] Get Object function generic
+- [ ] Talk pause
 
 
     

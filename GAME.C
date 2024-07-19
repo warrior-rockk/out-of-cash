@@ -29,8 +29,8 @@ int main()
         clear(buffer);
         tick_update();
         show_debug("X",mouse_x);
-        //show_debug("Y",mouse_y);
-        show_debug("gotCas",game.flags[GOT_CASSETTE]);
+        show_debug("Y",mouse_y);
+        //show_debug("gotCas",game.flags[GOT_CASSETTE]);
         //check actual game state
         switch (game.state)
         {
@@ -45,7 +45,7 @@ int main()
                     game_fade_out();
 
                     //test game load
-                    game_load();
+                    //game_load();
 
                     game_init();
                     cursor_init();
@@ -239,6 +239,8 @@ void game_init()
     roomScript.step = 0;
     roomScript.lastStep = 0;
     roomScript.stepTime = 0;
+    roomScript.hsX = 0;
+    roomScript.hsY = 0;
 
     //initialize x and y position of highlight verb images
     hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
@@ -494,9 +496,11 @@ void cursor_update()
                             roomScript.active = 1;
                             roomScript.object = hsColor;
                             roomScript.verb = cursor.selectedVerb;
+                            roomScript.hsX = mouse_x;
+                            roomScript.hsY = mouse_y;
 
                             //change player look dir
-                            if (mouse_x < fixtoi(player.x))
+                            if (roomScript.hsX < fixtoi(player.x))
                                 change_player_dir(DIR_LEFT);
                             else
                                 change_player_dir(DIR_RIGHT);
