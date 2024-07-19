@@ -34,6 +34,15 @@ position but can be overwritten by change_room start position
 - [X] Default right click action
 - [X] Room objects
 - [ ] Inventory
+
+    -draw inv images on grid
+    -pagination of inv grid
+    -verb on inv object
+    -combination of object on hotspot
+    -combinaton of inv object on inv object
+
+    8 inv objects x page = 4 columns on 2 rows
+
 - [ ] Refactor code
 - [X] Flip on walk and look objects
 - [X] Rethink object room array index for better identification (maybe defines for object
