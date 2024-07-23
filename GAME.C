@@ -5,6 +5,7 @@
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
+#include "inventor.h"
 #include "player.h"
 #include "utils.h"
 //game data resources
@@ -264,6 +265,9 @@ void game_init()
     
     //call init game modules
     msg_init();
+
+    //test
+    inventory_init();
 }
 
 //game update function
@@ -506,7 +510,6 @@ void cursor_update()
                                 change_player_dir(DIR_RIGHT);
                         }
                     }
-
                 }
                 //if cursor on HUD position, check color of HUD
                 else
@@ -514,16 +517,48 @@ void cursor_update()
                     //obtains the hotspot HUD color
                     hsColor = getpixel(hud.hsImage, mouse_x, mouse_y - HUD_Y);
 
-                    //if mouse click and action is valid
-                    if (hsColor > 0 && hsColor <= NUM_VERBS && mouse_b & 1)
+                    //check mouse hud region
+                    if (mouse_x < HUD_SCROLL_X)
                     {
-                        cursor.selectedVerb = hsColor - 1;
-                    }
+                        //BUTTONS VERBS REGION
+                        
+                        //if mouse click and action is valid
+                        if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
+                        {
+                            cursor.selectedVerb = hsColor - 1;
+                        }
 
-                    //if mouse left on hud: default verb
-                    if (cursor.rightClick)
+                        //if mouse left on hud: default verb
+                        if (cursor.rightClick)
+                        {
+                            cursor.selectedVerb = GO;
+                        }
+                    }
+                    else if (mouse_x < HUD_INVENTORY_X)
                     {
-                        cursor.selectedVerb = GO;
+                        //SCROLL INVENTORY BUTTONS REGION
+                    }
+                    else
+                    {
+                        //INVENTORY BUTTONS REGION
+
+                        //gets the object name
+                        get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
+
+                        //if cursor click on valid inv object or rightClick (default verb assigned)
+                        if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0')
+                        {
+                            //if no previous action/object selected
+                            if (!roomScript.active)
+                            {
+                                //saves the room vars to start script sequence
+                                roomScript.active = 1;
+                                roomScript.object = hsColor;
+                                roomScript.verb = cursor.selectedVerb;
+                                roomScript.hsX = mouse_x;
+                                roomScript.hsY = mouse_y;
+                            }
+                        }
                     }
                 }
                 //debug

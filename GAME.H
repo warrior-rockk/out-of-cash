@@ -21,7 +21,10 @@
 #define DBL_CLICK_MAX_TIME      4 //400ms
 
 //HUD
-#define HUD_Y                   162 //179
+#define HUD_Y                   162
+#define HUD_SCROLL_X            114
+#define HUD_INVENTORY_X         130
+
 #define VERB_SEL_ROW_1_X        2
 #define VERB_SEL_ROW_2_X        40
 #define VERB_SEL_ROW_3_X        78
