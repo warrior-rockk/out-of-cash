@@ -59,6 +59,7 @@ int main()
                 game_update();
                 msg_update();
                 room[game.actualRoom].room_update();
+                inventory_update();
                 room_action_update();
                 cursor_update();
                 player_update();
@@ -497,7 +498,8 @@ void cursor_update()
                         if (!roomScript.active)
                         {
                             //saves the room vars to start script sequence
-                            roomScript.active = 1;
+                            roomScript.active = true;
+                            roomScript.invScript = false;
                             roomScript.object = hsColor;
                             roomScript.verb = cursor.selectedVerb;
                             roomScript.hsX = mouse_x;
@@ -552,8 +554,9 @@ void cursor_update()
                             if (!roomScript.active)
                             {
                                 //saves the room vars to start script sequence
-                                roomScript.active = 1;
-                                roomScript.object = hsColor;
+                                roomScript.active = true;
+                                roomScript.invScript = true;
+                                roomScript.object = get_inv_obj_position(hsColor);
                                 roomScript.verb = cursor.selectedVerb;
                                 roomScript.hsX = mouse_x;
                                 roomScript.hsY = mouse_y;

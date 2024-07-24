@@ -14,22 +14,9 @@ struct inventory
     bool refresh;
 } inventory;
 
-//inventory script structure
-struct invScript
-{
-    bool active;
-    bool scriptAssigned;
-    int object;
-    enum verbs verb;
-    int step;
-    int lastStep;
-    int stepTime;
-    int hsX;
-    int hsY;
-} invScript;
-
 //funtion definitions
 void inventory_init();
+void inventory_update();
 uint8_t get_inv_obj_position(uint8_t colorCode);
 void get_inv_obj_name(uint8_t objIndex, char *s);
 

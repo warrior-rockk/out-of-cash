@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "inventor.h"
+#include "engine.h"
 #include "inv.h"
 
 //initialization of inventory
@@ -47,19 +48,19 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
 }
 
 //funcion to update inventory script
-void r01_room_update()
+void inventory_update()
 {
     //if nothing selected
-    if (invScript.active)
+    if (roomScript.active)
     {
         //sequence actions
-        switch (invScript.object)
+        switch (roomScript.object - 1)
         {
-            case dInvCassette:
-                switch(invScript.verb)
+            case dInv_Cassette:
+                switch(roomScript.verb)
                 {
                     case LOOK:
-                        switch (invScript.step)
+                        switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
@@ -78,7 +79,7 @@ void r01_room_update()
                         break;
                 }
                 break;
-            case Guitarra:
+            case dInv_Guitar:
                 switch(roomScript.verb)
                 {
                     case LOOK:

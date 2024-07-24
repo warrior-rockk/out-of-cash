@@ -54,6 +54,7 @@ struct roomScript
 {
     bool active;
     bool scriptAssigned;
+    bool invScript; //temporal
     int object;
     enum verbs verb;
     int step;

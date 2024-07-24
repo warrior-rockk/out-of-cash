@@ -76,7 +76,7 @@ void r01_room_init()
 void r01_room_update()
 {
     //if nothing selected
-    if (roomScript.active)
+    if (roomScript.active && !roomScript.invScript)
     {
         //sequence actions
         switch (roomScript.object)
