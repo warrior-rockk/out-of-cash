@@ -62,5 +62,6 @@ array indexes and change get_object_name using this defines...)
 - [X] Talk wait
 - [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
 multiple scripts?
+- [ ] Separate renderer
 
     

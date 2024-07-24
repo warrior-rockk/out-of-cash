@@ -12,6 +12,8 @@ void inventory_init()
 {
     //test
     inventory.numObjects = 8;
+    inventory.page = 0;
+    
     inventory.objIndex[0] = dInv_Cassette + 1;
     inventory.objIndex[1] = dInv_Guitar + 1;
     inventory.objIndex[2] = dInv_Soap + 1;
@@ -39,8 +41,10 @@ void inventory_draw()
             clear_bitmap(inventory.image);
             for (int i = 0; i < inventory.numObjects; i++)
             {
-                if (inventory.objIndex[i] > 0)
-                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->h)>>1));
+                //if inventory pos has object
+                if (inventory.objIndex[i+(inventory.page*INV_OBJECTS_PER_ROW)] > 0)
+                    //blit inventory icon on inventory image
+                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat)->h)>>1));
             }
             //reset refresh flag
             inventory.refresh = false;
