@@ -66,10 +66,10 @@ int main()
                 
                 //draw
                 room_draw();
-                //test_object_draw();
                 player_draw();
                 room_front_draw();
                 hud_draw();
+                inventory_draw();
                 status_bar_draw();
                 cursor_draw();
                 msg_draw();
@@ -149,12 +149,16 @@ void load_resources()
         abort_on_error("Archivo data.dat invalido o inexistente");
     //loads player data file
     playerDataFile = load_datafile("ego.dat");
-    if (!dataFile)
+    if (!playerDataFile)
         abort_on_error("Archivo ego.dat invalido o inexistente");
     //loads objects data file
     objectsDataFile = load_datafile("objects.dat");
-    if (!dataFile)
+    if (!objectsDataFile)
         abort_on_error("Archivo objects.dat invalido o inexistente");
+    //loads inventoru data file
+    inventoryDataFile = load_datafile("inv.dat");
+    if (!inventoryDataFile)
+        abort_on_error("Archivo inv.dat invalido o inexistente");
         
     //sets and get the palette
     set_palette((RGB*)dataFile[dGamePal].dat);

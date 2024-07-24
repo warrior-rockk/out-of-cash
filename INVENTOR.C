@@ -1,7 +1,9 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <allegro.h>
 #include "inventor.h"
+#include "game.h"    //<<-----FIX THAT! MAY NOT ACCESS BUFFER TO DRAW! SEPARATE RENDER!
 #include "engine.h"
 #include "inv.h"
 
@@ -9,9 +11,46 @@
 void inventory_init()
 {
     //test
-    inventory.numObjects = 2;
+    inventory.numObjects = 8;
     inventory.objIndex[0] = dInv_Cassette + 1;
     inventory.objIndex[1] = dInv_Guitar + 1;
+    inventory.objIndex[2] = dInv_Soap + 1;
+    inventory.objIndex[3] = dInv_Cassette + 1;
+    inventory.objIndex[4] = dInv_Guitar + 1;
+    inventory.objIndex[5] = dInv_Soap + 1;
+    inventory.objIndex[6] = dInv_Cassette + 1;
+    inventory.objIndex[7] = dInv_Guitar + 1;
+
+    inventory.refresh = true;
+
+    inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
+    clear_bitmap(inventory.image);
+}
+
+//draws the inventory
+void inventory_draw()
+{
+    //if objects on inventory
+    if (inventory.numObjects > 0)
+    {
+        //only compose the inventory if refresh flag
+        if (inventory.refresh)
+        {
+            clear_bitmap(inventory.image);
+            for (int i = 0; i < inventory.numObjects; i++)
+            {
+                if (inventory.objIndex[i] > 0)
+                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->h)>>1));
+            }
+            //reset refresh flag
+            inventory.refresh = false;
+        }
+        else
+        {
+            //draws the last composed inventory image
+            draw_sprite(buffer, inventory.image, INV_POS_X, INV_POS_Y + HUD_Y);
+        }
+    }
 }
 
 //calculate the inventory position based on colorCode

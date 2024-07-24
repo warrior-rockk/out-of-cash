@@ -60,6 +60,7 @@ array indexes and change get_object_name using this defines...)
 - [X] Move_player_to_target()
 - [X] Get Object function generic
 - [X] Talk wait
-
+- [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
+multiple scripts?
 
     

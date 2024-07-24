@@ -162,6 +162,7 @@ BITMAP *buffer;
 DATAFILE *dataFile;
 DATAFILE *playerDataFile;
 DATAFILE *objectsDataFile;
+DATAFILE *inventoryDataFile;
 bool gameTick;
 
 //function declarations
