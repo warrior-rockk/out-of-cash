@@ -14,6 +14,9 @@
 #define INV_ICON_Y_OFFSET       27
 #define INV_ICON_MARGIN         1
 
+#define INV_SCROLL_UP_CODE      18
+#define INV_SCROLL_DOWN_CODE    19
+
 //data structures
 struct inventory
 {

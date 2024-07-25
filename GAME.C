@@ -543,6 +543,38 @@ void cursor_update()
                     else if (mouse_x < HUD_INVENTORY_X)
                     {
                         //SCROLL INVENTORY BUTTONS REGION
+
+                        if (cursor.click)
+                        {
+                            //scroll down inventory page
+                            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_PAGE))
+                            {
+                                inventory.page++;
+                                inventory.refresh = true;
+                            }
+                            //scroll up inventory page
+                            if (hsColor == INV_SCROLL_UP_CODE && inventory.page > 0)
+                            {
+                                inventory.page--;
+                                inventory.refresh = true;
+                            }
+                        }
+                        
+                        if (cursor.rightClick)
+                        {
+                            //go to last inventory page
+                            if (hsColor == INV_SCROLL_DOWN_CODE)
+                            {
+                                inventory.page = (MAX_INV_OBJECTS / INV_OBJECTS_PER_ROW) -1;
+                                inventory.refresh = true;
+                            }
+                            //go to first inventory page
+                            if (hsColor == INV_SCROLL_UP_CODE)
+                            {
+                                inventory.page = 0;
+                                inventory.refresh = true;
+                            }
+                        }
                     }
                     else
                     {

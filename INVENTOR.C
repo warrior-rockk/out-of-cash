@@ -22,7 +22,8 @@ void inventory_init()
     inventory.objIndex[5] = dInv_Soap + 1;
     inventory.objIndex[6] = dInv_Cassette + 1;
     inventory.objIndex[7] = dInv_Guitar + 1;
-
+    inventory.objIndex[8] = dInv_Soap + 1;
+    
     inventory.refresh = true;
 
     inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
