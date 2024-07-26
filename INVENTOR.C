@@ -11,7 +11,7 @@
 void inventory_init()
 {
     //test
-    inventory.numObjects = 8;
+    inventory.numObjects = 9;
     inventory.page = 0;
     
     inventory.objIndex[0] = dInv_Cassette + 1;

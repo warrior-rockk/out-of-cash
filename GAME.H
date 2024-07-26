@@ -32,6 +32,10 @@
 #define VERB_SEL_COL_2_Y        39
 #define VERB_SEL_COL_3_Y        57
 
+#define SEL_UP_DOWN_X           119
+#define SEL_UP_Y                25
+#define SEL_DOWN_Y              54
+
 //Text
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
@@ -118,6 +122,9 @@ struct hud
     BITMAP *verbSelImage[NUM_VERBS];
     int posXVerbSelImage[NUM_VERBS];
     int posYVerbSelImage[NUM_VERBS];
+    //scroll buttons
+    bool selUpButton;
+    bool selDownButton;
 } hud;
 
 //cursor structure

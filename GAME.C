@@ -551,12 +551,16 @@ void cursor_update()
                             {
                                 inventory.page++;
                                 inventory.refresh = true;
+                                //set flag for highlight button
+                                hud.selDownButton = true;
                             }
                             //scroll up inventory page
                             if (hsColor == INV_SCROLL_UP_CODE && inventory.page > 0)
                             {
                                 inventory.page--;
                                 inventory.refresh = true;
+                                //set flag for highlight button
+                                hud.selUpButton = true;
                             }
                         }
                         
@@ -565,14 +569,18 @@ void cursor_update()
                             //go to last inventory page
                             if (hsColor == INV_SCROLL_DOWN_CODE)
                             {
-                                inventory.page = (MAX_INV_OBJECTS / INV_OBJECTS_PER_ROW) -1;
+                                inventory.page = ((inventory.numObjects - 1) / INV_OBJECTS_PER_PAGE);
                                 inventory.refresh = true;
+                                //set flag for highlight button
+                                hud.selDownButton = true;
                             }
                             //go to first inventory page
                             if (hsColor == INV_SCROLL_UP_CODE)
                             {
                                 inventory.page = 0;
                                 inventory.refresh = true;
+                                //set flag for highlight button
+                                hud.selUpButton = true;
                             }
                         }
                     }
@@ -791,8 +799,22 @@ void hud_draw()
 {
     //draws main image
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
+
     //blits highlight selected verb (using image because haven't smaller font)
     draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
+
+    //blits selected scroll inventory button
+    if (hud.selUpButton)
+        draw_sprite(buffer, (BITMAP *)dataFile[dHudUpSel].dat, SEL_UP_DOWN_X, SEL_UP_Y + HUD_Y);
+    if (hud.selDownButton)
+        draw_sprite(buffer, (BITMAP *)dataFile[dHudDownSel].dat, SEL_UP_DOWN_X, SEL_DOWN_Y + HUD_Y);
+
+    //reset scroll flags on mouse release
+    if (!mouse_b & 1)
+    {
+        hud.selUpButton = false;
+        hud.selDownButton = false;
+    }
 }
 
 //function to init the tick timer
