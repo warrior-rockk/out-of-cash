@@ -15,7 +15,7 @@
 #define MAX_SENTENCE_LENGTH     50
 
 //Debug
-#define DEBUG_MAX_VARS          5
+#define DEBUG_MAX_VARS          10
 
 //Directions
 #define DIR_NONE                0

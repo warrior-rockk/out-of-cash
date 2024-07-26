@@ -39,6 +39,7 @@ void inventory_add(uint8_t numObject)
     {
         inventory.numObjects++;
         inventory.objIndex[inventory.numObjects - 1] = numObject + 1;
+        inventory.refresh = true;
     }
     else
         //this should not happen...
@@ -56,7 +57,9 @@ void inventory_draw()
         if (inventory.refresh)
         {
             clear_bitmap(inventory.image);
-            for (int i = 0; i < inventory.numObjects; i++)
+            //for (int i = 0; i < inventory.numObjects; i++)
+            //run for inventory objects of active page
+            for (int i = (8 * inventory.page); i < (INV_OBJECTS_PER_PAGE * (inventory.page + 1)); i++)
             {
                 //if inventory pos has object
                 if (inventory.objIndex[i+(inventory.page*INV_OBJECTS_PER_ROW)] > 0)
@@ -72,6 +75,7 @@ void inventory_draw()
             draw_sprite(buffer, inventory.image, INV_POS_X, INV_POS_Y + HUD_Y);
         }
     }
+    show_debug("Inv Objs", inventory.numObjects);
 }
 
 //calculate the inventory position based on colorCode

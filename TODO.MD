@@ -34,7 +34,7 @@ position but can be overwritten by change_room start position
 - [X] Default right click action
 - [X] Room objects
 - [X] Inventory
-- [ ] Refactor code
+- [ ] Refactor code (separate cursor update function)
 - [X] Flip on walk and look objects
 - [X] Rethink object room array index for better identification (maybe defines for object
 array indexes and change get_object_name using this defines...)

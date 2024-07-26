@@ -78,8 +78,8 @@ void script_move_player_to_target()
 //to inventory
 void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 {
-    *objActive = false;
-    set_game_flag(gameFlag);
+    //*objActive = false;
+    //set_game_flag(gameFlag);
     inventory_add(invObjectNum);
 }
 
@@ -190,9 +190,12 @@ void end_script()
 //global debug vars function
 void show_debug(char *varName, int var)
 {
-    strcpy(debugVars.varName[debugVars.numVars], varName);
-    debugVars.var[debugVars.numVars] = var;
-    debugVars.numVars++;
+    if (debugVars.numVars < DEBUG_MAX_VARS)
+    {
+        strcpy(debugVars.varName[debugVars.numVars], varName);
+        debugVars.var[debugVars.numVars] = var;
+        debugVars.numVars++;
+    }
 }
 
 //function to move the player
