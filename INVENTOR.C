@@ -10,9 +10,15 @@
 //initialization of inventory
 void inventory_init()
 {
-    //test
-    inventory.numObjects = 9;
+    inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
+    clear_bitmap(inventory.image);
+    
     inventory.page = 0;
+    inventory.refresh = true;
+    
+    //test inventory
+    /*
+    inventory.numObjects = 9;
     
     inventory.objIndex[0] = dInv_Cassette + 1;
     inventory.objIndex[1] = dInv_Guitar + 1;
@@ -23,11 +29,21 @@ void inventory_init()
     inventory.objIndex[6] = dInv_Cassette + 1;
     inventory.objIndex[7] = dInv_Guitar + 1;
     inventory.objIndex[8] = dInv_Soap + 1;
-    
-    inventory.refresh = true;
+    */
+}
 
-    inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
-    clear_bitmap(inventory.image);
+//add object to inventory
+void inventory_add(uint8_t numObject)
+{
+    if (inventory.numObjects < MAX_INV_OBJECTS)
+    {
+        inventory.numObjects++;
+        inventory.objIndex[inventory.numObjects - 1] = numObject + 1;
+    }
+    else
+        //this should not happen...
+        say("No me caben mas objetos en el inventario...");
+
 }
 
 //draws the inventory

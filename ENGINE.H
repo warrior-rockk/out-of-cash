@@ -91,7 +91,7 @@ void script_say(char *message);
 void script_wait(int time);
 void script_move_player(int x, int y);
 void script_move_player_to_target();
-void script_take_object(bool *objActive, uint8_t gameFlag);
+void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum);
 
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);

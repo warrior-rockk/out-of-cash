@@ -591,8 +591,8 @@ void cursor_update()
                         //gets the object name
                         get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
 
-                        //if cursor click on valid inv object or rightClick (default verb assigned)
-                        if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0')
+                        //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
+                        if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
                         {
                             //if no previous action/object selected
                             if (!roomScript.active)

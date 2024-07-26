@@ -12,6 +12,8 @@
 #include "engine.h"
 #include "room01.h"
 
+#include "inv.h"
+
 //Funtion to return the name of hotspot by color code
 void r01_get_hotspot_name(uint8_t colorCode, char *s)
 {
@@ -145,7 +147,7 @@ void r01_room_update()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE);
+                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE, dInv_Cassette);
                                 end_script();
                                 break;
                         }

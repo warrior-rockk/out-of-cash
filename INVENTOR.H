@@ -29,6 +29,7 @@ struct inventory
 
 //funtion definitions
 void inventory_init();
+void inventory_add(uint8_t numObject);
 void inventory_update();
 void inventory_draw();
 uint8_t get_inv_obj_position(uint8_t colorCode);

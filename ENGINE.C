@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "utils.h"
 #include "game.h"
+#include "inventory.h"
 #include "player.h"
 
 //function to say something. Returns 1 when finished
@@ -73,11 +74,13 @@ void script_move_player_to_target()
     script_move_player(roomScript.hsX, roomScript.hsY);
 }
 
-//function to take and object (inactives the object and sets the game flag
-void script_take_object(bool *objActive, uint8_t gameFlag)
+//function to take and object (inactives the object, sets the game flag and adds object
+//to inventory
+void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 {
     *objActive = false;
     set_game_flag(gameFlag);
+    inventory_add(invObjectNum);
 }
 
 //function to set game flag

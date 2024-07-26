@@ -33,24 +33,7 @@ position but can be overwritten by change_room start position
 - [X] Double click for quick walk
 - [X] Default right click action
 - [X] Room objects
-- [ ] Inventory
-
-    -draw inv images on grid
-    -pagination of inv grid
-    -verb on inv object
-    -combination of object on hotspot
-    -combinaton of inv object on inv object
-
-    8 inv objects x page = 4 columns on 2 rows (16 items max on first iteration)
-
-    hotspot -> enum Name (local on room)
-               int colorCode (local on room)
-
-    object  -> definition name (local on room)
-               definition of number of bitmap .h (global)
-
-    inventory[0] -> image? description? scriptff?
-
+- [X] Inventory
 - [ ] Refactor code
 - [X] Flip on walk and look objects
 - [X] Rethink object room array index for better identification (maybe defines for object
@@ -63,5 +46,8 @@ array indexes and change get_object_name using this defines...)
 - [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
 multiple scripts?
 - [ ] Separate renderer
+- [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
+internal grabber number def
+- [ ] Separate grabber file data.h. The name was temporaly
 
     
