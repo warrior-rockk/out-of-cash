@@ -2,7 +2,7 @@
 #define H_INVENTORY
 
 #define INV_COLOR_OFFSET        20
-#define MAX_INV_OBJECTS         16
+#define MAX_INV_OBJECTS         32
 #define INV_OBJECTS_PER_PAGE    8
 #define INV_OBJECTS_PER_ROW     4
 

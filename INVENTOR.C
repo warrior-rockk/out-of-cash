@@ -59,12 +59,12 @@ void inventory_draw()
             clear_bitmap(inventory.image);
             //for (int i = 0; i < inventory.numObjects; i++)
             //run for inventory objects of active page
-            for (int i = (8 * inventory.page); i < (INV_OBJECTS_PER_PAGE * (inventory.page + 1)); i++)
+            for (int i = (inventory.page * INV_OBJECTS_PER_ROW); i < inventory.numObjects && i < INV_OBJECTS_PER_PAGE; i++)
             {
                 //if inventory pos has object
-                if (inventory.objIndex[i+(inventory.page*INV_OBJECTS_PER_ROW)] > 0)
+                if (inventory.objIndex[i] > 0)
                     //blit inventory icon on inventory image
-                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[(i+(inventory.page*INV_OBJECTS_PER_ROW))]-1].dat)->h)>>1));
+                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->h)>>1));
             }
             //reset refresh flag
             inventory.refresh = false;
