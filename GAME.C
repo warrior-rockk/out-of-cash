@@ -547,7 +547,7 @@ void cursor_update()
                         if (cursor.click)
                         {
                             //scroll down inventory page
-                            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_PAGE))
+                            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) && inventory.page < MAX_INV_PAGE)
                             {
                                 inventory.page++;
                                 inventory.refresh = true;
@@ -569,7 +569,7 @@ void cursor_update()
                             //go to last inventory page
                             if (hsColor == INV_SCROLL_DOWN_CODE)
                             {
-                                inventory.page = ((inventory.numObjects - 1) / INV_OBJECTS_PER_PAGE);
+                                inventory.page = inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
                                 inventory.refresh = true;
                                 //set flag for highlight button
                                 hud.selDownButton = true;

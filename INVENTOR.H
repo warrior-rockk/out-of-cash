@@ -3,6 +3,7 @@
 
 #define INV_COLOR_OFFSET        20
 #define MAX_INV_OBJECTS         32
+#define MAX_INV_PAGE            ((MAX_INV_OBJECTS - 1) / INV_OBJECTS_PER_ROW) - 1
 #define INV_OBJECTS_PER_PAGE    8
 #define INV_OBJECTS_PER_ROW     4
 

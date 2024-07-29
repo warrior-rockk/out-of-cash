@@ -1,3 +1,5 @@
+#define DEBUGMODE
+
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -56,15 +58,34 @@ void inventory_draw()
         //only compose the inventory if refresh flag
         if (inventory.refresh)
         {
+            int invX;
+            int invY;
+            int objIndex;
+            
             clear_bitmap(inventory.image);
-            //for (int i = 0; i < inventory.numObjects; i++)
+            TRACE("INICIO\n");
             //run for inventory objects of active page
-            for (int i = (inventory.page * INV_OBJECTS_PER_ROW); i < inventory.numObjects && i < INV_OBJECTS_PER_PAGE; i++)
+            for (int i = 0; i < inventory.numObjects && i < INV_OBJECTS_PER_PAGE; i++)
             {
-                //if inventory pos has object
-                if (inventory.objIndex[i] > 0)
-                    //blit inventory icon on inventory image
-                    draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat, ((INV_ICON_X_OFFSET*(i % INV_OBJECTS_PER_ROW))+(INV_ICON_X_OFFSET>>1)) + ((i%INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->w)>>1), ((INV_ICON_Y_OFFSET*(i/INV_OBJECTS_PER_ROW))+(INV_ICON_Y_OFFSET>>1)) + ((i/INV_OBJECTS_PER_ROW)*INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[i]-1].dat)->h)>>1));
+                //calculate paginated object index
+                objIndex = i + (inventory.page * INV_OBJECTS_PER_ROW);
+                //check limites
+                if (objIndex < MAX_INV_OBJECTS)
+                {
+                    //if inventory pos has object
+                    if (inventory.objIndex[objIndex] > 0)
+                    {
+                        //calculate icon position
+                        invX = ((INV_ICON_X_OFFSET * (objIndex % INV_OBJECTS_PER_ROW)) + (INV_ICON_X_OFFSET>>1)) + ((objIndex % INV_OBJECTS_PER_ROW) * INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat)->w)>>1);
+                        invY = ((INV_ICON_Y_OFFSET * (objIndex / (INV_OBJECTS_PER_ROW * (inventory.page + 1)))) + (INV_ICON_Y_OFFSET>>1)) + ((objIndex / (INV_OBJECTS_PER_ROW * (inventory.page + 1))) * INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat)->h)>>1);
+                        //blit inventory icon on inventory image
+                        draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat, invX, invY);
+                        //debug: print inv object index
+                        #ifdef DEBUGMODE
+                            textprintf_centre_ex(inventory.image, font, invX, invY, makecol(255,255,255), -1, "%i", objIndex);
+                        #endif
+                    }
+                }
             }
             //reset refresh flag
             inventory.refresh = false;
