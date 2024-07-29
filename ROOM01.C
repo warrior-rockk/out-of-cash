@@ -154,6 +154,24 @@ void r01_room_update()
                         break;
                 }
                 break;
+            case Guitarra:
+                switch(roomScript.verb)
+                {
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR, dInv_Guitar);
+                                end_script();
+                                break;
+                        }
+                        break;
+                }
+                break;
         }
     }
 }
