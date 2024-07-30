@@ -24,6 +24,7 @@
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Animation system
 - [ ] Talk system
+- [ ] Multi-line text (char 10 = \n)
 - [X] Player scale map (first iteration)
 - [X] Temporaly? collision map (fix blockings)
 - [ ] Real A* Pathfinding?
@@ -49,5 +50,6 @@ multiple scripts?
 - [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
 internal grabber number def
 - [ ] Separate grabber file data.h. The name was temporaly
+- [ ] Define DEBUGMODE on 1 file
 
     

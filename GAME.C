@@ -37,7 +37,7 @@ int main()
         {
             case TITLE_STATE:
                 //placeholder test
-                game_write("ADVENTURE GAME");
+                game_write("ADVENTURE-GAME");
                 cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
@@ -301,9 +301,27 @@ void game_update()
 //function to write text on screen
 void game_write(char *text)
 {
-    textprintf_centre_ex(buffer, font, SAY_X-1, SAY_Y-1, makecol(1,1,1), -1, "%s", text);
+    int posY;
+    char *ch;
+
+    
+    ch = strtok(text, "-");
+    posY = SAY_Y;
+    
+    while (ch)
+    {
+        //TRACE("1-%s",ch);
+        textprintf_centre_ex(buffer, font, SAY_X, posY, makecol(255,255,255), -1, "%s", ch);
+        ch = strtok(NULL, "-");
+        posY += 10;
+        textprintf_centre_ex(buffer, font, SAY_X, posY, makecol(255,255,255), -1, "%s", ch);
+        //TRACE("2-%s",test);
+
+    }
+    
+    /*textprintf_centre_ex(buffer, font, SAY_X-1, SAY_Y-1, makecol(1,1,1), -1, "%s", text);
     textprintf_centre_ex(buffer, font, SAY_X+1, SAY_Y+1, makecol(1,1,1), -1, "%s", text);
-    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", text);
+    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", text);*/
 }
 
 //function to save game

@@ -45,7 +45,7 @@ void inventory_add(uint8_t numObject)
     }
     else
         //this should not happen...
-        say("No me caben mas objetos en el inventario...");
+        say("No me caben mas objetos\n en el inventario...");
 
 }
 
