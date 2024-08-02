@@ -37,7 +37,7 @@ int main()
         {
             case TITLE_STATE:
                 //placeholder test
-                game_write("ADVENTURE\nGAME");
+                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y);
                 cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
@@ -83,7 +83,7 @@ int main()
                 //test_object_draw();
                 player_draw();
                 room_front_draw();
-                game_write("PAUSA");
+                game_write("PAUSA", SAY_X, SAY_Y);
                 break;
         }
         //general draw
@@ -299,7 +299,7 @@ void game_update()
 }
 
 //function to write text on screen
-void game_write(char *text)
+void game_write(char *text, int x, int y)
 {
     int posY;
     char s[MAX_SENTENCE_LENGTH];
@@ -310,15 +310,15 @@ void game_write(char *text)
     //first token
     ch = strtok(s, "\n");
     //sets the initial Y text position
-    posY = SAY_Y;
+    posY = y;
 
     //while ch != NULL (tokens left)
     while (ch)
     {
         //print text with outline
-        textprintf_centre_ex(buffer, font, SAY_X-1, posY-1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, SAY_X+1, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, SAY_X, posY, makecol(255,255,255), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, x, posY, makecol(255,255,255), -1, "%s", ch);
         //increment position
         posY += 10;
         //get next token
@@ -728,7 +728,25 @@ void msg_draw()
     //don't draw the text if fade in on progress
     if (!game.fadeIn)
     {
-        game_write(msg.msg);
+        int msgX;
+        int msgY;
+        
+        //get msg legth in pixels
+        int msgWidth = text_length(font, msg.msg);
+
+        //check msg X limits for avoid text outscreen
+        if (fixtoi(player.x) < (msgWidth>>1))
+            msgX = (msgWidth>>1);
+        else if (fixtoi(player.x) > (RES_X - (msgWidth>>1)))
+            msgX = RES_X - (msgWidth>>1);
+        else
+            msgX = fixtoi(player.x);
+
+        //get msg Y
+        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN; //(player.image[player.frame]->h>>1);
+        
+        //call to write text
+        game_write(msg.msg, msgX, msgY);
     }
 }
 

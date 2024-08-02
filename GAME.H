@@ -39,6 +39,7 @@
 //Text
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
+#define TEXT_ACTOR_MARGIN       10
 
 //Debug
 #define DEBUG_Y                 10
@@ -182,7 +183,7 @@ void game_init();
 void game_update();
 void game_exit();
 void game_do_fade_in();
-void game_write();
+void game_write(char *text, int x, int y);
 void game_save();
 void game_load();
 void cursor_init();
