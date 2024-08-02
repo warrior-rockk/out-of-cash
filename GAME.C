@@ -37,7 +37,7 @@ int main()
         {
             case TITLE_STATE:
                 //placeholder test
-                game_write("ADVENTURE-GAME");
+                game_write("ADVENTURE\nGAME");
                 cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
@@ -302,26 +302,28 @@ void game_update()
 void game_write(char *text)
 {
     int posY;
+    char s[MAX_SENTENCE_LENGTH];
     char *ch;
 
-    
-    ch = strtok(text, "-");
+    //make a copy of the string for tokenizer
+    strcpy(s, text);
+    //first token
+    ch = strtok(s, "\n");
+    //sets the initial Y text position
     posY = SAY_Y;
-    
+
+    //while ch != NULL (tokens left)
     while (ch)
     {
-        //TRACE("1-%s",ch);
+        //print text with outline
+        textprintf_centre_ex(buffer, font, SAY_X-1, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, SAY_X+1, posY+1, makecol(1,1,1), -1, "%s", ch);
         textprintf_centre_ex(buffer, font, SAY_X, posY, makecol(255,255,255), -1, "%s", ch);
-        ch = strtok(NULL, "-");
+        //increment position
         posY += 10;
-        textprintf_centre_ex(buffer, font, SAY_X, posY, makecol(255,255,255), -1, "%s", ch);
-        //TRACE("2-%s",test);
-
+        //get next token
+        ch = strtok(NULL, "-");
     }
-    
-    /*textprintf_centre_ex(buffer, font, SAY_X-1, SAY_Y-1, makecol(1,1,1), -1, "%s", text);
-    textprintf_centre_ex(buffer, font, SAY_X+1, SAY_Y+1, makecol(1,1,1), -1, "%s", text);
-    textprintf_centre_ex(buffer, font, SAY_X, SAY_Y, makecol(255,255,255), -1, "%s", text);*/
 }
 
 //function to save game

@@ -24,7 +24,8 @@
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Animation system
 - [ ] Talk system
-- [ ] Multi-line text (char 10 = \n)
+- [ ] Place text talk on character
+- [X] Multi-line text (char 10 = \n)
 - [X] Player scale map (first iteration)
 - [X] Temporaly? collision map (fix blockings)
 - [ ] Real A* Pathfinding?
