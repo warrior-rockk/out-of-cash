@@ -37,7 +37,7 @@ int main()
         {
             case TITLE_STATE:
                 //placeholder test
-                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y);
+                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 cursor.enabled = true;
                 cursor_update();
                 cursor_draw();
@@ -83,7 +83,7 @@ int main()
                 //test_object_draw();
                 player_draw();
                 room_front_draw();
-                game_write("PAUSA", SAY_X, SAY_Y);
+                game_write("PAUSA", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 break;
         }
         //general draw
@@ -299,7 +299,7 @@ void game_update()
 }
 
 //function to write text on screen
-void game_write(char *text, int x, int y)
+void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b)
 {
     int posY;
     char s[MAX_SENTENCE_LENGTH];
@@ -318,7 +318,7 @@ void game_write(char *text, int x, int y)
         //print text with outline
         textprintf_centre_ex(buffer, font, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
         textprintf_centre_ex(buffer, font, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, x, posY, makecol(255,255,255), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, x, posY, makecol(r,g,b), -1, "%s", ch);
         //increment position
         posY += 10;
         //get next token
@@ -746,7 +746,7 @@ void msg_draw()
         msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN; //(player.image[player.frame]->h>>1);
         
         //call to write text
-        game_write(msg.msg, msgX, msgY);
+        game_write(msg.msg, msgX, msgY, PLAYER_TEXT_COLOR);
     }
 }
 
