@@ -78,8 +78,13 @@ void script_move_player_to_target()
 //to inventory
 void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 {
-    //*objActive = false;
-    //set_game_flag(gameFlag);
+    //set player state
+    player.taking = true;
+    //deactivate room object
+    *objActive = false;
+    //set game flag
+    set_game_flag(gameFlag);
+    //add object to inventory
     inventory_add(invObjectNum);
 }
 

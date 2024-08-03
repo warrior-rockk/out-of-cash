@@ -743,7 +743,7 @@ void msg_draw()
             msgX = fixtoi(player.x);
 
         //get msg Y
-        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN;
+        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.animation.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN;
         
         //call to write text
         game_write(msg.msg, msgX, msgY, PLAYER_TEXT_COLOR);

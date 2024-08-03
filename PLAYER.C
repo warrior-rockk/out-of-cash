@@ -9,7 +9,7 @@ void player_init()
 {
     player.talking = false;
     player.moving = false;
-    player.frame = 1;
+    player.animation.frame = 1;
 }
 
 //function to update the player
@@ -85,20 +85,24 @@ void player_draw()
         if (gameTick)
         {
             //walk animation
-            player.frame = player.frame == 4 ? 3 : 4;
+            player.animation.frame = player.animation.frame == 4 ? 3 : 4;
         }
     }
-    else if(player.talking)
+    else if (player.talking)
     {
         if (gameTick)
         {
             //talk animation
-            player.frame = player.frame == 9 ? 8 : 9;
+            player.animation.frame = player.animation.frame == 9 ? 8 : 9;
         }
+    }
+    else if (player.taking)
+    {
+        player.taking = !play_animation(&player.animation, 10, 10, 2, ANIM_ONCE);
     }
     else
         //idle animation
-        player.frame = 1;
+        player.animation.frame = 1;
 
     //get scale map value
     switch (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
@@ -134,33 +138,33 @@ void player_draw()
     if (player.flip && player.scale == itofix(1))
     {
         //flipped
-        draw_sprite_h_flip(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
+        draw_sprite_h_flip(buffer, player.image[player.animation.frame], fixtoi(player.x)-(player.image[player.animation.frame]->w>>1), fixtoi(player.y)-(player.image[player.animation.frame]->h>>1));
     }
     else if (!player.flip && player.scale != itofix(1))
     {
         //scaled
 
         //calculate scale weight and height
-        fixed scaleW = fixmul(itofix(player.image[player.frame]->w),player.scale);
-        fixed scaleH = fixmul(itofix(player.image[player.frame]->h),player.scale);
+        fixed scaleW = fixmul(itofix(player.image[player.animation.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(player.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
-        stretch_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+        stretch_sprite(buffer, player.image[player.animation.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else if (player.flip && player.scale != itofix(1))
     {
         //flipped and scaled
         clear(player.tempImage);
-        draw_sprite_h_flip(player.tempImage, player.image[player.frame], 0 , 0);
+        draw_sprite_h_flip(player.tempImage, player.image[player.animation.frame], 0 , 0);
 
         //calculate scale weight and height
-        fixed scaleW = fixmul(itofix(player.image[player.frame]->w),player.scale);
-        fixed scaleH = fixmul(itofix(player.image[player.frame]->h),player.scale);
+        fixed scaleW = fixmul(itofix(player.image[player.animation.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(player.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
         stretch_sprite(buffer, player.tempImage, fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else
     {
         //original
-        draw_sprite(buffer, player.image[player.frame], fixtoi(player.x)-(player.image[player.frame]->w>>1), fixtoi(player.y)-(player.image[player.frame]->h>>1));
+        draw_sprite(buffer, player.image[player.animation.frame], fixtoi(player.x)-(player.image[player.animation.frame]->w>>1), fixtoi(player.y)-(player.image[player.animation.frame]->h>>1));
     }
 }

@@ -37,6 +37,8 @@ void inventory_init()
 //add object to inventory
 void inventory_add(uint8_t numObject)
 {
+    //ASSERT(inventory.numObjects < MAX_INV_OBJECTS);
+    
     if (inventory.numObjects < MAX_INV_OBJECTS)
     {
         inventory.numObjects++;
@@ -46,7 +48,6 @@ void inventory_add(uint8_t numObject)
     else
         //this should not happen...
         say("No me caben mas objetos\n en el inventario...");
-
 }
 
 //draws the inventory

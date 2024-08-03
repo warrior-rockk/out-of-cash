@@ -2,6 +2,7 @@
 #define H_PLAYER
 
 #include <stdbool.h>
+#include "anim.h"
 
 #define PLAYER_FAST_SPEED   1
 
@@ -31,8 +32,10 @@ struct player{
     bool moveFast;
     bool talking;
     bool flip;
+    bool taking;
     uint8_t lookDir;
-    int frame;
+    tAnimation animation;
+    //int frame;
 } player;
 
 //function declarations
