@@ -170,6 +170,9 @@ void default_verb_action(enum verbs roomVerb)
         case TAKE:
             say("No puedo coger eso");
             break;
+        case USE_WITH:
+            say("Esas cosas no combinan");
+            break;
         default:
             say("No tengo nada programado");
     }

@@ -6,7 +6,7 @@
 #include "gameflags.h"
 
 //Definitions
-#define NUM_VERBS               9
+#define NUM_VERBS               10
 #define NUM_RAND_ANSWERS        3
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
@@ -32,7 +32,8 @@ enum verbs {
     GIVE,
     OPEN,
     CLOSE,
-    TALK
+    TALK,
+    USE_WITH
 };
 
 //Global variables
@@ -46,7 +47,8 @@ static const char verbName[NUM_VERBS][10] = {
     "Dar",
     "Abrir",
     "Cerrar",
-    "Hablar a"
+    "Hablar a",
+    "Usar" //USE_WITH
 };
 
 //global room script structure
@@ -55,7 +57,8 @@ struct roomScript
     bool active;
     bool scriptAssigned;
     bool invScript; //temporal
-    int object;
+    int object; //change to hotspot
+    int invObject;
     enum verbs verb;
     int step;
     int lastStep;

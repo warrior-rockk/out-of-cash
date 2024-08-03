@@ -504,17 +504,6 @@ void cursor_update()
                     //gets the object name
                     room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
-                    //check left click action on room
-                    if (cursor.rightClick)
-                    {
-                        //if valid object, get default object verb
-                        if (cursor.objectName[0] != '\0')
-                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
-                        else
-                            //otherwise, select go verb
-                            cursor.selectedVerb = GO;
-                    }
-                    
                     //if cursor click on valid object or double click with GO verb or rightClick (default verb assigned)
                     if ((cursor.click || cursor.dblClick || cursor.rightClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
@@ -526,6 +515,7 @@ void cursor_update()
                             roomScript.invScript = false;
                             roomScript.object = hsColor;
                             roomScript.verb = cursor.selectedVerb;
+                            roomScript.invObject = cursor.invObject;
                             roomScript.hsX = mouse_x;
                             roomScript.hsY = mouse_y;
 
@@ -535,6 +525,17 @@ void cursor_update()
                             else
                                 change_player_dir(DIR_RIGHT);
                         }
+                    }
+
+                    //check right click action on room
+                    if (cursor.rightClick)
+                    {
+                        //if valid object, get default object verb
+                        if (cursor.objectName[0] != '\0')
+                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
+                        else
+                            //otherwise, select go verb
+                            cursor.selectedVerb = GO;
                     }
                 }
                 //if cursor on HUD position, check color of HUD
@@ -609,21 +610,38 @@ void cursor_update()
                         //INVENTORY BUTTONS REGION
 
                         //gets the object name
-                        get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
-
+                        if ((get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
+                            //don't allow use object on same object
+                            strcpy(cursor.objectName, "");
+                        else
+                            get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
+                            
                         //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
                         if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
                         {
-                            //if no previous action/object selected
-                            if (!roomScript.active)
+                            //check if click USE verb on inventory object
+                            if (cursor.selectedVerb == USE)
                             {
-                                //saves the room vars to start script sequence
-                                roomScript.active = true;
-                                roomScript.invScript = true;
-                                roomScript.object = get_inv_obj_position(hsColor);
-                                roomScript.verb = cursor.selectedVerb;
-                                roomScript.hsX = mouse_x;
-                                roomScript.hsY = mouse_y;
+                                //sets USE_WITH verb
+                                cursor.selectedVerb = USE_WITH;
+                                //sets inventory object name verb
+                                strcpy(cursor.invObjName, cursor.objectName);
+                                //sets inventory id
+                                cursor.invObject = get_inv_obj_position(hsColor) - 1;
+                            }
+                            else
+                            {
+                                //if no previous action/object selected
+                                if (!roomScript.active)
+                                {
+                                    //saves the room vars to start script sequence
+                                    roomScript.active = true;
+                                    roomScript.invScript = true;
+                                    roomScript.object = get_inv_obj_position(hsColor) - 1;
+                                    roomScript.verb = cursor.selectedVerb;
+                                    roomScript.hsX = mouse_x;
+                                    roomScript.hsY = mouse_y;
+                                }
                             }
                         }
                     }
@@ -653,8 +671,11 @@ void debug_draw()
 //draws the status bar
 void status_bar_draw()
 {
-
-    textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
+    //check if the verb is USE_WITH to print object inventory or not
+    if (cursor.selectedVerb != USE_WITH)
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
+    else
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
 }
 
 //function to init msg structure
@@ -857,7 +878,11 @@ void hud_draw()
     blit(hud.image, buffer, 0, 0, 0, HUD_Y, hud.image->w, hud.image->h);
 
     //blits highlight selected verb (using image because haven't smaller font)
-    draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
+    if (cursor.selectedVerb == USE_WITH)
+        //USE_WITH verb uses same USE highlight image
+        draw_sprite(buffer, hud.verbSelImage[USE],hud.posXVerbSelImage[USE], HUD_Y + hud.posYVerbSelImage[USE]);
+    else
+        draw_sprite(buffer, hud.verbSelImage[cursor.selectedVerb],hud.posXVerbSelImage[cursor.selectedVerb], HUD_Y + hud.posYVerbSelImage[cursor.selectedVerb]);
 
     //blits selected scroll inventory button
     if (hud.selUpButton)

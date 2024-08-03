@@ -140,7 +140,7 @@ void inventory_update()
     if (roomScript.active)
     {
         //sequence actions
-        switch (roomScript.object - 1)
+        switch (roomScript.object)
         {
             case dInv_Cassette:
                 switch(roomScript.verb)

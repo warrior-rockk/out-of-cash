@@ -137,10 +137,13 @@ struct cursor
 {
     //cursor image
     BITMAP *image;
-    //name of the pointed object
+    //name of the pointed object (change for hotspot)
     char objectName[OBJECT_NAME_MAX_CHARS];
+    char invObjName[OBJECT_NAME_MAX_CHARS];
     //selected action/verb
     enum verbs selectedVerb;
+    //selected use with object inventory
+    int invObject;
     //counters
     int dblClickTimer;
     //flags

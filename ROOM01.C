@@ -116,6 +116,16 @@ void r01_room_update()
                                 break;
                         }
                         break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case dInv_Cassette:
+                                begin_script();
+                                say("Dentro!");
+                                end_script();
+                                break;
+                        }
+                        break;
                 }
                 break;
             case Puerta:
