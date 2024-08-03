@@ -50,6 +50,25 @@ void inventory_add(uint8_t numObject)
         say("No me caben mas objetos\n en el inventario...");
 }
 
+//remove object to inventory
+void inventory_remove(uint8_t numObject)
+{
+    for (int i = 0; i < inventory.numObjects; i++)
+    {
+        if ((inventory.objIndex[i] + 1) == numObject)
+        {
+            inventory.objIndex[i] = 0;
+            for (int j = i; j < inventory.numObjects - 1; j++)
+            {
+                inventory.objIndex[j] = inventory.objIndex[j + 1];
+            }
+        }
+    }
+
+    inventory.numObjects--;
+    inventory.refresh = true;
+}
+
 //draws the inventory
 void inventory_draw()
 {

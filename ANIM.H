@@ -10,6 +10,7 @@ typedef struct tAnimation
     int frame;
     int lastFrame;
     int frameTime;
+    bool animating;
 } tAnimation;
 
 //declare functions

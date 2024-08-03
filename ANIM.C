@@ -10,9 +10,14 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
     bool animFinished = false;
 
     //set start frame
-    if (animation->frame > endFrame || animation->frame < startFrame)
+    //if (animation->frame > endFrame || animation->frame < startFrame)
+    if (!animation->animating)
+    {
+        animation->animating = true;
         animation->frame = startFrame;
-        
+        animation->frameTime = 0;
+    }
+    
     //reset frame time on frame change
     if (animation->lastFrame != animation->frame)
     {

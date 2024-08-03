@@ -88,6 +88,23 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
     inventory_add(invObjectNum);
 }
 
+//function to remove object inventory and increment script
+void script_remove_inv_object(int numObject)
+{
+    inventory_remove(numObject);
+    roomScript.step++;
+}
+
+//function to play animation and increments script step when finished
+void script_play_player_animation(int startFrame, int endFrame, int speed)
+{
+    if (play_animation(&player.animation, startFrame, endFrame, speed, ANIM_ONCE))
+    {
+        roomScript.step++;
+        player.animation.animating = false;
+    }
+}
+
 //function to set game flag
 void set_game_flag(uint8_t flagNum)
 {
@@ -188,11 +205,13 @@ void begin_script()
 void end_script()
 {
     roomScript.object = 0;
+    roomScript.invObject = 0;
     roomScript.verb = 0;
     roomScript.active = false;
     roomScript.scriptAssigned = false;
     roomScript.hsX = 0;
     roomScript.hsY = 0;
+
 }
 
 //global debug vars function

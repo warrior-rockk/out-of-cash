@@ -4,6 +4,7 @@
 
 #include <stdbool.h>
 #include "gameflags.h"
+#include "anim.h"
 
 //Definitions
 #define NUM_VERBS               10
@@ -95,6 +96,8 @@ void script_wait(int time);
 void script_move_player(int x, int y);
 void script_move_player_to_target();
 void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum);
+void script_play_player_animation(int startFrame, int endFrame, int speed);
+void script_remove_inv_object(int numObject);
 
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);

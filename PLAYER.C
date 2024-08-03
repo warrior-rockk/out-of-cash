@@ -98,12 +98,21 @@ void player_draw()
     }
     else if (player.taking)
     {
-        player.taking = !play_animation(&player.animation, 10, 10, 2, ANIM_ONCE);
+        if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
+        {
+            player.taking = false;
+            player.animation.animating = false;
+        }
     }
+    else if (player.animation.animating)
+        //extern animatin
+        ;
     else
+    {
         //idle animation
         player.animation.frame = 1;
-
+    }
+    
     //get scale map value
     switch (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
     {

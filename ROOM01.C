@@ -120,9 +120,21 @@ void r01_room_update()
                         switch (roomScript.invObject)
                         {
                             case dInv_Cassette:
-                                begin_script();
-                                say("Dentro!");
-                                end_script();
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        script_play_player_animation(10, 10, 5);
+                                        break;
+                                    case 2:
+                                        say("Ya esta dentro");
+                                        script_remove_inv_object(dInv_Cassette);
+                                        end_script();
+                                        break;
+                                }
                                 break;
                         }
                         break;
