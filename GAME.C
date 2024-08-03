@@ -731,8 +731,8 @@ void msg_draw()
         int msgX;
         int msgY;
         
-        //get msg legth in pixels
-        int msgWidth = text_length(font, msg.msg);
+        //get msg length in pixels
+        int msgWidth = get_msg_length(msg.msg); //text_length(font, msg.msg);
 
         //check msg X limits for avoid text outscreen
         if (fixtoi(player.x) < (msgWidth>>1))
@@ -743,11 +743,29 @@ void msg_draw()
             msgX = fixtoi(player.x);
 
         //get msg Y
-        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN; //(player.image[player.frame]->h>>1);
+        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN;
         
         //call to write text
         game_write(msg.msg, msgX, msgY, PLAYER_TEXT_COLOR);
     }
+}
+
+//function to get msg length (in pixels). On multiline, returns the lenght of first line
+int get_msg_length(char *text)
+{
+    char s[MAX_SENTENCE_LENGTH];
+    char *ch;
+
+    //make a copy of the string for tokenizer
+    strcpy(s, text);
+
+    //first token
+    ch = strtok(s, "\n");
+
+    if (ch)
+        return text_length(font, ch);
+    else
+        return 0;
 }
 
 //function to abort program with critical error

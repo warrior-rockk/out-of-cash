@@ -190,6 +190,7 @@ void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
 void game_save();
 void game_load();
+
 void cursor_init();
 void tick_init();
 void debug_init();
@@ -207,7 +208,7 @@ void debug_draw();
 void msg_init();
 void msg_update();
 void msg_draw();
-
+int get_msg_length(char *text);
 
 
 #endif
