@@ -36,5 +36,6 @@ void inventory_update();
 void inventory_draw();
 uint8_t get_inv_obj_position(uint8_t colorCode);
 void get_inv_obj_name(uint8_t objIndex, char *s);
+uint8_t get_inv_obj_id(uint8_t invPosition);
 
 #endif //H_INVENTORY

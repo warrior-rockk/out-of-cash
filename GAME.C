@@ -32,6 +32,7 @@ int main()
         show_debug("X",mouse_x);
         show_debug("Y",mouse_y);
         show_debug("gotCas",game.flags[GOT_CASSETTE]);
+        show_debug("invObj", cursor.invObject);
         //check actual game state
         switch (game.state)
         {
@@ -413,6 +414,7 @@ void cursor_init()
     cursor.rightClick = false;
     cursor.memClick = false;
     cursor.memRightClick = false;
+    cursor.invObject = 0;
     //clear verb flags
     strcpy(cursor.objectName,"");
     cursor.selectedVerb = GO;
@@ -627,7 +629,9 @@ void cursor_update()
                                 //sets inventory object name verb
                                 strcpy(cursor.invObjName, cursor.objectName);
                                 //sets inventory id
-                                cursor.invObject = get_inv_obj_position(hsColor) - 1;
+                                cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
+                                //cursor.invObject = (get_inv_obj_position(hsColor) - 1);
+                                
                             }
                             else
                             {

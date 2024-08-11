@@ -128,6 +128,12 @@ uint8_t get_inv_obj_position(uint8_t colorCode)
         return (uint8_t)((colorCode % INV_COLOR_OFFSET) + (inventory.page * INV_OBJECTS_PER_PAGE) + 1);
 }
 
+//get inventory object value based on inventory position
+uint8_t get_inv_obj_id(uint8_t invPosition)
+{
+    return (inventory.objIndex[invPosition] - 1);
+}
+
 //get inventory object name
 void get_inv_obj_name(uint8_t objIndex, char *s)
 {
