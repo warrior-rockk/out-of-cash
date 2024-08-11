@@ -55,7 +55,7 @@ void inventory_remove(uint8_t numObject)
 {
     for (int i = 0; i < inventory.numObjects; i++)
     {
-        if ((inventory.objIndex[i] + 1) == numObject)
+        if (inventory.objIndex[i] == (numObject + 1))
         {
             inventory.objIndex[i] = 0;
             for (int j = i; j < inventory.numObjects - 1; j++)
