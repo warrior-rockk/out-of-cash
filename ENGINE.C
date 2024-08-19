@@ -92,6 +92,9 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 void script_remove_inv_object(int numObject)
 {
     inventory_remove(numObject);
+    //reset "use with" verb
+    if (cursor.selectedVerb == USE_WITH)
+        cursor.selectedVerb = USE;
     roomScript.step++;
 }
 
@@ -211,7 +214,6 @@ void end_script()
     roomScript.scriptAssigned = false;
     roomScript.hsX = 0;
     roomScript.hsY = 0;
-
 }
 
 //global debug vars function

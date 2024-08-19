@@ -55,6 +55,6 @@ internal grabber number def
 - [X] Bug: right click on default verb don't work on first
 - [X] Bug: verb on inventary: incorrect index
 - [X] Bug: don't use object inventory on inventory
-- [ ] Bug: reset use with verb when finished with item
+- [X] Bug: reset use with verb when finished with item
 
     
