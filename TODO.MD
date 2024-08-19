@@ -52,5 +52,8 @@ multiple scripts?
 internal grabber number def
 - [ ] Separate grabber file data.h. The name was temporaly
 - [X] Define DEBUGMODE on 1 file. Passed on compiler options -DDEBUGMODE
+- [ ] Bug: right click on default verb don't work on first
+- [X] Bug: verb on inventary: incorrect index
+- [X] Bug: don't use object inventory on inventory
 
     

@@ -295,8 +295,6 @@ void game_update()
 
     check_room_changed();
 
-    //debug
-    show_debug("Moving", player.moving);
 }
 
 //function to write text on screen
@@ -612,7 +610,7 @@ void cursor_update()
                         //INVENTORY BUTTONS REGION
 
                         //gets the object name
-                        if ((get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
+                        if (get_inv_obj_id(get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
                             //don't allow use object on same object
                             strcpy(cursor.objectName, "");
                         else
@@ -630,8 +628,6 @@ void cursor_update()
                                 strcpy(cursor.invObjName, cursor.objectName);
                                 //sets inventory id
                                 cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
-                                //cursor.invObject = (get_inv_obj_position(hsColor) - 1);
-                                
                             }
                             else
                             {
@@ -641,7 +637,7 @@ void cursor_update()
                                     //saves the room vars to start script sequence
                                     roomScript.active = true;
                                     roomScript.invScript = true;
-                                    roomScript.object = get_inv_obj_position(hsColor) - 1;
+                                    roomScript.object = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
                                     roomScript.verb = cursor.selectedVerb;
                                     roomScript.hsX = mouse_x;
                                     roomScript.hsY = mouse_y;
