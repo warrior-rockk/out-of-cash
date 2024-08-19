@@ -1,4 +1,4 @@
-#define DEBUGMODE
+//#define DEBUGMODE
 
 #include <string.h>
 #include <stdint.h>

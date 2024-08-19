@@ -51,6 +51,6 @@ multiple scripts?
 - [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
 internal grabber number def
 - [ ] Separate grabber file data.h. The name was temporaly
-- [ ] Define DEBUGMODE on 1 file
+- [X] Define DEBUGMODE on 1 file. Passed on compiler options -DDEBUGMODE
 
     
