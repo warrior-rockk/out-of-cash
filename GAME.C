@@ -504,6 +504,17 @@ void cursor_update()
                     //gets the object name
                     room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
+                    //check right click action on room (evaluated before the left click)
+                    if (cursor.rightClick)
+                    {
+                        //if valid object, get default object verb
+                        if (cursor.objectName[0] != '\0')
+                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
+                        else
+                            //otherwise, select go verb
+                            cursor.selectedVerb = GO;
+                    }
+
                     //if cursor click on valid object or double click with GO verb or rightClick (default verb assigned)
                     if ((cursor.click || cursor.dblClick || cursor.rightClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
                     {
@@ -525,17 +536,6 @@ void cursor_update()
                             else
                                 change_player_dir(DIR_RIGHT);
                         }
-                    }
-
-                    //check right click action on room
-                    if (cursor.rightClick)
-                    {
-                        //if valid object, get default object verb
-                        if (cursor.objectName[0] != '\0')
-                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
-                        else
-                            //otherwise, select go verb
-                            cursor.selectedVerb = GO;
                     }
                 }
                 //if cursor on HUD position, check color of HUD
