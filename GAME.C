@@ -24,7 +24,7 @@ int main()
     tick_init();
 
     //main game loop
-    while (!key[KEY_ESC])
+    while (!game.exit)
     {
         //general update
         clear(buffer);
@@ -40,9 +40,10 @@ int main()
                 //placeholder test
                 game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 cursor.enabled = true;
+                game_update();
                 cursor_update();
                 cursor_draw();
-                if (cursor.click)
+                if (cursor.click) // || (keypressed() && !key[KEY_ESC]))
                 {
                     game_fade_out();
 
@@ -86,6 +87,8 @@ int main()
                 room_front_draw();
                 game_write("PAUSA", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 break;
+            case EXIT_STATE:
+                game.exit = true;
         }
         //general draw
         debug_draw();
@@ -291,6 +294,28 @@ void game_update()
     else
     {
         gameKeys.pausePressed = false;
+    }
+
+    //escape handler
+    if (key[KEY_ESC])
+    {
+        if (!gameKeys.escPressed)
+        {
+            switch (game.state)
+            {
+                case PLAYING_STATE:
+                    game.state = TITLE_STATE;
+                    break;
+                case TITLE_STATE:
+                    game.state = EXIT_STATE;
+                    break;
+            }
+            gameKeys.escPressed = true;
+        }
+    }
+    else
+    {
+        gameKeys.escPressed = false;
     }
 
     check_room_changed();

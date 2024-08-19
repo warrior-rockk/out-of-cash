@@ -59,7 +59,8 @@ enum gameState{
     INTRO_STATE,
     PLAYING_STATE,
     PAUSE_STATE,
-    MENU_STATE
+    MENU_STATE,
+    EXIT_STATE
 };
 
 //structures
@@ -74,6 +75,7 @@ struct game
     int room_pos_x;
     int room_pos_y;
     bool fadeIn;
+    bool exit;
     uint8_t flags[32];  //32 bytes = 255 bit flags
 } game;
 
@@ -167,6 +169,7 @@ struct gameConfig
 //keys struct
 struct gameKeys{
     bool pausePressed;
+    bool escPressed;
 } gameKeys;
 
 //global vars

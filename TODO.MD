@@ -14,7 +14,7 @@
 - [X] Use uint8_t when value < 256
 - [X] Bit mask macros for flags
 - [X] Game struct
-- [ ] Game update
+- [X] Game update (first iteration)
 - [X] Player?
 - [ ] Control song playing / room transition / song continues
 - [ ] Game GUI
