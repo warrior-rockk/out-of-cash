@@ -162,6 +162,7 @@ void game_fade_out()
 {
     game.fadeIn = false;
     fade_out(FADE_DEFAULT_SPEED);
+    game.fadeOut = true;
 }
 
 //function to do game fade in

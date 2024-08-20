@@ -76,6 +76,7 @@ struct game
     int room_pos_x;
     int room_pos_y;
     bool fadeIn;
+    bool fadeOut;
     bool exit;
     uint8_t flags[MAX_GAME_FLAGS];  //32 bytes = 255 bit flags
 } game;

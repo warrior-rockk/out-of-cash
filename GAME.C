@@ -22,7 +22,8 @@ int main()
     main_init();
     cursor_init();
     tick_init();
-
+    game_fade_out();
+    
     //main game loop
     while (!game.exit)
     {
@@ -43,6 +44,10 @@ int main()
                 game_update();
                 cursor_update();
                 cursor_draw();
+
+                if (game.fadeOut)
+                    game_fade_in();
+                    
                 if (cursor.click) // || (keypressed() && !key[KEY_ESC]))
                 {
                     game_fade_out();
@@ -299,6 +304,7 @@ void game_update()
             {
                 case PLAYING_STATE:
                     game.state = TITLE_STATE;
+                    game_fade_out();
                     break;
                 case TITLE_STATE:
                     game.state = EXIT_STATE;
@@ -380,7 +386,8 @@ void game_do_fade_in()
     if (game.fadeIn)
     {
         fade_in(gamePalette, FADE_DEFAULT_SPEED);
-        game.fadeIn = 0;
+        game.fadeIn     = false;
+        game.fadeOut    = false;
     }
 }
 
