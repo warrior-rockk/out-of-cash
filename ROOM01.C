@@ -66,12 +66,11 @@ tObject* r01_get_object_info(uint8_t numObject)
 //function to init room
 void r01_room_init()
 {
+    //update room objects state
+    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE);
+    r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR);
+    
     game_fade_in();
-    if (is_game_flag(GOT_CASSETTE))
-    {
-        r01_object[R01_CASSETTE_OBJ_ID].active = false;
-        say("Habia cogido el casete");
-    }
 }
 
 //funcion to update room

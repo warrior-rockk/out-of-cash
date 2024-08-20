@@ -8,6 +8,22 @@
 #include "inventory.h"
 #include "player.h"
 
+//initialize roomScript struct
+void init_room_script()
+{
+    roomScript.active = false;
+    roomScript.scriptAssigned = false;
+    roomScript.invScript = false;
+    roomScript.object = 0;
+    roomScript.invObject = 0;
+    roomScript.verb = 0;
+    roomScript.step = 0;
+    roomScript.lastStep = 0;
+    roomScript.stepTime = 0;
+    roomScript.hsX = 0;
+    roomScript.hsY = 0;
+}
+
 //function to say something. Returns 1 when finished
 int say(char *message)
 {

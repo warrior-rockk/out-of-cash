@@ -89,6 +89,7 @@ struct debugVars
 } debugVars;
 
 //global functions
+void init_room_script();
 int say(char *message);
 
 void script_say(char *message);

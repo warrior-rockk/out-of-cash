@@ -51,8 +51,6 @@ int main()
                     //game_load();
 
                     game_init();
-                    cursor_init();
-                    player_init();
                     game.state = PLAYING_STATE;
                 }
                 break;
@@ -240,17 +238,12 @@ void game_init()
     gameConfig.playerSpeed = ftofix(0.3);
     
     //init game vars
-    game.actualRoom = 0;
-    game.lastRoom = -1;     //to force first room_init
-    
-    roomScript.active = 0;
-    roomScript.object = 0;
-    roomScript.verb = 0;
-    roomScript.step = 0;
-    roomScript.lastStep = 0;
-    roomScript.stepTime = 0;
-    roomScript.hsX = 0;
-    roomScript.hsY = 0;
+    game.actualRoom     = 0;
+    game.lastRoom       = -1;     //to force first room_init
+    game.room_pos_x     = 0;
+    game.room_pos_y     = 0;
+    for (int i = 0; i < MAX_GAME_FLAGS; i++)
+        game.flags[i] = 0;
 
     //initialize x and y position of highlight verb images
     hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
@@ -273,9 +266,10 @@ void game_init()
     hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
     
     //call init game modules
+    cursor_init();
+    init_room_script();
     msg_init();
-
-    //test
+    player_init();
     inventory_init();
 }
 
@@ -437,10 +431,16 @@ void cursor_init()
     cursor.rightClick = false;
     cursor.memClick = false;
     cursor.memRightClick = false;
+    cursor.memDblClick = false;
+    cursor.evalueDblClick = false;
     cursor.invObject = 0;
+    cursor.dblClickTimer = 0;
+
     //clear verb flags
     strcpy(cursor.objectName,"");
+    strcpy(cursor.invObjName,"");
     cursor.selectedVerb = GO;
+
     //move cursor to screen center
     position_mouse(RES_X>>1, RES_Y>>1);
 }

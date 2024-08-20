@@ -12,6 +12,7 @@
 
 //Game
 #define NUM_GAME_ROOMS          2
+#define MAX_GAME_FLAGS          32
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
@@ -76,7 +77,7 @@ struct game
     int room_pos_y;
     bool fadeIn;
     bool exit;
-    uint8_t flags[32];  //32 bytes = 255 bit flags
+    uint8_t flags[MAX_GAME_FLAGS];  //32 bytes = 255 bit flags
 } game;
 
 //message structure

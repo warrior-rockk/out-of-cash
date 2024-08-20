@@ -12,12 +12,19 @@
 //initialization of inventory
 void inventory_init()
 {
-    inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
-    clear_bitmap(inventory.image);
-    
+    //initialize data
+    inventory.numObjects = 0;
     inventory.page = 0;
-    inventory.refresh = true;
+    inventory.refresh = true;   //for redrawn
+    for (int i = 0; i < MAX_INV_OBJECTS; i++)
+        inventory.objIndex[i] = 0;
     
+    //create inventory bitmap buffer to draw objects
+    if (!inventory.image)
+        inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
+    //clear inventory bitmap buffer
+    clear_bitmap(inventory.image);
+
     //test inventory
     /*
     inventory.numObjects = 9;

@@ -10,6 +10,19 @@ void player_init()
     player.talking = false;
     player.moving = false;
     player.animation.frame = 1;
+
+    player.x = 0;
+    player.y = 0;
+    player.vX = 0;
+    player.vY = 0;
+    player.destX = 0;
+    player.destY = 0;
+    player.scale = 0;
+
+    player.moveFast = false;
+    player.flip = false;
+    player.lookDir = 0;
+
 }
 
 //function to update the player
