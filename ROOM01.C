@@ -115,6 +115,21 @@ void r01_room_update()
                                 break;
                         }
                         break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(GOT_CASSETTE))
+                                    script_say("No hay ningun casete dentro");
+                                else
+                                    script_say("TO-DO: Reproducir");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                        break;
                     case USE_WITH:
                         switch (roomScript.invObject)
                         {

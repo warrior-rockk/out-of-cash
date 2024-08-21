@@ -187,6 +187,9 @@ bool gameTick;
 
 //function declarations
 void main_init();
+void main_update();
+void main_draw();
+
 void incTick(void);
 void abort_on_error(const char *msg);
 void load_resources();

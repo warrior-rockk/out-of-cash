@@ -1,4 +1,4 @@
-//#define DEBUGMODE
+//#define DEBUGMODE     //on compiler flags
 
 #include <stdio.h>
 #include <string.h>
@@ -20,35 +20,33 @@ int main()
 {
     //initialization
     main_init();
-    cursor_init();
-    tick_init();
+    game_init();
     game_fade_out();
     
     //main game loop
     while (!game.exit)
     {
-        //general update
-        clear(buffer);
-        tick_update();
-        show_debug("X",mouse_x);
-        show_debug("Y",mouse_y);
-        show_debug("gotCas",game.flags[GOT_CASSETTE]);
-        show_debug("invObj", cursor.invObject);
+        //stateless update
+        main_update();
+
         //check actual game state
         switch (game.state)
         {
             case TITLE_STATE:
-                //placeholder test
-                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 cursor.enabled = true;
+
                 game_update();
                 cursor_update();
+
+                //placeholder test (and game title)
+                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 cursor_draw();
 
                 if (game.fadeOut)
                     game_fade_in();
                     
-                if (cursor.click) // || (keypressed() && !key[KEY_ESC]))
+                //start play with mouse click
+                if (cursor.click)
                 {
                     game_fade_out();
 
@@ -60,7 +58,7 @@ int main()
                 }
                 break;
             case PLAYING_STATE:
-                //update
+                //update calls
                 game_update();
                 msg_update();
                 room[game.actualRoom].room_update();
@@ -69,7 +67,7 @@ int main()
                 cursor_update();
                 player_update();
                 
-                //draw
+                //draw calls
                 room_draw();
                 player_draw();
                 room_front_draw();
@@ -81,25 +79,22 @@ int main()
 
                 break;
             case PAUSE_STATE:
+                //update calls
                 game_update();
 
-                //draw
+                //draw calls
                 room_draw();
-                //test_object_draw();
                 player_draw();
                 room_front_draw();
                 game_write("PAUSA", SAY_X, SAY_Y, GAME_TEXT_COLOR);
+
                 break;
             case EXIT_STATE:
                 game.exit = true;
         }
-        //general draw
-        debug_draw();
 
-        //blits to screen
-        blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
-        //do pending fade in
-        game_do_fade_in();
+        //stateless draw
+        main_draw();
     }
 
     //quits the game
@@ -135,8 +130,34 @@ void main_init()
     //set game initial state
     game.state = TITLE_STATE;
 
-    //clear flags
-    game.fadeIn = 0;
+    //init game tick
+    tick_init();
+}
+
+//general update
+void main_update()
+{
+    clear(buffer);
+    tick_update();
+
+    //debug vars
+    show_debug("X",mouse_x);
+    show_debug("Y",mouse_y);
+    show_debug("gotCas",game.flags[GOT_CASSETTE]);
+    show_debug("invObj", cursor.invObject);
+}
+
+//general draw
+void main_draw()
+{
+    //debug draw info
+    debug_draw();
+
+    //blits to screen
+    blit(buffer, screen, 0, 0, 0, 0, buffer->w, buffer->h);
+
+    //do pending fade in
+    game_do_fade_in();
 }
 
 //timer function callback
@@ -239,8 +260,8 @@ void load_resources()
 //function to init game
 void game_init()
 {
-    gameConfig.textSpeed = 10; //8 chars per second? This going to be on config
-    gameConfig.playerSpeed = ftofix(0.3);
+    gameConfig.textSpeed    = 10; //8 chars per second? This going to be on config
+    gameConfig.playerSpeed  = ftofix(0.3);
     
     //init game vars
     game.actualRoom     = 0;
