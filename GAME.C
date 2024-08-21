@@ -44,18 +44,7 @@ int main()
 
                 if (game.fadeOut)
                     game_fade_in();
-                    
-                //start play with mouse click
-                if (cursor.click)
-                {
-                    game_fade_out();
 
-                    //test game load
-                    //game_load();
-
-                    game_init();
-                    game.state = PLAYING_STATE;
-                }
                 break;
             case PLAYING_STATE:
                 //update calls
@@ -302,45 +291,85 @@ void game_init()
 //game update function
 void game_update()
 {
-    //pause handler
-    if (key[KEY_SPACE])
-    {
-        if (!gameKeys.pausePressed)
-        {
-            game.state = game.state != PAUSE_STATE ? PAUSE_STATE : PLAYING_STATE;
-            gameKeys.pausePressed = true;
-        }
-    }
-    else
-    {
-        gameKeys.pausePressed = false;
-    }
+    //call to game keys handler
+    game_keys_handler();
 
-    //escape handler
-    if (key[KEY_ESC])
+    //update current game state
+    switch (game.state)
     {
-        if (!gameKeys.escPressed)
-        {
-            switch (game.state)
+        case TITLE_STATE:
+            if (gameKeys.exitPressed)
             {
-                case PLAYING_STATE:
-                    game.state = TITLE_STATE;
-                    game_fade_out();
-                    break;
-                case TITLE_STATE:
-                    game.state = EXIT_STATE;
-                    break;
+                game.state = EXIT_STATE;
             }
-            gameKeys.escPressed = true;
+            else if (cursor.click)
+            {
+                game_fade_out();
+
+                //test game load
+                //game_load();
+
+                game_init();
+                game.state = PLAYING_STATE;
+            }
+            break;
+        case PLAYING_STATE:
+            if (gameKeys.pausePressed)
+            {
+                game.state = PAUSE_STATE;
+            }
+            else if (gameKeys.exitPressed)
+            {
+                game.state = TITLE_STATE;
+                game_fade_out();
+            }
+            else
+            {
+                //check room transition
+                check_room_changed();
+            }
+            break;
+        case PAUSE_STATE:
+            if (gameKeys.pausePressed)
+            {
+                game.state = PLAYING_STATE;
+            }
+            break;
+    }
+}
+
+//function to handle game keys
+void game_keys_handler()
+{
+    //pause key handler
+    gameKeys.pausePressed = false;
+    if (key[G_KEY_PAUSE])
+    {
+        if (!gameKeys.memPause)
+        {
+            gameKeys.pausePressed = true;
+            gameKeys.memPause = true;
         }
     }
     else
     {
-        gameKeys.escPressed = false;
+        gameKeys.memPause = false;
     }
 
-    check_room_changed();
-
+    //exit key handler
+    gameKeys.exitPressed = false;
+    if (key[G_KEY_EXIT])
+    {
+        if (!gameKeys.memExit)
+        {
+            gameKeys.exitPressed = true;
+            gameKeys.memExit = true;
+        }
+    }
+    else
+    {
+        gameKeys.memExit = false;
+    }
 }
 
 //function to write text on screen

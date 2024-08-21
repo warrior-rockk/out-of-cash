@@ -170,8 +170,13 @@ struct gameConfig
 
 //keys struct
 struct gameKeys{
+    //game keys defines
+    #define G_KEY_PAUSE     KEY_SPACE
+    #define G_KEY_EXIT      KEY_ESC
     bool pausePressed;
-    bool escPressed;
+    bool exitPressed;
+    bool memPause;
+    bool memExit;
 } gameKeys;
 
 //global vars
@@ -201,6 +206,7 @@ void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
 void game_save();
 void game_load();
+void game_keys_handler();
 
 void cursor_init();
 void tick_init();
@@ -220,6 +226,5 @@ void msg_init();
 void msg_update();
 void msg_draw();
 int get_msg_length(char *text);
-
 
 #endif
