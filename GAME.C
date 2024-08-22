@@ -33,10 +33,9 @@ int main()
         switch (game.state)
         {
             case TITLE_STATE:
+                game_fade_in();
                 cursor.enabled = true;
-                if (game.fadeOut)
-                    game_fade_in();
-                    
+
                 game_update();
                 cursor_update();
 

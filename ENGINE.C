@@ -145,7 +145,7 @@ bool is_game_flag(uint8_t flagNum)
 //function to change the actual room
 void change_room(int roomNum)
 {
-    fade_out(FADE_DEFAULT_SPEED);
+    game_fade_out();
     game.actualRoom = roomNum;
 }
 
@@ -168,7 +168,8 @@ void game_fade_out()
 //function to do game fade in
 void game_fade_in()
 {
-    game.fadeIn = true;
+    if (game.fadeOut)
+        game.fadeIn = true;
 }
 
 //function to perform default verb action when nothing is scripted
