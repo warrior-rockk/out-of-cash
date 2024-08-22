@@ -34,17 +34,16 @@ int main()
         {
             case TITLE_STATE:
                 cursor.enabled = true;
-
+                if (game.fadeOut)
+                    game_fade_in();
+                    
                 game_update();
                 cursor_update();
 
                 //placeholder test (and game title)
                 game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
                 cursor_draw();
-
-                if (game.fadeOut)
-                    game_fade_in();
-
+                
                 break;
             case PLAYING_STATE:
                 //update calls
