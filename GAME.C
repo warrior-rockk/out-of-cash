@@ -76,6 +76,18 @@ int main()
                 game_write("PAUSA", SAY_X, SAY_Y, GAME_TEXT_COLOR);
 
                 break;
+            case MENU_STATE:
+                //update calls
+                game_update();
+                gui_update();
+                
+                //draw calls
+                room_draw();
+                player_draw();
+                room_front_draw();
+                gui_draw();
+                
+                break;
             case EXIT_STATE:
                 game.exit = true;
         }
@@ -242,6 +254,11 @@ void load_resources()
     player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
     player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
     clear(player.tempImage);
+
+    //temporaly load gui resources
+    gui.image = load_bmp("res/gui/gui.bmp", NULL);
+    if (!gui.image)
+        abort_on_error("Archivo gui.bmp invalido o inexistente");
 }
 
 //function to init game
@@ -318,8 +335,8 @@ void game_update()
             }
             else if (gameKeys.exitPressed)
             {
-                game.state = TITLE_STATE;
-                game_fade_out();
+                game.state = MENU_STATE;
+                //game_fade_out();
             }
             else
             {
@@ -333,7 +350,20 @@ void game_update()
                 game.state = PLAYING_STATE;
             }
             break;
+        case MENU_STATE:
+            if (gameKeys.exitPressed)
+            {
+                game.state = PLAYING_STATE;
+            }
+            break;
+
     }
+
+    //force game exit
+    #ifdef DEBUGMODE
+        if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
+            game.state = EXIT_STATE;
+    #endif
 }
 
 //function to handle game keys
@@ -1005,6 +1035,18 @@ void tick_update()
 void mytrace(char *s, ...)
 {
     TRACE(s);
+}
+
+//function to update the gui
+void gui_update()
+{
+
+}
+
+//function to draw the gui
+void gui_draw()
+{
+    draw_sprite(buffer, gui.image, (RES_X>>1) - (gui.image->w>>1), (RES_Y>>1) - (gui.image->h>>1));
 }
 
 END_OF_MAIN()

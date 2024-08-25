@@ -9,5 +9,4 @@
 
 //function definitions
 bool in_range(int value, int target, int offset);
-
 #endif

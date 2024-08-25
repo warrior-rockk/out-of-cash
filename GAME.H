@@ -179,6 +179,11 @@ struct gameKeys{
     bool memExit;
 } gameKeys;
 
+//menu gui
+struct gui{
+    BITMAP *image;
+} gui;
+
 //global vars
 static volatile int tick;
 tRoom room[NUM_GAME_ROOMS];
@@ -227,4 +232,6 @@ void msg_update();
 void msg_draw();
 int get_msg_length(char *text);
 
+void gui_update();
+void gui_draw();
 #endif

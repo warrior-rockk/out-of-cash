@@ -56,5 +56,5 @@ internal grabber number def
 - [X] Bug: verb on inventary: incorrect index
 - [X] Bug: don't use object inventory on inventory
 - [X] Bug: reset use with verb when finished with item
-- [ ] Player: change state bools with general state var
-    
+- [ ] Player: change state bools with general state var
+- [ ] Bug: player talks on pause
