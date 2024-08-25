@@ -95,7 +95,7 @@ void script_move_player_to_target()
 void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 {
     //set player state
-    player.taking = true;
+    player.state = player_st_taking;
     //deactivate room object
     *objActive = false;
     //set game flag
@@ -249,7 +249,7 @@ void show_debug(char *varName, int var)
 void move_player(int x, int y)
 {
     //set the flag and positions
-    player.moving = true;
+    player.state = player_st_moving;
     player.moveFast = cursor.dblClick;
     player.destX = x;
     player.destY = y;
@@ -265,7 +265,7 @@ void move_player_to_target()
 //function to return if player is moving
 bool is_player_moving()
 {
-    return player.moving;
+    return player.state == player_st_moving;
 }
 
 //function to change the direction of player

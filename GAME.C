@@ -142,8 +142,9 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
-    show_debug("gotCas",game.flags[GOT_CASSETTE]);
-    show_debug("invObj", cursor.invObject);
+    show_debug("step", roomScript.step);
+    //show_debug("gotCas",game.flags[GOT_CASSETTE]);
+    //show_debug("invObj", cursor.invObject);
 }
 
 //general draw
@@ -807,7 +808,7 @@ void msg_update()
     {
         msg.msgActive = false;
         msg.msgFinished = false;
-        player.talking = false;
+        player.state = player_st_idle;
     }
 
     //if msg active, calculate the relation of string length/characters per second
@@ -840,7 +841,7 @@ void msg_update()
                 msg.msgTime += gameTick > 0;
 
             //set talking flag
-            player.talking = true;
+            player.state = player_st_talking;
         }
     }
     else

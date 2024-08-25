@@ -7,8 +7,7 @@
 //function to init player
 void player_init()
 {
-    player.talking = false;
-    player.moving = false;
+    player.state = player_st_idle;
     player.animation.frame = 1;
 
     player.x = 0;
@@ -28,19 +27,27 @@ void player_init()
 //function to update the player
 void player_update()
 {
+    player_update_pos();
+    player_update_animation();
+    player_update_scale();
+}
+
+//function to update player position
+void player_update_pos()
+{
     bool in_range_x;
     bool in_range_y;
     fixed actualSpeed;
     
-    if (player.moving)
+    if (player.state == player_st_moving)
     {
         //check destination in range
         in_range_x = in_range(fixtoi(player.x), player.destX, 2);
         in_range_y = in_range(fixtoi(player.y), player.destY, 2);
-
+    
         //assign actual speed
         actualSpeed = player.moveFast ? ftofix(PLAYER_FAST_SPEED) : gameConfig.playerSpeed;
-
+    
         //decompose movement
         if (!in_range_x)
         {
@@ -55,77 +62,80 @@ void player_update()
         }
         else
             player.vY = itofix(0);
-
+    
         //check walk map
         if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
         {
             player.vX = itofix(0);
         }
-
+    
         if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)) == 0)
         {
             player.vY = itofix(0);
         }
-
+    
         //player blocked
         if (player.vX == itofix(0) && player.vY == itofix(0))
         {
-            player.moving = false;
+            player.state = player_st_idle;
         }
-
+    
         //player on destination
         if (in_range_x && in_range_y)
         {
-            player.moving = false;
+            player.state = player_st_idle;;
             player.vX = itofix(0);
             player.vY = itofix(0);
             player.x = itofix(player.destX);
             player.y = itofix(player.destY);
         }
-    }
 
+    }
+    
     //update position
     player.x += player.vX;
     player.y += player.vY;
 }
 
-//function to draw the player
-void player_draw()
+//function to update player animation
+void player_update_animation()
 {
     //animation state
-    if (player.moving)
+    switch (player.state)
     {
-        if (gameTick)
-        {
-            //walk animation
-            player.animation.frame = player.animation.frame == 4 ? 3 : 4;
-        }
-    }
-    else if (player.talking)
-    {
-        if (gameTick)
-        {
-            //talk animation
-            player.animation.frame = player.animation.frame == 9 ? 8 : 9;
-        }
-    }
-    else if (player.taking)
-    {
-        if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
-        {
-            player.taking = false;
-            player.animation.animating = false;
-        }
-    }
-    else if (player.animation.animating)
-        //extern animatin
-        ;
-    else
-    {
-        //idle animation
-        player.animation.frame = 1;
-    }
+        case player_st_idle:
+            if (!player.animation.animating)
+                //idle animation
+                player.animation.frame = 1;
+            break;
+        case player_st_moving:
+            if (gameTick)
+            {
+                //walk animation
+                player.animation.frame = player.animation.frame == 4 ? 3 : 4;
+            }
+            break;
+        case player_st_talking:
+            if (gameTick)
+            {
+                //walk animation
+                player.animation.frame = player.animation.frame == 9 ? 8 : 9;
+            }
+            break;
+        case player_st_taking:
+            if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
+            {
+                player.state = player_st_idle;
+                player.animation.animating = false;
+            }
+            break;
+     }
     
+}
+
+//function to update player scale
+void player_update_scale()
+{
     //get scale map value
     switch (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
     {
@@ -145,6 +155,12 @@ void player_draw()
             player.scale = ftofix(1.0);
             break;
     }
+
+}
+
+//function to draw the player
+void player_draw()
+{
 
     //check player flip
     if (player.vX < fixtoi(0) || player.lookDir == DIR_LEFT)

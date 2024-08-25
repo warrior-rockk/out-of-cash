@@ -17,6 +17,14 @@
 #define SCALE_3_VALUE   1.0
 #define SCALE_4_VALUE   1.5
 
+//player states
+enum playerStates{
+    player_st_idle,
+    player_st_moving,
+    player_st_talking,
+    player_st_taking
+};
+
 //player struct
 struct player{
     BITMAP *image[11];
@@ -28,19 +36,19 @@ struct player{
     int destX;
     int destY;
     fixed scale;
-    bool moving;
+    enum playerStates state;
     bool moveFast;
-    bool talking;
     bool flip;
-    bool taking;
     uint8_t lookDir;
     tAnimation animation;
-    //int frame;
 } player;
 
 //function declarations
 void player_init();
 void player_update();
+void player_update_pos();
+void player_update_animation();
+void player_update_scale();
 void player_draw();
 
 #endif
