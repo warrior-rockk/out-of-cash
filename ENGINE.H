@@ -102,7 +102,9 @@ void script_remove_inv_object(int numObject);
 
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);
+void toogle_game_flag(uint8_t flagNum);
 bool is_game_flag(uint8_t flagNum);
+
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);
 void game_fade_in();

@@ -136,6 +136,12 @@ void clear_game_flag(uint8_t flagNum)
     CLEAR_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
+//function to toggle game flag
+void toogle_game_flag(uint8_t flagNum)
+{
+    TOOGLE_BIT(game.flags[flagNum % 8], flagNum/8);
+}
+
 //function to check game flag
 bool is_game_flag(uint8_t flagNum)
 {

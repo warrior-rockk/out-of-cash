@@ -5,6 +5,7 @@
 #define GOT_CASSETTE        0
 #define GOT_GUITAR          1
 #define USED_COMPUTER       2
-
+#define USED_CASSETTE       3
+#define STEREO_ON           4
 
 #endif //H_GAME_FLAGS

@@ -69,6 +69,7 @@ void r01_room_init()
     //update room objects state
     r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE);
     r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR);
+    r01_object[R01_STEREO_OBJ_ID].active    = is_game_flag(STEREO_ON);
     
     game_fade_in();
 }
@@ -120,10 +121,21 @@ void r01_room_update()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(GOT_CASSETTE))
+                                if (!is_game_flag(USED_CASSETTE))
+                                {
                                     script_say("No hay ningun casete dentro");
+                                    end_script();
+                                }
                                 else
-                                    script_say("TO-DO: Reproducir");
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_play_player_animation(10, 10, 5);
+                                break;
+                            case 2:
+                                toogle_game_flag(STEREO_ON);
+                                r01_object[R01_STEREO_OBJ_ID].active = is_game_flag(STEREO_ON);
+                                end_script();
                                 break;
                             default:
                                 end_script();
@@ -146,6 +158,7 @@ void r01_room_update()
                                     case 2:
                                         say("Ya esta dentro");
                                         script_remove_inv_object(dInv_Cassette);
+                                        set_game_flag(USED_CASSETTE);
                                         end_script();
                                         break;
                                 }
