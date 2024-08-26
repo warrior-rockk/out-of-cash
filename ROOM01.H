@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "objects.h"
+#include "anim.h"
 
 #define R01_ROOM_NUM_OBJS   3
 
@@ -31,11 +32,13 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
     [R01_GUITAR_OBJ_ID].y = 50,
     [R01_GUITAR_OBJ_ID].active = true,
 
-    [R01_STEREO_OBJ_ID].objId = dObjStereo01,
+    [R01_STEREO_OBJ_ID].objId = dObjStereo01,   //3 to 6: animation
     [R01_STEREO_OBJ_ID].x = 282,
     [R01_STEREO_OBJ_ID].y = 56,
     [R01_STEREO_OBJ_ID].active = false
 };
+
+tAnimation r01_stereo_anim;
 
 //declare room functions
 void r01_get_hotspot_name(uint8_t colorCode, char *s);
