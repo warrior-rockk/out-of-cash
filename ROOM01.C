@@ -77,14 +77,14 @@ void r01_room_init()
 //funcion to update room
 void r01_room_update()
 {
-    //test general update
+    //objects update
     if (r01_object[R01_STEREO_OBJ_ID].active)
-        play_animation(&r01_stereo_anim, 3, 6, 2, ANIM_LOOP);
+        play_animation(&r01_stereo_anim, ANIM_PLAY_STEREO);
     else
-        r01_stereo_anim.frame = 3;
+        r01_stereo_anim.frame = dObjStereo01;
     r01_object[R01_STEREO_OBJ_ID].objId = r01_stereo_anim.frame;
     
-    //if nothing selected
+    //script update
     if (roomScript.active && !roomScript.invScript)
     {
         //sequence actions

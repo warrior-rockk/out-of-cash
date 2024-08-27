@@ -104,26 +104,23 @@ void player_update_animation()
     switch (player.state)
     {
         case player_st_idle:
-            if (!player.animation.animating)
-                //idle animation
-                player.animation.frame = 1;
+            //idle animation
+            //player.animation.frame = 1;
+            play_animation(&player.animation, ANIM_PLY_IDLE);
             break;
         case player_st_moving:
-            if (gameTick)
-            {
-                //walk animation
-                player.animation.frame = player.animation.frame == 4 ? 3 : 4;
-            }
+            //walk animation
+            //player.animation.frame = player.animation.frame == 4 ? 3 : 4;
+            play_animation(&player.animation, ANIM_PLY_WALK);
             break;
         case player_st_talking:
-            if (gameTick)
-            {
-                //walk animation
-                player.animation.frame = player.animation.frame == 9 ? 8 : 9;
-            }
+            //talk animation
+            //player.animation.frame = player.animation.frame == 9 ? 8 : 9;
+            play_animation(&player.animation, ANIM_PLY_TALK);
             break;
         case player_st_taking:
-            if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
+            //if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
+            if (play_animation(&player.animation, ANIM_PLY_TAKE))
             {
                 player.state = player_st_idle;
                 player.animation.animating = false;

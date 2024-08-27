@@ -10,10 +10,10 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
     bool animFinished = false;
 
     //set start frame
-    //if (animation->frame > endFrame || animation->frame < startFrame)
     if (!animation->animating)
     {
         animation->animating = true;
+        animation->looping = mode == ANIM_LOOP;
         animation->frame = startFrame;
         animation->frameTime = 0;
     }
@@ -28,7 +28,12 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
     //increment frame time
     if (gameTick)
         animation->frameTime += 1;
-
+    else
+    {
+        if (animation->frame > endFrame || animation->frame < startFrame)
+            animation->frame = startFrame;
+    }
+    
     //if frame time reached
     if (animation->frameTime >= speed)
         //if not last frame

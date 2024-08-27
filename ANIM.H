@@ -1,6 +1,9 @@
 #ifndef H_ANIM
 #define H_ANIM
 
+//include game animations
+#include "anims.h"
+
 //animation modes
 #define ANIM_LOOP       0
 #define ANIM_ONCE       1
@@ -11,6 +14,7 @@ typedef struct tAnimation
     int lastFrame;
     int frameTime;
     bool animating;
+    bool looping;
 } tAnimation;
 
 //declare functions

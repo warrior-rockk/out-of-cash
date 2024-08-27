@@ -117,10 +117,12 @@ void script_remove_inv_object(int numObject)
 //function to play animation and increments script step when finished
 void script_play_player_animation(int startFrame, int endFrame, int speed)
 {
+    player.state = player_st_animating;
     if (play_animation(&player.animation, startFrame, endFrame, speed, ANIM_ONCE))
     {
         roomScript.step++;
         player.animation.animating = false;
+        player.state = player_st_idle;
     }
 }
 

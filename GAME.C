@@ -143,6 +143,7 @@ void main_update()
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
     show_debug("step", roomScript.step);
+    show_debug("pl_anim", player.animation.animating);
     //show_debug("gotCas",game.flags[GOT_CASSETTE]);
     //show_debug("invObj", cursor.invObject);
 }
