@@ -9,15 +9,14 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
 {
     bool animFinished = false;
 
-    //set start frame
-    if (!animation->animating)
+    //reset animation state
+    if (animation->frame > endFrame || animation->frame < startFrame)
     {
-        animation->animating = true;
-        animation->looping = mode == ANIM_LOOP;
         animation->frame = startFrame;
+        animation->lastFrame = startFrame;
         animation->frameTime = 0;
     }
-    
+                
     //reset frame time on frame change
     if (animation->lastFrame != animation->frame)
     {
@@ -28,11 +27,6 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
     //increment frame time
     if (gameTick)
         animation->frameTime += 1;
-    else
-    {
-        if (animation->frame > endFrame || animation->frame < startFrame)
-            animation->frame = startFrame;
-    }
     
     //if frame time reached
     if (animation->frameTime >= speed)

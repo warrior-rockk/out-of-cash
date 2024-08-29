@@ -7,8 +7,9 @@
 //function to init player
 void player_init()
 {
-    player.state = player_st_idle;
-    player.animation.frame = 1;
+    player.state            = player_st_idle;
+    player.prevState        = player_st_idle;
+    player.animation.frame  = 1;
 
     player.x = 0;
     player.y = 0;
@@ -27,6 +28,10 @@ void player_init()
 //function to update the player
 void player_update()
 {
+    //updates prevState
+    player.prevState = player.state;
+
+    //calls player update functions
     player_update_pos();
     player_update_animation();
     player_update_scale();
@@ -105,29 +110,23 @@ void player_update_animation()
     {
         case player_st_idle:
             //idle animation
-            //player.animation.frame = 1;
             play_animation(&player.animation, ANIM_PLY_IDLE);
             break;
         case player_st_moving:
             //walk animation
-            //player.animation.frame = player.animation.frame == 4 ? 3 : 4;
             play_animation(&player.animation, ANIM_PLY_WALK);
             break;
         case player_st_talking:
             //talk animation
-            //player.animation.frame = player.animation.frame == 9 ? 8 : 9;
             play_animation(&player.animation, ANIM_PLY_TALK);
             break;
         case player_st_taking:
-            //if (play_animation(&player.animation, 10, 10, 2, ANIM_ONCE))
             if (play_animation(&player.animation, ANIM_PLY_TAKE))
             {
                 player.state = player_st_idle;
-                player.animation.animating = false;
             }
             break;
      }
-    
 }
 
 //function to update player scale

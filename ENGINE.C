@@ -114,15 +114,32 @@ void script_remove_inv_object(int numObject)
     roomScript.step++;
 }
 
-//function to play animation and increments script step when finished
+//function to play animation and increments script step when finished (DEPRECATED)
 void script_play_player_animation(int startFrame, int endFrame, int speed)
 {
-    player.state = player_st_animating;
     if (play_animation(&player.animation, startFrame, endFrame, speed, ANIM_ONCE))
     {
         roomScript.step++;
-        player.animation.animating = false;
         player.state = player_st_idle;
+    }
+}
+//function to change player state to take state
+void script_player_take_state()
+{
+    static bool memTaking;
+
+    if (player.state != player_st_taking)
+    {
+        if (!memTaking)
+        {
+            memTaking = true;
+            player.state = player_st_taking;
+        }
+        else
+        {
+            memTaking = false;
+            roomScript.step++;
+        }
     }
 }
 

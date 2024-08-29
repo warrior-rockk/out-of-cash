@@ -22,8 +22,7 @@ enum playerStates{
     player_st_idle,
     player_st_moving,
     player_st_talking,
-    player_st_taking,
-    player_st_animating
+    player_st_taking
 };
 
 //player struct
@@ -38,6 +37,7 @@ struct player{
     int destY;
     fixed scale;
     enum playerStates state;
+    enum playerStates prevState;
     bool moveFast;
     bool flip;
     uint8_t lookDir;

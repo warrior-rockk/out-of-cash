@@ -137,7 +137,8 @@ void r01_room_update()
                                     script_move_player_to_target();
                                 break;
                             case 1:
-                                script_play_player_animation(10, 10, 5);
+                                //script_play_player_animation(10, 10, 5);
+                                script_player_take_state();
                                 break;
                             case 2:
                                 toogle_game_flag(STEREO_ON);
@@ -160,7 +161,8 @@ void r01_room_update()
                                         script_move_player_to_target();
                                         break;
                                     case 1:
-                                        script_play_player_animation(10, 10, 5);
+                                        //script_play_player_animation(10, 10, 5);
+                                        script_player_take_state();
                                         break;
                                     case 2:
                                         say("Ya esta dentro");
