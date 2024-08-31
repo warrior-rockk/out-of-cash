@@ -278,9 +278,9 @@ void load_resources()
 void game_init()
 {
     gameConfig.textSpeed    = 10; //8 chars per second? This going to be on config
-    gameConfig.playerSpeed  = 3; //ftofix(0.3);
-    gameConfig.musicVolume  = 250;
-    gameConfig.soundVolume  = 10;
+    gameConfig.playerSpeed  = 30;
+    gameConfig.musicVolume  = 200;
+    gameConfig.soundVolume  = 200;
     
     //init game vars
     game.actualRoom     = 0;

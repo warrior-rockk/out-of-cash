@@ -51,8 +51,10 @@ void player_update_pos()
         in_range_y = in_range(fixtoi(player.y), player.destY, 2);
     
         //assign actual speed
-        actualSpeed = player.moveFast ? ftofix(PLAYER_FAST_SPEED) : fixdiv(itofix(gameConfig.playerSpeed), itofix(100));
-    
+        actualSpeed = fixdiv(itofix(gameConfig.playerSpeed), itofix(100));
+        if (player.moveFast)
+            actualSpeed = fixmul(actualSpeed,itofix(2));
+
         //decompose movement
         if (!in_range_x)
         {
