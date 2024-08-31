@@ -12,6 +12,7 @@
 #include "data.h"
 #include "ego.h"
 #include "objects.h"
+#include "gui.h"
 //includes all rooms
 #include "room01.h"
 #include "room02.h"
@@ -80,12 +81,14 @@ int main()
                 //update calls
                 game_update();
                 gui_update();
+                cursor_update();
                 
                 //draw calls
                 room_draw();
                 player_draw();
                 room_front_draw();
                 gui_draw();
+                cursor_draw();
                 
                 break;
             case EXIT_STATE:
@@ -183,10 +186,14 @@ void load_resources()
     objectsDataFile = load_datafile("objects.dat");
     if (!objectsDataFile)
         abort_on_error("Archivo objects.dat invalido o inexistente");
-    //loads inventoru data file
+    //loads inventory data file
     inventoryDataFile = load_datafile("inv.dat");
     if (!inventoryDataFile)
         abort_on_error("Archivo inv.dat invalido o inexistente");
+    //loads gui data file
+    guiDataFile = load_datafile("gui.dat");
+    if (!guiDataFile)
+        abort_on_error("Archivo gui.dat invalido o inexistente");
         
     //sets and get the palette
     set_palette((RGB*)dataFile[dGamePal].dat);
@@ -205,7 +212,15 @@ void load_resources()
     hud.verbSelImage[CLOSE] = (BITMAP *)dataFile[dHudCloseSel].dat;
     hud.verbSelImage[TALK]  = (BITMAP *)dataFile[dHudTalkSel].dat;
 
-    cursor.image       = (BITMAP *)dataFile[dCursor].dat;
+    gui.image               = (BITMAP *)guiDataFile[dGui_Main].dat;
+    //FIX: update datafile with guih.bmp
+    gui.hsImageMain         = load_bmp("res/gui/guih.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
+    gui.hsImage             = gui.hsImageMain;
+    //FIX:
+    gui.hsImageExit         = load_bmp("res/gui/guiExHs.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
+    
+    cursor.image            = (BITMAP *)dataFile[dCursor].dat;
+
     //loads room resources
     room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
     room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
@@ -256,10 +271,6 @@ void load_resources()
     player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
     clear(player.tempImage);
 
-    //temporaly load gui resources
-    gui.image = load_bmp("res/gui/gui.bmp", NULL);
-    if (!gui.image)
-        abort_on_error("Archivo gui.bmp invalido o inexistente");
 }
 
 //function to init game
@@ -302,6 +313,7 @@ void game_init()
     msg_init();
     player_init();
     inventory_init();
+    gui_init();
 }
 
 //game update function
@@ -337,7 +349,7 @@ void game_update()
             else if (gameKeys.exitPressed)
             {
                 game.state = MENU_STATE;
-                //game_fade_out();
+                gui_init();
             }
             else
             {
@@ -595,7 +607,6 @@ void cursor_button_handler()
 //updates function for cursor. Do call for click handler and check cursor actions
 void cursor_update()
 {
-
     //call buttons handler
     cursor_button_handler();
 
@@ -606,6 +617,17 @@ void cursor_update()
     {
         switch (game.state)
         {
+            case MENU_STATE:
+                //obtains the hotspot gui color (coords relative to gui base image)
+                hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
+
+                //if mouse click and colorCode is valid
+                if (cursor.click && hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
+                {
+                    //change gui state
+                    gui.state = (hsColor - GUI_COLOR_OFFSET);
+                }
+                break;
             case PLAYING_STATE:
                 //if cursor on room position, check color of room hotspot
                 if (mouse_y < STATUS_BAR_Y)
@@ -757,10 +779,10 @@ void cursor_update()
                         }
                     }
                 }
-                //debug
-                show_debug("Color", hsColor);
                 break;
         }
+        //debug
+        show_debug("Color", hsColor);
     }
 }
 
@@ -1038,16 +1060,90 @@ void mytrace(char *s, ...)
     TRACE(s);
 }
 
+//function to init the gui
+void gui_init()
+{
+    //set gui position (center of screen)
+    gui.x = (RES_X>>1) - (gui.image->w>>1);
+    gui.y = (RES_Y>>1) - (gui.image->h>>1);
+    //gui state
+    gui.state = GUI_MAIN_STATE;
+}
+
 //function to update the gui
 void gui_update()
 {
-
+    //compose gui hotspot image
+    draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
+    
+    switch (gui.state)
+    {
+        case GUI_EXIT_STATE:
+            //draw hotspot state zone
+            draw_sprite(gui.hsImage, gui.hsImageExit , GUI_CONTENT_X, GUI_CONTENT_Y);
+            break;
+        case GUI_EXIT_TITLE_STATE:
+            game.state = TITLE_STATE;
+            game_fade_out();
+            break;
+        case GUI_EXIT_DOS_STATE:
+            game.state = EXIT_STATE;
+            game_fade_out();
+            break;
+    }
 }
 
 //function to draw the gui
 void gui_draw()
 {
-    draw_sprite(buffer, gui.image, (RES_X>>1) - (gui.image->w>>1), (RES_Y>>1) - (gui.image->h>>1));
+    //draw base gui on center of screen
+    draw_sprite(buffer, gui.image, gui.x, gui.y);
+
+    switch (gui.state)
+    {
+        case GUI_LOAD_STATE:
+            //draw gui contents
+            //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            break;
+        case GUI_SAVE_STATE:
+            //draw gui contents
+            //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_SaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            break;
+        case GUI_OPTIONS_STATE:
+            //draw gui contents
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_OptionsSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            break;
+        case GUI_ABOUT_STATE:
+            //draw gui contents
+            //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_AboutSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            break;
+        case GUI_EXIT_STATE:
+            //draw gui contents
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            break;
+        case GUI_EXIT_TITLE_STATE:
+            //draw gui contents
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitTitleSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_TITLE_Y);
+            break;
+        case GUI_EXIT_DOS_STATE:
+            //draw gui contents
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            //draw button highlighted
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
+            break;
+    }
 }
 
 END_OF_MAIN()

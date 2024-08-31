@@ -37,6 +37,24 @@
 #define SEL_UP_Y                25
 #define SEL_DOWN_Y              54
 
+//gui
+#define GUI_COLOR_OFFSET        20      //color offset for hotspot buttons
+#define GUI_NUM_OPTIONS         7
+#define GUI_CONTENT_X           105
+#define GUI_CONTENT_Y           18
+#define GUI_BUTTONS_X           11
+#define GUI_BUTTONS_Y           17
+#define GUI_BUTTONS_SPACING     25
+#define GUI_BUTTONS_EXIT        132
+#define GUI_BUTTON_EXIT_TITLE_Y 37
+#define GUI_BUTTON_EXIT_DOS_Y   78
+
+//138,31 pos vel text min
+//,62 vel player
+//,90 vol music
+//,118 vol sound
+
+//247 pos x max
 //Text
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
@@ -54,6 +72,8 @@
 #define FADE_DEFAULT_SPEED   6
 
 //enums
+
+//game state
 enum gameState{
     LOGO_STATE,
     TITLE_STATE,
@@ -62,6 +82,18 @@ enum gameState{
     PAUSE_STATE,
     MENU_STATE,
     EXIT_STATE
+};
+
+//gui state
+enum guiState{
+    GUI_LOAD_STATE,
+    GUI_SAVE_STATE,
+    GUI_OPTIONS_STATE,
+    GUI_ABOUT_STATE,
+    GUI_EXIT_STATE,
+    GUI_EXIT_TITLE_STATE,
+    GUI_EXIT_DOS_STATE,
+    GUI_MAIN_STATE
 };
 
 //structures
@@ -136,6 +168,23 @@ struct hud
     bool selDownButton;
 } hud;
 
+//gui structure
+struct gui
+{
+    //gui base image
+    BITMAP *image;
+    //gui hotspot image
+    BITMAP *hsImage;
+    //TEMPORALY: fix when update gui datafile
+    BITMAP *hsImageMain;
+    BITMAP *hsImageExit;
+    //gui position
+    int x;
+    int y;
+    //gui state
+    int state;
+} gui;
+
 //cursor structure
 struct cursor
 {
@@ -179,11 +228,6 @@ struct gameKeys{
     bool memExit;
 } gameKeys;
 
-//menu gui
-struct gui{
-    BITMAP *image;
-} gui;
-
 //global vars
 static volatile int tick;
 tRoom room[NUM_GAME_ROOMS];
@@ -193,6 +237,7 @@ DATAFILE *dataFile;
 DATAFILE *playerDataFile;
 DATAFILE *objectsDataFile;
 DATAFILE *inventoryDataFile;
+DATAFILE *guiDataFile;
 bool gameTick;
 
 //function declarations
@@ -232,6 +277,7 @@ void msg_update();
 void msg_draw();
 int get_msg_length(char *text);
 
+void gui_init();
 void gui_update();
 void gui_draw();
 #endif
