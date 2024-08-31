@@ -145,9 +145,9 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
-    show_debug("step", roomScript.step);
-    //show_debug("gotCas",game.flags[GOT_CASSETTE]);
-    //show_debug("invObj", cursor.invObject);
+    show_debug("cfgTxtSpd", gameConfig.textSpeed);
+    show_debug("cfgPlySpd", gameConfig.playerSpeed);
+    show_debug("cfgMusVol", gameConfig.musicVolume);
 }
 
 //general draw
@@ -218,6 +218,7 @@ void load_resources()
     gui.hsImage             = gui.hsImageMain;
     //FIX:
     gui.hsImageExit         = load_bmp("res/gui/guiExHs.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
+    gui.hsImageOptions      = load_bmp("res/gui/gui-optH.bmp",NULL);
     
     cursor.image            = (BITMAP *)dataFile[dCursor].dat;
 
@@ -277,7 +278,9 @@ void load_resources()
 void game_init()
 {
     gameConfig.textSpeed    = 10; //8 chars per second? This going to be on config
-    gameConfig.playerSpeed  = ftofix(0.3);
+    gameConfig.playerSpeed  = 3; //ftofix(0.3);
+    gameConfig.musicVolume  = 250;
+    gameConfig.soundVolume  = 10;
     
     //init game vars
     game.actualRoom     = 0;
@@ -622,10 +625,39 @@ void cursor_update()
                 hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
 
                 //if mouse click and colorCode is valid
-                if (cursor.click && hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
+                if (cursor.click)
                 {
-                    //change gui state
-                    gui.state = (hsColor - GUI_COLOR_OFFSET);
+                    fixed norm_value;
+                    int scaled_value;
+                    switch (hsColor)
+                    {
+                        case 30: //slider 1
+                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+                            scaled_value = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
+                            gameConfig.textSpeed = scaled_value;
+                            break;
+                        case 31: //slider 2
+                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+                            scaled_value = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
+                            gameConfig.playerSpeed = scaled_value;
+                            break;
+                        case 32: //slider 3
+                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+                            scaled_value = scale_x(norm_value, 0, 255);
+                            gameConfig.musicVolume = scaled_value;
+                            break;
+                        case 33: //slider 4
+                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+                            scaled_value = scale_x(norm_value, 0, 255);
+                            gameConfig.soundVolume = scaled_value;
+                            break;    
+                        default:
+                            //if color is valid for main gui buttons
+                            if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
+                                //change gui state
+                                gui.state = (hsColor - GUI_COLOR_OFFSET);
+                            break;
+                    }
                 }
                 break;
             case PLAYING_STATE:
@@ -1078,6 +1110,10 @@ void gui_update()
     
     switch (gui.state)
     {
+        case GUI_OPTIONS_STATE:
+            //draw hotspot state zone
+            draw_sprite(gui.hsImage, gui.hsImageOptions, GUI_CONTENT_X, GUI_CONTENT_Y);
+            break;
         case GUI_EXIT_STATE:
             //draw hotspot state zone
             draw_sprite(gui.hsImage, gui.hsImageExit , GUI_CONTENT_X, GUI_CONTENT_Y);
@@ -1118,6 +1154,25 @@ void gui_draw()
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_OptionsSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            //draw options sliders
+            fixed norm_value;
+            int scaled_value;
+            
+            norm_value = norm_x(gameConfig.textSpeed, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
+            scaled_value = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_1_Y);
+
+            norm_value = norm_x(gameConfig.playerSpeed, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
+            scaled_value = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_2_Y);
+
+            norm_value      = norm_x(gameConfig.musicVolume, 0, 255);
+            scaled_value    = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_3_Y);
+
+            norm_value      = norm_x(gameConfig.soundVolume, 0, 255);
+            scaled_value    = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_4_Y);
             break;
         case GUI_ABOUT_STATE:
             //draw gui contents

@@ -42,6 +42,7 @@
 #define GUI_NUM_OPTIONS         7
 #define GUI_CONTENT_X           105
 #define GUI_CONTENT_Y           18
+
 #define GUI_BUTTONS_X           11
 #define GUI_BUTTONS_Y           17
 #define GUI_BUTTONS_SPACING     25
@@ -49,12 +50,13 @@
 #define GUI_BUTTON_EXIT_TITLE_Y 37
 #define GUI_BUTTON_EXIT_DOS_Y   78
 
-//138,31 pos vel text min
-//,62 vel player
-//,90 vol music
-//,118 vol sound
+#define GUI_SLIDER_MIN_X        138
+#define GUI_SLIDER_MAX_X        247
+#define GUI_SLIDER_1_Y          31
+#define GUI_SLIDER_2_Y          62
+#define GUI_SLIDER_3_Y          90
+#define GUI_SLIDER_4_Y          118
 
-//247 pos x max
 //Text
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
@@ -69,7 +71,7 @@
 #define DEBUG_FONT_HEIGHT       8
 
 //Fade
-#define FADE_DEFAULT_SPEED   6
+#define FADE_DEFAULT_SPEED      6
 
 //enums
 
@@ -177,6 +179,7 @@ struct gui
     BITMAP *hsImage;
     //TEMPORALY: fix when update gui datafile
     BITMAP *hsImageMain;
+    BITMAP *hsImageOptions;
     BITMAP *hsImageExit;
     //gui position
     int x;
@@ -213,8 +216,14 @@ struct cursor
 //game config structure
 struct gameConfig
 {
+    #define CONFIG_TEXT_SPEED_MIN   1
+    #define CONFIG_TEXT_SPEED_MAX   255
     uint8_t textSpeed;
-    fixed   playerSpeed;
+    #define CONFIG_PLY_SPEED_MIN    1
+    #define CONFIG_PLY_SPEED_MAX    100
+    uint8_t playerSpeed;
+    uint8_t musicVolume;
+    uint8_t soundVolume;
 } gameConfig;
 
 //keys struct
