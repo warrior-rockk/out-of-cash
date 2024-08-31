@@ -352,7 +352,6 @@ void game_update()
             else if (gameKeys.exitPressed)
             {
                 game.state = MENU_STATE;
-                gui_init();
             }
             else
             {
@@ -624,32 +623,26 @@ void cursor_update()
                 //obtains the hotspot gui color (coords relative to gui base image)
                 hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
 
-                //if mouse click and colorCode is valid
+                //if mouse click
                 if (cursor.click)
                 {
-                    fixed norm_value;
-                    int scaled_value;
+                    //obtain normalized x value from sliders
+                    fixed norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+
+                    //check hotspot color
                     switch (hsColor)
                     {
-                        case 30: //slider 1
-                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-                            scaled_value = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
-                            gameConfig.textSpeed = scaled_value;
+                        case GUI_SLIDER_1_COLOR:
+                            gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
                             break;
-                        case 31: //slider 2
-                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-                            scaled_value = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
-                            gameConfig.playerSpeed = scaled_value;
+                        case GUI_SLIDER_2_COLOR:
+                            gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
                             break;
-                        case 32: //slider 3
-                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-                            scaled_value = scale_x(norm_value, 0, 255);
-                            gameConfig.musicVolume = scaled_value;
+                        case GUI_SLIDER_3_COLOR:
+                            gameConfig.musicVolume = scale_x(norm_value, 0, 255);
                             break;
-                        case 33: //slider 4
-                            norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-                            scaled_value = scale_x(norm_value, 0, 255);
-                            gameConfig.soundVolume = scaled_value;
+                        case GUI_SLIDER_4_COLOR:
+                            gameConfig.soundVolume = scale_x(norm_value, 0, 255);
                             break;    
                         default:
                             //if color is valid for main gui buttons
@@ -1105,9 +1098,10 @@ void gui_init()
 //function to update the gui
 void gui_update()
 {
-    //compose gui hotspot image
+    //compose gui hotspot image: main gui hotspot
     draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
-    
+
+    //check gui state
     switch (gui.state)
     {
         case GUI_OPTIONS_STATE:
@@ -1132,7 +1126,7 @@ void gui_update()
 //function to draw the gui
 void gui_draw()
 {
-    //draw base gui on center of screen
+    //draw main gui on center of screen
     draw_sprite(buffer, gui.image, gui.x, gui.y);
 
     switch (gui.state)

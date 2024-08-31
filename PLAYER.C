@@ -53,6 +53,7 @@ void player_update_pos()
         //assign actual speed
         actualSpeed = fixdiv(itofix(gameConfig.playerSpeed), itofix(100));
         if (player.moveFast)
+            //double speed
             actualSpeed = fixmul(actualSpeed,itofix(2));
 
         //decompose movement

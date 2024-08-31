@@ -56,6 +56,10 @@
 #define GUI_SLIDER_2_Y          62
 #define GUI_SLIDER_3_Y          90
 #define GUI_SLIDER_4_Y          118
+#define GUI_SLIDER_1_COLOR      30
+#define GUI_SLIDER_2_COLOR      31
+#define GUI_SLIDER_3_COLOR      32
+#define GUI_SLIDER_4_COLOR      33
 
 //Text
 #define SAY_X                   RES_X / 2
