@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <allegro.h>
 #include "engine.h"
+#include "inventor.h"
+#include "player.h"
 
 //Definitions
 //Screen
@@ -13,6 +15,7 @@
 //Game
 #define NUM_GAME_ROOMS          2
 #define MAX_GAME_FLAGS          32
+#define SAVEGAME_FILE_VERSION   1
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
@@ -119,6 +122,19 @@ struct game
     uint8_t flags[MAX_GAME_FLAGS];  //32 bytes = 255 bit flags
 } game;
 
+//game config structure
+struct gameConfig
+{
+    #define CONFIG_TEXT_SPEED_MIN   1
+    #define CONFIG_TEXT_SPEED_MAX   255
+    uint8_t textSpeed;
+    #define CONFIG_PLY_SPEED_MIN    1
+    #define CONFIG_PLY_SPEED_MAX    100
+    uint8_t playerSpeed;
+    uint8_t musicVolume;
+    uint8_t soundVolume;
+} gameConfig;
+
 //message structure
 struct msg
 {
@@ -217,19 +233,6 @@ struct cursor
     bool evalueDblClick;
 } cursor;
 
-//game config structure
-struct gameConfig
-{
-    #define CONFIG_TEXT_SPEED_MIN   1
-    #define CONFIG_TEXT_SPEED_MAX   255
-    uint8_t textSpeed;
-    #define CONFIG_PLY_SPEED_MIN    1
-    #define CONFIG_PLY_SPEED_MAX    100
-    uint8_t playerSpeed;
-    uint8_t musicVolume;
-    uint8_t soundVolume;
-} gameConfig;
-
 //keys struct
 struct gameKeys{
     //game keys defines
@@ -240,6 +243,19 @@ struct gameKeys{
     bool memPause;
     bool memExit;
 } gameKeys;
+
+//savegame structure
+struct savegame
+{
+    uint8_t version;
+    struct gameConfig gameConfigData;
+    struct game gameData;
+    struct inventory invData;
+    struct player playerData;
+    struct msg msgData;
+    struct cursor cursorData;
+    struct roomScript roomScriptData;
+};
 
 //global vars
 static volatile int tick;

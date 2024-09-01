@@ -447,14 +447,28 @@ void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b)
 void game_save()
 {
     FILE* saveFile;
-
+    struct savegame savegame;
+    
+    //open/create the savegame file
     saveFile = fopen("savegame.001", "wb");
     if (saveFile == NULL)
         abort_on_error("No se puede crear el archivo de guardado");
-        
-    if (!fwrite(&game, sizeof(struct game), 1, saveFile))
-        abort_on_error("Error escribiendo el archivo de guardado");
 
+    //sets the contents of savegame file
+    savegame.version        = SAVEGAME_FILE_VERSION;
+    savegame.gameConfigData = gameConfig;
+    savegame.gameData       = game;
+    savegame.invData        = inventory;
+    savegame.playerData     = player;
+    savegame.msgData        = msg;
+    savegame.cursorData     = cursor;
+    savegame.roomScriptData = roomScript;
+    
+    //write the savegame file
+    if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
+        abort_on_error("Error escribiendo el archivo de guardado");
+    
+    //close and clear savegame
     fclose(saveFile);
 }
 
@@ -462,14 +476,36 @@ void game_save()
 void game_load()
 {
     FILE* loadFile;
-
+    struct savegame savegame;
+    
+    //open savegame file
     loadFile = fopen("savegame.001", "r");
     if (loadFile == NULL)
         abort_on_error("No se puede abrir el archivo de guardado");
 
-    if (!fread(&game, sizeof(struct game), 1, loadFile))
+    //read contents of savegame file
+    if (!fread(&savegame, sizeof(struct savegame), 1, loadFile))
         abort_on_error("Error leyendo el archivo de guardado");
 
+    //check version
+    if (savegame.version != SAVEGAME_FILE_VERSION)
+        abort_on_error("Version de archivo de guardado incompatible");
+
+    //writes savegame data to game
+    game        = savegame.gameData;
+    gameConfig  = savegame.gameConfigData;
+    inventory   = savegame.invData;
+    player      = savegame.playerData;
+    msg         = savegame.msgData;
+    cursor      = savegame.cursorData;
+    roomScript  = savegame.roomScriptData;
+    
+    //forces refresh room_init
+    room[game.actualRoom].room_init();
+    //forces refresh inventory
+    inventory.refresh = true;
+    
+    //close savegame file
     fclose(loadFile);
 }
 
@@ -513,8 +549,6 @@ void check_room_changed()
 //function that handles game exit
 void game_exit()
 {
-    //test save game
-    game_save();
     //free resources
     unload_datafile(dataFile);
     //quit allegro modules
@@ -1124,12 +1158,23 @@ void gui_init()
 //function to update the gui
 void gui_update()
 {
+    cursor.enabled = true;
+    
     //compose gui hotspot image: main gui hotspot
     draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
 
     //check gui state
     switch (gui.state)
     {
+        case GUI_LOAD_STATE:
+            gui.state = GUI_MAIN_STATE;
+            game_load();
+            break;
+        case GUI_SAVE_STATE:
+            game.state = PLAYING_STATE;
+            gui_init();
+            game_save();
+            break;
         case GUI_OPTIONS_STATE:
             //draw hotspot state zone
             draw_sprite(gui.hsImage, gui.hsImageOptions, GUI_CONTENT_X, GUI_CONTENT_Y);
