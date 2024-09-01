@@ -17,5 +17,5 @@ fixed norm_x(int value, int min, int max);
 fixed fix_norm_x(fixed value, fixed min, fixed max);
 int scale_x(fixed value, int min, int max);
 fixed fix_scale_x(fixed value, fixed min, fixed max);
-
+void get_actual_date(char *s);
 #endif

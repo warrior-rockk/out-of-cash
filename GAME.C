@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
@@ -444,22 +445,44 @@ void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b)
     }
 }
 
-//function to check if savegame file slot exists
-bool game_save_exists(uint8_t slot)
+//function to check if savegame file slot exists and copies the saved data file
+bool game_save_exists(uint8_t slot, char *s)
 {
     FILE* saveFile;
     struct savegame savegame;
     char filename[13];
 
     //compose filenae
-    sprintf(filename, "savegame.00%i", slot + 1);
+    sprintf(filename, "savegame.00%i", (slot + 1));
     //open/create the savegame file
     saveFile = fopen(filename, "r");
-    if (saveFile == NULL)
+    if (!saveFile)
+    {
+        strcpy(s, "uno");
         return false;
+    }
     else
     {
-        fclose(saveFile);
+        //read contents of savegame file
+        if (!fread(&savegame, sizeof(struct savegame), 1, saveFile))
+        {
+            //closes file
+            fclose(saveFile);
+            strcpy(s, filename);
+            return false;
+        }
+        
+        //check version
+        if (savegame.version != SAVEGAME_FILE_VERSION)
+        {
+            //closes file
+            fclose(saveFile);
+            strcpy(s, "tres");
+            return false;
+        }
+        
+        //copies saved data of the file
+        strcpy(s, "cosa");
         return true;
     }
 }
@@ -472,14 +495,20 @@ void game_save(uint8_t slot)
     char filename[13];
 
     //compose filenae
-    sprintf(filename, "savegame.00%i", slot + 1);
+    sprintf(filename, "savegame.00%i", (slot + 1));
     //open/create the savegame file
     saveFile = fopen(filename, "wb");
-    if (saveFile == NULL)
-        abort_on_error("No se puede crear el archivo de guardado");
-
+    if (!saveFile)
+    {
+        char txtError[100];
+        strcpy(txtError, strerror(errno));
+        abort_on_error(txtError);
+        //abort_on_error("No se puede crear el archivo de guardado");
+    }
+    
     //sets the contents of savegame file
     savegame.version        = SAVEGAME_FILE_VERSION;
+    get_actual_date(savegame.saveDate);
     savegame.gameConfigData = gameConfig;
     savegame.gameData       = game;
     savegame.invData        = inventory;
@@ -507,9 +536,14 @@ void game_load(uint8_t slot)
     sprintf(filename, "savegame.00%i", slot + 1);
     //open savegame file
     loadFile = fopen(filename, "r");
-    if (loadFile == NULL)
-        abort_on_error("No se puede abrir el archivo de guardado");
-
+    if (!loadFile)
+    {
+        char txtError[100];
+        strcpy(txtError, strerror(errno));
+        abort_on_error(txtError);
+        //abort_on_error("No se puede abrir el archivo de guardado");
+    }
+    
     //read contents of savegame file
     if (!fread(&savegame, sizeof(struct savegame), 1, loadFile))
         abort_on_error("Error leyendo el archivo de guardado");
@@ -1235,6 +1269,7 @@ void gui_draw()
     //draw main gui on center of screen
     draw_sprite(buffer, gui.image, gui.x, gui.y);
 
+    char saveDate[SAVEGAME_DATE_CHARS];
     switch (gui.state)
     {
         case GUI_LOAD_STATE:
@@ -1244,21 +1279,24 @@ void gui_draw()
                 //draw text position
                 textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%i- ", i + 1);
                 //draw savegame text if exists
-                if (game_save_exists(i))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "SAVEGAME");
+                if (game_save_exists(i, saveDate))
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
+                else
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "---------");    
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_SAVE_STATE:
-            //draw gui contents
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
                 //draw text position
                 textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%i- ", i + 1);
                 //draw savegame text if exists
-                if (game_save_exists(i))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "SAVEGAME");
+                if (game_save_exists(i, saveDate))
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
+                else
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_SaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));

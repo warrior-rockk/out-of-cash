@@ -17,6 +17,7 @@
 #define MAX_GAME_FLAGS          32
 #define SAVEGAME_FILE_VERSION   1
 #define SAVEGAME_SLOTS          5
+#define SAVEGAME_DATE_CHARS     17
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
@@ -265,6 +266,7 @@ struct gameKeys{
 struct savegame
 {
     uint8_t version;
+    char saveDate[25];
     struct gameConfig gameConfigData;
     struct game gameData;
     struct inventory invData;
@@ -301,7 +303,7 @@ void game_exit();
 void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
 void game_save(uint8_t slot);
-bool game_save_exists(uint8_t slot);
+bool game_save_exists(uint8_t slot, char *s);
 void game_load(uint8_t slot);
 void game_keys_handler();
 

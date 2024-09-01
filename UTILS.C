@@ -1,5 +1,7 @@
+#include <stdio.h>
 #include <stdbool.h>
 #include "utils.h"
+#include "time.h"
 
 //retuns true if the value is on target +/- the offset
 bool in_range(int value, int target, int offset)
@@ -53,4 +55,16 @@ fixed fix_scale_x(fixed value, fixed min, fixed max)
 {
     fixed ret_val = fixadd((fixmul(value, max) - fixmul(value, min)), min);
     return clamp(ret_val, min, max);
+}
+
+//function to copy actual date to string input parameter
+void get_actual_date(char *s)
+{
+    time_t rawtime;
+    struct tm *timeinfo;
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    sprintf(s,"%02d/%02d/%02d %02d:%02d:%02d", timeinfo->tm_mday, (timeinfo->tm_mon + 1), timeinfo->tm_year,
+                                   timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 }
