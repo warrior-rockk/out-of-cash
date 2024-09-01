@@ -16,6 +16,7 @@
 #define NUM_GAME_ROOMS          2
 #define MAX_GAME_FLAGS          32
 #define SAVEGAME_FILE_VERSION   1
+#define SAVEGAME_SLOTS          5
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
@@ -63,6 +64,15 @@
 #define GUI_SLIDER_2_COLOR      31
 #define GUI_SLIDER_3_COLOR      32
 #define GUI_SLIDER_4_COLOR      33
+
+#define GUI_SAVE_SLOT_1_COLOR   40
+#define GUI_SAVE_SLOT_2_COLOR   41
+#define GUI_SAVE_SLOT_3_COLOR   42
+#define GUI_SAVE_SLOT_4_COLOR   43
+#define GUI_SAVE_SLOT_5_COLOR   44
+#define GUI_SAVE_SLOTS_X        5
+#define GUI_SAVE_SLOTS_Y        13
+#define GUI_SAVE_SLOTS_SPACING  21
 
 //Text
 #define SAY_X                   RES_X / 2
@@ -201,6 +211,7 @@ struct gui
     BITMAP *hsImageMain;
     BITMAP *hsImageOptions;
     BITMAP *hsImageExit;
+    BITMAP *hsImageSave;
     //gui position
     int x;
     int y;
@@ -283,7 +294,8 @@ void game_update();
 void game_exit();
 void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
-void game_save();
+void game_save(uint8_t slot);
+bool game_save_exists(uint8_t slot);
 void game_load();
 void game_keys_handler();
 

@@ -59,4 +59,4 @@ internal grabber number def
 - [X] Player: change state bools with general state var
 - [X] Bug: player talks on pause
 - [X] Player: improve state-animation system and external state change
-
+- [ ] Bug: player walks slow on game start?
