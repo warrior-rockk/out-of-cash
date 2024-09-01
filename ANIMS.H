@@ -8,6 +8,6 @@
 #define ANIM_PLY_TAKE       10, 10, 5, ANIM_ONCE
 
 //object animations
-#define ANIM_PLAY_STEREO    3, 6, 2, ANIM_LOOP
+#define ANIM_PLAY_STEREO    6, 9, 2, ANIM_LOOP
 
 #endif  //H_ANIMS
