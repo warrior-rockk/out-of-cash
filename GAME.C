@@ -613,202 +613,228 @@ void cursor_update()
     cursor_button_handler();
 
     //check cursor behaviour
-    uint8_t hsColor;
-
     if (cursor.enabled)
     {
         switch (game.state)
         {
-            case MENU_STATE:
-                //obtains the hotspot gui color (coords relative to gui base image)
-                hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
-
-                //if mouse click
-                if (cursor.click)
-                {
-                    //obtain normalized x value from sliders
-                    fixed norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-
-                    //check hotspot color
-                    switch (hsColor)
-                    {
-                        case GUI_SLIDER_1_COLOR:
-                            gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
-                            break;
-                        case GUI_SLIDER_2_COLOR:
-                            gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
-                            break;
-                        case GUI_SLIDER_3_COLOR:
-                            gameConfig.musicVolume = scale_x(norm_value, 0, 255);
-                            break;
-                        case GUI_SLIDER_4_COLOR:
-                            gameConfig.soundVolume = scale_x(norm_value, 0, 255);
-                            break;    
-                        default:
-                            //if color is valid for main gui buttons
-                            if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
-                                //change gui state
-                                gui.state = (hsColor - GUI_COLOR_OFFSET);
-                            break;
-                    }
-                }
-                break;
             case PLAYING_STATE:
-                //if cursor on room position, check color of room hotspot
+                //if cursor on room position
                 if (mouse_y < STATUS_BAR_Y)
                 {
-                    //obtains the hotspot room color
-                    hsColor = getpixel(room[game.actualRoom].hsImage, mouse_x, mouse_y);
-                    //gets the object name
-                    room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
-
-                    //check right click action on room (evaluated before the left click)
-                    if (cursor.rightClick)
-                    {
-                        //if valid object, get default object verb
-                        if (cursor.objectName[0] != '\0')
-                            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
-                        else
-                            //otherwise, select go verb
-                            cursor.selectedVerb = GO;
-                    }
-
-                    //if cursor click on valid object or double click with GO verb or rightClick (default verb assigned)
-                    if ((cursor.click || cursor.dblClick || cursor.rightClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
-                    {
-                        //if no previous action/object selected
-                        if (!roomScript.active)
-                        {
-                            //saves the room vars to start script sequence
-                            roomScript.active = true;
-                            roomScript.invScript = false;
-                            roomScript.object = hsColor;
-                            roomScript.verb = cursor.selectedVerb;
-                            roomScript.invObject = cursor.invObject;
-                            roomScript.hsX = mouse_x;
-                            roomScript.hsY = mouse_y;
-
-                            //change player look dir
-                            if (roomScript.hsX < fixtoi(player.x))
-                                change_player_dir(DIR_LEFT);
-                            else
-                                change_player_dir(DIR_RIGHT);
-                        }
-                    }
+                    cursor_action_room();
                 }
                 //if cursor on HUD position, check color of HUD
                 else
                 {
-                    //obtains the hotspot HUD color
-                    hsColor = getpixel(hud.hsImage, mouse_x, mouse_y - HUD_Y);
-
-                    //check mouse hud region
-                    if (mouse_x < HUD_SCROLL_X)
-                    {
-                        //BUTTONS VERBS REGION
-                        
-                        //if mouse click and action is valid
-                        if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
-                        {
-                            cursor.selectedVerb = hsColor - 1;
-                        }
-
-                        //if mouse left on hud: default verb
-                        if (cursor.rightClick)
-                        {
-                            cursor.selectedVerb = GO;
-                        }
-                    }
-                    else if (mouse_x < HUD_INVENTORY_X)
-                    {
-                        //SCROLL INVENTORY BUTTONS REGION
-
-                        if (cursor.click)
-                        {
-                            //scroll down inventory page
-                            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) && inventory.page < MAX_INV_PAGE)
-                            {
-                                inventory.page++;
-                                inventory.refresh = true;
-                                //set flag for highlight button
-                                hud.selDownButton = true;
-                            }
-                            //scroll up inventory page
-                            if (hsColor == INV_SCROLL_UP_CODE && inventory.page > 0)
-                            {
-                                inventory.page--;
-                                inventory.refresh = true;
-                                //set flag for highlight button
-                                hud.selUpButton = true;
-                            }
-                        }
-                        
-                        if (cursor.rightClick)
-                        {
-                            //go to last inventory page
-                            if (hsColor == INV_SCROLL_DOWN_CODE)
-                            {
-                                inventory.page = inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
-                                inventory.refresh = true;
-                                //set flag for highlight button
-                                hud.selDownButton = true;
-                            }
-                            //go to first inventory page
-                            if (hsColor == INV_SCROLL_UP_CODE)
-                            {
-                                inventory.page = 0;
-                                inventory.refresh = true;
-                                //set flag for highlight button
-                                hud.selUpButton = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //INVENTORY BUTTONS REGION
-
-                        //gets the object name
-                        if (get_inv_obj_id(get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
-                            //don't allow use object on same object
-                            strcpy(cursor.objectName, "");
-                        else
-                            get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
-                            
-                        //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
-                        if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
-                        {
-                            //check if click USE verb on inventory object
-                            if (cursor.selectedVerb == USE)
-                            {
-                                //sets USE_WITH verb
-                                cursor.selectedVerb = USE_WITH;
-                                //sets inventory object name verb
-                                strcpy(cursor.invObjName, cursor.objectName);
-                                //sets inventory id
-                                cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
-                            }
-                            else
-                            {
-                                //if no previous action/object selected
-                                if (!roomScript.active)
-                                {
-                                    //saves the room vars to start script sequence
-                                    roomScript.active = true;
-                                    roomScript.invScript = true;
-                                    roomScript.object = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
-                                    roomScript.verb = cursor.selectedVerb;
-                                    roomScript.hsX = mouse_x;
-                                    roomScript.hsY = mouse_y;
-                                }
-                            }
-                        }
-                    }
+                    cursor_action_HUD();
                 }
                 break;
+            case MENU_STATE:
+                cursor_action_menu();
+
+                break;
         }
-        //debug
-        show_debug("Color", hsColor);
     }
+}
+
+//function that handles action of cursor on HUD
+void cursor_action_HUD()
+{
+    //obtains the hotspot HUD color
+    uint8_t hsColor = getpixel(hud.hsImage, mouse_x, mouse_y - HUD_Y);
+
+    //check mouse hud region
+    if (mouse_x < HUD_SCROLL_X)
+    {
+        //BUTTONS VERBS REGION
+
+
+        //if mouse click and action is valid
+        if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
+        {
+            cursor.selectedVerb = hsColor - 1;
+        }
+
+        //if mouse left on hud: default verb
+        if (cursor.rightClick)
+        {
+            cursor.selectedVerb = GO;
+        }
+    }
+    else if (mouse_x < HUD_INVENTORY_X)
+    {
+        //SCROLL INVENTORY BUTTONS REGION
+
+        if (cursor.click)
+        {
+            //scroll down inventory page
+            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) && inventory.page < MAX_INV_PAGE)
+            {
+                inventory.page++;
+                inventory.refresh = true;
+                //set flag for highlight button
+                hud.selDownButton = true;
+            }
+            //scroll up inventory page
+            if (hsColor == INV_SCROLL_UP_CODE && inventory.page > 0)
+            {
+                inventory.page--;
+                inventory.refresh = true;
+                //set flag for highlight button
+                hud.selUpButton = true;
+            }
+        }
+        
+        if (cursor.rightClick)
+        {
+            //go to last inventory page
+            if (hsColor == INV_SCROLL_DOWN_CODE)
+            {
+                inventory.page = inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
+                inventory.refresh = true;
+                //set flag for highlight button
+                hud.selDownButton = true;
+            }
+            //go to first inventory page
+            if (hsColor == INV_SCROLL_UP_CODE)
+            {
+                inventory.page = 0;
+                inventory.refresh = true;
+                //set flag for highlight button
+                hud.selUpButton = true;
+            }
+        }
+    }
+    else
+    {
+        //INVENTORY BUTTONS REGION
+
+        //gets the object name
+        if (get_inv_obj_id(get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
+            //don't allow use object on same object
+            strcpy(cursor.objectName, "");
+        else
+            get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
+            
+        //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
+        if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
+        {
+            //check if click USE verb on inventory object
+            if (cursor.selectedVerb == USE)
+            {
+                //sets USE_WITH verb
+                cursor.selectedVerb = USE_WITH;
+                //sets inventory object name verb
+                strcpy(cursor.invObjName, cursor.objectName);
+                //sets inventory id
+                cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
+            }
+            else
+            {
+                //if no previous action/object selected
+                if (!roomScript.active)
+                {
+                    //saves the room vars to start script sequence
+                    roomScript.active = true;
+                    roomScript.invScript = true;
+                    roomScript.object = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
+                    roomScript.verb = cursor.selectedVerb;
+                    roomScript.hsX = mouse_x;
+                    roomScript.hsY = mouse_y;
+                }
+            }
+        }
+    }
+
+    //debug
+    show_debug("Color", hsColor);
+}
+
+//function that handles action of cursor on menu
+void cursor_action_menu()
+{
+    //obtains the hotspot gui color (coords relative to gui base image)
+    uint8_t hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
+
+    //if mouse click
+    if (cursor.click)
+    {
+        //obtain normalized x value from sliders
+        fixed norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+
+        //check hotspot color
+        switch (hsColor)
+        {
+            case GUI_SLIDER_1_COLOR:
+                gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
+                break;
+            case GUI_SLIDER_2_COLOR:
+                gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
+                break;
+            case GUI_SLIDER_3_COLOR:
+                gameConfig.musicVolume = scale_x(norm_value, 0, 255);
+                break;
+            case GUI_SLIDER_4_COLOR:
+                gameConfig.soundVolume = scale_x(norm_value, 0, 255);
+                break;    
+            default:
+                //if color is valid for main gui buttons
+                if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
+                    //change gui state
+                    gui.state = (hsColor - GUI_COLOR_OFFSET);
+                break;
+        }
+    }
+
+    //debug
+    show_debug("Color", hsColor);
+}
+
+//funcion that handles action of cursor on room
+void cursor_action_room()
+{
+    //obtains the hotspot room color
+    uint8_t hsColor = getpixel(room[game.actualRoom].hsImage, mouse_x, mouse_y);
+
+    //gets the object name
+    room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
+
+    //check right click action on room (evaluated before the left click)
+    if (cursor.rightClick)
+    {
+        //if valid object, get default object verb
+        if (cursor.objectName[0] != '\0')
+            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
+        else
+            //otherwise, select go verb
+            cursor.selectedVerb = GO;
+    }
+
+    //if cursor click on valid object or double click with GO verb or rightClick (default verb assigned)
+    if ((cursor.click || cursor.dblClick || cursor.rightClick) && (cursor.objectName[0] != '\0' || cursor.selectedVerb == GO))
+    {
+        //if no previous action/object selected
+        if (!roomScript.active)
+        {
+            //saves the room vars to start script sequence
+            roomScript.active = true;
+            roomScript.invScript = false;
+            roomScript.object = hsColor;
+            roomScript.verb = cursor.selectedVerb;
+            roomScript.invObject = cursor.invObject;
+            roomScript.hsX = mouse_x;
+            roomScript.hsY = mouse_y;
+
+            //change player look dir
+            if (roomScript.hsX < fixtoi(player.x))
+                change_player_dir(DIR_LEFT);
+            else
+                change_player_dir(DIR_RIGHT);
+        }
+    }
+
+    //debug
+    show_debug("Color", hsColor);
 }
 
 //draws debug info

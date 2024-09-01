@@ -272,19 +272,27 @@ void game_load();
 void game_keys_handler();
 
 void cursor_init();
-void tick_init();
-void debug_init();
-void tick_update();
 void cursor_button_handler();
 void cursor_update();
+void cursor_draw();
+void cursor_action_room();
+void cursor_action_HUD();
+void cursor_action_menu();
+
+void tick_init();
+void tick_update();
+
 void check_room_changed();
 void room_action_update();
 void room_draw();
 void room_front_draw();
+
 void hud_draw();
 void status_bar_draw();
-void cursor_draw();
+
+void debug_init();
 void debug_draw();
+
 void msg_init();
 void msg_update();
 void msg_draw();

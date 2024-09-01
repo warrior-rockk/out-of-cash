@@ -17,12 +17,12 @@
 - [X] Game update (first iteration)
 - [X] Player?
 - [ ] Control song playing / room transition / song continues
-- [ ] Game GUI
+- [X] Game GUI
 - [X] Save / Load (first iteration)
-- [ ] Game Config
+- [X] Game Config
 - [X] Fix ints for movement
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
-- [ ] Animation system
+- [X] Animation system
 - [ ] Talk system
 - [X] Place text talk on character
 - [X] Multi-line text (char 10 = \n)
@@ -36,7 +36,7 @@ position but can be overwritten by change_room start position
 - [X] Default right click action
 - [X] Room objects
 - [X] Inventory
-- [ ] Refactor code (separate cursor update function)
+- [X] Refactor code (separate cursor update function)
 - [X] Flip on walk and look objects
 - [X] Rethink object room array index for better identification (maybe defines for object
 array indexes and change get_object_name using this defines...)
