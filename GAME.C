@@ -219,6 +219,7 @@ void load_resources()
     gui.hsImageExit         = load_bmp("res/gui/guiExHs.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
     gui.hsImageOptions      = load_bmp("res/gui/gui-optH.bmp",NULL);
     gui.hsImageSave         = load_bmp("res/gui/gui-svHs.bmp",NULL);
+    gui.hsImageLoad         = load_bmp("res/gui/gui-ldHs.bmp",NULL);
     
     cursor.image            = (BITMAP *)dataFile[dCursor].dat;
 
@@ -496,13 +497,16 @@ void game_save(uint8_t slot)
 }
 
 //function to load game
-void game_load()
+void game_load(uint8_t slot)
 {
     FILE* loadFile;
     struct savegame savegame;
-    
+    char filename[13];
+
+    //compose filenae
+    sprintf(filename, "savegame.00%i", slot + 1);
     //open savegame file
-    loadFile = fopen("savegame.001", "r");
+    loadFile = fopen(filename, "r");
     if (loadFile == NULL)
         abort_on_error("No se puede abrir el archivo de guardado");
 
@@ -834,10 +838,14 @@ void cursor_action_menu()
             case GUI_SLIDER_4_COLOR:
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
                 break;    
+            case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
+                gui.state = GUI_MAIN_STATE;
+                game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
+                break;
             case GUI_SAVE_SLOT_1_COLOR ... GUI_SAVE_SLOT_5_COLOR:
                 game.state = PLAYING_STATE;
                 gui_init();
-                game_save(hsColor - 40);
+                game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
                 break;
             default:
                 //if color is valid for main gui buttons
@@ -1195,13 +1203,10 @@ void gui_update()
     switch (gui.state)
     {
         case GUI_LOAD_STATE:
-            gui.state = GUI_MAIN_STATE;
-            game_load();
+            //draw hotspot state zone
+            draw_sprite(gui.hsImage, gui.hsImageLoad, GUI_CONTENT_X, GUI_CONTENT_Y);
             break;
         case GUI_SAVE_STATE:
-            //game.state = PLAYING_STATE;
-            //gui_init();
-            //game_save();
             //draw hotspot state zone
             draw_sprite(gui.hsImage, gui.hsImageSave, GUI_CONTENT_X, GUI_CONTENT_Y);
             break;
@@ -1234,13 +1239,19 @@ void gui_draw()
     {
         case GUI_LOAD_STATE:
             //draw gui contents
-            //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            for (int i = 0; i < SAVEGAME_SLOTS; i++)
+            {
+                //draw text position
+                textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%i- ", i + 1);
+                //draw savegame text if exists
+                if (game_save_exists(i))
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "SAVEGAME");
+            }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_SAVE_STATE:
             //draw gui contents
-            //draw_sprite(buffer, gui.hsImageSave, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
                 //draw text position

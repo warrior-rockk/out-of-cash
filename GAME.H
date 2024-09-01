@@ -70,6 +70,11 @@
 #define GUI_SAVE_SLOT_3_COLOR   42
 #define GUI_SAVE_SLOT_4_COLOR   43
 #define GUI_SAVE_SLOT_5_COLOR   44
+#define GUI_LOAD_SLOT_1_COLOR   50
+#define GUI_LOAD_SLOT_2_COLOR   51
+#define GUI_LOAD_SLOT_3_COLOR   52
+#define GUI_LOAD_SLOT_4_COLOR   53
+#define GUI_LOAD_SLOT_5_COLOR   54
 #define GUI_SAVE_SLOTS_X        5
 #define GUI_SAVE_SLOTS_Y        13
 #define GUI_SAVE_SLOTS_SPACING  21
@@ -212,6 +217,7 @@ struct gui
     BITMAP *hsImageOptions;
     BITMAP *hsImageExit;
     BITMAP *hsImageSave;
+    BITMAP *hsImageLoad;
     //gui position
     int x;
     int y;
@@ -296,7 +302,7 @@ void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
 void game_save(uint8_t slot);
 bool game_save_exists(uint8_t slot);
-void game_load();
+void game_load(uint8_t slot);
 void game_keys_handler();
 
 void cursor_init();
