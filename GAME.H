@@ -253,6 +253,8 @@ struct cursor
     bool memRightClick;
     bool memDblClick;
     bool evalueDblClick;
+    bool clicking;
+    bool rightClicking;
 } cursor;
 
 //keys struct

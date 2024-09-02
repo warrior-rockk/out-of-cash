@@ -677,7 +677,7 @@ void cursor_button_handler()
             cursor.dblClickTimer += gameTick;
     }
 
-    //handles rigth button click
+    //handles left button click
     cursor.click = false;
     if ((mouse_b & 1) && !cursor.memClick && !cursor.dblClick)
     {
@@ -692,7 +692,7 @@ void cursor_button_handler()
         cursor.memDblClick = false;
     }
     
-    //handles left button click
+    //handles right button click
     cursor.rightClick = 0;
     if ((mouse_b & 2) && !cursor.memRightClick)
     {
@@ -701,6 +701,10 @@ void cursor_button_handler()
     }
     if (!(mouse_b & 2))
         cursor.memRightClick = false;
+
+    //handles cursor clicking
+    cursor.clicking         = mouse_b & 1;
+    cursor.rightClicking    = mouse_b & 2;
 }
 
 //updates function for cursor. Do call for click handler and check cursor actions
@@ -850,7 +854,7 @@ void cursor_action_HUD()
 //function that handles action of cursor on menu
 void cursor_action_menu()
 {
-    //dummy variable for use save_game_exists
+    //dummy variable for char pointer used on save_game_exists
     char dummy[SAVEGAME_DATE_CHARS];
     
     //obtains the hotspot gui color (coords relative to gui base image)
@@ -866,19 +870,19 @@ void cursor_action_menu()
     switch (hsColor)
     {
         case GUI_SLIDER_1_COLOR:
-            if (mouse_b & 1)
+            if (cursor.clicking)
                 gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
             break;
         case GUI_SLIDER_2_COLOR:
-            if (mouse_b & 1)
+            if (cursor.clicking)
                 gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
             break;
         case GUI_SLIDER_3_COLOR:
-            if (mouse_b & 1)
+            if (cursor.clicking)
                 gameConfig.musicVolume = scale_x(norm_value, 0, 255);
             break;
         case GUI_SLIDER_4_COLOR:
-            if (mouse_b & 1)
+            if (cursor.clicking)
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
@@ -887,6 +891,7 @@ void cursor_action_menu()
 
             if (cursor.click && game_save_exists(gui.slotSel - 1, dummy))
             {
+                //load game slot
                 gui.state = GUI_MAIN_STATE;
                 game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
             }
@@ -897,6 +902,7 @@ void cursor_action_menu()
             
             if (cursor.click)
             {
+                //save game slot
                 game.state = PLAYING_STATE;
                 gui_init();
                 game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
@@ -912,7 +918,6 @@ void cursor_action_menu()
             }
             break;
     }
-
 
     //debug
     show_debug("Color", hsColor);
