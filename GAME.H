@@ -80,6 +80,7 @@
 #define GUI_SLOTS_Y             13
 #define GUI_SLOTS_SEL_Y         9
 #define GUI_SLOTS_Y_SPACING     21
+#define GUI_SEL_SLOT_TEXT_COLOR 179
 
 //Text
 #define SAY_X                   RES_X / 2

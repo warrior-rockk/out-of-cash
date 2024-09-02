@@ -850,6 +850,7 @@ void cursor_action_HUD()
 //function that handles action of cursor on menu
 void cursor_action_menu()
 {
+    //dummy variable for use save_game_exists
     char dummy[SAVEGAME_DATE_CHARS];
     
     //obtains the hotspot gui color (coords relative to gui base image)
@@ -1307,7 +1308,7 @@ void gui_draw()
                     //draw slot selection
                     draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
                     //draw savegame text (dark)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(0,0,0), -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
                 }
                 else
                     //draw savegame text (bright)
@@ -1327,7 +1328,7 @@ void gui_draw()
                     //draw slot selection
                     draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
                     //draw savegame text (dark)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(0,0,0), -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
                 }
                 else
                     //draw savegame text (bright)

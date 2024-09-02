@@ -60,3 +60,5 @@ internal grabber number def
 - [X] Bug: player talks on pause
 - [X] Player: improve state-animation system and external state change
 - [ ] Bug: player walks slow on game start?
+- [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
+- [ ] Separate gui on header / .c?
