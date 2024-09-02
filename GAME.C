@@ -221,7 +221,8 @@ void load_resources()
     gui.hsImageOptions      = load_bmp("res/gui/gui-optH.bmp",NULL);
     gui.hsImageSave         = load_bmp("res/gui/gui-svHs.bmp",NULL);
     gui.hsImageLoad         = load_bmp("res/gui/gui-ldHs.bmp",NULL);
-    
+    gui.imageSlotSel        = load_bmp("res/gui/gui-sel.bmp",NULL);
+
     cursor.image            = (BITMAP *)dataFile[dCursor].dat;
 
     //loads room resources
@@ -458,7 +459,7 @@ bool game_save_exists(uint8_t slot, char *s)
     saveFile = fopen(filename, "r");
     if (!saveFile)
     {
-        //strcpy(s, "uno");
+        strcpy(s, "\0");
         return false;
     }
     else
@@ -468,7 +469,7 @@ bool game_save_exists(uint8_t slot, char *s)
         {
             //closes file
             fclose(saveFile);
-            //strcpy(s, "dos");
+            strcpy(s, "\0");
             return false;
         }
         
@@ -477,7 +478,7 @@ bool game_save_exists(uint8_t slot, char *s)
         {
             //closes file
             fclose(saveFile);
-            //strcpy(s, "tres");
+            strcpy(s, "\0");
             return false;
         }
         
@@ -849,47 +850,68 @@ void cursor_action_HUD()
 //function that handles action of cursor on menu
 void cursor_action_menu()
 {
+    char dummy[SAVEGAME_DATE_CHARS];
+    
     //obtains the hotspot gui color (coords relative to gui base image)
     uint8_t hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
 
-    //if mouse click
-    if (cursor.click)
-    {
-        //obtain normalized x value from sliders
-        fixed norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
+    //obtain normalized x value from sliders
+    fixed norm_value = norm_x((mouse_x - gui.x), GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
 
-        //check hotspot color
-        switch (hsColor)
-        {
-            case GUI_SLIDER_1_COLOR:
+    //reset gui slot selection
+    gui.slotSel = 0;
+    
+    //check hotspot color
+    switch (hsColor)
+    {
+        case GUI_SLIDER_1_COLOR:
+            if (mouse_b & 1)
                 gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
-                break;
-            case GUI_SLIDER_2_COLOR:
+            break;
+        case GUI_SLIDER_2_COLOR:
+            if (mouse_b & 1)
                 gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
-                break;
-            case GUI_SLIDER_3_COLOR:
+            break;
+        case GUI_SLIDER_3_COLOR:
+            if (mouse_b & 1)
                 gameConfig.musicVolume = scale_x(norm_value, 0, 255);
-                break;
-            case GUI_SLIDER_4_COLOR:
+            break;
+        case GUI_SLIDER_4_COLOR:
+            if (mouse_b & 1)
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
-                break;    
-            case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
+            break;    
+        case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
+            //get slot selected
+            gui.slotSel = (hsColor - GUI_LOAD_SLOT_1_COLOR) + 1;
+
+            if (cursor.click && game_save_exists(gui.slotSel - 1, dummy))
+            {
                 gui.state = GUI_MAIN_STATE;
                 game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
-                break;
-            case GUI_SAVE_SLOT_1_COLOR ... GUI_SAVE_SLOT_5_COLOR:
+            }
+            break;
+        case GUI_SAVE_SLOT_1_COLOR ... GUI_SAVE_SLOT_5_COLOR:
+            //get slot selected
+            gui.slotSel = (hsColor - GUI_SAVE_SLOT_1_COLOR) + 1;
+            
+            if (cursor.click)
+            {
                 game.state = PLAYING_STATE;
                 gui_init();
                 game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
-                break;
-            default:
+            }
+            break;
+        default:
+            if (cursor.click)
+            {
                 //if color is valid for main gui buttons
                 if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
                     //change gui state
                     gui.state = (hsColor - GUI_COLOR_OFFSET);
-                break;
-        }
+            }
+            break;
     }
+
 
     //debug
     show_debug("Color", hsColor);
@@ -1275,14 +1297,21 @@ void gui_draw()
     switch (gui.state)
     {
         case GUI_LOAD_STATE:
-            //draw gui contents
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
-                //draw savegame text if exists
-                if (game_save_exists(i, saveDate))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
+                //check savegame file
+                game_save_exists(i, saveDate);
+
+                if (gui.slotSel == (i + 1))
+                {
+                    //draw slot selection
+                    draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
+                    //draw savegame text (dark)
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(0,0,0), -1, "%i.%s", i + 1, saveDate);
+                }
                 else
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.", i + 1);
+                    //draw savegame text (bright)
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
@@ -1290,11 +1319,19 @@ void gui_draw()
         case GUI_SAVE_STATE:
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
-                //draw savegame text if exists
-                if (game_save_exists(i, saveDate))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
+                //check savegame file
+                game_save_exists(i, saveDate);
+
+                if (gui.slotSel == (i + 1))
+                {
+                    //draw slot selection
+                    draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
+                    //draw savegame text (dark)
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(0,0,0), -1, "%i.%s", i + 1, saveDate);
+                }
                 else
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.", i + 1);
+                    //draw savegame text (bright)
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_SaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));

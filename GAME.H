@@ -78,6 +78,7 @@
 #define GUI_LOAD_SLOT_5_COLOR   54
 #define GUI_SLOTS_X             2
 #define GUI_SLOTS_Y             13
+#define GUI_SLOTS_SEL_Y         9
 #define GUI_SLOTS_Y_SPACING     21
 
 //Text
@@ -219,11 +220,13 @@ struct gui
     BITMAP *hsImageExit;
     BITMAP *hsImageSave;
     BITMAP *hsImageLoad;
+    BITMAP *imageSlotSel;
     //gui position
     int x;
     int y;
     //gui state
-    int state;
+    uint8_t state;
+    uint8_t slotSel;
 } gui;
 
 //cursor structure
