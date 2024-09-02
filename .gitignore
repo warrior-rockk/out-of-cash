@@ -2,3 +2,4 @@
 *.O
 .DS_Store
 .vscode
+SAVEGAME.*
