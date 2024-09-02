@@ -17,7 +17,7 @@
 #define MAX_GAME_FLAGS          32
 #define SAVEGAME_FILE_VERSION   1
 #define SAVEGAME_SLOTS          5
-#define SAVEGAME_DATE_CHARS     17
+#define SAVEGAME_DATE_CHARS     20      //19 chars + zero terminator
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
@@ -76,9 +76,9 @@
 #define GUI_LOAD_SLOT_3_COLOR   52
 #define GUI_LOAD_SLOT_4_COLOR   53
 #define GUI_LOAD_SLOT_5_COLOR   54
-#define GUI_SAVE_SLOTS_X        5
-#define GUI_SAVE_SLOTS_Y        13
-#define GUI_SAVE_SLOTS_SPACING  21
+#define GUI_SLOTS_X             2
+#define GUI_SLOTS_Y             13
+#define GUI_SLOTS_Y_SPACING     21
 
 //Text
 #define SAY_X                   RES_X / 2
@@ -266,7 +266,7 @@ struct gameKeys{
 struct savegame
 {
     uint8_t version;
-    char saveDate[25];
+    char saveDate[SAVEGAME_DATE_CHARS];
     struct gameConfig gameConfigData;
     struct game gameData;
     struct inventory invData;

@@ -458,7 +458,7 @@ bool game_save_exists(uint8_t slot, char *s)
     saveFile = fopen(filename, "r");
     if (!saveFile)
     {
-        strcpy(s, "uno");
+        //strcpy(s, "uno");
         return false;
     }
     else
@@ -468,7 +468,7 @@ bool game_save_exists(uint8_t slot, char *s)
         {
             //closes file
             fclose(saveFile);
-            strcpy(s, filename);
+            //strcpy(s, "dos");
             return false;
         }
         
@@ -477,12 +477,13 @@ bool game_save_exists(uint8_t slot, char *s)
         {
             //closes file
             fclose(saveFile);
-            strcpy(s, "tres");
+            //strcpy(s, "tres");
             return false;
         }
         
         //copies saved data of the file
-        strcpy(s, "cosa");
+        strcpy(s, savegame.saveDate);
+        fclose(saveFile);
         return true;
     }
 }
@@ -1266,23 +1267,22 @@ void gui_update()
 //function to draw the gui
 void gui_draw()
 {
+    char saveDate[SAVEGAME_DATE_CHARS];
+    
     //draw main gui on center of screen
     draw_sprite(buffer, gui.image, gui.x, gui.y);
 
-    char saveDate[SAVEGAME_DATE_CHARS];
     switch (gui.state)
     {
         case GUI_LOAD_STATE:
             //draw gui contents
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
-                //draw text position
-                textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%i- ", i + 1);
                 //draw savegame text if exists
                 if (game_save_exists(i, saveDate))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
                 else
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "---------");    
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.", i + 1);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
@@ -1290,13 +1290,11 @@ void gui_draw()
         case GUI_SAVE_STATE:
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
             {
-                //draw text position
-                textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%i- ", i + 1);
                 //draw savegame text if exists
                 if (game_save_exists(i, saveDate))
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
                 else
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SAVE_SLOTS_X + 20, gui.y + GUI_CONTENT_Y + GUI_SAVE_SLOTS_Y + (GUI_SAVE_SLOTS_SPACING * i), makecol(255,255,255), -1, "%s", saveDate);
+                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.", i + 1);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_SaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));

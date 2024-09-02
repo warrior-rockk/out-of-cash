@@ -65,6 +65,6 @@ void get_actual_date(char *s)
 
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-    sprintf(s,"%02d/%02d/%02d %02d:%02d:%02d", timeinfo->tm_mday, (timeinfo->tm_mon + 1), timeinfo->tm_year,
+    sprintf(s,"%02d/%02d/%d %02d:%02d:%02d", timeinfo->tm_mday, (timeinfo->tm_mon + 1), (1900 + timeinfo->tm_year),
                                    timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 }
