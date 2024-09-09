@@ -148,6 +148,7 @@ struct game
     enum gameState state;
     int actualRoom;
     int lastRoom;
+    bool roomLoaded;
     //enter room position assigned by change_room_pos()
     int room_pos_x;
     int room_pos_y;

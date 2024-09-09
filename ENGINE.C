@@ -172,6 +172,7 @@ void change_room(int roomNum)
 {
     game_fade_out();
     game.actualRoom = roomNum;
+    game.roomLoaded = false;
 }
 
 //function to change the actual room and set player position on new room

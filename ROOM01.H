@@ -2,7 +2,7 @@
 #define H_ROOM01
 
 #include <allegro.h>
-#include "objects.h"
+#include "R01DATA.H"
 #include "anim.h"
 
 #define R01_ROOM_NUM_OBJS   3
@@ -24,17 +24,17 @@ enum r01_hotspotCode{
 //declare room objects data
 static tObject r01_object[R01_ROOM_NUM_OBJS] =
 {
-    [R01_CASSETTE_OBJ_ID].objId = dObjCassette,
+    [R01_CASSETTE_OBJ_ID].objId = r01d_objCassette,
     [R01_CASSETTE_OBJ_ID].x = 279,
     [R01_CASSETTE_OBJ_ID].y = 89,
     [R01_CASSETTE_OBJ_ID].active = true,
 
-    [R01_GUITAR_OBJ_ID].objId = dObjGuitar,
+    [R01_GUITAR_OBJ_ID].objId = r01d_objGuitar,
     [R01_GUITAR_OBJ_ID].x = 100,
     [R01_GUITAR_OBJ_ID].y = 50,
     [R01_GUITAR_OBJ_ID].active = true,
 
-    [R01_STEREO_OBJ_ID].objId = dObjStereo01,
+    [R01_STEREO_OBJ_ID].objId = r01d_objStereo01,
     [R01_STEREO_OBJ_ID].x = 282,
     [R01_STEREO_OBJ_ID].y = 56,
     [R01_STEREO_OBJ_ID].active = false

@@ -3,6 +3,7 @@
 
 //include resources headers for simbolic use
 #include "PDATA.H"
+#include "R01DATA.H"
 
 //player animations
 #define ANIM_PLY_IDLE       pd_plyIdle,     pd_plyIdle,     1, ANIM_ONCE
@@ -11,6 +12,6 @@
 #define ANIM_PLY_TAKE       pd_plyTake,     pd_plyTake,     5, ANIM_ONCE
 
 //object animations
-#define ANIM_PLAY_STEREO    6, 9, 2, ANIM_LOOP
+#define ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo04, 2, ANIM_LOOP
 
 #endif  //H_ANIMS

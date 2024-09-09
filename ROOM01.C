@@ -81,7 +81,7 @@ void r01_room_update()
     if (r01_object[R01_STEREO_OBJ_ID].active)
         play_animation(&r01_stereo_anim, ANIM_PLAY_STEREO);
     else
-        r01_stereo_anim.frame = dObjStereo01;
+        r01_stereo_anim.frame = r01d_objStereo01;
     r01_object[R01_STEREO_OBJ_ID].objId = r01_stereo_anim.frame;
     
     //script update

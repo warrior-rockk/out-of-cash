@@ -13,7 +13,6 @@
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
-#include "objects.h"
 #include "gui.h"
 
 int main()
@@ -190,11 +189,13 @@ void game_load_resources()
 
     //TO-DO: objects on room file and gui on game datafile
     //====
+    /*
     //loads objects data file
     objectsDataFile = load_datafile("objects.dat");
     if (!objectsDataFile)
         abort_on_error("Archivo objects.dat invalido o inexistente");
-
+    */
+    
     //loads gui data file
     guiDataFile = load_datafile("gui.dat");
     if (!guiDataFile)
@@ -204,10 +205,6 @@ void game_load_resources()
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
-
-
-
-
 }
 
 //function to init game
@@ -222,13 +219,12 @@ void game_init()
     //init game vars
     game.actualRoom     = 0;
     game.lastRoom       = -1;     //to force first room_init
+    game.roomLoaded     = false;
     game.room_pos_x     = 0;
     game.room_pos_y     = 0;
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
-
-
     
     //call init game modules
     cursor_init();
@@ -1131,31 +1127,37 @@ void room_load(uint8_t roomNumber)
     actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
     actualRoom.fImage  = (BITMAP *)actualRoom.dataFile[3].dat;
     actualRoom.song    = (MIDI *)actualRoom.dataFile[4].dat;
+
+    //set room loaded flag
+    game.roomLoaded = true;
 }
 
 //draws the actual room to buffer
 void room_draw()
 {
-    //draw room image
-    blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
-    
-    //draw room objects
-    tObject *obj;
-    BITMAP *objImage;
-    for (int i = 0; i < roomData[game.actualRoom].room_num_objects; i++)
+    if (game.roomLoaded)
     {
-        //get pointer to object structure
-        obj = roomData[game.actualRoom].room_get_object_info(i);
-        //check null pointer
-        if (obj == NULL)
-            abort_on_error("Error accediendo a indice de objecto no existente");
-        //check object active
-        else if (obj->active)
+        //draw room image
+        blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
+    
+        //draw room objects
+        tObject *obj;
+        BITMAP *objImage;
+        for (int i = 0; i < roomData[game.actualRoom].room_num_objects; i++)
         {
-            //get pointer to bitmap object
-            objImage = (BITMAP *)objectsDataFile[obj->objId].dat;
-            //draw the object
-            draw_sprite(buffer, objImage, obj->x-(objImage->w>>1), obj->y - (objImage->h>>1));
+            //get pointer to object structure
+            obj = roomData[game.actualRoom].room_get_object_info(i);
+            //check null pointer
+            if (obj == NULL)
+                abort_on_error("Error accediendo a indice de objecto no existente");
+            //check object active
+            else if (obj->active)
+            {
+                //get pointer to bitmap object
+                objImage = (BITMAP *)actualRoom.dataFile[obj->objId].dat;
+                //draw the object
+                draw_sprite(buffer, objImage, obj->x-(objImage->w>>1), obj->y - (objImage->h>>1));
+            }
         }
     }
 }
@@ -1163,7 +1165,7 @@ void room_draw()
 //draws the actual room front layer to buffer
 void room_front_draw()
 {
-    if (actualRoom.fImage != NULL)
+    if (actualRoom.fImage != NULL && game.roomLoaded)
         masked_blit(actualRoom.fImage, buffer, 0, 0, 0, 0, actualRoom.fImage->w, actualRoom.fImage->h);
 }
 
