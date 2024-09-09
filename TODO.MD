@@ -1,12 +1,29 @@
 # TO-DO
 
+- [ ] BUG: inventory object spotted on status bar
+- [ ] Pass front layer to objects
+- [ ] Separate grabber file data.h. The name was temporaly.
+- [ ] Structure game resources
+- [ ] Iterate On-screen debug system (multiple vars)
+- [ ] Control song playing / room transition / song continues
+- [ ] Headers reestructuration (prevent circular includes) and improve engine structure
+- [ ] Talk system
+- [ ] Real A* Pathfinding?
+- [ ] Room definition/script tool
+- [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
+multiple scripts?
+- [ ] Separate renderer
+- [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
+internal grabber number def
+- [ ] BUG: player walks slow on game start?
+- [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
+- [ ] Separate gui on header / .c?
 - [X] Fix msg duration consistency
 - [X] Highlight default verbs
 - [X] Iterate verb selection
 - [X] Game state / game loop (second iteration)
 - [X] Room enter / room init events
 - [X] On-screen debug system
-- [ ] Iterate On-screen debug system (multiple vars)
 - [X] Fix on exit error
 - [X] Handle game errors
 - [X] Use fades for transitions
@@ -16,19 +33,15 @@
 - [X] Game struct
 - [X] Game update (first iteration)
 - [X] Player?
-- [ ] Control song playing / room transition / song continues
 - [X] Game GUI
 - [X] Save / Load (first iteration)
 - [X] Game Config
 - [X] Fix ints for movement
-- [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [X] Animation system
-- [ ] Talk system
 - [X] Place text talk on character
 - [X] Multi-line text (char 10 = \n)
 - [X] Player scale map (first iteration)
 - [X] Temporaly? collision map (fix blockings)
-- [ ] Real A* Pathfinding?
 - [X] Init room position and dynamic position based on previous room (room has default start
 position but can be overwritten by change_room start position
 - [X] Room draw layers (sustitute bitmap to objects to save memory?
@@ -40,17 +53,10 @@ position but can be overwritten by change_room start position
 - [X] Flip on walk and look objects
 - [X] Rethink object room array index for better identification (maybe defines for object
 array indexes and change get_object_name using this defines...)
-- [ ] Room definition/script tool
 - [X] Game flags system
 - [X] Move_player_to_target()
 - [X] Get Object function generic
 - [X] Talk wait
-- [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
-multiple scripts?
-- [ ] Separate renderer
-- [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
-internal grabber number def
-- [ ] Separate grabber file data.h. The name was temporaly
 - [X] Define DEBUGMODE on 1 file. Passed on compiler options -DDEBUGMODE
 - [X] Bug: right click on default verb don't work on first
 - [X] Bug: verb on inventary: incorrect index
@@ -59,6 +65,3 @@ internal grabber number def
 - [X] Player: change state bools with general state var
 - [X] Bug: player talks on pause
 - [X] Player: improve state-animation system and external state change
-- [ ] Bug: player walks slow on game start?
-- [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
-- [ ] Separate gui on header / .c?

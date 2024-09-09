@@ -6,17 +6,16 @@
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
+#include "rooms.h"
 #include "inventor.h"
 #include "player.h"
 #include "utils.h"
 //game data resources
-#include "data.h"
+#include "GDATA.H"
+#include "IDATA.H"
 #include "ego.h"
 #include "objects.h"
 #include "gui.h"
-//includes all rooms
-#include "room01.h"
-#include "room02.h"
 
 int main()
 {
@@ -50,7 +49,7 @@ int main()
                 //update calls
                 game_update();
                 msg_update();
-                room[game.actualRoom].room_update();
+                roomData[game.actualRoom].room_update();
                 inventory_update();
                 room_action_update();
                 cursor_update();
@@ -127,8 +126,8 @@ void main_init()
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
 
-    //load resources
-    load_resources();
+    //load game resources
+    game_load_resources();
 
     //set game initial state
     game.state = TITLE_STATE;
@@ -172,94 +171,80 @@ void incTick(void)
 }
 END_OF_FUNCTION(incTick);
 
-//function to load resources from dat file
-void load_resources()
+//function to load game resources
+void game_load_resources()
 {
-    //loads data file
-    dataFile = load_datafile("data.dat");
-    if (!dataFile)
-        abort_on_error("Archivo data.dat invalido o inexistente");
+    //loads game main data file
+    gameDataFile = load_datafile("GDATA.DAT");
+    if (!gameDataFile)
+        abort_on_error("Archivo GDATA.DAT invalido o inexistente");
+
     //loads player data file
     playerDataFile = load_datafile("ego.dat");
     if (!playerDataFile)
         abort_on_error("Archivo ego.dat invalido o inexistente");
+
+    //loads inventory data file
+    inventoryDataFile = load_datafile("IDATA.DAT");
+    if (!inventoryDataFile)
+        abort_on_error("Archivo IDATA.DAT invalido o inexistente");
+
+
+    //TO-DO: objects on room file and gui on game datafile
+    //====
     //loads objects data file
     objectsDataFile = load_datafile("objects.dat");
     if (!objectsDataFile)
         abort_on_error("Archivo objects.dat invalido o inexistente");
-    //loads inventory data file
-    inventoryDataFile = load_datafile("inv.dat");
-    if (!inventoryDataFile)
-        abort_on_error("Archivo inv.dat invalido o inexistente");
+
     //loads gui data file
     guiDataFile = load_datafile("gui.dat");
     if (!guiDataFile)
         abort_on_error("Archivo gui.dat invalido o inexistente");
+    //====
         
-    //sets and get the palette
-    set_palette((RGB*)dataFile[dGamePal].dat);
+    //sets and get the game palette
+    set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
 
-    //loads game resources
-    hud.image               = (BITMAP *)dataFile[dHud].dat;
-    hud.hsImage             = (BITMAP *)dataFile[dHudhs].dat;
-    hud.verbSelImage[GO]    = (BITMAP *)dataFile[dHudGoSel].dat;
-    hud.verbSelImage[TAKE]  = (BITMAP *)dataFile[dHudTakeSel].dat;
-    hud.verbSelImage[MOVE]  = (BITMAP *)dataFile[dHudMoveSel].dat;
-    hud.verbSelImage[LOOK]  = (BITMAP *)dataFile[dHudLookSel].dat;
-    hud.verbSelImage[USE]   = (BITMAP *)dataFile[dHudUseSel].dat;
-    hud.verbSelImage[GIVE]  = (BITMAP *)dataFile[dHudGiveSel].dat;
-    hud.verbSelImage[OPEN]  = (BITMAP *)dataFile[dHudOpenSel].dat;
-    hud.verbSelImage[CLOSE] = (BITMAP *)dataFile[dHudCloseSel].dat;
-    hud.verbSelImage[TALK]  = (BITMAP *)dataFile[dHudTalkSel].dat;
-
-    gui.image               = (BITMAP *)guiDataFile[dGui_Main].dat;
-    //FIX: update datafile with guih.bmp
-    gui.hsImageMain         = load_bmp("res/gui/guih.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
-    gui.hsImage             = gui.hsImageMain;
-    gui.hsImageExit         = load_bmp("res/gui/guiExHs.bmp", NULL); //(BITMAP *)guiDataFile[dGui_MainHs].dat;
-    gui.hsImageOptions      = load_bmp("res/gui/gui-optH.bmp",NULL);
-    gui.hsImageSave         = load_bmp("res/gui/gui-svHs.bmp",NULL);
-    gui.hsImageLoad         = load_bmp("res/gui/gui-ldHs.bmp",NULL);
-    gui.imageSlotSel        = load_bmp("res/gui/gui-sel.bmp",NULL);
-
-    cursor.image            = (BITMAP *)dataFile[dCursor].dat;
-
-    //loads room resources
-    room[0].image      = (BITMAP *)dataFile[dRoom01].dat;
-    room[0].hsImage    = (BITMAP *)dataFile[dRoom01hs].dat;
-    room[0].wImage     = (BITMAP *)dataFile[dRoom01w].dat;
-    room[0].fImage     = (BITMAP *)dataFile[dRoom01f].dat;
-    room[0].song       = (MIDI *)dataFile[dSong01].dat;
-    room[1].image      = (BITMAP *)dataFile[dRoom02].dat;
-    room[1].hsImage    = (BITMAP *)dataFile[dRoom02hs].dat;
-    room[1].song       = (MIDI *)dataFile[dSong01].dat;
-    room[1].wImage     = (BITMAP *)dataFile[dRoom02w].dat;
-    room[1].fImage     = NULL; //(BITMAP *)dataFile[dRoom01f].dat;
-
-    //room start positions
-    room[0].start_pos_x = 170;
-    room[0].start_pos_y = 100;
-    room[1].start_pos_x = 179;
-    room[1].start_pos_y = 117;
+    //set images to game objects
+    cursor.image            = (BITMAP *)gameDataFile[gd_cursor].dat;
     
-    //assign room function pointers
-    room[0].room_get_hotspot_name = &r01_get_hotspot_name;
-    room[0].room_get_default_hotspot_verb = &r01_get_default_hotspot_verb;
-    //room[0].room_get_num_objects = &r01_get_num_room_objects;
-    room[0].room_num_objects = R01_ROOM_NUM_OBJS;
-    room[0].room_get_object_info = &r01_get_object_info;
-    room[0].room_init = &r01_room_init;
-    room[0].room_update = &r01_room_update;
+    hud.image               = (BITMAP *)gameDataFile[gd_hud].dat;
+    hud.hsImage             = (BITMAP *)gameDataFile[gd_hudhs].dat;
+    hud.verbSelImage[GO]    = (BITMAP *)gameDataFile[gd_hudGoSel].dat;
+    hud.verbSelImage[TAKE]  = (BITMAP *)gameDataFile[gd_hudTakeSel].dat;
+    hud.verbSelImage[MOVE]  = (BITMAP *)gameDataFile[gd_hudMoveSel].dat;
+    hud.verbSelImage[LOOK]  = (BITMAP *)gameDataFile[gd_hudLookSel].dat;
+    hud.verbSelImage[USE]   = (BITMAP *)gameDataFile[gd_hudUseSel].dat;
+    hud.verbSelImage[GIVE]  = (BITMAP *)gameDataFile[gd_hudGiveSel].dat;
+    hud.verbSelImage[OPEN]  = (BITMAP *)gameDataFile[gd_hudOpenSel].dat;
+    hud.verbSelImage[CLOSE] = (BITMAP *)gameDataFile[gd_hudCloseSel].dat;
+    hud.verbSelImage[TALK]  = (BITMAP *)gameDataFile[gd_hudTalkSel].dat;
 
-    room[1].room_get_hotspot_name = &r02_get_hotspot_name;
-    room[1].room_get_default_hotspot_verb = &r02_get_default_hotspot_verb;
-    //room[1].room_get_num_objects = &r02_get_num_room_objects;
-    room[1].room_num_objects = R02_ROOM_NUM_OBJS;
-    room[1].room_get_object_info = &r02_get_object_info;
-    room[1].room_init = &r02_room_init;
-    room[1].room_update = &r02_room_update;
+    gui.image               = (BITMAP *)gameDataFile[gd_gui].dat;
+    gui.hsImageMain         = (BITMAP *)gameDataFile[gd_guiMainHs].dat;
+    gui.hsImage             = gui.hsImageMain;
+    gui.hsImageExit         = (BITMAP *)gameDataFile[gd_guiExitHs].dat;
+    gui.hsImageOptions      = (BITMAP *)gameDataFile[gd_guiOptionsHs].dat;
+    gui.hsImageSave         = (BITMAP *)gameDataFile[gd_guiSaveHs].dat;
+    gui.hsImageLoad         = (BITMAP *)gameDataFile[gd_guiLoadHs].dat;
+    gui.imageSlotSel        = (BITMAP *)gameDataFile[gd_guiSlotSel].dat;
 
+    //TO-DO:
+    //loads room 0 resources
+    room_load(0);
+    //actualRoom.number = 0;
+    /*
+    actualRoom.dataFile = room_load_datafile(game.actualRoom);
+
+    actualRoom.image   = (BITMAP *)actualRoom.dataFile[0].dat;
+    actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
+    actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
+    actualRoom.fImage  = (BITMAP *)actualRoom.dataFile[3].dat;
+    actualRoom.song    = (MIDI *)actualRoom.dataFile[4].dat;
+    */
+    
     //test player
     player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
     player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
@@ -280,7 +265,8 @@ void load_resources()
 //function to init game
 void game_init()
 {
-    gameConfig.textSpeed    = 10; //8 chars per second? This going to be on config
+    //default game config (each savegame file stores custom config
+    gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 30;
     gameConfig.musicVolume  = 200;
     gameConfig.soundVolume  = 200;
@@ -290,6 +276,7 @@ void game_init()
     game.lastRoom       = -1;     //to force first room_init
     game.room_pos_x     = 0;
     game.room_pos_y     = 0;
+    //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
 
@@ -563,8 +550,10 @@ void game_load(uint8_t slot)
     cursor      = savegame.cursorData;
     roomScript  = savegame.roomScriptData;
     
+    //loads saved room resources
+    room_load(game.actualRoom);
     //forces refresh room_init
-    room[game.actualRoom].room_init();
+    roomData[game.actualRoom].room_init();
     //forces refresh inventory
     inventory.refresh = true;
     
@@ -589,8 +578,12 @@ void check_room_changed()
     if (game.actualRoom != game.lastRoom)
     {
         game.lastRoom = game.actualRoom;
+
+        //load room resources
+        room_load(game.actualRoom);
+
         //call new room init
-        room[game.actualRoom].room_init();
+        roomData[game.actualRoom].room_init();
 
         //play room song
         //play_midi(room[game.actualRoom].song, -1);
@@ -603,8 +596,8 @@ void check_room_changed()
         }
         else
         {
-            player.x = itofix(room[game.actualRoom].start_pos_x);
-            player.y = itofix(room[game.actualRoom].start_pos_y);
+            player.x = itofix(roomData[game.actualRoom].start_pos_x);
+            player.y = itofix(roomData[game.actualRoom].start_pos_y);
         }
     }
 }
@@ -613,7 +606,12 @@ void check_room_changed()
 void game_exit()
 {
     //free resources
-    unload_datafile(dataFile);
+    unload_datafile(gameDataFile);
+    unload_datafile(playerDataFile);
+    unload_datafile(inventoryDataFile);
+    unload_datafile(objectsDataFile);
+    unload_datafile(guiDataFile);
+
     //quit allegro modules
     allegro_exit();
 }
@@ -927,17 +925,17 @@ void cursor_action_menu()
 void cursor_action_room()
 {
     //obtains the hotspot room color
-    uint8_t hsColor = getpixel(room[game.actualRoom].hsImage, mouse_x, mouse_y);
+    uint8_t hsColor = getpixel(actualRoom.hsImage, mouse_x, mouse_y);
 
     //gets the object name
-    room[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
+    roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
     //check right click action on room (evaluated before the left click)
     if (cursor.rightClick)
     {
         //if valid object, get default object verb
         if (cursor.objectName[0] != '\0')
-            cursor.selectedVerb = room[game.actualRoom].room_get_default_hotspot_verb(hsColor);
+            cursor.selectedVerb = roomData[game.actualRoom].room_get_default_hotspot_verb(hsColor);
         else
             //otherwise, select go verb
             cursor.selectedVerb = GO;
@@ -1107,18 +1105,42 @@ int get_msg_length(char *text)
 }
 
 //function to abort program with critical error
-void abort_on_error(const char *msg)
+void abort_on_error(const char *format, ...)
 {
-    //exit to return text mode
-    //allegro_exit();
-    //printf(msg);
+    char buf[1024];
+
+    //get the arguments of formatted string
+    va_list arglist;
+    va_start(arglist, format);
+    vsprintf(buf, format, arglist);
+    va_end(arglist);
+
     #ifndef DEBUGMODE
-    allegro_message(msg);
+    allegro_message(buf);
     #else
-    allegro_message(msg);
+    allegro_message(buf);
     allegro_message(allegro_error);
     #endif
     exit(EXIT_FAILURE);
+}
+
+//load a room datafile
+DATAFILE* room_load_datafile(uint8_t roomNumber)
+{
+    DATAFILE *df;
+    char filename[8];
+    
+    //compone room datafile name
+    sprintf(filename, "R%02dDATA.DAT", roomNumber + 1);
+
+    //loads datafile
+    df = load_datafile(filename);
+
+    //check datafile
+    if (!df)
+        abort_on_error("Archivo %s invalido o inexistente", filename);
+    else
+        return df;
 }
 
 //updates the room action structure
@@ -1154,19 +1176,42 @@ void room_action_update()
     }
 }
 
+//load the room data
+void room_load(uint8_t roomNumber)
+{
+    //unload previous datafile
+    if (actualRoom.dataFile)
+        unload_datafile(actualRoom.dataFile);
+    //free the room pointers
+    actualRoom.image   = NULL;
+    actualRoom.hsImage = NULL;
+    actualRoom.wImage  = NULL;
+    actualRoom.fImage  = NULL;
+    actualRoom.song    = NULL;
+
+    //loads actual room datafile
+    actualRoom.dataFile = room_load_datafile(roomNumber);
+    //sets the resources pointers
+    actualRoom.image   = (BITMAP *)actualRoom.dataFile[0].dat;
+    actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
+    actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
+    actualRoom.fImage  = (BITMAP *)actualRoom.dataFile[3].dat;
+    actualRoom.song    = (MIDI *)actualRoom.dataFile[4].dat;
+}
+
 //draws the actual room to buffer
 void room_draw()
 {
     //draw room image
-    blit(room[game.actualRoom].image, buffer, 0, 0, 0, 0, room[game.actualRoom].image->w, room[game.actualRoom].image->h);
+    blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
     
     //draw room objects
     tObject *obj;
     BITMAP *objImage;
-    for (int i = 0; i < room[game.actualRoom].room_num_objects; i++)
+    for (int i = 0; i < roomData[game.actualRoom].room_num_objects; i++)
     {
         //get pointer to object structure
-        obj = room[game.actualRoom].room_get_object_info(i);
+        obj = roomData[game.actualRoom].room_get_object_info(i);
         //check null pointer
         if (obj == NULL)
             abort_on_error("Error accediendo a indice de objecto no existente");
@@ -1184,8 +1229,8 @@ void room_draw()
 //draws the actual room front layer to buffer
 void room_front_draw()
 {
-    if (room[game.actualRoom].fImage != NULL)
-        masked_blit(room[game.actualRoom].fImage, buffer, 0, 0, 0, 0, room[game.actualRoom].fImage->w, room[game.actualRoom].fImage->h);
+    if (actualRoom.fImage != NULL)
+        masked_blit(actualRoom.fImage, buffer, 0, 0, 0, 0, actualRoom.fImage->w, actualRoom.fImage->h);
 }
 
 //draws the hud to buffer
@@ -1203,9 +1248,9 @@ void hud_draw()
 
     //blits selected scroll inventory button
     if (hud.selUpButton)
-        draw_sprite(buffer, (BITMAP *)dataFile[dHudUpSel].dat, SEL_UP_DOWN_X, SEL_UP_Y + HUD_Y);
+        draw_sprite(buffer, (BITMAP *)gameDataFile[gd_hudUpSel].dat, SEL_UP_DOWN_X, SEL_UP_Y + HUD_Y);
     if (hud.selDownButton)
-        draw_sprite(buffer, (BITMAP *)dataFile[dHudDownSel].dat, SEL_UP_DOWN_X, SEL_DOWN_Y + HUD_Y);
+        draw_sprite(buffer, (BITMAP *)gameDataFile[gd_hudDownSel].dat, SEL_UP_DOWN_X, SEL_DOWN_Y + HUD_Y);
 
     //reset scroll flags on mouse release
     if (!mouse_b & 1)
@@ -1247,9 +1292,13 @@ void mytrace(char *s, ...)
 //function to init the gui
 void gui_init()
 {
+    //sets main gui hotspot image
+    gui.hsImage  = gui.hsImageMain;
+    
     //set gui position (center of screen)
     gui.x = (RES_X>>1) - (gui.image->w>>1);
     gui.y = (RES_Y>>1) - (gui.image->h>>1);
+
     //gui state
     gui.state = GUI_MAIN_STATE;
 }

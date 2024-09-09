@@ -72,12 +72,12 @@ void player_update_pos()
             player.vY = itofix(0);
     
         //check walk map
-        if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
         {
             player.vX = itofix(0);
         }
     
-        if (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)) == 0)
         {
             player.vY = itofix(0);
         }
@@ -136,7 +136,7 @@ void player_update_animation()
 void player_update_scale()
 {
     //get scale map value
-    switch (getpixel(room[game.actualRoom].wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
+    switch (getpixel(actualRoom.wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
     {
         case SCALE_1_COLOR:
             player.scale = ftofix(SCALE_1_VALUE);

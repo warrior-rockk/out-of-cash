@@ -11,6 +11,8 @@
 #define R01_GUITAR_OBJ_ID    1
 #define R01_STEREO_OBJ_ID    2
 
+#define R01_DATA             170, 100, R01_ROOM_NUM_OBJS, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
+
 //room enumerations
 enum r01_hotspotCode{
     Guitarra    = 150,

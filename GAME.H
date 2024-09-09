@@ -125,6 +125,23 @@ enum guiState{
 
 //structures
 
+//actual game room structure
+struct actualRoom
+{
+    //room datafile
+    DATAFILE *dataFile;
+    //room image
+    BITMAP  *image;
+    //room hotspot image
+    BITMAP  *hsImage;
+    //room walk/scalemap image
+    BITMAP  *wImage;
+    //room front layer
+    BITMAP *fImage;
+    //room song
+    MIDI    *song;
+} actualRoom;
+
 //game structure
 struct game
 {
@@ -161,36 +178,6 @@ struct msg
     bool msgFinished;
     bool msgActive;
 } msg;
-
-//room structure
-typedef struct tRoom
-{
-    //room image
-    BITMAP  *image;
-    //room hotspot image
-    BITMAP  *hsImage;
-    //room walk/scalemap image
-    BITMAP  *wImage;
-    //room front layer
-    BITMAP *fImage;
-    //room song
-    MIDI    *song;
-    //default start player position on room
-    int start_pos_x;
-    int start_pos_y;
-    //function pointer to get hotspot name
-    void (*room_get_hotspot_name)(uint8_t, char *s);
-    //function pointer to get default hotspot verb
-    enum verbs (*room_get_default_hotspot_verb)(uint8_t);
-    //room num objects
-    uint8_t room_num_objects;
-    //function pointer to get object info
-    tObject* (*room_get_object_info)(uint8_t numObject);
-    //function pointer to init room
-    void (*room_init)(void);
-    //function pointer to update room
-    void (*room_update)(void);
-} tRoom;
 
 //hud structure
 struct hud
@@ -284,10 +271,9 @@ struct savegame
 
 //global vars
 static volatile int tick;
-tRoom room[NUM_GAME_ROOMS];
 PALETTE gamePalette;
 BITMAP *buffer;
-DATAFILE *dataFile;
+DATAFILE *gameDataFile;
 DATAFILE *playerDataFile;
 DATAFILE *objectsDataFile;
 DATAFILE *inventoryDataFile;
@@ -300,12 +286,12 @@ void main_update();
 void main_draw();
 
 void incTick(void);
-void abort_on_error(const char *msg);
-void load_resources();
+void abort_on_error(const char *format, ...);
 
 void game_init();
 void game_update();
 void game_exit();
+void game_load_resources();
 void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
 void game_save(uint8_t slot);
@@ -325,6 +311,8 @@ void tick_init();
 void tick_update();
 
 void check_room_changed();
+void room_load(uint8_t roomNumber);
+DATAFILE* room_load_datafile(uint8_t roomNumber);
 void room_action_update();
 void room_draw();
 void room_front_draw();
