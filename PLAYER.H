@@ -2,6 +2,7 @@
 #define H_PLAYER
 
 #include <stdbool.h>
+#include "PDATA.H"
 #include "anim.h"
 
 #define PLAYER_FAST_SPEED   1
@@ -27,7 +28,7 @@ enum playerStates{
 
 //player struct
 struct player{
-    BITMAP *image[11];
+    BITMAP *image[pd_COUNT];
     BITMAP *tempImage;
     fixed x;
     fixed y;

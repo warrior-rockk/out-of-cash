@@ -7,6 +7,30 @@
 //function to init player
 void player_init()
 {
+    //sets player images frames
+    for (int i = 0; i < pd_COUNT; i++)
+    {
+        player.image[i]  = (BITMAP *)playerDataFile[i].dat;
+    }
+    /*player.image[0]     = (BITMAP *)playerDataFile[0].dat;
+    player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
+    player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
+    player.image[3]     = (BITMAP *)playerDataFile[dEgo04].dat;
+    player.image[4]     = (BITMAP *)playerDataFile[dEgo05].dat;
+    player.image[5]     = (BITMAP *)playerDataFile[dEgo06].dat;
+    player.image[6]     = (BITMAP *)playerDataFile[dEgo07].dat;
+    player.image[7]     = (BITMAP *)playerDataFile[dEgo08].dat;
+    player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
+    player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
+    player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;*/
+
+    //creates temporal image
+    if (!player.tempImage)
+        player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
+    //clear temporal image
+    clear(player.tempImage);
+
+    //clear player vars and state
     player.state            = player_st_idle;
     player.prevState        = player_st_idle;
     player.animation.frame  = 1;

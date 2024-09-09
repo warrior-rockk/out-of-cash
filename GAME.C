@@ -13,7 +13,6 @@
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
-#include "ego.h"
 #include "objects.h"
 #include "gui.h"
 
@@ -180,9 +179,9 @@ void game_load_resources()
         abort_on_error("Archivo GDATA.DAT invalido o inexistente");
 
     //loads player data file
-    playerDataFile = load_datafile("ego.dat");
+    playerDataFile = load_datafile("PDATA.DAT");
     if (!playerDataFile)
-        abort_on_error("Archivo ego.dat invalido o inexistente");
+        abort_on_error("Archivo PDATA.DAT invalido o inexistente");
 
     //loads inventory data file
     inventoryDataFile = load_datafile("IDATA.DAT");
@@ -206,21 +205,8 @@ void game_load_resources()
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
 
-    //set images to game objects
-   //TO-DO: //test player
-    player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
-    player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
-    player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
-    player.image[3]     = (BITMAP *)playerDataFile[dEgo04].dat;
-    player.image[4]     = (BITMAP *)playerDataFile[dEgo05].dat;
-    player.image[5]     = (BITMAP *)playerDataFile[dEgo06].dat;
-    player.image[6]     = (BITMAP *)playerDataFile[dEgo07].dat;
-    player.image[7]     = (BITMAP *)playerDataFile[dEgo08].dat;
-    player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
-    player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
-    player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;
-    player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
-    clear(player.tempImage);
+
+
 
 }
 

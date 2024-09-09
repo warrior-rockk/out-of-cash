@@ -74,7 +74,6 @@ struct actualRoom
 	(BITMAP *) wImage;
 	(BITMAP *) fImage;
 	(MIDI*)    song;
-	int number
 }
 
 //ENGINE.H
