@@ -189,7 +189,6 @@ void game_load_resources()
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
 
-
     //TO-DO: objects on room file and gui on game datafile
     //====
     //loads objects data file
@@ -231,21 +230,7 @@ void game_load_resources()
     gui.hsImageLoad         = (BITMAP *)gameDataFile[gd_guiLoadHs].dat;
     gui.imageSlotSel        = (BITMAP *)gameDataFile[gd_guiSlotSel].dat;
 
-    //TO-DO:
-    //loads room 0 resources
-    room_load(0);
-    //actualRoom.number = 0;
-    /*
-    actualRoom.dataFile = room_load_datafile(game.actualRoom);
-
-    actualRoom.image   = (BITMAP *)actualRoom.dataFile[0].dat;
-    actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
-    actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
-    actualRoom.fImage  = (BITMAP *)actualRoom.dataFile[3].dat;
-    actualRoom.song    = (MIDI *)actualRoom.dataFile[4].dat;
-    */
-    
-    //test player
+    //TO-DO: //test player
     player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
     player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
     player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
