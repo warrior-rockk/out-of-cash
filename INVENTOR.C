@@ -90,7 +90,6 @@ void inventory_draw()
             int objIndex;
             
             clear_bitmap(inventory.image);
-            TRACE("INICIO\n");
             //run for inventory objects of active page
             for (int i = 0; i < inventory.numObjects && i < INV_OBJECTS_PER_PAGE; i++)
             {

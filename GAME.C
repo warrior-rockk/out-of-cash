@@ -207,30 +207,7 @@ void game_load_resources()
     get_palette(gamePalette);
 
     //set images to game objects
-    cursor.image            = (BITMAP *)gameDataFile[gd_cursor].dat;
-    
-    hud.image               = (BITMAP *)gameDataFile[gd_hud].dat;
-    hud.hsImage             = (BITMAP *)gameDataFile[gd_hudhs].dat;
-    hud.verbSelImage[GO]    = (BITMAP *)gameDataFile[gd_hudGoSel].dat;
-    hud.verbSelImage[TAKE]  = (BITMAP *)gameDataFile[gd_hudTakeSel].dat;
-    hud.verbSelImage[MOVE]  = (BITMAP *)gameDataFile[gd_hudMoveSel].dat;
-    hud.verbSelImage[LOOK]  = (BITMAP *)gameDataFile[gd_hudLookSel].dat;
-    hud.verbSelImage[USE]   = (BITMAP *)gameDataFile[gd_hudUseSel].dat;
-    hud.verbSelImage[GIVE]  = (BITMAP *)gameDataFile[gd_hudGiveSel].dat;
-    hud.verbSelImage[OPEN]  = (BITMAP *)gameDataFile[gd_hudOpenSel].dat;
-    hud.verbSelImage[CLOSE] = (BITMAP *)gameDataFile[gd_hudCloseSel].dat;
-    hud.verbSelImage[TALK]  = (BITMAP *)gameDataFile[gd_hudTalkSel].dat;
-
-    gui.image               = (BITMAP *)gameDataFile[gd_gui].dat;
-    gui.hsImageMain         = (BITMAP *)gameDataFile[gd_guiMainHs].dat;
-    gui.hsImage             = gui.hsImageMain;
-    gui.hsImageExit         = (BITMAP *)gameDataFile[gd_guiExitHs].dat;
-    gui.hsImageOptions      = (BITMAP *)gameDataFile[gd_guiOptionsHs].dat;
-    gui.hsImageSave         = (BITMAP *)gameDataFile[gd_guiSaveHs].dat;
-    gui.hsImageLoad         = (BITMAP *)gameDataFile[gd_guiLoadHs].dat;
-    gui.imageSlotSel        = (BITMAP *)gameDataFile[gd_guiSlotSel].dat;
-
-    //TO-DO: //test player
+   //TO-DO: //test player
     player.image[0]     = (BITMAP *)playerDataFile[dEgo01].dat;
     player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
     player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
@@ -265,25 +242,7 @@ void game_init()
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
 
-    //initialize x and y position of highlight verb images
-    hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
-    hud.posYVerbSelImage[GO]    = VERB_SEL_COL_1_Y;
-    hud.posXVerbSelImage[TAKE]  = VERB_SEL_ROW_1_X;
-    hud.posYVerbSelImage[TAKE]  = VERB_SEL_COL_2_Y;
-    hud.posXVerbSelImage[MOVE]  = VERB_SEL_ROW_1_X;
-    hud.posYVerbSelImage[MOVE]  = VERB_SEL_COL_3_Y;
-    hud.posXVerbSelImage[LOOK]  = VERB_SEL_ROW_2_X;
-    hud.posYVerbSelImage[LOOK]  = VERB_SEL_COL_1_Y;
-    hud.posXVerbSelImage[USE]   = VERB_SEL_ROW_2_X;
-    hud.posYVerbSelImage[USE]   = VERB_SEL_COL_2_Y;
-    hud.posXVerbSelImage[GIVE]  = VERB_SEL_ROW_2_X;
-    hud.posYVerbSelImage[GIVE]  = VERB_SEL_COL_3_Y;
-    hud.posXVerbSelImage[OPEN]  = VERB_SEL_ROW_3_X;
-    hud.posYVerbSelImage[OPEN]  = VERB_SEL_COL_1_Y;
-    hud.posXVerbSelImage[CLOSE] = VERB_SEL_ROW_3_X;
-    hud.posYVerbSelImage[CLOSE] = VERB_SEL_COL_2_Y;
-    hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
-    hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
+
     
     //call init game modules
     cursor_init();
@@ -292,6 +251,7 @@ void game_init()
     player_init();
     inventory_init();
     gui_init();
+    hud_init();
 }
 
 //game update function
@@ -604,6 +564,9 @@ void game_exit()
 //function to initialize cursor
 void cursor_init()
 {
+    //set cursor image
+    cursor.image = (BITMAP *)gameDataFile[gd_cursor].dat;
+    
     //clear cursor flags
     cursor.enabled = false;
     cursor.click = false;
@@ -1218,6 +1181,43 @@ void room_front_draw()
         masked_blit(actualRoom.fImage, buffer, 0, 0, 0, 0, actualRoom.fImage->w, actualRoom.fImage->h);
 }
 
+//inits the hud
+void hud_init()
+{
+    //sets hud images
+    hud.image               = (BITMAP *)gameDataFile[gd_hud].dat;
+    hud.hsImage             = (BITMAP *)gameDataFile[gd_hudhs].dat;
+    hud.verbSelImage[GO]    = (BITMAP *)gameDataFile[gd_hudGoSel].dat;
+    hud.verbSelImage[TAKE]  = (BITMAP *)gameDataFile[gd_hudTakeSel].dat;
+    hud.verbSelImage[MOVE]  = (BITMAP *)gameDataFile[gd_hudMoveSel].dat;
+    hud.verbSelImage[LOOK]  = (BITMAP *)gameDataFile[gd_hudLookSel].dat;
+    hud.verbSelImage[USE]   = (BITMAP *)gameDataFile[gd_hudUseSel].dat;
+    hud.verbSelImage[GIVE]  = (BITMAP *)gameDataFile[gd_hudGiveSel].dat;
+    hud.verbSelImage[OPEN]  = (BITMAP *)gameDataFile[gd_hudOpenSel].dat;
+    hud.verbSelImage[CLOSE] = (BITMAP *)gameDataFile[gd_hudCloseSel].dat;
+    hud.verbSelImage[TALK]  = (BITMAP *)gameDataFile[gd_hudTalkSel].dat;
+
+    //initialize x and y position of highlight verb images
+    hud.posXVerbSelImage[GO]    = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[GO]    = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[TAKE]  = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[TAKE]  = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[MOVE]  = VERB_SEL_ROW_1_X;
+    hud.posYVerbSelImage[MOVE]  = VERB_SEL_COL_3_Y;
+    hud.posXVerbSelImage[LOOK]  = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[LOOK]  = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[USE]   = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[USE]   = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[GIVE]  = VERB_SEL_ROW_2_X;
+    hud.posYVerbSelImage[GIVE]  = VERB_SEL_COL_3_Y;
+    hud.posXVerbSelImage[OPEN]  = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[OPEN]  = VERB_SEL_COL_1_Y;
+    hud.posXVerbSelImage[CLOSE] = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[CLOSE] = VERB_SEL_COL_2_Y;
+    hud.posXVerbSelImage[TALK]  = VERB_SEL_ROW_3_X;
+    hud.posYVerbSelImage[TALK]  = VERB_SEL_COL_3_Y;
+}
+
 //draws the hud to buffer
 void hud_draw()
 {
@@ -1277,9 +1277,16 @@ void mytrace(char *s, ...)
 //function to init the gui
 void gui_init()
 {
-    //sets main gui hotspot image
-    gui.hsImage  = gui.hsImageMain;
-    
+    //sets gui images
+    gui.image               = (BITMAP *)gameDataFile[gd_gui].dat;
+    gui.hsImageMain         = (BITMAP *)gameDataFile[gd_guiMainHs].dat;
+    gui.hsImage             = gui.hsImageMain;
+    gui.hsImageExit         = (BITMAP *)gameDataFile[gd_guiExitHs].dat;
+    gui.hsImageOptions      = (BITMAP *)gameDataFile[gd_guiOptionsHs].dat;
+    gui.hsImageSave         = (BITMAP *)gameDataFile[gd_guiSaveHs].dat;
+    gui.hsImageLoad         = (BITMAP *)gameDataFile[gd_guiLoadHs].dat;
+    gui.imageSlotSel        = (BITMAP *)gameDataFile[gd_guiSlotSel].dat;
+
     //set gui position (center of screen)
     gui.x = (RES_X>>1) - (gui.image->w>>1);
     gui.y = (RES_Y>>1) - (gui.image->h>>1);

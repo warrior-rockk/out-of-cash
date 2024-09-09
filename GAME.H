@@ -317,6 +317,7 @@ void room_action_update();
 void room_draw();
 void room_front_draw();
 
+void hud_init();
 void hud_draw();
 void status_bar_draw();
 
