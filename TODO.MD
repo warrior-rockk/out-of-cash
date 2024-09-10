@@ -1,9 +1,6 @@
 # TO-DO
 
-- [ ] BUG: inventory object spotted on status bar
 - [ ] Pass front layer to objects
-- [ ] Separate grabber file data.h. The name was temporaly.
-- [ ] Structure game resources
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Control song playing / room transition / song continues
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
@@ -18,6 +15,9 @@ internal grabber number def
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
+- [X] BUG: inventory object spotted on status bar
+- [X] Structure game resources
+- [X] Separate grabber file data.h. The name was temporaly.
 - [X] Fix msg duration consistency
 - [X] Highlight default verbs
 - [X] Iterate verb selection

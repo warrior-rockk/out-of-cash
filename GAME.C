@@ -776,7 +776,7 @@ void cursor_action_HUD()
     }
 
     //debug
-    show_debug("Color", hsColor);
+    show_debug("Color hud", hsColor);
 }
 
 //function that handles action of cursor on menu
@@ -848,7 +848,7 @@ void cursor_action_menu()
     }
 
     //debug
-    show_debug("Color", hsColor);
+    show_debug("Color menu", hsColor);
 }
 
 //funcion that handles action of cursor on room
@@ -895,7 +895,7 @@ void cursor_action_room()
     }
 
     //debug
-    show_debug("Color", hsColor);
+    show_debug("Color room", hsColor);
 }
 
 //draws debug info
@@ -918,9 +918,9 @@ void status_bar_draw()
 {
     //check if the verb is USE_WITH to print object inventory or not
     if (cursor.selectedVerb != USE_WITH)
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
     else
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
 }
 
 //function to init msg structure
