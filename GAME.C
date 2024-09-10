@@ -187,14 +187,8 @@ void game_load_resources()
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
 
-    //TO-DO: objects on room file and gui on game datafile
+    //TO-DO: gui on game datafile
     //====
-    /*
-    //loads objects data file
-    objectsDataFile = load_datafile("objects.dat");
-    if (!objectsDataFile)
-        abort_on_error("Archivo objects.dat invalido o inexistente");
-    */
     
     //loads gui data file
     guiDataFile = load_datafile("gui.dat");
@@ -253,10 +247,6 @@ void game_update()
             else if (cursor.click)
             {
                 game_fade_out();
-
-                //test game load
-                //game_load();
-
                 game_init();
                 game.state = PLAYING_STATE;
             }
@@ -272,7 +262,6 @@ void game_update()
             }
             else
             {
-                //check room transition
                 check_room_changed();
             }
             break;

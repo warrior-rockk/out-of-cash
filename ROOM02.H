@@ -5,6 +5,8 @@
 
 #define R02_ROOM_NUM_OBJS   0
 
+#define R02_DATA             179, 117, R02_ROOM_NUM_OBJS, &r02_room_init, &r02_room_update, &r02_get_hotspot_name, &r02_get_default_hotspot_verb, &r02_get_object_info
+
 //room enumerations
 enum r02_hotspotCode{
     espejo      = 139,

@@ -21,11 +21,11 @@
 
 //Status bar
 #define STATUS_BAR_X            RES_X / 2
-#define STATUS_BAR_Y            179 //166
+#define STATUS_BAR_Y            179
 #define STATUS_BAR_TEXT_Y       166
 
 //Cursor
-#define DBL_CLICK_MAX_TIME      4 //400ms
+#define DBL_CLICK_MAX_TIME      4       //400ms
 
 //HUD
 #define HUD_Y                   162
