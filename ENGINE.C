@@ -264,11 +264,11 @@ void end_script()
 void show_debug(char *varName, int var)
 {
     #ifdef DEBUGMODE
-    if (debugVars.numVars < DEBUG_MAX_VARS)
+    if (debug.numVars < DEBUG_MAX_VARS)
     {
-        strcpy(debugVars.varName[debugVars.numVars], varName);
-        debugVars.var[debugVars.numVars] = var;
-        debugVars.numVars++;
+        strcpy(debug.varName[debug.numVars], varName);
+        debug.var[debug.numVars] = var;
+        debug.numVars++;
     }
     #endif
 }

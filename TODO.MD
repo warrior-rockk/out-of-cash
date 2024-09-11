@@ -10,7 +10,7 @@
 multiple scripts?
 - [ ] Separate renderer
 - [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
-internal grabber number def
+internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?

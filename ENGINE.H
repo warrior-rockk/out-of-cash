@@ -82,13 +82,16 @@ typedef struct tObject
 } tObject;
 
 #ifdef DEBUGMODE
-//global debug vars structure (only ints on this iteration)
-struct debugVars
+//debug structure
+struct debug
 {
+    //global debug vars structure (only ints on this iteration)
     int var[DEBUG_MAX_VARS];
     char varName[DEBUG_MAX_VARS][10];
     int numVars;
-} debugVars;
+    //show walk room image
+    bool showWalkImage;
+} debug;
 #endif
 
 //global functions

@@ -270,10 +270,13 @@ void game_update()
 
     }
 
-    //force game exit
     #ifdef DEBUGMODE
+        //force game exit
         if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
             game.state = EXIT_STATE;
+        //toogle show room walk image
+        if (key[KEY_W] && game.state == PLAYING_STATE)
+            debug.showWalkImage = !debug.showWalkImage;
     #endif
 }
 
@@ -553,7 +556,8 @@ void cursor_init()
 void debug_init()
 {
     #ifdef DEBUGMODE
-    debugVars.numVars = 0;
+    debug.numVars = 0;
+    debug.showWalkImage = false;
     #endif
 }
 
@@ -883,14 +887,14 @@ void cursor_action_room()
 void debug_draw()
 {
     #ifdef DEBUGMODE
-        //writes all the debug vars
-        for (int i = 0; i < debugVars.numVars; i++)
-        {
-            textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debugVars.varName[i], debugVars.var[i]);
-        }
+    //writes all the debug vars
+    for (int i = 0; i < debug.numVars; i++)
+    {
+        textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debug.varName[i], debug.var[i]);
+    }
 
     //reset debug vars
-    debugVars.numVars = 0;
+    debug.numVars = 0;
     
     #endif //DEBUGMODE
 }
@@ -1119,7 +1123,13 @@ void room_draw()
     {
         //draw room image
         blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
-    
+
+        #ifdef DEBUGMODE
+            //draw walk image on debug mode
+            if (debug.showWalkImage)
+                    blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
+        #endif
+        
         //draw room objects back layer
         room_objects_draw(BACK_LAYER);
     }
