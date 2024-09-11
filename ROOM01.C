@@ -74,8 +74,18 @@ void r01_room_init()
     game_fade_in();
 }
 
-//funcion to update room
+//global funcion to update room
 void r01_room_update()
+{
+    //update room objects
+    r01_update_room_objects();
+
+    //update room script
+    r01_update_room_script();
+}
+
+//update room objects
+void r01_update_room_objects()
 {
     //objects update
     if (r01_object[R01_STEREO_OBJ_ID].active)
@@ -83,7 +93,11 @@ void r01_room_update()
     else
         r01_stereoAnim.frame = r01d_objStereo01;
     r01_object[R01_STEREO_OBJ_ID].objId = r01_stereoAnim.frame;
-    
+}
+
+//updates room script
+void r01_update_room_script()
+{
     //script update
     if (roomScript.active && !roomScript.invScript)
     {

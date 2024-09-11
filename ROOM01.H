@@ -52,5 +52,7 @@ enum verbs r01_get_default_hotspot_verb(uint8_t colorCode);
 tObject* r01_get_object_info(uint8_t numObject);
 void r01_room_init();
 void r01_room_update();
+void r01_update_room_objects();
+void r01_update_room_script();
 
 #endif
