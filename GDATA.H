@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\GDATA.DAT */
-/* Date: Mon Sep 09 12:28:00 2024 */
+/* Date: Wed Sep 11 17:02:44 2024 */
 /* Do not hand edit! */
 
 #define gd_gamePal                       0        /* PAL  */
@@ -18,12 +18,22 @@
 #define gd_hudUseSel                     12       /* BMP  */
 #define gd_hudUpSel                      13       /* BMP  */
 #define gd_hudDownSel                    14       /* BMP  */
-#define gd_gui                           15       /* BMP  */
+#define gd_guiMain                       15       /* BMP  */
 #define gd_guiMainHs                     16       /* BMP  */
 #define gd_guiExitHs                     17       /* BMP  */
 #define gd_guiOptionsHs                  18       /* BMP  */
 #define gd_guiSaveHs                     19       /* BMP  */
 #define gd_guiLoadHs                     20       /* BMP  */
 #define gd_guiSlotSel                    21       /* BMP  */
-#define gd_COUNT                         22
+#define gd_guiAboutSel                   22       /* BMP  */
+#define gd_guiExit                       23       /* BMP  */
+#define gd_guiExitDosSel                 24       /* BMP  */
+#define gd_guiExitSel                    25       /* BMP  */
+#define gd_guiExitTitleSel               26       /* BMP  */
+#define gd_guiLoadSel                    27       /* BMP  */
+#define gd_guiOptions                    28       /* BMP  */
+#define gd_guiOptionsSel                 29       /* BMP  */
+#define gd_guiSaveSel                    30       /* BMP  */
+#define gd_guiSlider                     31       /* BMP  */
+#define gd_COUNT                         32
 

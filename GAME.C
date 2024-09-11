@@ -13,7 +13,6 @@
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
-#include "gui.h"
 
 int main()
 {
@@ -186,15 +185,6 @@ void game_load_resources()
     inventoryDataFile = load_datafile("IDATA.DAT");
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
-
-    //TO-DO: gui on game datafile
-    //====
-    
-    //loads gui data file
-    guiDataFile = load_datafile("gui.dat");
-    if (!guiDataFile)
-        abort_on_error("Archivo gui.dat invalido o inexistente");
-    //====
         
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
@@ -1263,7 +1253,7 @@ void mytrace(char *s, ...)
 void gui_init()
 {
     //sets gui images
-    gui.image               = (BITMAP *)gameDataFile[gd_gui].dat;
+    gui.image               = (BITMAP *)gameDataFile[gd_guiMain].dat;
     gui.hsImageMain         = (BITMAP *)gameDataFile[gd_guiMainHs].dat;
     gui.hsImage             = gui.hsImageMain;
     gui.hsImageExit         = (BITMAP *)gameDataFile[gd_guiExitHs].dat;
@@ -1346,7 +1336,7 @@ void gui_draw()
                     textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_LoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiLoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_SAVE_STATE:
             for (int i = 0; i < SAVEGAME_SLOTS; i++)
@@ -1366,56 +1356,56 @@ void gui_draw()
                     textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_SaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiSaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_OPTIONS_STATE:
             //draw gui contents
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiOptions].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_OptionsSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiOptionsSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             //draw options sliders
             fixed norm_value;
             int scaled_value;
             
             norm_value = norm_x(gameConfig.textSpeed, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
             scaled_value = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_1_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiSlider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_1_Y);
 
             norm_value = norm_x(gameConfig.playerSpeed, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
             scaled_value = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_2_Y);
+            draw_sprite(buffer, gameDataFile[gd_guiSlider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_2_Y);
 
             norm_value      = norm_x(gameConfig.musicVolume, 0, 255);
             scaled_value    = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_3_Y);
+            draw_sprite(buffer, gameDataFile[gd_guiSlider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_3_Y);
 
             norm_value      = norm_x(gameConfig.soundVolume, 0, 255);
             scaled_value    = scale_x(norm_value, GUI_SLIDER_MIN_X, GUI_SLIDER_MAX_X);
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Slider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_4_Y);
+            draw_sprite(buffer, gameDataFile[gd_guiSlider].dat, gui.x + scaled_value, gui.y + GUI_SLIDER_4_Y);
             break;
         case GUI_ABOUT_STATE:
             //draw gui contents
             //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_AboutSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiAboutSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_EXIT_STATE:
             //draw gui contents
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
         case GUI_EXIT_TITLE_STATE:
             //draw gui contents
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitTitleSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_TITLE_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitTitleSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_TITLE_Y);
             break;
         case GUI_EXIT_DOS_STATE:
             //draw gui contents
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Exit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
-            draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_ExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
             break;
     }
 }
