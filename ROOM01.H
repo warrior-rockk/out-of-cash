@@ -18,12 +18,13 @@
 #define R01_TABLE_OBJ_ID    3
 
 //define object data
-#define R01_OBJ_0           r01d_objCassette,   279, 89,  true, 0
-#define R01_OBJ_1           r01d_objGuitar,     100, 50,  true, 0
-#define R01_OBJ_2           r01d_objStereo01,   282, 56,  true, 0
-#define R01_OBJ_3           r01d_objTable,      54,  144, true, 1
+#define R01_OBJ_0           r01d_objCassette,   279, 89,  0, true, 0
+#define R01_OBJ_1           r01d_objGuitar,     100, 50,  0, true, 0
+#define R01_OBJ_2           r01d_objStereo01,   282, 56,  1, true, 0
+#define R01_OBJ_3           r01d_objTable,      54,  144, 0, true, 1
 
 //define room animations
+#define R01_NUM_ANIMATIONS  1
 #define R01_ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo04, 2, ANIM_LOOP
 
 //hotspot code room enumeration
@@ -43,8 +44,8 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
     {R01_OBJ_3},
 };
 
-//declare room animations objects
-static tAnimation r01_stereoAnim;
+//declare room objects animations array
+static tAnimation r01_animations[R01_NUM_ANIMATIONS];
 
 //declare room functions
 void r01_get_hotspot_name(uint8_t colorCode, char *s);

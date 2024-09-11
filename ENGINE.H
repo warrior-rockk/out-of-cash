@@ -71,11 +71,13 @@ struct roomScript
 //object structure
 typedef struct tObject
 {
-    //object id (corresponds to index of objects datafile header)
+    //object id (corresponds to index of objects image datafile header)
     int objId;
     //position
     int x;
     int y;
+    //animation id
+    uint8_t animationId;
     //properties
     bool active;
     uint8_t layer;

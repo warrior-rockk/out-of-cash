@@ -308,11 +308,11 @@ void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
     //if object is active
     if (object->active)
         //plays parameter animation
-        play_animation(animation, startFrame, endFrame, speed, mode);
+        play_animation(&animation[object->animationId], startFrame, endFrame, speed, mode);
     else
         //sets idle frame
-        animation->frame = idleFrame;
+        animation[object->animationId].frame = idleFrame;
 
     //sets object idImage to current animation frame
-    object->objId = animation->frame;
+    object->objId = animation[object->animationId].frame;
 }

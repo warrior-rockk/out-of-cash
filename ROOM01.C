@@ -90,7 +90,7 @@ void r01_update_room_objects()
     //update objects
 
     //Stereo
-    object_play_animation(&r01_object[R01_STEREO_OBJ_ID], r01d_objStereo01, &r01_stereoAnim, R01_ANIM_PLAY_STEREO);
+    object_play_animation(&r01_object[R01_STEREO_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
 }
 
 //updates room script
