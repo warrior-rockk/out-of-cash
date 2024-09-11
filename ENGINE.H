@@ -81,6 +81,7 @@ typedef struct tObject
     uint8_t layer;
 } tObject;
 
+#ifdef DEBUGMODE
 //global debug vars structure (only ints on this iteration)
 struct debugVars
 {
@@ -88,6 +89,7 @@ struct debugVars
     char varName[DEBUG_MAX_VARS][10];
     int numVars;
 } debugVars;
+#endif
 
 //global functions
 void init_room_script();

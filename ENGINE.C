@@ -263,12 +263,14 @@ void end_script()
 //global debug vars function
 void show_debug(char *varName, int var)
 {
+    #ifdef DEBUGMODE
     if (debugVars.numVars < DEBUG_MAX_VARS)
     {
         strcpy(debugVars.varName[debugVars.numVars], varName);
         debugVars.var[debugVars.numVars] = var;
         debugVars.numVars++;
     }
+    #endif
 }
 
 //function to move the player

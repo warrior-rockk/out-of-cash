@@ -18,10 +18,10 @@
 #define R01_TABLE_OBJ_ID    3
 
 //define object data
-#define R01_OBJ_0           r01d_objCassette,   279, 89,  true, false
-#define R01_OBJ_1           r01d_objGuitar,     100, 50,  true, 1
-#define R01_OBJ_2           r01d_objStereo01,   282, 56,  true, false
-#define R01_OBJ_3           r01d_objTable,      54,  144, true, 0
+#define R01_OBJ_0           r01d_objCassette,   279, 89,  true, 0
+#define R01_OBJ_1           r01d_objGuitar,     100, 50,  true, 0
+#define R01_OBJ_2           r01d_objStereo01,   282, 56,  true, 0
+#define R01_OBJ_3           r01d_objTable,      54,  144, true, 1
 
 //define room animations
 #define R01_ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo04, 2, ANIM_LOOP

@@ -552,7 +552,9 @@ void cursor_init()
 //funcion to init the debug vars
 void debug_init()
 {
+    #ifdef DEBUGMODE
     debugVars.numVars = 0;
+    #endif
 }
 
 //draws the pointer cursor
@@ -886,10 +888,11 @@ void debug_draw()
         {
             textprintf_ex(buffer, font, 0, DEBUG_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s: %i", debugVars.varName[i], debugVars.var[i]);
         }
-    #endif //DEBUGMODE
 
     //reset debug vars
     debugVars.numVars = 0;
+    
+    #endif //DEBUGMODE
 }
 
 //draws the status bar
