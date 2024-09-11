@@ -79,10 +79,10 @@ void r01_room_update()
 {
     //objects update
     if (r01_object[R01_STEREO_OBJ_ID].active)
-        play_animation(&r01_stereo_anim, ANIM_PLAY_STEREO);
+        play_animation(&r01_stereoAnim, R01_ANIM_PLAY_STEREO);
     else
-        r01_stereo_anim.frame = r01d_objStereo01;
-    r01_object[R01_STEREO_OBJ_ID].objId = r01_stereo_anim.frame;
+        r01_stereoAnim.frame = r01d_objStereo01;
+    r01_object[R01_STEREO_OBJ_ID].objId = r01_stereoAnim.frame;
     
     //script update
     if (roomScript.active && !roomScript.invScript)
@@ -137,7 +137,6 @@ void r01_room_update()
                                     script_move_player_to_target();
                                 break;
                             case 1:
-                                //script_play_player_animation(10, 10, 5);
                                 script_player_take_state();
                                 break;
                             case 2:
