@@ -5,6 +5,7 @@
 
 =========================================================
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,12 +13,11 @@
 #include "engine.h"
 #include "room01.h"
 
-#include "inv.h"
+#include "IDATA.h"
 
 //Funtion to return the name of hotspot by color code
 void r01_get_hotspot_name(uint8_t colorCode, char *s)
 {
-        
     //check the object
     switch(colorCode)
     {
@@ -152,7 +152,7 @@ void r01_room_update()
                     case USE_WITH:
                         switch (roomScript.invObject)
                         {
-                            case dInv_Cassette:
+                            case id_cassette:
                                 switch (roomScript.step)
                                 {
                                     case 0:
@@ -165,7 +165,7 @@ void r01_room_update()
                                         break;
                                     case 2:
                                         say("Ya esta dentro");
-                                        script_remove_inv_object(dInv_Cassette);
+                                        script_remove_inv_object(id_cassette);
                                         set_game_flag(USED_CASSETTE);
                                         end_script();
                                         break;
@@ -204,7 +204,7 @@ void r01_room_update()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE, dInv_Cassette);
+                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE, id_cassette);
                                 end_script();
                                 break;
                         }
@@ -222,7 +222,7 @@ void r01_room_update()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR, dInv_Guitar);
+                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR, id_guitar);
                                 end_script();
                                 break;
                         }
