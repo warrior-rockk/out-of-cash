@@ -301,3 +301,18 @@ void change_player_dir(uint8_t dir)
 {
     player.lookDir = dir;
 }
+
+//plays room object animation if object is active
+void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
+{
+    //if object is active
+    if (object->active)
+        //plays parameter animation
+        play_animation(animation, startFrame, endFrame, speed, mode);
+    else
+        //sets idle frame
+        animation->frame = idleFrame;
+
+    //sets object idImage to current animation frame
+    object->objId = animation->frame;
+}

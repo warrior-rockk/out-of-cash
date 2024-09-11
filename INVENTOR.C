@@ -7,7 +7,7 @@
 #include "inventor.h"
 #include "game.h"    //<<-----FIX THAT! MAY NOT ACCESS BUFFER TO DRAW! SEPARATE RENDER!
 #include "engine.h"
-#include "inv.h"
+#include "IDATA.H"
 
 //initialization of inventory
 void inventory_init()
@@ -151,10 +151,10 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
         //get inventory object name
         switch (inventory.objIndex[objIndex - 1] - 1)
         {
-            case dInv_Cassette:
+            case id_cassette:
                 strcpy(s, "Casete");
                 break;
-            case dInv_Guitar:
+            case id_guitar:
                 strcpy(s, "Guitarra");
                 break;
             default:
@@ -173,7 +173,7 @@ void inventory_update()
         //sequence actions
         switch (roomScript.object)
         {
-            case dInv_Cassette:
+            case id_cassette:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -196,7 +196,7 @@ void inventory_update()
                         break;
                 }
                 break;
-            case dInv_Guitar:
+            case id_guitar:
                 switch(roomScript.verb)
                 {
                     case LOOK:

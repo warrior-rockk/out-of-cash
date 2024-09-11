@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Dialog system
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Control song playing / room transition / song continues
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure

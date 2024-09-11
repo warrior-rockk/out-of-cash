@@ -2,8 +2,8 @@
 #define H_ROOM01
 
 #include <allegro.h>
-#include "R01DATA.H"
 #include "anim.h"
+#include "R01DATA.H"
 
 //define num room objects
 #define R01_ROOM_NUM_OBJS   4
