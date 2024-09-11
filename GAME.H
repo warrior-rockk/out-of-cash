@@ -12,6 +12,10 @@
 #define RES_X    320
 #define RES_Y    240
 
+//Draw layers
+#define BACK_LAYER  0
+#define FRONT_LAYER 1
+
 //Game
 #define NUM_GAME_ROOMS          2
 #define MAX_GAME_FLAGS          32
@@ -137,8 +141,6 @@ struct actualRoom
     BITMAP  *hsImage;
     //room walk/scalemap image
     BITMAP  *wImage;
-    //room front layer
-    BITMAP *fImage;
     //room song
     MIDI    *song;
 } actualRoom;
@@ -317,7 +319,8 @@ void room_load(uint8_t roomNumber);
 DATAFILE* room_load_datafile(uint8_t roomNumber);
 void room_action_update();
 void room_draw();
-void room_front_draw();
+void room_front_layer_draw();
+void room_objects_draw(uint8_t layer);
 
 void hud_init();
 void hud_draw();

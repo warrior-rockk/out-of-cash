@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] Pass front layer to objects
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Control song playing / room transition / song continues
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
@@ -15,6 +14,7 @@ internal grabber number def
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
+- [X] Pass front layer to objects
 - [X] BUG: inventory object spotted on status bar
 - [X] Structure game resources
 - [X] Separate grabber file data.h. The name was temporaly.

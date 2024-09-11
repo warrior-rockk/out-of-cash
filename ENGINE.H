@@ -78,6 +78,7 @@ typedef struct tObject
     int y;
     //properties
     bool active;
+    uint8_t layer;
 } tObject;
 
 //global debug vars structure (only ints on this iteration)
