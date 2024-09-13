@@ -2,6 +2,7 @@
 
 - [ ] Dialog system
 - [ ] Iterate On-screen debug system (multiple vars)
+- [ ] Datafile for songs and the rooms uses song id
 - [ ] Control song playing / room transition / song continues
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Talk system
