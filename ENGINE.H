@@ -9,6 +9,8 @@
 //Definitions
 #define NUM_VERBS               10
 #define NUM_RAND_ANSWERS        3
+#define NUM_MAX_DIALOG_CHOICES  5
+
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
 
@@ -68,7 +70,7 @@ struct roomScript
     int hsY;
 } roomScript;
 
-//object structure
+//object room structure
 typedef struct tObject
 {
     //object id (corresponds to index of objects image datafile header)
@@ -82,6 +84,18 @@ typedef struct tObject
     bool active;
     uint8_t layer;
 } tObject;
+
+//global room dialog script structure
+struct dialogScript
+{
+    bool active;
+    uint8_t dialogId;
+    uint8_t choice;
+    uint8_t node;
+    uint8_t numChoices;
+    char choiceTxt[NUM_MAX_DIALOG_CHOICES][25];
+} dialogScript;
+
 
 #ifdef DEBUGMODE
 //debug structure
@@ -108,6 +122,8 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 void script_play_player_animation(int startFrame, int endFrame, int speed);
 void script_player_take_state();
 void script_remove_inv_object(int numObject);
+void script_start_dialog(uint8_t dialogId, char *text);
+void dialog_add(char *textLine, uint8_t destNode);
 
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);
@@ -129,4 +145,6 @@ bool is_player_moving();
 void change_player_dir(uint8_t dir);
 
 void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
+
+
 #endif

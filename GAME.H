@@ -111,6 +111,7 @@ enum gameState{
     TITLE_STATE,
     INTRO_STATE,
     PLAYING_STATE,
+    DIALOG_STATE,
     PAUSE_STATE,
     MENU_STATE,
     EXIT_STATE
@@ -310,6 +311,7 @@ void cursor_draw();
 void cursor_action_room();
 void cursor_action_HUD();
 void cursor_action_menu();
+void cursor_action_dialog();
 
 void tick_init();
 void tick_update();
@@ -337,4 +339,7 @@ int get_msg_length(char *text);
 void gui_init();
 void gui_update();
 void gui_draw();
+
+void dialog_init();
+void dialog_draw();
 #endif

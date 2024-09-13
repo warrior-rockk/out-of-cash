@@ -63,6 +63,28 @@ int main()
                 msg_draw();
 
                 break;
+            case DIALOG_STATE:
+                //update calls
+                game_update();
+                msg_update();
+                roomData[game.actualRoom].room_update();
+                //inventory_update();
+                room_action_update();
+                cursor_update();
+                player_update();
+                
+                //draw calls
+                room_draw();
+                player_draw();
+                room_front_layer_draw();
+                //hud_draw();
+                //inventory_draw();
+                //status_bar_draw();
+                dialog_draw();
+                cursor_draw();
+                msg_draw();
+                
+                break;
             case PAUSE_STATE:
                 //update calls
                 game_update();
@@ -218,6 +240,7 @@ void game_init()
     inventory_init();
     gui_init();
     hud_init();
+    dialog_init();
 }
 
 //game update function
@@ -647,6 +670,10 @@ void cursor_update()
                 cursor_action_menu();
 
                 break;
+            case DIALOG_STATE:
+                cursor_action_dialog();
+
+                break;
         }
     }
 }
@@ -881,6 +908,71 @@ void cursor_action_room()
 
     //debug
     show_debug("Color room", hsColor);
+}
+
+//function that handles action of cursor on dialog
+void cursor_action_dialog()
+{
+    //obtains the hotspot gui color (coords relative to gui base image)
+    uint8_t hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
+
+    /*
+    //check hotspot color
+    switch (hsColor)
+    {
+        case GUI_SLIDER_1_COLOR:
+            if (cursor.clicking)
+                gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
+            break;
+        case GUI_SLIDER_2_COLOR:
+            if (cursor.clicking)
+                gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
+            break;
+        case GUI_SLIDER_3_COLOR:
+            if (cursor.clicking)
+                gameConfig.musicVolume = scale_x(norm_value, 0, 255);
+            break;
+        case GUI_SLIDER_4_COLOR:
+            if (cursor.clicking)
+                gameConfig.soundVolume = scale_x(norm_value, 0, 255);
+            break;    
+        case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
+            //get slot selected
+            gui.slotSel = (hsColor - GUI_LOAD_SLOT_1_COLOR) + 1;
+
+            if (cursor.click && game_save_exists(gui.slotSel - 1, dummy))
+            {
+                //load game slot
+                gui.state = GUI_MAIN_STATE;
+                game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
+            }
+            break;
+        case GUI_SAVE_SLOT_1_COLOR ... GUI_SAVE_SLOT_5_COLOR:
+            //get slot selected
+            gui.slotSel = (hsColor - GUI_SAVE_SLOT_1_COLOR) + 1;
+            
+            if (cursor.click)
+            {
+                //save game slot
+                game.state = PLAYING_STATE;
+                gui_init();
+                game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
+            }
+            break;
+        default:
+            if (cursor.click)
+            {
+                //if color is valid for main gui buttons
+                if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
+                    //change gui state
+                    gui.state = (hsColor - GUI_COLOR_OFFSET);
+            }
+            break;
+    }
+    */
+    
+    //debug
+    show_debug("Color menu", hsColor);
 }
 
 //draws debug info
@@ -1421,6 +1513,30 @@ void gui_draw()
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
             break;
     }
+}
+
+//function to init dialog system
+void dialog_init()
+{
+    dialogScript.active = false;
+    dialogScript.dialogId = 0;
+    dialogScript.choice = 0;
+    dialogScript.node = 0;
+    dialogScript.numChoices = 0;
+
+    hud.hsImage = (BITMAP *)gameDataFile[gd_hudDialogHs].dat;
+}
+
+//function to draw the dialog
+void dialog_draw()
+{
+    for (int i = 0; i < dialogScript.numChoices; i++)
+    {
+        textprintf_ex(buffer, font, 0, STATUS_BAR_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialogScript.choiceTxt[i]);
+    }
+
+    //reset dialog choices
+    dialogScript.numChoices = 0;
 }
 
 END_OF_MAIN()

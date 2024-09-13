@@ -35,6 +35,9 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
             if (r01_object[R01_CASSETTE_OBJ_ID].active)
                 strcpy(s, "Casete");
             break;
+        case Spider:
+            strcpy(s, "Ara¤a");
+            break;
         default:
             strcpy(s, "");
     }
@@ -96,12 +99,61 @@ void r01_update_room_objects()
 //updates room script
 void r01_update_room_script()
 {
+    //dialog script test
+    if (dialogScript.active)
+    {
+        switch (dialogScript.dialogId)
+        {
+            case 1:
+                switch (dialogScript.node)
+                {
+                    case 0:
+                        dialog_add("¨Como est s ara¤a?", 1);
+                        dialog_add("¨Puedes contestar?", 2);
+                        dialog_add("Lo siento. Me voy...", -1);
+                    break;
+                    default:
+                    break;
+                }
+            break;
+        }
+    }
+
     //script update
     if (roomScript.active && !roomScript.invScript)
     {
         //sequence actions
         switch (roomScript.object)
         {
+            case Spider:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es mi ara¤a de He-man");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_start_dialog(1, "Hola que tal");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                }
+                break;
             case Minicadena:
                 switch(roomScript.verb)
                 {
