@@ -913,66 +913,23 @@ void cursor_action_room()
 //function that handles action of cursor on dialog
 void cursor_action_dialog()
 {
-    //obtains the hotspot gui color (coords relative to gui base image)
-    uint8_t hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
+    //obtains the hotspot dialog color (coords relative to gui base image)
+    uint8_t hsColor = getpixel(hud.dialogHsImage, mouse_x, mouse_y - HUD_Y);
 
-    /*
-    //check hotspot color
-    switch (hsColor)
+    if (hsColor >= 0 && hsColor <= dialogScript.numChoices)
     {
-        case GUI_SLIDER_1_COLOR:
-            if (cursor.clicking)
-                gameConfig.textSpeed = scale_x(norm_value, CONFIG_TEXT_SPEED_MIN, CONFIG_TEXT_SPEED_MAX);
-            break;
-        case GUI_SLIDER_2_COLOR:
-            if (cursor.clicking)
-                gameConfig.playerSpeed = scale_x(norm_value, CONFIG_PLY_SPEED_MIN, CONFIG_PLY_SPEED_MAX);
-            break;
-        case GUI_SLIDER_3_COLOR:
-            if (cursor.clicking)
-                gameConfig.musicVolume = scale_x(norm_value, 0, 255);
-            break;
-        case GUI_SLIDER_4_COLOR:
-            if (cursor.clicking)
-                gameConfig.soundVolume = scale_x(norm_value, 0, 255);
-            break;    
-        case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
-            //get slot selected
-            gui.slotSel = (hsColor - GUI_LOAD_SLOT_1_COLOR) + 1;
+        dialogScript.highlightChoice = hsColor;
 
-            if (cursor.click && game_save_exists(gui.slotSel - 1, dummy))
-            {
-                //load game slot
-                gui.state = GUI_MAIN_STATE;
-                game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
-            }
-            break;
-        case GUI_SAVE_SLOT_1_COLOR ... GUI_SAVE_SLOT_5_COLOR:
-            //get slot selected
-            gui.slotSel = (hsColor - GUI_SAVE_SLOT_1_COLOR) + 1;
-            
-            if (cursor.click)
-            {
-                //save game slot
-                game.state = PLAYING_STATE;
-                gui_init();
-                game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
-            }
-            break;
-        default:
-            if (cursor.click)
-            {
-                //if color is valid for main gui buttons
-                if (hsColor >= GUI_COLOR_OFFSET && hsColor <= (GUI_COLOR_OFFSET + GUI_NUM_OPTIONS))
-                    //change gui state
-                    gui.state = (hsColor - GUI_COLOR_OFFSET);
-            }
-            break;
+        if (cursor.click)
+        {
+            dialogScript.choice = hsColor;
+            dialogScript.selecting = false;
+            dialogScript.scripting = true;
+        }
     }
-    */
-    
+
     //debug
-    show_debug("Color menu", hsColor);
+    show_debug("Color dialog", hsColor);
 }
 
 //draws debug info
@@ -1523,8 +1480,9 @@ void dialog_init()
     dialogScript.choice = 0;
     dialogScript.node = 0;
     dialogScript.numChoices = 0;
-
-    hud.hsImage = (BITMAP *)gameDataFile[gd_hudDialogHs].dat;
+    dialogScript.selecting = false;
+    dialogScript.scripting = false;
+    hud.dialogHsImage = (BITMAP *)gameDataFile[gd_hudDialogHs].dat;
 }
 
 //function to draw the dialog
@@ -1532,7 +1490,10 @@ void dialog_draw()
 {
     for (int i = 0; i < dialogScript.numChoices; i++)
     {
-        textprintf_ex(buffer, font, 0, STATUS_BAR_Y + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialogScript.choiceTxt[i]);
+        if ((dialogScript.highlightChoice - 1) == i)
+            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialogScript.choiceTxt[i]);
+        else
+            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialogScript.choiceTxt[i]);
     }
 
     //reset dialog choices

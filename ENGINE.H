@@ -91,9 +91,12 @@ struct dialogScript
     bool active;
     uint8_t dialogId;
     uint8_t choice;
+    uint8_t highlightChoice;
     uint8_t node;
     uint8_t numChoices;
     char choiceTxt[NUM_MAX_DIALOG_CHOICES][25];
+    bool selecting;
+    bool scripting;
 } dialogScript;
 
 
@@ -122,8 +125,10 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
 void script_play_player_animation(int startFrame, int endFrame, int speed);
 void script_player_take_state();
 void script_remove_inv_object(int numObject);
-void script_start_dialog(uint8_t dialogId, char *text);
+void script_start_dialog(uint8_t dialogId);
+
 void dialog_add(char *textLine, uint8_t destNode);
+void stop_dialog();
 
 void set_game_flag(uint8_t flagNum);
 void clear_game_flag(uint8_t flagNum);

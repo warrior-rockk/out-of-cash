@@ -198,6 +198,8 @@ struct hud
     //scroll buttons
     bool selUpButton;
     bool selDownButton;
+    //hud dialog hotspot image
+    BITMAP *dialogHsImage;
 } hud;
 
 //gui structure

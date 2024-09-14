@@ -318,7 +318,7 @@ void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
 }
 
 //starts a dialog
-void script_start_dialog(uint8_t dialogId, char *text)
+void script_start_dialog(uint8_t dialogId)
 {
     //change game state to dialog
     game.state = DIALOG_STATE;
@@ -327,6 +327,8 @@ void script_start_dialog(uint8_t dialogId, char *text)
     dialog_init();
     dialogScript.active = true;
     dialogScript.dialogId = dialogId;
+    dialogScript.selecting = true;
+    dialogScript.scripting = false;
     
     //continue script
     roomScript.step++;
@@ -337,4 +339,10 @@ void dialog_add(char *textLine, uint8_t destNode)
 {
     dialogScript.numChoices++;
     strcpy(dialogScript.choiceTxt[dialogScript.numChoices-1], textLine);
+}
+
+void stop_dialog()
+{
+    dialog_init();
+    game.state = PLAYING_STATE;    
 }

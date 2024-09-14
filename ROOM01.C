@@ -102,20 +102,43 @@ void r01_update_room_script()
     //dialog script test
     if (dialogScript.active)
     {
-        switch (dialogScript.dialogId)
+        if (dialogScript.selecting)
         {
-            case 1:
-                switch (dialogScript.node)
-                {
-                    case 0:
-                        dialog_add("¨Como est s ara¤a?", 1);
-                        dialog_add("¨Puedes contestar?", 2);
-                        dialog_add("Lo siento. Me voy...", -1);
-                    break;
-                    default:
-                    break;
-                }
-            break;
+            switch (dialogScript.dialogId)
+            {
+                case 1:
+                    switch (dialogScript.node)
+                    {
+                        case 0:
+                            dialog_add("¨Como est s ara¤a?", 1);
+                            dialog_add("¨Puedes contestar?", 2);
+                            dialog_add("Lo siento. Me voy...", -1);
+                        break;
+                    }
+                break;
+            }
+        }
+        if (dialogScript.scripting)
+        {
+            switch (dialogScript.dialogId)
+            {
+                case 1:
+                    switch (dialogScript.node)
+                    {
+                        case 0:
+                            if (say(dialogScript.choiceTxt[dialogScript.choice - 1]))
+                                dialogScript.node++;
+                        break;
+                        case 1:
+                            if (say("Soy un juguete. No hablo"))
+                                dialogScript.node++;
+                        break;
+                        default:
+                            stop_dialog();
+                        break;
+                    }
+                break;
+            }
         }
     }
 
@@ -145,7 +168,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_start_dialog(1, "Hola que tal");
+                                script_start_dialog(1);
                                 break;
                             default:
                                 end_script();

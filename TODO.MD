@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Bug: exception on forced exit
 - [ ] Dialog system
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Datafile for songs and the rooms uses song id
