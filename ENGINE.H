@@ -60,6 +60,7 @@ struct roomScript
     bool active;
     bool scriptAssigned;
     bool invScript; //temporal
+    bool dialogScript;
     int object; //change to hotspot
     int invObject;
     enum verbs verb;
@@ -94,7 +95,8 @@ struct dialogScript
     uint8_t highlightChoice;
     uint8_t node;
     uint8_t numChoices;
-    char choiceTxt[NUM_MAX_DIALOG_CHOICES][25];
+    char choiceTxt[NUM_MAX_DIALOG_CHOICES][MAX_SENTENCE_LENGTH];
+    uint8_t choiceDestNode[NUM_MAX_DIALOG_CHOICES];
     bool selecting;
     bool scripting;
 } dialogScript;
@@ -126,6 +128,7 @@ void script_play_player_animation(int startFrame, int endFrame, int speed);
 void script_player_take_state();
 void script_remove_inv_object(int numObject);
 void script_start_dialog(uint8_t dialogId);
+void script_next_dialog_node();
 
 void dialog_add(char *textLine, uint8_t destNode);
 void stop_dialog();

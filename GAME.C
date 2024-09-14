@@ -164,9 +164,7 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
-    show_debug("cfgTxtSpd", gameConfig.textSpeed);
-    show_debug("cfgPlySpd", gameConfig.playerSpeed);
-    show_debug("cfgMusVol", gameConfig.musicVolume);
+    show_debug("diagNode", dialogScript.node);
 }
 
 //general draw
@@ -925,6 +923,10 @@ void cursor_action_dialog()
             dialogScript.choice = hsColor;
             dialogScript.selecting = false;
             dialogScript.scripting = true;
+
+            roomScript.active = true;
+            roomScript.invScript = false;
+            roomScript.dialogScript = true;
         }
     }
 

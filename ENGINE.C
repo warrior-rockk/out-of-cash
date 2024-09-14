@@ -258,6 +258,7 @@ void end_script()
     roomScript.scriptAssigned = false;
     roomScript.hsX = 0;
     roomScript.hsY = 0;
+    roomScript.dialogScript = false;
 }
 
 //global debug vars function
@@ -325,6 +326,7 @@ void script_start_dialog(uint8_t dialogId)
 
     //initialize dialog data
     dialog_init();
+    dialogScript.node = 1;
     dialogScript.active = true;
     dialogScript.dialogId = dialogId;
     dialogScript.selecting = true;
@@ -334,11 +336,24 @@ void script_start_dialog(uint8_t dialogId)
     roomScript.step++;
 }
 
+//function to set the next dialog node
+void script_next_dialog_node()
+{
+    dialogScript.node = dialogScript.choiceDestNode[dialogScript.choice - 1];
+    dialogScript.scripting = false;
+    dialogScript.selecting = true;
+    dialogScript.choice = 0;
+}
+
 //add line of dialog
 void dialog_add(char *textLine, uint8_t destNode)
 {
+    ASSERT(strlen(textLine) <= MAX_SENTENCE_LENGTH);
+    
     dialogScript.numChoices++;
+
     strcpy(dialogScript.choiceTxt[dialogScript.numChoices-1], textLine);
+    dialogScript.choiceDestNode[dialogScript.numChoices-1] = destNode;
 }
 
 void stop_dialog()

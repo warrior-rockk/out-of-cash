@@ -110,31 +110,67 @@ void r01_update_room_script()
                     switch (dialogScript.node)
                     {
                         case 0:
-                            dialog_add("¨Como est s ara¤a?", 1);
-                            dialog_add("¨Puedes contestar?", 2);
-                            dialog_add("Lo siento. Me voy...", -1);
+                            stop_dialog();
+                        break;
+                        case 1:
+                            dialog_add("¨Como est s ara¤a?", 2);
+                            dialog_add("¨Puedo jugar contigo?", 3);
+                            dialog_add("Lo siento. Me voy...", 0);
+                        break;
+                        case 2:
+                            dialog_add("Tampoco hace falta que seas tan borde", 0);
+                            dialog_add("Vale, vale. Ya me callo", 0);
+                        break;
+                        case 3:
+                            if (is_game_flag(GOT_CASSETTE))
+                                dialog_add("Te iba a dar este casete", 0);
+                            else
+                                dialog_add("Pues adios", 0);
                         break;
                     }
                 break;
             }
         }
-        if (dialogScript.scripting)
+    }
+
+    if (roomScript.active && roomScript.dialogScript)
+    {
+        if (roomScript.step == 0)
+        {
+            //say the response choice
+            begin_script();
+            script_say(dialogScript.choiceTxt[dialogScript.choice - 1]);
+        }
+        else
         {
             switch (dialogScript.dialogId)
             {
                 case 1:
                     switch (dialogScript.node)
                     {
-                        case 0:
-                            if (say(dialogScript.choiceTxt[dialogScript.choice - 1]))
-                                dialogScript.node++;
-                        break;
                         case 1:
-                            if (say("Soy un juguete. No hablo"))
-                                dialogScript.node++;
+                            switch (dialogScript.choice)
+                            {
+                                case 1:
+                                    switch (roomScript.step)
+                                    {
+                                        case 1:
+                                            script_wait(2);
+                                        break;
+                                        case 2:
+                                            script_say("A ti que te importa");
+                                        break;
+                                        default:
+                                            script_next_dialog_node();
+                                            end_script();
+                                        break;
+                                    }
+                                break;
+                            }
                         break;
                         default:
-                            stop_dialog();
+                            script_next_dialog_node();
+                            end_script();
                         break;
                     }
                 break;
@@ -143,7 +179,7 @@ void r01_update_room_script()
     }
 
     //script update
-    if (roomScript.active && !roomScript.invScript)
+    if (roomScript.active && !roomScript.invScript && !roomScript.dialogScript)
     {
         //sequence actions
         switch (roomScript.object)
