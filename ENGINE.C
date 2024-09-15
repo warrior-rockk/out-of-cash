@@ -318,7 +318,7 @@ void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
     object->objId = animation[object->animationId].frame;
 }
 
-//starts a dialog
+//starts a dialog and increments script step
 void script_start_dialog(uint8_t dialogId)
 {
     //change game state to dialog
@@ -326,36 +326,40 @@ void script_start_dialog(uint8_t dialogId)
 
     //initialize dialog data
     dialog_init();
-    dialogScript.node = 1;
-    dialogScript.active = true;
-    dialogScript.dialogId = dialogId;
-    dialogScript.selecting = true;
-    dialogScript.scripting = false;
+    dialog.node = 1;
+    dialog.active = true;
+    dialog.dialogId = dialogId;
+    dialog.selectState = true;
+    dialog.scriptState = false;
     
     //continue script
     roomScript.step++;
 }
 
-//function to set the next dialog node
+//function to set the next dialog node and increments script step
 void script_next_dialog_node()
 {
-    dialogScript.node = dialogScript.choiceDestNode[dialogScript.choice - 1];
-    dialogScript.scripting = false;
-    dialogScript.selecting = true;
-    dialogScript.choice = 0;
+    dialog.node = dialog.lineDestNode[dialog.selLine - 1];
+    dialog.scriptState = false;
+    dialog.selectState = true;
+    dialog.selLine = 0;
+
+    //continue script
+    roomScript.step++;
 }
 
-//add line of dialog
+//function to add line of dialog
 void dialog_add(char *textLine, uint8_t destNode)
 {
     ASSERT(strlen(textLine) <= MAX_SENTENCE_LENGTH);
     
-    dialogScript.numChoices++;
+    dialog.nodeNumLines++;
 
-    strcpy(dialogScript.choiceTxt[dialogScript.numChoices-1], textLine);
-    dialogScript.choiceDestNode[dialogScript.numChoices-1] = destNode;
+    strcpy(dialog.lineText[dialog.nodeNumLines-1], textLine);
+    dialog.lineDestNode[dialog.nodeNumLines-1] = destNode;
 }
 
+//function to stop a dialog
 void stop_dialog()
 {
     dialog_init();

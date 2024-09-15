@@ -9,7 +9,9 @@
 //Definitions
 #define NUM_VERBS               10
 #define NUM_RAND_ANSWERS        3
-#define NUM_MAX_DIALOG_CHOICES  5
+
+//dialogs
+#define NUM_MAX_DIALOG_LINES    5
 
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
@@ -86,21 +88,30 @@ typedef struct tObject
     uint8_t layer;
 } tObject;
 
-//global room dialog script structure
-struct dialogScript
+//dialog structure
+struct dialog
 {
-    bool active;
+    //unique room identification of dialog (for multi-dialog on room)
     uint8_t dialogId;
-    uint8_t choice;
-    uint8_t highlightChoice;
+    //line texts array of actual dialog node
+    char lineText[NUM_MAX_DIALOG_LINES][MAX_SENTENCE_LENGTH];
+    //destination node for each linea
+    uint8_t lineDestNode[NUM_MAX_DIALOG_LINES];
+    //num of lines on node
+    uint8_t nodeNumLines;
+    //actual node
     uint8_t node;
-    uint8_t numChoices;
-    char choiceTxt[NUM_MAX_DIALOG_CHOICES][MAX_SENTENCE_LENGTH];
-    uint8_t choiceDestNode[NUM_MAX_DIALOG_CHOICES];
-    bool selecting;
-    bool scripting;
-} dialogScript;
-
+    //actual line selection
+    uint8_t selLine;
+    //actual line highlighted
+    uint8_t highlightLine;
+    //dialog active flag
+    bool active;
+    //dialog on select state
+    bool selectState;
+    //dialog on scripting state
+    bool scriptState;
+} dialog;
 
 #ifdef DEBUGMODE
 //debug structure

@@ -100,14 +100,14 @@ void r01_update_room_objects()
 void r01_update_room_script()
 {
     //dialog script test
-    if (dialogScript.active)
+    if (dialog.active)
     {
-        if (dialogScript.selecting)
+        if (dialog.selectState)
         {
-            switch (dialogScript.dialogId)
+            switch (dialog.dialogId)
             {
                 case 1:
-                    switch (dialogScript.node)
+                    switch (dialog.node)
                     {
                         case 0:
                             stop_dialog();
@@ -123,9 +123,8 @@ void r01_update_room_script()
                         break;
                         case 3:
                             if (is_game_flag(GOT_CASSETTE))
-                                dialog_add("Te iba a dar este casete", 0);
-                            else
-                                dialog_add("Pues adios", 0);
+                                dialog_add("Te iba a dar este casete...", 0);
+                            dialog_add("Pues adios", 0);
                         break;
                     }
                 break;
@@ -139,17 +138,17 @@ void r01_update_room_script()
         {
             //say the response choice
             begin_script();
-            script_say(dialogScript.choiceTxt[dialogScript.choice - 1]);
+            script_say(dialog.lineText[dialog.selLine - 1]);
         }
         else
         {
-            switch (dialogScript.dialogId)
+            switch (dialog.dialogId)
             {
                 case 1:
-                    switch (dialogScript.node)
+                    switch (dialog.node)
                     {
                         case 1:
-                            switch (dialogScript.choice)
+                            switch (dialog.selLine)
                             {
                                 case 1:
                                     switch (roomScript.step)
@@ -159,6 +158,21 @@ void r01_update_room_script()
                                         break;
                                         case 2:
                                             script_say("A ti que te importa");
+                                        break;
+                                        default:
+                                            script_next_dialog_node();
+                                            end_script();
+                                        break;
+                                    }
+                                break;
+                                case 2:
+                                    switch (roomScript.step)
+                                    {
+                                        case 1:
+                                            script_wait(2);
+                                        break;
+                                        case 2:
+                                            script_say("Ya he jugado bastante");
                                         break;
                                         default:
                                             script_next_dialog_node();

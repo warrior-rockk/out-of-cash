@@ -164,7 +164,6 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
-    show_debug("diagNode", dialogScript.node);
 }
 
 //general draw
@@ -914,21 +913,29 @@ void cursor_action_dialog()
     //obtains the hotspot dialog color (coords relative to gui base image)
     uint8_t hsColor = getpixel(hud.dialogHsImage, mouse_x, mouse_y - HUD_Y);
 
-    if (hsColor >= 0 && hsColor <= dialogScript.numChoices)
+    //if cursor on valid dialog line
+    if (hsColor >= 0 && hsColor <= dialog.nodeNumLines)
     {
-        dialogScript.highlightChoice = hsColor;
+        //sets line highlighted
+        dialog.highlightLine = hsColor;
 
+        //if click on dialog line
         if (cursor.click)
         {
-            dialogScript.choice = hsColor;
-            dialogScript.selecting = false;
-            dialogScript.scripting = true;
+            //sets the selection on dialog structure
+            dialog.selLine   = hsColor;
+            //sets script state for dialog
+            dialog.selectState = false;
+            dialog.scriptState = true;
 
+            //sets the room script for dialog
             roomScript.active = true;
             roomScript.invScript = false;
             roomScript.dialogScript = true;
         }
     }
+    else
+        dialog.highlightLine = 0;
 
     //debug
     show_debug("Color dialog", hsColor);
@@ -1477,29 +1484,31 @@ void gui_draw()
 //function to init dialog system
 void dialog_init()
 {
-    dialogScript.active = false;
-    dialogScript.dialogId = 0;
-    dialogScript.choice = 0;
-    dialogScript.node = 0;
-    dialogScript.numChoices = 0;
-    dialogScript.selecting = false;
-    dialogScript.scripting = false;
+    dialog.active = false;
+    dialog.selectState = false;
+    dialog.scriptState = false;
+    dialog.dialogId = 0;
+    dialog.selLine = 0;
+    dialog.node = 0;
+    dialog.nodeNumLines = 0;
+    dialog.highlightLine = 0;
+
     hud.dialogHsImage = (BITMAP *)gameDataFile[gd_hudDialogHs].dat;
 }
 
 //function to draw the dialog
 void dialog_draw()
 {
-    for (int i = 0; i < dialogScript.numChoices; i++)
+    for (int i = 0; i < dialog.nodeNumLines; i++)
     {
-        if ((dialogScript.highlightChoice - 1) == i)
-            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialogScript.choiceTxt[i]);
+        if ((dialog.highlightLine - 1) == i)
+            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
         else
-            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialogScript.choiceTxt[i]);
+            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
     }
 
     //reset dialog choices
-    dialogScript.numChoices = 0;
+    dialog.nodeNumLines = 0;
 }
 
 END_OF_MAIN()
