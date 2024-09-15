@@ -329,9 +329,7 @@ void script_start_dialog(uint8_t dialogId)
     dialog.node = 1;
     dialog.active = true;
     dialog.dialogId = dialogId;
-    dialog.selectState = true;
-    dialog.scriptState = false;
-    
+
     //continue script
     roomScript.step++;
 }
@@ -340,8 +338,7 @@ void script_start_dialog(uint8_t dialogId)
 void script_next_dialog_node()
 {
     dialog.node = dialog.lineDestNode[dialog.selLine - 1];
-    dialog.scriptState = false;
-    dialog.selectState = true;
+    dialog.state = DIALOG_ST_SELECT;
     dialog.selLine = 0;
 
     //continue script

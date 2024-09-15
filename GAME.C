@@ -925,8 +925,7 @@ void cursor_action_dialog()
             //sets the selection on dialog structure
             dialog.selLine   = hsColor;
             //sets script state for dialog
-            dialog.selectState = false;
-            dialog.scriptState = true;
+            dialog.state = DIALOG_ST_SCRIPT;
 
             //sets the room script for dialog
             roomScript.active = true;
@@ -1485,8 +1484,7 @@ void gui_draw()
 void dialog_init()
 {
     dialog.active = false;
-    dialog.selectState = false;
-    dialog.scriptState = false;
+    dialog.state = DIALOG_ST_SELECT;
     dialog.dialogId = 0;
     dialog.selLine = 0;
     dialog.node = 0;
@@ -1499,16 +1497,19 @@ void dialog_init()
 //function to draw the dialog
 void dialog_draw()
 {
-    for (int i = 0; i < dialog.nodeNumLines; i++)
+    if (dialog.state == DIALOG_ST_SELECT)
     {
-        if ((dialog.highlightLine - 1) == i)
-            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
-        else
-            textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
+       for (int i = 0; i < dialog.nodeNumLines; i++)
+       {
+           if ((dialog.highlightLine - 1) == i)
+               textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
+           else
+               textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
+       }
+   
+       //reset dialog choices
+       dialog.nodeNumLines = 0;
     }
-
-    //reset dialog choices
-    dialog.nodeNumLines = 0;
 }
 
 END_OF_MAIN()

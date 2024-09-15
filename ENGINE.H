@@ -12,6 +12,8 @@
 
 //dialogs
 #define NUM_MAX_DIALOG_LINES    5
+#define DIALOG_ST_SELECT        0
+#define DIALOG_ST_SCRIPT        1
 
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
@@ -107,10 +109,8 @@ struct dialog
     uint8_t highlightLine;
     //dialog active flag
     bool active;
-    //dialog on select state
-    bool selectState;
-    //dialog on scripting state
-    bool scriptState;
+    //dialog state (selecting line or executing dialog script)
+    uint8_t state;
 } dialog;
 
 #ifdef DEBUGMODE

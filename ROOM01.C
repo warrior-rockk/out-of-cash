@@ -102,7 +102,7 @@ void r01_update_room_script()
     //dialog script test
     if (dialog.active)
     {
-        if (dialog.selectState)
+        if (dialog.state == DIALOG_ST_SELECT)
         {
             switch (dialog.dialogId)
             {
