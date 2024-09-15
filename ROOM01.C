@@ -118,12 +118,12 @@ void r01_update_room_script()
                             dialog_add("Lo siento. Me voy...", 0);
                         break;
                         case 2:
-                            dialog_add("Tampoco hace falta que seas tan borde", 0);
+                            dialog_add("Tampoco hace falta que seas tan borde", 1);
                             dialog_add("Vale, vale. Ya me callo", 0);
                         break;
                         case 3:
                             if (is_game_flag(GOT_CASSETTE))
-                                dialog_add("Te iba a dar este casete...", 0);
+                                dialog_add("Te iba a dar este casete...", 1);
                             dialog_add("Pues adios", 0);
                         break;
                     }
