@@ -83,6 +83,9 @@ void r01_room_update()
     //update room objects
     r01_update_room_objects();
 
+    //update dialog line selection
+    r01_update_dialog_selection();
+    
     //update room script
     r01_update_room_script();
 }
@@ -96,47 +99,48 @@ void r01_update_room_objects()
     object_play_animation(&r01_object[R01_STEREO_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
 }
 
+//function to update dialog line selection
+void r01_update_dialog_selection()
+{
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialog.node)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("¨Como est s ara¤a?", 2);
+                        dialog_add("¨Puedo jugar contigo?", 3);
+                        dialog_add("Lo siento. Me voy...", 0);
+                    break;
+                    case 2:
+                        dialog_add("Tampoco hace falta que seas tan borde", 1);
+                        dialog_add("Vale, vale. Ya me callo", 0);
+                    break;
+                    case 3:
+                        if (is_game_flag(GOT_CASSETTE))
+                            dialog_add("Te iba a dar este casete...", 1);
+                        dialog_add("Pues adios", 0);
+                    break;
+                }
+            break;
+        }
+    }
+}
+
 //updates room script
 void r01_update_room_script()
 {
-    //dialog script test
-    if (dialog.active)
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
     {
-        if (dialog.state == DIALOG_ST_SELECT)
-        {
-            switch (dialog.dialogId)
-            {
-                case 1:
-                    switch (dialog.node)
-                    {
-                        case 0:
-                            stop_dialog();
-                        break;
-                        case 1:
-                            dialog_add("¨Como est s ara¤a?", 2);
-                            dialog_add("¨Puedo jugar contigo?", 3);
-                            dialog_add("Lo siento. Me voy...", 0);
-                        break;
-                        case 2:
-                            dialog_add("Tampoco hace falta que seas tan borde", 1);
-                            dialog_add("Vale, vale. Ya me callo", 0);
-                        break;
-                        case 3:
-                            if (is_game_flag(GOT_CASSETTE))
-                                dialog_add("Te iba a dar este casete...", 1);
-                            dialog_add("Pues adios", 0);
-                        break;
-                    }
-                break;
-            }
-        }
-    }
-
-    if (roomScript.active && roomScript.dialogScript)
-    {
+        //fixed step: say response line
         if (roomScript.step == 0)
         {
-            //say the response choice
             begin_script();
             script_say(dialog.lineText[dialog.selLine - 1]);
         }
@@ -180,6 +184,10 @@ void r01_update_room_script()
                                         break;
                                     }
                                 break;
+                                default:
+                                    script_next_dialog_node();
+                                    end_script();
+                                break;
                             }
                         break;
                         default:
@@ -192,8 +200,8 @@ void r01_update_room_script()
         }
     }
 
-    //script update
-    if (roomScript.active && !roomScript.invScript && !roomScript.dialogScript)
+    //if script active is room script type
+    if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
         switch (roomScript.object)

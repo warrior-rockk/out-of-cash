@@ -56,5 +56,5 @@ void r01_room_init();
 void r01_room_update();
 void r01_update_room_objects();
 void r01_update_room_script();
-
+void r01_update_dialog_selection();
 #endif

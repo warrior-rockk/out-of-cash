@@ -18,6 +18,11 @@
 //Status bar
 #define OBJECT_NAME_MAX_CHARS   25
 
+//Scripts
+#define ROOM_SCRIPT_TYPE        0
+#define DIALOG_SCRIPT_TYPE      1
+#define INVENTORY_SCRIPT_TYPE   2
+
 //Texts
 #define MAX_SENTENCE_LENGTH     50
 
@@ -63,8 +68,7 @@ struct roomScript
 {
     bool active;
     bool scriptAssigned;
-    bool invScript; //temporal
-    bool dialogScript;
+    uint8_t type;
     int object; //change to hotspot
     int invObject;
     enum verbs verb;

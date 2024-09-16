@@ -13,7 +13,7 @@ void init_room_script()
 {
     roomScript.active = false;
     roomScript.scriptAssigned = false;
-    roomScript.invScript = false;
+    roomScript.type  = ROOM_SCRIPT_TYPE;
     roomScript.object = 0;
     roomScript.invObject = 0;
     roomScript.verb = 0;
@@ -258,7 +258,7 @@ void end_script()
     roomScript.scriptAssigned = false;
     roomScript.hsX = 0;
     roomScript.hsY = 0;
-    roomScript.dialogScript = false;
+    roomScript.type = ROOM_SCRIPT_TYPE;
 }
 
 //global debug vars function
@@ -328,10 +328,11 @@ void script_start_dialog(uint8_t dialogId)
     dialog_init();
     dialog.node = 1;
     dialog.active = true;
+    dialog.state = DIALOG_ST_SELECT;
     dialog.dialogId = dialogId;
 
-    //continue script
-    roomScript.step++;
+    //end script
+    end_script();
 }
 
 //function to set the next dialog node and increments script step

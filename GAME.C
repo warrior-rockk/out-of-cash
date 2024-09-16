@@ -774,7 +774,7 @@ void cursor_action_HUD()
                 {
                     //saves the room vars to start script sequence
                     roomScript.active = true;
-                    roomScript.invScript = true;
+                    roomScript.type = INVENTORY_SCRIPT_TYPE;
                     roomScript.object = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
                     roomScript.verb = cursor.selectedVerb;
                     roomScript.hsX = mouse_x;
@@ -793,7 +793,7 @@ void cursor_action_menu()
 {
     //dummy variable for char pointer used on save_game_exists
     char dummy[SAVEGAME_DATE_CHARS];
-    
+
     //obtains the hotspot gui color (coords relative to gui base image)
     uint8_t hsColor = getpixel(gui.hsImage, mouse_x - gui.x, mouse_y - gui.y);
 
@@ -888,7 +888,7 @@ void cursor_action_room()
         {
             //saves the room vars to start script sequence
             roomScript.active = true;
-            roomScript.invScript = false;
+            roomScript.type = ROOM_SCRIPT_TYPE;
             roomScript.object = hsColor;
             roomScript.verb = cursor.selectedVerb;
             roomScript.invObject = cursor.invObject;
@@ -929,8 +929,7 @@ void cursor_action_dialog()
 
             //sets the room script for dialog
             roomScript.active = true;
-            roomScript.invScript = false;
-            roomScript.dialogScript = true;
+            roomScript.type = DIALOG_SCRIPT_TYPE;
         }
     }
     else

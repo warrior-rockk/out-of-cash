@@ -1,7 +1,6 @@
 # TO-DO
 
 - [ ] Bug: exception on forced exit
-- [ ] Dialog system
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Datafile for songs and the rooms uses song id
 - [ ] Control song playing / room transition / song continues
@@ -17,6 +16,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
+- [X] Dialog system
 - [X] Pass front layer to objects
 - [X] BUG: inventory object spotted on status bar
 - [X] Structure game resources
