@@ -16,6 +16,8 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
+
+- [X] Fixed player stuck
 - [X] Dialog system
 - [X] Pass front layer to objects
 - [X] BUG: inventory object spotted on status bar

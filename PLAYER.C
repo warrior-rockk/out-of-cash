@@ -12,17 +12,6 @@ void player_init()
     {
         player.image[i]  = (BITMAP *)playerDataFile[i].dat;
     }
-    /*player.image[0]     = (BITMAP *)playerDataFile[0].dat;
-    player.image[1]     = (BITMAP *)playerDataFile[dEgo02].dat;
-    player.image[2]     = (BITMAP *)playerDataFile[dEgo03].dat;
-    player.image[3]     = (BITMAP *)playerDataFile[dEgo04].dat;
-    player.image[4]     = (BITMAP *)playerDataFile[dEgo05].dat;
-    player.image[5]     = (BITMAP *)playerDataFile[dEgo06].dat;
-    player.image[6]     = (BITMAP *)playerDataFile[dEgo07].dat;
-    player.image[7]     = (BITMAP *)playerDataFile[dEgo08].dat;
-    player.image[8]     = (BITMAP *)playerDataFile[dEgo09].dat;
-    player.image[9]     = (BITMAP *)playerDataFile[dEgo10].dat;
-    player.image[10]    = (BITMAP *)playerDataFile[dEgo11].dat;*/
 
     //creates temporal image
     if (!player.tempImage)
@@ -87,14 +76,14 @@ void player_update_pos()
         }
         else
             player.vX = itofix(0);
-            
+
         if (!in_range_y)
         {
             player.vY = fixtoi(player.y) < player.destY ? actualSpeed : -actualSpeed;
         }
         else
             player.vY = itofix(0);
-    
+
         //check walk map
         if (getpixel(actualRoom.wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
         {
@@ -118,8 +107,6 @@ void player_update_pos()
             player.state = player_st_idle;;
             player.vX = itofix(0);
             player.vY = itofix(0);
-            player.x = itofix(player.destX);
-            player.y = itofix(player.destY);
         }
 
     }
