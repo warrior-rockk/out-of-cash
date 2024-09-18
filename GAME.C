@@ -538,8 +538,6 @@ void game_exit()
     unload_datafile(gameDataFile);
     unload_datafile(playerDataFile);
     unload_datafile(inventoryDataFile);
-    unload_datafile(objectsDataFile);
-    unload_datafile(guiDataFile);
 
     //quit allegro modules
     allegro_exit();

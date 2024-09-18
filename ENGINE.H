@@ -69,7 +69,7 @@ struct roomScript
     bool active;
     bool scriptAssigned;
     uint8_t type;
-    int object; //change to hotspot
+    int object;
     int invObject;
     enum verbs verb;
     int step;

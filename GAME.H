@@ -282,9 +282,7 @@ PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *gameDataFile;
 DATAFILE *playerDataFile;
-DATAFILE *objectsDataFile;
 DATAFILE *inventoryDataFile;
-DATAFILE *guiDataFile;
 bool gameTick;
 
 //function declarations
