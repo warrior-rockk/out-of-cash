@@ -375,17 +375,28 @@ bool game_save_exists(uint8_t slot, char *s)
     saveFile = fopen(filename, "r");
     if (!saveFile)
     {
-        strcpy(s, "\0");
+        #ifdef DEBUGMODE
+            strcpy(s, "\0");
+        #else
+            strcpy(s, "\0");
+        #endif
         return false;
     }
     else
     {
+        //rewind the file
+        fseek(saveFile, 0, SEEK_SET);
+
         //read contents of savegame file
         if (!fread(&savegame, sizeof(struct savegame), 1, saveFile))
         {
             //closes file
             fclose(saveFile);
-            strcpy(s, "\0");
+            #ifdef DEBUGMODE
+                strcpy(s, "no read");
+            #else
+                strcpy(s, "\0");
+            #endif
             return false;
         }
         
@@ -394,7 +405,11 @@ bool game_save_exists(uint8_t slot, char *s)
         {
             //closes file
             fclose(saveFile);
-            strcpy(s, "\0");
+            #ifdef DEBUGMODE
+                strcpy(s, "error version");
+            #else
+                strcpy(s, "\0");
+            #endif
             return false;
         }
         
@@ -461,7 +476,10 @@ void game_load(uint8_t slot)
         abort_on_error(txtError);
         //abort_on_error("No se puede abrir el archivo de guardado");
     }
-    
+
+    //rewind the file
+    fseek(loadFile, 0, SEEK_SET);
+        
     //read contents of savegame file
     if (!fread(&savegame, sizeof(struct savegame), 1, loadFile))
         abort_on_error("Error leyendo el archivo de guardado");
