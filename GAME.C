@@ -43,7 +43,7 @@ int main()
                 
                 break;
             case PLAYING_STATE:
-                //update calls
+                 //update calls
                 game_update();
                 msg_update();
                 roomData[game.actualRoom].room_update();

@@ -1,7 +1,6 @@
 # TO-DO
 
 - [ ] Bug: continue actual sentence say when load savegame
-- [ ] Bug: exception on forced exit
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Datafile for songs and the rooms uses song id
 - [ ] Control song playing / room transition / song continues
@@ -18,6 +17,7 @@ internal grabber number def (same for gui)
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
 
+- [X] Bug: exception on exit
 - [X] Bug: save don't work
 - [X] Fixed player stuck
 - [X] Dialog system
