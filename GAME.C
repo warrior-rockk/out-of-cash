@@ -294,6 +294,7 @@ void game_update()
         //force game exit
         if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
             game.state = EXIT_STATE;
+
         //toogle show room walk image
         if (key[KEY_W] && game.state == PLAYING_STATE)
             debug.showWalkImage = !debug.showWalkImage;
@@ -1182,7 +1183,7 @@ void room_load(uint8_t roomNumber)
     actualRoom.image   = (BITMAP *)actualRoom.dataFile[0].dat;
     actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
     actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
-    actualRoom.song    = (MIDI *)actualRoom.dataFile[4].dat;
+    actualRoom.song    = (MIDI *)actualRoom.dataFile[3].dat;
 
     //set room loaded flag
     game.roomLoaded = true;
