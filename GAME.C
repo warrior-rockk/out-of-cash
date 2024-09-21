@@ -205,6 +205,11 @@ void game_load_resources()
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
         
+    //creates music dat file index to load individual music objects
+    actualRoom.musicDataFileIndex = create_datafile_index("MDATA.DAT");
+    if (!actualRoom.musicDataFileIndex)
+        abort_on_error("Archivo MDATA.DAT invalido o inexistente");
+    
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
@@ -228,6 +233,9 @@ void game_init()
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
+
+    //init room music
+    actualRoom.musicId  = -1;
     
     //call init game modules
     cursor_init();
@@ -265,10 +273,12 @@ void game_update()
             if (gameKeys.pausePressed)
             {
                 game.state = PAUSE_STATE;
+                midi_pause();
             }
             else if (gameKeys.exitPressed)
             {
                 game.state = MENU_STATE;
+                midi_pause();
             }
             else
             {
@@ -279,12 +289,14 @@ void game_update()
             if (gameKeys.pausePressed)
             {
                 game.state = PLAYING_STATE;
+                midi_resume();
             }
             break;
         case MENU_STATE:
             if (gameKeys.exitPressed)
             {
                 game.state = PLAYING_STATE;
+                midi_resume();
             }
             break;
 
@@ -532,9 +544,6 @@ void check_room_changed()
 
         //call new room init
         roomData[game.actualRoom].room_init();
-
-        //play room song
-        //play_midi(room[game.actualRoom].song, -1);
 
         //set player position on enter room (default or assigned)
         if (game.room_pos_x != 0 && game.room_pos_y != 0)
@@ -1171,11 +1180,11 @@ void room_load(uint8_t roomNumber)
     //unload previous datafile
     if (actualRoom.dataFile)
         unload_datafile(actualRoom.dataFile);
+
     //free the room pointers
     actualRoom.image   = NULL;
     actualRoom.hsImage = NULL;
     actualRoom.wImage  = NULL;
-    actualRoom.song    = NULL;
 
     //loads actual room datafile
     actualRoom.dataFile = room_load_datafile(roomNumber);
@@ -1183,7 +1192,26 @@ void room_load(uint8_t roomNumber)
     actualRoom.image   = (BITMAP *)actualRoom.dataFile[0].dat;
     actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
     actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
-    actualRoom.song    = (MIDI *)actualRoom.dataFile[3].dat;
+
+    //check if room music has to need changed
+    if (actualRoom.musicId != roomData[game.actualRoom].roomMusicId)
+    {
+        //stop actual music
+        stop_midi();
+        //free music resources
+        unload_datafile_object(actualRoom.musicDataFile);
+        actualRoom.music            = NULL;
+
+        //load room music
+        actualRoom.musicDataFile    = load_datafile_object_indexed(actualRoom.musicDataFileIndex, roomData[game.actualRoom].roomMusicId);
+        actualRoom.music            = (MIDI *)actualRoom.musicDataFile[0].dat;
+
+        //assign actual room music id
+        actualRoom.musicId = roomData[game.actualRoom].roomMusicId;
+
+        //play room music
+        play_midi(actualRoom.music, -1);
+    }
 
     //set room loaded flag
     game.roomLoaded = true;

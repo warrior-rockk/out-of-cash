@@ -142,8 +142,11 @@ struct actualRoom
     BITMAP  *hsImage;
     //room walk/scalemap image
     BITMAP  *wImage;
-    //room song
-    MIDI    *song;
+    //room music
+    uint8_t musicId;
+    DATAFILE_INDEX *musicDataFileIndex;
+    DATAFILE *musicDataFile;
+    MIDI    *music;
 } actualRoom;
 
 //game structure

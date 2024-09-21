@@ -14,7 +14,8 @@ typedef struct tRoomData
     int start_pos_y;
     //room num objects
     uint8_t room_num_objects;
-    
+    //room music
+    uint8_t roomMusicId;
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
