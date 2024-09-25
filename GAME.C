@@ -278,7 +278,7 @@ void game_update()
             else if (gameKeys.exitPressed)
             {
                 game.state = MENU_STATE;
-                midi_pause();
+                //midi_pause();
             }
             else
             {
@@ -296,7 +296,7 @@ void game_update()
             if (gameKeys.exitPressed)
             {
                 game.state = PLAYING_STATE;
-                midi_resume();
+                //midi_resume();
             }
             break;
 
@@ -509,6 +509,9 @@ void game_load(uint8_t slot)
     msg         = savegame.msgData;
     cursor      = savegame.cursorData;
     roomScript  = savegame.roomScriptData;
+
+    //sets audio config
+    set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     
     //loads saved room resources
     room_load(game.actualRoom);
@@ -843,10 +846,12 @@ void cursor_action_menu()
         case GUI_SLIDER_3_COLOR:
             if (cursor.clicking)
                 gameConfig.musicVolume = scale_x(norm_value, 0, 255);
+                set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
             break;
         case GUI_SLIDER_4_COLOR:
             if (cursor.clicking)
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
+                set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected

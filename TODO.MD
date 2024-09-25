@@ -3,7 +3,6 @@
 - [ ] Bug: continue actual sentence say when load savegame
 - [ ] Bug: player visible off-screen on PAUSE and DIALOG state
 - [ ] Iterate On-screen debug system (multiple vars)
-- [ ] Datafile for songs and the rooms uses song id
 - [ ] Music smooth transition
 - [ ] Audio volume
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
@@ -19,6 +18,7 @@ internal grabber number def (same for gui)
 - [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
 
+- [X] Datafile for songs and the rooms uses song id
 - [X] Control song playing / room transition / song continues
 - [X] Bug: exception on exit
 - [X] Bug: save don't work
