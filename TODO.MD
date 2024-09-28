@@ -1,7 +1,6 @@
 # TO-DO
 
 - [ ] Bug: continue actual sentence say when load savegame
-- [ ] Bug: player visible off-screen on PAUSE and DIALOG state
 - [ ] Custom fonts
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition
@@ -17,6 +16,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Bug: player visible off-screen on PAUSE and DIALOG state
 - [X] global.h for fast compiling
 - [X] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [X] Audio volume

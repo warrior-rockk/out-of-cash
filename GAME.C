@@ -1248,6 +1248,8 @@ void room_front_layer_draw()
     {
         //draw room objects front layer
         room_objects_draw(FRONT_LAYER);
+        //draw black background on hud position
+        rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
     }
 }
 

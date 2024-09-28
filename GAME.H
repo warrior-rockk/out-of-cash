@@ -16,6 +16,9 @@
 #define BACK_LAYER  0
 #define FRONT_LAYER 1
 
+//Game colors
+#define BLACK_COLOR 1
+
 //Game
 #define NUM_GAME_ROOMS          2
 #define MAX_GAME_FLAGS          32
