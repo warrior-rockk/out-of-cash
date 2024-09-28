@@ -161,7 +161,7 @@ void r01_update_room_script()
                                             script_wait(2);
                                         break;
                                         case 2:
-                                            script_say("A ti que te importa");
+                                            script_say_actor("A ti que te importa", &dialogActor);
                                         break;
                                         default:
                                             script_next_dialog_node();
@@ -176,7 +176,7 @@ void r01_update_room_script()
                                             script_wait(2);
                                         break;
                                         case 2:
-                                            script_say("Ya he jugado bastante");
+                                            script_say_actor("Ya he jugado bastante", &dialogActor);
                                         break;
                                         default:
                                             script_next_dialog_node();
@@ -226,6 +226,8 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
+                                dialogActor.msgX = roomScript.hsX;
+                                dialogActor.msgY = roomScript.hsY;
                                 script_start_dialog(1);
                                 break;
                             default:

@@ -88,6 +88,16 @@ tRoomData roomData[NUM_GAME_ROOMS] = {
 };
 
 ```
-	
+## Dialog system
 
-	
+say()->         copies sentence to msg.msg
+                if !msg.finished -> msg.active = true 
+
+msg_update()->  if msg.finished -> player.state = idle
+                if msg.active ->    handle msg duration time
+                                    player.state = talking
+
+msg_draw() ->   get player text coords
+                draw text with player_color_text
+
+

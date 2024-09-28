@@ -24,9 +24,12 @@ void init_room_script()
     roomScript.hsY = 0;
 }
 
-//function to say something. Returns 1 when finished
-int say(char *message)
+//function to actor say something. Returns 1 when finished
+int say_actor(char *message, tActorTalk *actorTalk)
 {
+    //assign actor talk pointer
+    msg.actorTalk = actorTalk;
+
     //copy message to structure
     strcpy(msg.msg, message);
 
@@ -38,7 +41,22 @@ int say(char *message)
     return msg.msgFinished;
 }
 
-//function to say something from script. Increments script step on finish
+//function to actor say something from script. Increments script step on finish
+void script_say_actor(char *message, tActorTalk *actorTalk)
+{
+    if (say_actor(message, actorTalk))
+    {
+        roomScript.step++;
+    }
+}
+
+//function to player say something. Returns 1 when finished
+int say(char *message)
+{
+    return say_actor(message, &player.talk);
+}
+
+//function to player say something from script. Increments script step on finish
 void script_say(char *message)
 {
     if (say(message))

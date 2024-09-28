@@ -117,6 +117,15 @@ struct dialog
     uint8_t state;
 } dialog;
 
+//talk structure for actors
+typedef struct tActorTalk
+{
+    int msgX;
+    int msgY;
+    uint8_t textColor;
+    bool talking;
+} tActorTalk;
+
 #ifdef DEBUGMODE
 //debug structure
 struct debug
@@ -133,8 +142,10 @@ struct debug
 //global functions
 void init_room_script();
 int say(char *message);
+int say_actor(char *message, tActorTalk *actorTalk);
 
 void script_say(char *message);
+void script_say_actor(char *message, tActorTalk *actorTalk);
 void script_wait(int time);
 void script_move_player(int x, int y);
 void script_move_player_to_target();

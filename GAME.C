@@ -38,7 +38,7 @@ int main()
                 cursor_update();
 
                 //placeholder test (and game title)
-                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, GAME_TEXT_COLOR);
+                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR));
                 cursor_draw();
                 
                 break;
@@ -93,7 +93,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("PAUSA", SAY_X, SAY_Y, GAME_TEXT_COLOR);
+                game_write("PAUSA", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR));
 
                 break;
             case MENU_STATE:
@@ -348,7 +348,7 @@ void game_keys_handler()
 }
 
 //function to write text on screen
-void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b)
+void game_write(char *text, int x, int y, uint8_t color)
 {
     int posY;
     char s[MAX_SENTENCE_LENGTH];
@@ -367,7 +367,7 @@ void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b)
         //print text with outline
         textprintf_centre_ex(buffer, font, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
         textprintf_centre_ex(buffer, font, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, x, posY, makecol(r,g,b), -1, "%s", ch);
+        textprintf_centre_ex(buffer, font, x, posY, color, -1, "%s", ch);
         //increment position
         posY += 10;
         //get next token
@@ -1015,7 +1015,8 @@ void msg_update()
     {
         msg.msgActive = false;
         msg.msgFinished = false;
-        player.state = player_st_idle;
+        //player.state = player_st_idle;
+        msg.actorTalk->talking = false;
     }
 
     //if msg active, calculate the relation of string length/characters per second
@@ -1037,18 +1038,18 @@ void msg_update()
             //convert to 100ms base
             msgDuration *= 10;
 
-            //show_debug("msgLength", msgLength);
-            //show_debug("msgDuration", msgDuration);
-
             if (msg.msgTime >= msgDuration || cursor.click)
             {
                 msg.msgFinished = true;
+                msg.actorTalk->talking = false;
             }
             else
+            {
                 msg.msgTime += gameTick > 0;
-
-            //set talking flag
-            player.state = player_st_talking;
+                //set talking flag
+                //player.state = player_st_talking;
+                msg.actorTalk->talking = true;
+            }
         }
     }
     else
@@ -1065,7 +1066,7 @@ void msg_update()
 void msg_draw()
 {
     //don't draw the text if fade in on progress
-    if (!game.fadeIn)
+    if (!game.fadeIn && msg.msgActive)
     {
         int msgX;
         int msgY;
@@ -1074,18 +1075,18 @@ void msg_draw()
         int msgWidth = get_msg_length(msg.msg); //text_length(font, msg.msg);
 
         //check msg X limits for avoid text outscreen
-        if (fixtoi(player.x) < (msgWidth>>1))
+        if (fixtoi(msg.actorTalk->msgX) < (msgWidth>>1))
             msgX = (msgWidth>>1);
-        else if (fixtoi(player.x) > (RES_X - (msgWidth>>1)))
+        else if (fixtoi(msg.actorTalk->msgX) > (RES_X - (msgWidth>>1)))
             msgX = RES_X - (msgWidth>>1);
         else
-            msgX = fixtoi(player.x);
+            msgX = fixtoi(msg.actorTalk->msgX);
 
         //get msg Y
-        msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.animation.frame]->h>>1)), player.scale))) - TEXT_ACTOR_MARGIN;
+        msgY = msg.actorTalk->msgY - TEXT_ACTOR_MARGIN;
         
         //call to write text
-        game_write(msg.msg, msgX, msgY, PLAYER_TEXT_COLOR);
+        game_write(msg.msg, msgX, msgY, msg.actorTalk->textColor);
     }
 }
 

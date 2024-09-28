@@ -36,6 +36,9 @@ void player_init()
     player.flip = false;
     player.lookDir = 0;
 
+    player.talk.textColor = PLAYER_TEXT_COLOR;
+    player.talk.talking = false;
+
 }
 
 //function to update the player
@@ -44,6 +47,12 @@ void player_update()
     //updates prevState
     player.prevState = player.state;
 
+    //check player talking
+    if (player.talk.talking)
+        player.state = player_st_talking;
+    else if (player.state == player_st_talking)
+        player.state = player_st_idle;
+        
     //calls player update functions
     player_update_pos();
     player_update_animation();
@@ -104,7 +113,7 @@ void player_update_pos()
         //player on destination
         if (in_range_x && in_range_y)
         {
-            player.state = player_st_idle;;
+            player.state = player_st_idle;
             player.vX = itofix(0);
             player.vY = itofix(0);
         }
@@ -114,6 +123,11 @@ void player_update_pos()
     //update position
     player.x += player.vX;
     player.y += player.vY;
+
+    //update talk position
+    player.talk.msgX = player.x;
+    player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.animation.frame]->h>>1)), player.scale)));
+
 }
 
 //function to update player animation

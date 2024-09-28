@@ -3,8 +3,10 @@
 
 #include <stdbool.h>
 #include "PDATA.H"
+#include "engine.h"
 #include "anim.h"
 
+#define PLAYER_TEXT_COLOR   40
 #define PLAYER_FAST_SPEED   1
 
 //scale values of scale map
@@ -40,6 +42,7 @@ struct player{
     enum playerStates state;
     enum playerStates prevState;
     tAnimation animation;
+    tActorTalk talk;
     uint8_t lookDir;
     bool moveFast;
     bool flip;

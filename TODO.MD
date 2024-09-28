@@ -5,7 +5,6 @@
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
-- [ ] Talk system
 - [ ] Real A* Pathfinding?
 - [ ] Room definition/script tool
 - [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
@@ -16,6 +15,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Talk system
 - [X] Bug: player visible off-screen on PAUSE and DIALOG state
 - [X] global.h for fast compiling
 - [X] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)

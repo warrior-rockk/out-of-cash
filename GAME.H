@@ -97,7 +97,6 @@
 
 //Text colors
 #define GAME_TEXT_COLOR         255,255,255
-#define PLAYER_TEXT_COLOR       0,255,255
 
 //Debug
 #define DEBUG_Y                 10
@@ -188,6 +187,7 @@ struct msg
     int msgTime;
     bool msgFinished;
     bool msgActive;
+    tActorTalk *actorTalk;
 } msg;
 
 //hud structure
@@ -304,7 +304,7 @@ void game_update();
 void game_exit();
 void game_load_resources();
 void game_do_fade_in();
-void game_write(char *text, int x, int y, uint8_t r, uint8_t g, uint8_t b);
+void game_write(char *text, int x, int y, uint8_t color);
 void game_save(uint8_t slot);
 bool game_save_exists(uint8_t slot, char *s);
 void game_load(uint8_t slot);
