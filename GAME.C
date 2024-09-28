@@ -505,10 +505,10 @@ void game_load(uint8_t slot)
     gameConfig  = savegame.gameConfigData;
     game        = savegame.gameData;
     inventory   = savegame.invData;
-    player      = savegame.playerData;
-    msg         = savegame.msgData;
     cursor      = savegame.cursorData;
     roomScript  = savegame.roomScriptData;
+    msg         = savegame.msgData;
+    player      = savegame.playerData;
 
     //sets audio config
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
@@ -1004,6 +1004,7 @@ void msg_init()
     msg.msgTime = 0;
     msg.msgFinished = false;
     msg.msgActive = false;
+    msg.actorTalk = NULL;
 }
 
 

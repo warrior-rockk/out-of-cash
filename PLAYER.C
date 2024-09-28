@@ -10,14 +10,14 @@ void player_init()
     //sets player images frames
     for (int i = 0; i < pd_COUNT; i++)
     {
-        player.image[i]  = (BITMAP *)playerDataFile[i].dat;
+        playerData.image[i]  = (BITMAP *)playerDataFile[i].dat;
     }
 
     //creates temporal image
-    if (!player.tempImage)
-        player.tempImage    = create_bitmap(player.image[0]->w, player.image[0]->h);
+    if (!playerData.tempImage)
+        playerData.tempImage    = create_bitmap(playerData.image[0]->w, playerData.image[0]->h);
     //clear temporal image
-    clear(player.tempImage);
+    clear(playerData.tempImage);
 
     //clear player vars and state
     player.state            = player_st_idle;
@@ -126,7 +126,7 @@ void player_update_pos()
 
     //update talk position
     player.talk.msgX = player.x;
-    player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(player.image[player.animation.frame]->h>>1)), player.scale)));
+    player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(playerData.image[player.animation.frame]->h>>1)), player.scale)));
 
 }
 
@@ -200,33 +200,33 @@ void player_draw()
     if (player.flip && player.scale == itofix(1))
     {
         //flipped
-        draw_sprite_h_flip(buffer, player.image[player.animation.frame], fixtoi(player.x)-(player.image[player.animation.frame]->w>>1), fixtoi(player.y)-(player.image[player.animation.frame]->h>>1));
+        draw_sprite_h_flip(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
     }
     else if (!player.flip && player.scale != itofix(1))
     {
         //scaled
 
         //calculate scale weight and height
-        fixed scaleW = fixmul(itofix(player.image[player.animation.frame]->w),player.scale);
-        fixed scaleH = fixmul(itofix(player.image[player.animation.frame]->h),player.scale);
+        fixed scaleW = fixmul(itofix(playerData.image[player.animation.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(playerData.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
-        stretch_sprite(buffer, player.image[player.animation.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+        stretch_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else if (player.flip && player.scale != itofix(1))
     {
         //flipped and scaled
-        clear(player.tempImage);
-        draw_sprite_h_flip(player.tempImage, player.image[player.animation.frame], 0 , 0);
+        clear(playerData.tempImage);
+        draw_sprite_h_flip(playerData.tempImage, playerData.image[player.animation.frame], 0 , 0);
 
         //calculate scale weight and height
-        fixed scaleW = fixmul(itofix(player.image[player.animation.frame]->w),player.scale);
-        fixed scaleH = fixmul(itofix(player.image[player.animation.frame]->h),player.scale);
+        fixed scaleW = fixmul(itofix(playerData.image[player.animation.frame]->w),player.scale);
+        fixed scaleH = fixmul(itofix(playerData.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
-        stretch_sprite(buffer, player.tempImage, fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+        stretch_sprite(buffer, playerData.tempImage, fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else
     {
         //original
-        draw_sprite(buffer, player.image[player.animation.frame], fixtoi(player.x)-(player.image[player.animation.frame]->w>>1), fixtoi(player.y)-(player.image[player.animation.frame]->h>>1));
+        draw_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
     }
 }

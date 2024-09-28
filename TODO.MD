@@ -1,6 +1,8 @@
 # TO-DO
 
+- [ ] Avoid pointers on savegame structure
 - [ ] Bug: continue actual sentence say when load savegame
+- [ ] Spanish characters on system font
 - [ ] Custom fonts
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition

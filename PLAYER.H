@@ -30,8 +30,8 @@ enum playerStates{
 
 //player struct
 struct player{
-    BITMAP *image[pd_COUNT];
-    BITMAP *tempImage;
+    //BITMAP *image[pd_COUNT];
+    //BITMAP *tempImage;
     fixed x;
     fixed y;
     fixed vX;
@@ -47,6 +47,11 @@ struct player{
     bool moveFast;
     bool flip;
 } player;
+
+struct playerData{
+    BITMAP *image[pd_COUNT];
+    BITMAP *tempImage;
+} playerData;
 
 //function declarations
 void player_init();
