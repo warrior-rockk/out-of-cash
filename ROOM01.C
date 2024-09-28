@@ -95,6 +95,9 @@ void r01_update_room_objects()
 {
     //update objects
 
+    //talk animation test
+    r01_object[R01_STEREO_OBJ_ID].active = r01_dialogActor.talking;
+    
     //Stereo
     object_play_animation(&r01_object[R01_STEREO_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
 }
@@ -161,7 +164,7 @@ void r01_update_room_script()
                                             script_wait(2);
                                         break;
                                         case 2:
-                                            script_say_actor("A ti que te importa", &dialogActor);
+                                            script_say_actor("A ti que te importa", &r01_dialogActor);
                                         break;
                                         default:
                                             script_next_dialog_node();
@@ -176,7 +179,7 @@ void r01_update_room_script()
                                             script_wait(2);
                                         break;
                                         case 2:
-                                            script_say_actor("Ya he jugado bastante", &dialogActor);
+                                            script_say_actor("Ya he jugado bastante", &r01_dialogActor);
                                         break;
                                         default:
                                             script_next_dialog_node();
@@ -226,8 +229,8 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                dialogActor.msgX = roomScript.hsX;
-                                dialogActor.msgY = roomScript.hsY;
+                                r01_dialogActor.msgX = roomScript.hsX;
+                                r01_dialogActor.msgY = roomScript.hsY;
                                 script_start_dialog(1);
                                 break;
                             default:

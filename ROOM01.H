@@ -51,11 +51,8 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
 //declare room objects animations array
 static tAnimation r01_animations[R01_NUM_ANIMATIONS];
 
-//declare room talk actor
-static tActorTalk dialogActor =
-{
-    100, 100, 70, false,
-};
+//declare room dialog actor
+static tActorTalk r01_dialogActor = {100, 100, 70, false};
 
 //declare room functions
 void r01_get_hotspot_name(uint8_t colorCode, char *s);
