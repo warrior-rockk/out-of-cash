@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include "PDATA.H"
 #include "anim.h"
-#include "anims.h"
 
 #define PLAYER_FAST_SPEED   1
 

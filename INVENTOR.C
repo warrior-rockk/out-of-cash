@@ -5,7 +5,8 @@
 #include <stdbool.h>
 #include <allegro.h>
 #include "inventor.h"
-#include "game.h"    //<<-----FIX THAT! MAY NOT ACCESS BUFFER TO DRAW! SEPARATE RENDER!
+//#include "game.h"    //<<-----FIX THAT! MAY NOT ACCESS BUFFER TO DRAW! SEPARATE RENDER!
+#include "globals.h"
 #include "engine.h"
 #include "IDATA.H"
 
@@ -119,7 +120,7 @@ void inventory_draw()
         else
         {
             //draws the last composed inventory image
-            draw_sprite(buffer, inventory.image, INV_POS_X, INV_POS_Y + HUD_Y);
+            draw_sprite(buffer, inventory.image, INV_POS_X, INV_POS_Y);
         }
     }
     show_debug("Inv Objs", inventory.numObjects);

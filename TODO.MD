@@ -3,7 +3,6 @@
 - [ ] Bug: continue actual sentence say when load savegame
 - [ ] Bug: player visible off-screen on PAUSE and DIALOG state
 - [ ] Custom fonts
-- [ ] global.h for fast compiling
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
@@ -16,9 +15,10 @@ multiple scripts?
 - [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
 internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
-- [ ] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [ ] Separate gui on header / .c?
 
+- [X] global.h for fast compiling
+- [X] Separate game.h data to engine.h to avoid recompile all the objects that not are related (like gui defines)
 - [X] Audio volume
 - [X] Datafile for songs and the rooms uses song id
 - [X] Control song playing / room transition / song continues

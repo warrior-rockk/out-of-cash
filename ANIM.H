@@ -1,8 +1,9 @@
 #ifndef H_ANIM
 #define H_ANIM
 
+#include "globals.h"
 //include game animations
-//#include "anims.h" //for what??
+#include "anims.h"
 
 //animation modes
 #define ANIM_LOOP       0
@@ -14,9 +15,6 @@ typedef struct tAnimation
     int lastFrame;
     int frameTime;
 } tAnimation;
-
-//global vars
-extern bool gameTick;
 
 //declare functions
 bool play_animation(tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);

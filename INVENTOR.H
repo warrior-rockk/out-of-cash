@@ -10,7 +10,7 @@
 #define INV_REGION_W            155
 #define INV_REGION_H            55
 #define INV_POS_X               134
-#define INV_POS_Y               20
+#define INV_POS_Y               182
 #define INV_ICON_X_OFFSET       38
 #define INV_ICON_Y_OFFSET       27
 #define INV_ICON_MARGIN         1
@@ -29,7 +29,7 @@ struct inventory
 } inventory;
 
 //global vars
-extern BITMAP *buffer;
+extern DATAFILE *inventoryDataFile;
 
 //funtion definitions
 void inventory_init();
