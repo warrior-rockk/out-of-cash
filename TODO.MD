@@ -1,7 +1,8 @@
 # TO-DO
 
+
 - [ ] Avoid pointers on savegame structure
-- [ ] Bug: continue actual sentence say when load savegame
+- [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Spanish characters on system font
 - [ ] Custom fonts
 - [ ] Iterate On-screen debug system (multiple vars)
