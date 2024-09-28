@@ -21,12 +21,15 @@
 //data structures
 struct inventory
 {
+    BITMAP *image;
     uint8_t numObjects;
     uint8_t objIndex[MAX_INV_OBJECTS];
     uint8_t page;
-    BITMAP *image;
     bool refresh;
 } inventory;
+
+//global vars
+extern BITMAP *buffer;
 
 //funtion definitions
 void inventory_init();

@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "anim.h"
-#include "game.h"
+//#include "game.h" //TESTING gameTick on anim.h as external
 
 //function to play animation. Recives pointer to struct actor animation
 //Returns true when animation finished (ONCE mode) or repeats (LOOP mode)

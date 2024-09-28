@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "PDATA.H"
 #include "anim.h"
+#include "anims.h"
 
 #define PLAYER_FAST_SPEED   1
 
@@ -34,15 +35,15 @@ struct player{
     fixed y;
     fixed vX;
     fixed vY;
+    fixed scale;
     int destX;
     int destY;
-    fixed scale;
     enum playerStates state;
     enum playerStates prevState;
+    tAnimation animation;
+    uint8_t lookDir;
     bool moveFast;
     bool flip;
-    uint8_t lookDir;
-    tAnimation animation;
 } player;
 
 //function declarations

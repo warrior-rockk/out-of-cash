@@ -458,11 +458,11 @@ void game_save(uint8_t slot)
     savegame.gameConfigData = gameConfig;
     savegame.gameData       = game;
     savegame.invData        = inventory;
-    savegame.playerData     = player;
-    savegame.msgData        = msg;
     savegame.cursorData     = cursor;
     savegame.roomScriptData = roomScript;
-    
+    savegame.msgData        = msg;
+    savegame.playerData     = player;
+
     //write the savegame file
     if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
         abort_on_error("Error escribiendo el archivo de guardado");
@@ -502,8 +502,8 @@ void game_load(uint8_t slot)
         abort_on_error("Version de archivo de guardado incompatible");
 
     //writes savegame data to game
-    game        = savegame.gameData;
     gameConfig  = savegame.gameConfigData;
+    game        = savegame.gameData;
     inventory   = savegame.invData;
     player      = savegame.playerData;
     msg         = savegame.msgData;

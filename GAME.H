@@ -273,10 +273,10 @@ struct savegame
     struct gameConfig gameConfigData;
     struct game gameData;
     struct inventory invData;
-    struct player playerData;
-    struct msg msgData;
     struct cursor cursorData;
     struct roomScript roomScriptData;
+    struct msg msgData;
+    struct player playerData;
 };
 
 //global vars

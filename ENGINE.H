@@ -66,9 +66,6 @@ static const char verbName[NUM_VERBS][10] = {
 //global room script structure
 struct roomScript
 {
-    bool active;
-    bool scriptAssigned;
-    uint8_t type;
     int object;
     int invObject;
     enum verbs verb;
@@ -77,6 +74,9 @@ struct roomScript
     int stepTime;
     int hsX;
     int hsY;
+    uint8_t type;
+    bool active;
+    bool scriptAssigned;
 } roomScript;
 
 //object room structure
