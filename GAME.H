@@ -20,7 +20,7 @@
 #define BLACK_COLOR 1
 
 //Game
-#define NUM_GAME_ROOMS          2
+
 #define MAX_GAME_FLAGS          32
 #define SAVEGAME_FILE_VERSION   1
 #define SAVEGAME_SLOTS          5

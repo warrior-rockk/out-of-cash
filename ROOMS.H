@@ -5,6 +5,9 @@
 //include all rooms
 #include "room01.h"
 #include "room02.h"
+#include "room03.h"
+
+#define NUM_GAME_ROOMS          3
 
 //room data structure array
 typedef struct tRoomData
@@ -33,7 +36,8 @@ typedef struct tRoomData
 //initialize room data
 tRoomData roomData[NUM_GAME_ROOMS] = {
     {R01_DATA},
-    {R02_DATA}
+    {R02_DATA},
+    {R03_DATA}
 };
 
 #endif  //H_ROOMS

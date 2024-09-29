@@ -566,6 +566,10 @@ void check_room_changed()
             player.x = itofix(roomData[game.actualRoom].start_pos_x);
             player.y = itofix(roomData[game.actualRoom].start_pos_y);
         }
+
+        //reset game room position
+        game.room_pos_x = 0;
+        game.room_pos_y = 0;
     }
 }
 
