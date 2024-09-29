@@ -313,6 +313,10 @@ void game_update()
         //toogle show room walk image
         if (key[KEY_W] && game.state == PLAYING_STATE)
             debug.showWalkImage = !debug.showWalkImage;
+
+        //toogle show room hotspot image
+        if (key[KEY_H] && game.state == PLAYING_STATE)
+            debug.showHotspotImage = !debug.showHotspotImage;
     #endif
 }
 
@@ -544,9 +548,9 @@ void check_room_changed()
 {
     if (game.actualRoom != game.lastRoom)
     {
-        if (roomData[game.lastRoom].fadeOut)
-            game_fade_out();
-            
+        //if (roomData[game.lastRoom].fadeOut)
+        //    game_fade_out();
+        TRACE("Change from room %i to room %i\n", game.lastRoom, game.actualRoom);
         game.lastRoom = game.actualRoom;
 
         //load room resources
@@ -1148,7 +1152,7 @@ DATAFILE* room_load_datafile(uint8_t roomNumber)
     
     //compone room datafile name
     sprintf(filename, "R%02dDATA.DAT", roomNumber + 1);
-
+    TRACE("Load room datafile: %s\n", filename);
     //loads datafile
     df = load_datafile(filename);
 
@@ -1195,6 +1199,8 @@ void room_action_update()
 //load the room data
 void room_load(uint8_t roomNumber)
 {
+    TRACE("Free actual room datafile resources\n");
+    
     //unload previous datafile
     if (actualRoom.dataFile)
         unload_datafile(actualRoom.dataFile);
@@ -1204,6 +1210,7 @@ void room_load(uint8_t roomNumber)
     actualRoom.hsImage = NULL;
     actualRoom.wImage  = NULL;
 
+
     //loads actual room datafile
     actualRoom.dataFile = room_load_datafile(roomNumber);
     //sets the resources pointers
@@ -1211,6 +1218,9 @@ void room_load(uint8_t roomNumber)
     actualRoom.hsImage = (BITMAP *)actualRoom.dataFile[1].dat;
     actualRoom.wImage  = (BITMAP *)actualRoom.dataFile[2].dat;
 
+    if (!actualRoom.hsImage)
+        TRACE("Error loading hotspot room image\n");
+        
     //check if room music has to need changed
     if (actualRoom.musicId != roomData[game.actualRoom].roomMusicId)
     {
@@ -1244,9 +1254,12 @@ void room_draw()
         blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
 
         #ifdef DEBUGMODE
+            //draw hotspot image on debug mode
+            if (debug.showHotspotImage)
+                    blit(actualRoom.hsImage, buffer, 0, 0, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
             //draw walk image on debug mode
             if (debug.showWalkImage)
-                    blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
+                    blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
         #endif
         
         //draw room objects back layer

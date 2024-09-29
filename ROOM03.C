@@ -126,9 +126,6 @@ void r03_update_room_script()
                                 change_room_pos(1, 154, 46);
                                 end_script();
                                 break;
-                            default:
-                                end_script();
-                                break;
                         }
                     break;
                 }

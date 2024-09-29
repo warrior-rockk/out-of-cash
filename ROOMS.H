@@ -37,7 +37,7 @@ typedef struct tRoomData
 tRoomData roomData[NUM_GAME_ROOMS] = {
     {R01_DATA},
     {R02_DATA},
-    {R03_DATA}
+    {R03_DATA},
 };
 
 #endif  //H_ROOMS

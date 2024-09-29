@@ -136,6 +136,8 @@ struct debug
     int numVars;
     //show walk room image
     bool showWalkImage;
+    //show hotspot room image
+    bool showHotspotImage;
 } debug;
 #endif
 
