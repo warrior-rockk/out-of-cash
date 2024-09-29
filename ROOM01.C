@@ -36,7 +36,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Casete");
             break;
         case Spider:
-            strcpy(s, "Ara¤a");
+            strcpy(s, "Ara"CHAR_NY"a");
             break;
         default:
             strcpy(s, "");

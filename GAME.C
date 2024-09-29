@@ -544,6 +544,9 @@ void check_room_changed()
 {
     if (game.actualRoom != game.lastRoom)
     {
+        if (roomData[game.lastRoom].fadeOut)
+            game_fade_out();
+            
         game.lastRoom = game.actualRoom;
 
         //load room resources

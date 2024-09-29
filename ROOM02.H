@@ -8,9 +8,10 @@
 #define R02_START_POS_Y         117
 #define R02_ROOM_NUM_OBJS       0
 #define R02_MUSIC_ID            0
+#define R02_FADE_OFF            true
 
 //define room data (compose room properties and function pointers)
-#define R02_DATA R02_START_POS_X, R02_START_POS_Y, R02_ROOM_NUM_OBJS, R02_MUSIC_ID, &r02_room_init, &r02_room_update, &r02_get_hotspot_name, &r02_get_default_hotspot_verb, &r02_get_object_info
+#define R02_DATA R02_START_POS_X, R02_START_POS_Y, R02_ROOM_NUM_OBJS, R02_MUSIC_ID, R02_FADE_OFF, &r02_room_init, &r02_room_update, &r02_get_hotspot_name, &r02_get_default_hotspot_verb, &r02_get_object_info
 
 //room enumerations
 enum r02_hotspotCode{

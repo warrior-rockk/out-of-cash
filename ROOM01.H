@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "anim.h"
+//include room datafile header data
 #include "R01DATA.H"
 
 //define room properties
@@ -10,9 +11,10 @@
 #define R01_START_POS_Y         100
 #define R01_ROOM_NUM_OBJS       4
 #define R01_MUSIC_ID            0
+#define R01_FADE_OFF            false
 
 //define room data (compose room properties and function pointers)
-#define R01_DATA R01_START_POS_X, R01_START_POS_Y, R01_ROOM_NUM_OBJS, R01_MUSIC_ID, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
+#define R01_DATA R01_START_POS_X, R01_START_POS_Y, R01_ROOM_NUM_OBJS, R01_MUSIC_ID, R01_FADE_OFF, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
 
 //define object array alias
 #define R01_CASSETTE_OBJ_ID 0
@@ -52,14 +54,16 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
 static tAnimation r01_animations[R01_NUM_ANIMATIONS];
 
 //declare room dialog actor
-static tActorTalk r01_dialogActor = {100, 100, 70, false};
+static tActorTalk r01_dialogActor = {0, 0, 70, false};
 
-//declare room functions
+//declare room functions called from game
 void r01_get_hotspot_name(uint8_t colorCode, char *s);
 enum verbs r01_get_default_hotspot_verb(uint8_t colorCode);
 tObject* r01_get_object_info(uint8_t numObject);
 void r01_room_init();
 void r01_room_update();
+
+//declare internal functions
 void r01_update_room_objects();
 void r01_update_room_script();
 void r01_update_dialog_selection();

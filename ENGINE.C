@@ -188,7 +188,8 @@ bool is_game_flag(uint8_t flagNum)
 //function to change the actual room
 void change_room(int roomNum)
 {
-    game_fade_out();
+
+        //game_fade_out();
     game.actualRoom = roomNum;
     game.roomLoaded = false;
 }
