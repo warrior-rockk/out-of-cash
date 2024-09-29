@@ -126,6 +126,9 @@ int main()
 //general initialization
 void main_init()
 {
+    //set unicode format
+    set_uformat(U_ASCII);
+    
     //initialize and install modules
     allegro_init();
     if (install_timer() != 0)
@@ -364,6 +367,7 @@ void game_write(char *text, int x, int y, uint8_t color)
     //while ch != NULL (tokens left)
     while (ch)
     {
+
         //print text with outline
         textprintf_centre_ex(buffer, font, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
         textprintf_centre_ex(buffer, font, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);

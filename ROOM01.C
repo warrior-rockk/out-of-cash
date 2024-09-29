@@ -217,7 +217,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es mi ara¤a de He-man");
+                                script_say("Es mi ara"CHAR_NY"a de He-man");
                                 break;
                             default:
                                 end_script();
