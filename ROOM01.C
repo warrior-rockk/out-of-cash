@@ -149,55 +149,44 @@ void r01_update_room_script()
         }
         else
         {
-            switch (dialog.dialogId)
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLinef
+            switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
             {
+
                 case 1:
-                    switch (dialog.node)
+                    switch (roomScript.step)
                     {
                         case 1:
-                            switch (dialog.selLine)
-                            {
-                                case 1:
-                                    switch (roomScript.step)
-                                    {
-                                        case 1:
-                                            script_wait(2);
-                                        break;
-                                        case 2:
-                                            script_say_actor("A ti que te importa", &r01_dialogActor);
-                                        break;
-                                        default:
-                                            script_next_dialog_node();
-                                            end_script();
-                                        break;
-                                    }
-                                break;
-                                case 2:
-                                    switch (roomScript.step)
-                                    {
-                                        case 1:
-                                            script_wait(2);
-                                        break;
-                                        case 2:
-                                            script_say_actor("Ya he jugado bastante", &r01_dialogActor);
-                                        break;
-                                        default:
-                                            script_next_dialog_node();
-                                            end_script();
-                                        break;
-                                    }
-                                break;
-                                default:
-                                    script_next_dialog_node();
-                                    end_script();
-                                break;
-                            }
+                            script_wait(2);
+                        break;
+                        case 2:
+                            script_say_actor("A ti que te importa", &r01_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
                             end_script();
                         break;
                     }
+                break;
+                case 2:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_wait(2);
+                        break;
+                        case 2:
+                            script_say_actor("Ya he jugado bastante", &r01_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                default:
+                    script_next_dialog_node();
+                    end_script();
                 break;
             }
         }
