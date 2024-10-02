@@ -68,9 +68,13 @@ void player_update_pos()
     
     if (player.state == player_st_moving)
     {
+        //calculate player relative position (on feet)
+        fixed relX = player.x;
+        fixed relY = fixadd(player.y, itofix(20)); //itofix(playerData.image[player.animation.frame]->h>>1));
+        
         //check destination in range
-        in_range_x = in_range(fixtoi(player.x), player.destX, 2);
-        in_range_y = in_range(fixtoi(player.y), player.destY, 2);
+        in_range_x = in_range(fixtoi(relX), player.destX, 2);
+        in_range_y = in_range(fixtoi(relY), player.destY, 2);
     
         //assign actual speed
         actualSpeed = fixdiv(itofix(gameConfig.playerSpeed), itofix(100));
@@ -81,25 +85,25 @@ void player_update_pos()
         //decompose movement
         if (!in_range_x)
         {
-            player.vX = fixtoi(player.x) < player.destX ? actualSpeed : -actualSpeed;
+            player.vX = fixtoi(relX) < player.destX ? actualSpeed : -actualSpeed;
         }
         else
             player.vX = itofix(0);
 
         if (!in_range_y)
         {
-            player.vY = fixtoi(player.y) < player.destY ? actualSpeed : -actualSpeed;
+            player.vY = fixtoi(relY) < player.destY ? actualSpeed : -actualSpeed;
         }
         else
             player.vY = itofix(0);
 
         //check walk map
-        if (getpixel(actualRoom.wImage, fixtoi(player.x + player.vX), fixtoi(player.y)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX), fixtoi(relY)) == 0)
         {
             player.vX = itofix(0);
         }
     
-        if (getpixel(actualRoom.wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX) , fixtoi(relY + player.vY)) == 0)
         {
             player.vY = itofix(0);
         }
