@@ -7,6 +7,7 @@
 #include "game.h"
 #include "inventory.h"
 #include "player.h"
+#include "rooms.h"
 
 //initialize roomScript struct
 void init_room_script()
@@ -188,7 +189,9 @@ bool is_game_flag(uint8_t flagNum)
 //function to change the actual room
 void change_room(int roomNum)
 {
-    game_fade_out();
+    //fade room transition if actual or new room has fadeRoom property
+    if (roomData[game.actualRoom].fadeRoom || roomData[roomNum].fadeRoom)
+        game_fade_out();
     game.actualRoom = roomNum;
     game.roomLoaded = false;
 }

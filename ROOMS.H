@@ -20,7 +20,7 @@ typedef struct tRoomData
     //room music
     uint8_t roomMusicId;
     //room properties
-    bool fadeOut;
+    bool fadeRoom;
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
@@ -34,7 +34,7 @@ typedef struct tRoomData
 } tRoomData;
 
 //initialize room data
-tRoomData roomData[NUM_GAME_ROOMS] = {
+static tRoomData roomData[NUM_GAME_ROOMS] = {
     {R01_DATA},
     {R02_DATA},
     {R03_DATA},

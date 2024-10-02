@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Change lastRoom by actualRoom, nextRoom
 - [ ] Avoid pointers on savegame structure
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Spanish characters on system font

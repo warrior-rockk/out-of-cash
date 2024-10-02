@@ -11,10 +11,10 @@
 #define R01_START_POS_Y         100
 #define R01_ROOM_NUM_OBJS       4
 #define R01_MUSIC_ID            0
-#define R01_FADE_OFF            false
+#define R01_FADE                false
 
 //define room data (compose room properties and function pointers)
-#define R01_DATA R01_START_POS_X, R01_START_POS_Y, R01_ROOM_NUM_OBJS, R01_MUSIC_ID, R01_FADE_OFF, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
+#define R01_DATA R01_START_POS_X, R01_START_POS_Y, R01_ROOM_NUM_OBJS, R01_MUSIC_ID, R01_FADE, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
 
 //define object array alias
 #define R01_CASSETTE_OBJ_ID 0
