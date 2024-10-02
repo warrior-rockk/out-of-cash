@@ -228,8 +228,8 @@ void game_init()
     gameConfig.soundVolume  = 200;
     
     //init game vars
-    game.actualRoom     = 0;
-    game.lastRoom       = -1;     //to force first room_init
+    game.actualRoom     = -1;    //to force first room_init
+    game.nextRoom       = 0;
     game.roomLoaded     = false;
     game.room_pos_x     = 0;
     game.room_pos_y     = 0;
@@ -546,12 +546,12 @@ void game_do_fade_in()
 //function to check if actual room as changed
 void check_room_changed()
 {
-    if (game.actualRoom != game.lastRoom)
+    if (game.actualRoom != game.nextRoom)
     {
         //if (roomData[game.lastRoom].fadeOut)
         //    game_fade_out();
-        TRACE("Change from room %i to room %i\n", game.lastRoom, game.actualRoom);
-        game.lastRoom = game.actualRoom;
+        TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
+        game.actualRoom = game.nextRoom;
 
         //load room resources
         room_load(game.actualRoom);

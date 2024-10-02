@@ -192,7 +192,7 @@ void change_room(int roomNum)
     //fade room transition if actual or new room has fadeRoom property
     if (roomData[game.actualRoom].fadeRoom || roomData[roomNum].fadeRoom)
         game_fade_out();
-    game.actualRoom = roomNum;
+    game.nextRoom = roomNum;
     game.roomLoaded = false;
 }
 

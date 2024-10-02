@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] Change lastRoom by actualRoom, nextRoom
 - [ ] Avoid pointers on savegame structure
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Spanish characters on system font
@@ -18,6 +17,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Change lastRoom by actualRoom, nextRoom
 - [X] Talk system
 - [X] Bug: player visible off-screen on PAUSE and DIALOG state
 - [X] global.h for fast compiling
