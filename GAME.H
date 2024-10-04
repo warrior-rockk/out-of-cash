@@ -104,6 +104,7 @@
 
 //Fade
 #define FADE_DEFAULT_SPEED      6
+#define FADE_FAST_SPEED         12
 
 //enums
 
@@ -160,7 +161,7 @@ struct game
     //enter room position assigned by change_room_pos()
     int room_pos_x;
     int room_pos_y;
-    bool roomLoaded;
+    //bool roomLoaded;
     bool fadeIn;
     bool fadeOut;
     bool exit;

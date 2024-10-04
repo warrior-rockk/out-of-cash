@@ -230,7 +230,7 @@ void game_init()
     //init game vars
     game.actualRoom     = -1;    //to force first room_init
     game.nextRoom       = 0;
-    game.roomLoaded     = false;
+    //game.roomLoaded     = false;
     game.room_pos_x     = 0;
     game.room_pos_y     = 0;
     //clear game flags
@@ -548,8 +548,12 @@ void check_room_changed()
 {
     if (game.actualRoom != game.nextRoom)
     {
-        //if (roomData[game.lastRoom].fadeOut)
-        //    game_fade_out();
+        //fade room transition if actual or new room has fadeRoom property
+        if (roomData[game.actualRoom].fadeRoom || roomData[game.nextRoom].fadeRoom)
+            game_fade_out(FADE_DEFAULT_SPEED);
+        else
+            game_fade_out(FADE_FAST_SPEED);
+
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
         game.actualRoom = game.nextRoom;
 
@@ -1242,14 +1246,14 @@ void room_load(uint8_t roomNumber)
     }
 
     //set room loaded flag
-    game.roomLoaded = true;
+    //game.roomLoaded = true;
 }
 
 //draws the actual room and room objects
 void room_draw()
 {
-    if (game.roomLoaded)
-    {
+    //if (game.roomLoaded)
+    //{
         //draw room image
         blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
 
@@ -1264,19 +1268,19 @@ void room_draw()
         
         //draw room objects back layer
         room_objects_draw(BACK_LAYER);
-    }
+    //}
 }
 
 //draws the room front layer objects
 void room_front_layer_draw()
 {
-    if (game.roomLoaded)
-    {
+    //if (game.roomLoaded)
+    //{
         //draw room objects front layer
         room_objects_draw(FRONT_LAYER);
         //draw black background on hud position
         rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
-    }
+    //}
 }
 
 //draws room objects filtered by layer parameter
