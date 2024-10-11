@@ -161,7 +161,7 @@ struct game
     //enter room position assigned by change_room_pos()
     int room_pos_x;
     int room_pos_y;
-    //bool roomLoaded;
+    long roomMusicPos;
     bool fadeIn;
     bool fadeOut;
     bool exit;

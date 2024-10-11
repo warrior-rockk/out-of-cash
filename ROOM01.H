@@ -38,7 +38,7 @@ enum r01_hotspotCode{
     Minicadena  = 225,
     Puerta      = 236,
     Casete      = 216,
-    Spider      = 234
+    Spider      = 234,
 };
 
 //declare and define room objects array

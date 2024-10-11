@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Save and resume music on game save/load
 - [ ] Avoid pointers on savegame structure
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Spanish characters on system font

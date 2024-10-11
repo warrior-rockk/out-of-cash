@@ -464,6 +464,7 @@ void game_save(uint8_t slot)
     savegame.version        = SAVEGAME_FILE_VERSION;
     get_actual_date(savegame.saveDate);
     savegame.gameConfigData = gameConfig;
+    game.roomMusicPos       = midi_pos;
     savegame.gameData       = game;
     savegame.invData        = inventory;
     savegame.cursorData     = cursor;
@@ -1243,6 +1244,7 @@ void room_load(uint8_t roomNumber)
 
         //play room music
         play_midi(actualRoom.music, -1);
+        midi_seek(game.roomMusicPos);
     }
 
     //set room loaded flag
