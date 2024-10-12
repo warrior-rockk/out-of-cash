@@ -521,9 +521,10 @@ void game_load(uint8_t slot)
 
     //sets audio config
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
-    
     //loads saved room resources
     room_load(game.actualRoom);
+    //seeks room music to saved position
+    midi_seek(game.roomMusicPos);
     //forces refresh room_init
     roomData[game.actualRoom].room_init();
     //forces refresh inventory
@@ -1215,7 +1216,6 @@ void room_load(uint8_t roomNumber)
     actualRoom.hsImage = NULL;
     actualRoom.wImage  = NULL;
 
-
     //loads actual room datafile
     actualRoom.dataFile = room_load_datafile(roomNumber);
     //sets the resources pointers
@@ -1244,11 +1244,7 @@ void room_load(uint8_t roomNumber)
 
         //play room music
         play_midi(actualRoom.music, -1);
-        midi_seek(game.roomMusicPos);
     }
-
-    //set room loaded flag
-    //game.roomLoaded = true;
 }
 
 //draws the actual room and room objects
@@ -1452,6 +1448,7 @@ void gui_update()
             break;
         case GUI_EXIT_TITLE_STATE:
             game.state = TITLE_STATE;
+            stop_midi();
             game_fade_out();
             break;
         case GUI_EXIT_DOS_STATE:
