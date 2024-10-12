@@ -69,8 +69,8 @@ void player_update_pos()
     if (player.state == player_st_moving)
     {
         //calculate player relative position (on feet)
-        fixed relX = player.x;
-        fixed relY = fixadd(player.y, itofix(20)); //itofix(playerData.image[player.animation.frame]->h>>1));
+        fixed relX = fixadd(player.x, itofix(PLAYER_POS_X_OFFSET));
+        fixed relY = fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET));
         
         //check destination in range
         in_range_x = in_range(fixtoi(relX), player.destX, 2);
@@ -165,7 +165,7 @@ void player_update_animation()
 void player_update_scale()
 {
     //get scale map value
-    switch (getpixel(actualRoom.wImage, fixtoi(player.x) , fixtoi(player.y + player.vY)))
+    switch (getpixel(actualRoom.wImage, fixtoi(fixadd(player.x, itofix(PLAYER_POS_X_OFFSET))) , fixtoi(fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET)) + player.vY)))
     {
         case SCALE_1_COLOR:
             player.scale = ftofix(SCALE_1_VALUE);

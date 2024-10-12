@@ -8,6 +8,8 @@
 
 #define PLAYER_TEXT_COLOR   40
 #define PLAYER_FAST_SPEED   1
+#define PLAYER_POS_X_OFFSET 0
+#define PLAYER_POS_Y_OFFSET 20
 
 //scale values of scale map
 #define SCALE_1_COLOR   32
