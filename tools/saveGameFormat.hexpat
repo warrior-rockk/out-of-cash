@@ -39,7 +39,7 @@ struct cursor
     char objectName[25];
     char invObjName[25];
     //selected action/verb
-    s16 verbs selectedVerb;
+    s16 selectedVerb;
     //selected use with object inventory
     s16 invObject;
     //counters
@@ -57,6 +57,67 @@ struct cursor
     bool rightClicking;
 };
 
+//global room script structure
+struct roomScript
+{
+    s16 object;
+    s16 invObject;
+    s16 verb;
+    s16 step;
+    s16 lastStep;
+    s16 stepTime;
+    s16 hsX;
+    s16 hsY;
+    u8 type;
+    bool active;
+    bool scriptAssigned;
+};
+
+//message structure
+struct msg
+{
+    char msg[50];
+    s16 msgTime;
+    bool msgFinished;
+    bool msgActive;
+    u16 actorTalk;
+};
+
+//animation structure
+struct tAnimation
+{
+    s16 frame;
+    s16 lastFrame;
+    s16 frameTime;
+};
+
+//talk structure for actors
+struct tActorTalk
+{
+    s16 msgX;
+    s16 msgY;
+    u8 textColor;
+    bool talking;
+};
+
+//player struct
+struct player{
+    s32 x;
+    s32 y;
+    s32 vX;
+    s32 vY;
+    s32 scale;
+    s16 destX;
+    s16 destY;
+    s16 state;
+    s16 prevState;
+    tAnimation animation;
+    tActorTalk talk;
+    u8 lookDir;
+    bool moveFast;
+    bool flip;
+};
+
 struct savegame
 {
     u8 version;
@@ -64,10 +125,10 @@ struct savegame
     gameConfig gameConfigData;
     game gameData;
     inventory invData;
-    /*struct cursor cursorData;
-    struct roomScript roomScriptData;
-    struct msg msgData;
-    struct player playerData;*/
+    cursor cursorData;
+    roomScript roomScriptData;
+    msg msgData;
+    player playerData;
 };
 
 savegame savegame @ 0x00;
