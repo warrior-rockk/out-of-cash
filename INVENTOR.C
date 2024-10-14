@@ -21,10 +21,10 @@ void inventory_init()
         inventory.objIndex[i] = 0;
     
     //create inventory bitmap buffer to draw objects
-    if (!inventory.image)
-        inventory.image = create_bitmap(INV_REGION_W, INV_REGION_H);
+    if (!inventoryImage)
+        inventoryImage = create_bitmap(INV_REGION_W, INV_REGION_H);
     //clear inventory bitmap buffer
-    clear_bitmap(inventory.image);
+    clear_bitmap(inventoryImage);
 
     //test inventory
     /*
@@ -90,13 +90,13 @@ void inventory_draw()
             int invY;
             int objIndex;
             
-            clear_bitmap(inventory.image);
+            clear_bitmap(inventoryImage);
             //run for inventory objects of active page
             for (int i = 0; i < inventory.numObjects && i < INV_OBJECTS_PER_PAGE; i++)
             {
                 //calculate paginated object index
                 objIndex = i + (inventory.page * INV_OBJECTS_PER_ROW);
-                //check limites
+                //check limits
                 if (objIndex < MAX_INV_OBJECTS)
                 {
                     //if inventory pos has object
@@ -106,10 +106,10 @@ void inventory_draw()
                         invX = ((INV_ICON_X_OFFSET * (objIndex % INV_OBJECTS_PER_ROW)) + (INV_ICON_X_OFFSET>>1)) + ((objIndex % INV_OBJECTS_PER_ROW) * INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat)->w)>>1);
                         invY = ((INV_ICON_Y_OFFSET * (objIndex / (INV_OBJECTS_PER_ROW * (inventory.page + 1)))) + (INV_ICON_Y_OFFSET>>1)) + ((objIndex / (INV_OBJECTS_PER_ROW * (inventory.page + 1))) * INV_ICON_MARGIN) - ((((BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat)->h)>>1);
                         //blit inventory icon on inventory image
-                        draw_sprite(inventory.image, (BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat, invX, invY);
+                        draw_sprite(inventoryImage, (BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat, invX, invY);
                         //debug: print inv object index
                         #ifdef DEBUGMODE
-                            textprintf_centre_ex(inventory.image, font, invX, invY, makecol(255,255,255), -1, "%i", objIndex);
+                            textprintf_centre_ex(inventoryImage, font, invX, invY, makecol(255,255,255), -1, "%i", objIndex);
                         #endif
                     }
                 }
@@ -120,7 +120,7 @@ void inventory_draw()
         else
         {
             //draws the last composed inventory image
-            draw_sprite(buffer, inventory.image, INV_POS_X, INV_POS_Y);
+            draw_sprite(buffer, inventoryImage, INV_POS_X, INV_POS_Y);
         }
     }
     show_debug("Inv Objs", inventory.numObjects);

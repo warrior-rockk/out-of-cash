@@ -21,7 +21,6 @@
 //data structures
 struct inventory
 {
-    BITMAP *image;
     uint8_t numObjects;
     uint8_t objIndex[MAX_INV_OBJECTS];
     uint8_t page;
@@ -30,6 +29,7 @@ struct inventory
 
 //global vars
 extern DATAFILE *inventoryDataFile;
+static BITMAP *inventoryImage;
 
 //funtion definitions
 void inventory_init();

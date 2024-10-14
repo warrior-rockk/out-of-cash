@@ -27,11 +27,34 @@ struct gameConfig
 
 struct inventory
 {
-    //BITMAP *image;
     u8 numObjects;
     u8 objIndex[32];
     u8 page;
     bool refresh;
+};
+
+struct cursor
+{
+    //name of the pointed object (change for hotspot)
+    char objectName[25];
+    char invObjName[25];
+    //selected action/verb
+    s16 verbs selectedVerb;
+    //selected use with object inventory
+    s16 invObject;
+    //counters
+    s16 dblClickTimer;
+    //flags
+    bool enabled;
+    bool click;
+    bool dblClick;
+    bool rightClick;
+    bool memClick;
+    bool memRightClick;
+    bool memDblClick;
+    bool evalueDblClick;
+    bool clicking;
+    bool rightClicking;
 };
 
 struct savegame
