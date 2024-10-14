@@ -234,8 +234,6 @@ struct gui
 //cursor structure
 struct cursor
 {
-    //cursor image
-    BITMAP *image;
     //name of the pointed object (change for hotspot)
     char objectName[OBJECT_NAME_MAX_CHARS];
     char invObjName[OBJECT_NAME_MAX_CHARS];
@@ -285,6 +283,7 @@ struct savegame
 
 //global vars
 static volatile int tick;
+static BITMAP *cursorImage;
 PALETTE gamePalette;
 BITMAP *buffer;
 DATAFILE *gameDataFile;

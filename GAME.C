@@ -599,7 +599,7 @@ void game_exit()
 void cursor_init()
 {
     //set cursor image
-    cursor.image = (BITMAP *)gameDataFile[gd_cursor].dat;
+    cursorImage = (BITMAP *)gameDataFile[gd_cursor].dat;
     
     //clear cursor flags
     cursor.enabled = false;
@@ -635,7 +635,7 @@ void debug_init()
 void cursor_draw()
 {
     if (cursor.enabled)
-        draw_sprite(buffer, cursor.image, mouse_x - (cursor.image->w>>1), mouse_y - (cursor.image->h>>1));
+        draw_sprite(buffer, cursorImage, mouse_x - (cursorImage->w>>1), mouse_y - (cursorImage->h>>1));
 }
 
 //function that handles rise clicks
