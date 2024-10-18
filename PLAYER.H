@@ -39,8 +39,8 @@ struct player{
     fixed vX;
     fixed vY;
     fixed scale;
-    int destX;
-    int destY;
+    int16_t destX;
+    int16_t destY;
     enum playerStates state;
     enum playerStates prevState;
     tAnimation animation;

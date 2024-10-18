@@ -1,6 +1,8 @@
+#pragma endian big
+
 struct game
 {
-    s16 state;
+    s32 state;
     s16 actualRoom;
     s16 nextRoom;
     //enter room position assigned by change_room_pos()
@@ -10,7 +12,7 @@ struct game
     bool fadeIn;
     bool fadeOut;
     bool exit;
-    u8 flags[255];  //32 bytes = 255 bit flags
+    u8 flags[32];  //32 bytes = 255 bit flags
 };
 
 struct gameConfig
@@ -39,7 +41,7 @@ struct cursor
     char objectName[25];
     char invObjName[25];
     //selected action/verb
-    s16 selectedVerb;
+    s32 selectedVerb;
     //selected use with object inventory
     s16 invObject;
     //counters
@@ -109,8 +111,8 @@ struct player{
     s32 scale;
     s16 destX;
     s16 destY;
-    s16 state;
-    s16 prevState;
+    s32 state;
+    s32 prevState;
     tAnimation animation;
     tActorTalk talk;
     u8 lookDir;

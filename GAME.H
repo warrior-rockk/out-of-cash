@@ -156,11 +156,11 @@ struct actualRoom
 struct game
 {
     enum gameState state;
-    int actualRoom;
-    int nextRoom;
+    int16_t actualRoom;
+    int16_t nextRoom;
     //enter room position assigned by change_room_pos()
-    int room_pos_x;
-    int room_pos_y;
+    int16_t room_pos_x;
+    int16_t room_pos_y;
     long roomMusicPos;
     bool fadeIn;
     bool fadeOut;
@@ -185,7 +185,7 @@ struct gameConfig
 struct msg
 {
     char msg[MAX_SENTENCE_LENGTH];
-    int msgTime;
+    int16_t msgTime;
     bool msgFinished;
     bool msgActive;
     tActorTalk *actorTalk;
@@ -200,8 +200,8 @@ struct hud
     BITMAP *hsImage;
     //selected verbs images and screen positions
     BITMAP *verbSelImage[NUM_VERBS];
-    int posXVerbSelImage[NUM_VERBS];
-    int posYVerbSelImage[NUM_VERBS];
+    int16_t posXVerbSelImage[NUM_VERBS];
+    int16_t posYVerbSelImage[NUM_VERBS];
     //scroll buttons
     bool selUpButton;
     bool selDownButton;
@@ -224,8 +224,8 @@ struct gui
     BITMAP *hsImageLoad;
     BITMAP *imageSlotSel;
     //gui position
-    int x;
-    int y;
+    int16_t x;
+    int16_t y;
     //gui state
     uint8_t state;
     uint8_t slotSel;
@@ -240,9 +240,9 @@ struct cursor
     //selected action/verb
     enum verbs selectedVerb;
     //selected use with object inventory
-    int invObject;
+    int16_t invObject;
     //counters
-    int dblClickTimer;
+    int16_t dblClickTimer;
     //flags
     bool enabled;
     bool click;

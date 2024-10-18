@@ -11,9 +11,9 @@
 
 typedef struct tAnimation
 {
-    int frame;
-    int lastFrame;
-    int frameTime;
+    int16_t frame;
+    int16_t lastFrame;
+    int16_t frameTime;
 } tAnimation;
 
 //declare functions

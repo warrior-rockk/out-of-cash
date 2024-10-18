@@ -66,14 +66,14 @@ static const char verbName[NUM_VERBS][10] = {
 //global room script structure
 struct roomScript
 {
-    int object;
-    int invObject;
+    int16_t object;
+    int16_t invObject;
     enum verbs verb;
-    int step;
-    int lastStep;
-    int stepTime;
-    int hsX;
-    int hsY;
+    int16_t step;
+    int16_t lastStep;
+    int16_t stepTime;
+    int16_t hsX;
+    int16_t hsY;
     uint8_t type;
     bool active;
     bool scriptAssigned;
@@ -83,10 +83,10 @@ struct roomScript
 typedef struct tObject
 {
     //object id (corresponds to index of objects image datafile header)
-    int objId;
+    int16_t objId;
     //position
-    int x;
-    int y;
+    int16_t x;
+    int16_t y;
     //animation id
     uint8_t animationId;
     //properties
@@ -120,8 +120,8 @@ struct dialog
 //talk structure for actors
 typedef struct tActorTalk
 {
-    int msgX;
-    int msgY;
+    int16_t msgX;
+    int16_t msgY;
     uint8_t textColor;
     bool talking;
 } tActorTalk;
@@ -131,9 +131,9 @@ typedef struct tActorTalk
 struct debug
 {
     //global debug vars structure (only ints on this iteration)
-    int var[DEBUG_MAX_VARS];
+    int16_t var[DEBUG_MAX_VARS];
     char varName[DEBUG_MAX_VARS][10];
-    int numVars;
+    int16_t numVars;
     //show walk room image
     bool showWalkImage;
     //show hotspot room image
