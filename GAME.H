@@ -256,8 +256,27 @@ struct cursor
     bool rightClicking;
 } cursor;
 
+typedef struct tKey{
+    uint16_t keyId;
+    bool pressed;
+    bool memPressed;
+} tKey;
+
+#define GAME_KEYS_NUM 4
+static tKey gameKeys[GAME_KEYS_NUM] =
+{
+    #define G_KEY_PAUSE     0
+    #define G_KEY_EXIT      1
+    #define G_KEY_W         2
+    #define G_KEY_H         3
+    {KEY_SPACE, false, false},
+    {KEY_ESC, false, false},
+    {KEY_W, false, false},
+    {KEY_H, false, false},
+};
+
 //keys struct
-struct gameKeys{
+/*struct gameKeys{
     //game keys defines
     #define G_KEY_PAUSE     KEY_SPACE
     #define G_KEY_EXIT      KEY_ESC
@@ -265,7 +284,7 @@ struct gameKeys{
     bool exitPressed;
     bool memPause;
     bool memExit;
-} gameKeys;
+} gameKeys;*/
 
 //savegame structure
 struct savegame

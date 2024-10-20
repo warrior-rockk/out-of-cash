@@ -261,7 +261,7 @@ void game_update()
     switch (game.state)
     {
         case TITLE_STATE:
-            if (gameKeys.exitPressed)
+            if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = EXIT_STATE;
             }
@@ -273,12 +273,12 @@ void game_update()
             }
             break;
         case PLAYING_STATE:
-            if (gameKeys.pausePressed)
+            if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = PAUSE_STATE;
                 midi_pause();
             }
-            else if (gameKeys.exitPressed)
+            else if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = MENU_STATE;
                 //midi_pause();
@@ -289,14 +289,14 @@ void game_update()
             }
             break;
         case PAUSE_STATE:
-            if (gameKeys.pausePressed)
+            if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = PLAYING_STATE;
                 midi_resume();
             }
             break;
         case MENU_STATE:
-            if (gameKeys.exitPressed)
+            if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = PLAYING_STATE;
                 //midi_resume();
@@ -311,11 +311,11 @@ void game_update()
             game.state = EXIT_STATE;
 
         //toogle show room walk image
-        if (key[KEY_W] && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_W].pressed && game.state == PLAYING_STATE)
             debug.showWalkImage = !debug.showWalkImage;
 
         //toogle show room hotspot image
-        if (key[KEY_H] && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
             debug.showHotspotImage = !debug.showHotspotImage;
     #endif
 }
@@ -323,6 +323,23 @@ void game_update()
 //function to handle game keys
 void game_keys_handler()
 {
+    for (int i = 0; i < GAME_KEYS_NUM; i++)
+    {
+        gameKeys[i].pressed = false;
+        if (key[gameKeys[i].keyId])
+        {
+            if (!gameKeys[i].memPressed)
+            {
+                gameKeys[i].pressed = true;
+                gameKeys[i].memPressed = true;
+            }
+        }
+        else
+        {
+            gameKeys[i].memPressed = false;
+        }
+    }
+    /*
     //pause key handler
     gameKeys.pausePressed = false;
     if (key[G_KEY_PAUSE])
@@ -352,6 +369,7 @@ void game_keys_handler()
     {
         gameKeys.memExit = false;
     }
+    */
 }
 
 //function to write text on screen
