@@ -1,12 +1,12 @@
 # TO-DO
 
-- [ ] Use unique walk+scale map image
+- [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Spanish characters on system font
 - [ ] Custom fonts
 - [ ] Iterate On-screen debug system (multiple vars)
-- [ ] Music smooth transition
+- [ ] Music smooth transition (music fades and screen fades?)
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Real A* Pathfinding?
 - [ ] Room definition/script tool

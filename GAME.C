@@ -339,37 +339,6 @@ void game_keys_handler()
             gameKeys[i].memPressed = false;
         }
     }
-    /*
-    //pause key handler
-    gameKeys.pausePressed = false;
-    if (key[G_KEY_PAUSE])
-    {
-        if (!gameKeys.memPause)
-        {
-            gameKeys.pausePressed = true;
-            gameKeys.memPause = true;
-        }
-    }
-    else
-    {
-        gameKeys.memPause = false;
-    }
-
-    //exit key handler
-    gameKeys.exitPressed = false;
-    if (key[G_KEY_EXIT])
-    {
-        if (!gameKeys.memExit)
-        {
-            gameKeys.exitPressed = true;
-            gameKeys.memExit = true;
-        }
-    }
-    else
-    {
-        gameKeys.memExit = false;
-    }
-    */
 }
 
 //function to write text on screen
