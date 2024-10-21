@@ -308,6 +308,7 @@ BITMAP *buffer;
 DATAFILE *gameDataFile;
 DATAFILE *playerDataFile;
 DATAFILE *inventoryDataFile;
+DATAFILE *soundDataFile;
 bool gameTick;
 
 //function declarations

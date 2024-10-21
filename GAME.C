@@ -13,6 +13,7 @@
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
+#include "SDATA.H"
 
 int main()
 {
@@ -137,7 +138,7 @@ void main_init()
         abort_on_error("Error iniciando el mouse");
     if (install_keyboard() != 0)
         abort_on_error("Error iniciando el teclado");
-    if (install_sound(0, MIDI_AUTODETECT, 0) != 0)
+    if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0) != 0)
         abort_on_error("Error iniciando el sonido");
 
     //set video mode
@@ -212,7 +213,12 @@ void game_load_resources()
     actualRoom.musicDataFileIndex = create_datafile_index("MDATA.DAT");
     if (!actualRoom.musicDataFileIndex)
         abort_on_error("Archivo MDATA.DAT invalido o inexistente");
-    
+
+    //loads sound fata file
+    soundDataFile = load_datafile("SDATA.DAT");
+    if (!soundDataFile)
+        abort_on_error("Archivo SDATA.DAT invalido o inexistente");
+        
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
@@ -312,8 +318,12 @@ void game_update()
 
         //toogle show room walk image
         if (gameKeys[G_KEY_W].pressed && game.state == PLAYING_STATE)
+            {
             debug.showWalkImage = !debug.showWalkImage;
 
+                if (play_sample((SAMPLE*)soundDataFile[sd_take].dat, 255, 0, rand() % (1200 - 800 + 1) + 800, 0) < 0 )
+                    abort_on_error("erorr en play");
+                }
         //toogle show room hotspot image
         if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
             debug.showHotspotImage = !debug.showHotspotImage;
