@@ -13,7 +13,7 @@
 #include "engine.h"
 #include "room03.h"
 
-#include "IDATA.h"
+//#include "IDATA.h"
 
 //Funtion to return the name of hotspot by color code
 void r03_get_hotspot_name(uint8_t colorCode, char *s)

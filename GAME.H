@@ -275,17 +275,6 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_H, false, false},
 };
 
-//keys struct
-/*struct gameKeys{
-    //game keys defines
-    #define G_KEY_PAUSE     KEY_SPACE
-    #define G_KEY_EXIT      KEY_ESC
-    bool pausePressed;
-    bool exitPressed;
-    bool memPause;
-    bool memExit;
-} gameKeys;*/
-
 //savegame structure
 struct savegame
 {

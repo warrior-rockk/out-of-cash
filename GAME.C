@@ -318,12 +318,8 @@ void game_update()
 
         //toogle show room walk image
         if (gameKeys[G_KEY_W].pressed && game.state == PLAYING_STATE)
-            {
             debug.showWalkImage = !debug.showWalkImage;
-
-                if (play_sample((SAMPLE*)soundDataFile[sd_take].dat, 255, 0, rand() % (1200 - 800 + 1) + 800, 0) < 0 )
-                    abort_on_error("erorr en play");
-                }
+            
         //toogle show room hotspot image
         if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
             debug.showHotspotImage = !debug.showHotspotImage;
@@ -863,13 +859,20 @@ void cursor_action_menu()
             break;
         case GUI_SLIDER_3_COLOR:
             if (cursor.clicking)
+            {
                 gameConfig.musicVolume = scale_x(norm_value, 0, 255);
                 set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
+            }
             break;
         case GUI_SLIDER_4_COLOR:
             if (cursor.clicking)
+            {
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
                 set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
+            }
+            //feedback random global sound
+            if (cursor.click)
+                play_global_sound(rand() % sd_COUNT);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected

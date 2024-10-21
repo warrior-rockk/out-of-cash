@@ -6,6 +6,10 @@
 #include "gameflags.h"
 #include "anim.h"
 
+//include game resources references
+#include "IDATA.h"
+#include "SDATA.h"
+
 //Definitions
 #define NUM_VERBS               10
 #define NUM_RAND_ANSWERS        3
@@ -182,5 +186,6 @@ void change_player_dir(uint8_t dir);
 
 void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 
+void play_global_sound(int16_t soundId);
 
 #endif

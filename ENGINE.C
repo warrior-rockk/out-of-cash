@@ -120,6 +120,8 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
     set_game_flag(gameFlag);
     //add object to inventory
     inventory_add(invObjectNum);
+    //plays take sound
+    play_global_sound(sd_take);
 }
 
 //function to remove object inventory and increment script
@@ -381,4 +383,10 @@ void stop_dialog()
 {
     dialog_init();
     game.state = PLAYING_STATE;    
+}
+
+//function to play game global sound
+void play_global_sound(int16_t soundId)
+{
+    play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, rand() % (1200 - 800 + 1) + 800, 0);
 }
