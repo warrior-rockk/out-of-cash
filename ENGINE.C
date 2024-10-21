@@ -121,7 +121,7 @@ void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
     //add object to inventory
     inventory_add(invObjectNum);
     //plays take sound
-    play_global_sound(sd_take);
+    play_sound_rnd(sd_take);
 }
 
 //function to remove object inventory and increment script
@@ -386,7 +386,13 @@ void stop_dialog()
 }
 
 //function to play game global sound
-void play_global_sound(int16_t soundId)
+void play_sound(int16_t soundId)
+{
+    play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, 1000, 0);
+}
+
+//function to play game global sound with random frecuency mod
+void play_sound_rnd(uint16_t soundId)
 {
     play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, rand() % (1200 - 800 + 1) + 800, 0);
 }

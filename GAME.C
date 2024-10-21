@@ -872,7 +872,7 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                play_global_sound(rand() % sd_COUNT);
+                play_sound_rnd(rand() % sd_COUNT);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
