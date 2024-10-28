@@ -1,8 +1,9 @@
-#pragma endian big
+#pragma little endian
 
 struct game
 {
     s32 state;
+    
     s16 actualRoom;
     s16 nextRoom;
     //enter room position assigned by change_room_pos()
@@ -13,6 +14,7 @@ struct game
     bool fadeOut;
     bool exit;
     u8 flags[32];  //32 bytes = 255 bit flags
+    padding[1];
 };
 
 struct gameConfig
@@ -25,6 +27,7 @@ struct gameConfig
     u8 playerSpeed;
     u8 musicVolume;
     u8 soundVolume;
+    padding[3];
 };
 
 struct inventory
@@ -33,6 +36,7 @@ struct inventory
     u8 objIndex[32];
     u8 page;
     bool refresh;
+    padding[2];
 };
 
 struct cursor
@@ -40,6 +44,7 @@ struct cursor
     //name of the pointed object (change for hotspot)
     char objectName[25];
     char invObjName[25];
+    padding[1];
     //selected action/verb
     s32 selectedVerb;
     //selected use with object inventory
@@ -57,6 +62,7 @@ struct cursor
     bool evalueDblClick;
     bool clicking;
     bool rightClicking;
+    padding[2];
 };
 
 //global room script structure
@@ -73,16 +79,19 @@ struct roomScript
     u8 type;
     bool active;
     bool scriptAssigned;
+    padding[1];
 };
 
 //message structure
 struct msg
 {
     char msg[50];
+    padding[2];
     s16 msgTime;
     bool msgFinished;
     bool msgActive;
     u16 actorTalk;
+    padding[2];
 };
 
 //animation structure
