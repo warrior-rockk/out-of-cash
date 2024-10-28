@@ -218,8 +218,8 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                r01_dialogActor.msgX = roomScript.hsX;
-                                r01_dialogActor.msgY = roomScript.hsY;
+                                //r01_dialogActor.msgX = roomScript.hsX;
+                                //r01_dialogActor.msgY = roomScript.hsY;
                                 script_start_dialog(1);
                                 break;
                             default:

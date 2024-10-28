@@ -1092,17 +1092,17 @@ void msg_draw()
     {
         int msgX;
         int msgY;
-        
+
         //get msg length in pixels
         int msgWidth = get_msg_length(msg.msg); //text_length(font, msg.msg);
 
         //check msg X limits for avoid text outscreen
-        if (fixtoi(msg.actorTalk->msgX) < (msgWidth>>1))
+        if (msg.actorTalk->msgX < (msgWidth>>1))
             msgX = (msgWidth>>1);
-        else if (fixtoi(msg.actorTalk->msgX) > (RES_X - (msgWidth>>1)))
+        else if (msg.actorTalk->msgX > (RES_X - (msgWidth>>1)))
             msgX = RES_X - (msgWidth>>1);
         else
-            msgX = fixtoi(msg.actorTalk->msgX);
+            msgX = msg.actorTalk->msgX;
 
         //get msg Y
         msgY = msg.actorTalk->msgY - TEXT_ACTOR_MARGIN;

@@ -129,7 +129,7 @@ void player_update_pos()
     player.y += player.vY;
 
     //update talk position
-    player.talk.msgX = player.x;
+    player.talk.msgX = fixtoi(player.x);
     player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(playerData.image[player.animation.frame]->h>>1)), player.scale)));
 
 }

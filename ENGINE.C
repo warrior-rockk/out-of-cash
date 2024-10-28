@@ -27,6 +27,9 @@ void init_room_script()
 //function to actor say something. Returns 1 when finished
 int say_actor(char *message, tActorTalk *actorTalk)
 {
+    show_debug("actorx", actorTalk->msgX);
+        show_debug("actory", actorTalk->msgY);
+        
     //assign actor talk pointer
     msg.actorTalk = actorTalk;
 
