@@ -32,8 +32,8 @@
 //define object data
 #define R03_OBJ_0           r03d_objGel,   169, 41,  0, 0, 0
 #define R03_OBJ_1           r03d_objBath,   162, 148,  0, 1, 1
-#define R03_OBJ_2           r03d_objBathClosetOpen,   144, 23,  0, 1, 0
-#define R03_OBJ_3           r03d_objBathDoorOpen,   204, 33,  0, 1, 0
+#define R03_OBJ_2           r03d_objBathClosetOpen,   167, 60,  0, 1, 0
+#define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, 1, 0
 
 //define room animations
 #define R03_NUM_ANIMATIONS  0
