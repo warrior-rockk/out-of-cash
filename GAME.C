@@ -323,6 +323,33 @@ void game_update()
         //toogle show room hotspot image
         if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
             debug.showHotspotImage = !debug.showHotspotImage;
+
+        //toogle cursor room objects
+        if (gameKeys[G_KEY_O].pressed && game.state == PLAYING_STATE)
+        {
+            if (!debug.cursorRoomObjects)
+            {
+                debug.cursorRoomObjects = true;
+                debug.numCursorRoomObject = 0;
+            }
+            else
+                debug.cursorRoomObjects = false;
+        }
+
+        //cycle up cursor room objects
+        if (gameKeys[G_KEY_PLUS].pressed && game.state == PLAYING_STATE)
+        {
+            if (debug.cursorRoomObjects && debug.numCursorRoomObject < roomData[game.actualRoom].room_num_objects)
+                debug.numCursorRoomObject++;
+        }
+
+        //cycle down cursor room objects
+        if (gameKeys[G_KEY_MINUS].pressed && game.state == PLAYING_STATE)
+        {
+            if (debug.cursorRoomObjects && debug.numCursorRoomObject > 0)
+                debug.numCursorRoomObject--;
+        }
+
     #endif
 }
 
@@ -629,6 +656,27 @@ void cursor_draw()
 {
     if (cursor.enabled)
         draw_sprite(buffer, cursorImage, mouse_x - (cursorImage->w>>1), mouse_y - (cursorImage->h>>1));
+
+    #ifdef DEBUGMODE
+    if (debug.cursorRoomObjects)
+    {
+        tObject *obj;
+        BITMAP *objImage;
+
+        //get pointer to object structure
+        obj = roomData[game.actualRoom].room_get_object_info(debug.numCursorRoomObject);
+        //check null pointer
+        if (obj != NULL)
+        {
+            //get pointer to bitmap object
+            objImage = (BITMAP *)actualRoom.dataFile[obj->objId].dat;
+            //draw the object as cursor
+            draw_sprite(buffer, objImage, mouse_x - (objImage->w>>1), mouse_y - (objImage->h>>1));
+        }
+        else
+            debug.numCursorRoomObject = 0;
+    }
+    #endif
 }
 
 //function that handles rise clicks

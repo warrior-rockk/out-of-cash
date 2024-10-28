@@ -9,7 +9,7 @@
 //define room properties
 #define R01_START_POS_X         170
 #define R01_START_POS_Y         100
-#define R01_ROOM_NUM_OBJS       4
+#define R01_ROOM_NUM_OBJS       3
 #define R01_MUSIC_ID            0
 #define R01_FADE                0
 

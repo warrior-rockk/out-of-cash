@@ -138,10 +138,13 @@ struct debug
     int16_t var[DEBUG_MAX_VARS];
     char varName[DEBUG_MAX_VARS][10];
     int16_t numVars;
+    uint8_t numCursorRoomObject;
     //show walk room image
     bool showWalkImage;
     //show hotspot room image
     bool showHotspotImage;
+    //cursor room objects
+    bool cursorRoomObjects;
 } debug;
 #endif
 
