@@ -11,22 +11,20 @@
 #define R01_START_POS_Y         100
 #define R01_ROOM_NUM_OBJS       4
 #define R01_MUSIC_ID            0
-#define R01_FADE                false
+#define R01_FADE                0
 
 //define room data (compose room properties and function pointers)
 #define R01_DATA R01_START_POS_X, R01_START_POS_Y, R01_ROOM_NUM_OBJS, R01_MUSIC_ID, R01_FADE, &r01_room_init, &r01_room_update, &r01_get_hotspot_name, &r01_get_default_hotspot_verb, &r01_get_object_info
 
 //define object array alias
 #define R01_CASSETTE_OBJ_ID 0
-#define R01_GUITAR_OBJ_ID   1
-#define R01_STEREO_OBJ_ID   2
-#define R01_TABLE_OBJ_ID    3
+#define R01_GUITAR_OBJ_ID 1
+#define R01_STEREO_OBJ_ID 2
 
 //define object data
-#define R01_OBJ_0           r01d_objCassette,   279, 89,  0, true, 0
-#define R01_OBJ_1           r01d_objGuitar,     100, 50,  0, true, 0
-#define R01_OBJ_2           r01d_objStereo01,   282, 56,  1, true, 0
-#define R01_OBJ_3           r01d_objTable,      54,  144, 0, true, 1
+#define R01_OBJ_0           r01d_objCassette,   279, 89,  0, 1, 0
+#define R01_OBJ_1           r01d_objGuitar,   100, 50,  0, 1, 0
+#define R01_OBJ_2           r01d_objStereo01,   282, 56,  1, 1, 0
 
 //define room animations
 #define R01_NUM_ANIMATIONS  1
@@ -34,11 +32,11 @@
 
 //hotspot code room enumeration
 enum r01_hotspotCode{
-    Guitarra    = 150,
-    Minicadena  = 225,
-    Puerta      = 236,
-    Casete      = 216,
-    Spider      = 234,
+    r01_guitar    = 150,
+    r01_stereo    = 225,
+    r01_door    = 236,
+    r01_cassette    = 216,
+    r01_spider    = 234,
 };
 
 //declare and define room objects array
@@ -47,7 +45,6 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
     {R01_OBJ_0},
     {R01_OBJ_1},
     {R01_OBJ_2},
-    {R01_OBJ_3},
 };
 
 //declare room objects animations array

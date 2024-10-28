@@ -21,21 +21,21 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
     //check the object
     switch(colorCode)
     {
-        case Guitarra:
+        case r01_guitar:
             if (r01_object[R01_GUITAR_OBJ_ID].active)
                 strcpy(s, "Guitarra");
             break;
-        case Minicadena:
+        case r01_stereo:
             strcpy(s, "Minicadena");
             break;
-        case Puerta:
+        case r01_door:
             strcpy(s, "Puerta");
             break;
-        case Casete:
+        case r01_cassette:
             if (r01_object[R01_CASSETTE_OBJ_ID].active)
                 strcpy(s, "Casete");
             break;
-        case Spider:
+        case r01_spider:
             strcpy(s, "Ara"CHAR_NY"a");
             break;
         default:
@@ -49,7 +49,7 @@ enum verbs r01_get_default_hotspot_verb(uint8_t colorCode)
     //check the object
     switch(colorCode)
     {
-        case Puerta:
+        case r01_door:
             return OPEN;
             break;
         default:
@@ -198,7 +198,7 @@ void r01_update_room_script()
         //sequence actions
         switch (roomScript.object)
         {
-            case Spider:
+            case r01_spider:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -229,7 +229,7 @@ void r01_update_room_script()
                     break;
                 }
                 break;
-            case Minicadena:
+            case r01_stereo:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -313,7 +313,7 @@ void r01_update_room_script()
                         break;
                 }
                 break;
-            case Puerta:
+            case r01_door:
                 switch(roomScript.verb)
                 {
                     case GO:
@@ -331,7 +331,7 @@ void r01_update_room_script()
                         break;
                 }
                 break;
-            case Casete:
+            case r01_cassette:
                 switch(roomScript.verb)
                 {
                     case TAKE:
@@ -349,7 +349,7 @@ void r01_update_room_script()
                         break;
                 }
                 break;
-            case Guitarra:
+            case r01_guitar:
                 switch(roomScript.verb)
                 {
                     case TAKE:
