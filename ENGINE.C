@@ -27,6 +27,9 @@ void init_room_script()
 //function to actor say something. Returns 1 when finished
 int say_actor(char *message, tActorTalk *actorTalk)
 {        
+    //check message length
+    ASSERT(strlen(message) <= MAX_MSG_LENGTH);
+    
     //assign actor talk pointer
     msg.actorTalk = actorTalk;
 
@@ -370,7 +373,7 @@ void script_next_dialog_node()
 //function to add line of dialog
 void dialog_add(char *textLine, uint8_t destNode)
 {
-    ASSERT(strlen(textLine) <= MAX_SENTENCE_LENGTH);
+    ASSERT(strlen(textLine) <= MAX_MSG_LENGTH);
     
     dialog.nodeNumLines++;
 

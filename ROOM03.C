@@ -31,7 +31,10 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Toalla");
             break;
         case r03_gel:
+            if (r03_object[R03_GEL_OBJ_ID].active)
                 strcpy(s, "Gel");
+            else
+                strcpy(s, "");
             break;
         case r03_bathMat:
                 strcpy(s, "Alfombrilla");
@@ -113,7 +116,8 @@ void r03_room_update()
 //update room objects
 void r03_update_room_objects()
 {
-
+    r03_object[R03_GEL_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN) && !is_game_flag(GOT_GEL);
+    r03_object[R03_BATHCLOSETOPEN_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN);
 }
 
 //update dialog selection
@@ -139,13 +143,32 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Armario");
+                                script_say("El cl sico armario del ba¤o donde\nacabas acumulando cientos de productos");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(BATH_CLOSET_OPEN))
+                                {
+                                    script_say("Ya est  abierto");
+                                    end_script();
+                                }
+                                else                                
+                                    set_game_flag(BATH_CLOSET_OPEN);
+                                    end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r03_washbowl:
@@ -156,7 +179,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Lavabo");
+                                script_say("No olviden lavarse las manos antes\nde reincorporarse al trabajo...");
                                 break;
                             default:
                                 end_script();
@@ -173,8 +196,18 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Espejo");
+                                if (!is_game_flag(MIRROR_MSG))
+                                {
+                                    script_say("El programador del juego ha sido tan\nvago como para no programar los reflejos...");
+                                    end_script();
+                                }
+                                else
+                                    script_say("Otro espejo con reflejo sin programar...");
                                 break;
+                            case 1:
+                                script_wait(10);
+                            case 2:
+                                script_say("No se le puede pedir mas...");
                             default:
                                 end_script();
                                 break;
@@ -190,8 +223,10 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Toalla");
+                                script_say("Esta toalla lleva en la familia muchos a¤os");
                                 break;
+                            case 1:
+                                script_say("Deberiamos pensar en lavarla...");
                             default:
                                 end_script();
                                 break;
@@ -207,13 +242,29 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Gel");
+                                script_say("Un bote de gel corporal");
                                 break;
+                            case 1:
+                                script_say("Parece muy viscoso...");
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r03_object[R03_GEL_OBJ_ID].active, GOT_GEL, id_soap);
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r03_bathMat:
@@ -224,8 +275,12 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Alfombrilla");
+                                script_say("La alfombrilla para secarte los pies\ndespu‚s de la ducha");
                                 break;
+                            case 1:
+                                script_wait(10);
+                            case 2:
+                                script_say("No le des vueltas. No hay nada debajo...");
                             default:
                                 end_script();
                                 break;
@@ -241,7 +296,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Interruptor");
+                                script_say("Hay algo placentero en el sonido\nde un interruptor accion ndose");
                                 break;
                             default:
                                 end_script();
@@ -258,7 +313,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("La puerta del ba¤o que da al pasillo");
                                 break;
                             default:
                                 end_script();

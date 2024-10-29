@@ -15,6 +15,7 @@
 #define NUM_RAND_ANSWERS        3
 
 //dialogs
+#define MAX_DIALOG_LINE_LENGTH  50
 #define NUM_MAX_DIALOG_LINES    5
 #define DIALOG_ST_SELECT        0
 #define DIALOG_ST_SCRIPT        1
@@ -26,9 +27,6 @@
 #define ROOM_SCRIPT_TYPE        0
 #define DIALOG_SCRIPT_TYPE      1
 #define INVENTORY_SCRIPT_TYPE   2
-
-//Texts
-#define MAX_SENTENCE_LENGTH     50
 
 //Debug
 #define DEBUG_MAX_VARS          10
@@ -104,7 +102,7 @@ struct dialog
     //unique room identification of dialog (for multi-dialog on room)
     uint8_t dialogId;
     //line texts array of actual dialog node
-    char lineText[NUM_MAX_DIALOG_LINES][MAX_SENTENCE_LENGTH];
+    char lineText[NUM_MAX_DIALOG_LINES][MAX_DIALOG_LINE_LENGTH];
     //destination node for each linea
     uint8_t lineDestNode[NUM_MAX_DIALOG_LINES];
     //num of lines on node

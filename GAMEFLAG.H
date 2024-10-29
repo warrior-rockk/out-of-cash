@@ -8,4 +8,9 @@
 #define USED_CASSETTE       3
 #define STEREO_ON           4
 
+#define BATH_CLOSET_OPEN    5
+#define BATH_DOOR_OPEN      6
+#define GOT_GEL             7
+#define MIRROR_MSG          8
+
 #endif //H_GAME_FLAGS
