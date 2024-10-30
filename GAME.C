@@ -402,7 +402,7 @@ void game_write(char *text, int x, int y, uint8_t color)
         //increment position
         posY += 10;
         //get next token
-        ch = strtok(NULL, "-");
+        ch = strtok(NULL, "\n");
     }
 }
 
@@ -1144,26 +1144,26 @@ void msg_draw()
         int msgX;
         int msgY;
 
-        //get msg length in pixels
-        int msgWidth = get_msg_length(msg.msg); //text_length(font, msg.msg);
-
-        //insert new line every MAX_LINE_LENGTH on each space char
+        //insert new line every MAX_MSG_LINE_LENGTH on each space char
         int msgCharCount = 0;
         for (int i = 0; i < strlen(msg.msg); i++)
         {
-            if (msgCharCount > 30)
+            if (msgCharCount > MAX_MSG_LINE_LENGTH)
             {
-                if (msg.msg[i] == 0x20)
+                //if char is space or new_line char
+                if (msg.msg[i] == 0x20 || msg.msg[i] == 0x0A)
                 {
+                    //replace with new_line char
                     msg.msg[i] = 0x0A;
+                    //reset the counter
                     msgCharCount = -1;
                 }
             }
-            msgCharCount ++;
+            msgCharCount++;
         }
-        //get msg length again
-        msgWidth = get_msg_length(msg.msg);
 
+        //get msg length in pixels
+        int msgWidth = get_msg_length(msg.msg);
         
         //check msg X limits for avoid text outscreen
         if (msg.actorTalk->msgX < (msgWidth>>1))

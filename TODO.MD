@@ -1,7 +1,6 @@
 # TO-DO
 
 - [ ] Get animation upper and bottom
-- [ ] Auto-separate say lines?
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
@@ -20,6 +19,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Auto-separate say lines?
 - [X] BUG: actors text off-positions
 - [X] Debug keys mem (key handler scalable?)
 - [X] Avoid pointers on savegame structure

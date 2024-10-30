@@ -92,6 +92,7 @@
 
 //Text
 #define MAX_MSG_LENGTH          200
+#define MAX_MSG_LINE_LENGTH     20
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
 #define TEXT_ACTOR_MARGIN       10
