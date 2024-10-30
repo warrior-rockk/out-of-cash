@@ -1181,22 +1181,30 @@ void msg_draw()
     }
 }
 
-//function to get msg length (in pixels). On multiline, returns the lenght of first line
+//function to get msg length (in pixels). Returns the length of largest line
 int get_msg_length(char *text)
 {
     char s[MAX_MSG_LENGTH];
     char *ch;
-
+    int msgLength = 0;
+    
     //make a copy of the string for tokenizer
     strcpy(s, text);
 
     //first token
     ch = strtok(s, "\n");
 
-    if (ch)
-        return text_length(font, ch);
-    else
-        return 0;
+    //run for tokens
+    while(ch)
+    {
+        //check largest line
+        if (text_length(font, ch) > msgLength)
+            msgLength = text_length(font, ch);
+        //next token
+        ch = strtok(NULL, "\n");
+    }
+
+    return msgLength;
 }
 
 //function to abort program with critical error
