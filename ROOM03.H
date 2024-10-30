@@ -24,15 +24,15 @@
 #define R03_DATA R03_START_POS_X, R03_START_POS_Y, R03_ROOM_NUM_OBJS, R03_MUSIC_ID, R03_FADE, &r03_room_init, &r03_room_update, &r03_get_hotspot_name, &r03_get_default_hotspot_verb, &r03_get_object_info
 
 //define object array alias
-#define R03_GEL_OBJ_ID 0
-#define R03_BATH_OBJ_ID 1
-#define R03_BATHCLOSETOPEN_OBJ_ID 2
+#define R03_BATH_OBJ_ID 0
+#define R03_BATHCLOSETOPEN_OBJ_ID 1
+#define R03_GEL_OBJ_ID 2
 #define R03_BATHDOOROPEN_OBJ_ID 3
 
 //define object data (objId, x, y, animId, active, layer)
-#define R03_OBJ_0           r03d_objGel,   169, 41,  0, false, 0
-#define R03_OBJ_1           r03d_objBath,   162, 148,  0, true, 1
-#define R03_OBJ_2           r03d_objBathClosetOpen,   167, 60,  0, false, 0
+#define R03_OBJ_0           r03d_objBath,   162, 148,  0, true, 1
+#define R03_OBJ_1           r03d_objBathClosetOpen,   167, 60,  0, false, 0
+#define R03_OBJ_2           r03d_objGel,   169, 41,  0, false, 0
 #define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, false, 0
 
 //define room animations

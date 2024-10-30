@@ -1,5 +1,7 @@
 # TO-DO
 
+- [ ] Get animation upper and bottom
+- [ ] Auto-separate say lines?
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)

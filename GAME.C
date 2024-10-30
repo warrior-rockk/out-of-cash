@@ -230,8 +230,11 @@ void game_init()
     //default game config (each savegame file stores custom config
     gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 30;
-    gameConfig.musicVolume  = 200;
+    gameConfig.musicVolume  = 0; //200
     gameConfig.soundVolume  = 200;
+
+    //sets audio config
+    set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     
     //init game vars
     game.actualRoom     = -1;    //to force first room_init

@@ -18,6 +18,15 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
     //check the object
     switch(colorCode)
     {
+        case r03_gel:
+            if (r03_object[R03_GEL_OBJ_ID].active)
+            {
+                strcpy(s, "Gel");
+                break;
+            }
+            else
+                strcpy(s, "");
+            //break;
         case r03_closet:
                 strcpy(s, "Armario");
             break;
@@ -29,12 +38,6 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
             break;
         case r03_towel:
                 strcpy(s, "Toalla");
-            break;
-        case r03_gel:
-            if (r03_object[R03_GEL_OBJ_ID].active)
-                strcpy(s, "Gel");
-            else
-                strcpy(s, "");
             break;
         case r03_bathMat:
                 strcpy(s, "Alfombrilla");
@@ -57,7 +60,10 @@ enum verbs r03_get_default_hotspot_verb(uint8_t colorCode)
     switch(colorCode)
     {
         case r03_closet:
-            return LOOK;
+            if (is_game_flag(BATH_CLOSET_OPEN))
+                return CLOSE;
+            else
+                return OPEN;
             break;
         case r03_washbowl:
             return USE;
@@ -78,7 +84,10 @@ enum verbs r03_get_default_hotspot_verb(uint8_t colorCode)
             return USE;
             break;
         case r03_door:
-            return OPEN;
+            if (is_game_flag(BATH_DOOR_OPEN))
+                return CLOSE;
+            else
+                return OPEN;
             break;
         default:
             return LOOK;
@@ -118,6 +127,7 @@ void r03_update_room_objects()
 {
     r03_object[R03_GEL_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN) && !is_game_flag(GOT_GEL);
     r03_object[R03_BATHCLOSETOPEN_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN);
+    r03_object[R03_BATHDOOROPEN_OBJ_ID].active = is_game_flag(BATH_DOOR_OPEN);
 }
 
 //update dialog selection
@@ -135,6 +145,42 @@ void r03_update_room_script()
         //sequence actions
         switch (roomScript.object)
         {
+            case r03_gel:
+                if (is_game_flag(BATH_CLOSET_OPEN) && !is_game_flag(GOT_GEL))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("Un bote de gel corporal");
+                                    break;
+                                case 1:
+                                    script_say("Parece muy viscoso...");
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                        case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r03_object[R03_GEL_OBJ_ID].active, GOT_GEL, id_soap);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }
             case r03_closet:
                 switch(roomScript.verb)
                 {
@@ -161,9 +207,33 @@ void r03_update_room_script()
                                     end_script();
                                 }
                                 else                                
-                                    set_game_flag(BATH_CLOSET_OPEN);
-                                    end_script();
+                                    script_move_player_to_target();
                                 break;
+                            case 1:
+                                set_game_flag(BATH_CLOSET_OPEN);
+                                end_script();
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(BATH_CLOSET_OPEN))
+                                {
+                                    script_say("Ya est  cerrado");
+                                    end_script();
+                                }
+                                else                                
+                                    script_move_player_to_target();
+
+                                break;
+                            case 1:
+                                clear_game_flag(BATH_CLOSET_OPEN);
+                                end_script();
                             default:
                                 end_script();
                                 break;
@@ -233,40 +303,7 @@ void r03_update_room_script()
                         }
                     break;                    
                 }
-                break;            
-            case r03_gel:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_say("Un bote de gel corporal");
-                                break;
-                            case 1:
-                                script_say("Parece muy viscoso...");
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;
-                    case TAKE:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_move_player_to_target();
-                                break;
-                            case 1:
-                                script_take_object(&r03_object[R03_GEL_OBJ_ID].active, GOT_GEL, id_soap);
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;
-                }
-                break;            
+                break;
             case r03_bathMat:
                 switch(roomScript.verb)
                 {
@@ -308,6 +345,27 @@ void r03_update_room_script()
             case r03_door:
                 switch(roomScript.verb)
                 {
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(BATH_DOOR_OPEN))
+                                {
+                                    script_say("La puerta est  cerrada");
+                                    end_script();
+                                }
+                                else
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                change_room_pos(1, 154, 46);
+                                end_script();
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                     case LOOK:
                         switch (roomScript.step)
                         {
@@ -319,7 +377,50 @@ void r03_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(BATH_DOOR_OPEN))
+                                {
+                                    script_say("Ya est  abierta");
+                                    end_script();
+                                }
+                                else                                
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                set_game_flag(BATH_DOOR_OPEN);
+                                end_script();
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(BATH_DOOR_OPEN))
+                                {
+                                    script_say("Ya est  cerrada");
+                                    end_script();
+                                }
+                                else                                
+                                    script_move_player_to_target();
+
+                                break;
+                            case 1:
+                                clear_game_flag(BATH_DOOR_OPEN);
+                                end_script();
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
 
