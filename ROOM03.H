@@ -18,7 +18,7 @@
 #define R03_START_POS_Y         117
 #define R03_ROOM_NUM_OBJS       4
 #define R03_MUSIC_ID            0
-#define R03_FADE                0
+#define R03_FADE                false
 
 //define room data (compose room properties and function pointers)
 #define R03_DATA R03_START_POS_X, R03_START_POS_Y, R03_ROOM_NUM_OBJS, R03_MUSIC_ID, R03_FADE, &r03_room_init, &r03_room_update, &r03_get_hotspot_name, &r03_get_default_hotspot_verb, &r03_get_object_info
@@ -29,16 +29,11 @@
 #define R03_BATHCLOSETOPEN_OBJ_ID 2
 #define R03_BATHDOOROPEN_OBJ_ID 3
 
-//define object data
-#define R03_OBJ_0           r03d_objGel,   169, 41,  0, 0, 0
-#define R03_OBJ_1           r03d_objBath,   162, 148,  0, 1, 1
-<<<<<<< HEAD
-#define R03_OBJ_2           r03d_objBathClosetOpen,   167, 60,  0, 1, 0
-#define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, 1, 0
-=======
-#define R03_OBJ_2           r03d_objBathClosetOpen,   144, 23,  0, 0, 0
-#define R03_OBJ_3           r03d_objBathDoorOpen,   204, 33,  0, 0, 0
->>>>>>> 3313e3c9073f19fd20d29614965a44001d8e91a2
+//define object data (objId, x, y, animId, active, layer)
+#define R03_OBJ_0           r03d_objGel,   169, 41,  0, false, 0
+#define R03_OBJ_1           r03d_objBath,   162, 148,  0, true, 1
+#define R03_OBJ_2           r03d_objBathClosetOpen,   167, 60,  0, false, 0
+#define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, false, 0
 
 //define room animations
 #define R03_NUM_ANIMATIONS  0
