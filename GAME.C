@@ -1163,7 +1163,9 @@ void msg_draw()
         }
 
         //get msg length in pixels
-        int msgWidth = get_msg_length(msg.msg);
+        int msgLines;
+        int msgWidth = get_msg_length(msg.msg, &msgLines);
+        TRACE("%i\n", msgLines);
         
         //check msg X limits for avoid text outscreen
         if (msg.actorTalk->msgX < (msgWidth>>1))
@@ -1174,26 +1176,32 @@ void msg_draw()
             msgX = msg.actorTalk->msgX;
 
         //get msg Y
-        msgY = msg.actorTalk->msgY - TEXT_ACTOR_MARGIN;
-        
+        msgY = msg.actorTalk->msgY - TEXT_ACTOR_MARGIN - ((msgLines - 1) * MSG_LINE_SPACING);
+        //check msg Y for avoid text outscreen
+        if (msgY < MSG_LINE_SPACING)
+            msgY = MSG_LINE_SPACING;
+            
         //call to write text
         game_write(msg.msg, msgX, msgY, msg.actorTalk->textColor);
     }
 }
 
 //function to get msg length (in pixels). Returns the length of largest line
-int get_msg_length(char *text)
+//and pointer to num of lines on msg
+int get_msg_length(char *text, int *lines)
 {
     char s[MAX_MSG_LENGTH];
     char *ch;
     int msgLength = 0;
+    int lineCount;
     
     //make a copy of the string for tokenizer
     strcpy(s, text);
 
     //first token
     ch = strtok(s, "\n");
-
+    lineCount = 0;
+    
     //run for tokens
     while(ch)
     {
@@ -1202,8 +1210,12 @@ int get_msg_length(char *text)
             msgLength = text_length(font, ch);
         //next token
         ch = strtok(NULL, "\n");
+        lineCount++;
     }
 
+    //pointer to num of lines
+    *lines = lineCount;
+    
     return msgLength;
 }
 

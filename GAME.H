@@ -93,6 +93,7 @@
 //Text
 #define MAX_MSG_LENGTH          200
 #define MAX_MSG_LINE_LENGTH     20
+#define MSG_LINE_SPACING        10
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
 #define TEXT_ACTOR_MARGIN       10
@@ -357,7 +358,7 @@ void debug_draw();
 void msg_init();
 void msg_update();
 void msg_draw();
-int get_msg_length(char *text);
+int get_msg_length(char *text, int *lines);
 
 void gui_init();
 void gui_update();
