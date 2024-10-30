@@ -189,7 +189,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("El cl sico armario del ba¤o donde\nacabas acumulando cientos de productos");
+                                script_say("El cl sico armario del ba¤o donde acabas acumulando cientos de productos");
                                 break;
                             default:
                                 end_script();
@@ -249,7 +249,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No olviden lavarse las manos antes\nde reincorporarse al trabajo...");
+                                script_say("No olviden lavarse las manos antes de reincorporarse al trabajo...");
                                 break;
                             default:
                                 end_script();
@@ -268,7 +268,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(MIRROR_MSG))
                                 {
-                                    script_say("El programador del juego ha sido tan\nvago como para no programar los reflejos...");
+                                    script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
                                     end_script();
                                 }
                                 else
@@ -312,7 +312,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La alfombrilla para secarte los pies\ndespu‚s de la ducha");
+                                script_say("La alfombrilla para secarte los pies despu‚s de la ducha");
                                 break;
                             case 1:
                                 script_wait(10);
@@ -333,7 +333,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hay algo placentero en el sonido\nde un interruptor accion ndose");
+                                script_say("Hay algo placentero en el sonido de un interruptor accion ndose");
                                 break;
                             default:
                                 end_script();

@@ -1147,6 +1147,22 @@ void msg_draw()
         //get msg length in pixels
         int msgWidth = get_msg_length(msg.msg); //text_length(font, msg.msg);
 
+        //msg.msg[10] = 0x0A;
+
+        //split msg on max line length sentences
+        if (msgWidth > 30)
+        {
+            for (int i = 30; i < msgWidth; i++)
+            {
+                if (msg.msg[i] == 0x20)
+                {
+                    msg.msg[i] = 0x0A;
+                    break;
+                }
+            }
+            msgWidth = get_msg_length(msg.msg);
+        }
+        
         //check msg X limits for avoid text outscreen
         if (msg.actorTalk->msgX < (msgWidth>>1))
             msgX = (msgWidth>>1);
