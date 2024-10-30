@@ -91,6 +91,7 @@
 #define GUI_SEL_SLOT_TEXT_COLOR 179
 
 //Text
+#define MAX_MSG_LENGTH          200
 #define SAY_X                   RES_X / 2
 #define SAY_Y                   162 / 2
 #define TEXT_ACTOR_MARGIN       10
@@ -184,7 +185,7 @@ struct gameConfig
 //message structure
 struct msg
 {
-    char msg[MAX_SENTENCE_LENGTH];
+    char msg[MAX_MSG_LENGTH];
     int16_t msgTime;
     bool msgFinished;
     bool msgActive;

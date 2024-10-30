@@ -6,7 +6,7 @@
 #include "engine.h"
 #include "anim.h"
 
-#define PLAYER_TEXT_COLOR   40
+#define PLAYER_TEXT_COLOR   30
 #define PLAYER_FAST_SPEED   1
 #define PLAYER_POS_X_OFFSET 0
 #define PLAYER_POS_Y_OFFSET 20

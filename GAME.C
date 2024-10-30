@@ -378,7 +378,7 @@ void game_keys_handler()
 void game_write(char *text, int x, int y, uint8_t color)
 {
     int posY;
-    char s[MAX_SENTENCE_LENGTH];
+    char s[MAX_MSG_LENGTH];
     char *ch;
 
     //make a copy of the string for tokenizer
@@ -1163,7 +1163,7 @@ void msg_draw()
 //function to get msg length (in pixels). On multiline, returns the lenght of first line
 int get_msg_length(char *text)
 {
-    char s[MAX_SENTENCE_LENGTH];
+    char s[MAX_MSG_LENGTH];
     char *ch;
 
     //make a copy of the string for tokenizer
