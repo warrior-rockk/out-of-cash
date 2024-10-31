@@ -265,7 +265,7 @@ typedef struct tKey{
     bool memPressed;
 } tKey;
 
-#define GAME_KEYS_NUM 7
+#define GAME_KEYS_NUM 9
 static tKey gameKeys[GAME_KEYS_NUM] =
 {
     #define G_KEY_PAUSE     0
@@ -275,6 +275,9 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     #define G_KEY_O         4
     #define G_KEY_UP        5
     #define G_KEY_DOWN      6
+    #define G_KEY_LEFT      7
+    #define G_KEY_RIGHT     8
+
     {KEY_SPACE, false, false},
     {KEY_ESC, false, false},
     {KEY_W, false, false},
@@ -282,6 +285,8 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_O, false, false},
     {KEY_UP, false, false},
     {KEY_DOWN, false, false},
+    {KEY_LEFT, false, false},
+    {KEY_RIGHT, false, false},
 };
 
 //savegame structure

@@ -1,8 +1,7 @@
 # TO-DO
 
-- [ ] debug: use arrows to move room object
 - [ ] debug mode for jump to room
-- [ ] Get animation upper and bottom
+- [ ] Animation for take upper and bottom
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
@@ -21,6 +20,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Debug: use arrows to move room object
 - [X] Auto-separate say lines?
 - [X] BUG: actors text off-positions
 - [X] Debug keys mem (key handler scalable?)

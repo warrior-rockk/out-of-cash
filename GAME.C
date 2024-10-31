@@ -354,6 +354,10 @@ void game_update()
         }
 
         //move cursor with arrows
+        if (gameKeys[G_KEY_LEFT].pressed && !(key_shifts & KB_SHIFT_FLAG))
+            mouse_x--;
+        if (gameKeys[G_KEY_RIGHT].pressed && !(key_shifts & KB_SHIFT_FLAG))
+            mouse_x++;
         if (gameKeys[G_KEY_UP].pressed && !(key_shifts & KB_SHIFT_FLAG))
             mouse_y--;
         if (gameKeys[G_KEY_DOWN].pressed && !(key_shifts & KB_SHIFT_FLAG))
