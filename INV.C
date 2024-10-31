@@ -122,7 +122,6 @@ void inventory_draw()
             draw_sprite(buffer, inventoryImage, INV_POS_X, INV_POS_Y);
         }
     }
-    show_debug("Inv Objs", inventory.numObjects);
 }
 
 //calculate the inventory position based on colorCode
@@ -156,6 +155,9 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                 break;
             case id_guitar:
                 strcpy(s, "Guitarra");
+                break;
+            case id_soap:
+                strcpy(s, "Gel");
                 break;
             default:
                 strcpy(s, "");
@@ -203,6 +205,26 @@ void inventory_update()
                         begin_script();
                         script_say("Mi guitarra");
                         end_script();
+                        break;
+                }
+                break;
+            case id_soap:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch(roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Un bote lleno de gel de ducha");
+                                break;
+                            case 1:
+                                script_say("Parece bastante viscoso");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
                         break;
                 }
                 break;

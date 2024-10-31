@@ -857,7 +857,15 @@ void cursor_action_HUD()
             strcpy(cursor.objectName, "");
         else
             get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
-            
+
+        //check right click action on inventory object (evaluated before the left click)
+        if (cursor.rightClick)
+        {
+            //if valid inv object, set default inv object verb
+            if (cursor.objectName[0] != '\0')
+                cursor.selectedVerb = LOOK;
+        }
+        
         //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
         if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
         {

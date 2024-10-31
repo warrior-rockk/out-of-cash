@@ -20,6 +20,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] default verb for inventory (LOOK or USE WITH)
 - [X] Debug: use arrows to move room object
 - [X] Auto-separate say lines?
 - [X] BUG: actors text off-positions
