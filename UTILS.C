@@ -76,44 +76,39 @@ char replace_unicode(char character)
     {
         case '§':
             return CHAR_NY;
-            break;
         case '•':
             return CHAR_NY_CAP;
-            break;
         case '®':
             return CHAR_QUESTION;
-            break;
         case '†':
             return CHAR_A_ACCENT;
-            break;
         case 'Ç':
             return CHAR_E_ACCENT;
-            break;
         case '°':
             return CHAR_I_ACCENT;
-            break;
         case '¢':
             return CHAR_O_ACCENT;
-            break;
         case '£':
             return CHAR_U_ACCENT;
-            break;
         case 'µ':
             return CHAR_A_ACCENT_CAP;
-            break;
         case 'ê':
             return CHAR_E_ACCENT_CAP;
-            break;
         case '÷':
             return CHAR_I_ACCENT_CAP;
-            break;
         case '‡':
             return CHAR_O_ACCENT_CAP;
-            break;
         case 'È':
             return CHAR_U_ACCENT_CAP;
-            break;
         default:
             return character;
     }
+}
+
+//function to replace unicode latin char on entire string
+void replace_unicode_str(char *str)
+{
+    for (int i = 0; i < strlen(str); i++)
+        //replace unicode latin characters
+        str[i] = replace_unicode(str[i]);
 }

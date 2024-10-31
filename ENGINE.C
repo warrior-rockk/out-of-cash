@@ -377,6 +377,8 @@ void dialog_add(char *textLine, uint8_t destNode)
     
     dialog.nodeNumLines++;
 
+    replace_unicode_str(textLine);
+    
     strcpy(dialog.lineText[dialog.nodeNumLines-1], textLine);
     dialog.lineDestNode[dialog.nodeNumLines-1] = destNode;
 }

@@ -790,7 +790,6 @@ void cursor_action_HUD()
     {
         //BUTTONS VERBS REGION
 
-
         //if mouse click and action is valid
         if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
         {
@@ -858,6 +857,9 @@ void cursor_action_HUD()
         else
             get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
 
+        //replace latin 1 unicode chars
+        replace_unicode_str(cursor.objectName);
+    
         //check right click action on inventory object (evaluated before the left click)
         if (cursor.rightClick)
         {
@@ -990,6 +992,9 @@ void cursor_action_room()
     //gets the object name
     roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
+    //replace latin 1 unicode chars
+    replace_unicode_str(cursor.objectName);
+    
     //check right click action on room (evaluated before the left click)
     if (cursor.rightClick)
     {
@@ -1166,8 +1171,7 @@ void msg_draw()
         int msgCharCount = 0;
         for (int i = 0; i < strlen(msg.msg); i++)
         {
-            //if (msg.msg[i] == '¤')
-            //    msg.msg[i] = 'X';
+            //replace unicode latin characters
             msg.msg[i] = replace_unicode(msg.msg[i]);
             
             if (msgCharCount > MAX_MSG_LINE_LENGTH)

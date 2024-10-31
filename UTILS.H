@@ -38,4 +38,5 @@ fixed fix_scale_x(fixed value, fixed min, fixed max);
 void get_actual_date(char *s);
 
 char replace_unicode(char character);
+void replace_unicode_str(char *str);
 #endif
