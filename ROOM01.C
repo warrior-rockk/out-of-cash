@@ -34,7 +34,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Casete");
             break;
         case r01_spider:
-            strcpy(s, "Ara"CHAR_NY"a");
+            strcpy(s, "Ara¤a");
             break;
         default:
             strcpy(s, "");
@@ -204,7 +204,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es mi ara"CHAR_NY"a de He-man");
+                                script_say("Es mi ara¤a de He-man");
                                 break;
                             default:
                                 end_script();

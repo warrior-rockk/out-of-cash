@@ -155,7 +155,7 @@ void r03_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Un bote de gel corporal");
+                                    script_say("Un bote de gel de ducha");
                                     break;
                                 case 1:
                                     script_say("Parece muy viscoso...");

@@ -1166,6 +1166,10 @@ void msg_draw()
         int msgCharCount = 0;
         for (int i = 0; i < strlen(msg.msg); i++)
         {
+            //if (msg.msg[i] == '¤')
+            //    msg.msg[i] = 'X';
+            msg.msg[i] = replace_unicode(msg.msg[i]);
+            
             if (msgCharCount > MAX_MSG_LINE_LENGTH)
             {
                 //if char is space or new_line char

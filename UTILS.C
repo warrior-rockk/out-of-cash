@@ -68,3 +68,52 @@ void get_actual_date(char *s)
     sprintf(s,"%02d/%02d/%d %02d:%02d:%02d", timeinfo->tm_mday, (timeinfo->tm_mon + 1), (1900 + timeinfo->tm_year),
                                    timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 }
+
+//function to replace unicode chars by correct char code
+char replace_unicode(char character)
+{
+    switch (character)
+    {
+        case '§':
+            return CHAR_NY;
+            break;
+        case '•':
+            return CHAR_NY_CAP;
+            break;
+        case '®':
+            return CHAR_QUESTION;
+            break;
+        case '†':
+            return CHAR_A_ACCENT;
+            break;
+        case 'Ç':
+            return CHAR_E_ACCENT;
+            break;
+        case '°':
+            return CHAR_I_ACCENT;
+            break;
+        case '¢':
+            return CHAR_O_ACCENT;
+            break;
+        case '£':
+            return CHAR_U_ACCENT;
+            break;
+        case 'µ':
+            return CHAR_A_ACCENT_CAP;
+            break;
+        case 'ê':
+            return CHAR_E_ACCENT_CAP;
+            break;
+        case '÷':
+            return CHAR_I_ACCENT_CAP;
+            break;
+        case '‡':
+            return CHAR_O_ACCENT_CAP;
+            break;
+        case 'È':
+            return CHAR_U_ACCENT_CAP;
+            break;
+        default:
+            return character;
+    }
+}
