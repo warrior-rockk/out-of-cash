@@ -112,3 +112,28 @@ void replace_unicode_str(char *str)
         //replace unicode latin characters
         str[i] = replace_unicode(str[i]);
 }
+
+//function to replace unicode and wrap text
+void replace_unicode_and_wrap(char *str, int wrapChars)
+{
+    int msgCharCount = 0;
+    for (int i = 0; i < strlen(str); i++)
+    {
+        //replace unicode latin characters
+        str[i] = replace_unicode(str[i]);
+
+        //insert new line every wrapChars on each space char
+        if (msgCharCount > wrapChars)
+        {
+            //if char is space or new_line char
+            if (str[i] == 0x20 || str[i] == 0x0A)
+            {
+                //replace with new_line char
+                str[i] = 0x0A;
+                //reset the counter
+                msgCharCount = -1;
+            }
+        }
+        msgCharCount++;
+    }
+}

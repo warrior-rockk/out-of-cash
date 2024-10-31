@@ -1167,32 +1167,10 @@ void msg_draw()
         int msgX;
         int msgY;
 
-        //insert new line every MAX_MSG_LINE_LENGTH on each space char
-        int msgCharCount = 0;
-        for (int i = 0; i < strlen(msg.msg); i++)
-        {
-            //replace unicode latin characters
-            msg.msg[i] = replace_unicode(msg.msg[i]);
-            
-            if (msgCharCount > MAX_MSG_LINE_LENGTH)
-            {
-                //if char is space or new_line char
-                if (msg.msg[i] == 0x20 || msg.msg[i] == 0x0A)
-                {
-                    //replace with new_line char
-                    msg.msg[i] = 0x0A;
-                    //reset the counter
-                    msgCharCount = -1;
-                }
-            }
-            msgCharCount++;
-        }
-
         //get msg length in pixels
         int msgLines;
         int msgWidth = get_msg_length(msg.msg, &msgLines);
-        TRACE("%i\n", msgLines);
-        
+
         //check msg X limits for avoid text outscreen
         if (msg.actorTalk->msgX < (msgWidth>>1))
             msgX = (msgWidth>>1);

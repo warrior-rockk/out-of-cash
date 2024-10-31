@@ -27,15 +27,21 @@ void init_room_script()
 //function to actor say something. Returns 1 when finished
 int say_actor(char *message, tActorTalk *actorTalk)
 {        
-    //check message length
-    ASSERT(strlen(message) <= MAX_MSG_LENGTH);
+    if (!msg.msgActive)
+    {
+        //check message length
+        ASSERT(strlen(message) <= MAX_MSG_LENGTH);
+        
+        //assign actor talk pointer
+        msg.actorTalk = actorTalk;
+
+        //replace Latin 1 chars and wrap text on lines
+        replace_unicode_and_wrap(message, MAX_MSG_LINE_LENGTH);
+        
+        //copy message to structure
+        strcpy(msg.msg, message);
+    }
     
-    //assign actor talk pointer
-    msg.actorTalk = actorTalk;
-
-    //copy message to structure
-    strcpy(msg.msg, message);
-
     //if not msg finished, set msg active
     if (!msg.msgFinished)
         msg.msgActive = true;

@@ -39,4 +39,5 @@ void get_actual_date(char *s);
 
 char replace_unicode(char character);
 void replace_unicode_str(char *str);
+void replace_unicode_and_wrap(char *str, int wrapChars);
 #endif
