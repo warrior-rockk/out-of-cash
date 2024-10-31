@@ -1,5 +1,7 @@
 # TO-DO
 
+- [ ] debug: use arrows to move room object
+- [ ] debug mode for jump to room
 - [ ] Get animation upper and bottom
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead

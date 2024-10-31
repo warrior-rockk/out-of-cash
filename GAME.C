@@ -340,18 +340,24 @@ void game_update()
         }
 
         //cycle up cursor room objects
-        if (gameKeys[G_KEY_PLUS].pressed && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_UP].pressed && (key_shifts & KB_SHIFT_FLAG) && game.state == PLAYING_STATE)
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject < roomData[game.actualRoom].room_num_objects)
                 debug.numCursorRoomObject++;
         }
 
         //cycle down cursor room objects
-        if (gameKeys[G_KEY_MINUS].pressed && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_DOWN].pressed && (key_shifts & KB_SHIFT_FLAG) && game.state == PLAYING_STATE)
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject > 0)
                 debug.numCursorRoomObject--;
         }
+
+        //move cursor with arrows
+        if (gameKeys[G_KEY_UP].pressed && !(key_shifts & KB_SHIFT_FLAG))
+            mouse_y--;
+        if (gameKeys[G_KEY_DOWN].pressed && !(key_shifts & KB_SHIFT_FLAG))
+            mouse_y++;
 
     #endif
 }

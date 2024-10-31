@@ -273,15 +273,15 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     #define G_KEY_W         2
     #define G_KEY_H         3
     #define G_KEY_O         4
-    #define G_KEY_PLUS      5
-    #define G_KEY_MINUS     6
+    #define G_KEY_UP        5
+    #define G_KEY_DOWN      6
     {KEY_SPACE, false, false},
     {KEY_ESC, false, false},
     {KEY_W, false, false},
     {KEY_H, false, false},
     {KEY_O, false, false},
-    {KEY_PLUS_PAD, false, false},
-    {KEY_MINUS_PAD, false, false},
+    {KEY_UP, false, false},
+    {KEY_DOWN, false, false},
 };
 
 //savegame structure
