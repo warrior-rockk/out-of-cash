@@ -7,7 +7,7 @@
 #include "engine.h"
 #include "game.h"
 #include "rooms.h"
-#include "inventor.h"
+#include "inv.h"
 #include "player.h"
 #include "utils.h"
 //game data resources

@@ -43,12 +43,14 @@ C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=alleg alld
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=-fgnu89-inline
+C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=engine.o game.o player.o room01.o room02.o utils.o
-ALL_OBJFILES=engine.o game.o player.o room01.o room02.o utils.o
+OBJFILES=anim.o engine.o game.o inv.o player.o room01.o room02.o room03.o\
+	utils.o
+ALL_OBJFILES=anim.o engine.o game.o inv.o player.o room01.o room02.o\
+	room03.o utils.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -59,7 +61,8 @@ SRC_DIRS=¼ûO ‘®[ ¼ÇS
 WUC=
 EDITORS=
 MAIN_TARGET=game.exe
-PROJECT_ITEMS=engine.c game.c player.c room01.c room02.c utils.c
+PROJECT_ITEMS=anim.c engine.c game.c inv.c player.c room01.c room02.c\
+	room03.c utils.c
 DEFAULT_MASK=*.[acfghimnops]*
 RHIDE_BIN_DIR=c:/djgpp/bin
 PASCAL_TYPE=GPC
@@ -353,27 +356,37 @@ _RHIDE_COMPILE_LINK_ADA=$(RHIDE_COMPILE_LINK_ADA_BIND);\
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= engine.o game.o player.o room01.o room02.o utils.o 
+DEPS_0= anim.o engine.o game.o inv.o player.o room01.o room02.o room03.o\
+	utils.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 game.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=engine.c
-engine.o:: $(DEPS_1)
+DEPS_1=anim.c
+anim.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.c.o)
-DEPS_2=game.c
-game.o:: $(DEPS_2)
+DEPS_2=engine.c
+engine.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=player.c
-player.o:: $(DEPS_3)
+DEPS_3=game.c
+game.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.c.o)
-DEPS_4=room01.c
-room01.o:: $(DEPS_4)
+DEPS_4=inv.c
+inv.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.c.o)
-DEPS_5=room02.c
-room02.o:: $(DEPS_5)
+DEPS_5=player.c
+player.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.c.o)
-DEPS_6=utils.c
-utils.o:: $(DEPS_6)
+DEPS_6=room01.c
+room01.o:: $(DEPS_6)
+	$(RHIDE_COMPILE.c.o)
+DEPS_7=room02.c
+room02.o:: $(DEPS_7)
+	$(RHIDE_COMPILE.c.o)
+DEPS_8=room03.c
+room03.o:: $(DEPS_8)
+	$(RHIDE_COMPILE.c.o)
+DEPS_9=utils.c
+utils.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.c.o)
 all:: game.exe

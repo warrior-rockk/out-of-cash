@@ -5,7 +5,7 @@
 #include "engine.h"
 #include "utils.h"
 #include "game.h"
-#include "inventory.h"
+#include "inv.h"
 #include "player.h"
 
 //initialize roomScript struct

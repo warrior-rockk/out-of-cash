@@ -3,7 +3,7 @@
 #define H_ENGINE
 
 #include <stdbool.h>
-#include "gameflags.h"
+#include "gameflag.h"
 #include "anim.h"
 
 //include game resources references

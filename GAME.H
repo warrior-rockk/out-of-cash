@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <allegro.h>
 #include "engine.h"
-#include "inventor.h"
+#include "inv.h"
 #include "player.h"
 
 //Definitions
