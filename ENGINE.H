@@ -173,6 +173,7 @@ bool is_game_flag(uint8_t flagNum);
 
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);
+void set_room_lights_off(uint8_t roomNumber, bool lightsOff);
 void game_fade_in();
 void game_fade_out();
 void default_verb_action(enum verbs roomVerb);

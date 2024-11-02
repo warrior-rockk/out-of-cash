@@ -1343,35 +1343,35 @@ void room_load(uint8_t roomNumber)
 //draws the actual room and room objects
 void room_draw()
 {
-    //if (game.roomLoaded)
-    //{
+
+    if (!roomData[game.actualRoom].lightsOff)
         //draw room image
         blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
 
-        #ifdef DEBUGMODE
-            //draw hotspot image on debug mode
-            if (debug.showHotspotImage)
-                    blit(actualRoom.hsImage, buffer, 0, 0, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
-            //draw walk image on debug mode
-            if (debug.showWalkImage)
-                    blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
-        #endif
-        
+    #ifdef DEBUGMODE
+        //draw hotspot image on debug mode
+        if (debug.showHotspotImage)
+                blit(actualRoom.hsImage, buffer, 0, 0, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
+        //draw walk image on debug mode
+        if (debug.showWalkImage)
+                blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
+    #endif
+
+    if (!roomData[game.actualRoom].lightsOff)
         //draw room objects back layer
         room_objects_draw(BACK_LAYER);
-    //}
+
 }
 
 //draws the room front layer objects
 void room_front_layer_draw()
 {
-    //if (game.roomLoaded)
-    //{
+    if (!roomData[game.actualRoom].lightsOff)
         //draw room objects front layer
         room_objects_draw(FRONT_LAYER);
-        //draw black background on hud position
-        rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
-    //}
+
+    //draw black background on hud position
+    rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
 }
 
 //draws room objects filtered by layer parameter

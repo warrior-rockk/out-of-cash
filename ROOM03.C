@@ -106,6 +106,8 @@ tObject* r03_get_object_info(uint8_t numObject)
 //function to init room
 void r03_room_init()
 {
+    set_room_lights_off(3, is_game_flag(BATH_LIGHT_OFF));
+    
     game_fade_in();
 }
 
@@ -339,7 +341,21 @@ void r03_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                toogle_game_flag(BATH_LIGHT_OFF);
+                                set_room_lights_off(3, is_game_flag(BATH_LIGHT_OFF));
+                                end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r03_door:
