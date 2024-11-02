@@ -1398,6 +1398,12 @@ void room_objects_draw(uint8_t layer)
     }
 }
 
+//function to update room lights
+void room_update_lights(uint8_t roomNumber, bool turnOff)
+{
+    roomData[roomNumber].lightsOff = turnOff;
+}
+
 //inits the hud
 void hud_init()
 {

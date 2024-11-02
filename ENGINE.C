@@ -7,7 +7,6 @@
 #include "game.h"
 #include "inv.h"
 #include "player.h"
-#include "rooms.h"
 
 //initialize roomScript struct
 void init_room_script()
@@ -216,7 +215,7 @@ void change_room_pos(int roomNum, int x, int y)
 //function to set or reset room lights off
 void set_room_lights_off(uint8_t roomNumber, bool turnOff)
 {
-    roomData[roomNumber].lightsOff = true; //turnOff;
+    room_update_lights(roomNumber, turnOff);
 }
 
 //function to do game fade out

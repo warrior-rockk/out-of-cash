@@ -352,6 +352,7 @@ void room_action_update();
 void room_draw();
 void room_front_layer_draw();
 void room_objects_draw(uint8_t layer);
+void room_update_lights(uint8_t roomNumber, bool turnOff);
 
 void hud_init();
 void hud_draw();
