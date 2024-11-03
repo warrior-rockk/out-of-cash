@@ -80,6 +80,8 @@ char replace_unicode(char character)
             return CHAR_NY_CAP;
         case '¨':
             return CHAR_QUESTION;
+        case '­':
+            return CHAR_EXCLAMATION;
         case ' ':
             return CHAR_A_ACCENT;
         case '‚':

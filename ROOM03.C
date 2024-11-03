@@ -267,8 +267,9 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(MIRROR_MSG))
+                                if (!is_game_flag(CORRIDOR_MIRROR_MSG))
                                 {
+                                    set_game_flag(BATH_MIRROR_MSG);
                                     script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
                                     end_script();
                                 }
@@ -277,8 +278,10 @@ void r03_update_room_script()
                                 break;
                             case 1:
                                 script_wait(10);
+                                break;
                             case 2:
                                 script_say("No se le puede pedir mas...");
+                                break;
                             default:
                                 end_script();
                                 break;

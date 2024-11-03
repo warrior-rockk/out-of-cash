@@ -23,6 +23,7 @@
 #define CHAR_I_ACCENT_CAP   '\xCD'
 #define CHAR_O_ACCENT_CAP   '\xD3'
 #define CHAR_U_ACCENT_CAP   '\xDA'
+#define CHAR_EXCLAMATION    '\xA1'
 
 //function definitions
 bool in_range(int value, int target, int offset);

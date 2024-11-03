@@ -11,7 +11,9 @@
 #define BATH_CLOSET_OPEN    5
 #define BATH_DOOR_OPEN      6
 #define GOT_GEL             7
-#define MIRROR_MSG          8
+#define BATH_MIRROR_MSG     8
 #define BATH_LIGHT_OFF      9
+
+#define CORRIDOR_MIRROR_MSG 10
 
 #endif //H_GAME_FLAGS
