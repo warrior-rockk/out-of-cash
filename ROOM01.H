@@ -51,7 +51,7 @@ enum r01_hotspotCode{
     r01_cd    = 147,
     r01_poster    = 128,
     r01_draws    = 71,
-    r01_sofa    = 200,
+    r01_sofa    = 201,
     r01_computer    = 179,
     r01_toys    = 52,
     r01_printer    = 113,
