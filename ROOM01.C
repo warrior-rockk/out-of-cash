@@ -1,4 +1,4 @@
-/*
+﻿/*
 =========================================================
  Room Number:   01
  Room Name:     01_bedRoom
@@ -52,7 +52,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Cajones");
             break;
         case r01_sofa:
-                strcpy(s, "Sofá");
+                strcpy(s, "SofÃ¡");
             break;
         case r01_computer:
                 strcpy(s, "Ordenador");
@@ -71,6 +71,9 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
             break;
         case r01_book3:
                 strcpy(s, "Libro 3");
+            break;
+        case r01_book4:
+                strcpy(s, "Libro 4");
             break;
         default:
             strcpy(s, "");
@@ -135,6 +138,9 @@ enum verbs r01_get_default_hotspot_verb(uint8_t colorCode)
             return LOOK;
             break;
         case r01_book3:
+            return LOOK;
+            break;
+        case r01_book4:
             return LOOK;
             break;
         default:
@@ -267,7 +273,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Araña");
+                                script_say("AraÃƒÂ±a");
                                 break;
                             default:
                                 end_script();
@@ -386,7 +392,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Sofá");
+                                script_say("SofÃƒÂ¡");
                                 break;
                             default:
                                 end_script();
@@ -489,6 +495,23 @@ void r01_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Libro 3");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r01_book4:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Libro 4");
                                 break;
                             default:
                                 end_script();
