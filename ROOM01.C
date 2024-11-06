@@ -160,6 +160,11 @@ tObject* r01_get_object_info(uint8_t numObject)
 //function to init room
 void r01_room_init()
 {
+    //update room objects state
+    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE);
+    r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR);
+    r01_object[R01_STEREO01_OBJ_ID].active    = is_game_flag(STEREO_ON);
+    
     game_fade_in();
 }
 
@@ -179,7 +184,8 @@ void r01_room_update()
 //update room objects
 void r01_update_room_objects()
 {
-
+    //Stereo
+    object_play_animation(&r01_object[R01_STEREO01_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
 }
 
 //update dialog selection
@@ -236,7 +242,55 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(USED_CASSETTE))
+                                {
+                                    script_say("No hay ning£n casete dentro para escuchar");
+                                    end_script();
+                                }
+                                else
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            case 2:
+                                toogle_game_flag(STEREO_ON);
+                                r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON);
+                                end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                        break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_cassette:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        script_player_take_state();
+                                        break;
+                                    case 2:
+                                        script_remove_inv_object(id_cassette);
+                                        set_game_flag(USED_CASSETTE);
+                                        end_script();
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
                 }
                 break;            
             case r01_door:
@@ -290,7 +344,20 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE, id_cassette);
+                                end_script();
+                                break;
+                        }
+                        break;
                 }
                 break;            
             case r01_spider:
