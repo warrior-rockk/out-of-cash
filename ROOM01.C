@@ -31,7 +31,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Casete");
             break;
         case r01_spider:
-                strcpy(s, "AraÃ±a");
+                strcpy(s, "Ara¤a");
             break;
         case r01_drums:
                 strcpy(s, "Tambor");
@@ -52,7 +52,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Cajones");
             break;
         case r01_sofa:
-                strcpy(s, "SofÃƒÂ¡");
+                strcpy(s, "Sof ");
             break;
         case r01_computer:
                 strcpy(s, "Ordenador");
@@ -64,16 +64,16 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Impresora");
             break;
         case r01_book1:
-                strcpy(s, "Libro 1");
+                strcpy(s, "Libro");
             break;
         case r01_book2:
-                strcpy(s, "Libro 2");
+                strcpy(s, "Libro");
             break;
         case r01_book3:
-                strcpy(s, "Libro 3");
+                strcpy(s, "Libro");
             break;
         case r01_book4:
-                strcpy(s, "Libro 4");
+                strcpy(s, "Libro");
             break;
         default:
             strcpy(s, "");
@@ -205,7 +205,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Guitarra");
+                                script_say("Mi guitarra marca Sonora");
                                 break;
                             default:
                                 end_script();
@@ -222,7 +222,15 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Minicadena");
+                                script_say("Es mi minicadena Hifi £ltimo modelo");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Con doble pletina, sintonizador de radio y equalizador gr fico");
+                                break;
+                            case 2:
+                                begin_script();
+                                script_say("Wow!!");
                                 break;
                             default:
                                 end_script();
@@ -239,13 +247,29 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al pasillo");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN ... CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Siempre est  abierta");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("No tengo secretos para mis padres...");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_cassette:
@@ -256,7 +280,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Casete");
+                                script_say("Es un casete de lo £ltimo que ha sacado Reincidentes");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("La £ltima compra que pude hacer cuando ten¡a dinero");
                                 break;
                             default:
                                 end_script();
@@ -273,7 +301,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("AraÃƒÆ’Ã‚Â±a");
+                                script_say("Es mi figura exclusiva de ara¤a de la serie He-man");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("­POR EL PODER DE GREYSKULL!");
                                 break;
                             default:
                                 end_script();
@@ -290,7 +322,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Tambor");
+                                script_say("Es mi tambor de mi ‚poca de tamborilero");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("En la ‚poca que lo tocaba todav¡a no hab¡a descubierto el rock");
                                 break;
                             default:
                                 end_script();
@@ -307,13 +343,33 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cosa");
+                                script_say("No s‚ que puede ser eso...");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Brilla un poco y parece estar pegado al suelo...");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No consigo cogerlo");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Est  muy pegado al suelo");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_glasses:
@@ -324,7 +380,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Gafas");
+                                script_say("Son mis gafas de cerca, de lejos y para leer");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Tambi‚n las uso cuando llevo lentillas");
                                 break;
                             default:
                                 end_script();
@@ -375,13 +435,25 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cajones");
+                                script_say("Estos cajones no guardan mas que porquer¡a dentro");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No hay nada de inter‚s dentro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_sofa:
@@ -392,7 +464,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("SofÃƒÆ’Ã‚Â¡");
+                                script_say("¨Cuantos chavales pueden permitirse tener un sofa en su habitaci¢n?");
                                 break;
                             default:
                                 end_script();
@@ -409,7 +481,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
+                                script_say("Mi flamante Pentium a 100Mhz");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("M quina de alta tecnolog¡a solo para manos expertas");
                                 break;
                             default:
                                 end_script();
@@ -426,13 +502,33 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Figuras");
+                                script_say("Son mis figuras de los Caballeros del Zod¡aco edici¢n limitada");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Mira como brillan esos cromados...");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Prefiero dejarlos aqu¡");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Van a ser mi jubilaci¢n");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_printer:
@@ -443,7 +539,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Impresora");
+                                script_say("Mi impresora de inyecci¢n");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Solo tiene cartucho de tinta negra");
                                 break;
                             default:
                                 end_script();
@@ -460,7 +560,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Libro 1");
+                                script_say("\"La edad prohibida\"");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("de Torcuato Luca de Tena");
                                 break;
                             default:
                                 end_script();
@@ -477,7 +581,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Libro 2");
+                                script_say("\"MSDOS para Dummies\"");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("por Dan Gookin");
                                 break;
                             default:
                                 end_script();
@@ -494,7 +602,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Libro 3");
+                                script_say("\"Del deporte tambi‚n se sale\"");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("por Diego Maradona");
                                 break;
                             default:
                                 end_script();
