@@ -21,6 +21,18 @@ void r00_get_hotspot_name(uint8_t colorCode, char *s)
         case r00_door:
                 strcpy(s, "Puerta");
             break;
+        case r00_sign:
+                strcpy(s, "Cartel");
+            break;
+        case r00_stationery:
+                strcpy(s, "Papelería");
+            break;
+        case r00_school:
+                strcpy(s, "Colegio");
+            break;
+        case r00_shop:
+                strcpy(s, "Tienda");
+            break;
         default:
             strcpy(s, "");
     }
@@ -34,6 +46,18 @@ enum verbs r00_get_default_hotspot_verb(uint8_t colorCode)
     {
         case r00_door:
             return GO;
+            break;
+        case r00_sign:
+            return LOOK;
+            break;
+        case r00_stationery:
+            return GO;
+            break;
+        case r00_school:
+            return GO;
+            break;
+        case r00_shop:
+            return LOOK;
             break;
         default:
             return LOOK;
@@ -103,14 +127,82 @@ void r00_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;
-                    case GO:
+                    break;  
+					case GO:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 change_room(CORRIDOR_ROOM_NUM);
                                 end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                }
+                break;            
+            case r00_sign:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cartel");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r00_stationery:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Papelería");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r00_school:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Colegio");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r00_shop:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Tienda");
                                 break;
                             default:
                                 end_script();

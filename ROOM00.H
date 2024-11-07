@@ -30,7 +30,12 @@
 //hotspot code room enumeration
 enum r00_hotspotCode{
     r00_door    = 32,
+    r00_sign    = 33,
+    r00_stationery    = 34,
+    r00_school    = 35,
+    r00_shop    = 36,
 };
+
 
 //declare and define room objects array
 static tObject r00_object[R00_ROOM_NUM_OBJS] =

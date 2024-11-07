@@ -1,5 +1,7 @@
 # TO-DO
 
+- [ ] Remove borders for small rooms and draw on center of screen
+- [ ] Draw borders on front layer for hide player?
 - [ ] debug mode for jump to room
 - [ ] Animation for take upper and bottom
 - [ ] Sound effects

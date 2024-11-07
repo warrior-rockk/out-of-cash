@@ -29,7 +29,14 @@
 
 //hotspot code room enumeration
 enum r04_hotspotCode{
+    r04_corridor    = 164,
     r04_fridge    = 99,
+    r04_father    = 176,
+    r04_trash    = 148,
+    r04_paper    = 191,
+    r04_oven    = 139,
+    r04_spatula    = 205,
+    r04_cheesse    = 81,
 };
 
 //declare and define room objects array
