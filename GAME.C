@@ -238,7 +238,7 @@ void game_init()
     
     //init game vars
     game.actualRoom     = -1;    //to force first room_init
-    game.nextRoom       = 0;
+    game.nextRoom       = 1;
     //game.roomLoaded     = false;
     game.room_pos_x     = 0;
     game.room_pos_y     = 0;
@@ -1250,7 +1250,7 @@ DATAFILE* room_load_datafile(uint8_t roomNumber)
     char filename[8];
     
     //compone room datafile name
-    sprintf(filename, "R%02dDATA.DAT", roomNumber + 1);
+    sprintf(filename, "R%02dDATA.DAT", roomNumber);
     TRACE("Load room datafile: %s\n", filename);
     //loads datafile
     df = load_datafile(filename);

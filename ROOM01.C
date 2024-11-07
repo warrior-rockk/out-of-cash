@@ -1,4 +1,4 @@
-﻿/*
+/*
 =========================================================
  Room Number:   01
  Room Name:     01_bedRoom
@@ -324,6 +324,19 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player(roomScript.hsX,200);
+                                break;
+                            case 1:
+                                change_room_pos(CORRIDOR_ROOM_NUM,174,38);
+                                end_script();
+                                break;
+                        }
+                        break;
                 }
                 break;            
             case r01_cassette:
