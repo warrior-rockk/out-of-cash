@@ -383,7 +383,7 @@ void r03_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
-                                change_room_pos(1, 154, 46);
+                                change_room_pos(CORRIDOR_ROOM_NUM, 154, 46);
                                 end_script();
                             default:
                                 end_script();

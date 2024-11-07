@@ -217,7 +217,20 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR, id_guitar);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_stereo:
@@ -653,7 +666,7 @@ void r01_update_room_script()
                     break;                    
                 }
                 break;            
-            case r01_book2:
+            case r01_book4:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -674,7 +687,7 @@ void r01_update_room_script()
                     break;                    
                 }
                 break;            
-            case r01_book3:
+            case r01_book2:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -695,7 +708,7 @@ void r01_update_room_script()
                     break;                    
                 }
                 break;            
-            case r01_book4:
+            case r01_book3:
                 switch(roomScript.verb)
                 {
                     case LOOK:

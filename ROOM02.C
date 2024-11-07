@@ -165,7 +165,7 @@ void r02_update_room_script()
                                 script_wait(10);
                                 break;
                             case 2:
-                                script_say("No se le puede pedir mas...");
+                                script_say("No se le puede pedir m s...");
                                 break;
                             default:
                                 end_script();
@@ -191,7 +191,7 @@ void r02_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
-                                change_room(2);
+                                change_room(BATH_ROOM_NUM);
                                 end_script();
                             default:
                                 end_script();
@@ -314,7 +314,20 @@ void r02_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                change_room(KITCHEN_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                        break;                    
                 }
                 break;            
             case r02_door:
@@ -389,7 +402,7 @@ void r02_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                change_room_pos(0, 201, 145);
+                                change_room_pos(BEDROOM_ROOM_NUM, 201, 145);
                                 end_script();
                                 break;
                         }
@@ -413,7 +426,20 @@ void r02_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                change_room_pos(STREET_ROOM_NUM, 160, 100);
+                                end_script();
+                                break;
+                        }
+                        break;                    
                 }
                 break;            
             case r02_lamp:
