@@ -17,7 +17,8 @@
 #define FRONT_LAYER 1
 
 //Game colors
-#define BLACK_COLOR 1
+#define BLACK_COLOR     1
+#define BORDER_COLOR    BLACK_COLOR
 
 //Game
 
@@ -148,6 +149,11 @@ struct actualRoom
     BITMAP  *hsImage;
     //room walk/scalemap image
     BITMAP  *wImage;
+    //room borders
+    int16_t leftBorder;
+    int16_t rightBorder;
+    int16_t upBorder;
+    int16_t downBorder;
     //room music
     uint8_t musicId;
     DATAFILE_INDEX *musicDataFileIndex;
@@ -346,6 +352,7 @@ void tick_init();
 void tick_update();
 
 void check_room_changed();
+void calculate_actual_room_borders();
 void room_load(uint8_t roomNumber);
 DATAFILE* room_load_datafile(uint8_t roomNumber);
 void room_action_update();

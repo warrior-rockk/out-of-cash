@@ -595,6 +595,9 @@ void check_room_changed()
         //load room resources
         room_load(game.actualRoom);
 
+        //calculate room image borders
+        calculate_actual_room_borders();
+        
         //call new room init
         roomData[game.actualRoom].room_init();
 
@@ -613,6 +616,34 @@ void check_room_changed()
         //reset game room position
         game.room_pos_x = 0;
         game.room_pos_y = 0;
+    }
+}
+
+//function to calculate room borders
+void calculate_actual_room_borders()
+{
+    //if room image width is smaller than room screen area
+    if (actualRoom.image->w < RES_X)
+    {
+        actualRoom.leftBorder   = (RES_X - actualRoom.image->w)>>1;
+        actualRoom.rightBorder  = RES_X -  actualRoom.leftBorder;
+    }
+    else
+    {
+        actualRoom.leftBorder = 0;
+        actualRoom.rightBorder = 0;
+    }
+
+    //if room image height is smaller than room screen area
+    if (actualRoom.image->h < HUD_Y)
+    {
+        actualRoom.upBorder    = (HUD_Y - actualRoom.image->h)>>1;
+        actualRoom.downBorder  = HUD_Y -  actualRoom.upBorder;
+    }
+    else
+    {
+        actualRoom.upBorder = 0;
+        actualRoom.downBorder = 0;
     }
 }
 
@@ -1345,8 +1376,8 @@ void room_draw()
 {
 
     if (!roomData[game.actualRoom].lightsOff)
-        //draw room image
-        blit(actualRoom.image, buffer, 0, 0, 0, 0, actualRoom.image->w, actualRoom.image->h);
+        //draw room image centered on room screen zone
+        blit(actualRoom.image, buffer, 0, 0, actualRoom.leftBorder, actualRoom.upBorder, actualRoom.image->w, actualRoom.image->h);
 
     #ifdef DEBUGMODE
         //draw hotspot image on debug mode
@@ -1360,7 +1391,6 @@ void room_draw()
     if (!roomData[game.actualRoom].lightsOff)
         //draw room objects back layer
         room_objects_draw(BACK_LAYER);
-
 }
 
 //draws the room front layer objects
@@ -1372,6 +1402,18 @@ void room_front_layer_draw()
 
     //draw black background on hud position
     rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
+
+    //draw black borders around room
+    if (actualRoom.leftBorder > 0)
+    {
+        rectfill(buffer, 0, 0, actualRoom.leftBorder, HUD_Y, BORDER_COLOR);
+        rectfill(buffer, actualRoom.rightBorder, 0, RES_X, HUD_Y, BORDER_COLOR);
+    }
+    if (actualRoom.upBorder > 0)
+    {
+        rectfill(buffer, actualRoom.leftBorder, 0, actualRoom.rightBorder, actualRoom.upBorder, BORDER_COLOR);
+        rectfill(buffer, actualRoom.leftBorder, actualRoom.downBorder, actualRoom.rightBorder, HUD_Y, BORDER_COLOR);
+    }
 }
 
 //draws room objects filtered by layer parameter
