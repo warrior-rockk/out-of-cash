@@ -168,6 +168,9 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
+    show_debug("cursor.x", cursor.x);
+    show_debug("Room scroll", roomScroll.x);
+    show_debug("Player x", fixtoi(player.x));
 }
 
 //general draw
@@ -784,7 +787,7 @@ void cursor_update()
 {
     //update cursor position
     cursor.x = mouse_x + roomScroll.x;
-    cursor.y = mouse_y + roomScroll.y
+    cursor.y = mouse_y + roomScroll.y;
     
     //call buttons handler
     cursor_button_handler();
@@ -930,8 +933,8 @@ void cursor_action_HUD()
                     roomScript.type = INVENTORY_SCRIPT_TYPE;
                     roomScript.object = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
                     roomScript.verb = cursor.selectedVerb;
-                    roomScript.hsX = mouse_x;
-                    roomScript.hsY = mouse_y;
+                    roomScript.hsX = cursor.x; //mouse_x;
+                    roomScript.hsY = cursor.y; //mouse_y;
                 }
             }
         }
@@ -1026,7 +1029,7 @@ void cursor_action_menu()
 void cursor_action_room()
 {
     //obtains the hotspot room color
-    uint8_t hsColor = getpixel(actualRoom.hsImage, mouse_x, mouse_y);
+    uint8_t hsColor = getpixel(actualRoom.hsImage, cursor.x, cursor.y);
 
     //gets the object name
     roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
@@ -1057,8 +1060,8 @@ void cursor_action_room()
             roomScript.object = hsColor;
             roomScript.verb = cursor.selectedVerb;
             roomScript.invObject = cursor.invObject;
-            roomScript.hsX = mouse_x;
-            roomScript.hsY = mouse_y;
+            roomScript.hsX = cursor.x;
+            roomScript.hsY = cursor.y;
 
             //change player look dir
             if (roomScript.hsX < fixtoi(player.x))
@@ -1465,7 +1468,7 @@ void room_update_scroll()
         if (fixtoi(player.x) > RES_X>>1)
             roomScroll.x = fixtoi(player.x) - (RES_X>>1);
 
-        show_debug("Room scroll", roomScroll.x);
+
     }
 }
 

@@ -249,7 +249,7 @@ void default_verb_action(enum verbs roomVerb)
     switch(roomVerb)
     {
         case GO:
-            move_player(mouse_x, mouse_y);
+            move_player(cursor.x, cursor.y);
             break;
         case LOOK:
             switch (rndNumber)
