@@ -243,6 +243,8 @@ struct gui
 //cursor structure
 struct cursor
 {
+    int16_t x;
+    int16_t y;
     //name of the pointed object (change for hotspot)
     char objectName[OBJECT_NAME_MAX_CHARS];
     char invObjName[OBJECT_NAME_MAX_CHARS];
@@ -309,6 +311,13 @@ struct savegame
     struct player playerData;
 };
 
+//scroll structure
+struct roomScroll
+{
+    int16_t x;
+    int16_t y;
+} roomScroll;
+
 //global vars
 static volatile int tick;
 static BITMAP *cursorImage;
@@ -360,6 +369,7 @@ void room_draw();
 void room_front_layer_draw();
 void room_objects_draw(uint8_t layer);
 void room_update_lights(uint8_t roomNumber, bool turnOff);
+void room_update_scroll();
 
 void hud_init();
 void hud_draw();

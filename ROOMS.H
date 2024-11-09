@@ -8,6 +8,7 @@
 #include "room02.h"
 #include "room03.h"
 #include "room04.h"
+#include "room05.h"
 #include "room06.h"
 #include "room07.h"
 #include "room08.h"
@@ -46,7 +47,7 @@ static tRoomData roomData[NUM_GAME_ROOMS] = {
     {R02_DATA},
     {R03_DATA},
     {R04_DATA},
-    {R04_DATA},
+    {R05_DATA},
     {R06_DATA},
     {R07_DATA},
     {R08_DATA},

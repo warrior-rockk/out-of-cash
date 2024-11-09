@@ -246,6 +246,10 @@ void game_init()
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
 
+    //init scroll
+    roomScroll.x = 0;
+    roomScroll.y = 0;
+    
     //init room music
     actualRoom.musicId  = -1;
     
@@ -778,6 +782,10 @@ void cursor_button_handler()
 //updates function for cursor. Do call for click handler and check cursor actions
 void cursor_update()
 {
+    //update cursor position
+    cursor.x = mouse_x + roomScroll.x;
+    cursor.y = mouse_y + roomScroll.y
+    
     //call buttons handler
     cursor_button_handler();
 
@@ -1374,10 +1382,12 @@ void room_load(uint8_t roomNumber)
 //draws the actual room and room objects
 void room_draw()
 {
-
+    //test: move to new function room_update
+    room_update_scroll();
+    
     if (!roomData[game.actualRoom].lightsOff)
         //draw room image centered on room screen zone
-        blit(actualRoom.image, buffer, 0, 0, actualRoom.leftBorder, actualRoom.upBorder, actualRoom.image->w, actualRoom.image->h);
+        blit(actualRoom.image, buffer, roomScroll.x, roomScroll.y, actualRoom.leftBorder, actualRoom.upBorder, actualRoom.image->w, actualRoom.image->h);
 
     #ifdef DEBUGMODE
         //draw hotspot image on debug mode
@@ -1444,6 +1454,19 @@ void room_objects_draw(uint8_t layer)
 void room_update_lights(uint8_t roomNumber, bool turnOff)
 {
     roomData[roomNumber].lightsOff = turnOff;
+}
+
+//function to update room scroll
+void room_update_scroll()
+{
+    //test scroll
+    if (game.actualRoom == STATIONERY_ROOM_NUM)
+    {
+        if (fixtoi(player.x) > RES_X>>1)
+            roomScroll.x = fixtoi(player.x) - (RES_X>>1);
+
+        show_debug("Room scroll", roomScroll.x);
+    }
 }
 
 //inits the hud
@@ -1732,5 +1755,7 @@ void dialog_draw()
        dialog.nodeNumLines = 0;
     }
 }
+
+
 
 END_OF_MAIN()

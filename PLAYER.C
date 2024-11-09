@@ -98,12 +98,12 @@ void player_update_pos()
             player.vY = itofix(0);
 
         //check walk map
-        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX), fixtoi(relY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX) + roomScroll.x, fixtoi(relY)) == 0)
         {
             player.vX = itofix(0);
         }
     
-        if (getpixel(actualRoom.wImage, fixtoi(relX) , fixtoi(relY + player.vY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX) + roomScroll.x , fixtoi(relY + player.vY)) == 0)
         {
             player.vY = itofix(0);
         }
@@ -231,6 +231,6 @@ void player_draw()
     else
     {
         //original
-        draw_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
+        draw_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)- roomScroll.x - (playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
     }
 }
