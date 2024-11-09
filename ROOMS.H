@@ -8,8 +8,11 @@
 #include "room02.h"
 #include "room03.h"
 #include "room04.h"
+#include "room06.h"
+#include "room07.h"
+#include "room08.h"
 
-#define NUM_GAME_ROOMS          5
+#define NUM_GAME_ROOMS          9
 
 //room data structure array
 typedef struct tRoomData
@@ -43,6 +46,10 @@ static tRoomData roomData[NUM_GAME_ROOMS] = {
     {R02_DATA},
     {R03_DATA},
     {R04_DATA},
+    {R04_DATA},
+    {R06_DATA},
+    {R07_DATA},
+    {R08_DATA},
 };
 
 #endif  //H_ROOMS

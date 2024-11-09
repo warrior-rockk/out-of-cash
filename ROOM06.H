@@ -1,0 +1,54 @@
+/*
+=========================================================
+ Room Number:   06
+ Room Name:     06_school01
+=========================================================
+*/
+
+#ifndef H_ROOM06
+#define H_ROOM06
+
+#include <allegro.h>
+#include "anim.h"
+//include room datafile header data
+#include "R06DATA.H"
+
+//define room properties
+#define R06_START_POS_X         160
+#define R06_START_POS_Y         80
+#define R06_ROOM_NUM_OBJS       0
+#define R06_MUSIC_ID            0
+#define R06_FADE                true
+#define R06_LIGHTS_OFF                false
+
+//define room data (compose room properties and function pointers)
+#define R06_DATA R06_START_POS_X, R06_START_POS_Y, R06_ROOM_NUM_OBJS, R06_MUSIC_ID, R06_FADE , R06_LIGHTS_OFF , &r06_room_init, &r06_room_update, &r06_get_hotspot_name, &r06_get_default_hotspot_verb, &r06_get_object_info
+
+//define room animations
+#define R06_NUM_ANIMATIONS  0
+
+//hotspot code room enumeration
+enum r06_hotspotCode{
+    r06_door    = 32,
+};
+
+//declare and define room objects array
+static tObject r06_object[R06_ROOM_NUM_OBJS] =
+{
+};
+
+//declare room objects animations array
+static tAnimation r06_animations[R06_NUM_ANIMATIONS];
+
+//declare room functions called from game
+void r06_get_hotspot_name(uint8_t colorCode, char *s);
+enum verbs r06_get_default_hotspot_verb(uint8_t colorCode);
+tObject* r06_get_object_info(uint8_t numObject);
+void r06_room_init();
+void r06_room_update();
+
+//declare internal functions
+void r06_update_room_objects();
+void r06_update_room_script();
+void r06_update_dialog_selection();
+#endif

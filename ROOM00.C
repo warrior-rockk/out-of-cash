@@ -185,13 +185,28 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Colegio");
+                                script_say("Por ah¡ se va hacia mi instituto");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                change_room(SCHOOL_1_ROOM_NUM);
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r00_shop:

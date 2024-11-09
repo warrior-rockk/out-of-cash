@@ -43,13 +43,15 @@
 #define BATH_ROOM_NUM           3
 #define KITCHEN_ROOM_NUM        4
 #define STATIONERY_ROOM_NUM     5
-#define SCHOOL_ROOM_NUM         6
-#define SCIENCE_ROOM_NUM        7
-#define COMPUTER_ROOM_NUM       8
-#define LOCKER_ROOM_NUM         9
-#define MAINTCLOSET_ROOM_NUM    10
-#define PEOFFICE_ROOM_NUM       11
-#define SCHOOLBATH_ROOM_NUM     12
+#define SCHOOL_1_ROOM_NUM       6
+#define SCHOOL_2_ROOM_NUM       7
+#define SCHOOL_3_ROOM_NUM       8
+#define SCIENCE_ROOM_NUM        9
+#define COMPUTER_ROOM_NUM       10
+#define LOCKER_ROOM_NUM         11
+#define MAINTCLOSET_ROOM_NUM    12
+#define PEOFFICE_ROOM_NUM       13
+#define SCHOOLBATH_ROOM_NUM     14
 
 //Enumerations
 enum verbs {
