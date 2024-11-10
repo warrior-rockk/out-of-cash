@@ -1462,17 +1462,23 @@ void room_update_lights(uint8_t roomNumber, bool turnOff)
 //function to update room scroll
 void room_update_scroll()
 {
-    //test scroll
-    if (game.actualRoom == STATIONERY_ROOM_NUM)
+    //if room image needs scroll on x
+    if (actualRoom.image->w > RES_X)
     {
         //start move scroll with player on center of screen
         if (fixtoi(player.x) > RES_X>>1)
             roomScroll.x = fixtoi(player.x) - (RES_X>>1);
 
-        //scroll x limit
-        if (roomScroll.x + RES_X > actualRoom.image->w)
-            roomScroll.x = actualRoom.image->w - RES_X;
+        //scroll x limits
+        roomScroll.x = clamp(roomScroll.x, 0, actualRoom.image->w - RES_X);
     }
+    else
+    {
+        roomScroll.x = 0;
+    }
+
+    //scroll on Y not implemented on this version of engine
+    roomScroll.y = 0;
 }
 
 //inits the hud

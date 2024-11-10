@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Bug: show_debug overwrite lines
 - [ ] int positions on player structure
 - [ ] debug mode for jump to room
 - [ ] Animation for take upper and bottom
