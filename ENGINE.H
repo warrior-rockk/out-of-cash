@@ -151,7 +151,7 @@ struct debug
 {
     //global debug vars structure (only ints on this iteration)
     int16_t var[DEBUG_MAX_VARS];
-    char varName[DEBUG_MAX_VARS][10];
+    char varName[DEBUG_MAX_VARS][20];
     int16_t numVars;
     uint8_t numCursorRoomObject;
     //show walk room image
