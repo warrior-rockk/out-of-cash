@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] Reset roomScript vars on room change to prevent gameplay blocking because missing end_script()
 - [ ] int positions on player structure
 - [ ] debug mode for jump to room
 - [ ] Animation for take upper and bottom
@@ -22,6 +21,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Reset roomScript vars on room change to prevent gameplay blocking because missing end_script()
 - [X] Remove borders for small rooms and draw on center of screen
 - [X] Draw borders on front layer for hide player?
 - [X] default verb for inventory (LOOK or USE WITH)

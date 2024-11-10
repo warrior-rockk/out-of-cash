@@ -1395,10 +1395,10 @@ void room_draw()
     #ifdef DEBUGMODE
         //draw hotspot image on debug mode
         if (debug.showHotspotImage)
-                blit(actualRoom.hsImage, buffer, 0, 0, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
+                blit(actualRoom.hsImage, buffer, roomScroll.x, roomScroll.y, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
         //draw walk image on debug mode
         if (debug.showWalkImage)
-                blit(actualRoom.wImage, buffer, 0, 0, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
+                blit(actualRoom.wImage, buffer, roomScroll.x, roomScroll.y, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
     #endif
 
     if (!roomData[game.actualRoom].lightsOff)
@@ -1465,10 +1465,13 @@ void room_update_scroll()
     //test scroll
     if (game.actualRoom == STATIONERY_ROOM_NUM)
     {
+        //start move scroll with player on center of screen
         if (fixtoi(player.x) > RES_X>>1)
             roomScroll.x = fixtoi(player.x) - (RES_X>>1);
 
-
+        //scroll x limit
+        if (roomScroll.x + RES_X > actualRoom.image->w)
+            roomScroll.x = actualRoom.image->w - RES_X;
     }
 }
 

@@ -29,7 +29,7 @@
 
 //hotspot code room enumeration
 enum r05_hotspotCode{
-    r05_door    = 32,
+    r05_door    = 36,
 };
 
 //declare and define room objects array

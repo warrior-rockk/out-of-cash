@@ -98,12 +98,12 @@ void player_update_pos()
             player.vY = itofix(0);
 
         //check walk map
-        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX) + roomScroll.x, fixtoi(relY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX), fixtoi(relY)) == 0)
         {
             player.vX = itofix(0);
         }
     
-        if (getpixel(actualRoom.wImage, fixtoi(relX) + roomScroll.x , fixtoi(relY + player.vY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX), fixtoi(relY + player.vY)) == 0)
         {
             player.vY = itofix(0);
         }
@@ -129,7 +129,7 @@ void player_update_pos()
     player.y += player.vY;
 
     //update talk position
-    player.talk.msgX = fixtoi(player.x);
+    player.talk.msgX = fixtoi(player.x) - roomScroll.x;
     player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(playerData.image[player.animation.frame]->h>>1)), player.scale)));
 
 }
@@ -204,7 +204,7 @@ void player_draw()
     if (player.flip && player.scale == itofix(1))
     {
         //flipped
-        draw_sprite_h_flip(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
+        draw_sprite_h_flip(buffer, playerData.image[player.animation.frame], fixtoi(player.x) - roomScroll.x - (playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
     }
     else if (!player.flip && player.scale != itofix(1))
     {
@@ -214,7 +214,7 @@ void player_draw()
         fixed scaleW = fixmul(itofix(playerData.image[player.animation.frame]->w),player.scale);
         fixed scaleH = fixmul(itofix(playerData.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
-        stretch_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+        stretch_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x) - roomScroll.x - (fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else if (player.flip && player.scale != itofix(1))
     {
@@ -226,11 +226,11 @@ void player_draw()
         fixed scaleW = fixmul(itofix(playerData.image[player.animation.frame]->w),player.scale);
         fixed scaleH = fixmul(itofix(playerData.image[player.animation.frame]->h),player.scale);
         //draw streched and reposition
-        stretch_sprite(buffer, playerData.tempImage, fixtoi(player.x)-(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
+        stretch_sprite(buffer, playerData.tempImage, fixtoi(player.x) - roomScroll.x -(fixtoi(scaleW)>>1), fixtoi(player.y)-(fixtoi(scaleH)>>1),fixtoi(scaleW),fixtoi(scaleH));
     }
     else
     {
         //original
-        draw_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x)- roomScroll.x - (playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
+        draw_sprite(buffer, playerData.image[player.animation.frame], fixtoi(player.x) - roomScroll.x - (playerData.image[player.animation.frame]->w>>1), fixtoi(player.y)-(playerData.image[player.animation.frame]->h>>1));
     }
 }
