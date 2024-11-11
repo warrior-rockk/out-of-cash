@@ -25,7 +25,7 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Nevera");
             break;
         case r04_father:
-                strcpy(s, "Padre");
+                strcpy(s, "Pap ");
             break;
         case r04_trash:
                 strcpy(s, "Papelera");
@@ -37,11 +37,17 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Horno");
             break;
         case r04_spatula:
-                strcpy(s, "Espátula");
+                strcpy(s, "Esp tula");
             break;
         case r04_cheesse:
                 strcpy(s, "Queso");
             break;
+        case r04_clock:
+                if (!is_game_flag(GOT_CLOCK))
+                    strcpy(s, "Reloj");
+                else
+                    strcpy(s, "");
+            break;    
         default:
             strcpy(s, "");
     }
@@ -75,6 +81,9 @@ enum verbs r04_get_default_hotspot_verb(uint8_t colorCode)
             return LOOK;
             break;
         case r04_cheesse:
+            return LOOK;
+            break;
+        case r04_clock:
             return LOOK;
             break;
         default:
@@ -139,7 +148,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pasillo");
+                                script_say("Por esa puerta se va al pasillo");
                                 break;
                             default:
                                 end_script();
@@ -169,13 +178,26 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Nevera");
+                                script_say("La nevera de la cocina rellena de rica comida");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No tengo hambre");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r04_father:
@@ -186,7 +208,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Padre");
+                                script_say("Creo que tengo mas recuerdos de mi padre leyendo el peri¢dico que jugando conmigo");
                                 break;
                             default:
                                 end_script();
@@ -203,13 +225,27 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Papelera");
+                                script_say("La papelera donde tiramos la basura de la cocina");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Est  vac¡a");
+                                break;
+                            default:
+                                script_say("Acabo de tirar la basura hace poco");
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r04_paper:
@@ -220,13 +256,14 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Papel de cocina");
+                                script_say("Un rollo de papel de cocina");
                                 break;
                             default:
+                                script_say("Que raro que est‚ en la cocina");
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
                 }
                 break;            
             case r04_oven:
@@ -237,13 +274,25 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Horno");
+                                script_say("A£n huele a pizza");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Si tuviera hambre, me har¡a una pizza");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r04_spatula:
@@ -254,13 +303,32 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Espátula");
+                                script_say("Una esp tula para reposter¡a");
                                 break;
+                            default:
+                                script_say("Sirve para extender el chocolate en las tartas, por ejemplo");
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            //case 2:
+                            //    script_take_object();
+                            //    break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
                 }
                 break;            
             case r04_cheesse:
@@ -271,7 +339,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Queso");
+                                script_say("Me encanta el queso");
                                 break;
                             default:
                                 end_script();
@@ -279,7 +347,24 @@ void r04_update_room_script()
                         }
                     break;                    
                 }
-                break;            
+                break;
+            case r04_clock:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Un est£pido reloj de cocina en forma de estrella que compraron mis padres de viaje");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;
 
         }
     }

@@ -37,6 +37,7 @@ enum r04_hotspotCode{
     r04_oven    = 139,
     r04_spatula    = 205,
     r04_cheesse    = 81,
+    r04_clock      = 32,
 };
 
 //declare and define room objects array

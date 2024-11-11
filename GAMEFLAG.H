@@ -19,4 +19,5 @@
 #define PRINTED_SCHOOL_SCHEDULE 11
 #define PRINTED_PHOTOCOPY       12
 
+#define GOT_CLOCK               13
 #endif //H_GAME_FLAGS

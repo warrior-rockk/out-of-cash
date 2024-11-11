@@ -266,13 +266,64 @@ void default_verb_action(enum verbs roomVerb)
             }
             break;
         case TAKE:
-            say("No puedo coger eso");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No lo necesito");
+                    break;
+                case 1:
+                    say("Est  bien donde est ");
+                    break;
+                case 2:
+                    say("No quiero acumular trastos");
+                    break;
+            }
+            break;
+        case OPEN:
+            switch (rndNumber)
+            {
+                case 0:
+                    say("Est  bien como est ");
+                    break;
+                case 1:
+                    say("No hace falta abrirlo");
+                    break;
+                case 2:
+                    say("No se puede abrir");
+                    break;
+            }
+            break;
+        case CLOSE:
+            switch (rndNumber)
+            {
+                case 0:
+                    say("Est  bien como est ");
+                    break;
+                case 1:
+                    say("No hace falta cerrarlo");
+                    break;
+                case 2:
+                    say("No se puede cerrar");
+                    break;
+            }
             break;
         case USE_WITH:
             say("Esas cosas no combinan");
             break;
         default:
-            say("No tengo nada programado");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No es necesario");
+                    break;
+                case 1:
+                    say("No tengo nada programado");
+                    break;
+                case 2:
+                    say("Prefiero que no");
+                    break;
+            }
+            break;
     }
 }
 
