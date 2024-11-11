@@ -25,7 +25,7 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Carpetas");
             break;
         case r05_stationeryMaterial:
-                strcpy(s, "Material papelería");
+                strcpy(s, "Material papeler¡a");
             break;
         case r05_photocopies:
                 strcpy(s, "Fotocopias");
@@ -43,10 +43,13 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Papel impreso");
             break;
         case r05_mouse:
-                strcpy(s, "Ratón");
+                strcpy(s, "Rat¢n");
             break;
         case r05_monitor:
                 strcpy(s, "Monitor");
+            break;
+        case r05_employee:
+            strcpy(s, "Dependiente");
             break;
         default:
             strcpy(s, "");
@@ -88,6 +91,9 @@ enum verbs r05_get_default_hotspot_verb(uint8_t colorCode)
             break;
         case r05_monitor:
             return LOOK;
+            break;
+        case r05_employee:
+            return TALK;
             break;
         default:
             return LOOK;
@@ -334,8 +340,24 @@ void r05_update_room_script()
                         }
                     break;                    
                 }
+                break;
+            case r05_employee:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es el dependiente de la papeler¡a");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
                 break;            
-
         }
     }
 }

@@ -39,6 +39,7 @@ enum r05_hotspotCode{
     r05_printedPaper    = 34,
     r05_mouse    = 37,
     r05_monitor    = 38,
+    r05_employee    = 43,
 };
 
 //declare and define room objects array
