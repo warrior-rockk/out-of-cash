@@ -21,6 +21,33 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
         case r05_door:
                 strcpy(s, "Puerta");
             break;
+        case r05_folders:
+                strcpy(s, "Carpetas");
+            break;
+        case r05_stationeryMaterial:
+                strcpy(s, "Material papelería");
+            break;
+        case r05_photocopies:
+                strcpy(s, "Fotocopias");
+            break;
+        case r05_paper:
+                strcpy(s, "Papel");
+            break;
+        case r05_cartridge:
+                strcpy(s, "Cartucho ");
+            break;
+        case r05_printer:
+                strcpy(s, "Impresora");
+            break;
+        case r05_printedPaper:
+                strcpy(s, "Papel impreso");
+            break;
+        case r05_mouse:
+                strcpy(s, "Ratón");
+            break;
+        case r05_monitor:
+                strcpy(s, "Monitor");
+            break;
         default:
             strcpy(s, "");
     }
@@ -34,6 +61,33 @@ enum verbs r05_get_default_hotspot_verb(uint8_t colorCode)
     {
         case r05_door:
             return GO;
+            break;
+        case r05_folders:
+            return LOOK;
+            break;
+        case r05_stationeryMaterial:
+            return LOOK;
+            break;
+        case r05_photocopies:
+            return LOOK;
+            break;
+        case r05_paper:
+            return LOOK;
+            break;
+        case r05_cartridge:
+            return LOOK;
+            break;
+        case r05_printer:
+            return LOOK;
+            break;
+        case r05_printedPaper:
+            return LOOK;
+            break;
+        case r05_mouse:
+            return LOOK;
+            break;
+        case r05_monitor:
+            return LOOK;
             break;
         default:
             return LOOK;
@@ -98,6 +152,181 @@ void r05_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Puerta");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(STREET_ROOM_NUM, 258, 138);
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_folders:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Unas bonitas carpetas para meter folios");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_stationeryMaterial:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Siempre me han encantado las papeler¡as y las cosas que venden en ellas");
+                                break;
+                            default:
+                                script_say("Pero no me interesa nada de lo que tienen aqu¡");
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_photocopies:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Son unas fotocopias con dibujos de la serie Dragon Ball");
+                                break;
+                            default:
+                                script_say("Todo chaval del instituto sabe que lo mas mol¢n es tener estas fotocopias");
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_paper:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es el papel que hay cargado en la impresora");
+                                break;
+                            default:
+                                script_say("Un A4 est ndar...");
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_cartridge:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es el cartucho de tinta de la impresora");
+                                break;
+                            default:
+                                script_say("Parece lleno");
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_printer:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es la impresora de la papeler¡a");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_printedPaper:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE))
+                                    script_say("La impresora ha impreso el horario del instituto por las 2 caras");
+                                else if (is_game_flag(PRINTED_PHOTOCOPY))
+                                    script_say("Como el cartucho no tenia tinta, la impresora ha sacado la fotocopia de Dragon Ball sin ning£n da¤o");
+                                else
+                                    end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_mouse:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es el rat¢n del ordenador de la papeler¡a");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case r05_monitor:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Es el monitor del ordenador de la papeler¡a");
                                 break;
                             default:
                                 end_script();

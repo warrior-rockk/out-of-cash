@@ -14,8 +14,8 @@
 #include "R05DATA.H"
 
 //define room properties
-#define R05_START_POS_X         65
-#define R05_START_POS_Y         120
+#define R05_START_POS_X         132
+#define R05_START_POS_Y         64
 #define R05_ROOM_NUM_OBJS       0
 #define R05_MUSIC_ID            0
 #define R05_FADE                false
@@ -29,7 +29,16 @@
 
 //hotspot code room enumeration
 enum r05_hotspotCode{
-    r05_door    = 36,
+    r05_door    = 32,
+    r05_folders    = 39,
+    r05_stationeryMaterial    = 41,
+    r05_photocopies    = 33,
+    r05_paper    = 36,
+    r05_cartridge    = 35,
+    r05_printer    = 42,
+    r05_printedPaper    = 34,
+    r05_mouse    = 37,
+    r05_monitor    = 38,
 };
 
 //declare and define room objects array
