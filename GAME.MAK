@@ -47,10 +47,11 @@ C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=anim.o engine.o game.o inv.o player.o room01.o room02.o room03.o\
+OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
+	room03.o room04.o room05.o room06.o room07.o room08.o utils.o
+ALL_OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o\
+	room02.o room03.o room04.o room05.o room06.o room07.o room08.o\
 	utils.o
-ALL_OBJFILES=anim.o engine.o game.o inv.o player.o room01.o room02.o\
-	room03.o utils.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -61,8 +62,9 @@ SRC_DIRS=¼ûO ‘®[ ¼ÇS
 WUC=
 EDITORS=
 MAIN_TARGET=game.exe
-PROJECT_ITEMS=anim.c engine.c game.c inv.c player.c room01.c room02.c\
-	room03.c utils.c
+PROJECT_ITEMS=anim.c engine.c game.c inv.c player.c room00.c room01.c\
+	room02.c room03.c room04.c room05.c room06.c room07.c room08.c\
+	utils.c
 DEFAULT_MASK=*.[acfghimnops]*
 RHIDE_BIN_DIR=c:/djgpp/bin
 PASCAL_TYPE=GPC
@@ -356,8 +358,8 @@ _RHIDE_COMPILE_LINK_ADA=$(RHIDE_COMPILE_LINK_ADA_BIND);\
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= anim.o engine.o game.o inv.o player.o room01.o room02.o room03.o\
-	utils.o 
+DEPS_0= anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
+	room03.o room04.o room05.o room06.o room07.o room08.o utils.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 game.exe:: $(DEPS_0)
@@ -377,16 +379,34 @@ inv.o:: $(DEPS_4)
 DEPS_5=player.c
 player.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.c.o)
-DEPS_6=room01.c
-room01.o:: $(DEPS_6)
+DEPS_6=room00.c
+room00.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.c.o)
-DEPS_7=room02.c
-room02.o:: $(DEPS_7)
+DEPS_7=room01.c
+room01.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.c.o)
-DEPS_8=room03.c
-room03.o:: $(DEPS_8)
+DEPS_8=room02.c
+room02.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.c.o)
-DEPS_9=utils.c
-utils.o:: $(DEPS_9)
+DEPS_9=room03.c
+room03.o:: $(DEPS_9)
+	$(RHIDE_COMPILE.c.o)
+DEPS_10=room04.c
+room04.o:: $(DEPS_10)
+	$(RHIDE_COMPILE.c.o)
+DEPS_11=room05.c
+room05.o:: $(DEPS_11)
+	$(RHIDE_COMPILE.c.o)
+DEPS_12=room06.c
+room06.o:: $(DEPS_12)
+	$(RHIDE_COMPILE.c.o)
+DEPS_13=room07.c
+room07.o:: $(DEPS_13)
+	$(RHIDE_COMPILE.c.o)
+DEPS_14=room08.c
+room08.o:: $(DEPS_14)
+	$(RHIDE_COMPILE.c.o)
+DEPS_15=utils.c
+utils.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.c.o)
 all:: game.exe
