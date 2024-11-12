@@ -30,6 +30,17 @@
 //hotspot code room enumeration
 enum r06_hotspotCode{
     r06_door    = 32,
+    r06_maintLockerDoor    = 33,
+    r06_paint    = 34,
+    r06_computerRoomDoor    = 35,
+    r06_window    = 36,
+    r06_scienceRoomDoor    = 37,
+    r06_board    = 38,
+    r06_schoolBathDoor    = 39,
+    r06_lockerDoor    = 40,
+    r06_orla    = 41,
+    r06_bench    = 42,
+    r06_PEOfficeRoom    = 43,
 };
 
 //declare and define room objects array

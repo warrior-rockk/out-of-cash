@@ -23,6 +23,7 @@
 //Game
 
 #define MAX_GAME_FLAGS          32
+#define MAX_GAME_VARS           10
 #define SAVEGAME_FILE_VERSION   1
 #define SAVEGAME_SLOTS          5
 #define SAVEGAME_DATE_CHARS     20      //19 chars + zero terminator
@@ -175,6 +176,7 @@ struct game
     bool fadeOut;
     bool exit;
     uint8_t flags[MAX_GAME_FLAGS];  //32 bytes = 255 bit flags
+    uint16_t vars[MAX_GAME_VARS];
 } game;
 
 //game config structure

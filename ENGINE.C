@@ -175,25 +175,56 @@ void script_player_take_state()
 //function to set game flag
 void set_game_flag(uint8_t flagNum)
 {
+    ASSERT(flagNum < MAX_GAME_FLAGS);
     SET_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to clear game flag
 void clear_game_flag(uint8_t flagNum)
 {
+    ASSERT(flagNum < MAX_GAME_FLAGS);
     CLEAR_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to toggle game flag
 void toogle_game_flag(uint8_t flagNum)
 {
+    ASSERT(flagNum < MAX_GAME_FLAGS);
     TOOGLE_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to check game flag
 bool is_game_flag(uint8_t flagNum)
 {
+    ASSERT(flagNum < MAX_GAME_FLAGS);
     return CHECK_BIT(game.flags[flagNum % 8], flagNum/8);
+}
+
+//function to increment game var
+void inc_game_var(uint8_t varNum)
+{
+    ASSERT(varNum < MAX_GAME_VARS);
+    game.vars[varNum]++;
+}
+
+//function to decrement game var
+void dec_game_var(uint8_t varNum)
+{
+    ASSERT(varNum < MAX_GAME_VARS);
+    game.vars[varNum]--;
+}
+
+//function to set value to game var
+void set_game_var(uint8_t varNum, uint16_t value)
+{
+    ASSERT(varNum < MAX_GAME_VARS);
+    game.vars[varNum] = value;
+}
+
+//function to get game var value
+uint16_t get_game_var(uint8_t varNum)
+{
+    return game.vars[varNum];
 }
 
 //function to change the actual room

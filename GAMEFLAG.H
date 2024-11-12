@@ -20,4 +20,9 @@
 #define PRINTED_PHOTOCOPY       12
 
 #define GOT_CLOCK               13
+
+
+//definition of global game numeric vars
+#define VAR_BULLETIN_BOARD      0
+
 #endif //H_GAME_FLAGS
