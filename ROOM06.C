@@ -274,13 +274,13 @@ void r06_update_room_script()
                                         script_say("El tabl¢n de anuncios del instituto");
                                         break;
                                     case 1:
-                                        script_say("uno");
+                                        script_say("Se dan clases de matem ticas particulares. Contacto 555-5555");
                                         break;
                                     case 2:
-                                        script_say("dos");
+                                        script_say("Grupo de m£sica rock busca guitarrista solista con equipo propio");
                                         break;
                                     case 3:
-                                        script_say("tres");
+                                        script_say("Vota a Carlos para delegado de clase. Cuando solo hay un candidato, solo hay una elecci¢n");
                                         break;
                                 }
                                 break;
@@ -303,7 +303,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da a los ba¤os");
                                 break;
                             default:
                                 end_script();
@@ -320,7 +320,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que va a los vestuarios");
                                 break;
                             default:
                                 end_script();
@@ -337,9 +337,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Orla");
+                                script_say("Es la orla de la generaci¢n de profesores del 57");
                                 break;
                             default:
+                                script_say("Una manada de dinosaurios es lo que son...");
                                 end_script();
                                 break;
                         }
@@ -354,7 +355,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Banco");
+                                script_say("Creo que nunca me he sentado en este banco");
                                 break;
                             default:
                                 end_script();
@@ -371,7 +372,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al despacho del profesor de educaci¢n f¡sica");
                                 break;
                             default:
                                 end_script();
@@ -380,7 +381,6 @@ void r06_update_room_script()
                     break;                    
                 }
                 break;            
-
         }
     }
 }
