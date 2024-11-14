@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] debug mode for jump to room
 - [ ] Animation for take upper and bottom
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
@@ -20,6 +19,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] debug mode for jump to room
 - [X] Bug: show_debug overwrite lines
 - [X] Reset roomScript vars on room change to prevent gameplay blocking because missing end_script()
 - [X] Remove borders for small rooms and draw on center of screen

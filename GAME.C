@@ -1010,6 +1010,15 @@ void cursor_action_menu()
                 game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
             }
             break;
+        case GUI_DEBUG_ROOM_INI_COLOR ... GUI_DEBUG_ROOM_END_COLOR:
+            if (cursor.click)
+            {
+                game.state = PLAYING_STATE;
+                gui_init();
+                change_room(hsColor - GUI_DEBUG_ROOM_INI_COLOR);
+                
+            }
+            break;
         default:
             if (cursor.click)
             {
@@ -1631,6 +1640,12 @@ void gui_update()
             game.state = EXIT_STATE;
             game_fade_out();
             break;
+        default:
+            #ifdef DEBUGMODE
+                //draw hotspot debug zone
+                draw_sprite(gui.hsImage, (BITMAP *)gameDataFile[gd_guiDebugHs].dat , GUI_CONTENT_X, GUI_CONTENT_Y);
+            #endif
+            break;
     }
 }
 
@@ -1732,6 +1747,12 @@ void gui_draw()
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExit].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
+            break;
+        default:
+            #ifdef DEBUGMODE
+            //draw gui contents
+            draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiDebug].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            #endif
             break;
     }
 }

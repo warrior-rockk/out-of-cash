@@ -86,6 +86,8 @@
 #define GUI_LOAD_SLOT_3_COLOR   52
 #define GUI_LOAD_SLOT_4_COLOR   53
 #define GUI_LOAD_SLOT_5_COLOR   54
+#define GUI_DEBUG_ROOM_INI_COLOR 60
+#define GUI_DEBUG_ROOM_END_COLOR 72
 #define GUI_SLOTS_X             2
 #define GUI_SLOTS_Y             13
 #define GUI_SLOTS_SEL_Y         9
