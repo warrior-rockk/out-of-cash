@@ -168,9 +168,8 @@ void main_update()
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
-    show_debug("cursor.x", cursor.x);
-    show_debug("Room scroll", roomScroll.x);
     show_debug("Player x", fixtoi(player.x));
+    show_debug("Player y", fixtoi(player.y));
 }
 
 //general draw
@@ -597,6 +596,7 @@ void check_room_changed()
             game_fade_out(FADE_FAST_SPEED);
 
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
+        game.lastRoom = game.actualRoom;
         game.actualRoom = game.nextRoom;
 
         //load room resources

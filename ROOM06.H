@@ -1,7 +1,7 @@
 /*
 =========================================================
  Room Number:   06
- Room Name:     06_school01
+ Room Name:     06_school
 =========================================================
 */
 
@@ -14,8 +14,8 @@
 #include "R06DATA.H"
 
 //define room properties
-#define R06_START_POS_X         160
-#define R06_START_POS_Y         80
+#define R06_START_POS_X         57
+#define R06_START_POS_Y         103
 #define R06_ROOM_NUM_OBJS       0
 #define R06_MUSIC_ID            0
 #define R06_FADE                true

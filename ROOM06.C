@@ -1,7 +1,7 @@
 /*
 =========================================================
  Room Number:   06
- Room Name:     06_school01
+ Room Name:     06_school
 =========================================================
 */
 
@@ -118,6 +118,8 @@ tObject* r06_get_object_info(uint8_t numObject)
 //function to init room
 void r06_room_init()
 {
+    change_player_dir(DIR_RIGHT);
+    
     game_fade_in();
 }
 
@@ -170,7 +172,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(STREET_ROOM_NUM, 59, 115);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r06_maintLockerDoor:
@@ -187,7 +202,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(MAINT_LOCKER_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r06_paint:
@@ -222,7 +250,21 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(COMPUTER_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
+
                 }
                 break;            
             case r06_window:
@@ -257,7 +299,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(SCIENCE_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r06_board:
@@ -309,7 +364,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(SCHOOL_BATH_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r06_lockerDoor:
@@ -326,7 +394,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(LOCKER_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r06_orla:
@@ -378,7 +459,20 @@ void r06_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room(PE_OFFICE_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
         }

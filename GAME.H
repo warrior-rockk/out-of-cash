@@ -168,6 +168,7 @@ struct game
     enum gameState state;
     int16_t actualRoom;
     int16_t nextRoom;
+    int16_t lastRoom;
     //enter room position assigned by change_room_pos()
     int16_t room_pos_x;
     int16_t room_pos_y;

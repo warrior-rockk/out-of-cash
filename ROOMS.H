@@ -13,7 +13,7 @@
 #include "room07.h"
 #include "room08.h"
 
-#define NUM_GAME_ROOMS          9
+#define NUM_GAME_ROOMS          13
 
 //room data structure array
 typedef struct tRoomData

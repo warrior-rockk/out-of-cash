@@ -1,7 +1,7 @@
 /*
 =========================================================
  Room Number:   07
- Room Name:     07_school02
+ Room Name:     07_scienceRoom
 =========================================================
 */
 
@@ -14,8 +14,8 @@
 #include "R07DATA.H"
 
 //define room properties
-#define R07_START_POS_X         160
-#define R07_START_POS_Y         80
+#define R07_START_POS_X         58
+#define R07_START_POS_Y         74
 #define R07_ROOM_NUM_OBJS       0
 #define R07_MUSIC_ID            0
 #define R07_FADE                false
@@ -30,6 +30,16 @@
 //hotspot code room enumeration
 enum r07_hotspotCode{
     r07_door    = 32,
+    r07_blackBoard    = 33,
+    r07_notes    = 34,
+    r07_brain    = 35,
+    r07_washer1    = 36,
+    r07_testTube    = 37,
+    r07_sheets    = 38,
+    r07_washer2    = 39,
+    r07_glass    = 40,
+    r07_knife    = 41,
+    r07_labMaterial    = 42,
 };
 
 //declare and define room objects array

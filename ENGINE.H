@@ -43,15 +43,13 @@
 #define BATH_ROOM_NUM           3
 #define KITCHEN_ROOM_NUM        4
 #define STATIONERY_ROOM_NUM     5
-#define SCHOOL_1_ROOM_NUM       6
-#define SCHOOL_2_ROOM_NUM       7
-#define SCHOOL_3_ROOM_NUM       8
-#define SCIENCE_ROOM_NUM        9
-#define COMPUTER_ROOM_NUM       10
-#define LOCKER_ROOM_NUM         11
-#define MAINTCLOSET_ROOM_NUM    12
-#define PEOFFICE_ROOM_NUM       13
-#define SCHOOLBATH_ROOM_NUM     14
+#define SCHOOL_ROOM_NUM         6
+#define SCIENCE_ROOM_NUM        7
+#define COMPUTER_ROOM_NUM       8
+#define LOCKER_ROOM_NUM         9
+#define MAINT_LOCKER_ROOM_NUM   10
+#define PE_OFFICE_ROOM_NUM      11
+#define SCHOOL_BATH_ROOM_NUM    12
 
 //Enumerations
 enum verbs {
@@ -196,6 +194,8 @@ uint16_t get_game_var(uint8_t varNum);
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);
 void set_room_lights_off(uint8_t roomNumber, bool lightsOff);
+uint16_t get_last_room();
+
 void game_fade_in();
 void game_fade_out();
 void default_verb_action(enum verbs roomVerb);

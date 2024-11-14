@@ -248,6 +248,12 @@ void set_room_lights_off(uint8_t roomNumber, bool turnOff)
     room_update_lights(roomNumber, turnOff);
 }
 
+//function to get last room
+uint16_t get_last_room()
+{
+    return game.lastRoom;
+}
+
 //function to do game fade out
 void game_fade_out(int fadeSpeed)
 {

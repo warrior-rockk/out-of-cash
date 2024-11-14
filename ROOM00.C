@@ -76,6 +76,11 @@ tObject* r00_get_object_info(uint8_t numObject)
 //function to init room
 void r00_room_init()
 {
+    if (get_last_room() == SCHOOL_ROOM_NUM)
+        change_player_dir(DIR_RIGHT);
+    else
+        change_player_dir(DIR_LEFT);
+        
     game_fade_in();
 }
 
@@ -215,7 +220,7 @@ void r00_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                change_room(SCHOOL_1_ROOM_NUM);
+                                change_room(SCHOOL_ROOM_NUM);
                                 break;
                             default:
                                 end_script();
