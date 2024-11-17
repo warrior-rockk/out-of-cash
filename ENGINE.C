@@ -297,7 +297,7 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("No veo nada");
                     break;
-                case 2:
+                default:
                     say("No hay nada que ver");
                     break;
             }
@@ -311,7 +311,7 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("Est  bien donde est ");
                     break;
-                case 2:
+                default:
                     say("No quiero acumular trastos");
                     break;
             }
@@ -325,7 +325,7 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("No hace falta abrirlo");
                     break;
-                case 2:
+                default:
                     say("No se puede abrir");
                     break;
             }
@@ -339,7 +339,7 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("No hace falta cerrarlo");
                     break;
-                case 2:
+                default:
                     say("No se puede cerrar");
                     break;
             }
@@ -358,6 +358,12 @@ void default_verb_action(enum verbs roomVerb)
                     break;
                 case 2:
                     say("Prefiero que no");
+                    break;
+                case 3:
+                    say("No s‚ que pretendes que suceda");
+                    break;
+                default:
+                    say("Tampoco tengo que hacer todo lo que digas...");
                     break;
             }
             break;

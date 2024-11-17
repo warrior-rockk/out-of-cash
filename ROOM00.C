@@ -126,14 +126,14 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta de entrada a mi casa");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
                     break;  
-					case GO:
+                    case GO:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -156,7 +156,19 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cartel");
+                                script_say("Zurraspa Producciones presenta:");
+                                break;
+                            case 1:
+                                script_say("Reincidentes en concierto");
+                                break;
+                            case 2:
+                                script_say("Presentando su £ltimo disco en directo");
+                                break;
+                            case 3:
+                                script_say("Precio de la entrada: 5000 pesetas");
+                                break;    
+                            case 4:
+                                script_say("Tengo que conseguir el dinero como sea");
                                 break;
                             default:
                                 end_script();
@@ -173,7 +185,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Papelería");
+                                script_say("Por all¡ se va a la papeler¡a");
                                 break;
                             default:
                                 end_script();
@@ -237,13 +249,29 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Tienda");
+                                script_say("Mi tienda de ordenadores de confianza");
                                 break;
+                            case 1:
+                                script_say("Aqui me compr‚ mi Pentium 100 por un buen precio");
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Nah, ya me gast‚ todo mi dinero en el Pentium");
+                                break;
+                            case 1:
+                                script_say("Adem s todo el que consiga lo necesito para ir al concierto");
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
 

@@ -46,7 +46,7 @@ void r07_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Vaso");
             break;
         case r07_knife:
-                strcpy(s, "Bisturí");
+                strcpy(s, "Bistur¡");
             break;
         case r07_labMaterial:
                 strcpy(s, "Material laboratorio");
@@ -159,7 +159,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al pasillo del instituto");
                                 break;
                             default:
                                 end_script();
@@ -189,7 +189,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pizarra");
+                                script_say("Creo que en esa f¢rmula han olvidado que se llevan una");
                                 break;
                             default:
                                 end_script();
@@ -206,9 +206,10 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Apuntes");
+                                script_say("Apuntes sobre alguna clase de ciencias que no logro comprender");
                                 break;
                             default:
+                                script_say("Al menos la letra es bonita");
                                 end_script();
                                 break;
                         }
@@ -223,9 +224,16 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cerebro");
+                                script_say("Un cerebro humano flotando en formol");
+                                break;
+                            case 1:
+                                script_say("Triste analog¡a de la efeversencia del pensamiento");
+                                break;
+                            case 2:
+                                script_wait(10);
                                 break;
                             default:
+                                script_say("Lo le¡ en una servilleta");
                                 end_script();
                                 break;
                         }
@@ -240,7 +248,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pica");
+                                script_say("A£n se puede oler el £ltimo experimento que vertieron al desague");
                                 break;
                             default:
                                 end_script();
@@ -257,9 +265,10 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Probetas");
+                                script_say("Siempre he sentido fascinaci¢n por el material de laboratorio");
                                 break;
                             default:
+                                script_say("Creo que viene de la frustaci¢n de que mis padres no me dejaran jugar con el Quimicefa");
                                 end_script();
                                 break;
                         }
@@ -274,7 +283,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hojas");
+                                script_say("Hojas y hojas llenadas de garabatos que significaran algo para alguien");
                                 break;
                             default:
                                 end_script();
@@ -291,7 +300,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pica");
+                                script_say("Esta pica esta impoluta");
                                 break;
                             default:
                                 end_script();
@@ -308,7 +317,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Vaso");
+                                script_say("Una matraz de laboratorio para realizar mezclas");
                                 break;
                             default:
                                 end_script();
@@ -325,7 +334,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Bisturí");
+                                script_say("Este bistur¡ est  muy afilado");
                                 break;
                             default:
                                 end_script();
@@ -342,7 +351,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Material laboratorio");
+                                script_say("Material diverso de laboratorio sin ning£n inter‚s aparente");
                                 break;
                             default:
                                 end_script();
