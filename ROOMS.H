@@ -12,6 +12,8 @@
 #include "room06.h"
 #include "room07.h"
 #include "room08.h"
+#include "room09.h"
+#include "room10.h"
 
 #define NUM_GAME_ROOMS          13
 
@@ -51,6 +53,8 @@ static tRoomData roomData[NUM_GAME_ROOMS] = {
     {R06_DATA},
     {R07_DATA},
     {R08_DATA},
+    {R09_DATA},
+    {R10_DATA},
 };
 
 #endif  //H_ROOMS

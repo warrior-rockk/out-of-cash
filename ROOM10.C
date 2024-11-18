@@ -1,7 +1,7 @@
 /*
 =========================================================
- Room Number:   08
- Room Name:     08_computerRoom
+ Room Number:   10
+ Room Name:     10_maintCloset
 =========================================================
 */
 
@@ -10,37 +10,28 @@
 #include <string.h>
 #include <stdint.h>
 #include "engine.h"
-#include "room08.h"
+#include "room10.h"
 
 //Funtion to return the name of hotspot by color code
-void r08_get_hotspot_name(uint8_t colorCode, char *s)
+void r10_get_hotspot_name(uint8_t colorCode, char *s)
 {
     //check the object
     switch(colorCode)
     {
-        case r08_door:
+        case r10_door:
                 strcpy(s, "Puerta");
             break;
-        case r08_window:
-                strcpy(s, "Ventana");
+        case r10_switch:
+                strcpy(s, "Interruptor");
             break;
-        case r08_computer3:
-                strcpy(s, "Ordenador");
+        case r10_spiderWeb:
+                strcpy(s, "Telaraña");
             break;
-        case r08_manual:
-                strcpy(s, "Manual");
+        case r10_closet:
+                strcpy(s, "Armario");
             break;
-        case r08_computer1:
-                strcpy(s, "Ordenador");
-            break;
-        case r08_nerd:
-                strcpy(s, "Friki");
-            break;
-        case r08_computer2:
-                strcpy(s, "Ordenador");
-            break;
-        case r08_chair:
-                strcpy(s, "Silla");
+        case r10_paintBucket:
+                strcpy(s, "Cubo de pintura");
             break;
         default:
             strcpy(s, "");
@@ -48,33 +39,24 @@ void r08_get_hotspot_name(uint8_t colorCode, char *s)
 }
 
 //function to return default hotspot verb
-enum verbs r08_get_default_hotspot_verb(uint8_t colorCode)
+enum verbs r10_get_default_hotspot_verb(uint8_t colorCode)
 {
     //check the object
     switch(colorCode)
     {
-        case r08_door:
+        case r10_door:
             return GO;
             break;
-        case r08_window:
+        case r10_switch:
+            return USE;
+            break;
+        case r10_spiderWeb:
             return LOOK;
             break;
-        case r08_computer3:
-            return LOOK;
+        case r10_closet:
+            return OPEN;
             break;
-        case r08_manual:
-            return LOOK;
-            break;
-        case r08_computer1:
-            return LOOK;
-            break;
-        case r08_nerd:
-            return TALK;
-            break;
-        case r08_computer2:
-            return LOOK;
-            break;
-        case r08_chair:
+        case r10_paintBucket:
             return LOOK;
             break;
         default:
@@ -83,47 +65,47 @@ enum verbs r08_get_default_hotspot_verb(uint8_t colorCode)
 }
 
 //function to return room object info
-tObject* r08_get_object_info(uint8_t numObject)
+tObject* r10_get_object_info(uint8_t numObject)
 {
-    if (numObject < R08_ROOM_NUM_OBJS)
-        return &r08_object[numObject];
+    if (numObject < R10_ROOM_NUM_OBJS)
+        return &r10_object[numObject];
     else
         return NULL;
 }
 
 //function to init room
-void r08_room_init()
+void r10_room_init()
 {
     game_fade_in();
 }
 
 //global funcion to update room
-void r08_room_update()
+void r10_room_update()
 {
     //update room objects
-    r08_update_room_objects();
+    r10_update_room_objects();
 
     //update dialog line selection
-    r08_update_dialog_selection();
+    r10_update_dialog_selection();
     
     //update room script
-    r08_update_room_script();
+    r10_update_room_script();
 }
 
 //update room objects
-void r08_update_room_objects()
+void r10_update_room_objects()
 {
 
 }
 
 //update dialog selection
-void r08_update_dialog_selection()
+void r10_update_dialog_selection()
 {
 
 }
 
 //update room script
-void r08_update_room_script()
+void r10_update_room_script()
 {
 //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
@@ -131,7 +113,7 @@ void r08_update_room_script()
         //sequence actions
         switch (roomScript.object)
         {
-            case r08_door:
+            case r10_door:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -148,7 +130,7 @@ void r08_update_room_script()
                     break;                    
                 }
                 break;            
-            case r08_window:
+            case r10_switch:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -156,7 +138,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ventana");
+                                script_say("Interruptor");
                                 break;
                             default:
                                 end_script();
@@ -165,7 +147,7 @@ void r08_update_room_script()
                     break;                    
                 }
                 break;            
-            case r08_computer3:
+            case r10_spiderWeb:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -173,7 +155,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
+                                script_say("Telaraña");
                                 break;
                             default:
                                 end_script();
@@ -182,7 +164,7 @@ void r08_update_room_script()
                     break;                    
                 }
                 break;            
-            case r08_manual:
+            case r10_closet:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -190,7 +172,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Manual");
+                                script_say("Armario");
                                 break;
                             default:
                                 end_script();
@@ -199,7 +181,7 @@ void r08_update_room_script()
                     break;                    
                 }
                 break;            
-            case r08_computer1:
+            case r10_paintBucket:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -207,58 +189,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
-                                break;
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;                    
-                }
-                break;            
-            case r08_nerd:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_say("Friki");
-                                break;
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;                    
-                }
-                break;            
-            case r08_computer2:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_say("Ordenador");
-                                break;
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;                    
-                }
-                break;            
-            case r08_chair:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_say("Silla");
+                                script_say("Cubo de pintura");
                                 break;
                             default:
                                 end_script();

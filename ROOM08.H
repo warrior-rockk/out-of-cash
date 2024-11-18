@@ -1,7 +1,7 @@
 /*
 =========================================================
  Room Number:   08
- Room Name:     08_school03
+ Room Name:     08_computerRoom
 =========================================================
 */
 
@@ -14,8 +14,8 @@
 #include "R08DATA.H"
 
 //define room properties
-#define R08_START_POS_X         160
-#define R08_START_POS_Y         80
+#define R08_START_POS_X         276
+#define R08_START_POS_Y         111
 #define R08_ROOM_NUM_OBJS       0
 #define R08_MUSIC_ID            0
 #define R08_FADE                false
@@ -30,6 +30,13 @@
 //hotspot code room enumeration
 enum r08_hotspotCode{
     r08_door    = 32,
+    r08_window    = 33,
+    r08_computer3    = 34,
+    r08_manual    = 35,
+    r08_computer1    = 36,
+    r08_nerd    = 37,
+    r08_computer2    = 38,
+    r08_chair    = 39,
 };
 
 //declare and define room objects array
