@@ -98,12 +98,12 @@ void player_update_pos()
             player.vY = itofix(0);
 
         //check walk map
-        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX), fixtoi(relY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX) - actualRoom.hsWalkBorders.left, fixtoi(relY) - actualRoom.hsWalkBorders.up) == 0)
         {
             player.vX = itofix(0);
         }
     
-        if (getpixel(actualRoom.wImage, fixtoi(relX), fixtoi(relY + player.vY)) == 0)
+        if (getpixel(actualRoom.wImage, fixtoi(relX) - actualRoom.hsWalkBorders.left, fixtoi(relY + player.vY) - actualRoom.hsWalkBorders.up) == 0)
         {
             player.vY = itofix(0);
         }

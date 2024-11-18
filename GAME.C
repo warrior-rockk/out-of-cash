@@ -603,7 +603,9 @@ void check_room_changed()
         room_load(game.actualRoom);
 
         //calculate room image borders
-        calculate_actual_room_borders();
+        calculate_image_borders(actualRoom.image, &actualRoom.roomBorders);
+        //calculate hotspot/walk image borders
+        calculate_image_borders(actualRoom.hsImage, &actualRoom.hsWalkBorders);
         
         //call new room init
         roomData[game.actualRoom].room_init();
@@ -626,31 +628,31 @@ void check_room_changed()
     }
 }
 
-//function to calculate room borders
-void calculate_actual_room_borders()
+//function to calculate image borders
+void calculate_image_borders(BITMAP *image, tBorders *border)
 {
-    //if room image width is smaller than room screen area
-    if (actualRoom.image->w < RES_X)
+    //if image width is smaller than room screen area
+    if (image->w < RES_X)
     {
-        actualRoom.leftBorder   = (RES_X - actualRoom.image->w)>>1;
-        actualRoom.rightBorder  = RES_X -  actualRoom.leftBorder;
+        border->left   = (RES_X - image->w)>>1;
+        border->right  = RES_X -  border->left;
     }
     else
     {
-        actualRoom.leftBorder = 0;
-        actualRoom.rightBorder = 0;
+        border->left = 0;
+        border->right = 0;
     }
 
-    //if room image height is smaller than room screen area
-    if (actualRoom.image->h < HUD_Y)
+    //if image height is smaller than room screen area
+    if (image->h < HUD_Y)
     {
-        actualRoom.upBorder    = (HUD_Y - actualRoom.image->h)>>1;
-        actualRoom.downBorder  = HUD_Y -  actualRoom.upBorder;
+        border->up    = (HUD_Y - image->h)>>1;
+        border->down  = HUD_Y -  border->up;
     }
     else
     {
-        actualRoom.upBorder = 0;
-        actualRoom.downBorder = 0;
+        border->up = 0;
+        border->down = 0;
     }
 }
 
@@ -1038,7 +1040,7 @@ void cursor_action_menu()
 void cursor_action_room()
 {
     //obtains the hotspot room color
-    uint8_t hsColor = getpixel(actualRoom.hsImage, cursor.x, cursor.y);
+    uint8_t hsColor = getpixel(actualRoom.hsImage, cursor.x - actualRoom.hsWalkBorders.left, cursor.y - actualRoom.hsWalkBorders.up);
 
     //gets the object name
     roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
@@ -1399,15 +1401,15 @@ void room_draw()
     
     if (!roomData[game.actualRoom].lightsOff)
         //draw room image centered on room screen zone
-        blit(actualRoom.image, buffer, roomScroll.x, roomScroll.y, actualRoom.leftBorder, actualRoom.upBorder, actualRoom.image->w, actualRoom.image->h);
+        blit(actualRoom.image, buffer, roomScroll.x, roomScroll.y, actualRoom.roomBorders.left, actualRoom.roomBorders.up, actualRoom.image->w, actualRoom.image->h);
 
     #ifdef DEBUGMODE
         //draw hotspot image on debug mode
         if (debug.showHotspotImage)
-                blit(actualRoom.hsImage, buffer, roomScroll.x, roomScroll.y, 0, 0, actualRoom.hsImage->w, actualRoom.hsImage->h);
+                blit(actualRoom.hsImage, buffer, roomScroll.x, roomScroll.y, actualRoom.hsWalkBorders.left, actualRoom.hsWalkBorders.up, actualRoom.hsImage->w, actualRoom.hsImage->h);
         //draw walk image on debug mode
         if (debug.showWalkImage)
-                blit(actualRoom.wImage, buffer, roomScroll.x, roomScroll.y, 0, 0, actualRoom.wImage->w, actualRoom.wImage->h);
+                blit(actualRoom.wImage, buffer, roomScroll.x, roomScroll.y, actualRoom.hsWalkBorders.left, actualRoom.hsWalkBorders.up, actualRoom.wImage->w, actualRoom.wImage->h);
     #endif
 
     if (!roomData[game.actualRoom].lightsOff)
@@ -1426,15 +1428,15 @@ void room_front_layer_draw()
     rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
 
     //draw black borders around room
-    if (actualRoom.leftBorder > 0)
+    if (actualRoom.roomBorders.left > 0)
     {
-        rectfill(buffer, 0, 0, actualRoom.leftBorder, HUD_Y, BORDER_COLOR);
-        rectfill(buffer, actualRoom.rightBorder, 0, RES_X, HUD_Y, BORDER_COLOR);
+        rectfill(buffer, 0, 0, actualRoom.roomBorders.left, HUD_Y, BORDER_COLOR);
+        rectfill(buffer, actualRoom.roomBorders.right, 0, RES_X, HUD_Y, BORDER_COLOR);
     }
-    if (actualRoom.upBorder > 0)
+    if (actualRoom.roomBorders.up > 0)
     {
-        rectfill(buffer, actualRoom.leftBorder, 0, actualRoom.rightBorder, actualRoom.upBorder, BORDER_COLOR);
-        rectfill(buffer, actualRoom.leftBorder, actualRoom.downBorder, actualRoom.rightBorder, HUD_Y, BORDER_COLOR);
+        rectfill(buffer, actualRoom.roomBorders.left, 0, actualRoom.roomBorders.right, actualRoom.roomBorders.up, BORDER_COLOR);
+        rectfill(buffer, actualRoom.roomBorders.left, actualRoom.roomBorders.down, actualRoom.roomBorders.right, HUD_Y, BORDER_COLOR);
     }
 }
 

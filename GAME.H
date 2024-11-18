@@ -141,6 +141,14 @@ enum guiState{
 
 //structures
 
+typedef struct tBorders
+{
+    int16_t left;
+    int16_t right;
+    int16_t up;
+    int16_t down;
+} tBorders;
+
 //actual game room structure
 struct actualRoom
 {
@@ -153,10 +161,8 @@ struct actualRoom
     //room walk/scalemap image
     BITMAP  *wImage;
     //room borders
-    int16_t leftBorder;
-    int16_t rightBorder;
-    int16_t upBorder;
-    int16_t downBorder;
+    tBorders roomBorders;
+    tBorders hsWalkBorders;
     //room music
     uint8_t musicId;
     DATAFILE_INDEX *musicDataFileIndex;
@@ -366,7 +372,7 @@ void tick_init();
 void tick_update();
 
 void check_room_changed();
-void calculate_actual_room_borders();
+void calculate_image_borders();
 void room_load(uint8_t roomNumber);
 DATAFILE* room_load_datafile(uint8_t roomNumber);
 void room_action_update();
