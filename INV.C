@@ -156,7 +156,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
             case id_guitar:
                 strcpy(s, "Guitarra");
                 break;
-            case id_soap:
+            case id_gel:
                 strcpy(s, "Gel");
                 break;
             default:
@@ -208,7 +208,7 @@ void inventory_update()
                         break;
                 }
                 break;
-            case id_soap:
+            case id_gel:
                 switch(roomScript.verb)
                 {
                     case LOOK:

@@ -173,7 +173,7 @@ void r03_update_room_script()
                                     script_move_player_to_target();
                                     break;
                                 case 1:
-                                    script_take_object(&r03_object[R03_GEL_OBJ_ID].active, GOT_GEL, id_soap);
+                                    script_take_object(&r03_object[R03_GEL_OBJ_ID].active, GOT_GEL, id_gel);
                                 default:
                                     end_script();
                                     break;
