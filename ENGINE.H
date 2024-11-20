@@ -171,7 +171,7 @@ void script_say_actor(char *message, tActorTalk *actorTalk);
 void script_wait(int time);
 void script_move_player(int x, int y);
 void script_move_player_to_target();
-void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum);
+void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObjectNum);
 void script_play_player_animation(int startFrame, int endFrame, int speed);
 void script_player_take_state();
 void script_remove_inv_object(int numObject);
@@ -181,10 +181,10 @@ void script_next_dialog_node();
 void dialog_add(char *textLine, uint8_t destNode);
 void stop_dialog();
 
-void set_game_flag(uint8_t flagNum);
-void clear_game_flag(uint8_t flagNum);
-void toogle_game_flag(uint8_t flagNum);
-bool is_game_flag(uint8_t flagNum);
+void set_game_flag(enum gameFlags flagNum);
+void clear_game_flag(enum gameFlags flagNum);
+void toogle_game_flag(enum gameFlags flagNum);
+bool is_game_flag(enum gameFlags flagNum);
 
 void inc_game_var(uint8_t varNum);
 void dec_game_var(uint8_t varNum);

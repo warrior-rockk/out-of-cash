@@ -125,7 +125,7 @@ void r02_room_update()
 //update room objects
 void r02_update_room_objects()
 {
-    r02_object[R02_BATHDOOR_OBJ_ID].active = is_game_flag(BATH_DOOR_OPEN);
+    r02_object[R02_BATHDOOR_OBJ_ID].active = is_game_flag(BATH_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -151,9 +151,9 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(BATH_MIRROR_MSG))
+                                if (!is_game_flag(BATH_MIRROR_MSG_FLAG))
                                 {
-                                    set_game_flag(CORRIDOR_MIRROR_MSG);
+                                    set_game_flag(CORRIDOR_MIRROR_MSG_FLAG);
                                     script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
                                     end_script();
                                 }
@@ -182,7 +182,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(BATH_DOOR_OPEN))
+                                if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
                                     script_say("La puerta est  cerrada");
                                     end_script();
@@ -215,7 +215,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (is_game_flag(BATH_DOOR_OPEN))
+                                if (is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
                                     script_say("Ya est  abierta");
                                     end_script();
@@ -224,7 +224,7 @@ void r02_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
-                                set_game_flag(BATH_DOOR_OPEN);
+                                set_game_flag(BATH_DOOR_OPEN_FLAG);
                                 end_script();
                             default:
                                 end_script();
@@ -236,7 +236,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(BATH_DOOR_OPEN))
+                                if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
                                     script_say("Ya est  cerrada");
                                     end_script();
@@ -246,7 +246,7 @@ void r02_update_room_script()
 
                                 break;
                             case 1:
-                                clear_game_flag(BATH_DOOR_OPEN);
+                                clear_game_flag(BATH_DOOR_OPEN_FLAG);
                                 end_script();
                             default:
                                 end_script();

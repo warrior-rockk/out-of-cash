@@ -119,7 +119,7 @@ void script_move_player_to_target()
 
 //function to take and object (inactives the object, sets the game flag and adds object
 //to inventory
-void script_take_object(bool *objActive, uint8_t gameFlag, uint8_t invObjectNum)
+void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObjectNum)
 {
     //set player state
     player.state = player_st_taking;
@@ -173,28 +173,28 @@ void script_player_take_state()
 }
 
 //function to set game flag
-void set_game_flag(uint8_t flagNum)
+void set_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < MAX_GAME_FLAGS);
     SET_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to clear game flag
-void clear_game_flag(uint8_t flagNum)
+void clear_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < MAX_GAME_FLAGS);
     CLEAR_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to toggle game flag
-void toogle_game_flag(uint8_t flagNum)
+void toogle_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < MAX_GAME_FLAGS);
     TOOGLE_BIT(game.flags[flagNum % 8], flagNum/8);
 }
 
 //function to check game flag
-bool is_game_flag(uint8_t flagNum)
+bool is_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < MAX_GAME_FLAGS);
     return CHECK_BIT(game.flags[flagNum % 8], flagNum/8);
