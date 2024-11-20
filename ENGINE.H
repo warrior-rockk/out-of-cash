@@ -186,10 +186,10 @@ void clear_game_flag(enum gameFlags flagNum);
 void toogle_game_flag(enum gameFlags flagNum);
 bool is_game_flag(enum gameFlags flagNum);
 
-void inc_game_var(uint8_t varNum);
-void dec_game_var(uint8_t varNum);
-void set_game_var(uint8_t varNum, uint16_t value);
-uint16_t get_game_var(uint8_t varNum);
+void inc_game_var(enum gameVars varNum);
+void dec_game_var(enum gameVars varNum);
+void set_game_var(enum gameVars varNum, uint16_t value);
+uint16_t get_game_var(enum gameVars varNum);
 
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);

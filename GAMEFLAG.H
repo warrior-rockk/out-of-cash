@@ -2,27 +2,6 @@
 #define H_GAME_FLAGS
 
 //definition of global game flags index
-/*#define GOT_CASSETTE        0
-#define GOT_GUITAR          1
-#define USED_COMPUTER       2
-#define USED_CASSETTE       3
-#define STEREO_ON           4
-
-#define BATH_CLOSET_OPEN    5
-#define BATH_DOOR_OPEN      6
-#define GOT_GEL             7
-#define BATH_MIRROR_MSG     8
-#define BATH_LIGHT_OFF      9
-
-#define CORRIDOR_MIRROR_MSG 10
-
-#define PRINTED_SCHOOL_SCHEDULE 11
-#define PRINTED_PHOTOCOPY       12
-
-#define GOT_CLOCK               13
-#define FLAG_GOT_SPATULA        14
-#define FLAG_GOT_OAT            15
-*/
 enum gameFlags{
     GOT_CASSETTE_FLAG,
     GOT_GUITAR_FLAG,
@@ -54,6 +33,8 @@ enum gameFlags{
     GOT_SCHOOL_SCHEDULE_FLAG,
     GOT_FOLDER_FLAG,
     GOT_FULL_CARTRIDGE_FLAG,
+    PRINTED_SCHOOL_SCHEDULE_FLAG,
+    PRINTED_PHOTOCOPY_FLAG,
     
     GOT_PAINT_BUCKET_FLAG,
     
@@ -62,11 +43,7 @@ enum gameFlags{
     
 };
 
-
-
-//definition of global game numeric vars
-#define VAR_BULLETIN_BOARD      0
-
+//definition of global game numeric vars index
 enum gameVars{
     BULLETIN_BOARD_VAR,
 };

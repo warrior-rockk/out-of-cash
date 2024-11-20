@@ -293,9 +293,9 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE))
+                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
                                     script_say("La impresora ha impreso el horario del instituto por las 2 caras");
-                                else if (is_game_flag(PRINTED_PHOTOCOPY))
+                                else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                     script_say("Como el cartucho no tenia tinta, la impresora ha sacado la fotocopia de Dragon Ball sin ning£n da¤o");
                                 else
                                     end_script();

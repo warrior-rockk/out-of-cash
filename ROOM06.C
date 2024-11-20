@@ -323,7 +323,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                switch (get_game_var(VAR_BULLETIN_BOARD))
+                                switch (get_game_var(BULLETIN_BOARD_VAR))
                                 {
                                     case 0:
                                         script_say("El tabl¢n de anuncios del instituto");
@@ -340,10 +340,10 @@ void r06_update_room_script()
                                 }
                                 break;
                             default:
-                                if (get_game_var(VAR_BULLETIN_BOARD) < 3)
-                                    inc_game_var(VAR_BULLETIN_BOARD);
+                                if (get_game_var(BULLETIN_BOARD_VAR) < 3)
+                                    inc_game_var(BULLETIN_BOARD_VAR);
                                 else
-                                    set_game_var(VAR_BULLETIN_BOARD, 0);
+                                    set_game_var(BULLETIN_BOARD_VAR, 0);
                                 end_script();
                                 break;
                         }
