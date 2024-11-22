@@ -201,28 +201,28 @@ bool is_game_flag(enum gameFlags flagNum)
 }
 
 //function to increment game var
-void inc_game_var(uint8_t varNum)
+void inc_game_var(enum gameVars varNum)
 {
     ASSERT(varNum < MAX_GAME_VARS);
     game.vars[varNum]++;
 }
 
 //function to decrement game var
-void dec_game_var(uint8_t varNum)
+void dec_game_var(enum gameVars varNum)
 {
     ASSERT(varNum < MAX_GAME_VARS);
     game.vars[varNum]--;
 }
 
 //function to set value to game var
-void set_game_var(uint8_t varNum, uint16_t value)
+void set_game_var(enum gameVars varNum, uint16_t value)
 {
     ASSERT(varNum < MAX_GAME_VARS);
     game.vars[varNum] = value;
 }
 
 //function to get game var value
-uint16_t get_game_var(uint8_t varNum)
+uint16_t get_game_var(enum gameVars varNum)
 {
     return game.vars[varNum];
 }

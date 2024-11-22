@@ -43,7 +43,7 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Queso");
             break;
         case r04_clock:
-                if (!is_game_flag(GOT_CLOCK))
+                if (!is_game_flag(GOT_CLOCK_FLAG))
                     strcpy(s, "Reloj");
                 else
                     strcpy(s, "");

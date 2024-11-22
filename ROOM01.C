@@ -161,9 +161,9 @@ tObject* r01_get_object_info(uint8_t numObject)
 void r01_room_init()
 {
     //update room objects state
-    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE);
-    r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR);
-    r01_object[R01_STEREO01_OBJ_ID].active    = is_game_flag(STEREO_ON);
+    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE_FLAG);
+    r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR_FLAG);
+    r01_object[R01_STEREO01_OBJ_ID].active    = is_game_flag(STEREO_ON_FLAG);
     
     game_fade_in();
 }
@@ -226,7 +226,7 @@ void r01_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR, id_guitar);
+                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR_FLAG, id_guitar);
                                 end_script();
                                 break;
                         }
@@ -261,7 +261,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(USED_CASSETTE))
+                                if (!is_game_flag(USED_CASSETTE_FLAG))
                                 {
                                     script_say("No hay ning£n casete dentro para escuchar");
                                     end_script();
@@ -273,8 +273,8 @@ void r01_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                toogle_game_flag(STEREO_ON);
-                                r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON);
+                                toogle_game_flag(STEREO_ON_FLAG);
+                                r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON_FLAG);
                                 end_script();
                                 break;
                             default:
@@ -297,7 +297,7 @@ void r01_update_room_script()
                                         break;
                                     case 2:
                                         script_remove_inv_object(id_cassette);
-                                        set_game_flag(USED_CASSETTE);
+                                        set_game_flag(USED_CASSETTE_FLAG);
                                         end_script();
                                         break;
                                 }
@@ -379,7 +379,7 @@ void r01_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE, id_cassette);
+                                script_take_object(&r01_object[R01_CASSETTE_OBJ_ID].active, GOT_CASSETTE_FLAG, id_cassette);
                                 end_script();
                                 break;
                         }
