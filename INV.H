@@ -12,7 +12,7 @@
 #define INV_POS_X               134
 #define INV_POS_Y               182
 #define INV_ICON_X_OFFSET       38
-#define INV_ICON_Y_OFFSET       27
+#define INV_ICON_Y_OFFSET       28 //27
 #define INV_ICON_MARGIN         1
 
 #define INV_SCROLL_UP_CODE      18

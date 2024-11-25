@@ -25,20 +25,13 @@ void inventory_init()
     //clear inventory bitmap buffer
     clear_bitmap(inventoryImage);
 
+
     //test inventory
-    /*
-    inventory.numObjects = 9;
-    
-    inventory.objIndex[0] = dInv_Cassette + 1;
-    inventory.objIndex[1] = dInv_Guitar + 1;
-    inventory.objIndex[2] = dInv_Soap + 1;
-    inventory.objIndex[3] = dInv_Cassette + 1;
-    inventory.objIndex[4] = dInv_Guitar + 1;
-    inventory.objIndex[5] = dInv_Soap + 1;
-    inventory.objIndex[6] = dInv_Cassette + 1;
-    inventory.objIndex[7] = dInv_Guitar + 1;
-    inventory.objIndex[8] = dInv_Soap + 1;
-    */
+    for (int i = 0; i < id_COUNT; i++)
+    {
+        inventory.objIndex[i] = i + 1;
+        inventory.numObjects++;
+    }
 }
 
 //add object to inventory
