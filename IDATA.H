@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\IDATA.DAT */
-/* Date: Mon Nov 25 19:39:07 2024 */
+/* Date: Tue Nov 26 17:21:29 2024 */
 /* Do not hand edit! */
 
 #define id_answers                       0        /* BMP  */
@@ -27,9 +27,10 @@
 #define id_photocopy                     21       /* BMP  */
 #define id_photocopySchedule             22       /* BMP  */
 #define id_schedule                      23       /* BMP  */
-#define id_shirt                         24       /* BMP  */
-#define id_spatula                       25       /* BMP  */
-#define id_starClock                     26       /* BMP  */
-#define id_starShirt                     27       /* BMP  */
-#define id_COUNT                         28
+#define id_sheet                         24       /* BMP  */
+#define id_shirt                         25       /* BMP  */
+#define id_spatula                       26       /* BMP  */
+#define id_starClock                     27       /* BMP  */
+#define id_starShirt                     28       /* BMP  */
+#define id_COUNT                         29
 
