@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\IDATA.DAT */
-/* Date: Wed Nov 27 11:44:24 2024 */
+/* Date: Wed Nov 27 13:04:57 2024 */
 /* Do not hand edit! */
 
 #define id_answers                       0        /* BMP  */
@@ -24,14 +24,16 @@
 #define id_knife                         18       /* BMP  */
 #define id_money                         19       /* BMP  */
 #define id_oat                           20       /* BMP  */
-#define id_paintBucket                   21       /* BMP  */
-#define id_photocopy                     22       /* BMP  */
-#define id_photocopySchedule             23       /* BMP  */
-#define id_schedule                      24       /* BMP  */
-#define id_sheet                         25       /* BMP  */
-#define id_shirt                         26       /* BMP  */
-#define id_spatula                       27       /* BMP  */
-#define id_starClock                     28       /* BMP  */
-#define id_starShirt                     29       /* BMP  */
-#define id_COUNT                         30
+#define id_openedEmptyCartridge          21       /* BMP  */
+#define id_openedFullCartridge           22       /* BMP  */
+#define id_paintBucket                   23       /* BMP  */
+#define id_photocopy                     24       /* BMP  */
+#define id_photocopySchedule             25       /* BMP  */
+#define id_schedule                      26       /* BMP  */
+#define id_sheet                         27       /* BMP  */
+#define id_shirt                         28       /* BMP  */
+#define id_spatula                       29       /* BMP  */
+#define id_starClock                     30       /* BMP  */
+#define id_starShirt                     31       /* BMP  */
+#define id_COUNT                         32
 
