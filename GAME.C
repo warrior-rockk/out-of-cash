@@ -224,6 +224,12 @@ void game_load_resources()
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);
+
+    //loads game font
+    gameFont = load_dat_font("GDATA.DAT", NULL, NULL);
+    if (!gameFont)
+        abort_on_error("Error cargando fuente de texto");
+
 }
 
 //function to init game
@@ -412,9 +418,9 @@ void game_write(char *text, int x, int y, uint8_t color)
     {
 
         //print text with outline
-        textprintf_centre_ex(buffer, font, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, font, x, posY, color, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x, posY, color, -1, "%s", ch);
         //increment position
         posY += 10;
         //get next token
