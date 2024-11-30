@@ -103,7 +103,7 @@
 #define TEXT_ACTOR_MARGIN       10
 
 //Text colors
-#define GAME_TEXT_COLOR         255,255,255
+#define GAME_TEXT_COLOR         255,0,255
 
 //Debug
 #define DEBUG_Y                 10
