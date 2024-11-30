@@ -226,7 +226,8 @@ void game_load_resources()
     get_palette(gamePalette);
 
     //loads game font
-    gameFont = load_dat_font("GDATA.DAT", NULL, NULL);
+    char *fontName[] = {"verdana9Bold", NULL};
+    gameFont = load_dat_font("GDATA.DAT", NULL, fontName);
     if (!gameFont)
         abort_on_error("Error cargando fuente de texto");
 
