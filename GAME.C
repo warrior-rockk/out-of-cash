@@ -227,6 +227,7 @@ void game_load_resources()
 
     //loads game font
     char *fontName[] = {"verdana9Bold", NULL};
+    //PALETTE pal;
     gameFont = load_dat_font("GDATA.DAT", NULL, fontName);
     if (!gameFont)
         abort_on_error("Error cargando fuente de texto");
@@ -417,13 +418,18 @@ void game_write(char *text, int x, int y, uint8_t color)
     //while ch != NULL (tokens left)
     while (ch)
     {
+        //print black outline text
+        textprintf_centre_ex(buffer, gameFont, x+1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x-1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x, posY+1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont, x, posY-1, makecol(1,1,1), -1, "%s", ch);
 
-        //print text with outline
-        textprintf_centre_ex(buffer, gameFont, x-1, posY-1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont, x+1, posY+1, makecol(1,1,1), -1, "%s", ch);
+        //print text
         textprintf_centre_ex(buffer, gameFont, x, posY, color, -1, "%s", ch);
-        //increment position
-        posY += 10;
+        
+        //increment line position
+        posY += text_height(gameFont);
+        
         //get next token
         ch = strtok(NULL, "\n");
     }

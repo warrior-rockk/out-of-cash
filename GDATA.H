@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\GDATA.DAT */
-/* Date: Sat Nov 30 09:36:55 2024 */
+/* Date: Mon Dec 02 15:50:39 2024 */
 /* Do not hand edit! */
 
 #define gd_gamePal                       0        /* PAL  */
