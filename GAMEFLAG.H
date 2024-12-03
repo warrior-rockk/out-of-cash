@@ -15,13 +15,17 @@ enum gameFlags{
     BATH_CLOSET_OPEN_FLAG,
     BATH_DOOR_OPEN_FLAG,
     GOT_GEL_FLAG,
+    BATH_MIRROR_MSG_FLAG,
     BATH_LIGHT_OFF_FLAG,
-
+    
+    CORRIDOR_MIRROR_MSG_FLAG,
+    
     GOT_CLOCK_FLAG,
     GOT_SPATULA_FLAG,
     GOT_OAT_FLAG,
     
     GOT_ANSWERS_FLAG,
+    SCHOOLBATH_MIRROR_MSG_FLAG,
     
     GOT_BRAIN_FLAG,
     GOT_KNIFE_FLAG,
@@ -42,8 +46,8 @@ enum gameFlags{
 
 //definition of global game numeric vars index
 enum gameVars{
-    MIRROR_COUNT_VAR,
-    BULLETIN_BOARD_VAR,    
+    MIRROR_MSG_COUNT_VAR,
+    BULLETIN_BOARD_VAR,
 };
 
 #endif //H_GAME_FLAGS

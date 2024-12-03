@@ -150,7 +150,23 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pero mira que hubiera costado poco programar los reflejos...");
+                                if (!is_game_flag(SCHOOLBATH_MIRROR_MSG_FLAG))
+                                {
+                                    set_game_flag(SCHOOLBATH_MIRROR_MSG_FLAG);
+                                    inc_game_var(MIRROR_MSG_COUNT_VAR);
+                                }
+                                switch (get_game_var(MIRROR_MSG_COUNT_VAR))
+                                {
+                                    case 1:
+                                        script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
+                                        break;
+                                    case 2:
+                                        script_say("Otro espejo con reflejo sin programar...");
+                                        break;
+                                    case 3:
+                                        script_say("Con lo poco que cuesta programar los reflejos...");
+                                        break;
+                                }
                                 break;
                             default:
                                 end_script();

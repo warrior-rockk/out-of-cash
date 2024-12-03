@@ -267,20 +267,23 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(CORRIDOR_MIRROR_MSG_FLAG))
+                                if (!is_game_flag(BATH_MIRROR_MSG_FLAG))
                                 {
                                     set_game_flag(BATH_MIRROR_MSG_FLAG);
-                                    script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
-                                    end_script();
+                                    inc_game_var(MIRROR_MSG_COUNT_VAR);
                                 }
-                                else
-                                    script_say("Otro espejo con reflejo sin programar...");
-                                break;
-                            case 1:
-                                script_wait(10);
-                                break;
-                            case 2:
-                                script_say("No se le puede pedir mas...");
+                                switch (get_game_var(MIRROR_MSG_COUNT_VAR))
+                                {
+                                    case 1:
+                                        script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
+                                        break;
+                                    case 2:
+                                        script_say("Otro espejo con reflejo sin programar...");
+                                        break;
+                                    case 3:
+                                        script_say("Con lo poco que cuesta programar los reflejos...");
+                                        break;
+                                }
                                 break;
                             default:
                                 end_script();

@@ -272,7 +272,10 @@ void game_init()
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
-
+    //clear game vars
+    for (int i = 0; i < MAX_GAME_VARS; i++)
+        game.vars[i] = 0;
+        
     //init scroll
     roomScroll.x = 0;
     roomScroll.y = 0;
