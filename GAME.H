@@ -333,7 +333,8 @@ struct roomScroll
 static volatile int tick;
 static BITMAP *cursorImage;
 PALETTE gamePalette;
-FONT *gameFont;
+FONT *gameFont[6];
+int actualFont;
 BITMAP *buffer;
 DATAFILE *gameDataFile;
 DATAFILE *playerDataFile;

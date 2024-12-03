@@ -226,9 +226,26 @@ void game_load_resources()
     get_palette(gamePalette);
 
     //loads game font
-    char *fontName[] = {"verdana9Bold", NULL};
+
+
+
+
+
+    
     //PALETTE pal;
-    gameFont = load_dat_font("GDATA.DAT", NULL, fontName);
+    char *fontName1[] = {"gameFont", NULL};
+    gameFont[0] = load_dat_font("GDATA.DAT", NULL, fontName1);
+    char *fontName2[] = {"verdana8", NULL};
+    gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
+    char *fontName3[] = {"verdana8Bold", NULL};
+    gameFont[2] = load_dat_font("GDATA.DAT", NULL, fontName3);
+    char *fontName4[] = {"verdana9", NULL};
+    gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
+    char *fontName5[] = {"verdana9Bold", NULL};
+    gameFont[4] = load_dat_font("GDATA.DAT", NULL, fontName5);
+    gameFont[5] = font;
+    
+    //gameFont = load_dat_font("GDATA.DAT", NULL, fontName[0]);
     if (!gameFont)
         abort_on_error("Error cargando fuente de texto");
 
@@ -358,6 +375,8 @@ void game_update()
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject < roomData[game.actualRoom].room_num_objects)
                 debug.numCursorRoomObject++;
+            else
+                actualFont = actualFont < 5 ? ++actualFont : 0;
         }
 
         //cycle down cursor room objects
@@ -365,6 +384,8 @@ void game_update()
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject > 0)
                 debug.numCursorRoomObject--;
+            else
+                actualFont = actualFont > 0 ? --actualFont : 5;
         }
 
         //move cursor with arrows
@@ -419,16 +440,16 @@ void game_write(char *text, int x, int y, uint8_t color)
     while (ch)
     {
         //print black outline text
-        textprintf_centre_ex(buffer, gameFont, x+1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont, x-1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont, x, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont, x, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[actualFont], x+1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[actualFont], x-1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY+1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY-1, makecol(1,1,1), -1, "%s", ch);
 
         //print text
-        textprintf_centre_ex(buffer, gameFont, x, posY, color, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY, color, -1, "%s", ch);
         
         //increment line position
-        posY += text_height(gameFont);
+        posY += text_height(gameFont[actualFont]);
         
         //get next token
         ch = strtok(NULL, "\n");
