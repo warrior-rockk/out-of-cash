@@ -121,13 +121,26 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al pasillo del instituto");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(SCHOOL_ROOM_NUM, 901, 82);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r11_earthGlobe:
@@ -138,7 +151,7 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Bola del mundo");
+                                script_say("Nuestro peque¤o y p lido punto azul condensado en un objeto de escritorio");
                                 break;
                             default:
                                 end_script();
@@ -155,13 +168,26 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cosas");
+                                script_say("Cosas varias que pertenecen al profesor de educaci¢n f¡sica");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No pienso tocar las cosas del profesor");
+                                break;
+                            default:
+                                script_say("Solo me faltar¡a enfadarlo...");
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r11_cup:
@@ -172,13 +198,26 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Taza");
+                                script_say("Esperaba que fuera la cl sica taza de: Al mejor profesor de gimnasia");
+                                break;
+                            default:
+                                script_say("Pero solo es una taza sin inscripci¢n");
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Parece un buen objeto de inventario, pero no me hace falta");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
                 }
                 break;            
             case r11_teacher:
@@ -189,9 +228,10 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Profesor");
+                                script_say("Este profesor parece mas bien un terrorista de algun pa¡s del este...");
                                 break;
                             default:
+                                script_say("Con todo el respeto a todos los habitantes de pa¡ses del este que esten ahora jug ndonos");
                                 end_script();
                                 break;
                         }
