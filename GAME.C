@@ -1648,9 +1648,11 @@ void gui_update()
 {
     cursor.enabled = true;
     
-    //compose gui hotspot image: main gui hotspot
-    draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
-
+    //clear gui hotspot image
+    //clear_to_color(gui.hsImage, BLACK_COLOR);
+    //draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
+    gui.hsImage             = gui.hsImageMain;
+    
     //check gui state
     switch (gui.state)
     {
@@ -1679,7 +1681,7 @@ void gui_update()
             game.state = EXIT_STATE;
             game_fade_out();
             break;
-        default:
+        case GUI_MAIN_STATE:
             #ifdef DEBUGMODE
                 //draw hotspot debug zone
                 draw_sprite(gui.hsImage, (BITMAP *)gameDataFile[gd_guiDebugHs].dat , GUI_CONTENT_X, GUI_CONTENT_Y);
@@ -1787,7 +1789,7 @@ void gui_draw()
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiExitDosSel].dat, gui.x + GUI_BUTTONS_EXIT, gui.y + GUI_BUTTON_EXIT_DOS_Y);
             break;
-        default:
+        case GUI_MAIN_STATE:
             #ifdef DEBUGMODE
             //draw gui contents
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiDebug].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);

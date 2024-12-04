@@ -17,8 +17,9 @@
 #define FRONT_LAYER 1
 
 //Game colors
-#define BLACK_COLOR     1
-#define BORDER_COLOR    BLACK_COLOR
+#define TRANSPARENT_COLOR   1
+#define BLACK_COLOR         251
+#define BORDER_COLOR        BLACK_COLOR
 
 //Game
 
