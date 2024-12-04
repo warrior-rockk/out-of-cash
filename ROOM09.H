@@ -14,8 +14,8 @@
 #include "R09DATA.H"
 
 //define room properties
-#define R09_START_POS_X         271
-#define R09_START_POS_Y         108
+#define R09_START_POS_X         229
+#define R09_START_POS_Y         129
 #define R09_ROOM_NUM_OBJS       0
 #define R09_MUSIC_ID            0
 #define R09_FADE                false

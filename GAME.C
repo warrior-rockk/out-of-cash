@@ -226,15 +226,8 @@ void game_load_resources()
     get_palette(gamePalette);
 
     //loads game font
-
-
-
-
-
-    
     //PALETTE pal;
-    char *fontName1[] = {"gameFont", NULL};
-    gameFont[0] = load_dat_font("GDATA.DAT", NULL, fontName1);
+    gameFont[0] = font;
     char *fontName2[] = {"verdana8", NULL};
     gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
     char *fontName3[] = {"verdana8Bold", NULL};
@@ -243,12 +236,13 @@ void game_load_resources()
     gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
     char *fontName5[] = {"verdana9Bold", NULL};
     gameFont[4] = load_dat_font("GDATA.DAT", NULL, fontName5);
-    gameFont[5] = font;
+    char *fontName1[] = {"gameFont", NULL};
+    gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);;
     
-    //gameFont = load_dat_font("GDATA.DAT", NULL, fontName[0]);
+    /*gameFont = load_dat_font("GDATA.DAT", NULL, fontName[0]);
     if (!gameFont)
         abort_on_error("Error cargando fuente de texto");
-
+    */
 }
 
 //function to init game

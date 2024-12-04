@@ -145,7 +145,20 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(SCHOOL_ROOM_NUM, 686, 82);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_bench:

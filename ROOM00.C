@@ -138,10 +138,10 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                change_room(CORRIDOR_ROOM_NUM);
-                                end_script();
+                                script_move_player_to_target();
                                 break;
                             default:
+                                change_room(CORRIDOR_ROOM_NUM);
                                 end_script();
                                 break;
                         }

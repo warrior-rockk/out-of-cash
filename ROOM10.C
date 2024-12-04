@@ -4,7 +4,6 @@
  Room Name:     10_maintCloset
 =========================================================
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,7 +24,7 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Interruptor");
             break;
         case r10_spiderWeb:
-                strcpy(s, "Telara√±a");
+                strcpy(s, "Telara§a");
             break;
         case r10_closet:
                 strcpy(s, "Armario");
@@ -121,13 +120,26 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Por esa puerta se va al pasillo");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(SCHOOL_ROOM_NUM, 124, 86);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r10_switch:
@@ -138,7 +150,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Interruptor");
+                                script_say("®Cual ser† la funci¢n de este interruptor?");
                                 break;
                             default:
                                 end_script();
@@ -155,7 +167,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Telara√±a");
+                                script_say("Quien dir°a que pudiera haber ara§as en este cuarto de mantenimiento tan aseado");
                                 break;
                             default:
                                 end_script();
@@ -172,7 +184,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Armario");
+                                script_say("Parece el armario donde el personal de mantenimiento guarda el material");
                                 break;
                             default:
                                 end_script();
@@ -189,7 +201,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cubo de pintura");
+                                script_say("Un cubo de pintura negra");
                                 break;
                             default:
                                 end_script();

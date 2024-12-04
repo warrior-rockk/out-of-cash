@@ -4,7 +4,6 @@
  Room Name:     08_computerRoom
 =========================================================
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -139,13 +138,26 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al pasillo");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r08_window:
@@ -156,7 +168,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ventana");
+                                script_say("Esta ventana al exterior impide que la gente haga uso fraudulentos con los ordenadores");
                                 break;
                             default:
                                 end_script();
@@ -190,8 +202,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Manual");
+                                script_say("Un manual de Q-Basic para MS-DOS");
                                 break;
+                            case 1:
+                                script_say("Aprenda a programar desde el juego Gorillas al Snake");
                             default:
                                 end_script();
                                 break;
@@ -258,7 +272,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Silla");
+                                script_say("àjala en el futuro hagan sillas de ordenador m s c¢modas y que sirvan para largas sesiones de juego");
                                 break;
                             default:
                                 end_script();
@@ -266,8 +280,7 @@ void r08_update_room_script()
                         }
                     break;                    
                 }
-                break;            
-
+                break;
         }
     }
 }

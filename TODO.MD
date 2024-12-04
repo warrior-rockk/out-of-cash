@@ -4,8 +4,6 @@
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
-- [ ] Spanish characters on system font
-- [ ] Custom fonts
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition (music fades and screen fades?)
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
@@ -19,6 +17,8 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Spanish characters on system font
+- [X] Custom fonts
 - [X] debug mode for jump to room
 - [X] Bug: show_debug overwrite lines
 - [X] Reset roomScript vars on room change to prevent gameplay blocking because missing end_script()
