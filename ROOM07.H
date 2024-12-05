@@ -16,13 +16,21 @@
 //define room properties
 #define R07_START_POS_X         58
 #define R07_START_POS_Y         74
-#define R07_ROOM_NUM_OBJS       0
+#define R07_ROOM_NUM_OBJS       2
 #define R07_MUSIC_ID            0
 #define R07_FADE                false
 #define R07_LIGHTS_OFF                false
 
 //define room data (compose room properties and function pointers)
 #define R07_DATA R07_START_POS_X, R07_START_POS_Y, R07_ROOM_NUM_OBJS, R07_MUSIC_ID, R07_FADE , R07_LIGHTS_OFF , &r07_room_init, &r07_room_update, &r07_get_hotspot_name, &r07_get_default_hotspot_verb, &r07_get_object_info
+
+//define object array alias
+#define R07_TABLE_OBJ_ID 0
+#define R07_BRAIN_OBJ_ID 1
+
+//define object data (objId, x, y, animId, active, layer)
+#define R07_OBJ_0           r07d_objTable,   159, 126,  0, true, 1
+#define R07_OBJ_1           r07d_objBrain,   66, 131,  0, true, 1
 
 //define room animations
 #define R07_NUM_ANIMATIONS  0
@@ -45,6 +53,8 @@ enum r07_hotspotCode{
 //declare and define room objects array
 static tObject r07_object[R07_ROOM_NUM_OBJS] =
 {
+    {R07_OBJ_0},
+    {R07_OBJ_1},
 };
 
 //declare room objects animations array
