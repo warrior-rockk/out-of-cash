@@ -1622,13 +1622,14 @@ void gui_init()
     //sets gui images
     gui.image               = (BITMAP *)gameDataFile[gd_guiMain].dat;
     gui.hsImageMain         = (BITMAP *)gameDataFile[gd_guiMainHs].dat;
-    gui.hsImage             = gui.hsImageMain;
     gui.hsImageExit         = (BITMAP *)gameDataFile[gd_guiExitHs].dat;
     gui.hsImageOptions      = (BITMAP *)gameDataFile[gd_guiOptionsHs].dat;
     gui.hsImageSave         = (BITMAP *)gameDataFile[gd_guiSaveHs].dat;
     gui.hsImageLoad         = (BITMAP *)gameDataFile[gd_guiLoadHs].dat;
     gui.imageSlotSel        = (BITMAP *)gameDataFile[gd_guiSlotSel].dat;
 
+    gui.hsImage             = create_bitmap(gui.image->w, gui.image->h);
+    
     //set gui position (center of screen)
     gui.x = (RES_X>>1) - (gui.image->w>>1);
     gui.y = (RES_Y>>1) - (gui.image->h>>1);
@@ -1642,10 +1643,8 @@ void gui_update()
 {
     cursor.enabled = true;
     
-    //clear gui hotspot image
-    //clear_to_color(gui.hsImage, BLACK_COLOR);
-    //draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
-    gui.hsImage             = gui.hsImageMain;
+    //reset gui hotspot image
+    draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
     
     //check gui state
     switch (gui.state)
@@ -1661,6 +1660,8 @@ void gui_update()
         case GUI_OPTIONS_STATE:
             //draw hotspot state zone
             draw_sprite(gui.hsImage, gui.hsImageOptions, GUI_CONTENT_X, GUI_CONTENT_Y);
+            break;
+        case GUI_ABOUT_STATE:
             break;
         case GUI_EXIT_STATE:
             //draw hotspot state zone
