@@ -145,14 +145,101 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
         //get inventory object name
         switch (inventory.objIndex[objIndex - 1] - 1)
         {
-            case id_cassette:
-                strcpy(s, "Casete");
+            case id_answers:
+                strcpy(s, "Hoja respuestas");
+            break;
+            case id_bathMat             :
+                strcpy(s, "Alfombrilla");
+            break;
+            case id_blackBrain          :
+                    strcpy(s, "Cerebro Negro");
                 break;
-            case id_guitar:
-                strcpy(s, "Guitarra");
+            case id_blackStarClock      :
+                    strcpy(s, "Reloj Negro");
                 break;
-            case id_gel:
-                strcpy(s, "Gel");
+            case id_book                :
+                    strcpy(s, "Libro");
+                break;
+            case id_bookSheets          :
+                    strcpy(s, "Hojas libro");
+                break;
+            case id_brain               :
+                    strcpy(s, "Cerebro");
+                break;
+            case id_califications       :
+                    strcpy(s, "Notas");
+                break;
+            case id_cassette            :
+                    strcpy(s, "Casete");
+                break;
+            case id_coin                :
+                    strcpy(s, "Moneda");
+                break;
+            case id_emptyCartridge      :
+                    strcpy(s, "Cartucho vacío");
+                break;
+            case id_folder              :
+                    strcpy(s, "Carpeta");
+                break;
+            case id_fullCartridge       :
+                    strcpy(s, "Cartucho lleno");
+                break;
+            case id_fullFolder          :
+                    strcpy(s, "Carpeta llena");
+                break;
+            case id_gel                 :
+                    strcpy(s, "Gel");
+                break;
+            case id_guitar              :
+                    strcpy(s, "Guitarra");
+                break;
+            case id_jeans               :
+                    strcpy(s, "Pantalones");
+                break;
+            case id_key                 :
+                    strcpy(s, "Llave");
+                break;
+            case id_knife               :
+                    strcpy(s, "Escalpelo");
+                break;
+            case id_money               :
+                    strcpy(s, "Dinero");
+                break;
+            case id_oat                 :
+                    strcpy(s, "Avena");
+                break;
+            case id_openedEmptyCartridge:
+                    strcpy(s, "Cartucho vacío");
+                break;
+            case id_openedFullCartridge :
+                    strcpy(s, "Cartucho lleno");
+                break;
+            case id_paintBucket         :
+                    strcpy(s, "Bote pintura");
+                break;
+            case id_photocopy           :
+                    strcpy(s, "Fotocopia");
+                break;
+            case id_photocopySchedule   :
+                    strcpy(s, "Fotocopia");
+                break;
+            case id_schedule            :
+                    strcpy(s, "Horario");
+                break;
+            case id_sheet               :
+                    strcpy(s, "Hoja");
+                break;
+            case id_shirt               :
+                    strcpy(s, "Camiseta");
+                break;
+            case id_spatula             :
+                    strcpy(s, "Espátula");
+                break;
+            case id_starClock           :
+                    strcpy(s, "Reloj");
+                break;
+            case id_starShirt           :
+                    strcpy(s, "Camiseta");
                 break;
             default:
                 strcpy(s, "");
@@ -170,7 +257,7 @@ void inventory_update()
         //sequence actions
         switch (roomScript.object)
         {
-            case id_cassette:
+            case id_answers:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -178,32 +265,237 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es un casete de Reincidentes");
-                                break;
-                            case 1:
-                                script_wait(4);
-                                break;
-                            case 2:
-                                script_say("Gran grupo");
+                                script_say("Hoja respuestas");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                        break;
+                    break;                    
                 }
-                break;
-            case id_guitar:
+                break;            
+            case id_bathMat             :
                 switch(roomScript.verb)
                 {
                     case LOOK:
-                        begin_script();
-                        script_say("Mi guitarra");
-                        end_script();
-                        break;
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Alfombrilla");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
                 }
-                break;
-            case id_gel:
+                break;            
+            case id_blackBrain          :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cerebro Negro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_blackStarClock      :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Reloj Negro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_book                :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Libro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_bookSheets          :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Hojas libro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_brain               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cerebro");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_califications       :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Notas");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_cassette            :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Casete");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_coin                :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Moneda");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_emptyCartridge      :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cartucho vacío");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_folder              :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Carpeta");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_fullCartridge       :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cartucho lleno");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_fullFolder          :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Carpeta llena");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_gel                 :
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -220,9 +512,298 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                        break;
+                        break;                    
                 }
-                break;
+                break;            
+            case id_guitar              :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Guitarra");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_jeans               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Pantalones");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_key                 :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Llave");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_knife               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Escalpelo");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_money               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Dinero");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_oat                 :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Avena");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_openedEmptyCartridge:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cartucho vacío");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_openedFullCartridge :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Cartucho lleno");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_paintBucket         :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Bote pintura");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_photocopy           :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Fotocopia");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_photocopySchedule   :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Fotocopia");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_schedule            :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Horario");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_sheet               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Hoja");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_shirt               :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Camiseta");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_spatula             :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Espátula");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_starClock           :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Reloj");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
+            case id_starShirt           :
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Camiseta");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
         }
     }
 }
