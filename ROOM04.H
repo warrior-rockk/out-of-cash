@@ -16,13 +16,19 @@
 //define room properties
 #define R04_START_POS_X         84
 #define R04_START_POS_Y         99
-#define R04_ROOM_NUM_OBJS       0
+#define R04_ROOM_NUM_OBJS       1
 #define R04_MUSIC_ID            0
 #define R04_FADE                false
 #define R04_LIGHTS_OFF                false
 
 //define room data (compose room properties and function pointers)
 #define R04_DATA R04_START_POS_X, R04_START_POS_Y, R04_ROOM_NUM_OBJS, R04_MUSIC_ID, R04_FADE , R04_LIGHTS_OFF , &r04_room_init, &r04_room_update, &r04_get_hotspot_name, &r04_get_default_hotspot_verb, &r04_get_object_info
+
+//define object array alias
+#define R04_FATHERREAD_OBJ_ID 0
+
+//define object data (objId, x, y, animId, active, layer)
+#define R04_OBJ_0           r04d_objFatherRead,   165, 130,  0, true, 1
 
 //define room animations
 #define R04_NUM_ANIMATIONS  0
@@ -43,6 +49,7 @@ enum r04_hotspotCode{
 //declare and define room objects array
 static tObject r04_object[R04_ROOM_NUM_OBJS] =
 {
+    {R04_OBJ_0},
 };
 
 //declare room objects animations array

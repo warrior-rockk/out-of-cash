@@ -16,7 +16,7 @@
 //define room properties
 #define R01_START_POS_X         170
 #define R01_START_POS_Y         100
-#define R01_ROOM_NUM_OBJS       3
+#define R01_ROOM_NUM_OBJS       4
 #define R01_MUSIC_ID            0
 #define R01_FADE                false
 #define R01_LIGHTS_OFF                false
@@ -28,11 +28,13 @@
 #define R01_CASSETTE_OBJ_ID 0
 #define R01_GUITAR_OBJ_ID 1
 #define R01_STEREO01_OBJ_ID 2
+#define R01_TABLE_OBJ_ID    3
 
 //define object data (objId, x, y, animId, active, layer)
 #define R01_OBJ_0           r01d_objCassette,   280, 88,  0, true, 0
 #define R01_OBJ_1           r01d_objGuitar,   103, 45,  0, true, 0
 #define R01_OBJ_2           r01d_objStereo01,   282, 56,  1, false, 0
+#define R01_OBJ_3           r01d_objTable,   54, 144,  1, true, 1
 
 //define room animations
 #define R01_NUM_ANIMATIONS  1
@@ -67,6 +69,7 @@ static tObject r01_object[R01_ROOM_NUM_OBJS] =
     {R01_OBJ_0},
     {R01_OBJ_1},
     {R01_OBJ_2},
+    {R01_OBJ_3},
 };
 
 //declare room objects animations array

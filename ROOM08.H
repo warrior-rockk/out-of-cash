@@ -14,8 +14,8 @@
 #include "R08DATA.H"
 
 //define room properties
-#define R08_START_POS_X         276
-#define R08_START_POS_Y         111
+#define R08_START_POS_X         245
+#define R08_START_POS_Y         100
 #define R08_ROOM_NUM_OBJS       0
 #define R08_MUSIC_ID            0
 #define R08_FADE                false
