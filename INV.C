@@ -27,11 +27,13 @@ void inventory_init()
 
 
     //test inventory
+    /*
     for (int i = 0; i < id_COUNT; i++)
     {
         inventory.objIndex[i] = i + 1;
         inventory.numObjects++;
     }
+    */
 }
 
 //add object to inventory

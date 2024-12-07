@@ -39,12 +39,9 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
         case r04_spatula:
                 strcpy(s, "Esp tula");
             break;
-        case r04_cheesse:
-                strcpy(s, "Queso");
-            break;
         case r04_clock:
                 if (!is_game_flag(GOT_CLOCK_FLAG))
-                    strcpy(s, "Reloj");
+                    strcpy(s, "Reloj de cocina");
                 else
                     strcpy(s, "");
             break;    
@@ -122,7 +119,8 @@ void r04_room_update()
 //update room objects
 void r04_update_room_objects()
 {
-
+    r04_object[R04_SPATULA_OBJ_ID].active = !is_game_flag(GOT_SPATULA_FLAG);
+    r04_object[R04_STARCLOCK_OBJ_ID].active = !is_game_flag(GOT_CLOCK_FLAG);
 }
 
 //update dialog selection
@@ -312,40 +310,19 @@ void r04_update_room_script()
                         }
                     break;
                     case TAKE:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_move_player_to_target();
-                                break;
-                            case 1:
-                                script_player_take_state();
-                                break;
-                            //case 2:
-                            //    script_take_object();
-                            //    break;
-                            default:
-                                end_script();
-                                break;
-                        }
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r04_object[R04_SPATULA_OBJ_ID].active, GOT_SPATULA_FLAG, id_spatula);
+                                default:
+                                    end_script();
+                                    break;
+                            }
                     break;
-                }
-                break;            
-            case r04_cheesse:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                script_say("Me encanta el queso");
-                                break;
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;                    
                 }
                 break;
             case r04_clock:
@@ -362,7 +339,21 @@ void r04_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r04_object[R04_STARCLOCK_OBJ_ID].active, GOT_CLOCK_FLAG, id_starClock);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;
 

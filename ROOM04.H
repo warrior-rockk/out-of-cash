@@ -16,7 +16,7 @@
 //define room properties
 #define R04_START_POS_X         84
 #define R04_START_POS_Y         99
-#define R04_ROOM_NUM_OBJS       1
+#define R04_ROOM_NUM_OBJS       3
 #define R04_MUSIC_ID            0
 #define R04_FADE                false
 #define R04_LIGHTS_OFF                false
@@ -26,9 +26,13 @@
 
 //define object array alias
 #define R04_FATHERREAD_OBJ_ID 0
+#define R04_STARCLOCK_OBJ_ID 1
+#define R04_SPATULA_OBJ_ID 2
 
 //define object data (objId, x, y, animId, active, layer)
 #define R04_OBJ_0           r04d_objFatherRead,   165, 130,  0, true, 1
+#define R04_OBJ_1           r04d_objStarClock,   138, 34,  0, true, 1
+#define R04_OBJ_2           r04d_objSpatula,   220, 57,  0, true, 1
 
 //define room animations
 #define R04_NUM_ANIMATIONS  0
@@ -50,6 +54,8 @@ enum r04_hotspotCode{
 static tObject r04_object[R04_ROOM_NUM_OBJS] =
 {
     {R04_OBJ_0},
+    {R04_OBJ_1},
+    {R04_OBJ_2},
 };
 
 //declare room objects animations array

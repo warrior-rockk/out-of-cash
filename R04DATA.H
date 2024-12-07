@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R04DATA.DAT */
-/* Date: Tue Oct 01 14:53:14 2024 */
+/* Date: Sat Dec 07 17:37:17 2024 */
 /* Do not hand edit! */
 
 #define r04d_image                       0        /* BMP  */
@@ -9,5 +9,7 @@
 #define r04d_objFatherRead               3        /* BMP  */
 #define r04d_objFatherIdle               4        /* BMP  */
 #define r04d_objFatherTalk               5        /* BMP  */
-#define r04d_COUNT                       6
+#define r04d_objStarClock                6        /* BMP  */
+#define r04d_objSpatula                  7        /* BMP  */
+#define r04d_COUNT                       8
 
