@@ -124,7 +124,8 @@ void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObj
     //set player state
     player.state = player_st_taking;
     //deactivate room object
-    *objActive = false;
+    if (objActive)
+        *objActive = false;
     //set game flag
     set_game_flag(gameFlag);
     //add object to inventory

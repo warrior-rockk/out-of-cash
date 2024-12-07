@@ -28,19 +28,33 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Material papeler¡a");
             break;
         case r05_photocopies:
+            if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+                strcpy(s, "");
+            else
                 strcpy(s, "Fotocopias");
             break;
         case r05_paper:
+            if (is_game_flag(GOT_SHEETS_FLAG))
+                strcpy(s, "");
+            else
                 strcpy(s, "Papel");
             break;
         case r05_cartridge:
+            if (is_game_flag(GOT_CARTRIDGE_FULL_FLAG))
+                strcpy(s, "");
+            else
                 strcpy(s, "Cartucho ");
             break;
         case r05_printer:
                 strcpy(s, "Impresora");
             break;
         case r05_printedPaper:
+            if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) ||
+                is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) ||
+                is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                 strcpy(s, "Papel impreso");
+            else
+                strcpy(s, "");
             break;
         case r05_mouse:
                 strcpy(s, "Rat¢n");
@@ -131,7 +145,13 @@ void r05_room_update()
 //update room objects
 void r05_update_room_objects()
 {
+    r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
+    r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG);
+    r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(GOT_CARTRIDGE_FULL_FLAG);
 
+    r05_object[R05_PRINTEDSCH_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
+    r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
+    r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = is_game_flag(PRINTED_PHOTOCOPY_FLAG);
 }
 
 //update dialog selection
@@ -193,7 +213,27 @@ void r05_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    if (is_game_flag(GOT_FOLDER_FLAG))
+                                    {
+                                        script_say("Solo necesito una");
+                                        end_script();
+                                    }
+                                    else
+                                        script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;            
             case r05_stationeryMaterial:
@@ -229,7 +269,21 @@ void r05_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r05_object[R05_PHOTOCOPY_OBJ_ID].active, GOT_PHOTOCOPY_STOLEN_FLAG, id_photocopy);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;            
             case r05_paper:
@@ -247,7 +301,21 @@ void r05_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r05_object[R05_SHEETS_OBJ_ID].active, GOT_SHEETS_FLAG, id_sheet);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;            
             case r05_cartridge:
@@ -265,7 +333,21 @@ void r05_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r05_object[R05_CARTRIDGEFULL_OBJ_ID].active, GOT_CARTRIDGE_FULL_FLAG, id_fullCartridge);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;            
             case r05_printer:
@@ -295,6 +377,8 @@ void r05_update_room_script()
                                 begin_script();
                                 if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
                                     script_say("La impresora ha impreso el horario del instituto por las 2 caras");
+                                else if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG))
+                                    script_say("La impresora ha impreso el horario del instituto encima de la fotocopia de Dragon Ball");
                                 else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                     script_say("Como el cartucho no tenia tinta, la impresora ha sacado la fotocopia de Dragon Ball sin ning£n da¤o");
                                 else
@@ -304,7 +388,35 @@ void r05_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
+                                        script_take_object(&r05_object[R05_PRINTEDSCH_OBJ_ID].active, GOT_PRINTED_SCH_FLAG, id_schedule);
+                                    else if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG))
+                                        script_take_object(&r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active, GOT_PRINTED_SCH_PHOTO_FLAG, id_photocopySchedule);
+                                    else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
+                                        script_take_object(&r05_object[R05_PRINTEDPHOTO_OBJ_ID].active, GOT_PHOTOCOPY_FLAG, id_photocopy);
+                                    break;
+                                case 2:
+                                    if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
+                                        clear_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
+                                    else if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG))
+                                        clear_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
+                                    else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
+                                        clear_game_flag(PRINTED_PHOTOCOPY_FLAG);
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                    break;
                 }
                 break;            
             case r05_mouse:
