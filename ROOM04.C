@@ -121,18 +121,51 @@ void r04_update_room_objects()
 {
     r04_object[R04_SPATULA_OBJ_ID].active = !is_game_flag(GOT_SPATULA_FLAG);
     r04_object[R04_STARCLOCK_OBJ_ID].active = !is_game_flag(GOT_CLOCK_FLAG);
+
+    //father actor
+    if (r04_dialogActor.talking)
+        object_play_animation(&r04_object[R04_FATHER_OBJ_ID], r04d_objFatherIdle, r04_animations, R04_ANIM_FATHER_TALK);
+    else if (dialog.active)
+        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objFatherIdle;
+    else
+        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objFatherRead;
 }
 
 //update dialog selection
 void r04_update_dialog_selection()
 {
-
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialog.node)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("Hola papá", 2);
+                        dialog_add("¿Buenas noticias?", 3);
+                        dialog_add("Lo siento. Me voy...", 0);
+                    break;
+                    case 2:
+                        dialog_add("Tampoco hace falta que seas tan borde", 1);
+                        dialog_add("Vale, vale. Ya me callo", 0);
+                    break;
+                    case 3:
+                        dialog_add("Pues adios", 0);
+                    break;
+                }
+            break;
+        }
+    }
 }
 
 //update room script
 void r04_update_room_script()
 {
-//if script active is room script type
+    //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
@@ -209,6 +242,19 @@ void r04_update_room_script()
                                 script_say("Creo que tengo mas recuerdos de mi padre leyendo el peri¢dico que jugando conmigo");
                                 break;
                             default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Ejem... ¨Pap ?");
+                                break;
+                            default:
+                                script_start_dialog(1);                                
                                 end_script();
                                 break;
                         }
@@ -357,6 +403,60 @@ void r04_update_room_script()
                 }
                 break;
 
+        }
+    }
+
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
+    {
+        //fixed step: say response line
+        if (roomScript.step == 0)
+        {
+            begin_script();
+            script_say(dialog.lineText[dialog.selLine - 1]);
+        }
+        else
+        {
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLinef
+            switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
+            {
+
+                case 1:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_wait(2);
+                        break;
+                        case 2:
+                            script_say_actor("A ti que te importa", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 2:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_wait(2);
+                        break;
+                        case 2:
+                            script_say_actor("Ya he jugado bastante", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                default:
+                    script_next_dialog_node();
+                    end_script();
+                break;
+            }
         }
     }
 }
