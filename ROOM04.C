@@ -145,16 +145,28 @@ void r04_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("¨Por qu‚ siempre estas leyendo el peri¢dico?", 2);
-                        dialog_add("¿Buenas noticias?", 3);
-                        dialog_add("Lo siento. Me voy...", 0);
+                        dialog_add("¨Por qu‚ siempre estas leyendo el peri¢dico?", 1);
+                        dialog_add("¨Por qu‚ hay una habitaci¢n que nunca abrimos?", 1);
+                        if (!is_game_flag(FATHER_SAY_MONEY_FLAG))
+                            dialog_add("Tengo que pedirte una cosa...", 2);
+                        else
+                            dialog_add("¨Qu‚ ten¡a que hacer para que me des el dinero?", 4);
+                        dialog_add("Da igual", 0);
                     break;
                     case 2:
-                        dialog_add("Tampoco hace falta que seas tan borde", 1);
-                        dialog_add("Vale, vale. Ya me callo", 0);
+                        dialog_add("Hay un concierto al que quiero ir", 3);
+                        dialog_add("¨Me das pasta, viejo?", 4);
+                        dialog_add("En realidad no era nada...", 1);
                     break;
                     case 3:
-                        dialog_add("Pues adios", 0);
+                        dialog_add("Vaaa, porfavor... Me hace mucha ilusi¢n", 4);
+                        dialog_add("¨De verdad no quieres ser el mejor padre del mundo?", 4);
+                        dialog_add("­­Vengaa!! ­Har‚ lo que sea!", 4);
+                    break;
+                    case 4:
+                        dialog_add("­Pero es que las Matem ticas son muy dif¡ciles!", 1);
+                        dialog_add("­Pero es que Historia es un rollo!", 1);
+                        dialog_add("¨Educaci¢n F¡sica? ¨Para qu‚ me sirve?", 1);
                     break;
                 }
             break;
@@ -426,10 +438,13 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_wait(2);
+                            script_say_actor("En la vida hay que estar informado, muchacho", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("A ti que te importa", &r04_dialogActor);
+                            script_say_actor("Y el peri¢dico es el £nico modo de enterarme de la verdad", &r04_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Y no de esas bazofias que dicen por la tele", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -441,10 +456,112 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_wait(2);
+                            script_say_actor("Si te lo dijera tendr¡a que matarte", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Ya he jugado bastante", &r04_dialogActor);
+                            script_say_actor("Adem s, no lo s‚", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 3:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            if (is_game_flag(FATHER_SAY_MONEY_FLAG))
+                                script_say_actor("Aprueba Matem ticas, Historia y Educaci¢n f¡sica y te dar‚ el dinero", &r04_dialogActor);
+                            else
+                                roomScript.step++;
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 101:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say("Es de mi grupo favorito");
+                        break;
+                        case 2:
+                            script_say("Acaban de sacar disco y vienen a la ciudad a presentarlo");
+                        break;
+                        case 3:
+                            script_say("El problema es que no tengo dinero y la entrada vale 5000 pelas");
+                        break;
+                        case 4:
+                            script_say("Ser¡as el mejor padre del mundo si me dejas el dinero");
+                        break;
+                        case 5:
+                            script_say_actor("Ni lo sue¤es", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 201:
+                case 202:
+                case 203:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Mmmm...", &r04_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Vamos a hacer un trato", &r04_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Si apruebas las asignaturas que has suspendido, te dar‚ el dinero", &r04_dialogActor);
+                            set_game_flag(FATHER_SAY_MONEY_FLAG);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 301:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Es tu obligaci¢n saber aprender las Matem ticas", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 302:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Para afrontar el futuro tienes que conocer bien el pasado", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 303:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Hijo", &r04_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Educaci¢n F¡sica es una asignatura tan respetable e importante como las dem s", &r04_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Adem s te est s poniendo fond¢n", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
