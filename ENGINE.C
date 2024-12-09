@@ -144,6 +144,13 @@ void script_remove_inv_object(int numObject)
     roomScript.step++;
 }
 
+//function to add object inventory and increment script
+void script_add_inv_object(int numObject)
+{
+    inventory_add(numObject);
+    roomScript.step++;
+}
+
 //function to play animation and increments script step when finished (DEPRECATED)
 void script_play_player_animation(int startFrame, int endFrame, int speed)
 {

@@ -463,6 +463,31 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_spatula:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        set_game_flag(GOT_COIN_FLAG);
+                                        script_add_inv_object(id_coin);
+                                        break;
+                                    case 2:
+                                        script_say("­Eureka! Con la esp tula lo he podido despegar");
+                                        break;
+                                    case 3:
+                                        script_say("­Es una moneda de 100 pesetas!");
+                                        end_script();
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
                 }
                 break;            
             case r01_glasses:
@@ -705,7 +730,20 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(NULL, GOT_BOOK_FLAG, id_book);
+                                end_script();
+                                break;
+                        }
+                        break;
                 }
                 break;            
             case r01_book3:
