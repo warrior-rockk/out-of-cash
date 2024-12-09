@@ -1815,9 +1815,9 @@ void dialog_draw()
        for (int i = 0; i < dialog.nodeNumLines; i++)
        {
            if ((dialog.highlightLine - 1) == i)
-               textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
+               textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
            else
-               textprintf_ex(buffer, font, 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
+               textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
        }
    
        //reset dialog choices

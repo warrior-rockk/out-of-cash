@@ -145,7 +145,7 @@ void r04_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("Hola papá", 2);
+                        dialog_add("¨Por qu‚ siempre estas leyendo el peri¢dico?", 2);
                         dialog_add("¿Buenas noticias?", 3);
                         dialog_add("Lo siento. Me voy...", 0);
                     break;
