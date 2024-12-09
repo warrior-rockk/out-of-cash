@@ -92,16 +92,17 @@ char replace_unicode(char character)
             return CHAR_O_ACCENT;
         case '£':
             return CHAR_U_ACCENT;
-        case 'µ':
+        /*case 'A':
             return CHAR_A_ACCENT_CAP;
-        case 'ê':
+        case 'E':
             return CHAR_E_ACCENT_CAP;
-        case '÷':
+        case 'I':
             return CHAR_I_ACCENT_CAP;
-        case '‡':
+        case 'O':
             return CHAR_O_ACCENT_CAP;
-        case 'È':
+        case 'U':
             return CHAR_U_ACCENT_CAP;
+        */
         default:
             return character;
     }

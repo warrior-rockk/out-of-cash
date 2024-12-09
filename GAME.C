@@ -276,6 +276,9 @@ void game_init()
     
     //init room music
     actualRoom.musicId  = -1;
+
+    //game font
+    actualFont = 2;
     
     //call init game modules
     cursor_init();
