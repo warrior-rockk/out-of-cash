@@ -151,16 +151,16 @@ void r04_update_dialog_selection()
                             dialog_add("Tengo que pedirte una cosa...", 2);
                         else
                             dialog_add("¨Qu‚ ten¡a que hacer para que me des el dinero?", 4);
-                        dialog_add("Da igual", 0);
+                        dialog_add("Da igual...", 0);
                     break;
                     case 2:
-                        dialog_add("Hay un concierto al que quiero ir", 3);
-                        dialog_add("¨Me das pasta, viejo?", 4);
+                        dialog_add("Hay un concierto al que quiero ir...", 3);
+                        dialog_add("¨Me das pasta, viejo?", 2);
                         dialog_add("En realidad no era nada...", 1);
                     break;
                     case 3:
                         dialog_add("Vaaa, porfavor... Me hace mucha ilusi¢n", 4);
-                        dialog_add("¨De verdad no quieres ser el mejor padre del mundo?", 4);
+                        dialog_add("¨De verdad no quieres ser el mejor padre?", 4);
                         dialog_add("­­Vengaa!! ­Har‚ lo que sea!", 4);
                     break;
                     case 4:
@@ -506,6 +506,18 @@ void r04_update_room_script()
                         break;
                     }
                 break;
+                case 102:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("­Modera tu lenguaje jovenzuelo!", &r04_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                    break;
                 case 201:
                 case 202:
                 case 203:
