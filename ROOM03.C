@@ -322,14 +322,26 @@ void r03_update_room_script()
                                 script_say("La alfombrilla para secarte los pies despu‚s de la ducha");
                                 break;
                             case 1:
-                                script_wait(10);
-                            case 2:
-                                script_say("No le des vueltas. No hay nada debajo...");
+                                script_say("Tambi‚n es un nido de microbios y moho");
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(NULL, GOT_BATH_MAT_FLAG, id_bathMat);
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r03_switch:

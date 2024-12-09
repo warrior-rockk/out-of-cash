@@ -19,7 +19,7 @@
 #define R10_ROOM_NUM_OBJS       0
 #define R10_MUSIC_ID            0
 #define R10_FADE                false
-#define R10_LIGHTS_OFF                false
+#define R10_LIGHTS_OFF          true
 
 //define room data (compose room properties and function pointers)
 #define R10_DATA R10_START_POS_X, R10_START_POS_Y, R10_ROOM_NUM_OBJS, R10_MUSIC_ID, R10_FADE , R10_LIGHTS_OFF , &r10_room_init, &r10_room_update, &r10_get_hotspot_name, &r10_get_default_hotspot_verb, &r10_get_object_info

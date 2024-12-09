@@ -132,6 +132,8 @@ void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObj
     inventory_add(invObjectNum);
     //plays take sound
     play_sound_rnd(sd_take);
+
+    roomScript.step++;    
 }
 
 //function to remove object inventory and increment script

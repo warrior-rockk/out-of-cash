@@ -156,7 +156,27 @@ void r10_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            case 2:
+                                toogle_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+                                set_room_lights_off(MAINT_LOCKER_ROOM_NUM, !is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG));
+                                end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r10_spiderWeb:

@@ -660,14 +660,37 @@ void r01_update_room_script()
                                 script_say("Mi impresora de inyecci¢n");
                                 break;
                             case 1:
-                                begin_script();
                                 script_say("Solo tiene cartucho de tinta negra");
+                                break;
+                            case 2:
+                                script_say("Y encima no le queda tinta");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(NULL, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
+                                break;
+                            case 2:
+                                script_wait(1);
+                                break;
+                            case 3:
+                                script_say("Me llevo el cartucho de tinta vac¡o");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }       
+                    break;
                 }
                 break;            
             case r01_book1:
