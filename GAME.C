@@ -388,6 +388,10 @@ void game_update()
                 actualFont = actualFont > 0 ? --actualFont : 5;
         }
 
+        //log object placement position
+        if (game.state == PLAYING_STATE && debug.cursorRoomObjects && cursor.click)
+            TRACE("Objeto %i Posicion x: %i Posicion y: %i\n", debug.numCursorRoomObject, cursor.x, cursor.y);
+
         //move cursor with arrows
         if (gameKeys[G_KEY_LEFT].pressed && !(key_shifts & KB_SHIFT_FLAG))
             mouse_x--;

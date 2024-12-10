@@ -162,8 +162,10 @@ void r01_room_init()
 {
     //update room objects state
     r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE_FLAG);
-    r01_object[R01_GUITAR_OBJ_ID].active    = !is_game_flag(GOT_GUITAR_FLAG);
-    r01_object[R01_STEREO01_OBJ_ID].active    = is_game_flag(STEREO_ON_FLAG);
+    //r01_object[R01_GUITAR_OBJ_ID].active  = !is_game_flag(GOT_GUITAR_FLAG);
+    r01_object[R01_STEREO01_OBJ_ID].active  = is_game_flag(STEREO_ON_FLAG);
+    r01_object[R01_COIN_OBJ_ID].active      = !is_game_flag(GOT_COIN_FLAG);
+    r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
     
     game_fade_in();
 }
@@ -475,6 +477,7 @@ void r01_update_room_script()
                                         break;
                                     case 1:
                                         set_game_flag(GOT_COIN_FLAG);
+                                        r01_object[R01_COIN_OBJ_ID].active = false;
                                         script_add_inv_object(id_coin);
                                         break;
                                     case 2:
@@ -762,7 +765,7 @@ void r01_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(NULL, GOT_BOOK_FLAG, id_book);
+                                script_take_object(&r01_object[R01_BOOK_OBJ_ID].active, GOT_BOOK_FLAG, id_book);
                                 end_script();
                                 break;
                         }
