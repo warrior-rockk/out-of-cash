@@ -35,14 +35,14 @@
 //define object data (objId, x, y, animId, active, layer)
 #define R01_OBJ_0           r01d_objCassette,   251, 87,  0, true, 0
 #define R01_OBJ_1           r01d_objGuitar,   103, 45,  0, false, 0
-#define R01_OBJ_2           r01d_objStereo01,   282, 56,  1, false, 0
+#define R01_OBJ_2           r01d_objStereo01,   251, 57,  1, false, 0
 #define R01_OBJ_3           r01d_objTable,   86, 143,  0, true, 1
 #define R01_OBJ_4           r01d_objCoin,   94, 96,  0, true, 0
 #define R01_OBJ_5           r01d_objBook,   54, 9,  0, true, 0
 
 //define room animations
 #define R01_NUM_ANIMATIONS  1
-#define R01_ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo04, 2, ANIM_LOOP
+#define R01_ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo03, 2, ANIM_LOOP
 
 //hotspot code room enumeration
 enum r01_hotspotCode{

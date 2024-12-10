@@ -255,6 +255,7 @@ void game_init()
     gameConfig.soundVolume  = 200;
 
     //sets audio config
+    set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     
     //init game vars
@@ -597,6 +598,7 @@ void game_load(uint8_t slot)
     player      = savegame.playerData;
 
     //sets audio config
+    set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     //loads saved room resources
     room_load(game.actualRoom);
@@ -1014,6 +1016,7 @@ void cursor_action_menu()
             if (cursor.clicking)
             {
                 gameConfig.musicVolume = scale_x(norm_value, 0, 255);
+                set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
                 set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
             }
             break;
@@ -1021,6 +1024,7 @@ void cursor_action_menu()
             if (cursor.clicking)
             {
                 gameConfig.soundVolume = scale_x(norm_value, 0, 255);
+                set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
                 set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
             }
             //feedback random global sound
