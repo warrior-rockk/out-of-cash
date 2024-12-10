@@ -31,8 +31,8 @@
 
 //define object data (objId, x, y, animId, active, layer)
 #define R04_OBJ_0           r04d_objFatherRead,   165, 130,  1, true, 1
-#define R04_OBJ_1           r04d_objStarClock,   138, 34,  0, true, 1
-#define R04_OBJ_2           r04d_objSpatula,   220, 57,  0, true, 1
+#define R04_OBJ_1           r04d_objStarClock,   138, 34,  0, true, 0
+#define R04_OBJ_2           r04d_objSpatula,   220, 57,  0, true, 0
 
 //define room animations
 #define R04_NUM_ANIMATIONS  1
