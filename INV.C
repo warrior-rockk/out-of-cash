@@ -176,7 +176,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Moneda");
                 break;
             case id_emptyCartridge      :
-                    strcpy(s, "Cartucho vac√≠o");
+                    strcpy(s, "Cartucho vac°o");
                 break;
             case id_folder              :
                     strcpy(s, "Carpeta");
@@ -209,7 +209,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Avena");
                 break;
             case id_openedEmptyCartridge:
-                    strcpy(s, "Cartucho vac√≠o");
+                    strcpy(s, "Cartucho vac°o");
                 break;
             case id_openedFullCartridge :
                     strcpy(s, "Cartucho lleno");
@@ -233,7 +233,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Camiseta");
                 break;
             case id_spatula             :
-                    strcpy(s, "Esp√°tula");
+                    strcpy(s, "Esp†tula");
                 break;
             case id_starClock           :
                     strcpy(s, "Reloj");
@@ -265,7 +265,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hoja respuestas");
+                                script_say("Son las respuestas del examen de matem†ticas");
                                 break;
                             default:
                                 end_script();
@@ -282,7 +282,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Alfombrilla");
+                                script_say("Es la alfombrilla del ba§o");
                                 break;
                             default:
                                 end_script();
@@ -299,7 +299,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cerebro Negro");
+                                script_say("Un cerebro pintado de negro");
                                 break;
                             default:
                                 end_script();
@@ -316,7 +316,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Reloj Negro");
+                                script_say("El reloj de cocina en forma de estrella pintado de negro");
+                                break;
+                            case 1:
+                                script_say("A£n gotea la pintura");
                                 break;
                             default:
                                 end_script();
@@ -333,7 +336,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Libro");
+                                script_say("Un libro titulado: Del deporte tambiÇn se sale");
+                                break;
+                            case 1:
+                                script_say("Eso es lo que he dicho yo siempre...");
                                 break;
                             default:
                                 end_script();
@@ -350,7 +356,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hojas libro");
+                                script_say("Son las hojas arrancadas del libro de deporte");
                                 break;
                             default:
                                 end_script();
@@ -367,7 +373,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cerebro");
+                                script_say("®Ser† este cerebro de alg£n antiguo alumno?");
                                 break;
                             default:
                                 end_script();
@@ -384,7 +390,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Notas");
+                                script_say("Son mis notas del instituto");
+                                break;
+                            case 1:
+                                script_say("He suspendido Matem†ticas, Historia y Educaci¢n F°sica");
                                 break;
                             default:
                                 end_script();
@@ -401,7 +410,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Casete");
+                                script_say("Un casete del £ltimo disco de Reincidentes");
                                 break;
                             default:
                                 end_script();
@@ -418,7 +427,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Moneda");
+                                script_say("Una moneda de 100 pesetas");
+                                break;
+                            case 1:
+                                script_say("No es una fortuna pero por algo se empieza");
                                 break;
                             default:
                                 end_script();
@@ -435,7 +447,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cartucho vac√≠o");
+                                script_say("Un cartucho de tinta de impresora vac°o");
                                 break;
                             default:
                                 end_script();
@@ -452,7 +464,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Carpeta");
+                                script_say("Una carpeta verde muy bonita");
                                 break;
                             default:
                                 end_script();
@@ -469,7 +481,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cartucho lleno");
+                                script_say("Un cartucho de tinta de impresora");
+                                break;
+                            case 1:
+                                script_say("Parece que a£n tiene tinta");
                                 break;
                             default:
                                 end_script();
@@ -486,7 +501,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Carpeta llena");
+                                script_say("La carpeta est† llena de las hojas del libro de deporte");
                                 break;
                             default:
                                 end_script();
@@ -540,7 +555,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pantalones");
+                                script_say("Espero que nadie necesitara estos pantalones...");
                                 break;
                             default:
                                 end_script();
@@ -557,7 +572,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Llave");
+                                script_say("La llave del almacÇn de mantenimiento");
                                 break;
                             default:
                                 end_script();
@@ -574,7 +589,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Escalpelo");
+                                script_say("Un escalpelo afilado");
                                 break;
                             default:
                                 end_script();
@@ -591,7 +606,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Dinero");
+                                script_say("4900 pelas que mi padre me ha dado por aprobar las asignaturas");
+                                break;
+                            case 1:
+                                script_say("≠Ya estoy mas cerca de poder comprar la entrada!");
                                 break;
                             default:
                                 end_script();
@@ -608,7 +626,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Avena");
+                                script_say("Una caja de copos de avena");
+                                break;
+                            case 1:
+                                script_say("Pone que son copos pero a mi me parecen granos");
                                 break;
                             default:
                                 end_script();
@@ -625,7 +646,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cartucho vac√≠o");
+                                script_say("Un cartucho de tinta de impresora vac°o y abierto");
                                 break;
                             default:
                                 end_script();
@@ -642,7 +663,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cartucho lleno");
+                                script_say("Un cartucho de tinta de impresora abierto y con tinta");
                                 break;
                             default:
                                 end_script();
@@ -659,7 +680,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Bote pintura");
+                                script_say("Es un bote de pintura negra");
                                 break;
                             default:
                                 end_script();
@@ -676,7 +697,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Fotocopia");
+                                script_say("Una fotocopia de la serie Dragon Ball");
+                                break;
+                            case 1:
+                                script_say("≠Ademas creo que es de Goku!");
                                 break;
                             default:
                                 end_script();
@@ -710,7 +734,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Horario");
+                                script_say("Es el horario del instituto impreso por ambas caras");
                                 break;
                             default:
                                 end_script();
@@ -727,7 +751,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hoja");
+                                script_say("Una hoja vac°a");
                                 break;
                             default:
                                 end_script();
@@ -744,7 +768,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Camiseta");
+                                script_say("Yo tengo una camiseta del mismo color");
                                 break;
                             default:
                                 end_script();
@@ -761,7 +785,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Esp√°tula");
+                                script_say("Una esp†tula de cocina para aplicar mejunges");
                                 break;
                             default:
                                 end_script();
@@ -778,7 +802,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Reloj");
+                                script_say("Un est£pido reloj de cocina en forma de estrella");
                                 break;
                             default:
                                 end_script();
@@ -795,7 +819,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Camiseta");
+                                script_say("Una camiseta con una estrella negra impresa en medio");
+                                break;
+                            case 1:
+                                script_say("Ahora si que es clavadita a la m°a");
                                 break;
                             default:
                                 end_script();
