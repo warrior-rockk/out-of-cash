@@ -16,7 +16,7 @@
 //define room properties
 #define R03_START_POS_X         206
 #define R03_START_POS_Y         117
-#define R03_ROOM_NUM_OBJS       4
+#define R03_ROOM_NUM_OBJS       5
 #define R03_MUSIC_ID            0
 #define R03_FADE                false
 #define R03_LIGHTS_OFF          false
@@ -29,12 +29,14 @@
 #define R03_BATHCLOSETOPEN_OBJ_ID 1
 #define R03_GEL_OBJ_ID 2
 #define R03_BATHDOOROPEN_OBJ_ID 3
+#define R03_BATHMAT_OBJ_ID 4
 
 //define object data (objId, x, y, animId, active, layer)
 #define R03_OBJ_0           r03d_objBath,   162, 148,  0, true, 1
 #define R03_OBJ_1           r03d_objBathClosetOpen,   167, 60,  0, false, 0
 #define R03_OBJ_2           r03d_objGel,   169, 41,  0, false, 0
 #define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, false, 0
+#define R03_OBJ_4           r03d_objBathMat,   161, 135,  0, true, 0
 
 //define room animations
 #define R03_NUM_ANIMATIONS  0
@@ -58,6 +60,7 @@ static tObject r03_object[R03_ROOM_NUM_OBJS] =
     {R03_OBJ_1},
     {R03_OBJ_2},
     {R03_OBJ_3},
+    {R03_OBJ_4},
 };
 
 //declare room objects animations array

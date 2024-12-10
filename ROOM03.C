@@ -129,6 +129,7 @@ void r03_update_room_objects()
     r03_object[R03_GEL_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_GEL_FLAG);
     r03_object[R03_BATHCLOSETOPEN_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG);
     r03_object[R03_BATHDOOROPEN_OBJ_ID].active = is_game_flag(BATH_DOOR_OPEN_FLAG);
+    r03_object[R03_BATHMAT_OBJ_ID].active = !is_game_flag(GOT_BATH_MAT_FLAG);
 }
 
 //update dialog selection
@@ -336,7 +337,7 @@ void r03_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                script_take_object(NULL, GOT_BATH_MAT_FLAG, id_bathMat);
+                                script_take_object(&r03_object[R03_BATHMAT_OBJ_ID].active, GOT_BATH_MAT_FLAG, id_bathMat);
                             default:
                                 end_script();
                                 break;
