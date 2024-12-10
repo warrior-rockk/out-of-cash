@@ -62,9 +62,9 @@ enum r01_hotspotCode{
     r01_toys    = 52,
     r01_printer    = 113,
     r01_book1    = 104,
-    r01_book2    = 105,
+    r01_book2    = 107,
     r01_book3    = 106,
-    r01_book4    = 107,
+    r01_book4    = 105,
 };
 
 //declare and define room objects array

@@ -371,7 +371,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player(220, 87);
+                                script_move_player(231, 110);
                                 break;
                             case 1:
                                 script_take_object(&r07_object[R07_KNIFE_OBJ_ID].active, GOT_KNIFE_FLAG, id_knife);

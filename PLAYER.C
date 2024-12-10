@@ -97,13 +97,15 @@ void player_update_pos()
         else
             player.vY = itofix(0);
 
-        //check walk map
-        if (getpixel(actualRoom.wImage, fixtoi(relX + player.vX) - actualRoom.hsWalkBorders.left, fixtoi(relY) - actualRoom.hsWalkBorders.up) == 0)
+        //check walk map (block with color 0 or out screen)
+        int pixelColorX = getpixel(actualRoom.wImage, fixtoi(relX + player.vX) - actualRoom.hsWalkBorders.left, fixtoi(relY) - actualRoom.hsWalkBorders.up);
+        if (pixelColorX == 0 || pixelColorX == -1)
         {
             player.vX = itofix(0);
         }
-    
-        if (getpixel(actualRoom.wImage, fixtoi(relX) - actualRoom.hsWalkBorders.left, fixtoi(relY + player.vY) - actualRoom.hsWalkBorders.up) == 0)
+
+        int pixelColorY = getpixel(actualRoom.wImage, fixtoi(relX) - actualRoom.hsWalkBorders.left, fixtoi(relY + player.vY) - actualRoom.hsWalkBorders.up);
+        if (pixelColorY == 0 || pixelColorY == -1)
         {
             player.vY = itofix(0);
         }
@@ -164,8 +166,11 @@ void player_update_animation()
 //function to update player scale
 void player_update_scale()
 {
+    int checkScaleX = fixtoi(fixadd(player.x, itofix(PLAYER_POS_X_OFFSET))) - actualRoom.hsWalkBorders.left;
+    int checkScaleY = fixtoi(fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET)) + player.vY) - actualRoom.hsWalkBorders.up;
+
     //get scale map value
-    switch (getpixel(actualRoom.wImage, fixtoi(fixadd(player.x, itofix(PLAYER_POS_X_OFFSET))) , fixtoi(fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET)) + player.vY)))
+    switch (getpixel(actualRoom.wImage, checkScaleX, checkScaleY))
     {
         case SCALE_1_COLOR:
             player.scale = ftofix(SCALE_1_VALUE);
