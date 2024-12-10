@@ -215,6 +215,9 @@ void r01_update_room_script()
                                 begin_script();
                                 script_say("Mi guitarra marca Sonora");
                                 break;
+                            case 1:
+                                script_say("Mi intento frustado de ser una estrella del rock");
+                                break;
                             default:
                                 end_script();
                                 break;
@@ -225,10 +228,10 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
+                                script_say("Es mejor que se quede en la funda");
                                 break;
                             case 1:
-                                script_take_object(&r01_object[R01_GUITAR_OBJ_ID].active, GOT_GUITAR_FLAG, id_guitar);
+                                script_say("Por mi bien, y por el bien de la m£sica");
                                 end_script();
                                 break;
                         }
@@ -251,7 +254,7 @@ void r01_update_room_script()
                                 break;
                             case 2:
                                 begin_script();
-                                script_say("Wow!!");
+                                script_say("­Alucina!");
                                 break;
                             default:
                                 end_script();
@@ -511,7 +514,23 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No creo que las necesite");
+                                break;
+                            case 1:
+                                begin_script();
+                                script_say("Con esta resolucion VGA de 320x240 los p¡xeles son como pu¤os");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_cd:
@@ -522,13 +541,34 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Cd");
+                                script_say("Un amigo trajo al instituto esto que llaman compact disc");
+                                break;
+                            case 1:
+                                script_say("Se supone que va a ser el formato musical del futuro");
+                                break;
+                            case 2:
+                                script_say("Como de momento no tengo nada para poder reproducirlo lo tengo ah¡ colgado porque brilla");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Ah¡ est  bien");
+                                break;
+                            case 1:
+                                script_say("Su brillo ahuyenta a los mosquitos");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_poster:
@@ -539,8 +579,10 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Poster");
+                                script_say("Mi otro grupo favorito: Los de Marras");
                                 break;
+                            case 1:
+                                script_say("Tengo el presentimiento que a este grupo le va a ir muy bien en el futuro");
                             default:
                                 end_script();
                                 break;
@@ -591,7 +633,22 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No tengo tiempo para descansar");
+                                break;
+                            case 1:
+                                script_say("He de averiguar como conseguir dinero para la entrada del concierto");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_computer:
@@ -605,8 +662,10 @@ void r01_update_room_script()
                                 script_say("Mi flamante Pentium a 100Mhz");
                                 break;
                             case 1:
-                                begin_script();
-                                script_say("M quina de alta tecnolog¡a solo para manos expertas");
+                                script_say("Le he instalado hace poco Windows 95");
+                                break;
+                            case 2:
+                                script_say("Pero sigo prefiriendo mi viejo MS-DOS");
                                 break;
                             default:
                                 end_script();
@@ -707,7 +766,6 @@ void r01_update_room_script()
                                 script_say("\"La edad prohibida\"");
                                 break;
                             case 1:
-                                begin_script();
                                 script_say("de Torcuato Luca de Tena");
                                 break;
                             default:
@@ -728,7 +786,6 @@ void r01_update_room_script()
                                 script_say("\"MSDOS para Dummies\"");
                                 break;
                             case 1:
-                                begin_script();
                                 script_say("por Dan Gookin");
                                 break;
                             default:
@@ -749,7 +806,6 @@ void r01_update_room_script()
                                 script_say("\"Del deporte tambi‚n se sale\"");
                                 break;
                             case 1:
-                                begin_script();
                                 script_say("por Diego Maradona");
                                 break;
                             default:
@@ -780,7 +836,10 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Libro 4");
+                                script_say("Es un cat logo musical de la tienda Tipo");
+                                break;
+                            case 1:
+                                script_say("Pero ya no tengo dinero para comprarme ning£n disco");
                                 break;
                             default:
                                 end_script();
@@ -788,8 +847,7 @@ void r01_update_room_script()
                         }
                     break;                    
                 }
-                break;            
-
+                break;
         }
     }
 }
