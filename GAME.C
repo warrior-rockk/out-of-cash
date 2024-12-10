@@ -1487,6 +1487,13 @@ void room_objects_draw(uint8_t layer)
 {
     tObject *obj;
     BITMAP *objImage;
+
+    //on debug room objects don't draw the room objects
+    #ifdef DEBUGMODE
+        if (debug.cursorRoomObjects)
+            return;
+    #endif
+
     //runs for room objects
     for (int i = 0; i < roomData[game.actualRoom].room_num_objects; i++)
     {

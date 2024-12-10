@@ -15,8 +15,8 @@
 
 //define room properties
 #define R07_START_POS_X         58
-#define R07_START_POS_Y         74
-#define R07_ROOM_NUM_OBJS       2
+#define R07_START_POS_Y         80
+#define R07_ROOM_NUM_OBJS       3
 #define R07_MUSIC_ID            0
 #define R07_FADE                false
 #define R07_LIGHTS_OFF                false
@@ -27,10 +27,12 @@
 //define object array alias
 #define R07_TABLE_OBJ_ID 0
 #define R07_BRAIN_OBJ_ID 1
+#define R07_KNIFE_OBJ_ID 2
 
 //define object data (objId, x, y, animId, active, layer)
 #define R07_OBJ_0           r07d_objTable,   159, 126,  0, true, 1
 #define R07_OBJ_1           r07d_objBrain,   66, 131,  0, true, 1
+#define R07_OBJ_2           r07d_objKnife,   254, 71,  0, true, 0
 
 //define room animations
 #define R07_NUM_ANIMATIONS  0
@@ -55,6 +57,7 @@ static tObject r07_object[R07_ROOM_NUM_OBJS] =
 {
     {R07_OBJ_0},
     {R07_OBJ_1},
+    {R07_OBJ_2},
 };
 
 //declare room objects animations array

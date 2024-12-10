@@ -28,7 +28,10 @@ void r07_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Apuntes");
             break;
         case r07_brain:
+            if (!is_game_flag(GOT_BRAIN_FLAG))
                 strcpy(s, "Cerebro");
+            else
+                strcpy(s, "");
             break;
         case r07_washer1:
                 strcpy(s, "Pica");
@@ -46,7 +49,10 @@ void r07_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Vaso");
             break;
         case r07_knife:
+            if (!is_game_flag(GOT_KNIFE_FLAG))
                 strcpy(s, "Bistur¡");
+            else
+                strcpy(s, "");
             break;
         case r07_labMaterial:
                 strcpy(s, "Material laboratorio");
@@ -133,7 +139,8 @@ void r07_room_update()
 //update room objects
 void r07_update_room_objects()
 {
-
+    r07_object[R07_KNIFE_OBJ_ID].active = !is_game_flag(GOT_KNIFE_FLAG);
+    r07_object[R07_BRAIN_OBJ_ID].active = !is_game_flag(GOT_BRAIN_FLAG);
 }
 
 //update dialog selection
@@ -237,7 +244,25 @@ void r07_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r07_object[R07_BRAIN_OBJ_ID].active, GOT_BRAIN_FLAG, id_brain);
+                                break;
+                            case 2:
+                                script_say("Buajj....");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r07_washer1:
@@ -340,7 +365,22 @@ void r07_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player(220, 87);
+                                break;
+                            case 1:
+                                script_take_object(&r07_object[R07_KNIFE_OBJ_ID].active, GOT_KNIFE_FLAG, id_knife);
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r07_labMaterial:
