@@ -237,7 +237,7 @@ void r06_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
+                                if (!is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG))
                                     script_say("La puerta est  cerrada");
                                 else
                                     change_room(MAINT_LOCKER_ROOM_NUM);
@@ -300,7 +300,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Veo por la cerradura que la llave esta metido por dentro, pero no cerrada");
+                                if (!is_game_flag(KEY_ON_BATH_MAT_FLAG))
+                                    script_say("Veo por la cerradura que la llave esta metido por dentro, pero no cerrada");
+                                else
+                                    script_say("Parece que la llave ha ca¡do a la alfombrilla por el otro lado");
                                 break;
                             default:
                                 end_script();
@@ -318,6 +321,11 @@ void r06_update_room_script()
                                         if (!is_game_flag(BATH_MAT_IN_DOOR_FLAG))
                                         {
                                             script_say("Si meto el escalpelo por la cerradura caer  al suelo y no podr‚ recuperar la llave");
+                                            end_script();
+                                        }
+                                        else if(is_game_flag(KEY_ON_BATH_MAT_FLAG))
+                                        {
+                                            script_say("La llave ya ha ca¡do sobre la alfombrilla");
                                             end_script();
                                         }
                                         else
