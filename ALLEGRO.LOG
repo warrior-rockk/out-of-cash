@@ -1,27 +1,21 @@
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Change from room -1 to room 1
-Free actual room datafile resources
-Load room datafile: R01DATA.DAT
-Change from room 1 to room 3
-Free actual room datafile resources
-Load room datafile: R03DATA.DAT
-Change from room 3 to room 7
-Free actual room datafile resources
-Load room datafile: R07DATA.DAT
-Change from room 7 to room 6
+Change from room 1 to room 6
 Free actual room datafile resources
 Load room datafile: R06DATA.DAT
-Change from room 6 to room 10
-Free actual room datafile resources
-Load room datafile: R10DATA.DAT
-Change from room 10 to room 6
 Free actual room datafile resources
 Load room datafile: R06DATA.DAT
-Change from room 6 to room 10
 Free actual room datafile resources
-Load room datafile: R10DATA.DAT
-Change from room 10 to room 6
+Load room datafile: R06DATA.DAT
+Free actual room datafile resources
+Load room datafile: R06DATA.DAT
+Change from room 6 to room 0
+Free actual room datafile resources
+Load room datafile: R00DATA.DAT
+Free actual room datafile resources
+Load room datafile: R06DATA.DAT
+Free actual room datafile resources
+Load room datafile: R06DATA.DAT
 Free actual room datafile resources
 Load room datafile: R06DATA.DAT
