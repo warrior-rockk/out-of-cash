@@ -278,7 +278,7 @@ void r01_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                toogle_game_flag(STEREO_ON_FLAG);
+                                toggle_game_flag(STEREO_ON_FLAG);
                                 r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON_FLAG);
                                 end_script();
                                 break;

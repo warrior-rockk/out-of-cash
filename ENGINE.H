@@ -184,7 +184,7 @@ void stop_dialog();
 
 void set_game_flag(enum gameFlags flagNum);
 void clear_game_flag(enum gameFlags flagNum);
-void toogle_game_flag(enum gameFlags flagNum);
+void toggle_game_flag(enum gameFlags flagNum);
 bool is_game_flag(enum gameFlags flagNum);
 
 void inc_game_var(enum gameVars varNum);

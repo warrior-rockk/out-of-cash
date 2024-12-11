@@ -371,7 +371,7 @@ void r03_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                toogle_game_flag(BATH_LIGHT_OFF_FLAG);
+                                toggle_game_flag(BATH_LIGHT_OFF_FLAG);
                                 set_room_lights_off(BATH_ROOM_NUM, is_game_flag(BATH_LIGHT_OFF_FLAG));
                                 end_script();
                                 break;

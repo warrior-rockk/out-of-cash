@@ -1508,7 +1508,7 @@ void room_objects_draw(uint8_t layer)
             //get pointer to bitmap object
             objImage = (BITMAP *)actualRoom.dataFile[obj->objId].dat;
             //draw the object
-            draw_sprite(buffer, objImage, obj->x-(objImage->w>>1), obj->y - (objImage->h>>1));
+            draw_sprite(buffer, objImage, obj->x-(objImage->w>>1) - roomScroll.x, obj->y - (objImage->h>>1) - roomScroll.y);
         }
     }
 }

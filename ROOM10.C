@@ -168,7 +168,7 @@ void r10_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                toogle_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+                                toggle_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
                                 set_room_lights_off(MAINT_LOCKER_ROOM_NUM, !is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG));
                                 end_script();
                                 break;

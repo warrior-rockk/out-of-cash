@@ -24,6 +24,21 @@ void r06_get_hotspot_name(uint8_t colorCode, char *s)
         case r06_maintLockerDoor:
                 strcpy(s, "Puerta");
             break;
+        case r06_maintLockerLock:
+                strcpy(s, "Cerradura");
+            break;
+        case r06_maintLockerBathMat:
+            if (is_game_flag(BATH_MAT_IN_DOOR_FLAG) || is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
+                strcpy(s, "Alfombrilla");
+            else
+                strcpy(s, "");
+            break;
+        case r06_maintLockerKey:
+            if (is_game_flag(KEY_ON_BATH_MAT_FLAG) && is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
+                strcpy(s, "Llave");
+            else
+                strcpy(s, "");
+            break;
         case r06_paint:
                 strcpy(s, "Cuadro");
             break;
@@ -70,6 +85,15 @@ enum verbs r06_get_default_hotspot_verb(uint8_t colorCode)
             break;
         case r06_maintLockerDoor:
             return GO;
+            break;
+        case r06_maintLockerLock:
+            return LOOK;
+            break;
+        case r06_maintLockerBathMat:
+            return LOOK;
+            break;
+        case r06_maintLockerKey:
+            return TAKE;
             break;
         case r06_paint:
             return LOOK;
@@ -139,7 +163,9 @@ void r06_room_update()
 //update room objects
 void r06_update_room_objects()
 {
-
+    r06_object[R06_BATHMATIN_OBJ_ID].active     = is_game_flag(BATH_MAT_IN_DOOR_FLAG);
+    r06_object[R06_BATHMATOUT_OBJ_ID].active    = is_game_flag(BATH_MAT_OUT_DOOR_FLAG);
+    r06_object[R06_KEY_OBJ_ID].active = is_game_flag(BATH_MAT_OUT_DOOR_FLAG) && is_game_flag(KEY_ON_BATH_MAT_FLAG);
 }
 
 //update dialog selection
@@ -210,14 +236,194 @@ void r06_update_room_script()
                                 begin_script();
                                 script_move_player_to_target();
                                 break;
+                            case 1:
+                                if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
+                                    script_say("La puerta est  cerrada");
+                                else
+                                    change_room(MAINT_LOCKER_ROOM_NUM);
+                                break;
                             default:
-                                change_room(MAINT_LOCKER_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            default:
+                                if (!is_game_flag(GOT_KEY_FLAG))
+                                    script_say("La puerta est  cerrada y no tengo la llave");
+                                else if (!is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG))
+                                    script_say("La puerta est  cerrada con llave");
+                                else
+                                    change_room(MAINT_LOCKER_ROOM_NUM);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_bathMat:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        r06_object[R06_BATHMATIN_OBJ_ID].active = true;
+                                        set_game_flag(BATH_MAT_IN_DOOR_FLAG);
+                                        script_remove_inv_object(id_bathMat);
+                                        break;
+                                    case 2:
+                                        script_player_take_state();
+                                        break;
+                                    default:
+                                        end_script();
+                                        break;
+                                }
+                            break;
+                        }
+                    break;
+                }
+                break;            
+            case r06_maintLockerLock:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Veo por la cerradura que la llave esta metido por dentro, pero no cerrada");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_knife:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(BATH_MAT_IN_DOOR_FLAG))
+                                        {
+                                            script_say("Si meto el escalpelo por la cerradura caer  al suelo y no podr‚ recuperar la llave");
+                                            end_script();
+                                        }
+                                        else
+                                            script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        script_player_take_state();
+                                        break;
+                                    case 2:
+                                        set_game_flag(KEY_ON_BATH_MAT_FLAG);
+                                        script_say("­Eureka! La llave ha ca¡do sobre la alfombrilla");
+                                    default:
+                                        end_script();
+                                        break;
+                                }
+                            break;
+                            case id_key:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_move_player_to_target();
+                                        break;
+                                    case 1:
+                                        script_player_take_state();
+                                        break;
+                                    case 2:
+                                        set_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG);
+                                        script_remove_inv_object(id_key);
+                                    default:
+                                        end_script();
+                                        break;
+                                }
+                            break;
+                        }
+                    break;
+                }
+                break;
+            case r06_maintLockerBathMat:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("He metido la alfombrilla por debajo de la puerta");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case MOVE:
+                         switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                toggle_game_flag(BATH_MAT_IN_DOOR_FLAG);
+                                toggle_game_flag(BATH_MAT_OUT_DOOR_FLAG);
+                                r06_object[R06_BATHMATIN_OBJ_ID].active = is_game_flag(BATH_MAT_IN_DOOR_FLAG);
+                                r06_object[R06_BATHMATOUT_OBJ_ID].active = is_game_flag(BATH_MAT_OUT_DOOR_FLAG);
+                                end_script();
+                            default:
                                 end_script();
                                 break;
                         }
                     break;
                 }
-                break;            
+                break;
+            case r06_maintLockerKey:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("La llave de la puerta del almac‚n de mantenimiento reposa sobre la alfombrilla");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                clear_game_flag(KEY_ON_BATH_MAT_FLAG);
+                                script_take_object(&r06_object[R06_KEY_OBJ_ID].active, GOT_KEY_FLAG, id_key);
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                }
+                break;        
             case r06_paint:
                 switch(roomScript.verb)
                 {

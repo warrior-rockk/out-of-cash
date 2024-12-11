@@ -197,7 +197,7 @@ void clear_game_flag(enum gameFlags flagNum)
 }
 
 //function to toggle game flag
-void toogle_game_flag(enum gameFlags flagNum)
+void toggle_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < (MAX_GAME_FLAGS * 8));
     TOOGLE_BIT(game.flags[flagNum % 8], flagNum/8);
