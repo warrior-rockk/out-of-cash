@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] Debug when load game with room scroll
 - [ ] Animation for take upper and bottom
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
@@ -18,6 +17,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Debug when load game with room scroll
 - [X] Spanish characters on system font
 - [X] Custom fonts
 - [X] debug mode for jump to room

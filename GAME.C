@@ -170,6 +170,7 @@ void main_update()
     show_debug("Y",mouse_y);
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
+    show_debug("Room scroll x", roomScroll.x);
 }
 
 //general draw
@@ -602,6 +603,10 @@ void game_load(uint8_t slot)
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     //loads saved room resources
     room_load(game.actualRoom);
+    //calculate room image borders
+    calculate_image_borders(actualRoom.image, &actualRoom.roomBorders);
+    //calculate hotspot/walk image borders
+    calculate_image_borders(actualRoom.hsImage, &actualRoom.hsWalkBorders);
     //seeks room music to saved position
     midi_seek(game.roomMusicPos);
     //forces refresh room_init
@@ -1528,7 +1533,9 @@ void room_update_scroll()
         //start move scroll with player on center of screen
         if (fixtoi(player.x) > RES_X>>1)
             roomScroll.x = fixtoi(player.x) - (RES_X>>1);
-
+        else
+            roomScroll.x = 0;
+            
         //scroll x limits
         roomScroll.x = clamp(roomScroll.x, 0, actualRoom.image->w - RES_X);
     }
