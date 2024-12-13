@@ -45,6 +45,9 @@
 //define room animations
 #define R05_NUM_ANIMATIONS  0
 
+//define room scripts
+#define R05_WELLCOME_SCRIPT 256
+
 //hotspot code room enumeration
 enum r05_hotspotCode{
     r05_door    = 32,
@@ -74,6 +77,9 @@ static tObject r05_object[R05_ROOM_NUM_OBJS] =
 
 //declare room objects animations array
 static tAnimation r05_animations[R05_NUM_ANIMATIONS];
+
+//declare room dialog actor
+static tActorTalk r05_dialogActor = {244, 50, 70, false};
 
 //declare room functions called from game
 void r05_get_hotspot_name(uint8_t colorCode, char *s);

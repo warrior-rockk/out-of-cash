@@ -126,6 +126,7 @@ tObject* r05_get_object_info(uint8_t numObject)
 //function to init room
 void r05_room_init()
 {
+    start_script(R05_WELLCOME_SCRIPT);
     game_fade_in();
 }
 
@@ -469,7 +470,22 @@ void r05_update_room_script()
                         }
                     break;                    
                 }
-                break;            
+                break;
+            case R05_WELLCOME_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_say_actor("Bienvenido a la papeler¡a", &r05_dialogActor);
+                        break;
+                    case 1:
+                        script_say_actor("Esto es un test", &r05_dialogActor);
+                        break;
+                    default:
+                        end_script();
+                        break;
+                }
+                break;
         }
     }
 }

@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R05DATA.DAT */
-/* Date: Sat Dec 07 18:14:52 2024 */
+/* Date: Fri Dec 13 11:54:54 2024 */
 /* Do not hand edit! */
 
 #define r05d_image                       0        /* BMP  */

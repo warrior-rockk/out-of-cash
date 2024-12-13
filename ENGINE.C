@@ -399,6 +399,17 @@ void end_script()
     roomScript.type = ROOM_SCRIPT_TYPE;
 }
 
+//starts room custom script
+void start_script(uint16_t scriptNumber)
+{
+    //the custom scripts start always > 255 to avoid palette index collisions
+    ASSERT(scriptNumber > 255);
+    roomScript.object = scriptNumber;
+    roomScript.type == ROOM_SCRIPT_TYPE;
+    roomScript.active = true;
+    roomScript.scriptAssigned = true;
+}
+
 //global debug vars function
 void show_debug(char *varName, int var)
 {

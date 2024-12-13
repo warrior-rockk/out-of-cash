@@ -203,6 +203,7 @@ void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
 void begin_script();
 void end_script();
+void start_script(uint16_t scriptNumber);
 void show_debug(char *varName, int var);
 void move_player(int x, int y);
 void move_player_to_target();
