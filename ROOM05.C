@@ -158,13 +158,62 @@ void r05_update_room_objects()
 //update dialog selection
 void r05_update_dialog_selection()
 {
-
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialognode)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("",1);
+                        dialog_add("",2);
+                        dialog_add("",0);
+                    break;
+                }
+            break;
+        }
+    }
 }
 
 //update room script
 void r05_update_room_script()
 {
-//if script active is room script type
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
+    {
+        //fixed step: say response line
+        if (roomScript.step == 0)
+        {
+            begin_script();
+            script_say(dialog.lineText[dialog.selLine - 1]);
+        }
+    }
+    else
+    {
+        //encode dialog id, node and selLine on integer value
+        //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLine
+        switch (((dialog.dialogId - 1) * 1000) + ((dialognode - 1) * 100) + dialog.selLine)
+        {
+            case 1:
+                switch (roomScript.step)
+                {
+                    case 1:
+                        script_say_actor("", &r05_dialogActor);
+                    break;
+                    default:
+                        script_next_dialog_node();
+                        end_script();
+                    break;
+                }
+            break;
+        }
+    }
+    
+    //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
@@ -505,13 +554,20 @@ void r05_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_say_actor("Bienvenido a nuestra papeler¡a", &r05_dialogActor);
+                        if (!set_game_flag(WELLCOME_FLAG))
+                            script_say_actor("­Hola! Bienvenido a nuestra papeler¡a", &r05_dialogActor);
+                        else
+                        {
+                            script_say_actor("­Hola! Bienvenido de nuevo", &r05_dialogActor);
+                            end_script();
+                        }
                         break;
                     case 1:
                         script_say_actor("Mira todo lo que necesites y pregunta lo que quieras", &r05_dialogActor);
                         break;
                     case 2:
                         script_say_actor("Estamos aqu¡ para ayudar", &r05_dialogActor);
+                        set_game_flag(WELLCOME_FLAG);
                         break;
                     default:
                         end_script();
