@@ -210,6 +210,12 @@ void r05_update_room_script()
                                 begin_script();
                                 script_say("Unas bonitas carpetas para meter folios");
                                 break;
+                            case 1:
+                                script_say("Y de muy alta calidad y acabados");
+                                break;
+                            case 2:
+                                script_say_actor("Puedes llevarte una gratis para probarla y asegurarte de su calidad", &r05_dialogActor);
+                                break;
                             default:
                                 end_script();
                                 break;
@@ -221,15 +227,15 @@ void r05_update_room_script()
                                 case 0:
                                     begin_script();
                                     if (is_game_flag(GOT_FOLDER_FLAG))
-                                    {
-                                        script_say("Solo necesito una");
-                                        end_script();
-                                    }
+                                        script_say("El dependiente ha dicho que solo me puedo llevar una gratis");
                                     else
                                         script_move_player_to_target();
                                     break;
                                 case 1:
-                                    script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
+                                    if (is_game_flag(GOT_FOLDER_FLAG))
+                                        script_say_actor("Asi es", &r05_dialogActor);
+                                    else
+                                        script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
                                 default:
                                     end_script();
                                     break;
@@ -247,8 +253,13 @@ void r05_update_room_script()
                                 begin_script();
                                 script_say("Siempre me han encantado las papeler¡as y las cosas que venden en ellas");
                                 break;
-                            default:
+                            case 1:
                                 script_say("Pero no me interesa nada de lo que tienen aqu¡");
+                                break;
+                            case 2:
+                                script_say_actor("Todo nuestro material es de primera y a unos precios incre¡bles", &r05_dialogActor);
+                                break;
+                            default:
                                 end_script();
                                 break;
                         }
@@ -265,8 +276,13 @@ void r05_update_room_script()
                                 begin_script();
                                 script_say("Son unas fotocopias con dibujos de la serie Dragon Ball");
                                 break;
+                            case 1:
+                                script_say_actor("Todo chaval del instituto sabe que lo mas mol¢n es tener estas fotocopias", &r05_dialogActor);
+                                break;
+                            case 2:
+                                script_say_actor("Por 25 pesetas puedes llevarte la que mas te guste", &r05_dialogActor);
+                                break;
                             default:
-                                script_say("Todo chaval del instituto sabe que lo mas mol¢n es tener estas fotocopias");
                                 end_script();
                                 break;
                         }
@@ -462,13 +478,26 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el dependiente de la papeler¡a");
+                                script_say("Es el servicial dependiente de la papeler¡a");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say_actor("­Hola! ¨En que te puedo ayudar?", &r05_dialogActor);
+                                break;
+                            case 1:
+                                script_start_dialog(1);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;
             case R05_WELLCOME_SCRIPT:
@@ -476,10 +505,13 @@ void r05_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_say_actor("Bienvenido a la papeler¡a", &r05_dialogActor);
+                        script_say_actor("Bienvenido a nuestra papeler¡a", &r05_dialogActor);
                         break;
                     case 1:
-                        script_say_actor("Esto es un test", &r05_dialogActor);
+                        script_say_actor("Mira todo lo que necesites y pregunta lo que quieras", &r05_dialogActor);
+                        break;
+                    case 2:
+                        script_say_actor("Estamos aqu¡ para ayudar", &r05_dialogActor);
                         break;
                     default:
                         end_script();
