@@ -717,7 +717,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Fotocopia");
+                                script_say("Es una fotocopia de Dragon Ball con el horario del instituto impreso por encima");
                                 break;
                             default:
                                 end_script();

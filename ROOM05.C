@@ -171,7 +171,7 @@ void r05_update_dialog_selection()
                     break;
                     case 1:
                         dialog_add("Bonita papeler¡a...",1);
-                        dialog_add("¨Puedo llevarme una carpeta?",2);
+                        dialog_add("¨Puedo llevarme una carpeta?",1);
                         dialog_add("¨Qu‚ son estas fotocopias que ten‚is?",3);
                         if (!is_game_flag(SCHEDULE_INFO_FLAG))
                             dialog_add("¨Para qu‚ es la impresora?",1);
@@ -294,7 +294,9 @@ void r05_update_room_script()
                                script_say_actor("Te lo imprimo ahora mismo", &r05_dialogActor);
                            break;
                            case 3:
-                               if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                               if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
+                                   script_say_actor("­Oh vaya! Creo que ya hay un horario impreso de antes", &r05_dialogActor);
+                               else if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, me he quedado sin hojas en la impresora", &r05_dialogActor);
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, la impresora me dice error de cartucho", &r05_dialogActor);
@@ -320,6 +322,7 @@ void r05_update_room_script()
                                    }
                                    script_say_actor("Ya lo tienes", &r05_dialogActor);
                                }
+                           break;
                            default:
                                script_next_dialog_node();
                                end_script();
@@ -390,8 +393,19 @@ void r05_update_room_script()
                                 begin_script();
                                 script_move_player_to_target();
                                 break;
+                            case 1:
+                                if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+                                    script_say_actor("Disculpa, no puedes llevarte las fotocopias de Dragon Ball sin pagar", &r05_dialogActor);
+                                else
+                                {
+                                    change_room_pos(STREET_ROOM_NUM, 258, 138);
+                                    end_script();
+                                }
+                                break;
+                            case 2:
+                                script_say_actor("Si no tienes dinero te agradecer¡a que me las devolvieras", &r05_dialogActor);
+                                break;    
                             default:
-                                change_room_pos(STREET_ROOM_NUM, 258, 138);
                                 end_script();
                                 break;
                         }
