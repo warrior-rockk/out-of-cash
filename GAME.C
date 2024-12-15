@@ -883,12 +883,18 @@ void cursor_action_HUD()
         if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
         {
             cursor.selectedVerb = hsColor - 1;
+            //clear cursor inventory vars
+            cursor.invObject = 0;
+            strcpy(cursor.invObjName,"");
         }
 
         //if mouse left on hud: default verb
         if (cursor.rightClick)
         {
             cursor.selectedVerb = GO;
+            //clear cursor inventory vars
+            cursor.invObject = 0;
+            strcpy(cursor.invObjName,"");
         }
     }
     else if (mouse_x < HUD_INVENTORY_X)
@@ -939,11 +945,14 @@ void cursor_action_HUD()
     {
         //INVENTORY BUTTONS REGION
 
-        //gets the object name
-        if (get_inv_obj_id(get_inv_obj_position(hsColor) - 1) == cursor.invObject && cursor.selectedVerb == USE_WITH)
-            //don't allow use object on same object
+        //on use with verb, don't allow use object on same object
+        if (cursor.selectedVerb == USE_WITH && get_inv_obj_id(get_inv_obj_position(hsColor) - 1) == cursor.invObject)
+            strcpy(cursor.objectName, "");
+        //on give verb, don't allow give inv object to inv object
+        else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
             strcpy(cursor.objectName, "");
         else
+            //gets the object name
             get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);
 
         //replace latin 1 unicode chars
@@ -965,6 +974,14 @@ void cursor_action_HUD()
             {
                 //sets USE_WITH verb
                 cursor.selectedVerb = USE_WITH;
+                //sets inventory object name verb
+                strcpy(cursor.invObjName, cursor.objectName);
+                //sets inventory id
+                cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
+            }
+            //check if click GIVE verb on inventory object
+            else if (cursor.selectedVerb == GIVE)
+            {
                 //sets inventory object name verb
                 strcpy(cursor.invObjName, cursor.objectName);
                 //sets inventory id
@@ -1185,10 +1202,14 @@ void debug_draw()
 void status_bar_draw()
 {
     //check if the verb is USE_WITH to print object inventory or not
-    if (cursor.selectedVerb != USE_WITH)
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
-    else
+    if (cursor.selectedVerb == USE_WITH)
         textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
+    else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s a %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
+    else
+        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
+
+
 }
 
 //function to init msg structure

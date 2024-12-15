@@ -34,7 +34,7 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Fotocopias");
             break;
         case r05_paper:
-            if (is_game_flag(GOT_SHEETS_FLAG))
+            if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                 strcpy(s, "");
             else
                 strcpy(s, "Papel");
@@ -146,7 +146,7 @@ void r05_room_update()
 //update room objects
 void r05_update_room_objects()
 {
-    r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
+    r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
     r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG);
     r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
@@ -539,7 +539,13 @@ void r05_update_room_script()
                                     script_move_player_to_target();
                                     break;
                                 case 1:
-                                    script_take_object(&r05_object[R05_SHEETS_OBJ_ID].active, GOT_SHEETS_FLAG, id_sheet);
+                                    if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                                    {
+                                        script_take_object(NULL, GOT_PHOTOCOPY_STOLEN_FLAG, id_photocopy);
+                                        clear_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
+                                    }
+                                    else
+                                        script_take_object(&r05_object[R05_SHEETS_OBJ_ID].active, GOT_SHEETS_FLAG, id_sheet);
                                     break;
                                 default:
                                     end_script();
@@ -641,6 +647,7 @@ void r05_update_room_script()
                                     case 2:
                                         //r05_object[R05_OBJ_ID].active = true;
                                         set_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
+                                        clear_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
                                         script_remove_inv_object(id_photocopy);
                                     break;
                                     default:
@@ -819,6 +826,28 @@ void r05_update_room_script()
                                 script_start_dialog(1);
                                 end_script();
                                 break;
+                        }
+                    break;
+                    case GIVE:
+                        switch (roomScript.invObject)
+                        {
+                            case id_photocopy:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say_actor("Graaaacias", &r05_dialogActor);
+                                    break;
+                                    case 1:
+                                        clear_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
+                                        r05_object[R05_PHOTOCOPY_OBJ_ID].active = true;
+                                        script_remove_inv_object(id_photocopy);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
                         }
                     break;
                 }
