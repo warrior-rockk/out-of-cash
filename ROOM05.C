@@ -148,6 +148,7 @@ void r05_update_room_objects()
 {
     r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
     r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG);
+    r05_object[R05_SHEETSPHOTO_OBJ_ID].active = is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
     
@@ -523,7 +524,13 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el papel que hay cargado en la impresora");
+                                if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                                {
+                                    script_say("He sustituido las hojas de la impresora por una fotocopia de Dragon Ball");
+                                    end_script();
+                                }
+                                else
+                                    script_say("Es el papel que hay cargado en la impresora");
                                 break;
                             default:
                                 script_say("Un A4 est ndar...");
@@ -541,7 +548,7 @@ void r05_update_room_script()
                                 case 1:
                                     if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                     {
-                                        script_take_object(NULL, GOT_PHOTOCOPY_STOLEN_FLAG, id_photocopy);
+                                        script_take_object(&r05_object[R05_SHEETSPHOTO_OBJ_ID].active, GOT_PHOTOCOPY_STOLEN_FLAG, id_photocopy);
                                         clear_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
                                     }
                                     else
@@ -645,7 +652,7 @@ void r05_update_room_script()
                                         script_player_take_state();
                                     break;
                                     case 2:
-                                        //r05_object[R05_OBJ_ID].active = true;
+                                        r05_object[R05_SHEETSPHOTO_OBJ_ID].active = true;
                                         set_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
                                         clear_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
                                         script_remove_inv_object(id_photocopy);
