@@ -39,14 +39,14 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
             else
                 strcpy(s, "Papel");
             break;
+        case r05_printer:
+                strcpy(s, "Impresora");
+            break;    
         case r05_cartridge:
             if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                 strcpy(s, "");
             else
                 strcpy(s, "Cartucho ");
-            break;
-        case r05_printer:
-                strcpy(s, "Impresora");
             break;
         case r05_printedPaper:
             if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) ||
@@ -854,6 +854,11 @@ void r05_update_room_script()
                                         end_script();
                                     break;
                                 }
+                            break;
+                            default:
+                                begin_script();
+                                script_say_actor("Oh...Gracias, pero no sabr¡a que hacer con esto", &r05_dialogActor);
+                                end_script();
                             break;
                         }
                     break;
