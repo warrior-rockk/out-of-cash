@@ -143,6 +143,13 @@ void script_remove_inv_object(int numObject)
     //reset "use with" verb
     if (cursor.selectedVerb == USE_WITH)
         cursor.selectedVerb = USE;
+    //reset "give x to" verb
+    else if (cursor.selectedVerb == GIVE)
+    {
+        cursor.invObjName[0] = '\0';
+        cursor.invObject = 0;
+    }
+    
     roomScript.step++;
 }
 

@@ -1106,8 +1106,12 @@ void cursor_action_room()
     //obtains the hotspot room color
     uint8_t hsColor = getpixel(actualRoom.hsImage, cursor.x - actualRoom.hsWalkBorders.left, cursor.y - actualRoom.hsWalkBorders.up);
 
-    //gets the object name
-    roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
+    //if selected verb is GIVE and not assigned the inventory object, no name allowed
+    if (cursor.selectedVerb == GIVE && cursor.invObjName[0] == '\0')
+        strcpy(cursor.objectName, "");
+    else
+        //gets the room object name
+        roomData[game.actualRoom].room_get_hotspot_name(hsColor, cursor.objectName);
 
     //replace latin 1 unicode chars
     replace_unicode_str(cursor.objectName);

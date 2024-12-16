@@ -55,6 +55,9 @@ void inventory_add(uint8_t numObject)
 //remove object to inventory
 void inventory_remove(uint8_t numObject)
 {
+    //inventory number must be higher than zero to remove
+    ASSERT(inventory.numObjects > 0);
+    
     for (int i = 0; i < inventory.numObjects; i++)
     {
         if (inventory.objIndex[i] == (numObject + 1))
