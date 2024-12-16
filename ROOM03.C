@@ -59,6 +59,12 @@ enum verbs r03_get_default_hotspot_verb(uint8_t colorCode)
     //check the object
     switch(colorCode)
     {
+        case r03_gel:
+            if (r03_object[R03_GEL_OBJ_ID].active)
+            {
+                return LOOK;
+                break;
+            }
         case r03_closet:
             if (is_game_flag(BATH_CLOSET_OPEN_FLAG))
                 return CLOSE;
@@ -72,9 +78,6 @@ enum verbs r03_get_default_hotspot_verb(uint8_t colorCode)
             return LOOK;
             break;
         case r03_towel:
-            return LOOK;
-            break;
-        case r03_gel:
             return LOOK;
             break;
         case r03_bathMat:

@@ -26,11 +26,16 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
         case r10_spiderWeb:
                 strcpy(s, "Telara¤a");
             break;
+        case r10_paintBucket:
+            if (r10_object[R10_PAINTBUCKET_OBJ_ID].active)
+            {
+                strcpy(s, "Cubo de pintura");
+                break;
+            }
+            else
+                strcpy(s, "");
         case r10_closet:
                 strcpy(s, "Armario");
-            break;
-        case r10_paintBucket:
-                strcpy(s, "Cubo de pintura");
             break;
         default:
             strcpy(s, "");
@@ -52,11 +57,17 @@ enum verbs r10_get_default_hotspot_verb(uint8_t colorCode)
         case r10_spiderWeb:
             return LOOK;
             break;
-        case r10_closet:
-            return OPEN;
-            break;
         case r10_paintBucket:
-            return LOOK;
+            if (r10_object[R10_PAINTBUCKET_OBJ_ID].active)
+            {
+                return LOOK;
+                break;
+            }
+        case r10_closet:
+            if (!is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+                return OPEN;
+            else
+                return CLOSE;
             break;
         default:
             return LOOK;
@@ -94,7 +105,8 @@ void r10_room_update()
 //update room objects
 void r10_update_room_objects()
 {
-
+    r10_object[R10_MAINTCLOSETOPEN_OBJ_ID].active = is_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+    r10_object[R10_PAINTBUCKET_OBJ_ID].active = !is_game_flag(GOT_PAINT_BUCKET_FLAG) && is_game_flag(MAIN_LOCKER_CLOSET_OPEN);
 }
 
 //update dialog selection
@@ -120,7 +132,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Por esa puerta se va al pasillo");
+                                script_say("Por esa puerta se va al pasillo del instituto");
                                 break;
                             default:
                                 end_script();
@@ -195,7 +207,41 @@ void r10_update_room_script()
                         }
                     break;                    
                 }
-                break;            
+                break;  
+            case r10_paintBucket:
+                if (r10_object[R10_PAINTBUCKET_OBJ_ID].active)
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("Un cubo de pintura negra");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                        case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(&r10_object[R10_PAINTBUCKET_OBJ_ID].active, GOT_PAINT_BUCKET_FLAG, id_paintBucket);
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }
             case r10_closet:
                 switch(roomScript.verb)
                 {
@@ -210,27 +256,59 @@ void r10_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
-                }
-                break;            
-            case r10_paintBucket:
-                switch(roomScript.verb)
-                {
-                    case LOOK:
+                    break;
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cubo de pintura negra");
+                                if (is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+                                {
+                                    script_say("Ya est  abierto");
+                                    end_script();
+                                }
+                                else                                
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            case 2:
+                                set_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+                                end_script();
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+                                {
+                                    script_say("Ya est  cerrado");
+                                    end_script();
+                                }
+                                else                                
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            case 2:
+                                clear_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+                                end_script();
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
-                break;            
-
+                break;
         }
     }
 }
