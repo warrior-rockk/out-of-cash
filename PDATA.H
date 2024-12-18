@@ -1,10 +1,10 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\PDATA.DAT */
-/* Date: Wed Dec 18 15:58:13 2024 */
+/* Date: Wed Dec 18 20:52:06 2024 */
 /* Do not hand edit! */
 
-#define pd_plyBackIdle                   0        /* BMP  */
-#define pd_plyIdle                       1        /* BMP  */
+#define pd_idle                          0        /* BMP  */
+#define pd_plyBackIdle                   1        /* BMP  */
 #define pd_plyTake                       2        /* BMP  */
 #define pd_plyWalk01                     3        /* BMP  */
 #define pd_plyWalk02                     4        /* BMP  */
