@@ -15,6 +15,7 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
         animation->frame = startFrame;
         animation->lastFrame = startFrame;
         animation->frameTime = 0;
+        animation->reverse = false;
     }
                 
     //reset frame time on frame change
@@ -33,11 +34,23 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
         //if not last frame
         if (animation->frame < endFrame)
             //next frame
-            animation->frame += 1;
+            if (!animation->reverse)
+                animation->frame += 1;
+            else
+                animation->frame -= 1;
+        else if (animation->frame == startFrame && mode == ANIM_PING_PONG)
+            animation->reverse = false;
         else if (mode == ANIM_LOOP)
         {
             //repeat animation
             animation->frame = startFrame;
+            animFinished = true;
+        }
+        else if (mode == ANIM_PING_PONG)
+        {
+            //reverse animation
+            animation->reverse = true;
+            animation->frame -=1;
             animFinished = true;
         }
         else

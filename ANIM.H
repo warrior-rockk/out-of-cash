@@ -8,12 +8,14 @@
 //animation modes
 #define ANIM_LOOP       0
 #define ANIM_ONCE       1
+#define ANIM_PING_PONG  2
 
 typedef struct tAnimation
 {
     int16_t frame;
     int16_t lastFrame;
     int16_t frameTime;
+    bool reverse;
 } tAnimation;
 
 //declare functions
