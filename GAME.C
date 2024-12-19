@@ -170,7 +170,6 @@ void main_update()
     show_debug("Y",mouse_y);
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
-    show_debug("Room scroll x", roomScroll.x);
 }
 
 //general draw

@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Free fonts
 - [ ] Bug on lights off when reset game
 - [ ] New object focused on inventory (blink?)
 - [ ] Animation for take upper and bottom
