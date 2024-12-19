@@ -109,7 +109,8 @@ tObject* r03_get_object_info(uint8_t numObject)
 //function to init room
 void r03_room_init()
 {
-    set_room_lights_off(2, is_game_flag(BATH_LIGHT_OFF_FLAG));    
+    set_room_light_off(is_game_flag(BATH_LIGHT_OFF_FLAG));
+        
     game_fade_in();
 }
 
@@ -129,10 +130,11 @@ void r03_room_update()
 //update room objects
 void r03_update_room_objects()
 {
-    r03_object[R03_GEL_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_GEL_FLAG);
-    r03_object[R03_BATHCLOSETOPEN_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG);
+    r03_object[R03_GEL_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_GEL_FLAG) && !is_game_flag(BATH_LIGHT_OFF_FLAG);
+    r03_object[R03_BATHCLOSETOPEN_OBJ_ID].active = is_game_flag(BATH_CLOSET_OPEN_FLAG) && !is_game_flag(BATH_LIGHT_OFF_FLAG);
     r03_object[R03_BATHDOOROPEN_OBJ_ID].active = is_game_flag(BATH_DOOR_OPEN_FLAG);
-    r03_object[R03_BATHMAT_OBJ_ID].active = !is_game_flag(GOT_BATH_MAT_FLAG);
+    r03_object[R03_BATHMAT_OBJ_ID].active = !is_game_flag(GOT_BATH_MAT_FLAG) && !is_game_flag(BATH_LIGHT_OFF_FLAG);
+    r03_object[R03_BATH_OBJ_ID].active = !is_game_flag(BATH_LIGHT_OFF_FLAG);
 }
 
 //update dialog selection
@@ -375,7 +377,7 @@ void r03_update_room_script()
                                 break;
                             case 2:
                                 toggle_game_flag(BATH_LIGHT_OFF_FLAG);
-                                set_room_lights_off(BATH_ROOM_NUM, is_game_flag(BATH_LIGHT_OFF_FLAG));
+                                set_room_light_off(is_game_flag(BATH_LIGHT_OFF_FLAG));
                                 end_script();
                                 break;
                             default:

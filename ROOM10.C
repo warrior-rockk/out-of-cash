@@ -86,6 +86,8 @@ tObject* r10_get_object_info(uint8_t numObject)
 //function to init room
 void r10_room_init()
 {
+    set_room_light_off(!is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG));
+    
     game_fade_in();
 }
 
@@ -105,8 +107,8 @@ void r10_room_update()
 //update room objects
 void r10_update_room_objects()
 {
-    r10_object[R10_MAINTCLOSETOPEN_OBJ_ID].active = is_game_flag(MAIN_LOCKER_CLOSET_OPEN);
-    r10_object[R10_PAINTBUCKET_OBJ_ID].active = !is_game_flag(GOT_PAINT_BUCKET_FLAG) && is_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+    r10_object[R10_MAINTCLOSETOPEN_OBJ_ID].active = is_game_flag(MAIN_LOCKER_CLOSET_OPEN) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+    r10_object[R10_PAINTBUCKET_OBJ_ID].active = !is_game_flag(GOT_PAINT_BUCKET_FLAG) && is_game_flag(MAIN_LOCKER_CLOSET_OPEN) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
 }
 
 //update dialog selection
@@ -181,7 +183,7 @@ void r10_update_room_script()
                                 break;
                             case 2:
                                 toggle_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
-                                set_room_lights_off(MAINT_LOCKER_ROOM_NUM, !is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG));
+                                set_room_light_off(!is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG));
                                 end_script();
                                 break;
                             default:

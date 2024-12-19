@@ -182,6 +182,7 @@ struct game
     int16_t room_pos_x;
     int16_t room_pos_y;
     long roomMusicPos;
+    bool actualRoomLightOff;
     bool fadeIn;
     bool fadeOut;
     bool exit;
@@ -382,7 +383,6 @@ void room_action_update();
 void room_draw();
 void room_front_layer_draw();
 void room_objects_draw(uint8_t layer);
-void room_update_lights(uint8_t roomNumber, bool turnOff);
 void room_update_scroll();
 
 void hud_init();

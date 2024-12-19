@@ -1,7 +1,7 @@
 # TO-DO
 
+- [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
-- [ ] Bug on lights off when reset game
 - [ ] New object focused on inventory (blink?)
 - [ ] Animation for take upper and bottom
 - [ ] Sound effects
@@ -20,6 +20,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Bug on lights off when reset game
 - [X] Debug when load game with room scroll
 - [X] Spanish characters on system font
 - [X] Custom fonts

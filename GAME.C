@@ -259,11 +259,12 @@ void game_init()
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     
     //init game vars
-    game.actualRoom     = -1;    //to force first room_init
-    game.nextRoom       = 1;
-    //game.roomLoaded     = false;
-    game.room_pos_x     = 0;
-    game.room_pos_y     = 0;
+    game.actualRoom             = -1;    //to force first room_init
+    game.nextRoom               = 1;
+    game.actualRoomLightOff     = false;
+    game.room_pos_x             = 0;
+    game.room_pos_y             = 0;
+    
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
@@ -642,7 +643,8 @@ void check_room_changed()
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
         game.lastRoom = game.actualRoom;
         game.actualRoom = game.nextRoom;
-
+        game.actualRoomLightOff = false;
+        
         //load room resources
         room_load(game.actualRoom);
 
@@ -1470,7 +1472,7 @@ void room_draw()
     //test: move to new function room_update
     room_update_scroll();
     
-    if (!roomData[game.actualRoom].lightsOff)
+    if (!game.actualRoomLightOff)
         //draw room image centered on room screen zone
         blit(actualRoom.image, buffer, roomScroll.x, roomScroll.y, actualRoom.roomBorders.left, actualRoom.roomBorders.up, actualRoom.image->w, actualRoom.image->h);
 
@@ -1483,17 +1485,15 @@ void room_draw()
                 blit(actualRoom.wImage, buffer, roomScroll.x, roomScroll.y, actualRoom.hsWalkBorders.left, actualRoom.hsWalkBorders.up, actualRoom.wImage->w, actualRoom.wImage->h);
     #endif
 
-    if (!roomData[game.actualRoom].lightsOff)
-        //draw room objects back layer
-        room_objects_draw(BACK_LAYER);
+    //draw room objects back layer
+    room_objects_draw(BACK_LAYER);
 }
 
 //draws the room front layer objects
 void room_front_layer_draw()
 {
-    if (!roomData[game.actualRoom].lightsOff)
-        //draw room objects front layer
-        room_objects_draw(FRONT_LAYER);
+    //draw room objects front layer
+    room_objects_draw(FRONT_LAYER);
 
     //draw black background on hud position
     rectfill(buffer, 0, HUD_Y, RES_X, RES_Y, BLACK_COLOR);
@@ -1540,12 +1540,6 @@ void room_objects_draw(uint8_t layer)
             draw_sprite(buffer, objImage, obj->x-(objImage->w>>1) - roomScroll.x, obj->y - (objImage->h>>1) - roomScroll.y);
         }
     }
-}
-
-//function to update room lights
-void room_update_lights(uint8_t roomNumber, bool turnOff)
-{
-    roomData[roomNumber].lightsOff = turnOff;
 }
 
 //function to update room scroll

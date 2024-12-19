@@ -260,9 +260,9 @@ void change_room_pos(int roomNum, int x, int y)
 }
 
 //function to set or reset room lights off
-void set_room_lights_off(uint8_t roomNumber, bool turnOff)
+void set_room_light_off(bool turnOff)
 {
-    room_update_lights(roomNumber, turnOff);
+    game.actualRoomLightOff = turnOff;
 }
 
 //function to get last room

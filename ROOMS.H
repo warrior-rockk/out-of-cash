@@ -31,7 +31,7 @@ typedef struct tRoomData
     uint8_t roomMusicId;
     //room properties
     bool fadeRoom;
-    bool lightsOff;
+    bool lightsOff; //deprecated
     //function pointer to init room
     void (*room_init)(void);
     //function pointer to update room
