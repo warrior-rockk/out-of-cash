@@ -24,23 +24,68 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
         case r09_bench:
                 strcpy(s, "Banco");
             break;
+        case r09_shirt:
+            if (!r09_object[R09_SHIRT_OBJ_ID].active)
+                strcpy(s, "");
+            else
+            {
+                strcpy(s, "Camiseta");
+                break;
+            }
+        case r09_books:
+            if (!is_game_flag(LOCKER_1_OPEN_FLAG)
+                strcpy(s, "");
+            else
+                strcpy(s, "Libros");
+                break;
+            }
         case r09_locker1:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Taquilla 1");
             break;
+        case r09_poster:
+            if (!is_game_flag(LOCKER_2_OPEN_FLAG)
+                strcpy(s, "");
+            else
+                strcpy(s, "Poster");
+                break;
+            }
+        case r09_shoes:
+            if (!is_game_flag(LOCKER_2_OPEN_FLAG)
+                strcpy(s, "");
+            else
+                strcpy(s, "Zapatillas");
+                break;
+            }
+        case r09_bag:
+            if (!is_game_flag(LOCKER_2_OPEN_FLAG)
+                strcpy(s, "");
+            else
+                strcpy(s, "Mochila");
+                break;
+            }
         case r09_locker2:
-                strcpy(s, "Taquilla");
-            break;
-        case r09_locker3:
-                strcpy(s, "Taquilla");
-            break;
-        case r09_locker4:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Taquilla 2");
             break;
         case r09_jeans:
+            if (!r09_object[R09_JEANS_OBJ_ID].active)
+                strcpy(s, "");
+            else
+            {
                 strcpy(s, "Pantalones");
+                break;
+            }
+        case r09_box:
+            if (!is_game_flag(LOCKER_3_OPEN_FLAG)
+                strcpy(s, "");
+            else
+                strcpy(s, "Caja");
+                break;
+            }
+        case r09_locker3:
+                strcpy(s, "Taquilla 3");
             break;
-        case r09_shirt:
-                strcpy(s, "Camiseta");
+        case r09_locker4:
+                strcpy(s, "Taquilla 4");
             break;
         default:
             strcpy(s, "");
@@ -59,23 +104,68 @@ enum verbs r09_get_default_hotspot_verb(uint8_t colorCode)
         case r09_bench:
             return LOOK;
             break;
+        case r09_shirt:
+            if (r09_object[R09_SHIRT_OBJ_ID].active)
+            {
+                return LOOK;
+                break;
+            }
+        case r09_books:
+            if (is_game_flag(LOCKER_1_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
         case r09_locker1:
-            return OPEN;
+            if (is_game_flag(LOCKER_1_OPEN_FLAG))
+                return CLOSE;
+            else
+                return OPEN;
             break;
+        case r09_poster:
+            if (is_game_flag(LOCKER_2_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
+        case r09_shoes:
+            if (is_game_flag(LOCKER_2_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
+        case r09_bag:
+            if (is_game_flag(LOCKER_2_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
         case r09_locker2:
-            return OPEN;
+            if (is_game_flag(LOCKER_2_OPEN_FLAG))
+                return CLOSE;
+            else
+                return OPEN;
             break;
+        case r09_jeans:
+            if (r09_object[R09_SHIRT_OBJ_ID].active)
+            {
+                return LOOK;
+                break;
+            }
+        case r09_box:
+            if (is_game_flag(LOCKER_3_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
         case r09_locker3:
-            return OPEN;
+            if (is_game_flag(LOCKER_3_OPEN_FLAG))
+                return CLOSE;
+            else
+                return OPEN;
             break;
         case r09_locker4:
             return OPEN;
-            break;
-        case r09_jeans:
-            return LOOK;
-            break;
-        case r09_shirt:
-            return LOOK;
             break;
         default:
             return LOOK;
@@ -113,7 +203,12 @@ void r09_room_update()
 //update room objects
 void r09_update_room_objects()
 {
+    r09_object[R09_LOCKER1OPEN_OBJ_ID].active = is_game_flag(LOCKER_1_OPEN_FLAG);
+    r09_object[R09_LOCKER2OPEN_OBJ_ID].active = is_game_flag(LOCKER_2_OPEN_FLAG);
+    r09_object[R09_LOCKER3OPEN_OBJ_ID].active = is_game_flag(LOCKER_3_OPEN_FLAG);
 
+    r09_object[R09_SHIRT_OBJ_ID].active = is_game_flag(LOCKER_1_OPEN_FLAG) && !is_game_flag(GOT_SHIRT_FLAG);
+    r09_object[R09_JEANS_OBJ_ID].active = is_game_flag(LOCKER_3_OPEN_FLAG) && !is_game_flag(GOT_JEANS_FLAG);
 }
 
 //update dialog selection
@@ -139,7 +234,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Es la puerta que da al pasillo del instituto");
                                 break;
                             default:
                                 end_script();
@@ -169,7 +264,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Banco");
+                                script_say("Un banco para sentarse y poder cambiarse");
                                 break;
                             default:
                                 end_script();
@@ -192,7 +287,39 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();                                
+                                if (!is_game_flag(LOCKER_1_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  abierta");
+                                break;
+                            default:
+                                set_game_flag(LOCKER_1_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(LOCKER_1_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  cerrada");
+                                break;
+                            default:
+                                clear_game_flag(LOCKER_1_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_locker2:
@@ -209,7 +336,39 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();                                
+                                if (!is_game_flag(LOCKER_2_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  abierta");
+                                break;
+                            default:
+                                set_game_flag(LOCKER_2_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(LOCKER_2_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  cerrada");
+                                break;
+                            default:
+                                clear_game_flag(LOCKER_2_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_locker3:
@@ -226,7 +385,39 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();                                
+                                if (!is_game_flag(LOCKER_3_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  abierta");
+                                break;
+                            default:
+                                set_game_flag(LOCKER_3_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(LOCKER_3_OPEN_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                    script_say("Ya est  cerrada");
+                                break;
+                            default:
+                                clear_game_flag(LOCKER_3_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_locker4:
@@ -243,7 +434,34 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_say("Esta bloqueada. No se puede abrir");
+                            default:
+                                script_say("Y tampoco tengo mucho inter‚s en abrirla");
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Ya est  cerrada");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_jeans:
@@ -254,13 +472,29 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Pantalones");
+                                script_say("Unos pantalones vaqueros perfectamente doblados");
+                                break;
+                            default:
+                                script_say("Yo uso la misma marca");
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r09_object[R09_SHIRT_OBJ_ID].active, GOT_SHIRT_FLAG, id_shirt);
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
                 }
                 break;            
             case r09_shirt:
@@ -271,13 +505,28 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Camiseta");
+                                script_say("Una camiseta roja muy parecida a la m¡a");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_take_object(&r09_object[R09_JEANS_OBJ_ID].active, GOT_JEANS_FLAG, id_jeans);
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
 

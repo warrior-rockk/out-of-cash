@@ -48,11 +48,16 @@ enum r09_hotspotCode{
     r09_door    = 32,
     r09_bench    = 33,
     r09_locker1    = 34,
-    r09_locker2    = 35,
-    r09_locker3    = 36,
-    r09_locker4    = 37,
+    r09_locker2    = 36,
+    r09_locker3    = 37,
+    r09_locker4    = 35,
     r09_jeans    = 38,
     r09_shirt    = 39,
+    r09_books    = 40,
+    r09_poster   = 41,
+    r09_shoes    = 42,
+    r09_bag      = 43,
+    r09_box      = 44,
 };
 
 //declare and define room objects array

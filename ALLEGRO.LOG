@@ -1,23 +1,15 @@
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Change from room 1 to room 9
+Change from room 1 to room 10
+Free actual room datafile resources
+Load room datafile: R10DATA.DAT
+Change from room 10 to room 9
 Free actual room datafile resources
 Load room datafile: R09DATA.DAT
-Objeto 1 Posicion x: 79 Posicion y: 85
-Objeto 2 Posicion x: 139 Posicion y: 83
-Objeto 3 Posicion x: 189 Posicion y: 79
-Objeto 4 Posicion x: 89 Posicion y: 56
-Objeto 5 Posicion x: 178 Posicion y: 79
 Change from room 9 to room 6
 Free actual room datafile resources
 Load room datafile: R06DATA.DAT
-Change from room 6 to room 12
+Change from room 6 to room 9
 Free actual room datafile resources
-Load room datafile: R12DATA.DAT
-Objeto 0 Posicion x: 236 Posicion y: 96
-Objeto 1 Posicion x: 237 Posicion y: 97
-Change from room 12 to room 10
-Free actual room datafile resources
-Load room datafile: R10DATA.DAT
-Objeto 2 Posicion x: 131 Posicion y: 75
+Load room datafile: R09DATA.DAT
