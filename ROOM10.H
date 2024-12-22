@@ -31,7 +31,7 @@
 
 //define object data (objId, x, y, animId, active, layer)
 #define R10_OBJ_0           r10d_objMaintClosetOpen,   174, 98,  0, false, 0
-#define R10_OBJ_1           r10d_objPaintBucket,       167, 115,  0, false, 0
+#define R10_OBJ_1           r10d_objPaintBucket,       180, 123,  0, false, 0
 #define R10_OBJ_2           r10d_objDoorOpen,          131, 75,  0, true, 0
 
 //define room animations
