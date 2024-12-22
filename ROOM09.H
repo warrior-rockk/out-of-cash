@@ -16,7 +16,7 @@
 //define room properties
 #define R09_START_POS_X         229
 #define R09_START_POS_Y         129
-#define R09_ROOM_NUM_OBJS       1
+#define R09_ROOM_NUM_OBJS       6
 #define R09_MUSIC_ID            0
 #define R09_FADE                false
 #define R09_LIGHTS_OFF                false
@@ -26,9 +26,19 @@
 
 //define object array alias
 #define R09_BENCH_OBJ_ID 0
+#define R09_LOCKER1OPEN_OBJ_ID 1
+#define R09_LOCKER2OPEN_OBJ_ID 2
+#define R09_LOCKER3OPEN_OBJ_ID 3
+#define R09_SHIRT_OBJ_ID 4
+#define R09_JEANS_OBJ_ID 5
 
 //define object data (objId, x, y, animId, active, layer)
-#define R09_OBJ_0           r09d_objBench,   149, 154,  0, true, 1
+#define R09_OBJ_0           r09d_objBench,         149, 154,  0, true, 1
+#define R09_OBJ_1           r09d_objLocker1Open,   79,  85,  0, false, 0
+#define R09_OBJ_2           r09d_objLocker2Open,   139, 83,  0, false, 0
+#define R09_OBJ_3           r09d_objLocker3Open,   189, 79,  0, false, 0
+#define R09_OBJ_4           r09d_objShirt,         89,  56,  0, false, 0
+#define R09_OBJ_5           r09d_objJeans,         178, 79,  0, false, 0
 
 //define room animations
 #define R09_NUM_ANIMATIONS  0
@@ -49,6 +59,11 @@ enum r09_hotspotCode{
 static tObject r09_object[R09_ROOM_NUM_OBJS] =
 {
     {R09_OBJ_0},
+    {R09_OBJ_1},
+    {R09_OBJ_2},
+    {R09_OBJ_3},
+    {R09_OBJ_4},
+    {R09_OBJ_5},
 };
 
 //declare room objects animations array

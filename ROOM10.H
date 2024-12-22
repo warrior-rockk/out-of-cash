@@ -16,7 +16,7 @@
 //define room properties
 #define R10_START_POS_X         134
 #define R10_START_POS_Y         95
-#define R10_ROOM_NUM_OBJS       2
+#define R10_ROOM_NUM_OBJS       3
 #define R10_MUSIC_ID            0
 #define R10_FADE                false
 #define R10_LIGHTS_OFF          true
@@ -27,10 +27,12 @@
 //define object array alias
 #define R10_MAINTCLOSETOPEN_OBJ_ID  0
 #define R10_PAINTBUCKET_OBJ_ID      1
+#define R10_DOOROPEN_OBJ_ID         2
 
 //define object data (objId, x, y, animId, active, layer)
 #define R10_OBJ_0           r10d_objMaintClosetOpen,   174, 98,  0, false, 0
 #define R10_OBJ_1           r10d_objPaintBucket,       167, 115,  0, false, 0
+#define R10_OBJ_2           r10d_objDoorOpen,          131, 75,  0, true, 0
 
 //define room animations
 #define R10_NUM_ANIMATIONS  0
@@ -49,6 +51,7 @@ static tObject r10_object[R10_ROOM_NUM_OBJS] =
 {
     {R10_OBJ_0},
     {R10_OBJ_1},
+    {R10_OBJ_2},
 };
 
 //declare room objects animations array
