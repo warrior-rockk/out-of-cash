@@ -34,6 +34,22 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
             }
             else
                 strcpy(s, "");
+        case r10_broom:
+            if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+            {
+                strcpy(s, "Escoba");
+                break;
+            }
+            else
+                strcpy(s, "");
+        case r10_box:
+            if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+            {
+                strcpy(s, "Caja");
+                break;
+            }
+            else
+                strcpy(s, "");
         case r10_closet:
                 strcpy(s, "Armario");
             break;
@@ -63,8 +79,20 @@ enum verbs r10_get_default_hotspot_verb(uint8_t colorCode)
                 return LOOK;
                 break;
             }
+        case r10_broom:
+            if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }
+        case r10_box:
+            if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+            {
+                return LOOK;
+                break;
+            }        
         case r10_closet:
-            if (!is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+            if (!is_game_flag(MAINT_CLOSET_OPEN_FLAG))
                 return OPEN;
             else
                 return CLOSE;
@@ -107,8 +135,10 @@ void r10_room_update()
 //update room objects
 void r10_update_room_objects()
 {
-    r10_object[R10_MAINTCLOSETOPEN_OBJ_ID].active = is_game_flag(MAIN_LOCKER_CLOSET_OPEN) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
-    r10_object[R10_PAINTBUCKET_OBJ_ID].active = !is_game_flag(GOT_PAINT_BUCKET_FLAG) && is_game_flag(MAIN_LOCKER_CLOSET_OPEN) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+    r10_object[R10_MAINTCLOSETOPEN_OBJ_ID].active = is_game_flag(MAINT_CLOSET_OPEN_FLAG) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+    r10_object[R10_BOX_OBJ_ID].active = is_game_flag(MAINT_CLOSET_OPEN_FLAG) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+    r10_object[R10_PAINTBUCKET_OBJ_ID].active = !is_game_flag(GOT_PAINT_BUCKET_FLAG) && is_game_flag(MAINT_CLOSET_OPEN_FLAG) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
+
 }
 
 //update dialog selection
@@ -244,6 +274,46 @@ void r10_update_room_script()
                     }
                     break;
                 }
+            case r10_box:
+                if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("No entiendo porque hay tantas cajas vac¡as en este juego...");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }
+            case r10_broom:
+                if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("No me hagas mucho caso pero dir¡a que es una escoba");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }
             case r10_closet:
                 switch(roomScript.verb)
                 {
@@ -264,7 +334,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+                                if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
                                 {
                                     script_say("Ya est  abierto");
                                     end_script();
@@ -276,7 +346,7 @@ void r10_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                set_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+                                set_game_flag(MAINT_CLOSET_OPEN_FLAG);
                                 end_script();
                                 break;
                             default:
@@ -289,7 +359,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                if (!is_game_flag(MAIN_LOCKER_CLOSET_OPEN))
+                                if (!is_game_flag(MAINT_CLOSET_OPEN_FLAG))
                                 {
                                     script_say("Ya est  cerrado");
                                     end_script();
@@ -301,7 +371,7 @@ void r10_update_room_script()
                                 script_player_take_state();
                                 break;
                             case 2:
-                                clear_game_flag(MAIN_LOCKER_CLOSET_OPEN);
+                                clear_game_flag(MAINT_CLOSET_OPEN_FLAG);
                                 end_script();
                                 break;
                             default:
