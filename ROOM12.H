@@ -56,6 +56,9 @@ static tObject r12_object[R12_ROOM_NUM_OBJS] =
 //declare room objects animations array
 static tAnimation r12_animations[R12_NUM_ANIMATIONS];
 
+//declare room dialog actor
+static tActorTalk r12_dialogActor = {244, 50, 70, false};
+
 //declare room functions called from game
 void r12_get_hotspot_name(uint8_t colorCode, char *s);
 enum verbs r12_get_default_hotspot_verb(uint8_t colorCode);

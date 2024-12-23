@@ -113,13 +113,104 @@ void r12_update_room_objects()
 //update dialog selection
 void r12_update_dialog_selection()
 {
-
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialog.node)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("¨A que te refieres con curso y asignatura?",1);
+                        dialog_add("¨Que haces ah¡ dentro?",1);
+                        dialog_add("¨Est  ocupado?",3);
+                        dialog_add("Hasta luego",0);
+                    break;
+                    case 3:
+                        dialog_add("Me gustar¡a llevarme una fotocopia de Dragon Ball",4);
+                    break;
+                    case 4:
+                        dialog_add("No tengo dinero...",1);
+                        dialog_add("No me interesa, gracias", 0);
+                    break;
+                    
+                }
+            break;
+        }
+    }
 }
 
 //update room script
 void r12_update_room_script()
 {
-//if script active is room script type
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
+    {
+        //fixed step: say response line
+        if (roomScript.step == 0)
+        {
+            begin_script();
+            script_say(dialog.lineText[dialog.selLine - 1]);
+        }
+        else
+        {
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLine
+            switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
+            {
+                case 1:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Dime curso y asignatura y te consigo respuestas a los ex menes", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("100% garantizado o devolvemos el dinero", &r05_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 2:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Me dedico a conseguir a la gente las respuestas a los ex menes", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("A cambio de una peque¤a compensaci¢n ec¢nomica", &r05_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("De algo hay que vivir, tio", &r05_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 3:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Este v ter esta reservado para tareas empresariales", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+            }
+        }
+    }
+
+    //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
@@ -248,13 +339,29 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Parece que se ve algo dentro de este WC...");
+                                script_say("Parece que hay alguien dentro de este WC...");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("¨Hola?");
+                                break;
+                            case 1:
+                                script_say_actor("¨Curso y asignatura?", &r12_dialogActor);
+                                break;
+                            default:
+                                script_start_dialog(1);
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r12_holeDoor:

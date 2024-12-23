@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Bug selecting inexistent dialog lines
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
 - [ ] New object focused on inventory (blink?)
