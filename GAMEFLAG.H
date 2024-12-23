@@ -65,7 +65,9 @@ enum gameFlags{
     GOT_SHIRT_FLAG,
     GOT_JEANS_FLAG,
 
-    ASKED_ANSWERS_FLAG,
+    R12_DIALOG_OPTION_1_FLAG,
+    R12_DIALOG_OPTION_2_FLAG,
+    R12_DIALOG_OPTION_3_FLAG,
 };
 
 //definition of global game numeric vars index

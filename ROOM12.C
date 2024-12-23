@@ -124,9 +124,16 @@ void r12_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("¨A que te refieres con curso y asignatura?",2);
-                        dialog_add("¨Que haces ah¡ dentro?",2);
-                        dialog_add("¨Est  ocupado?",1);
+                        if (!is_game_flag(R12_DIALOG_OPTION_1_FLAG))
+                            dialog_add("¨A que te refieres con curso y asignatura?",2);
+                        else
+                            dialog_add("Necesitar¡a las respuestas de M tematicas de 1§ de BUP", 3);
+                        if (!is_game_flag(R12_DIALOG_OPTION_2_FLAG))
+                            dialog_add("¨Que haces ah¡ dentro?",2);
+                        else
+                            dialog_add("Necesitar¡a las respuestas de Historia de 1§ de BUP", 3);
+                        if (!is_game_flag(R12_DIALOG_OPTION_3_FLAG))
+                            dialog_add("¨Est  este v ter ocupado?",1);
                         dialog_add("Hasta luego",0);
                     break;
                     case 2:
@@ -138,7 +145,11 @@ void r12_update_dialog_selection()
                     break;
                     case 3:
                         dialog_add("Pero es que no tengo dinero, colega",0);
+                        dialog_add("¨Hay algo que puedas aceptar a cambio de las respuestas?", 4);
                         dialog_add("Muy caro...Me esperar‚ a rebajas", 0);
+                    break;
+                    case 4:
+
                     break;
                 }
             break;
@@ -165,18 +176,27 @@ void r12_update_room_script()
             switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
             {
                 case 1:
-                    switch (roomScript.step)
+                    if (!is_game_flag(R12_DIALOG_OPTION_1_FLAG))
                     {
-                        case 1:
-                            script_say_actor("Dime curso y asignatura y te consigo respuestas a los ex menes", &r12_dialogActor);
-                        break;
-                        case 2:
-                            script_say_actor("100% garantizado o devolvemos el dinero, tronco", &r12_dialogActor);
-                        break;
-                        default:
-                            script_next_dialog_node();
-                            end_script();
-                        break;
+                       switch (roomScript.step)
+                       {
+                           case 1:
+                               script_say_actor("Dime curso y asignatura y te consigo respuestas a los ex menes", &r12_dialogActor);
+                           break;
+                           case 2:
+                               script_say_actor("100% garantizado o devolvemos el dinero, tronco", &r12_dialogActor);
+                           break;
+                           default:
+                               set_game_flag(R12_DIALOG_OPTION_1_FLAG);
+                               script_next_dialog_node();
+                               end_script();
+                           break;
+                       }
+                    }
+                    else
+                    {
+                        dialog.selLine = 3;
+                        dialog.node = 2;
                     }
                 break;
                 case 2:
@@ -195,6 +215,7 @@ void r12_update_room_script()
                             script_say_actor("De algo hay que vivir, t¡o", &r12_dialogActor);
                         break;
                         default:
+                            set_game_flag(R12_DIALOG_OPTION_2_FLAG);
                             script_next_dialog_node();
                             end_script();
                         break;
@@ -210,6 +231,7 @@ void r12_update_room_script()
                             script_say_actor("Busc te otro para tus asuntos, colega", &r12_dialogActor);
                         break;
                         default:
+                            set_game_flag(R12_DIALOG_OPTION_3_FLAG);
                             script_next_dialog_node();
                             end_script();
                         break;

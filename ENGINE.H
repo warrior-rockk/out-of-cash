@@ -15,7 +15,7 @@
 #define NUM_RAND_ANSWERS        4
 
 //dialogs
-#define MAX_DIALOG_LINE_LENGTH  50
+#define MAX_DIALOG_LINE_LENGTH  100 //50
 #define NUM_MAX_DIALOG_LINES    5
 #define DIALOG_ST_SELECT        0
 #define DIALOG_ST_SCRIPT        1
