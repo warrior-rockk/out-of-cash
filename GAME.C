@@ -1853,21 +1853,45 @@ void dialog_init()
 //function to draw the dialog
 void dialog_draw()
 {
+    static int iniPos = 0;
+    static int lastLine = 0;
+    char strScroll[MAX_DIALOG_LINE_SCROLL + 1];
+    
     if (dialog.state == DIALOG_ST_SELECT)
     {
-       for (int i = 0; i < dialog.nodeNumLines; i++)
-       {
-           if ((dialog.highlightLine - 1) == i)
-               textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", dialog.lineText[i]);
-           else
-               textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
-       }
+        //run all the lines of the select dialog node
+        for (int i = 0; i < dialog.nodeNumLines; i++)
+        {
+            //if actual draw line is the hightlighted line
+            if ((dialog.highlightLine - 1) == i)
+            {
+                //increment scroll string pos on game tick
+                if (gameTick)
+                {
+                    if ((iniPos + MAX_DIALOG_LINE_SCROLL) < strlen(dialog.lineText[i]))
+                        iniPos++;
+                }
+
+                //compone string scroll substring
+                strncpy(strScroll, dialog.lineText[i] + iniPos, MAX_DIALOG_LINE_SCROLL);
+                strScroll[MAX_DIALOG_LINE_SCROLL] = '\0';
+
+                //draw scroll dialog line on highlight color
+                textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(255,255,255), -1, "%s", strScroll);
+
+                //reset iniPos string scroll on line change
+                if (lastLine != dialog.highlightLine)
+                    iniPos = 0;
+                lastLine = dialog.highlightLine;
+            }
+            else
+                //draw dialog line on regular color
+                textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
+        }
    
-       //reset dialog choices
-       dialog.nodeNumLines = 0;
+        //reset dialog choices
+        dialog.nodeNumLines = 0;
     }
 }
-
-
 
 END_OF_MAIN()

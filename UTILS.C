@@ -92,6 +92,10 @@ char replace_unicode(char character)
             return CHAR_O_ACCENT;
         case '£':
             return CHAR_U_ACCENT;
+        case '§':
+            return CHAR_MAS_ORDINAL;
+        case '¦':
+            return CHAR_FEM_ORDINAL;
         /*case 'A':
             return CHAR_A_ACCENT_CAP;
         case 'E':

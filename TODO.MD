@@ -1,7 +1,5 @@
 # TO-DO
 
-- [ ] Scroll long dialog line
-- [ ] Bug selecting inexistent dialog lines
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
 - [ ] New object focused on inventory (blink?)
@@ -22,6 +20,8 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Scroll long dialog line
+- [X] Bug selecting inexistent dialog lines
 - [X] Bug on lights off when reset game
 - [X] Debug when load game with room scroll
 - [X] Spanish characters on system font
