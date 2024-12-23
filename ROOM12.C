@@ -124,19 +124,22 @@ void r12_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("¨A que te refieres con curso y asignatura?",1);
-                        dialog_add("¨Que haces ah¡ dentro?",1);
-                        dialog_add("¨Est  ocupado?",3);
+                        dialog_add("¨A que te refieres con curso y asignatura?",2);
+                        dialog_add("¨Que haces ah¡ dentro?",2);
+                        dialog_add("¨Est  ocupado?",1);
                         dialog_add("Hasta luego",0);
                     break;
+                    case 2:
+                        dialog_add("Pero esto no es muy legal ¨no?",2);
+                        dialog_add("¨Como s‚ que eres de fiar y son correctas las respuestas?",2);
+                        dialog_add("­Genial! Necesito las respuestas de M tematicas de 1§ de BUP", 3);
+                        dialog_add("­Perfecto! Necesito las respuestas de Historia de 1§ de BUP", 2);
+                        dialog_add("Gracias, pero no, gracias", 1);
+                    break;
                     case 3:
-                        dialog_add("Me gustar¡a llevarme una fotocopia de Dragon Ball",4);
+                        dialog_add("Pero es que no tengo dinero, colega",0);
+                        dialog_add("Muy caro...Me esperar‚ a rebajas", 0);
                     break;
-                    case 4:
-                        dialog_add("No tengo dinero...",1);
-                        dialog_add("No me interesa, gracias", 0);
-                    break;
-                    
                 }
             break;
         }
@@ -168,7 +171,7 @@ void r12_update_room_script()
                             script_say_actor("Dime curso y asignatura y te consigo respuestas a los ex menes", &r12_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("100% garantizado o devolvemos el dinero", &r05_dialogActor);
+                            script_say_actor("100% garantizado o devolvemos el dinero, tronco", &r12_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -180,13 +183,16 @@ void r12_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Me dedico a conseguir a la gente las respuestas a los ex menes", &r12_dialogActor);
+                            script_say_actor("Colega, me dedico a hacer a la gente feliz", &r12_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("A cambio de una peque¤a compensaci¢n ec¢nomica", &r05_dialogActor);
-                        break;
+                            script_say_actor("Consigo las respuestas para los ex menes del instituto", &r12_dialogActor);
+                            break;
                         case 3:
-                            script_say_actor("De algo hay que vivir, tio", &r05_dialogActor);
+                            script_say_actor("A cambio de una peque¤a compensaci¢n ec¢nomica, por supuesto", &r12_dialogActor);
+                        break;
+                        case 4:
+                            script_say_actor("De algo hay que vivir, t¡o", &r12_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -200,11 +206,90 @@ void r12_update_room_script()
                         case 1:
                             script_say_actor("Este v ter esta reservado para tareas empresariales", &r12_dialogActor);
                         break;
+                        case 2:
+                            script_say_actor("Busc te otro para tus asuntos, colega", &r12_dialogActor);
+                        break;
                         default:
                             script_next_dialog_node();
                             end_script();
                         break;
                     }
+                break;
+                case 101:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("T¡o, la legalidad es un concepto muy subjetivo y difuminado en la sociedad actual de consumo", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Adem s, estas respuestas no son lo peor que te pueden vender en un ba¤o de instituto, colega", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 102:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Tio, si est s en un v ter buscando respuestas a ex menes es que est s desesperado", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Ahora mismo soy tu mejor opci¢n", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 103:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Dabuten, son 1000 pesetas", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 104:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Lo siento colega, se me han acabado las respuestas de Historia de 1§ de BUP", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Parece que es una asignatura de las dif¡ciles y ya me han comprado todas las que ten¡a", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 201:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Mala suerte chaval", &r12_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Si no hay dinero, no hay respuestas", &r12_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                default:
+                    script_next_dialog_node();
+                    end_script();
                 break;
             }
         }

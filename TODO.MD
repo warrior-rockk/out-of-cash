@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Scroll long dialog line
 - [ ] Bug selecting inexistent dialog lines
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts

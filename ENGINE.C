@@ -506,7 +506,7 @@ void script_next_dialog_node()
 //function to add line of dialog
 void dialog_add(char *textLine, uint8_t destNode)
 {
-    ASSERT(strlen(textLine) <= MAX_MSG_LENGTH);
+    ASSERT(strlen(textLine) <= MAX_DIALOG_LINE_LENGTH);
     
     dialog.nodeNumLines++;
 

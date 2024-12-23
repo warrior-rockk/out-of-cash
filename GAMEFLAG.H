@@ -64,7 +64,8 @@ enum gameFlags{
     LOCKER_3_OPEN_FLAG,
     GOT_SHIRT_FLAG,
     GOT_JEANS_FLAG,
-    
+
+    ASKED_ANSWERS_FLAG,
 };
 
 //definition of global game numeric vars index
