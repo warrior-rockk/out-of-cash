@@ -1162,7 +1162,7 @@ void cursor_action_dialog()
     uint8_t hsColor = getpixel(hud.dialogHsImage, mouse_x, mouse_y - HUD_Y);
 
     //if cursor on valid dialog line
-    if (hsColor >= 0 && hsColor <= dialog.nodeNumLines)
+    if (hsColor > 0 && hsColor <= dialog.nodeNumLines)
     {
         //sets line highlighted
         dialog.highlightLine = hsColor;
