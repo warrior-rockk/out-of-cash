@@ -392,7 +392,7 @@ void game_update()
 
         //log object placement position
         if (game.state == PLAYING_STATE && debug.cursorRoomObjects && cursor.click)
-            TRACE("Objeto %i Posicion x: %i Posicion y: %i\n", debug.numCursorRoomObject, cursor.x, cursor.y);
+            TRACE("Object %i Position x: %i Position y: %i\n", debug.numCursorRoomObject, cursor.x, cursor.y);
 
         //move cursor with arrows
         if (gameKeys[G_KEY_LEFT].pressed && !(key_shifts & KB_SHIFT_FLAG))
@@ -1519,7 +1519,7 @@ void room_objects_draw(uint8_t layer)
 
     //on debug room objects don't draw the room objects
     #ifdef DEBUGMODE
-        if (debug.cursorRoomObjects)
+        if (debug.cursorRoomObjects && (key_shifts & KB_SHIFT_FLAG))
             return;
     #endif
 

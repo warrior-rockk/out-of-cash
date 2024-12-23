@@ -16,7 +16,7 @@
 //define room properties
 #define R06_START_POS_X         57
 #define R06_START_POS_Y         103
-#define R06_ROOM_NUM_OBJS       3
+#define R06_ROOM_NUM_OBJS       5
 #define R06_MUSIC_ID            0
 #define R06_FADE                true
 #define R06_LIGHTS_OFF          false
@@ -25,14 +25,19 @@
 #define R06_DATA R06_START_POS_X, R06_START_POS_Y, R06_ROOM_NUM_OBJS, R06_MUSIC_ID, R06_FADE , R06_LIGHTS_OFF , &r06_room_init, &r06_room_update, &r06_get_hotspot_name, &r06_get_default_hotspot_verb, &r06_get_object_info
 
 //define object array alias
-#define R06_BATHMATIN_OBJ_ID    0
-#define R06_BATHMATOUT_OBJ_ID   1
-#define R06_KEY_OBJ_ID          2
+#define R06_BATHMATIN_OBJ_ID            0
+#define R06_BATHMATOUT_OBJ_ID           1
+#define R06_KEY_OBJ_ID                  2
+#define R06_MAINTDOOROPEN_OBJ_ID        3
+#define R06_MAINTDOOROPENLIGHT_OBJ_ID   4
+
 
 //define object data (objId, x, y, animId, active, layer)
-#define R06_OBJ_0           r06d_objBathMatIn,      128, 105,  0, false, 0
-#define R06_OBJ_1           r06d_objBathMatOut,     128, 107,  0, false, 0
-#define R06_OBJ_2           r06d_objKey,            136, 107,  0, false, 0
+#define R06_OBJ_0           r06d_objBathMatIn,          128, 105,  0, false, 0
+#define R06_OBJ_1           r06d_objBathMatOut,         128, 107,  0, false, 0
+#define R06_OBJ_2           r06d_objKey,                136, 107,  0, false, 0
+#define R06_OBJ_3           r06d_objMaintDoorOpen,      115, 77,  0, false, 0
+#define R06_OBJ_4           r06d_objMaintDoorOpenLight, 115, 77,  0, false, 0
 
 //define room animations
 #define R06_NUM_ANIMATIONS  0
@@ -62,6 +67,8 @@ static tObject r06_object[R06_ROOM_NUM_OBJS] =
     {R06_OBJ_0},
     {R06_OBJ_1},
     {R06_OBJ_2},
+    {R06_OBJ_3},
+    {R06_OBJ_4},
 };
 
 //declare room objects animations array

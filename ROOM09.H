@@ -37,8 +37,8 @@
 #define R09_OBJ_1           r09d_objLocker1Open,   79,  85,  0, false, 0
 #define R09_OBJ_2           r09d_objLocker2Open,   139, 83,  0, false, 0
 #define R09_OBJ_3           r09d_objLocker3Open,   189, 79,  0, false, 0
-#define R09_OBJ_4           r09d_objShirt,         89,  56,  0, false, 0
-#define R09_OBJ_5           r09d_objJeans,         178, 79,  0, false, 0
+#define R09_OBJ_4           r09d_objShirt,         84,  58,  0, false, 0
+#define R09_OBJ_5           r09d_objJeans,         175, 76,  0, false, 0
 
 //define room animations
 #define R09_NUM_ANIMATIONS  0

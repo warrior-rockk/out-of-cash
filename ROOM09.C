@@ -41,7 +41,7 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 break;
             }
         case r09_locker1:
-                strcpy(s, "Taquilla 1");
+                strcpy(s, "Taquilla");
             break;
         case r09_poster:
             if (!is_game_flag(LOCKER_2_OPEN_FLAG))
@@ -68,7 +68,7 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 break;
             }
         case r09_locker2:
-                strcpy(s, "Taquilla 2");
+                strcpy(s, "Taquilla");
             break;
         case r09_jeans:
             if (!r09_object[R09_JEANS_OBJ_ID].active)
@@ -87,10 +87,10 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 break;
             }
         case r09_locker3:
-                strcpy(s, "Taquilla 3");
+                strcpy(s, "Taquilla");
             break;
         case r09_locker4:
-                strcpy(s, "Taquilla 4");
+                strcpy(s, "Taquilla");
             break;
         default:
             strcpy(s, "");
