@@ -134,7 +134,7 @@ void r12_update_dialog_selection()
                             dialog_add("¨Ya tienes las respuestas de Historia de 1§ de BUP?", 1);
                         else
                             dialog_add("Necesito las respuestas de Historia de 1§ de BUP", 2);
-                        if (!is_game_flag(R12_DIALOG_OPTION_3_FLAG))
+                        if (!is_game_flag(ASK_BY_WC_FLAG))
                             dialog_add("¨Est  este v ter ocupado?",1);
                         else
                             dialog_add("¨Sigue este v ter ocupado?",1);
@@ -239,7 +239,7 @@ void r12_update_room_script()
                             script_say_actor("Busc te otro para tus asuntos, colega", &r12_dialogActor);
                         break;
                         default:
-                            set_game_flag(R12_DIALOG_OPTION_3_FLAG);
+                            set_game_flag(ASK_BY_WC_FLAG);
                             script_next_dialog_node();
                             end_script();
                         break;
@@ -519,6 +519,75 @@ void r12_update_room_script()
                                 script_start_dialog(1);
                                 end_script();
                                 break;
+                        }
+                    break;
+                    case GIVE:
+                        switch (roomScript.invObject)
+                        {
+                            case id_photocopy:
+                                if (!is_game_flag(INFO_ANIME_FLAG))
+                                {
+                                    script_say("¨Porqu‚ deber¡a darle esta fotocopia de Dragon Ball?");
+                                    end_script();
+                                }
+                                else
+                                {
+                                    switch (roomScript.step)
+                                    {
+                                        case 0:
+                                            begin_script();
+                                            script_say("Perdona...");
+                                        break;
+                                        case 1:
+                                            script_say_actor("¨Qu‚ quieres, t¡o?", &r12_dialogActor);
+                                        break;
+                                        case 2:
+                                            script_say("Dec¡as que te gustaba el manga, ¨no?");
+                                        break;
+                                        case 3:
+                                            script_say("Pues tengo esta fotocopia exclusiva de Dragon Ball para ti");
+                                        break;
+                                        case 4:
+                                            script_say_actor("¨UNA FOTOCOPIA DE DRAGON BALL?", &r12_dialogActor);
+                                        break;
+                                        case 5:
+                                            script_say_actor("Colega, eres un crack. ­Me encanta Dragon Ball!", &r12_dialogActor);
+                                        break;
+                                        case 6:
+                                            script_say_actor("D mela y te dar‚ las respuestas del examen de Matem ticas", &r12_dialogActor);
+                                            r12_object[R12_HAND_OBJ_ID].active = true;
+                                        break;
+                                        case 7:
+                                            script_move_player(207, 114);
+                                        break;
+                                        case 8:
+                                            script_player_take_state();
+                                        break;
+                                        case 9:
+                                            r12_object[R12_HAND_OBJ_ID].active = false;
+                                            script_remove_inv_object(id_photocopy);
+                                        break;
+                                        case 10:
+                                            script_say_actor("­Wow gracias! ­Encima es de Goku!", &r12_dialogActor);
+                                        break;
+                                        case 11:
+                                            script_say_actor("Aqu¡ tienes las respuestas", &r12_dialogActor);
+                                            r12_object[R12_HANDEXAM_OBJ_ID].active = true;
+                                        break;
+                                        case 12:
+                                            script_take_object(&r12_object[R12_HANDEXAM_OBJ_ID].active, GOT_ANSWERS, id_answers);
+                                            r12_object[R12_HAND_OBJ_ID].active = true;
+                                        break;
+                                        case 13:
+                                            script_say("­Gracias!");
+                                        break;
+                                        default:
+                                            r12_object[R12_HAND_OBJ_ID].active = false;
+                                            end_script();
+                                            break;
+                                    }
+                                }
+                            break;
                         }
                     break;
                 }

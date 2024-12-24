@@ -65,13 +65,12 @@ enum gameFlags{
     GOT_SHIRT_FLAG,
     GOT_JEANS_FLAG,
 
-    R12_DIALOG_OPTION_1_FLAG,
-    R12_DIALOG_OPTION_2_FLAG,
-    R12_DIALOG_OPTION_3_FLAG,
+    ASK_BY_WC_FLAG,
     DIALOG_KNOW_ANSWERS,
     ASKED_BY_MATH_ANSWERS,
     INFO_ANIME_FLAG,
     ASKED_BY_HISTORY_ANSWERS,
+    GOT_ANSWERS,
 };
 
 //definition of global game numeric vars index
