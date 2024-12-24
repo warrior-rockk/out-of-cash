@@ -1,5 +1,7 @@
 # TO-DO
 
+- [ ] Time base below 100ms?
+- [ ] Different player walk speed based on configured speed
 - [ ] Bug: incorrect frames on animations
 - [ ] Bug: say text errors on unique frame?
 - [ ] Room scroll vsync?

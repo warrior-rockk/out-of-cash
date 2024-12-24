@@ -69,6 +69,8 @@ enum gameFlags{
     ASKED_BY_HISTORY_ANSWERS,
     GOT_ANSWERS_FLAG,
     SCHOOLBATH_MIRROR_MSG_FLAG,
+
+    INFO_SPORT_WORK_FLAG,
 };
 
 //definition of global game numeric vars index

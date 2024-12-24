@@ -101,13 +101,208 @@ void r11_update_room_objects()
 //update dialog selection
 void r11_update_dialog_selection()
 {
-
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialog.node)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("¨No podr¡a aprobarme la educaci¢n f¡sica?",2);
+                        dialog_add("¨Por qu‚ la educaci¢n f¡sica tiene que contar en las calificaciones?",1);
+                        dialog_add("Saludos de McClane", 0);
+                    break;
+                    case 2:
+                        dialog_add("Pero es que odio nadar",2);
+                        dialog_add("¨10 largos? ¨Pero quien cree que soy, Aquaman?",2);
+                        dialog_add("Ah pero, ¨tenemos piscina en este instituto?", 2);
+                        if (!is_game_flag(INFO_SPORT_WORK_FLAG))
+                            dialog_add("Y no hay otra cosa que pueda hacer para aprobar", 2);
+                        else
+                            dialog_add("¨Que dec¡a de una enfermedad en la piel?", 2);
+                        dialog_add("Bah... el agua para los patos", 1);
+                    break;
+                    case 4:
+                        dialog_add("No tengo dinero...",1);
+                        dialog_add("No me interesa, gracias", 0);
+                    break;
+                    
+                }
+            break;
+        }
+    }
 }
 
 //update room script
 void r11_update_room_script()
 {
-//if script active is room script type
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
+    {
+        //fixed step: say response line
+        if (roomScript.step == 0)
+        {
+            begin_script();
+            script_say(dialog.lineText[dialog.selLine - 1]);
+        }
+        else
+        {
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLine
+            switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
+            {
+                case 1:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Joven, ya sabe de sobra lo que es necesario", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Todos los alumnos tienen que pasar la £ltima prueba del curso para aprobar", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("La prueba consiste en realizar 10 largos de piscina sin detenerse", &r11_dialogActor);
+                        break;
+                        case 4:
+                            script_say_actor("Y usted hasta el momento no la ha realizado", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 2:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("El trabajo duro y la fortaleza f¡sica que ense¤a la educaci¢n f¡sica", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("son de los valores mas importantes y necesarios que os encontrar‚is en la vida", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Adem s, se est  poniendo fond¢n", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 3:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Mac, ¨qui‚n?", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 101:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Y yo odio a la gente quejica y sin disciplina", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Y por si no entiende la iron¡a me refiero a usted", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 102:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Hemos estado practicando largos todo el curso para esta prueba", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("y todos los alumnos son capaces de realizarla", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Siempre claro que haya acudido a las clases...", &r11_dialogActor);
+                        break;
+                        case 4:
+                            script_say("Emm... ya...");
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 103:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("La disciplina y trabajo duro que realiza este instituto ha conseguido grandes cosas", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Desde la financiaci¢n de la piscina ol¡mpica de la que disponemos", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("hasta la lujosa sala de profesores", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 104:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            if (!is_game_flag(INFO_SPORT_WORK_FLAG))
+                                script_say_actor("No, ya lo sabe", &r11_dialogActor);
+                            else
+                                roomScript.step = 5;
+                        break;
+                        case 2:
+                            script_say_actor("Todos los alumnos deben superar la prueba acu tica para aprobar", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("A no ser...", &r11_dialogActor);
+                        break;
+                        case 4:
+                            script_say("¨A no ser?");
+                        break;
+                        case 5:
+                            if (!is_game_flag(INFO_SPORT_WORK_FLAG))
+                                script_say_actor("A no ser que por alg£n tipo de enfermedad cut nea infecciosa le impida usar las instalaciones de la piscina", &r11_dialogActor);
+                            else
+                                script_say_actor("Es posible no realizar la prueba de nataci¢n por alg£n tipo de enfermedad cut nea infecciosa que le impida usar las instalaciones de la piscina", &r11_dialogActor);
+                        break;
+                        case 6:
+                            script_say_actor("En ese caso el alumno tendr  que realizar un trabajo sobre el deporte para aprobar", &r11_dialogActor);
+                            set_game_flag(INFO_SPORT_WORK_FLAG);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                default:
+                    script_next_dialog_node();
+                    end_script();
+                break;
+            }
+        }
+    }
+
+    //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
@@ -228,14 +423,29 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Este profesor parece mas bien un terrorista de algun pa¡s del este...");
+                                script_say("Este profesor parece mas bien un terrorista de la pel¡cula Junga de Cristal");
                                 break;
                             default:
-                                script_say("Con todo el respeto a todos los habitantes de pa¡ses del este que esten ahora jug ndonos");
+                                script_say("­YIPIEE YAI EII MOTHERFUCKER!");
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Disculpe profesor...");
+                            break;
+                            case 1:
+                                script_start_dialog(1);
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
 
