@@ -27,6 +27,7 @@ enum gameFlags{
     FATHER_SAY_MONEY_FLAG,
 
     GOT_BRAIN_FLAG,
+    GOT_BLACK_BRAIN_FLAG,
     GOT_KNIFE_FLAG,
     
     WELLCOME_FLAG,

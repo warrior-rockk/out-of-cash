@@ -3,7 +3,7 @@
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Bug: incorrect frames on animations
-- [ ] Bug: say text errors on unique frame?
+- [ ] Bug: say text errors on unique frame? (I think is debug text info)
 - [ ] Room scroll vsync?
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts

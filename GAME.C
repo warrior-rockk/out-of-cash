@@ -178,7 +178,8 @@ void main_update()
     show_debug("Y",mouse_y);
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
-    //show_debug("Node", dialog.node);
+    show_debug("rsObj", roomScript.object);
+    show_debug("invObj", roomScript.invObject);
     //show_debug("SelLine", dialog.selLine);
 }
 
@@ -1015,6 +1016,8 @@ void cursor_action_HUD()
                     roomScript.verb = cursor.selectedVerb;
                     roomScript.hsX = cursor.x; //mouse_x;
                     roomScript.hsY = cursor.y; //mouse_y;
+
+                    roomScript.invObject = cursor.invObject;
                 }
             }
         }

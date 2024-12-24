@@ -18,6 +18,12 @@
 #define INV_SCROLL_UP_CODE      18
 #define INV_SCROLL_DOWN_CODE    19
 
+//custom scripts id (inventory scripts > 1000)
+#define BLACK_BRAIN_SCRIPT          1000
+#define BLACK_STAR_CLOCK_SCRIPT     1001
+#define OPEN_FULL_CARTRIDGE_SCRIPT  1002
+#define STAR_SHIRT_SCRIPT           1003
+
 //data structures
 struct inventory
 {

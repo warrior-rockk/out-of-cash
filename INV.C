@@ -328,7 +328,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_shirt:
+                                start_script(STAR_SHIRT_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_book                :
@@ -382,7 +390,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_paintBucket:
+                                start_script(BLACK_BRAIN_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_califications       :
@@ -493,7 +509,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_knife:
+                                start_script(OPEN_FULL_CARTRIDGE_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_fullFolder          :
@@ -598,7 +622,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_fullCartridge:
+                                start_script(OPEN_FULL_CARTRIDGE_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_money               :
@@ -672,7 +704,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_starClock:
+                                start_script(BLACK_STAR_CLOCK_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_paintBucket         :
@@ -689,7 +729,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_brain:
+                                start_script(BLACK_BRAIN_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_photocopy           :
@@ -777,7 +825,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_blackStarClock:
+                                start_script(STAR_SHIRT_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_spatula             :
@@ -811,7 +867,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_openedFullCartridge:
+                                start_script(BLACK_STAR_CLOCK_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_starShirt           :
@@ -833,7 +897,89 @@ void inventory_update()
                         }
                     break;                    
                 }
-                break;            
+                break;
+            case BLACK_BRAIN_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_remove_inv_object(id_brain);
+                    break;
+                    case 1:
+                        begin_script();
+                        script_remove_inv_object(id_paintBucket);
+                    break;
+                    case 2:
+                        script_take_object(NULL, GOT_BLACK_BRAIN_FLAG, id_blackBrain);
+                    break;
+                    case 3:
+                        script_say("Ahora tengo un bonito cerebro pintado de negro");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case BLACK_STAR_CLOCK_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_remove_inv_object(id_starClock);
+                    break;
+                    case 1:
+                        script_add_inv_object(id_blackStarClock);
+                    break;
+                    case 2:
+                        script_say("El reloj con forma de estrella ahora est  cubierto de pintura negra");
+                    break;
+                    case 3:
+                        script_say("Y la pintura a£n mancha...");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case OPEN_FULL_CARTRIDGE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_remove_inv_object(id_fullCartridge);
+                    break;
+                    case 1:
+                        script_add_inv_object(id_openedFullCartridge);
+                    break;
+                    case 2:
+                        script_say("He podido abrir el cartucho y est  lleno de tinta negra");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case STAR_SHIRT_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_remove_inv_object(id_shirt);
+                    break;
+                    case 1:
+                        script_remove_inv_object(id_blackStarClock);
+                    break;
+                    case 2:
+                        script_add_inv_object(id_starShirt);
+                    break;
+                    case 3:
+                        script_say("El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }
