@@ -1,6 +1,5 @@
 //on compiler flags
 //#define DEBUGMODE
-//#define ALLEGRO_TRACE   GAME.LOG (doesn't work)
 
 #include <stdio.h>
 #include <string.h>
@@ -129,6 +128,11 @@ int main()
 //general initialization
 void main_init()
 {
+    //set env var trace log file
+    setenv("ALLEGRO_TRACE", "GAME.LOG", 1);
+
+    TRACE("Initializing systems and modules\n");
+    
     //set unicode format
     set_uformat(U_ASCII);
     
@@ -151,6 +155,8 @@ void main_init()
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
 
+    TRACE("All system and modules initialized\n");
+    
     //load game resources
     game_load_resources();
 
@@ -200,6 +206,8 @@ END_OF_FUNCTION(incTick);
 //function to load game resources
 void game_load_resources()
 {
+    TRACE("Loading game resources\n");
+    
     //loads game main data file
     gameDataFile = load_datafile("GDATA.DAT");
     if (!gameDataFile)
@@ -247,6 +255,7 @@ void game_load_resources()
     if (!gameFont)
         abort_on_error("Error cargando fuente de texto");
     */
+    TRACE("Game resources loaded\n");
 }
 
 //function to init game
@@ -295,6 +304,8 @@ void game_init()
     gui_init();
     hud_init();
     dialog_init();
+
+    TRACE("Game initialized\n");
 }
 
 //game update function
