@@ -510,7 +510,13 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("¨Hola?");
+                                if (is_game_flag(GOT_ANSWERS_FLAG))
+                                {
+                                    script_say("Ya no necesito nada de este tipo");
+                                    end_script();
+                                }
+                                else
+                                    script_say("¨Hola?");
                                 break;
                             case 1:
                                 script_say_actor("¨Curso y asignatura?", &r12_dialogActor);
@@ -575,7 +581,7 @@ void r12_update_room_script()
                                             r12_object[R12_HANDEXAM_OBJ_ID].active = true;
                                         break;
                                         case 12:
-                                            script_take_object(&r12_object[R12_HANDEXAM_OBJ_ID].active, GOT_ANSWERS, id_answers);
+                                            script_take_object(&r12_object[R12_HANDEXAM_OBJ_ID].active, GOT_ANSWERS_FLAG, id_answers);
                                             r12_object[R12_HAND_OBJ_ID].active = true;
                                         break;
                                         case 13:

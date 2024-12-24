@@ -25,10 +25,7 @@ enum gameFlags{
     GOT_SPATULA_FLAG,
     GOT_OAT_FLAG,
     FATHER_SAY_MONEY_FLAG,
-    
-    GOT_ANSWERS_FLAG,
-    SCHOOLBATH_MIRROR_MSG_FLAG,
-    
+
     GOT_BRAIN_FLAG,
     GOT_KNIFE_FLAG,
     
@@ -70,7 +67,8 @@ enum gameFlags{
     ASKED_BY_MATH_ANSWERS,
     INFO_ANIME_FLAG,
     ASKED_BY_HISTORY_ANSWERS,
-    GOT_ANSWERS,
+    GOT_ANSWERS_FLAG,
+    SCHOOLBATH_MIRROR_MSG_FLAG,
 };
 
 //definition of global game numeric vars index
