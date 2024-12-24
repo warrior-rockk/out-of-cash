@@ -516,6 +516,14 @@ void dialog_add(char *textLine, uint8_t destNode)
     dialog.lineDestNode[dialog.nodeNumLines-1] = destNode;
 }
 
+//function to jump to a specified dialog node and line
+void dialog_jump(uint8_t node, uint8_t selLine, uint8_t destNode)
+{
+    dialog.node = node;
+    dialog.selLine = selLine;
+    dialog.lineDestNode[dialog.selLine - 1] = destNode;
+}
+
 //function to stop a dialog
 void stop_dialog()
 {

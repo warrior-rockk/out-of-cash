@@ -1,5 +1,8 @@
 # TO-DO
 
+- [ ] Bug: incorrect frames on animations
+- [ ] Bug: say text errors on unique frame?
+- [ ] Room scroll vsync?
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
 - [ ] New object focused on inventory (blink?)

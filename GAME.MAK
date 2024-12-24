@@ -43,16 +43,16 @@ C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=alleg alld
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE
+C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE -DALLEGRO_TRACE=GAME.LOG
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
 OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
 	room03.o room04.o room05.o room06.o room07.o room08.o room09.o\
-	room10.o room12.o utils.o
+	room10.o room11.o room12.o utils.o
 ALL_OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o\
 	room02.o room03.o room04.o room05.o room06.o room07.o room08.o\
-	room09.o room10.o room12.o utils.o
+	room09.o room10.o room11.o room12.o utils.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -65,7 +65,7 @@ EDITORS=
 MAIN_TARGET=game.exe
 PROJECT_ITEMS=anim.c engine.c game.c inv.c player.c room00.c room01.c\
 	room02.c room03.c room04.c room05.c room06.c room07.c room08.c\
-	room09.c room10.c room12.c utils.c
+	room09.c room10.c room11.c room12.c utils.c
 DEFAULT_MASK=*.[acfghimnops]*
 RHIDE_BIN_DIR=c:/djgpp/bin
 PASCAL_TYPE=GPC
@@ -361,7 +361,7 @@ clean::
 	rm -f $(CLEAN_FILES)
 DEPS_0= anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
 	room03.o room04.o room05.o room06.o room07.o room08.o room09.o\
-	room10.o room12.o utils.o 
+	room10.o room11.o room12.o utils.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 game.exe:: $(DEPS_0)
@@ -414,10 +414,13 @@ room09.o:: $(DEPS_15)
 DEPS_16=room10.c
 room10.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.c.o)
-DEPS_17=room12.c
-room12.o:: $(DEPS_17)
+DEPS_17=room11.c
+room11.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.c.o)
-DEPS_18=utils.c
-utils.o:: $(DEPS_18)
+DEPS_18=room12.c
+room12.o:: $(DEPS_18)
+	$(RHIDE_COMPILE.c.o)
+DEPS_19=utils.c
+utils.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.c.o)
 all:: game.exe

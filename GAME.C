@@ -1,4 +1,6 @@
-//#define DEBUGMODE     //on compiler flags
+//on compiler flags
+//#define DEBUGMODE
+//#define ALLEGRO_TRACE   GAME.LOG (doesn't work)
 
 #include <stdio.h>
 #include <string.h>
@@ -170,6 +172,8 @@ void main_update()
     show_debug("Y",mouse_y);
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
+    //show_debug("Node", dialog.node);
+    //show_debug("SelLine", dialog.selLine);
 }
 
 //general draw

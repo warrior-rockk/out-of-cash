@@ -181,6 +181,7 @@ void script_start_dialog(uint8_t dialogId);
 void script_next_dialog_node();
 
 void dialog_add(char *textLine, uint8_t destNode);
+void dialog_jump(uint8_t node, uint8_t selLine, uint8_t destNode);
 void stop_dialog();
 
 void set_game_flag(enum gameFlags flagNum);

@@ -8,6 +8,7 @@
 #include "player.h"
 
 //Definitions
+
 //Screen
 #define RES_X    320
 #define RES_Y    240

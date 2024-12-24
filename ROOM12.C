@@ -124,16 +124,20 @@ void r12_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        if (!is_game_flag(R12_DIALOG_OPTION_1_FLAG))
+                        if (!is_game_flag(DIALOG_KNOW_ANSWERS))
                             dialog_add("¨A que te refieres con curso y asignatura?",2);
                         else
-                            dialog_add("Necesitar¡a las respuestas de M tematicas de 1§ de BUP", 3);
-                        if (!is_game_flag(R12_DIALOG_OPTION_2_FLAG))
+                            dialog_add("Necesito las respuestas de M tematicas de 1§ de BUP", 3);
+                        if (!is_game_flag(DIALOG_KNOW_ANSWERS))
                             dialog_add("¨Que haces ah¡ dentro?",2);
+                        else if (is_game_flag(ASKED_BY_HISTORY_ANSWERS))
+                            dialog_add("¨Ya tienes las respuestas de Historia de 1§ de BUP?", 1);
                         else
-                            dialog_add("Necesitar¡a las respuestas de Historia de 1§ de BUP", 3);
+                            dialog_add("Necesito las respuestas de Historia de 1§ de BUP", 2);
                         if (!is_game_flag(R12_DIALOG_OPTION_3_FLAG))
                             dialog_add("¨Est  este v ter ocupado?",1);
+                        else
+                            dialog_add("¨Sigue este v ter ocupado?",1);
                         dialog_add("Hasta luego",0);
                     break;
                     case 2:
@@ -144,12 +148,14 @@ void r12_update_dialog_selection()
                         dialog_add("Gracias, pero no, gracias", 1);
                     break;
                     case 3:
-                        dialog_add("Pero es que no tengo dinero, colega",0);
-                        dialog_add("¨Hay algo que puedas aceptar a cambio de las respuestas?", 4);
-                        dialog_add("Muy caro...Me esperar‚ a rebajas", 0);
-                    break;
-                    case 4:
-
+                        dialog_add("Pero es que no tengo dinero, colega",1);
+                        if (is_game_flag(ASKED_BY_MATH_ANSWERS))
+                        {
+                            dialog_add("¨Hay algo que puedas aceptar a cambio de las respuestas?", 1);
+                            dialog_add("Muy caro...Me esperar‚ a rebajas", 0);
+                        }
+                        else
+                            dialog_add("Muy caro...Me esperar‚ a rebajas", 0);
                     break;
                 }
             break;
@@ -176,7 +182,7 @@ void r12_update_room_script()
             switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
             {
                 case 1:
-                    if (!is_game_flag(R12_DIALOG_OPTION_1_FLAG))
+                    if (!is_game_flag(DIALOG_KNOW_ANSWERS))
                     {
                        switch (roomScript.step)
                        {
@@ -187,39 +193,41 @@ void r12_update_room_script()
                                script_say_actor("100% garantizado o devolvemos el dinero, tronco", &r12_dialogActor);
                            break;
                            default:
-                               set_game_flag(R12_DIALOG_OPTION_1_FLAG);
+                               set_game_flag(DIALOG_KNOW_ANSWERS);
                                script_next_dialog_node();
                                end_script();
                            break;
                        }
                     }
                     else
-                    {
-                        dialog.selLine = 3;
-                        dialog.node = 2;
-                    }
+                        dialog_jump(2, 3, 3);
                 break;
                 case 2:
-                    switch (roomScript.step)
+                    if (!is_game_flag(DIALOG_KNOW_ANSWERS))
                     {
-                        case 1:
-                            script_say_actor("Colega, me dedico a hacer a la gente feliz", &r12_dialogActor);
-                        break;
-                        case 2:
-                            script_say_actor("Consigo las respuestas para los ex menes del instituto", &r12_dialogActor);
+                        switch (roomScript.step)
+                        {
+                            case 1:
+                                script_say_actor("Colega, me dedico a hacer a la gente feliz", &r12_dialogActor);
                             break;
-                        case 3:
-                            script_say_actor("A cambio de una peque¤a compensaci¢n ec¢nomica, por supuesto", &r12_dialogActor);
-                        break;
-                        case 4:
-                            script_say_actor("De algo hay que vivir, t¡o", &r12_dialogActor);
-                        break;
-                        default:
-                            set_game_flag(R12_DIALOG_OPTION_2_FLAG);
-                            script_next_dialog_node();
-                            end_script();
-                        break;
+                            case 2:
+                                script_say_actor("Consigo las respuestas para los ex menes del instituto", &r12_dialogActor);
+                                break;
+                            case 3:
+                                script_say_actor("A cambio de una peque¤a compensaci¢n ec¢nomica, por supuesto", &r12_dialogActor);
+                            break;
+                            case 4:
+                                script_say_actor("De algo hay que vivir, t¡o", &r12_dialogActor);
+                            break;
+                            default:
+                                set_game_flag(DIALOG_KNOW_ANSWERS);
+                                script_next_dialog_node();
+                                end_script();
+                            break;
+                        }
                     }
+                    else
+                        dialog_jump(2, 4, 1);
                 break;
                 case 3:
                     switch (roomScript.step)
@@ -289,6 +297,7 @@ void r12_update_room_script()
                             script_say_actor("Parece que es una asignatura de las dif¡ciles y ya me han comprado todas las que ten¡a", &r12_dialogActor);
                         break;
                         default:
+                            set_game_flag(ASKED_BY_HISTORY_ANSWERS);
                             script_next_dialog_node();
                             end_script();
                         break;
@@ -304,9 +313,52 @@ void r12_update_room_script()
                             script_say_actor("Si no hay dinero, no hay respuestas", &r12_dialogActor);
                         break;
                         default:
+                            set_game_flag(ASKED_BY_MATH_ANSWERS);
                             script_next_dialog_node();
                             end_script();
                         break;
+                    }
+                break;
+                case 202:
+                    if (is_game_flag(ASKED_BY_MATH_ANSWERS))
+                    {
+                        switch (roomScript.step)
+                        {
+                            case 1:
+                                script_say_actor("Mmmm....", &r12_dialogActor);
+                            break;
+                            case 2:
+                                script_say_actor("No s‚, mi principal motivaci¢n es el dinero", &r12_dialogActor);
+                            break;
+                            case 3:
+                                script_say_actor("Pero no te creas que soy tan superficial", &r12_dialogActor);
+                            break;
+                            case 4:
+                                script_say_actor("Tambi‚n tengo gustos muy exquisitos", &r12_dialogActor);
+                            break;
+                            case 5:
+                                script_say_actor("Me gusta el buen cine", &r12_dialogActor);
+                            break;
+                            case 6:
+                                script_say_actor("Los c¢mics", &r12_dialogActor);
+                            break;
+                            case 7:
+                                script_say_actor("Y sobretodo el manga y el anime", &r12_dialogActor);
+                            break;
+                            case 8:
+                                script_say_actor("Si pudieras conseguirme algo de eso, quiz s podemos llegar a un acuerdo", &r12_dialogActor);
+                            break;
+                            default:
+                                set_game_flag(INFO_ANIME_FLAG);
+                                script_next_dialog_node();
+                                end_script();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        script_next_dialog_node();
+                        end_script();
                     }
                 break;
                 default:
