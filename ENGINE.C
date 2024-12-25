@@ -154,7 +154,7 @@ void script_remove_inv_object(int numObject)
 }
 
 //function to add object inventory and increment script
-void script_add_inv_object(int numObject)
+void script_add_inv_object(uint8_t numObject)
 {
     inventory_add(numObject);
     roomScript.step++;

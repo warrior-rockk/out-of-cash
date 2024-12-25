@@ -488,7 +488,7 @@ bool game_save_exists(uint8_t slot, char *s)
     //compose filenae
     sprintf(filename, "savegame.00%i", (slot + 1));
     //open/create the savegame file
-    saveFile = fopen(filename, "r");
+    saveFile = fopen(filename, "rb");
     if (!saveFile)
     {
         #ifdef DEBUGMODE
@@ -585,7 +585,7 @@ void game_load(uint8_t slot)
     //compose filenae
     sprintf(filename, "savegame.00%i", slot + 1);
     //open savegame file
-    loadFile = fopen(filename, "r");
+    loadFile = fopen(filename, "rb");
     if (!loadFile)
     {
         char txtError[100];
@@ -1090,8 +1090,8 @@ void cursor_action_menu()
             if (cursor.click)
             {
                 //save game slot
-                game.state = PLAYING_STATE;
-                gui_init();
+                //game.state = PLAYING_STATE;
+                //gui_init();
                 game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
             }
             break;

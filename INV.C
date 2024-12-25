@@ -44,8 +44,9 @@ void inventory_add(uint8_t numObject)
     if (inventory.numObjects < MAX_INV_OBJECTS)
     {
         inventory.numObjects++;
-        inventory.objIndex[inventory.numObjects - 1] = numObject + 1;
+        inventory.objIndex[inventory.numObjects - 1] = (numObject + 1);
         inventory.refresh = true;
+        TRACE("Adding numObject %i to inventory array position %i\n", numObject, inventory.numObjects - 1);
     }
     else
         //this should not happen...
