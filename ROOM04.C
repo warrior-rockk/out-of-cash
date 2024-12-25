@@ -44,7 +44,18 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
                     strcpy(s, "Reloj de cocina");
                 else
                     strcpy(s, "");
-            break;    
+            break;
+        case r04_oat:
+                if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_OAT_FLAG))
+                {
+                    strcpy(s, "Caja avena");
+                    break;
+                }
+                else
+                    strcpy(s, "");
+        case r04_closet:
+            strcpy(s, "Armario");
+            break;
         default:
             strcpy(s, "");
     }
@@ -82,6 +93,18 @@ enum verbs r04_get_default_hotspot_verb(uint8_t colorCode)
             break;
         case r04_clock:
             return LOOK;
+            break;
+        case r04_oat:
+            if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_OAT_FLAG))
+            {
+                return LOOK;
+                break;
+            }
+        case r04_closet:
+            if (!is_game_flag(KITCHEN_CLOSET_OPEN_FLAG))
+                return OPEN;
+            else
+                return CLOSE;
             break;
         default:
             return LOOK;
@@ -121,6 +144,9 @@ void r04_update_room_objects()
 {
     r04_object[R04_SPATULA_OBJ_ID].active = !is_game_flag(GOT_SPATULA_FLAG);
     r04_object[R04_STARCLOCK_OBJ_ID].active = !is_game_flag(GOT_CLOCK_FLAG);
+
+    r04_object[R04_CLOSETOPEN_OBJ_ID].active = is_game_flag(KITCHEN_CLOSET_OPEN_FLAG);
+    r04_object[R04_OAT_OBJ_ID].active = is_game_flag(KITCHEN_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_OAT_FLAG);
 
     //father actor
     if (r04_dialogActor.talking)
@@ -414,7 +440,100 @@ void r04_update_room_script()
                     break;
                 }
                 break;
+            case r04_oat:
+                if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_OAT_FLAG))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("Una caja de copos de avena");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                        case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_take_object(&r04_object[R04_OAT_OBJ_ID].active, GOT_OAT_FLAG, id_oat);
+                                    end_script();
+                                break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }
+            case r04_closet:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Un armario de la cocina");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG))
+                                {
+                                    script_say("Ya est  abierto");
+                                    end_script();
+                                }
+                                else
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            default:
+                                set_game_flag(KITCHEN_CLOSET_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(KITCHEN_CLOSET_OPEN_FLAG))
+                                {
+                                    script_say("Ya est  cerrado");
+                                    end_script();
+                                }
+                                else
+                                    script_move_player_to_target();
+                                break;
+                            case 1:
+                                script_player_take_state();
+                                break;
+                            default:
+                                clear_game_flag(KITCHEN_CLOSET_OPEN_FLAG);
+                                end_script();
+                                break;
+                        }
 
+                }
+            break;
         }
     }
 
