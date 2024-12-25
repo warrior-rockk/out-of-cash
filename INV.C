@@ -245,6 +245,9 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
             case id_starShirt           :
                     strcpy(s, "Camiseta");
                 break;
+            case id_oatMixed:
+                    strcpy(s, "Avena viscosa");
+                break;
             default:
                 strcpy(s, "");
                 break;
@@ -555,7 +558,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                        break;                    
+                        break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_oat:
+                                start_script(OAT_MIXED_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_guitar              :
@@ -671,7 +682,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_gel:
+                                start_script(OAT_MIXED_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_openedEmptyCartridge:
@@ -899,6 +918,26 @@ void inventory_update()
                     break;                    
                 }
                 break;
+            case id_oatMixed:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Son los copos de avena mezclados con el gel de ducha");
+                                break;
+                            case 1:
+                                script_say("Han formado una masa viscosa grumosa");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;                    
+                }
+                break;            
             case BLACK_BRAIN_SCRIPT:
                 switch(roomScript.step)
                 {
@@ -975,6 +1014,27 @@ void inventory_update()
                     break;
                     case 3:
                         script_say("El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case OAT_MIXED_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_remove_inv_object(id_gel);
+                    break;
+                    case 1:
+                        script_remove_inv_object(id_oat);
+                    break;
+                    case 2:
+                        script_add_inv_object(id_oatMixed);
+                    break;
+                    case 3:
+                        script_say("Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa");
                     break;
                     default:
                         end_script();

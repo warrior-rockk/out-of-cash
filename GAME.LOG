@@ -10,10 +10,15 @@ Load room datafile: R01DATA.DAT
 Change from room 1 to room 2
 Free actual room datafile resources
 Load room datafile: R02DATA.DAT
+Change from room 2 to room 3
+Free actual room datafile resources
+Load room datafile: R03DATA.DAT
+Adding numObject 14 to inventory array position 0
+Change from room 3 to room 2
+Free actual room datafile resources
+Load room datafile: R02DATA.DAT
 Change from room 2 to room 4
 Free actual room datafile resources
 Load room datafile: R04DATA.DAT
-Adding numObject 29 to inventory array position 0
-Change from room 4 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
+Adding numObject 20 to inventory array position 1
+Adding numObject 21 to inventory array position 0

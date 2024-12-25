@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\IDATA.DAT */
-/* Date: Wed Nov 27 13:04:57 2024 */
+/* Date: Wed Dec 25 12:49:16 2024 */
 /* Do not hand edit! */
 
 #define id_answers                       0        /* BMP  */
@@ -24,16 +24,17 @@
 #define id_knife                         18       /* BMP  */
 #define id_money                         19       /* BMP  */
 #define id_oat                           20       /* BMP  */
-#define id_openedEmptyCartridge          21       /* BMP  */
-#define id_openedFullCartridge           22       /* BMP  */
-#define id_paintBucket                   23       /* BMP  */
-#define id_photocopy                     24       /* BMP  */
-#define id_photocopySchedule             25       /* BMP  */
-#define id_schedule                      26       /* BMP  */
-#define id_sheet                         27       /* BMP  */
-#define id_shirt                         28       /* BMP  */
-#define id_spatula                       29       /* BMP  */
-#define id_starClock                     30       /* BMP  */
-#define id_starShirt                     31       /* BMP  */
-#define id_COUNT                         32
+#define id_oatMixed                      21       /* BMP  */
+#define id_openedEmptyCartridge          22       /* BMP  */
+#define id_openedFullCartridge           23       /* BMP  */
+#define id_paintBucket                   24       /* BMP  */
+#define id_photocopy                     25       /* BMP  */
+#define id_photocopySchedule             26       /* BMP  */
+#define id_schedule                      27       /* BMP  */
+#define id_sheet                         28       /* BMP  */
+#define id_shirt                         29       /* BMP  */
+#define id_spatula                       30       /* BMP  */
+#define id_starClock                     31       /* BMP  */
+#define id_starShirt                     32       /* BMP  */
+#define id_COUNT                         33
 

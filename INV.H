@@ -23,6 +23,7 @@
 #define BLACK_STAR_CLOCK_SCRIPT     1001
 #define OPEN_FULL_CARTRIDGE_SCRIPT  1002
 #define STAR_SHIRT_SCRIPT           1003
+#define OAT_MIXED_SCRIPT            1004
 
 //data structures
 struct inventory
