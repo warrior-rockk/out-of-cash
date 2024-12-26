@@ -16,7 +16,7 @@
 //define room properties
 #define R05_START_POS_X         132
 #define R05_START_POS_Y         64
-#define R05_ROOM_NUM_OBJS       9
+#define R05_ROOM_NUM_OBJS       10
 #define R05_MUSIC_ID            0
 #define R05_FADE                false
 #define R05_LIGHTS_OFF          false
@@ -34,7 +34,7 @@
 #define R05_SHEETSPHOTO_OBJ_ID      6
 #define R05_CARTRIDGEFULL_OBJ_ID    7
 #define R05_CARTRIDGEEMPTY_OBJ_ID   8
-
+#define R05_PRINTER_OBJ_ID          9
 
 //define object data (objId, x, y, animId, active, layer)
 #define R05_OBJ_0           r05d_objAnimIdle,   261, 71,  1, true, 0
@@ -46,10 +46,10 @@
 #define R05_OBJ_6           r05d_objSheetsPhoto,   254, 85,  0, false, 0
 #define R05_OBJ_7           r05d_objCartridgeFull,   251, 91,  0, true, 0
 #define R05_OBJ_8           r05d_objCartridgeEmpty,   251, 91,  0, false, 0
-
+#define R05_OBJ_9           r05d_objPrintSchd1,       251, 94,  2, false, 0
 
 //define room animations
-#define R05_NUM_ANIMATIONS  1
+#define R05_NUM_ANIMATIONS  2
 
 //define animations with id 1
 #define R05_ANIM_TALK           r05d_objTalk1, r05d_objTalk9, 1, ANIM_PING_PONG
@@ -57,6 +57,9 @@
 #define R05_ANIM_COMPUTER_TALK  r05d_objComputerTalk1, r05d_objComputerTalk6, 1, ANIM_PING_PONG
 #define R05_ANIM_WALK           r05d_objWalk1, r05d_objWalk4, 1, ANIM_ONCE
 #define R05_ANIM_WALK_REVERSE   r05d_objWalkReverse1, r05d_objWalkReverse4, 1, ANIM_ONCE
+
+//define animations with id 2
+#define R05_ANIM_PRINT_SCHD     r05d_objPrintSchd1, r05d_objPrintSchd22, 1, ANIM_ONCE
 
 //define room scripts
 #define R05_WELLCOME_SCRIPT 256
@@ -88,6 +91,7 @@ static tObject r05_object[R05_ROOM_NUM_OBJS] =
     {R05_OBJ_6},
     {R05_OBJ_7},
     {R05_OBJ_8},
+    {R05_OBJ_9},
 };
 
 //declare room objects animations array

@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R05DATA.DAT */
-/* Date: Thu Dec 26 16:48:51 2024 */
+/* Date: Thu Dec 26 18:39:59 2024 */
 /* Do not hand edit! */
 
 #define r05d_image                       0        /* BMP  */
@@ -44,5 +44,27 @@
 #define r05d_objWalkReverse2             38       /* BMP  */
 #define r05d_objWalkReverse3             39       /* BMP  */
 #define r05d_objWalkReverse4             40       /* BMP  */
-#define r05d_COUNT                       41
+#define r05d_objPrintSchd1               41       /* BMP  */
+#define r05d_objPrintSchd2               42       /* BMP  */
+#define r05d_objPrintSchd3               43       /* BMP  */
+#define r05d_objPrintSchd4               44       /* BMP  */
+#define r05d_objPrintSchd5               45       /* BMP  */
+#define r05d_objPrintSchd6               46       /* BMP  */
+#define r05d_objPrintSchd7               47       /* BMP  */
+#define r05d_objPrintSchd8               48       /* BMP  */
+#define r05d_objPrintSchd9               49       /* BMP  */
+#define r05d_objPrintSchd10              50       /* BMP  */
+#define r05d_objPrintSchd11              51       /* BMP  */
+#define r05d_objPrintSchd12              52       /* BMP  */
+#define r05d_objPrintSchd13              53       /* BMP  */
+#define r05d_objPrintSchd14              54       /* BMP  */
+#define r05d_objPrintSchd15              55       /* BMP  */
+#define r05d_objPrintSchd16              56       /* BMP  */
+#define r05d_objPrintSchd17              57       /* BMP  */
+#define r05d_objPrintSchd18              58       /* BMP  */
+#define r05d_objPrintSchd19              59       /* BMP  */
+#define r05d_objPrintSchd20              60       /* BMP  */
+#define r05d_objPrintSchd21              61       /* BMP  */
+#define r05d_objPrintSchd22              62       /* BMP  */
+#define r05d_COUNT                       63
 

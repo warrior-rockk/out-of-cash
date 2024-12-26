@@ -35,7 +35,7 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Fotocopias");
             break;
         case r05_paper:
-            if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+            if ((is_game_flag(GOT_SHEETS_FLAG) || is_game_flag(USED_SHEETS_FLAG)) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                 strcpy(s, "");
             else
                 strcpy(s, "Papel");
@@ -148,7 +148,7 @@ void r05_room_update()
 void r05_update_room_objects()
 {
     r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
-    r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG);
+    r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(USED_SHEETS_FLAG);
     r05_object[R05_SHEETSPHOTO_OBJ_ID].active = is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
@@ -165,6 +165,8 @@ void r05_update_room_objects()
             object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_COMPUTER_TALK);
     else if (is_game_flag(EMPLOYEE_USING_COMPUTER_FLAG))
         object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_PRINTING);
+    else if (is_game_flag(EMPLOYEE_AT_COMPUTER_FLAG))
+        r05_object[R05_EMPLOYEER_OBJ_ID].objId = r05d_objPrinting1;
     else if (is_game_flag(EMPLOYEE_RETURN_FLAG))
     {
         if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK_REVERSE))
@@ -269,7 +271,7 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Son fotocopias de la serie de anime del momento: Dragon Ball", &r05_dialogActor);
+                            script_say_actor("Son fotocopias de la serie anime del momento: Dragon Ball", &r05_dialogActor);
                         break;
                         case 2:
                             script_say_actor("Son muy codiciadas por su valor coleccionista", &r05_dialogActor);
@@ -309,8 +311,15 @@ void r05_update_room_script()
                                script_say_actor("Por supuesto", &r05_dialogActor);
                            break;
                            case 2:
-                               if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK))
-                                   roomScript.step++;
+                               if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG) && !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
+                               {
+                                   roomScript.step = 10;
+                               }
+                               else
+                               {
+                                   if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK))
+                                       roomScript.step++;
+                               }
                            break;
                            case 3:
                                script_say_actor("Te lo imprimo ahora mismo", &r05_dialogActor);
@@ -321,43 +330,57 @@ void r05_update_room_script()
                                 script_wait(20);
                            break;
                            case 5:
-                               clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                    script_say_actor("­Oh vaya! Creo que ya hay un horario impreso de antes", &r05_dialogActor);
-                               else if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                               else if ((is_game_flag(GOT_SHEETS_FLAG) || is_game_flag(USED_SHEETS_FLAG)) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, me he quedado sin hojas en la impresora", &r05_dialogActor);
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, la impresora me dice error de cartucho", &r05_dialogActor);
                                else
+                                   roomScript.step = 20;
+                           break;
+                           case 20:
+                               clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
+                               set_game_flag(USED_SHEETS_FLAG);
+                               r05_object[R05_PRINTER_OBJ_ID].active = true;
+                               if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchd1, r05_animations, R05_ANIM_PRINT_SCHD))
+                                   roomScript.step++;
+                           break;
+                           case 21:
+                               if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                {
-                                   if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                                   if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
                                    {
-                                       if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
-                                       {
-                                           set_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
-                                           r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = true;
-                                       }
-                                       else
-                                       {
-                                           set_game_flag(PRINTED_PHOTOCOPY_FLAG);
-                                           r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
-                                       }
+                                       set_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
+                                       r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = true;
                                    }
                                    else
                                    {
-                                       set_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
-                                       r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
+                                       set_game_flag(PRINTED_PHOTOCOPY_FLAG);
+                                       r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
                                    }
-                                   script_say_actor("Ya lo tienes", &r05_dialogActor);
                                }
+                               else
+                               {
+                                   set_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
+                                   r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
+                               }
+                               script_say_actor("Ya lo tienes", &r05_dialogActor);
                            break;
-                           case 256:
-                               if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK_REVERSE))
-                                   roomScript.step++;
+                           case 10:
+                               script_say("­Espera!... mejor no, gracias");
+                           break;
+                           case 11:
+                               script_say("(Si imprimo el horario sobre la fotocopia de Dragon Ball la voy a estropear)");
                            break;
                            default:
-                               set_game_flag(EMPLOYEE_RETURN_FLAG);
-                               clear_game_flag(EMPLOYEE_AT_COMPUTER_FLAG);
+                               r05_object[R05_PRINTER_OBJ_ID].active = false;
+                               clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
+                               if (is_game_flag(EMPLOYEE_AT_COMPUTER_FLAG))
+                               {
+                                  set_game_flag(EMPLOYEE_RETURN_FLAG);
+                                  clear_game_flag(EMPLOYEE_AT_COMPUTER_FLAG);
+                               }
                                script_next_dialog_node();
                                end_script();
                            break;
@@ -473,15 +496,19 @@ void r05_update_room_script()
                                 case 0:
                                     begin_script();
                                     if (is_game_flag(GOT_FOLDER_FLAG))
+                                    {
                                         script_say("El dependiente ha dicho que solo me puedo llevar una gratis");
+                                        end_script();
+                                    }
                                     else
                                         script_move_player_to_target();
                                     break;
                                 case 1:
-                                    if (is_game_flag(GOT_FOLDER_FLAG))
-                                        script_say_actor("Asi es", &r05_dialogActor);
-                                    else
-                                        script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
+                                    script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
+                                    break;
+                                case 2:
+                                    script_say_actor("Tenemos tanta confianza en nuestras carpetas que puedes llevarte una gratis para probarla", &r05_dialogActor);
+                                    break;
                                 default:
                                     end_script();
                                     break;
