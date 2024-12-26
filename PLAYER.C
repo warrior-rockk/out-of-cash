@@ -168,27 +168,16 @@ void player_update_scale()
 {
     int checkScaleX = fixtoi(fixadd(player.x, itofix(PLAYER_POS_X_OFFSET))) - actualRoom.hsWalkBorders.left;
     int checkScaleY = fixtoi(fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET)) + player.vY) - actualRoom.hsWalkBorders.up;
+    int checkColor;
 
-    //get scale map value
-    switch (getpixel(actualRoom.wImage, checkScaleX, checkScaleY))
-    {
-        case SCALE_1_COLOR:
-            player.scale = ftofix(SCALE_1_VALUE);
-            break;
-        case SCALE_2_COLOR:
-            player.scale = ftofix(SCALE_2_VALUE);
-            break;
-        case SCALE_3_COLOR:
-            player.scale = ftofix(SCALE_3_VALUE);
-            break;
-        case SCALE_4_COLOR:
-            player.scale = ftofix(SCALE_4_VALUE);
-            break;
-        default:
-            player.scale = ftofix(1.0);
-            break;
-    }
-
+    //get walk pixel color
+    checkColor = getpixel(actualRoom.wImage, checkScaleX, checkScaleY);
+    
+    //calculate scale value
+    if (checkColor == NO_SCALE_COLOR)
+        player.scale = ftofix(1.0);
+    else
+        player.scale = ftofix(((checkColor - SCALE_INI_COLOR) + 1) * SCALE_COLOR_SCALE);
 }
 
 //function to draw the player

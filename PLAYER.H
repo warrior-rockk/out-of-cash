@@ -11,16 +11,10 @@
 #define PLAYER_POS_X_OFFSET 0
 #define PLAYER_POS_Y_OFFSET 20
 
-//scale values of scale map
-#define SCALE_1_COLOR   32
-#define SCALE_2_COLOR   33
-#define SCALE_3_COLOR   34
-#define SCALE_4_COLOR   35
-
-#define SCALE_1_VALUE   0.5
-#define SCALE_2_VALUE   0.7
-#define SCALE_3_VALUE   1.0
-#define SCALE_4_VALUE   1.5
+//scale values
+#define SCALE_INI_COLOR     32
+#define NO_SCALE_COLOR      247
+#define SCALE_COLOR_SCALE   0.2
 
 //player states
 enum playerStates{
