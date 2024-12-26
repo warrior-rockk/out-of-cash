@@ -24,6 +24,7 @@
 #define OPEN_FULL_CARTRIDGE_SCRIPT  1002
 #define STAR_SHIRT_SCRIPT           1003
 #define OAT_MIXED_SCRIPT            1004
+#define SPORT_WORK_SCRIPT           1005
 
 //data structures
 struct inventory

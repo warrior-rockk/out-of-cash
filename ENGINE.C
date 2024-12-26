@@ -160,6 +160,18 @@ void script_add_inv_object(uint8_t numObject)
     roomScript.step++;
 }
 
+//function to combine 2 inventory items on new item
+void script_combine_inv_object(uint8_t numObject1, uint8_t numObject2, uint8_t numObjectAdd)
+{
+    if (numObject1)
+        inventory_remove(numObject1);
+    if (numObject2)
+        inventory_remove(numObject2);
+    inventory_add(numObjectAdd);
+    
+    roomScript.step++;
+}
+
 //function to play animation and increments script step when finished (DEPRECATED)
 void script_play_player_animation(int startFrame, int endFrame, int speed)
 {

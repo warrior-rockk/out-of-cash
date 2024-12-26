@@ -360,7 +360,26 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_remove_inv_object(id_book);
+                                break;
+                            case 1:
+                                script_add_inv_object(id_bookSheets);
+                                break;
+                            case 2:
+                                script_say("He arrancado las hojas del libro que me parec¡an interesantes");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case id_bookSheets          :
@@ -377,7 +396,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_folder:
+                                start_script(SPORT_WORK_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_brain               :
@@ -493,7 +520,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_bookSheets:
+                                start_script(SPORT_WORK_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_fullCartridge       :
@@ -943,16 +978,9 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        script_remove_inv_object(id_brain);
+                        script_combine_inv_object(id_brain, id_paintBucket, id_blackBrain);
                     break;
                     case 1:
-                        begin_script();
-                        script_remove_inv_object(id_paintBucket);
-                    break;
-                    case 2:
-                        script_take_object(NULL, GOT_BLACK_BRAIN_FLAG, id_blackBrain);
-                    break;
-                    case 3:
                         script_say("Ahora tengo un bonito cerebro pintado de negro");
                     break;
                     default:
@@ -965,12 +993,9 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        script_remove_inv_object(id_starClock);
+                        script_combine_inv_object(id_starClock, 0, id_blackStarClock);
                     break;
                     case 1:
-                        script_add_inv_object(id_blackStarClock);
-                    break;
-                    case 2:
                         script_say("El reloj con forma de estrella ahora est  cubierto de pintura negra");
                     break;
                     case 3:
@@ -986,12 +1011,9 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        script_remove_inv_object(id_fullCartridge);
+                        script_combine_inv_object(id_fullCartridge, 0, id_openedFullCartridge);
                     break;
                     case 1:
-                        script_add_inv_object(id_openedFullCartridge);
-                    break;
-                    case 2:
                         script_say("He podido abrir el cartucho y est  lleno de tinta negra");
                     break;
                     default:
@@ -1004,15 +1026,9 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        script_remove_inv_object(id_shirt);
+                        script_combine_inv_object(id_shirt, id_blackStarClock, id_starShirt);
                     break;
                     case 1:
-                        script_remove_inv_object(id_blackStarClock);
-                    break;
-                    case 2:
-                        script_add_inv_object(id_starShirt);
-                    break;
-                    case 3:
                         script_say("El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella");
                     break;
                     default:
@@ -1025,16 +1041,25 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        script_remove_inv_object(id_gel);
+                        script_combine_inv_object(id_gel, id_oat, id_oatMixed);
                     break;
                     case 1:
-                        script_remove_inv_object(id_oat);
-                    break;
-                    case 2:
-                        script_add_inv_object(id_oatMixed);
-                    break;
-                    case 3:
                         script_say("Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa");
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case SPORT_WORK_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_combine_inv_object(id_bookSheets, id_folder, id_fullFolder);
+                    break;
+                    case 1:
+                        script_say("He metido las hojas del libro de deporte en la carpeta");
                     break;
                     default:
                         end_script();
