@@ -7,12 +7,6 @@ Game initialized
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Change from room 1 to room 7
+Change from room 1 to room 5
 Free actual room datafile resources
-Load room datafile: R07DATA.DAT
-Adding numObject 6 to inventory array position 0
-Change from room 7 to room 10
-Free actual room datafile resources
-Load room datafile: R10DATA.DAT
-Adding numObject 24 to inventory array position 1
-Adding numObject 2 to inventory array position 0
+Load room datafile: R05DATA.DAT

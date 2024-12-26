@@ -213,7 +213,7 @@ void move_player_to_target();
 bool is_player_moving();
 void change_player_dir(uint8_t dir);
 
-void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
+bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 
 void play_global_sound(int16_t soundId);
 void play_sound_rnd(uint16_t soundId);

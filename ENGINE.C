@@ -471,13 +471,15 @@ void change_player_dir(uint8_t dir)
     player.lookDir = dir;
 }
 
-//plays room object animation if object is active
-void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
+//plays room object animation if object is active. Returns true when finished on ONCE mode
+bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
 {
+    bool finished = false;
+    
     //if object is active
     if (object->active)
         //plays parameter animation
-        play_animation(&animation[object->animationId - 1], startFrame, endFrame, speed, mode);
+        finished = play_animation(&animation[object->animationId - 1], startFrame, endFrame, speed, mode);
     else
         //sets idle frame
         animation[object->animationId - 1].frame = idleFrame;
@@ -485,6 +487,7 @@ void object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
     //sets object idImage to current animation frame
     object->objId = animation[object->animationId - 1].frame;
 
+    return finished;
 }
 
 //starts a dialog and increments script step

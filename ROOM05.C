@@ -156,6 +156,22 @@ void r05_update_room_objects()
     r05_object[R05_PRINTEDSCH_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
     r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
     r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = is_game_flag(PRINTED_PHOTOCOPY_FLAG);
+
+    //employeer actor
+    if (r05_dialogActor.talking)
+        if (!is_game_flag(EMPLOYEE_AT_COMPUTER_FLAG))
+            object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_TALK);
+        else
+            object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_COMPUTER_TALK);
+    else if (is_game_flag(EMPLOYEE_USING_COMPUTER_FLAG))
+        object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_PRINTING);
+    else if (is_game_flag(EMPLOYEE_RETURN_FLAG))
+    {
+        if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK_REVERSE))
+            clear_game_flag(EMPLOYEE_RETURN_FLAG);
+    }
+    else
+        r05_object[R05_EMPLOYEER_OBJ_ID].objId = r05d_objAnimIdle;
 }
 
 //update dialog selection
@@ -293,9 +309,19 @@ void r05_update_room_script()
                                script_say_actor("Por supuesto", &r05_dialogActor);
                            break;
                            case 2:
-                               script_say_actor("Te lo imprimo ahora mismo", &r05_dialogActor);
+                               if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK))
+                                   roomScript.step++;
                            break;
                            case 3:
+                               script_say_actor("Te lo imprimo ahora mismo", &r05_dialogActor);
+                               set_game_flag(EMPLOYEE_AT_COMPUTER_FLAG);
+                               set_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
+                           break;
+                           case 4:
+                                script_wait(20);
+                           break;
+                           case 5:
+                               clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                    script_say_actor("­Oh vaya! Creo que ya hay un horario impreso de antes", &r05_dialogActor);
                                else if (is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
@@ -325,7 +351,13 @@ void r05_update_room_script()
                                    script_say_actor("Ya lo tienes", &r05_dialogActor);
                                }
                            break;
+                           case 256:
+                               if (object_play_animation(&r05_object[R05_EMPLOYEER_OBJ_ID], r05d_objAnimIdle, r05_animations, R05_ANIM_WALK_REVERSE))
+                                   roomScript.step++;
+                           break;
                            default:
+                               set_game_flag(EMPLOYEE_RETURN_FLAG);
+                               clear_game_flag(EMPLOYEE_AT_COMPUTER_FLAG);
                                script_next_dialog_node();
                                end_script();
                            break;
