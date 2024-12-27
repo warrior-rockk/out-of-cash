@@ -984,18 +984,7 @@ void cursor_action_HUD()
         //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
         if ((cursor.click || cursor.rightClick) && cursor.objectName[0] != '\0' && cursor.selectedVerb != GO)
         {
-            //check if click USE verb on inventory object
-            if (cursor.selectedVerb == USE)
-            {
-                //sets USE_WITH verb
-                cursor.selectedVerb = USE_WITH;
-                //sets inventory object name verb
-                strcpy(cursor.invObjName, cursor.objectName);
-                //sets inventory id
-                cursor.invObject = get_inv_obj_id(get_inv_obj_position(hsColor) - 1);
-            }
-            //check if click GIVE verb on inventory object
-            else if (cursor.selectedVerb == GIVE)
+            if (cursor.selectedVerb == GIVE)
             {
                 //sets inventory object name verb
                 strcpy(cursor.invObjName, cursor.objectName);
@@ -1431,7 +1420,20 @@ void room_action_update()
 
         if (!roomScript.scriptAssigned)
         {
-            default_verb_action(roomScript.verb);
+            //is selectedVerb USE on inventory and not script assigned, change verb to USE_WITH
+            if (cursor.selectedVerb == USE && roomScript.type == INVENTORY_SCRIPT_TYPE)
+            {
+                //sets USE_WITH verb
+                cursor.selectedVerb = USE_WITH;
+                //sets inventory object name verb
+                strcpy(cursor.invObjName, cursor.objectName);
+                //sets inventory id
+                cursor.invObject =roomScript.object;
+            }
+            else
+            {
+                default_verb_action(roomScript.verb);
+            }
             end_script();
         }
     }

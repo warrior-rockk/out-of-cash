@@ -970,6 +970,18 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Me lo unto");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
                     break;                    
                 }
                 break;            
