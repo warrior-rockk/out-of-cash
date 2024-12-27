@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R05DATA.DAT */
-/* Date: Thu Dec 26 20:07:04 2024 */
+/* Date: Fri Dec 27 12:35:34 2024 */
 /* Do not hand edit! */
 
 #define r05d_image                       0        /* BMP  */
@@ -68,5 +68,46 @@
 #define r05d_objPrintSchd22              62       /* BMP  */
 #define r05d_objPrintPhoto1              63       /* BMP  */
 #define r05d_objPrintPhoto2              64       /* BMP  */
-#define r05d_COUNT                       65
+#define r05d_objPrintPhoto3              65       /* BMP  */
+#define r05d_objPrintPhoto4              66       /* BMP  */
+#define r05d_objPrintPhoto5              67       /* BMP  */
+#define r05d_objPrintPhoto6              68       /* BMP  */
+#define r05d_objPrintPhoto7              69       /* BMP  */
+#define r05d_objPrintPhoto8              70       /* BMP  */
+#define r05d_objPrintPhoto9              71       /* BMP  */
+#define r05d_objPrintPhoto10             72       /* BMP  */
+#define r05d_objPrintPhoto11             73       /* BMP  */
+#define r05d_objPrintPhoto12             74       /* BMP  */
+#define r05d_objPrintPhoto13             75       /* BMP  */
+#define r05d_objPrintPhoto14             76       /* BMP  */
+#define r05d_objPrintPhoto15             77       /* BMP  */
+#define r05d_objPrintPhoto16             78       /* BMP  */
+#define r05d_objPrintPhoto17             79       /* BMP  */
+#define r05d_objPrintPhoto18             80       /* BMP  */
+#define r05d_objPrintPhoto19             81       /* BMP  */
+#define r05d_objPrintPhoto20             82       /* BMP  */
+#define r05d_objPrintPhoto21             83       /* BMP  */
+#define r05d_objPrintSchdEmpty1          84       /* BMP  */
+#define r05d_objPrintSchdEmpty2          85       /* BMP  */
+#define r05d_objPrintSchdEmpty3          86       /* BMP  */
+#define r05d_objPrintSchdEmpty4          87       /* BMP  */
+#define r05d_objPrintSchdEmpty5          88       /* BMP  */
+#define r05d_objPrintSchdEmpty6          89       /* BMP  */
+#define r05d_objPrintSchdEmpty7          90       /* BMP  */
+#define r05d_objPrintSchdEmpty8          91       /* BMP  */
+#define r05d_objPrintSchdEmpty9          92       /* BMP  */
+#define r05d_objPrintSchdEmpty10         93       /* BMP  */
+#define r05d_objPrintSchdEmpty11         94       /* BMP  */
+#define r05d_objPrintSchdEmpty12         95       /* BMP  */
+#define r05d_objPrintSchdEmpty13         96       /* BMP  */
+#define r05d_objPrintSchdEmpty14         97       /* BMP  */
+#define r05d_objPrintSchdEmpty15         98       /* BMP  */
+#define r05d_objPrintSchdEmpty16         99       /* BMP  */
+#define r05d_objPrintSchdEmpty17         100      /* BMP  */
+#define r05d_objPrintSchdEmpty18         101      /* BMP  */
+#define r05d_objPrintSchdEmpty19         102      /* BMP  */
+#define r05d_objPrintSchdEmpty20         103      /* BMP  */
+#define r05d_objPrintSchdEmpty21         104      /* BMP  */
+#define r05d_objPrintedSheet             105      /* BMP  */
+#define r05d_COUNT                       106
 

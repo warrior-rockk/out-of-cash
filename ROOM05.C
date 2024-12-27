@@ -156,7 +156,8 @@ void r05_update_room_objects()
     r05_object[R05_PRINTEDSCH_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
     r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
     r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = is_game_flag(PRINTED_PHOTOCOPY_FLAG);
-
+    r05_object[R05_PRINTEDSHEET_OBJ_ID].active = is_game_flag(PRINTED_SHEET_FLAG) && !is_game_flag(GOT_SHEETS_FLAG);
+    
     //employeer actor
     if (r05_dialogActor.talking)
         if (!is_game_flag(EMPLOYEE_AT_COMPUTER_FLAG))
@@ -343,28 +344,36 @@ void r05_update_room_script()
                                clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                                set_game_flag(USED_SHEETS_FLAG);
                                r05_object[R05_PRINTER_OBJ_ID].active = true;
-                               if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchd1, r05_animations, R05_ANIM_PRINT_SCHD))
-                                   roomScript.step++;
-                           break;
-                           case 21:
+
                                if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                {
-                                   if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
+                                   if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintPhoto1, r05_animations, R05_ANIM_PRINT_PHOTO))
                                    {
-                                       set_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG);
-                                       r05_object[R05_PRINTEDSCHPHOTO_OBJ_ID].active = true;
-                                   }
-                                   else
-                                   {
+                                       roomScript.step++;
                                        set_game_flag(PRINTED_PHOTOCOPY_FLAG);
                                        r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
                                    }
                                }
                                else
                                {
-                                   set_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
-                                   r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
+                                   if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
+                                       if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchdEmpty1, r05_animations, R05_ANIM_PRINT_SCHD_EMPTY))
+                                       {
+                                           roomScript.step++;
+                                           set_game_flag(PRINTED_SHEET_FLAG);
+                                       }
+                                   else
+                                   {
+                                       if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchd1, r05_animations, R05_ANIM_PRINT_SCHD))
+                                       {
+                                           roomScript.step++;
+                                           set_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
+                                           r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
+                                       }
+                                   }
                                }
+                           break;
+                           case 21:
                                script_say_actor("Ya lo tienes", &r05_dialogActor);
                            break;
                            case 10:
