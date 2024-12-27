@@ -11,5 +11,13 @@ Adding numObject 10 to inventory array position 0
 Change from room 1 to room 5
 Free actual room datafile resources
 Load room datafile: R05DATA.DAT
-Adding numObject 12 to inventory array position 1
-Adding numObject 28 to inventory array position 1
+Adding numObject 25 to inventory array position 1
+Adding numObject 28 to inventory array position 2
+Adding numObject 12 to inventory array position 3
+Adding numObject 25 to inventory array position 2
+Change from room 5 to room 0
+Free actual room datafile resources
+Load room datafile: R00DATA.DAT
+Change from room 0 to room 5
+Free actual room datafile resources
+Load room datafile: R05DATA.DAT

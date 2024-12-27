@@ -1,4 +1,3 @@
-
 /*
 =========================================================
  Room Number:   05
@@ -29,16 +28,16 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Material papeler¡a");
             break;
         case r05_photocopies:
-            if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+            if (!r05_object[R05_PHOTOCOPY_OBJ_ID].active)
                 strcpy(s, "");
             else
                 strcpy(s, "Fotocopias");
             break;
         case r05_paper:
-            if ((is_game_flag(GOT_SHEETS_FLAG) || is_game_flag(USED_SHEETS_FLAG)) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
-                strcpy(s, "");
-            else
+            if (!is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                 strcpy(s, "Papel");
+            else
+                strcpy(s, "");
             break;
         case r05_printer:
                 strcpy(s, "Impresora");
@@ -148,8 +147,8 @@ void r05_room_update()
 //update room objects
 void r05_update_room_objects()
 {
-    r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
-    r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(USED_SHEETS_FLAG);
+    r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG) && !is_game_flag(USED_PHOTOCOPY_FLAG);
+    r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG);
     r05_object[R05_SHEETSPHOTO_OBJ_ID].active = is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG) && !is_game_flag(USED_PHOTOCOPY_FLAG);
     r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
@@ -334,7 +333,7 @@ void r05_update_room_script()
                            case 5:
                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                    script_say_actor("­Oh vaya! Creo que ya hay un horario impreso de antes", &r05_dialogActor);
-                               else if ((is_game_flag(GOT_SHEETS_FLAG) || is_game_flag(USED_SHEETS_FLAG)) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+                               else if (is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, me he quedado sin hojas en la impresora", &r05_dialogActor);
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, la impresora me dice error de cartucho", &r05_dialogActor);
@@ -359,7 +358,8 @@ void r05_update_room_script()
                                else
                                {
                                    set_game_flag(USED_SHEETS_FLAG);
-                               
+                                   set_game_flag(SHEETS_NOT_ON_PRINTER_FLAG);
+                                   
                                    if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                    {
                                        if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchdEmpty1, r05_animations, R05_ANIM_PRINT_SCHD_EMPTY))
@@ -383,6 +383,7 @@ void r05_update_room_script()
                            case 21:
                                script_say_actor("Ya lo tienes", &r05_dialogActor);
                                r05_object[R05_PRINTER_OBJ_ID].active = false;
+                               r05_animations[r05_object[R05_PRINTER_OBJ_ID].animationId - 1].frame = 0;
                            break;
                            case 10:
                                script_say("­Espera!... mejor no, gracias");
@@ -629,7 +630,10 @@ void r05_update_room_script()
                                         clear_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
                                     }
                                     else
+                                    {
                                         script_take_object(&r05_object[R05_SHEETS_OBJ_ID].active, GOT_SHEETS_FLAG, id_sheet);
+                                        set_game_flag(SHEETS_NOT_ON_PRINTER_FLAG);
+                                    }
                                     break;
                                 default:
                                     end_script();
@@ -709,7 +713,7 @@ void r05_update_room_script()
                                         script_player_take_state();
                                     break;
                                     case 2:
-                                        r05_object[R05_SHEETS_OBJ_ID].active = true;
+                                        clear_game_flag(SHEETS_NOT_ON_PRINTER_FLAG);
                                         clear_game_flag(GOT_SHEETS_FLAG);
                                         script_remove_inv_object(id_sheet);
                                     break;
@@ -811,6 +815,8 @@ void r05_update_room_script()
                                     script_say("La impresora ha impreso el horario del instituto encima de la fotocopia de Dragon Ball");
                                 else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
                                     script_say("Como el cartucho no tenia tinta, la impresora ha sacado la fotocopia de Dragon Ball sin ning£n da¤o");
+                                else if (is_game_flag(PRINTED_SHEET_FLAG))
+                                    script_say("Como el cartucho no tenia tinta, la impresora ha sacado el folio sin imprimir nada");
                                 else
                                     end_script();
                                 break;
