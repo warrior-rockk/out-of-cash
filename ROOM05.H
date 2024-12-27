@@ -48,7 +48,7 @@
 #define R05_OBJ_7           r05d_objCartridgeFull,   251, 91,  0, true, 0
 #define R05_OBJ_8           r05d_objCartridgeEmpty,   251, 91,  0, false, 0
 #define R05_OBJ_9           r05d_objPrintSchd1,       251, 94,  2, false, 0
-#define R05_OBJ_10          r05d_objPrintedSheet,     251, 94,  0, false, 0
+#define R05_OBJ_10          r05d_objPrintedSheet,     245, 104,  0, false, 0
 
 //define room animations
 #define R05_NUM_ANIMATIONS  2

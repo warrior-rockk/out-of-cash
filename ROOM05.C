@@ -52,7 +52,8 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
         case r05_printedPaper:
             if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) ||
                 is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) ||
-                is_game_flag(PRINTED_PHOTOCOPY_FLAG))
+                is_game_flag(PRINTED_PHOTOCOPY_FLAG) ||
+                is_game_flag(PRINTED_SHEET_FLAG))
                 strcpy(s, "Papel impreso");
             else
                 strcpy(s, "");
@@ -149,7 +150,7 @@ void r05_update_room_objects()
 {
     r05_object[R05_PHOTOCOPY_OBJ_ID].active = !is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
     r05_object[R05_SHEETS_OBJ_ID].active = !is_game_flag(GOT_SHEETS_FLAG) && !is_game_flag(USED_SHEETS_FLAG);
-    r05_object[R05_SHEETSPHOTO_OBJ_ID].active = is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
+    r05_object[R05_SHEETSPHOTO_OBJ_ID].active = is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG) && !is_game_flag(USED_PHOTOCOPY_FLAG);
     r05_object[R05_CARTRIDGEFULL_OBJ_ID].active = !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
     r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
     
@@ -342,26 +343,32 @@ void r05_update_room_script()
                            break;
                            case 20:
                                clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
-                               set_game_flag(USED_SHEETS_FLAG);
                                r05_object[R05_PRINTER_OBJ_ID].active = true;
 
                                if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                {
+                                   set_game_flag(USED_PHOTOCOPY_FLAG);
                                    if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintPhoto1, r05_animations, R05_ANIM_PRINT_PHOTO))
                                    {
                                        roomScript.step++;
                                        set_game_flag(PRINTED_PHOTOCOPY_FLAG);
+                                       clear_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
                                        r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
                                    }
                                }
                                else
                                {
+                                   set_game_flag(USED_SHEETS_FLAG);
+                               
                                    if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
+                                   {
                                        if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchdEmpty1, r05_animations, R05_ANIM_PRINT_SCHD_EMPTY))
                                        {
                                            roomScript.step++;
                                            set_game_flag(PRINTED_SHEET_FLAG);
+                                           clear_game_flag(USED_SHEETS_FLAG);
                                        }
+                                   }
                                    else
                                    {
                                        if (object_play_animation(&r05_object[R05_PRINTER_OBJ_ID], r05d_objPrintSchd1, r05_animations, R05_ANIM_PRINT_SCHD))
@@ -375,6 +382,7 @@ void r05_update_room_script()
                            break;
                            case 21:
                                script_say_actor("Ya lo tienes", &r05_dialogActor);
+                               r05_object[R05_PRINTER_OBJ_ID].active = false;
                            break;
                            case 10:
                                script_say("­Espera!... mejor no, gracias");
@@ -833,6 +841,11 @@ void r05_update_room_script()
                                     {
                                         clear_game_flag(PRINTED_PHOTOCOPY_FLAG);
                                         script_take_object(&r05_object[R05_PRINTEDPHOTO_OBJ_ID].active, GOT_PHOTOCOPY_FLAG, id_photocopy);
+                                    }
+                                    else if (is_game_flag(PRINTED_SHEET_FLAG))
+                                    {
+                                        clear_game_flag(PRINTED_SHEET_FLAG);
+                                        script_take_object(&r05_object[R05_PRINTEDSHEET_OBJ_ID].active, GOT_SHEETS_FLAG, id_sheet);
                                     }
                                     break;
                                 default:
