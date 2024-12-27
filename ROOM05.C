@@ -34,7 +34,7 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Fotocopias");
             break;
         case r05_paper:
-            if (!is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
+            if (r05_object[R05_SHEETS_OBJ_ID].active || r05_object[R05_SHEETSPHOTO_OBJ_ID].active)
                 strcpy(s, "Papel");
             else
                 strcpy(s, "");
@@ -352,7 +352,7 @@ void r05_update_room_script()
                                        roomScript.step++;
                                        set_game_flag(PRINTED_PHOTOCOPY_FLAG);
                                        clear_game_flag(PHOTOCOPY_ON_PRINTER_FLAG);
-                                       r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
+                                       //r05_object[R05_PRINTEDPHOTO_OBJ_ID].active = true;
                                    }
                                }
                                else
@@ -375,7 +375,7 @@ void r05_update_room_script()
                                        {
                                            roomScript.step++;
                                            set_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
-                                           r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
+                                           //r05_object[R05_PRINTEDSCH_OBJ_ID].active = true;
                                        }
                                    }
                                }
@@ -653,7 +653,10 @@ void r05_update_room_script()
                                 script_say("Es el cartucho de tinta de la impresora");
                                 break;
                             default:
-                                script_say("Parece lleno");
+                                if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
+                                    script_say("Parece lleno");
+                                else if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
+                                    script_say("Parece vac¡o");
                                 end_script();
                                 break;
                         }
@@ -727,7 +730,13 @@ void r05_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_move_player_to_target();
+                                        if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+                                            script_move_player_to_target();
+                                        else
+                                        {
+                                            script_say("Mejor me la guardo");
+                                            end_script();
+                                        }
                                     break;
                                     case 1:
                                         script_player_take_state();
