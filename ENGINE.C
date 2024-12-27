@@ -168,6 +168,11 @@ void script_combine_inv_object(uint8_t numObject1, uint8_t numObject2, uint8_t n
     if (numObject2)
         inventory_remove(numObject2);
     inventory_add(numObjectAdd);
+
+    //clear cursor data
+    cursor.invObjName[0] = '\0';
+    cursor.invObject = 0;
+    cursor.selectedVerb = USE;
     
     roomScript.step++;
 }
