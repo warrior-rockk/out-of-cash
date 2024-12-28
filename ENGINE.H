@@ -159,6 +159,8 @@ struct debug
     bool showHotspotImage;
     //cursor room objects
     bool cursorRoomObjects;
+    //debug info
+    bool showDebugInfo;
 } debug;
 #endif
 

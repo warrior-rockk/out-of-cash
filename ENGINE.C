@@ -438,11 +438,14 @@ void start_script(uint16_t scriptNumber)
 void show_debug(char *varName, int var)
 {
     #ifdef DEBUGMODE
-    if (debug.numVars < DEBUG_MAX_VARS)
+    if (debug.showDebugInfo)
     {
-        strcpy(debug.varName[debug.numVars], varName);
-        debug.var[debug.numVars] = var;
-        debug.numVars++;
+        if (debug.numVars < DEBUG_MAX_VARS)
+        {
+            strcpy(debug.varName[debug.numVars], varName);
+            debug.var[debug.numVars] = var;
+            debug.numVars++;
+        }
     }
     #endif
 }

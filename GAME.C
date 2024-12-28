@@ -165,6 +165,11 @@ void main_init()
 
     //init game tick
     tick_init();
+
+    //init debug
+    #ifdef DEBUGMODE
+    debug.showDebugInfo = true;
+    #endif
 }
 
 //general update
@@ -373,6 +378,10 @@ void game_update()
         //toogle show room hotspot image
         if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
             debug.showHotspotImage = !debug.showHotspotImage;
+
+        //toogle show debug info
+        if (gameKeys[G_KEY_D].pressed)
+            debug.showDebugInfo = !debug.showDebugInfo;
 
         //toogle cursor room objects
         if (gameKeys[G_KEY_O].pressed && game.state == PLAYING_STATE)
