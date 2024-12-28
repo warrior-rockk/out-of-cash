@@ -172,9 +172,9 @@ void player_update_scale()
 
     //get walk pixel color
     checkColor = getpixel(actualRoom.wImage, checkScaleX, checkScaleY);
-    
+
     //calculate scale value
-    if (checkColor == NO_SCALE_COLOR)
+    if (checkColor == NO_SCALE_COLOR || checkColor == 0 || checkColor == -1)
         player.scale = ftofix(1.0);
     else
         player.scale = ftofix(((checkColor - SCALE_INI_COLOR) + 1) * SCALE_COLOR_SCALE);

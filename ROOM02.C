@@ -404,7 +404,7 @@ void r02_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                change_room_pos(BEDROOM_ROOM_NUM, 201, 145);
+                                change_room_pos(BEDROOM_ROOM_NUM, 201, 136);
                                 end_script();
                                 break;
                         }
