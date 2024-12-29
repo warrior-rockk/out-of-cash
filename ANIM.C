@@ -31,15 +31,19 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
     
     //if frame time reached
     if (animation->frameTime >= speed)
+    {
         //if not last frame
         if (animation->frame < endFrame)
+        {
+            if (animation->frame == startFrame && mode == ANIM_PING_PONG)
+                animation->reverse = false;
+
             //next frame
             if (!animation->reverse)
                 animation->frame += 1;
             else
                 animation->frame -= 1;
-        else if (animation->frame == startFrame && mode == ANIM_PING_PONG)
-            animation->reverse = false;
+        }
         else if (mode == ANIM_LOOP)
         {
             //repeat animation
@@ -56,5 +60,7 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
         else
            animFinished = true;
            
+    }
+    
     return animFinished;
 }

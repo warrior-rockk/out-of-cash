@@ -1565,11 +1565,6 @@ void room_objects_draw(uint8_t layer)
             objImage = (BITMAP *)actualRoom.dataFile[obj->objId].dat;
             //draw the object
             draw_sprite(buffer, objImage, obj->x-(objImage->w>>1) - roomScroll.x, obj->y - (objImage->h>>1) - roomScroll.y);
-
-            #ifdef DEBUGMODE
-            if (obj->animationId)
-                TRACE("Draw object %i with frame %i\n", i, obj->objId);
-            #endif
         }
     }
 }
