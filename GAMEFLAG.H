@@ -80,6 +80,8 @@ enum gameFlags{
     SCHOOLBATH_MIRROR_MSG_FLAG,
 
     INFO_SPORT_WORK_FLAG,
+
+    NERD_SIDE_FLAG,
 };
 
 //definition of global game numeric vars index

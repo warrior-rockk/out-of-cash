@@ -10,11 +10,19 @@ Load room datafile: R01DATA.DAT
 Change from room 1 to room 8
 Free actual room datafile resources
 Load room datafile: R08DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 6
+Draw player with frame 7
+Draw player with frame 8
+Draw player with frame 9
+Draw player with frame 10
+Draw player with frame 11
+Draw player with frame 12
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 6
+Draw player with frame 7
 Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
@@ -28,22 +36,23 @@ Draw player with frame 13
 Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
 Draw player with frame 7
 Draw player with frame 8
 Draw player with frame 9
 Draw player with frame 10
 Draw player with frame 11
 Draw player with frame 12
-Draw player with frame 4
+Draw player with frame 13
+Draw player with frame 12
+Draw player with frame 11
+Draw player with frame 10
+Draw player with frame 9
+Draw player with frame 8
+Draw player with frame 7
+Draw player with frame 6
 Draw player with frame 5
+Draw player with frame 4
+Draw player with frame 3
 Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
@@ -52,120 +61,3 @@ Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
 Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 15
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 15
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Change from room 6 to room 0
-Free actual room datafile resources
-Load room datafile: R00DATA.DAT
-Draw player with frame 15
-Change from room 0 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 14
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 14
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Change from room 6 to room 0
-Free actual room datafile resources
-Load room datafile: R00DATA.DAT
-Draw player with frame 15
-Change from room 0 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 14
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
