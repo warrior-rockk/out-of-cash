@@ -95,7 +95,13 @@ void r11_room_update()
 //update room objects
 void r11_update_room_objects()
 {
-
+    //teacher object
+    if (r11_dialogActor.talking)
+        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_TALK);
+    else if (dialog.active)
+        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_IDLE);
+    else
+        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objReading1, r11_animations, R11_ANIM_READING);
 }
 
 //update dialog selection

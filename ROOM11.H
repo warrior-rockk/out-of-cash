@@ -16,16 +16,28 @@
 //define room properties
 #define R11_START_POS_X         76
 #define R11_START_POS_Y         99
-#define R11_ROOM_NUM_OBJS       0
+#define R11_ROOM_NUM_OBJS       1
 #define R11_MUSIC_ID            0
 #define R11_FADE                false
-#define R11_LIGHTS_OFF                false
+#define R11_LIGHTS_OFF          false
 
 //define room data (compose room properties and function pointers)
 #define R11_DATA R11_START_POS_X, R11_START_POS_Y, R11_ROOM_NUM_OBJS, R11_MUSIC_ID, R11_FADE , R11_LIGHTS_OFF , &r11_room_init, &r11_room_update, &r11_get_hotspot_name, &r11_get_default_hotspot_verb, &r11_get_object_info
 
+//define object array alias
+#define R11_TEACHER_OBJ_ID        0
+
+//define object data (objId, x, y, animId, active, layer)
+#define R11_OBJ_0           r11d_objReading1,   211, 64,  1, true, 0
+
 //define room animations
-#define R11_NUM_ANIMATIONS  0
+#define R11_NUM_ANIMATIONS  1
+
+#define R11_ANIM_READING    r11d_objReading1, r11d_objReading4, 2, ANIM_PING_PONG
+#define R11_ANIM_TALK       r11d_objTalk1,    r11d_objTalk9, 1, ANIM_PING_PONG
+#define R11_ANIM_TAKE       r11d_objTake,     r11d_objTake, 3, ANIM_ONCE
+#define R11_ANIM_SURPRISE   r11d_objSurprise, r11d_objSurprise, 3, ANIM_ONCE
+#define R11_ANIM_IDLE       r11d_objTalk7,    r11d_objTalk7, 1, ANIM_LOOP
 
 //hotspot code room enumeration
 enum r11_hotspotCode{
@@ -39,13 +51,14 @@ enum r11_hotspotCode{
 //declare and define room objects array
 static tObject r11_object[R11_ROOM_NUM_OBJS] =
 {
+    {R11_OBJ_0},
 };
 
 //declare room objects animations array
 static tAnimation r11_animations[R11_NUM_ANIMATIONS];
 
 //declare room dialog actor
-static tActorTalk r11_dialogActor = {244, 50, 70, false};
+static tActorTalk r11_dialogActor = {150, 50, 70, false};
 
 //declare room functions called from game
 void r11_get_hotspot_name(uint8_t colorCode, char *s);
