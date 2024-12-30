@@ -115,8 +115,8 @@ void r08_update_room_objects()
     //nerd object
     if (r08_dialogActor.talking)
         object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TALK);
-    else if (dialog.active)
-        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_IDLE);
+    //else if (dialog.active)
+    //    object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_IDLE);
     else
         object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_PLAYING);
 }
@@ -124,13 +124,108 @@ void r08_update_room_objects()
 //update dialog selection
 void r08_update_dialog_selection()
 {
-
+    if (dialog.active && dialog.state == DIALOG_ST_SELECT)
+    {
+        switch (dialog.dialogId)
+        {
+            case 1:
+                switch (dialog.node)
+                {
+                    case 0:
+                        stop_dialog();
+                    break;
+                    case 1:
+                        dialog_add("¨A qu‚ est s jugando?",2);
+                        dialog_add("¨Por qu‚ la educaci¢n f¡sica tiene que contar en las calificaciones?",1);
+                        dialog_add("No te molesto", 0);
+                    break;
+                    case 2:
+                        dialog_add("Pero es que odio nadar",2);
+                        dialog_add("¨10 largos? ¨Pero quien cree que soy, Aquaman?",2);
+                        dialog_add("Ah pero, ¨tenemos piscina en este instituto?", 2);
+                        if (!is_game_flag(INFO_SPORT_WORK_FLAG))
+                            dialog_add("Y no hay otra cosa que pueda hacer para aprobar", 2);
+                        else
+                            dialog_add("¨Que dec¡a de una enfermedad en la piel?", 2);
+                        dialog_add("Bah... el agua para los patos", 1);
+                    break;
+                    case 4:
+                        dialog_add("No tengo dinero...",1);
+                        dialog_add("No me interesa, gracias", 0);
+                    break;
+                    
+                }
+            break;
+        }
+    }
 }
 
 //update room script
 void r08_update_room_script()
 {
-//if script active is room script type
+    //if script active is dialog type
+    if (roomScript.active && roomScript.type == DIALOG_SCRIPT_TYPE)
+    {
+        //fixed step: say response line
+        if (roomScript.step == 0)
+        {
+            begin_script();
+            script_say(dialog.lineText[dialog.selLine - 1]);
+        }
+        else
+        {
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLine
+            switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
+            {
+                case 1:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Todos los alumnos tienen que pasar la £ltima prueba del curso para aprobar", &r08_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("La prueba consiste en realizar 10 largos de piscina sin detenerse", &r08_dialogActor);
+                        break;
+                        case 4:
+                            script_say_actor("Y usted hasta el momento no la ha realizado", &r08_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 2:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("El trabajo duro y la fortaleza f¡sica que ense¤a la educaci¢n f¡sica", &r08_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("son de los valores mas importantes y necesarios que os encontrar‚is en la vida", &r08_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Adem s, se est  poniendo fond¢n", &r08_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                default:
+                    script_next_dialog_node();
+                    end_script();
+                break;
+            }
+        }
+    }
+
+    //if script active is room script type
     if (roomScript.active && roomScript.type == ROOM_SCRIPT_TYPE)
     {
         //sequence actions
@@ -245,6 +340,18 @@ void r08_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Friki");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case TALK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_start_dialog(1);
                                 break;
                             default:
                                 end_script();
