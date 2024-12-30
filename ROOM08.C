@@ -112,7 +112,13 @@ void r08_room_update()
 //update room objects
 void r08_update_room_objects()
 {
-
+    //nerd object
+    if (r08_dialogActor.talking)
+        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TALK);
+    else if (dialog.active)
+        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_IDLE);
+    else
+        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_PLAYING);
 }
 
 //update dialog selection
