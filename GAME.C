@@ -40,7 +40,8 @@ int main()
                 cursor_update();
 
                 //placeholder test (and game title)
-                game_write("ADVENTURE\nGAME", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR));
+                game_write("OUT OF CASH", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
+                game_write("(SIN BLANCA)", SAY_X, SAY_Y + 20, makecol(255,255,255), 2);
                 cursor_draw();
                 
                 break;
@@ -95,7 +96,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("PAUSA", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR));
+                game_write("PAUSA", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), actualFont);
 
                 break;
             case MENU_STATE:
@@ -452,7 +453,7 @@ void game_keys_handler()
 }
 
 //function to write text on screen
-void game_write(char *text, int x, int y, uint8_t color)
+void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex)
 {
     int posY;
     char s[MAX_MSG_LENGTH];
@@ -469,16 +470,16 @@ void game_write(char *text, int x, int y, uint8_t color)
     while (ch)
     {
         //print black outline text
-        textprintf_centre_ex(buffer, gameFont[actualFont], x+1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[actualFont], x-1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x+1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x-1, posY, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY+1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY-1, makecol(1,1,1), -1, "%s", ch);
 
         //print text
-        textprintf_centre_ex(buffer, gameFont[actualFont], x, posY, color, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY, color, -1, "%s", ch);
         
         //increment line position
-        posY += text_height(gameFont[actualFont]);
+        posY += text_height(gameFont[fontIndex]);
         
         //get next token
         ch = strtok(NULL, "\n");
@@ -1326,7 +1327,7 @@ void msg_draw()
             msgY = MSG_LINE_SPACING;
             
         //call to write text
-        game_write(msg.msg, msgX, msgY, msg.actorTalk->textColor);
+        game_write(msg.msg, msgX, msgY, msg.actorTalk->textColor, actualFont);
     }
 }
 
