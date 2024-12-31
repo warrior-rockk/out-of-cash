@@ -82,6 +82,7 @@ enum gameFlags{
     INFO_SPORT_WORK_FLAG,
 
     NERD_SIDE_FLAG,
+    NERD_HELP_FLAG,
 };
 
 //definition of global game numeric vars index

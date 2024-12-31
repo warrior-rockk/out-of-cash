@@ -7,51 +7,42 @@ Game initialized
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
+Change from room 1 to room 8
+Free actual room datafile resources
+Load room datafile: R08DATA.DAT
 Draw player with frame 15
 Draw player with frame 16
 Draw player with frame 17
-Adding numObject 8 to inventory array position 0
+Draw player with frame 18
 Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
 Draw player with frame 7
 Draw player with frame 8
 Draw player with frame 9
+Draw player with frame 10
+Draw player with frame 11
+Draw player with frame 12
+Draw player with frame 13
+Draw player with frame 12
 Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
 Draw player with frame 7
 Draw player with frame 8
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Change from room 1 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Draw player with frame 15
-Change from room 2 to room 1
-Free actual room datafile resources
-Load room datafile: R01DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 15
-Draw player with frame 16
-Change from room 1 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Draw player with frame 15
-Change from room 2 to room 1
-Free actual room datafile resources
-Load room datafile: R01DATA.DAT
-Change from room 1 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Change from room 2 to room 11
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change from room 11 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
+Draw player with frame 9
+Draw player with frame 10
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 6
+Draw player with frame 7
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 4
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 6
+Draw player with frame 4
+Draw player with frame 5
+Draw player with frame 6
+Draw player with frame 7

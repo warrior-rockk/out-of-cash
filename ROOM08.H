@@ -36,7 +36,7 @@
 #define R08_ANIM_IDLE           r08d_objIdle, r08d_objIdle, 1, ANIM_LOOP
 #define R08_ANIM_PLAYING        r08d_objPlay1, r08d_objPlay6, 6, ANIM_PING_PONG
 #define R08_ANIM_TALK           r08d_objTalk1, r08d_objTalk9, 1, ANIM_PING_PONG
-#define R08_ANIM_TALK_PLAYING   r08d_objPlay1, r08d_objPlay6, 1, ANIM_PING_PONG
+#define R08_ANIM_TALK_PLAYING   r08d_objTalkPlay1, r08d_objTalkPlay6, 1, ANIM_PING_PONG
 
 //hotspot code room enumeration
 enum r08_hotspotCode{

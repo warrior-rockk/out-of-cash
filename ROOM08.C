@@ -151,7 +151,10 @@ void r08_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("¨A qu‚ est s jugando?",2);
+                        if (!is_game_flag(NERD_HELP_FLAG))
+                            dialog_add("¨A qu‚ est s jugando?",2);
+                        else
+                            dialog_add("Entonces, ¨me ayudar s a aprobar el ex men de historia?",0);
                         dialog_add("¨Est s usando el aula de inform tica para jugar?",1);
                         dialog_add("No te molesto", 0);
                     break;
@@ -199,7 +202,10 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
+                            if (!is_game_flag(NERD_HELP_FLAG))
+                                script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
+                            else
+                                dialog_jump(5, 1, 0);
                         break;
                         case 2:
                             script_say_actor("El juego de estrategia definitivo", &r08_dialogActor);
@@ -370,6 +376,22 @@ void r08_update_room_script()
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
+                            set_game_flag(NERD_HELP_FLAG);
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 401:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Si, te ayudar‚", &r08_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen por ti", &r08_dialogActor);
+                        break;
+                        default:
                             script_next_dialog_node();
                             end_script();
                         break;
