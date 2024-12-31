@@ -210,28 +210,28 @@ void script_player_take_state()
 void set_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < (MAX_GAME_FLAGS * 8));
-    SET_BIT(game.flags[flagNum % 8], flagNum/8);
+    SET_BIT(game.flags[flagNum / 8], flagNum % 8);
 }
 
 //function to clear game flag
 void clear_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < (MAX_GAME_FLAGS * 8));
-    CLEAR_BIT(game.flags[flagNum % 8], flagNum/8);
+    CLEAR_BIT(game.flags[flagNum / 8], flagNum % 8);
 }
 
 //function to toggle game flag
 void toggle_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < (MAX_GAME_FLAGS * 8));
-    TOOGLE_BIT(game.flags[flagNum % 8], flagNum/8);
+    TOOGLE_BIT(game.flags[flagNum / 8], flagNum % 8);
 }
 
 //function to check game flag
 bool is_game_flag(enum gameFlags flagNum)
 {
     ASSERT(flagNum < (MAX_GAME_FLAGS * 8));
-    return CHECK_BIT(game.flags[flagNum % 8], flagNum/8);
+    return CHECK_BIT(game.flags[flagNum / 8], flagNum % 8);
 }
 
 //function to increment game var
