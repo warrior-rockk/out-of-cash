@@ -161,6 +161,8 @@ struct debug
     bool cursorRoomObjects;
     //debug info
     bool showDebugInfo;
+    //obtain all inventory items
+    bool allInvObjects;
 } debug;
 #endif
 

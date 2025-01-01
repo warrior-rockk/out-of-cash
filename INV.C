@@ -25,16 +25,24 @@ void inventory_init()
     //clear inventory bitmap buffer
     clear_bitmap(inventoryImage);
 
-
-    //test inventory
-    /*
-    for (int i = 0; i < id_COUNT; i++)
-    {
-        inventory.objIndex[i] = i + 1;
-        inventory.numObjects++;
-    }
-    */
 }
+
+#ifdef DEBUGMODE
+void get_all_inv_objects()
+{
+    //get all inventory
+    if (!debug.allInvObjects)
+    {
+        for (int i = 0; i < id_COUNT; i++)
+        {
+            inventory.objIndex[i] = i + 1;
+            inventory.numObjects++;
+        }
+    }
+    debug.allInvObjects = true;
+    inventory.refresh = true;
+}
+#endif
 
 //add object to inventory
 void inventory_add(uint8_t numObject)
@@ -443,8 +451,49 @@ void inventory_update()
                                 script_say("Son mis notas del instituto");
                                 break;
                             case 1:
-                                script_say("He suspendido Matem ticas, Historia y Educaci¢n F¡sica");
+                                if (is_game_flag(HISTORY_APPROVED_FLAG) &&
+                                    is_game_flag(MATH_APPROVED_FLAG) &&
+                                    is_game_flag(PE_APPROVED_FLAG))
+                                    script_say("­He aprobado todo!");
+                                else
+                                    roomScript.step++;
                                 break;
+                            case 2:
+                                if (!is_game_flag(HISTORY_APPROVED_FLAG) &&
+                                    !is_game_flag(MATH_APPROVED_FLAG) &&
+                                    !is_game_flag(PE_APPROVED_FLAG))
+                                {
+                                    script_say("He suspendido Matem ticas, Historia y Educaci¢n F¡sica");
+                                    end_script();
+                                }
+                                else
+                                    script_say("Pero ya he aprobado:");
+                                break;    
+                            case 3:
+                                if (is_game_flag(MATH_APPROVED_FLAG))
+                                    script_say("Matem ticas");
+                                else
+                                    roomScript.step++;
+                            case 4:
+                                if (is_game_flag(HISTORY_APPROVED_FLAG))
+                                {
+                                    if (is_game_flag(PE_APPROVED_FLAG))
+                                        script_say("Historia");
+                                    else
+                                        script_say("e Historia");
+                                }
+                                else
+                                    roomScript.step++;
+                            case 5:
+                                if (is_game_flag(PE_APPROVED_FLAG))
+                                {
+                                    if (is_game_flag(MATH_APPROVED_FLAG) || is_game_flag(HISTORY_APPROVED_FLAG))
+                                        script_say("y Educaci¢n F¡sica");
+                                    else
+                                        script_say("Educaci¢n F¡sica");
+                                }
+                                else
+                                    roomScript.step++;        
                             default:
                                 end_script();
                                 break;

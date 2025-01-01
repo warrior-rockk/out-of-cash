@@ -49,5 +49,7 @@ void inventory_draw();
 uint8_t get_inv_obj_position(uint8_t colorCode);
 void get_inv_obj_name(uint8_t objIndex, char *s);
 uint8_t get_inv_obj_id(uint8_t invPosition);
-
+#ifdef DEBUGMODE
+void get_all_inv_objects();
+#endif
 #endif //H_INVENTORY

@@ -266,7 +266,7 @@ void game_load_resources()
 //function to init game
 void game_init()
 {
-    //default game config (each savegame file stores custom config
+    //default game config (each savegame file stores custom config)
     gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 30;
     gameConfig.musicVolume  = 0; //200
@@ -310,6 +310,9 @@ void game_init()
     hud_init();
     dialog_init();
 
+    //initial game inventory object
+    inventory_add(id_califications);
+    
     TRACE("Game initialized\n");
 }
 
@@ -427,6 +430,10 @@ void game_update()
             mouse_y--;
         if (gameKeys[G_KEY_DOWN].pressed && !(key_shifts & KB_SHIFT_FLAG))
             mouse_y++;
+
+        //get all inventory items
+        if (gameKeys[G_KEY_I].pressed)
+            get_all_inv_objects();
 
     #endif
 }
