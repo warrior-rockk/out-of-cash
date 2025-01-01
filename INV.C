@@ -137,7 +137,7 @@ uint8_t get_inv_obj_position(uint8_t colorCode)
     if (colorCode > (INV_COLOR_OFFSET + INV_OBJECTS_PER_PAGE))
         return 0;
     else
-        return (uint8_t)((colorCode % INV_COLOR_OFFSET) + (inventory.page * INV_OBJECTS_PER_PAGE) + 1);
+        return (uint8_t)((colorCode % INV_COLOR_OFFSET) + (inventory.page * INV_OBJECTS_PER_ROW) + 1);
 }
 
 //get inventory object value based on inventory position
@@ -454,19 +454,17 @@ void inventory_update()
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) &&
                                     is_game_flag(MATH_APPROVED_FLAG) &&
                                     is_game_flag(PE_APPROVED_FLAG))
-                                    script_say("­He aprobado todo!");
-                                else
-                                    roomScript.step++;
-                                break;
-                            case 2:
-                                if (!is_game_flag(HISTORY_APPROVED_FLAG) &&
-                                    !is_game_flag(MATH_APPROVED_FLAG) &&
-                                    !is_game_flag(PE_APPROVED_FLAG))
                                 {
-                                    script_say("He suspendido Matem ticas, Historia y Educaci¢n F¡sica");
+                                    script_say("­He aprobado todo!");
                                     end_script();
                                 }
                                 else
+                                    script_say("He suspendido Matem ticas, Historia y Educaci¢n F¡sica");
+                                break;
+                            case 2:
+                                if (is_game_flag(HISTORY_APPROVED_FLAG) ||
+                                    is_game_flag(MATH_APPROVED_FLAG) ||
+                                    is_game_flag(PE_APPROVED_FLAG))
                                     script_say("Pero ya he aprobado:");
                                 break;    
                             case 3:
@@ -474,6 +472,7 @@ void inventory_update()
                                     script_say("Matem ticas");
                                 else
                                     roomScript.step++;
+                                break;
                             case 4:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG))
                                 {
@@ -484,6 +483,7 @@ void inventory_update()
                                 }
                                 else
                                     roomScript.step++;
+                                break;
                             case 5:
                                 if (is_game_flag(PE_APPROVED_FLAG))
                                 {
@@ -493,7 +493,8 @@ void inventory_update()
                                         script_say("Educaci¢n F¡sica");
                                 }
                                 else
-                                    roomScript.step++;        
+                                    roomScript.step++;
+                                break;
                             default:
                                 end_script();
                                 break;

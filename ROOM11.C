@@ -104,7 +104,10 @@ void r11_update_room_objects()
         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objReading1, r11_animations, R11_ANIM_READING);
 
     if (is_game_flag(SHOW_DISEASE_FLAG))
+    {
         start_script(R11_SHOW_DISEASE_SCRIPT);
+        clear_game_flag(SHOW_DISEASE_FLAG);
+    }
 }
 
 //update dialog selection
@@ -555,7 +558,6 @@ void r11_update_room_script()
                     break;
                     default:
                         set_game_flag(SPORT_WORK_FLAG);
-                        clear_game_flag(SHOW_DISEASE_FLAG);
                         end_script();
                     break;
                 }
