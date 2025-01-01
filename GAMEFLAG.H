@@ -86,6 +86,9 @@ enum gameFlags{
     
     NERD_SIDE_FLAG,
     NERD_HELP_FLAG,
+    BRAIN_COSTUME_FLAG,
+    SHIRT_COSTUME_FLAG,
+    JEANS_COSTUME_FLAG,
 };
 
 //definition of global game numeric vars index

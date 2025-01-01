@@ -537,7 +537,79 @@ void r08_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                    case GIVE:
+                        switch (roomScript.invObject)
+                        {
+                            case id_blackBrain:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(NERD_HELP_FLAG))
+                                        {
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say_actor("­Perfecto! Usaremos esto para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_remove_inv_object(id_blackBrain);
+                                        set_game_flag(BRAIN_COSTUME_FLAG);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_starShirt:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(NERD_HELP_FLAG))
+                                        {
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say_actor("­Muy bien! Esto servir  para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_remove_inv_object(id_starShirt);
+                                        set_game_flag(SHIRT_COSTUME_FLAG);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_jeans:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(NERD_HELP_FLAG))
+                                        {
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say_actor("­Oh si! Esto nos vendr  bien para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_remove_inv_object(id_jeans);
+                                        set_game_flag(JEANS_COSTUME_FLAG);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r08_computer2:
