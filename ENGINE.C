@@ -438,6 +438,8 @@ void start_script(uint16_t scriptNumber)
     roomScript.type == ROOM_SCRIPT_TYPE;
     roomScript.active = true;
     roomScript.scriptAssigned = true;
+    roomScript.step = 0;
+    roomScript.stepTime = 0;
 }
 
 //global debug vars function

@@ -89,6 +89,7 @@ enum gameFlags{
     BRAIN_COSTUME_FLAG,
     SHIRT_COSTUME_FLAG,
     JEANS_COSTUME_FLAG,
+    HISTORY_APPROVED_FLAG,
 };
 
 //definition of global game numeric vars index

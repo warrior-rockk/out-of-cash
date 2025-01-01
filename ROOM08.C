@@ -154,7 +154,7 @@ void r08_update_dialog_selection()
                         if (!is_game_flag(NERD_HELP_FLAG))
                             dialog_add("¨A qu‚ est s jugando?",2);
                         else
-                            dialog_add("Entonces, ¨me ayudar s a aprobar el ex men de historia?",0);
+                            dialog_add("Entonces, ¨me ayudar s a aprobar el ex men de historia?",6);
                         dialog_add("¨Est s usando el aula de inform tica para jugar?",1);
                         dialog_add("No te molesto", 0);
                     break;
@@ -173,6 +173,10 @@ void r08_update_dialog_selection()
                         dialog_add("Si me ayudas, ir‚ una tarde a merendar leche con galletas a tu casa",0);
                         dialog_add("Si me ayudas, te ense¤are a hacer niveles chulos para el DOOM",0);
                         dialog_add("Bueno, d‚jalo...", 0);
+                    break;
+                    case 6:
+                        dialog_add("¨Qu‚ necesito para el disfraz?",0);
+                        dialog_add("Genial, ­Gracias!",0);
                     break;
                 }
             break;
@@ -205,7 +209,7 @@ void r08_update_room_script()
                             if (!is_game_flag(NERD_HELP_FLAG))
                                 script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
                             else
-                                dialog_jump(5, 1, 0);
+                                dialog_jump(5, 1, 6);
                         break;
                         case 2:
                             script_say_actor("El juego de estrategia definitivo", &r08_dialogActor);
@@ -397,6 +401,49 @@ void r08_update_room_script()
                         break;
                     }
                 break;
+                case 501:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("Pues no s‚...", &r08_dialogActor);
+                        break;
+                        case 2:
+                            if (!is_game_flag(BRAIN_COSTUME_FLAG))
+                                script_say_actor("Consigue algo para el pelo", &r08_dialogActor);
+                            else
+                                roomScript.step++;
+                        break;
+                        case 3:
+                            if (!is_game_flag(SHIRT_COSTUME_FLAG))
+                            {
+                                if (is_game_flag(BRAIN_COSTUME_FLAG))
+                                    script_say_actor("Consigue alguna camiseta como las tuyas", &r08_dialogActor);
+                                else
+                                    script_say_actor("alguna camiseta como las tuyas", &r08_dialogActor);
+                            }
+                            else
+                                roomScript.step++;
+                        break;
+                        case 4:
+                            if (!is_game_flag(JEANS_COSTUME_FLAG))
+                            {
+                                if (is_game_flag(BRAIN_COSTUME_FLAG) || is_game_flag(SHIRT_COSTUME_FLAG))
+                                    script_say_actor("Consigue alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
+                                else
+                                    script_say_actor("y alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
+                            }
+                            else
+                                roomScript.step++;
+                        break;
+                        case 5:
+                            script_say_actor("Y con eso lo tendremos listo", &r08_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
                 default:
                     script_next_dialog_node();
                     end_script();
@@ -531,7 +578,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_start_dialog(1);
+                                if (!is_game_flag(HISTORY_APPROVED_FLAG))
+                                    script_start_dialog(1);
+                                else
+                                    script_say("Ya me ha sido de suficiente ayuda");
                                 break;
                             default:
                                 end_script();
@@ -559,6 +609,9 @@ void r08_update_room_script()
                                         script_remove_inv_object(id_blackBrain);
                                         set_game_flag(BRAIN_COSTUME_FLAG);
                                     break;
+                                    case 2:
+                                        start_script(R08_COSTUME_COMPLETE_SCRIPT);
+                                    break;
                                     default:
                                         end_script();
                                     break;
@@ -581,6 +634,9 @@ void r08_update_room_script()
                                         script_remove_inv_object(id_starShirt);
                                         set_game_flag(SHIRT_COSTUME_FLAG);
                                     break;
+                                    case 2:
+                                        start_script(R08_COSTUME_COMPLETE_SCRIPT);
+                                    break;
                                     default:
                                         end_script();
                                     break;
@@ -602,6 +658,9 @@ void r08_update_room_script()
                                     case 1:
                                         script_remove_inv_object(id_jeans);
                                         set_game_flag(JEANS_COSTUME_FLAG);
+                                    break;
+                                    case 2:
+                                        start_script(R08_COSTUME_COMPLETE_SCRIPT);
                                     break;
                                     default:
                                         end_script();
@@ -646,6 +705,40 @@ void r08_update_room_script()
                     break;                    
                 }
                 break;
+            case R08_COSTUME_COMPLETE_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        if (is_game_flag(BRAIN_COSTUME_FLAG) &&
+                            is_game_flag(SHIRT_COSTUME_FLAG) &&
+                            is_game_flag(JEANS_COSTUME_FLAG)
+                            )
+                        {
+                            script_say_actor("Creo que ya tengo todo lo necesario para el disfraz", &r08_dialogActor);
+                        }
+                        else
+                            end_script();
+                    break;
+                    case 1:
+                        game_fade_out(6);
+                        roomScript.step++;
+                    break;
+                    case 2:
+                        script_wait(20);
+                    break;
+                    case 3:
+                        game_fade_in();
+                        roomScript.step++;
+                    break;
+                    case 4:
+                        script_say_actor("Ha estado chupado. ­Examen aprobado!", &r08_dialogActor);
+                        set_game_flag(HISTORY_APPROVED_FLAG);
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }

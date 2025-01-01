@@ -38,6 +38,9 @@
 #define R08_ANIM_TALK           r08d_objTalk1, r08d_objTalk9, 1, ANIM_PING_PONG
 #define R08_ANIM_TALK_PLAYING   r08d_objTalkPlay1, r08d_objTalkPlay6, 1, ANIM_PING_PONG
 
+//define custom scripts (>256)
+#define R08_COSTUME_COMPLETE_SCRIPT 257
+
 //hotspot code room enumeration
 enum r08_hotspotCode{
     r08_door    = 32,
