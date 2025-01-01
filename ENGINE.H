@@ -199,6 +199,7 @@ uint16_t get_game_var(enum gameVars varNum);
 
 void change_room(int roomNum);
 void change_room_pos(int roomNum, int x, int y);
+uint8_t get_actual_room();
 void set_room_light_off(bool lightsOff);
 uint16_t get_last_room();
 

@@ -25,6 +25,7 @@
 #define STAR_SHIRT_SCRIPT           1003
 #define OAT_MIXED_SCRIPT            1004
 #define SPORT_WORK_SCRIPT           1005
+#define APPLY_OAT_SCRIPT            1006
 
 //data structures
 struct inventory

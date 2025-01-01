@@ -276,6 +276,12 @@ void change_room_pos(int roomNum, int x, int y)
     change_room(roomNum);
 }
 
+//function to return the actual room
+uint8_t get_actual_room()
+{
+    return game.actualRoom;
+}
+
 //function to set or reset room lights off
 void set_room_light_off(bool turnOff)
 {

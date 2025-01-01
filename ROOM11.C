@@ -102,6 +102,9 @@ void r11_update_room_objects()
         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_IDLE);
     else
         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objReading1, r11_animations, R11_ANIM_READING);
+
+    if (is_game_flag(SHOW_DISEASE_FLAG))
+        start_script(R11_SHOW_DISEASE_SCRIPT);
 }
 
 //update dialog selection
@@ -442,7 +445,12 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Disculpe profesor...");
+                                if (is_game_flag(PE_APPROVED_FLAG))
+                                {
+                                    script_say("Ahora que ya he aprobado no necesito nada de ‚l");
+                                }
+                                else
+                                    script_say("Disculpe profesor...");
                             break;
                             case 1:
                                 script_start_dialog(1);
@@ -452,8 +460,106 @@ void r11_update_room_script()
                             break;
                         }
                     break;
+                    case USE_WITH:
+                    case GIVE:
+                        switch (roomScript.invObject)
+                        {
+                            case id_bookSheets:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(SPORT_WORK_FLAG))
+                                            script_say_actor("No s‚ porque me da esto", &r11_dialogActor);
+                                        else
+                                            script_say_actor("Esta no es manera de presentar un trabajo", &r11_dialogActor);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_fullFolder:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(SPORT_WORK_FLAG))
+                                        {
+                                            script_say_actor("No s‚ porque me da esto", &r11_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say("Disculpe profesor...");
+                                    break;
+                                    case 1:
+                                        script_say("Aqu¡ tiene el trabajo sobre el deporte");
+                                    break;
+                                    case 2:
+                                        script_move_player_to_target();
+                                    break;
+                                    case 3:
+                                        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_TAKE);
+                                        script_player_take_state();
+                                    break;
+                                    case 4:
+                                        script_remove_inv_object(id_fullFolder);
+                                    break;
+                                    case 5:
+                                        script_say_actor("Veamos...", &r11_dialogActor);
+                                    break;
+                                    case 6:
+                                        script_wait(20);
+                                    break;
+                                    case 7:
+                                        script_say_actor("Muy bien, muy buen trabajo", &r11_dialogActor);
+                                    break;
+                                    case 8:
+                                        script_say_actor("Tiene usted la asignatura aprobada", &r11_dialogActor);
+                                    break;
+                                    case 9:
+                                        script_say_actor("Y que se mejore", &r11_dialogActor);
+                                        set_game_flag(PE_APPROVED_FLAG);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                        }
+                    break;
                 }
-                break;            
+                break;
+            case R11_SHOW_DISEASE_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_say("Me temo que no podr‚ hacer la prueba de nataci¢n");
+                    break;
+                    case 1:
+                        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_SURPRISE);
+                        script_say("Me ha salido una fea erupci¢n en la pierna");
+                    break;
+                    case 2:
+                        script_say_actor("­Desde luego, hijo! No se preocupe", &r11_dialogActor);
+                    break;
+                    case 3:
+                        script_say_actor("Eso no tiene buena pinta y debe ser examinado por un m‚dico", &r11_dialogActor);
+                    break;
+                    case 4:
+                        script_say_actor("Y no se preocupe por la prueba", &r11_dialogActor);
+                    break;
+                    case 5:
+                        script_say_actor("Entr‚gueme un trabajo sobre el deporte y le aprobar‚ la asignatura", &r11_dialogActor);
+                    break;
+                    default:
+                        set_game_flag(SPORT_WORK_FLAG);
+                        clear_game_flag(SHOW_DISEASE_FLAG);
+                        end_script();
+                    break;
+                }
+            break;
 
         }
     }

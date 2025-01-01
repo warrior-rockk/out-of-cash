@@ -905,7 +905,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_oatMixed:
+                                start_script(APPLY_OAT_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_starClock           :
@@ -976,13 +984,24 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Me lo unto");
+                                script_say("No querr¡a tocar esta masa con las manos");
+                                break;
+                            case 1:
+                                script_say("Necesitar¡a algo con lo que aplicarlo");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch(roomScript.invObject)
+                        {
+                            case id_spatula:
+                                start_script(APPLY_OAT_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case BLACK_BRAIN_SCRIPT:
@@ -1074,6 +1093,33 @@ void inventory_update()
                         script_say("He metido las hojas del libro de deporte en la carpeta");
                     break;
                     default:
+                        end_script();
+                    break;
+                }
+            break;
+            case APPLY_OAT_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        if (!is_game_flag(INFO_SPORT_WORK_FLAG))
+                        {
+                            script_say("La idea de aplicarme avena no es mala pero, ¨cual es el motivo de hacerlo?");
+                            end_script();
+                        }
+                        else if (get_actual_room() != PE_OFFICE_ROOM_NUM)
+                        {
+                            script_say("No deber¡a hacer esto aqu¡. Se me puede resbalar y caer");
+                            end_script();
+                        }
+                        else
+                            script_remove_inv_object(id_oatMixed);
+                    break;
+                    case 1:
+                        script_say("Emm... ¨Profesor?");
+                    break;
+                    default:
+                        set_game_flag(SHOW_DISEASE_FLAG);
                         end_script();
                     break;
                 }

@@ -39,6 +39,9 @@
 #define R11_ANIM_SURPRISE   r11d_objSurprise, r11d_objSurprise, 3, ANIM_ONCE
 #define R11_ANIM_IDLE       r11d_objTalk7,    r11d_objTalk7, 1, ANIM_LOOP
 
+//define custom scripts (>256)
+#define R11_SHOW_DISEASE_SCRIPT     257
+
 //hotspot code room enumeration
 enum r11_hotspotCode{
     r11_door    = 32,
