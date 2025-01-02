@@ -296,7 +296,86 @@ void r04_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case GIVE:
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_califications:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (is_game_flag(FATHER_SAY_MONEY_FLAG))
+                                            script_say_actor("Veamos...", &r04_dialogActor);
+                                        else
+                                        {
+                                            script_say("Uf... Mejor deber¡a hablar con mi padre primero antes de ense¤arle las notas");
+                                            end_script();
+                                        }
+                                    break;
+                                    case 1:
+                                        if (!is_game_flag(MATH_APPROVED_FLAG) ||
+                                            !is_game_flag(HISTORY_APPROVED_FLAG) ||
+                                            !is_game_flag(PE_APPROVED_FLAG))
+                                            roomScript.step++;
+                                        else
+                                            roomScript.step = 20;
+                                    break;
+                                    case 2:
+                                        script_say_actor("Todav¡a tienes que aprobar:", &r04_dialogActor);
+                                    break;
+                                    case 3:
+                                        if (!is_game_flag(MATH_APPROVED_FLAG))
+                                            script_say_actor("Matem ticas", &r04_dialogActor);
+                                        else
+                                            roomScript.step++;
+                                    break;
+                                    case 4:
+                                        if (!is_game_flag(HISTORY_APPROVED_FLAG))
+                                        {
+                                            if (!is_game_flag(PE_APPROVED_FLAG))
+                                                script_say_actor("Historia", &r04_dialogActor);
+                                            else
+                                                script_say_actor("e Historia", &r04_dialogActor);
+                                        }
+                                        else
+                                            roomScript.step++;
+                                    break;
+                                    case 5:
+                                        if (!is_game_flag(PE_APPROVED_FLAG))
+                                        {
+                                            if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG))
+                                                script_say_actor("Educaci¢n f¡sica", &r04_dialogActor);
+                                            else
+                                                script_say_actor("y Educaci¢n f¡sica", &r04_dialogActor);
+                                        }
+                                        else
+                                            roomScript.step++;
+                                    break;
+                                    case 6:
+                                        script_say_actor("Hasta que no lo apruebes todo no te dar‚ el dinero", &r04_dialogActor);
+                                        end_script();
+                                    break;
+                                    case 20:
+                                        script_say_actor("­Muy bien hijo!", &r04_dialogActor);
+                                    break;
+                                    case 21:
+                                        script_say_actor("Al final con trabajo y esfuerzo se consiguen metas", &r04_dialogActor);
+                                    break;
+                                    case 22:
+                                        script_say_actor("Aqu¡ tienes el dinero", &r04_dialogActor);
+                                    break;
+                                    case 23:
+                                        script_add_inv_object(id_money);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r04_trash:
