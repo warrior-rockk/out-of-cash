@@ -373,6 +373,10 @@ void r09_update_room_script()
                                 }
                                 break;
                             case 1:
+                                play_sound(sd_lockerOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
                             default:
@@ -399,6 +403,7 @@ void r09_update_room_script()
                                 break;
                             default:
                                 clear_game_flag(LOCKER_1_OPEN_FLAG);
+                                play_sound(sd_lockerClose);
                                 end_script();
                                 break;
                         }
@@ -506,6 +511,10 @@ void r09_update_room_script()
                                 }
                                 break;
                             case 1:
+                                play_sound(sd_lockerOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
                             default:
@@ -532,6 +541,7 @@ void r09_update_room_script()
                                 break;
                             default:
                                 clear_game_flag(LOCKER_2_OPEN_FLAG);
+                                play_sound(sd_lockerClose);
                                 end_script();
                                 break;
                         }
@@ -622,6 +632,10 @@ void r09_update_room_script()
                                 }
                                 break;
                             case 1:
+                                play_sound(sd_lockerOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
                             default:
@@ -648,6 +662,7 @@ void r09_update_room_script()
                                 break;
                             default:
                                 clear_game_flag(LOCKER_3_OPEN_FLAG);
+                                play_sound(sd_lockerClose);
                                 end_script();
                                 break;
                         }

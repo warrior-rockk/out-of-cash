@@ -226,6 +226,7 @@ void r02_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
+                                play_sound(sd_doorOpen);
                                 set_game_flag(BATH_DOOR_OPEN_FLAG);
                                 end_script();
                             default:
@@ -248,6 +249,7 @@ void r02_update_room_script()
 
                                 break;
                             case 1:
+                                play_sound(sd_doorClose);
                                 clear_game_flag(BATH_DOOR_OPEN_FLAG);
                                 end_script();
                             default:

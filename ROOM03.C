@@ -373,9 +373,13 @@ void r03_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
+                                play_sound(sd_switch);
+                                roomScript.step++;
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
-                            case 2:
+                            case 3:
                                 toggle_game_flag(BATH_LIGHT_OFF_FLAG);
                                 set_room_light_off(is_game_flag(BATH_LIGHT_OFF_FLAG));
                                 end_script();

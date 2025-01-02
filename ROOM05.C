@@ -338,12 +338,16 @@ void r05_update_room_script()
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... Lo siento, la impresora me dice error de cartucho", &r05_dialogActor);
                                else
+                               {
                                    roomScript.step = 20;
+                                   play_sound(sd_printer);
+                               }
                            break;
                            case 20:
                                clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                                r05_object[R05_PRINTER_OBJ_ID].active = true;
 
+                               
                                if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                {
                                    set_game_flag(USED_PHOTOCOPY_FLAG);
