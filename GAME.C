@@ -32,6 +32,31 @@ int main()
         //check actual game state
         switch (game.state)
         {
+            case LOGO_STATE:
+                game_fade_in();
+                cursor.enabled = false;
+
+                game_update();
+
+                //placeholder logo
+                game_write("WARCOM SOFT PRESENTS", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
+            break;
+            case INTRO_STATE:
+                 //update calls
+                game_update();
+                msg_update();
+                roomData[game.actualRoom].room_update();
+                room_action_update();
+                cursor_update();
+                player_update();
+                
+                //draw calls
+                room_draw();
+                player_draw();
+                room_front_layer_draw();
+                msg_draw();
+
+                break;
             case TITLE_STATE:
                 game_fade_in();
                 cursor.enabled = true;
@@ -162,7 +187,7 @@ void main_init()
     game_load_resources();
 
     //set game initial state
-    game.state = TITLE_STATE;
+    game.state = LOGO_STATE;
 
     //init game tick
     tick_init();
@@ -319,12 +344,38 @@ void game_init()
 //game update function
 void game_update()
 {
+    static uint16_t timeCounter;
+    
     //call to game keys handler
     game_keys_handler();
 
     //update current game state
     switch (game.state)
     {
+        case LOGO_STATE:
+            if (gameTick)
+                timeCounter++;
+            if (timeCounter >= 30 || cursor.click)
+            {
+                timeCounter = 0;
+                game_fade_out();
+                game_init();
+                game.nextRoom = 0;
+                game.room_pos_x = 30;
+                game.room_pos_y = 120;
+                set_game_flag(INTRO_FLAG);
+                game.state = INTRO_STATE;
+            }
+        break;
+        case INTRO_STATE:
+            if (!is_game_flag(INTRO_FLAG) || cursor.click)
+            {
+                game_fade_out();
+                game.state = TITLE_STATE;
+            }
+            else
+                check_room_changed();
+        break;
         case TITLE_STATE:
             if (gameKeys[G_KEY_PAUSE].pressed)
             {

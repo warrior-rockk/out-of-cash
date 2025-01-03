@@ -90,6 +90,8 @@ enum gameFlags{
     SHIRT_COSTUME_FLAG,
     JEANS_COSTUME_FLAG,
     HISTORY_APPROVED_FLAG,
+
+    INTRO_FLAG,
 };
 
 //definition of global game numeric vars index

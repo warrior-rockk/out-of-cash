@@ -25,7 +25,7 @@ void r00_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Cartel");
             break;
         case r00_stationery:
-                strcpy(s, "Papelería");
+                strcpy(s, "Papeler¡a");
             break;
         case r00_school:
                 strcpy(s, "Colegio");
@@ -76,11 +76,15 @@ tObject* r00_get_object_info(uint8_t numObject)
 //function to init room
 void r00_room_init()
 {
-    if (get_last_room() == SCHOOL_ROOM_NUM)
+    if (is_game_flag(INTRO_FLAG))
+    {
+        start_script(R00_INTRO_SCRIPT);
+    }
+    else if (get_last_room() == SCHOOL_ROOM_NUM)
         change_player_dir(DIR_RIGHT);
     else
         change_player_dir(DIR_LEFT);
-        
+
     game_fade_in();
 }
 
@@ -274,7 +278,34 @@ void r00_update_room_script()
                     break;
                 }
                 break;            
-
+            case R00_INTRO_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_move_player(160, 120);
+                    break;
+                    case 1:
+                        script_say("Um...");
+                    break;
+                    case 2:
+                        script_move_player(80, 120);
+                    break;
+                    case 3:
+                        script_say("­Concierto de Reincidentes!");
+                    break;
+                    case 4:
+                        script_say("5000 pelas la entrada");
+                    break;
+                    case 5:
+                        script_say("Tengo que conseguir el dinero como sea");
+                    break;
+                    default:
+                        clear_game_flag(INTRO_FLAG);
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }

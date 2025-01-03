@@ -27,6 +27,9 @@
 //define room animations
 #define R00_NUM_ANIMATIONS  0
 
+//define custom scripts >256
+#define R00_INTRO_SCRIPT 257
+
 //hotspot code room enumeration
 enum r00_hotspotCode{
     r00_door    = 32,
