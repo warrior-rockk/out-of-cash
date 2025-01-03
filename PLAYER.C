@@ -144,7 +144,10 @@ void player_update_animation()
     {
         case player_st_idle:
             //idle animation
-            play_animation(&player.animation, ANIM_PLY_IDLE);
+            if (player.lookDir != DIR_UP)
+                play_animation(&player.animation, ANIM_PLY_IDLE);
+            else
+                play_animation(&player.animation, ANIM_PLY_BACK);
             break;
         case player_st_moving:
             //walk animation

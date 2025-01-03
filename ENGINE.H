@@ -36,6 +36,7 @@
 #define DIR_NONE                0
 #define DIR_RIGHT               1
 #define DIR_LEFT                2
+#define DIR_UP                  3
 
 //room numbers
 #define STREET_ROOM_NUM         0

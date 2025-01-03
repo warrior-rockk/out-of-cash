@@ -292,12 +292,17 @@ void r00_update_room_script()
                         script_move_player(80, 120);
                     break;
                     case 3:
-                        script_say("­Concierto de Reincidentes!");
+                        change_player_dir(DIR_UP);
+                        script_wait(20);
                     break;
                     case 4:
-                        script_say("5000 pelas la entrada");
+                        script_say("­Concierto de Reincidentes!");
                     break;
                     case 5:
+                        script_say("5000 pelas la entrada");
+                    break;
+                    case 6:
+                        change_player_dir(DIR_RIGHT);
                         script_say("Tengo que conseguir el dinero como sea");
                     break;
                     default:
