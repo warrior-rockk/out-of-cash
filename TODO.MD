@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] fade in/out speed parameter all functions (bug on engine.h on function game_fade_off)
 - [ ] Block cursor while script running?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
