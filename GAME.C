@@ -304,7 +304,6 @@ void game_init()
     //init game vars
     game.actualRoom             = -1;    //to force first room_init
     game.nextRoom               = STREET_ROOM_NUM;
-    game.actualRoomLightOff     = false;
     game.room_pos_x             = 30;
     game.room_pos_y             = 120;
 
@@ -359,7 +358,6 @@ void game_update()
             {
                 timeCounter = 0;
                 game_fade_out();
-                game_init();
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }
@@ -382,6 +380,8 @@ void game_update()
             else if (cursor.click)
             {
                 game_fade_out();
+                game_init();
+                change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
                 game.state = PLAYING_STATE;
             }
             break;
@@ -417,6 +417,12 @@ void game_update()
             break;
     }
 
+    if (game.state != game.prevState)
+    {
+        TRACE("Change game state from %i to %i\n", game.prevState, game.state);
+        game.prevState = game.state;
+    }
+    
     #ifdef DEBUGMODE
         //force game exit
         if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
@@ -1794,7 +1800,7 @@ void gui_update()
             draw_sprite(gui.hsImage, gui.hsImageExit , GUI_CONTENT_X, GUI_CONTENT_Y);
             break;
         case GUI_EXIT_TITLE_STATE:
-            game.state = LOGO_STATE;
+            game.state = TITLE_STATE;
             stop_midi();
             game_fade_out();
             break;

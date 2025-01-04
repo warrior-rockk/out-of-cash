@@ -176,6 +176,7 @@ struct actualRoom
 struct game
 {
     enum gameState state;
+    enum gameState prevState;
     int16_t actualRoom;
     int16_t nextRoom;
     int16_t lastRoom;
