@@ -303,11 +303,11 @@ void game_init()
     
     //init game vars
     game.actualRoom             = -1;    //to force first room_init
-    game.nextRoom               = 1;
+    game.nextRoom               = STREET_ROOM_NUM;
     game.actualRoomLightOff     = false;
-    game.room_pos_x             = 0;
-    game.room_pos_y             = 0;
-    
+    game.room_pos_x             = 30;
+    game.room_pos_y             = 120;
+
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
@@ -355,20 +355,17 @@ void game_update()
         case LOGO_STATE:
             if (gameTick)
                 timeCounter++;
-            if (timeCounter >= 30 || cursor.click)
+            if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
             {
                 timeCounter = 0;
                 game_fade_out();
                 game_init();
-                game.nextRoom = 0;
-                game.room_pos_x = 30;
-                game.room_pos_y = 120;
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }
         break;
         case INTRO_STATE:
-            if (!is_game_flag(INTRO_FLAG) || cursor.click)
+            if (!is_game_flag(INTRO_FLAG) || gameKeys[G_KEY_EXIT].pressed)
             {
                 game_fade_out();
                 game.state = TITLE_STATE;
@@ -377,14 +374,13 @@ void game_update()
                 check_room_changed();
         break;
         case TITLE_STATE:
-            if (gameKeys[G_KEY_PAUSE].pressed)
+            if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = EXIT_STATE;
             }
             else if (cursor.click)
             {
                 game_fade_out();
-                game_init();
                 game.state = PLAYING_STATE;
             }
             break;
@@ -721,7 +717,7 @@ void check_room_changed()
             game_fade_out(FADE_DEFAULT_SPEED);
         else
             game_fade_out(FADE_FAST_SPEED);
-
+            
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
         game.lastRoom = game.actualRoom;
         game.actualRoom = game.nextRoom;
@@ -1797,7 +1793,7 @@ void gui_update()
             draw_sprite(gui.hsImage, gui.hsImageExit , GUI_CONTENT_X, GUI_CONTENT_Y);
             break;
         case GUI_EXIT_TITLE_STATE:
-            game.state = TITLE_STATE;
+            game.state = LOGO_STATE;
             stop_midi();
             game_fade_out();
             break;

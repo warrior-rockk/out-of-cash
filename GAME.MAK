@@ -43,7 +43,7 @@ C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=alleg alld
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE -DALLEGRO_TRACE=GAME.LOG
+C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
