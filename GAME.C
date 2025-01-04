@@ -368,6 +368,7 @@ void game_update()
             if (!is_game_flag(INTRO_FLAG) || gameKeys[G_KEY_EXIT].pressed)
             {
                 game_fade_out();
+                change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
             }
             else
@@ -414,7 +415,6 @@ void game_update()
                 //midi_resume();
             }
             break;
-
     }
 
     #ifdef DEBUGMODE
@@ -713,11 +713,12 @@ void check_room_changed()
     if (game.actualRoom != game.nextRoom)
     {
         //fade room transition if actual or new room has fadeRoom property
-        if (roomData[game.actualRoom].fadeRoom || roomData[game.nextRoom].fadeRoom)
-            game_fade_out(FADE_DEFAULT_SPEED);
-        else
-            game_fade_out(FADE_FAST_SPEED);
-            
+        //if (roomData[game.actualRoom].fadeRoom || roomData[game.nextRoom].fadeRoom)
+        //    game_fade_out(FADE_DEFAULT_SPEED);
+        //else
+        //    game_fade_out(FADE_FAST_SPEED);
+        game_fade_out();
+        
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
         game.lastRoom = game.actualRoom;
         game.actualRoom = game.nextRoom;

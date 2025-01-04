@@ -307,7 +307,6 @@ void r00_update_room_script()
                     break;
                     default:
                         clear_game_flag(INTRO_FLAG);
-                        change_room(BEDROOM_ROOM_NUM);
                         end_script();
                     break;
                 }
