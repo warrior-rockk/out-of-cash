@@ -111,10 +111,6 @@
 #define DEBUG_Y                 10
 #define DEBUG_FONT_HEIGHT       8
 
-//Fade
-#define FADE_DEFAULT_SPEED      6
-#define FADE_FAST_SPEED         12
-
 //enums
 
 //game state
@@ -188,6 +184,7 @@ struct game
     bool fadeIn;
     bool fadeOut;
     bool exit;
+    uint8_t fadeSpeed;
     uint8_t flags[MAX_GAME_FLAGS];  //32 bytes = 255 bit flags
     uint16_t vars[MAX_GAME_VARS];
 } game;

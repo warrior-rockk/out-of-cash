@@ -13,6 +13,8 @@ Draw player with frame 16
 Draw player with frame 17
 Draw player with frame 18
 Draw player with frame 19
+Draw player with frame 14
+Draw player with frame 15
 Change game state from 2 to 1
 Adding numObject 7 to inventory array position 0
 Game initialized
@@ -20,17 +22,3 @@ Change game state from 1 to 3
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 15
-Draw player with frame 16
-Adding numObject 4 to inventory array position 1
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Adding numObject 8 to inventory array position 2

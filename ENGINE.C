@@ -295,11 +295,12 @@ uint16_t get_last_room()
 }
 
 //function to do game fade out
-void game_fade_out()//int fadeSpeed)
+void game_fade_out(uint8_t fadeSpeed)
 {
     game.fadeIn = false;
-    fade_out(FADE_FAST_SPEED); //fadeSpeed);
+    fade_out(fadeSpeed);
     game.fadeOut = true;
+    game.fadeSpeed = fadeSpeed;
 }
 
 //function to do game fade in

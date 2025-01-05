@@ -720,7 +720,7 @@ void r08_update_room_script()
                             end_script();
                     break;
                     case 1:
-                        game_fade_out(6);
+                        game_fade_out(FADE_SLOW_SPEED);
                         roomScript.step++;
                     break;
                     case 2:

@@ -21,7 +21,7 @@ int main()
     //initialization
     main_init();
     game_init();
-    game_fade_out();
+    game_fade_out(FADE_DEFAULT_SPEED);
     
     //main game loop
     while (!game.exit)
@@ -306,7 +306,8 @@ void game_init()
     game.nextRoom               = STREET_ROOM_NUM;
     game.room_pos_x             = 30;
     game.room_pos_y             = 120;
-
+    game.fadeSpeed              = FADE_DEFAULT_SPEED;
+    
     //clear game flags
     for (int i = 0; i < MAX_GAME_FLAGS; i++)
         game.flags[i] = 0;
@@ -357,7 +358,7 @@ void game_update()
             if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
             {
                 timeCounter = 0;
-                game_fade_out();
+                game_fade_out(FADE_DEFAULT_SPEED);
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }
@@ -365,7 +366,7 @@ void game_update()
         case INTRO_STATE:
             if (!is_game_flag(INTRO_FLAG) || gameKeys[G_KEY_EXIT].pressed)
             {
-                game_fade_out();
+                game_fade_out(FADE_DEFAULT_SPEED);
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
             }
@@ -379,7 +380,7 @@ void game_update()
             }
             else if (cursor.click)
             {
-                game_fade_out();
+                game_fade_out(FADE_SLOW_SPEED);
                 game_init();
                 change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
                 game.state = PLAYING_STATE;
@@ -723,7 +724,7 @@ void check_room_changed()
         //    game_fade_out(FADE_DEFAULT_SPEED);
         //else
         //    game_fade_out(FADE_FAST_SPEED);
-        game_fade_out();
+        game_fade_out(FADE_DEFAULT_SPEED);
         
         TRACE("Change from room %i to room %i\n", game.actualRoom, game.nextRoom);
         game.lastRoom = game.actualRoom;
@@ -1802,11 +1803,11 @@ void gui_update()
         case GUI_EXIT_TITLE_STATE:
             game.state = TITLE_STATE;
             stop_midi();
-            game_fade_out();
+            game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_EXIT_DOS_STATE:
             game.state = EXIT_STATE;
-            game_fade_out();
+            game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_MAIN_STATE:
             #ifdef DEBUGMODE

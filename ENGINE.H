@@ -53,6 +53,11 @@
 #define PE_OFFICE_ROOM_NUM      11
 #define SCHOOL_BATH_ROOM_NUM    12
 
+//Fade speeds
+#define FADE_SLOW_SPEED         2
+#define FADE_DEFAULT_SPEED      6
+#define FADE_FAST_SPEED         12
+
 //Enumerations
 enum verbs {
     GO,
@@ -207,7 +212,7 @@ void set_room_light_off(bool lightsOff);
 uint16_t get_last_room();
 
 void game_fade_in();
-void game_fade_out();
+void game_fade_out(uint8_t fadeSpeed);
 void default_verb_action(enum verbs roomVerb);
 void mytrace(char *s, ...);
 void begin_script();
