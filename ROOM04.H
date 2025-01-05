@@ -16,7 +16,7 @@
 //define room properties
 #define R04_START_POS_X         84
 #define R04_START_POS_Y         99
-#define R04_ROOM_NUM_OBJS       5
+#define R04_ROOM_NUM_OBJS       6
 #define R04_MUSIC_ID            0
 #define R04_FADE                false
 #define R04_LIGHTS_OFF          false
@@ -25,22 +25,24 @@
 #define R04_DATA R04_START_POS_X, R04_START_POS_Y, R04_ROOM_NUM_OBJS, R04_MUSIC_ID, R04_FADE , R04_LIGHTS_OFF , &r04_room_init, &r04_room_update, &r04_get_hotspot_name, &r04_get_default_hotspot_verb, &r04_get_object_info
 
 //define object array alias
-#define R04_FATHER_OBJ_ID 0
+#define R04_TABLE_OBJ_ID 0
 #define R04_STARCLOCK_OBJ_ID 1
 #define R04_SPATULA_OBJ_ID 2
 #define R04_CLOSETOPEN_OBJ_ID 3
 #define R04_OAT_OBJ_ID 4
+#define R04_FATHER_OBJ_ID 5
 
 //define object data (objId, x, y, animId, active, layer)
-#define R04_OBJ_0           r04d_objFatherRead,     163, 128,  1, true, 1
+#define R04_OBJ_0           r04d_objTable,          152, 137, 0, true, 1
 #define R04_OBJ_1           r04d_objStarClock,      138, 34,  0, true, 0
 #define R04_OBJ_2           r04d_objSpatula,        219, 56,  0, true, 0
 #define R04_OBJ_3           r04d_objClosetOpen,     157, 77,  0, false, 0
 #define R04_OBJ_4           r04d_objOat,            157, 75,  0, false, 0
+#define R04_OBJ_5           r04d_objIdle,           199, 125, 1, true, 1
 
 //define room animations
 #define R04_NUM_ANIMATIONS  1
-#define R04_ANIM_FATHER_TALK    r04d_objFatherIdle, r04d_objFatherTalk, 1, ANIM_LOOP
+#define R04_ANIM_FATHER_TALK    r04d_objTalk1, r04d_objTalk9, 1, ANIM_PING_PONG
 
 //hotspot code room enumeration
 enum r04_hotspotCode{
@@ -65,6 +67,7 @@ static tObject r04_object[R04_ROOM_NUM_OBJS] =
     {R04_OBJ_2},
     {R04_OBJ_3},
     {R04_OBJ_4},
+    {R04_OBJ_5},
 };
 
 //declare room objects animations array

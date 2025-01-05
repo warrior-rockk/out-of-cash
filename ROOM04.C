@@ -150,11 +150,11 @@ void r04_update_room_objects()
 
     //father actor
     if (r04_dialogActor.talking)
-        object_play_animation(&r04_object[R04_FATHER_OBJ_ID], r04d_objFatherIdle, r04_animations, R04_ANIM_FATHER_TALK);
+        object_play_animation(&r04_object[R04_FATHER_OBJ_ID], r04d_objIdle, r04_animations, R04_ANIM_FATHER_TALK);
     else if (dialog.active)
-        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objFatherIdle;
+        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objTalk7;
     else
-        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objFatherRead;
+        r04_object[R04_FATHER_OBJ_ID].objId = r04d_objIdle;
 }
 
 //update dialog selection

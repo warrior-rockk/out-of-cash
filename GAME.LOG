@@ -10,202 +10,29 @@ Free actual room datafile resources
 Load room datafile: R00DATA.DAT
 Draw player with frame 15
 Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 14
 Change game state from 2 to 1
+Draw player with frame 17
 Adding numObject 7 to inventory array position 0
 Game initialized
 Change game state from 1 to 3
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
+Change game state from 3 to 6
+Change from room 1 to room 4
+Free actual room datafile resources
+Load room datafile: R04DATA.DAT
+Change game state from 6 to 3
+Change game state from 3 to 6
+Change game state from 6 to 3
+Change game state from 3 to 6
+Change game state from 6 to 3
 Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Adding numObject 8 to inventory array position 1
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Draw player with frame 19
-Adding numObject 4 to inventory array position 2
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 12
-Draw player with frame 11
-Draw player with frame 10
-Draw player with frame 9
-Draw player with frame 8
-Draw player with frame 7
-Draw player with frame 6
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 12
-Draw player with frame 11
-Draw player with frame 10
-Draw player with frame 9
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 12
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 12
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 18
-Change from room 1 to room 2
+Change from room 4 to room 2
 Free actual room datafile resources
 Load room datafile: R02DATA.DAT
 Draw player with frame 15
 Draw player with frame 16
-Draw player with frame 17
-Draw player with frame 15
-Draw player with frame 15
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 4
-Draw player with frame 5
-Draw player with frame 6
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 17
 Change from room 2 to room 4
 Free actual room datafile resources
 Load room datafile: R04DATA.DAT
@@ -213,10 +40,8 @@ Draw player with frame 4
 Draw player with frame 5
 Draw player with frame 6
 Draw player with frame 7
-Draw player with frame 8
 Change game state from 3 to 4
 Draw player with frame 4
 Draw player with frame 5
-Draw player with frame 4
-Draw player with frame 5
+Draw player with frame 6
 Change game state from 4 to 3
