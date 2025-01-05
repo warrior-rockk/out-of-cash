@@ -91,21 +91,17 @@ void script_wait(int time)
 //function to move player and autoincrements script step
 void script_move_player(int x, int y)
 {
-    static bool memMoving;
-
     //if player is not moving
     if (!is_player_moving())
     {
-        if (!memMoving)
+        if (player.prevState != player_st_moving )
         {
-            //mem flag and call move_player
-            memMoving = true;
+            //call move_player
             move_player(x, y);
         }
         else
         {
             //increment step when finish moving
-            memMoving = false;
             roomScript.step++;
         }
     }

@@ -1,6 +1,5 @@
 # TO-DO
 
-- [ ] Bug on first game script_move_player_to() after intro
 - [ ] Block cursor while script running?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
@@ -24,6 +23,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Bug on first game script_move_player_to() after intro
 - [X] fade in/out speed parameter all functions (bug on engine.h on function game_fade_off)
 - [X] Bug: say text errors on unique frame? (I think is debug text info)
 - [X] Bug: incorrect frames on animations
