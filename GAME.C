@@ -22,6 +22,11 @@ int main()
     main_init();
     game_init();
     game_fade_out(FADE_DEFAULT_SPEED);
+
+    #ifdef DEBUGMODE
+        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        game.state = PLAYING_STATE;
+    #endif
     
     //main game loop
     while (!game.exit)

@@ -67,7 +67,7 @@ enum verbs r03_get_default_hotspot_verb(uint8_t colorCode)
             }
         case r03_closet:
             if (is_game_flag(BATH_CLOSET_OPEN_FLAG))
-                return CLOSE;
+                return GO;
             else
                 return OPEN;
             break;
@@ -373,8 +373,7 @@ void r03_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                play_sound(sd_switch);
-                                roomScript.step++;
+                                script_play_sound(sd_switch);
                             break;
                             case 2:
                                 script_player_take_state();
@@ -442,6 +441,7 @@ void r03_update_room_script()
                                 break;
                             case 1:
                                 set_game_flag(BATH_DOOR_OPEN_FLAG);
+                                play_sound(sd_doorOpen);
                                 end_script();
                             default:
                                 end_script();
@@ -464,6 +464,7 @@ void r03_update_room_script()
                                 break;
                             case 1:
                                 clear_game_flag(BATH_DOOR_OPEN_FLAG);
+                                play_sound(sd_doorClose);
                                 end_script();
                             default:
                                 end_script();

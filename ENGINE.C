@@ -202,6 +202,20 @@ void script_player_take_state()
     }
 }
 
+//function to play game sound and increment script step
+void script_play_sound(int16_t soundId)
+{
+    play_sound(soundId);
+    roomScript.step++;
+}
+
+//function to play game sound at random freq and increment script step
+void script_play_sound_rnd(int16_t soundId)
+{
+    play_sound_rnd(soundId);
+    roomScript.step++;
+}
+
 //function to set game flag
 void set_game_flag(enum gameFlags flagNum)
 {

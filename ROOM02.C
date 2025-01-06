@@ -63,7 +63,10 @@ enum verbs r02_get_default_hotspot_verb(uint8_t colorCode)
             return LOOK;
             break;
         case r02_bathDoor:
-            return OPEN;
+            if (is_game_flag(BATH_DOOR_OPEN_FLAG))
+                return GO;
+            else
+                return OPEN;
             break;
         case r02_flowers:
             return LOOK;

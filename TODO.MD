@@ -1,5 +1,6 @@
 # TO-DO
 
+- [ ] Add take 2 random
 - [ ] Block cursor while script running?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed

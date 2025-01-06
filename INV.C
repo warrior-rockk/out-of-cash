@@ -1062,7 +1062,7 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        play_sound(sd_paint);
+                        play_sound_rnd(sd_paint);
                         script_combine_inv_object(id_brain, id_paintBucket, id_blackBrain);
                     break;
                     case 1:
@@ -1078,7 +1078,7 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
-                        play_sound(sd_paint);
+                        play_sound_rnd(sd_greasy);
                         script_combine_inv_object(id_starClock, 0, id_blackStarClock);
                     break;
                     case 1:
@@ -1127,6 +1127,7 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
+                        play_sound_rnd(sd_paint);
                         script_combine_inv_object(id_gel, id_oat, id_oatMixed);
                     break;
                     case 1:
@@ -1171,6 +1172,9 @@ void inventory_update()
                             script_remove_inv_object(id_oatMixed);
                     break;
                     case 1:
+                        script_play_sound_rnd(sd_paint);
+                    break;
+                    case 2:
                         script_say("Emm... ¨Profesor?");
                     break;
                     default:

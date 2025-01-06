@@ -190,6 +190,8 @@ void script_add_inv_object(uint8_t numObject);
 void script_combine_inv_object(uint8_t numObject1, uint8_t numObject2, uint8_t numObjectAdd);
 void script_start_dialog(uint8_t dialogId);
 void script_next_dialog_node();
+void script_play_sound(int16_t soundId);
+void script_play_sound_rnd(int16_t soundId);
 
 void dialog_add(char *textLine, uint8_t destNode);
 void dialog_jump(uint8_t node, uint8_t selLine, uint8_t destNode);

@@ -95,7 +95,10 @@ enum verbs r06_get_default_hotspot_verb(uint8_t colorCode)
                 break;
             }
         case r06_maintLockerDoor:
-            return GO;
+            if (is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
+                return GO;
+            else
+                return OPEN;
             break;
         case r06_maintLockerBathMat:
             return LOOK;
@@ -323,10 +326,10 @@ void r06_update_room_script()
                                 script_move_player_to_target();
                                 break;
                             case 1:
-                                if (!is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG) && is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
-                                    script_say("La puerta est  cerrada");
-                                else
+                                if (is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG) && is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
                                     change_room(MAINT_LOCKER_ROOM_NUM);
+                                else
+                                    script_say("La puerta est  cerrada");
                                 break;
                             default:
                                 end_script();
@@ -348,7 +351,10 @@ void r06_update_room_script()
                                 else if (is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
                                     script_say("Ya est  abierta");
                                 else
+                                {
+                                    play_sound(sd_doorOpen);
                                     set_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG);
+                                }
                                 end_script();
                                 break;
                         }
@@ -364,7 +370,10 @@ void r06_update_room_script()
                                 if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
                                     script_say("Ya est  cerrada");
                                 else
+                                {
                                     clear_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG);
+                                    play_sound(sd_doorClose);
+                                }
                                 end_script();
                                 break;
                         }
