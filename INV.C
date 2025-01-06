@@ -53,6 +53,9 @@ void inventory_add(uint8_t numObject)
     {
         inventory.numObjects++;
         inventory.objIndex[inventory.numObjects - 1] = (numObject + 1);
+        //go to last inventory page
+        inventory.page = inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;                
+        //refresh inventory
         inventory.refresh = true;
         TRACE("Adding numObject %i to inventory array position %i\n", numObject, inventory.numObjects - 1);
     }

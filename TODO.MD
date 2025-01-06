@@ -5,7 +5,6 @@
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
-- [ ] New object focused on inventory (blink?)
 - [ ] Animation for take upper and bottom
 - [ ] Sound effects
 - [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
@@ -23,6 +22,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] New object focused on inventory (blink?. No, go to last inventory page)
 - [X] Bug on first game script_move_player_to() after intro
 - [X] fade in/out speed parameter all functions (bug on engine.h on function game_fade_off)
 - [X] Bug: say text errors on unique frame? (I think is debug text info)
