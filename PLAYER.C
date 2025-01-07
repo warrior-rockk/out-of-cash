@@ -144,7 +144,7 @@ void player_update_animation()
     {
         case player_st_idle:
             //idle animation
-            if (player.lookDir != DIR_UP)
+            if (player.lookDir != DIR_BACK)
                 play_animation(&player.animation, ANIM_PLY_IDLE);
             else
                 play_animation(&player.animation, ANIM_PLY_BACK);
@@ -155,7 +155,10 @@ void player_update_animation()
             break;
         case player_st_talking:
             //talk animation
-            play_animation(&player.animation, ANIM_PLY_TALK);
+            if (player.lookDir == DIR_BACK)
+                play_animation(&player.animation, ANIM_PLY_BACK_TALK);
+            else
+                play_animation(&player.animation, ANIM_PLY_TALK);
             break;
         case player_st_taking:
             if (play_animation(&player.animation, ANIM_PLY_TAKE))

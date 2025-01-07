@@ -23,10 +23,12 @@ int main()
     game_init();
     game_fade_out(FADE_DEFAULT_SPEED);
 
+
     #ifdef DEBUGMODE
         change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
         game.state = PLAYING_STATE;
     #endif
+
     
     //main game loop
     while (!game.exit)
@@ -267,7 +269,7 @@ void game_load_resources()
     soundDataFile = load_datafile("SDATA.DAT");
     if (!soundDataFile)
         abort_on_error("Archivo SDATA.DAT invalido o inexistente");
-        
+
     //sets and get the game palette
     set_palette((RGB*)gameDataFile[gd_gamePal].dat);
     get_palette(gamePalette);

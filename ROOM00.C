@@ -292,7 +292,7 @@ void r00_update_room_script()
                         script_move_player(80, 120);
                     break;
                     case 3:
-                        change_player_dir(DIR_UP);
+                        change_player_dir(DIR_BACK);
                         script_wait(20);
                     break;
                     case 4:
