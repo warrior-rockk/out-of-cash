@@ -680,13 +680,13 @@ void r01_update_room_script()
                                 script_move_player_to_target();
                             break;
                             case 1:
-                                script_play_sound(sd_switch);
+                                script_play_sound(sd_computerBoot);
                             break;
                             case 2:
                                 script_player_take_state();
                             break;
                             case 3:
-                                script_wait(10);
+                                script_wait(100);
                             break;
                             case 4:
                                 script_play_sound(sd_win95Startup);

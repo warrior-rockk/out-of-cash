@@ -1,7 +1,5 @@
 # TO-DO
 
-- [ ] Add take 2 random
-- [ ] Block cursor while script running?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
@@ -23,6 +21,8 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Add take 2 random
+- [X] Block cursor while script running?
 - [X] New object focused on inventory (blink?. No, go to last inventory page)
 - [X] Bug on first game script_move_player_to() after intro
 - [X] fade in/out speed parameter all functions (bug on engine.h on function game_fade_off)

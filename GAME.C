@@ -1328,7 +1328,7 @@ void msg_update()
     if (msg.msgActive)
     {
         //disables cursor
-        cursor.enabled = false;
+        //cursor.enabled = false;
         
         int msgLength = strlen(msg.msg);
 
@@ -1362,7 +1362,7 @@ void msg_update()
         msg.msgTime = 0;
         strcpy(msg.msg,"");
         //enable cursor
-        cursor.enabled = true;
+        //cursor.enabled = true;
     }
 }
 

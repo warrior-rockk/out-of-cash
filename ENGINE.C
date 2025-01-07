@@ -79,12 +79,12 @@ void script_wait(int time)
 {
     if (roomScript.stepTime > time)
     {
-        cursor.enabled = true;
+        //cursor.enabled = true;
         roomScript.step++;
     }
     else
     {
-        cursor.enabled = false;
+        //cursor.enabled = false;
     }
 }
 
@@ -428,6 +428,7 @@ void default_verb_action(enum verbs roomVerb)
 //actions when script begins
 void begin_script()
 {
+    cursor.enabled = false;
     roomScript.scriptAssigned = true;
 }
 
@@ -442,6 +443,8 @@ void end_script()
     roomScript.hsX = 0;
     roomScript.hsY = 0;
     roomScript.type = ROOM_SCRIPT_TYPE;
+
+    cursor.enabled = true;
 }
 
 //starts room custom script
