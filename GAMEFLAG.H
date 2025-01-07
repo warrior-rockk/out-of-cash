@@ -92,6 +92,7 @@ enum gameFlags{
     HISTORY_APPROVED_FLAG,
 
     INTRO_FLAG,
+    GAME_START_FLAG,
 };
 
 //definition of global game numeric vars index

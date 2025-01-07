@@ -166,7 +166,10 @@ void r01_room_init()
     r01_object[R01_STEREO01_OBJ_ID].active  = is_game_flag(STEREO_ON_FLAG);
     r01_object[R01_COIN_OBJ_ID].active      = !is_game_flag(GOT_COIN_FLAG);
     r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
-    
+
+    if (!is_game_flag(GAME_START_FLAG))
+        start_script(R01_GAME_START_SCRIPT);
+        
     game_fade_in();
 }
 
@@ -877,7 +880,23 @@ void r01_update_room_script()
                         }
                     break;                    
                 }
-                break;
+            break;
+            case R01_GAME_START_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_say("¨Y como consigo el dinero para el concierto?");
+                    break;
+                    case 1:
+                        script_say("Tengo que averiguarlo...");
+                    break;
+                    case 2:
+                        set_game_flag(GAME_START_FLAG);
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }

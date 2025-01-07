@@ -44,6 +44,9 @@
 #define R01_NUM_ANIMATIONS  1
 #define R01_ANIM_PLAY_STEREO    r01d_objStereo01, r01d_objStereo03, 2, ANIM_LOOP
 
+//define custom script > 256
+#define R01_GAME_START_SCRIPT    257
+
 //hotspot code room enumeration
 enum r01_hotspotCode{
     r01_guitar    = 150,
