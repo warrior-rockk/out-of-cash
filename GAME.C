@@ -25,8 +25,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
     
@@ -68,8 +68,8 @@ int main()
                 game_fade_in();
                 cursor.enabled = true;
 
-                game_update();
                 cursor_update();
+                game_update();
 
                 //placeholder test (and game title)
                 game_write("OUT OF CASH", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
