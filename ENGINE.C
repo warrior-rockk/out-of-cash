@@ -589,5 +589,11 @@ void play_sound(int16_t soundId)
 //function to play game global sound with random frecuency mod
 void play_sound_rnd(uint16_t soundId)
 {
-    play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, rand() % (1200 - 800 + 1) + 800, 0);
+    //play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, rand() % (1200 - 800 + 1) + 800, 0);
+    //if (sfx.voice >= 0)
+    //{
+        sfx.voice = allocate_voice((SAMPLE*)soundDataFile[soundId].dat);
+        voice_start(sfx.voice);
+        release_voice(sfx.voice);
+    //}
 }

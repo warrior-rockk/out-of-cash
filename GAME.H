@@ -334,6 +334,12 @@ struct roomScroll
     int16_t y;
 } roomScroll;
 
+//sfx voices structure
+struct sfx
+{
+    int voice;
+} sfx;
+
 //global vars
 static volatile int tick;
 static BITMAP *cursorImage;

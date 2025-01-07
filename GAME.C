@@ -398,6 +398,7 @@ void game_update()
             {
                 game.state = PAUSE_STATE;
                 midi_pause();
+                voice_stop(sfx.voice);
             }
             else if (gameKeys[G_KEY_EXIT].pressed)
             {
@@ -414,6 +415,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 midi_resume();
+                voice_start(sfx.voice);
             }
             break;
         case MENU_STATE:
