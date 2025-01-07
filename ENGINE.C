@@ -126,8 +126,12 @@ void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObj
     set_game_flag(gameFlag);
     //add object to inventory
     inventory_add(invObjectNum);
+
     //plays take sound
-    play_sound_rnd(sd_take);
+    if ((rand() % 2) == 0)
+        play_sound_rnd(sd_take);
+    else
+        play_sound_rnd(sd_take2);
 
     roomScript.step++;    
 }

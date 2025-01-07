@@ -217,6 +217,12 @@ void r03_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
+                                script_play_sound(sd_closetOpen);
+                            break;
+                            case 2:
+                                script_player_take_state();
+                            break;
+                            case 3:
                                 set_game_flag(BATH_CLOSET_OPEN_FLAG);
                                 end_script();
                             default:
@@ -239,6 +245,12 @@ void r03_update_room_script()
 
                                 break;
                             case 1:
+                                script_play_sound(sd_closetClose);
+                            break;
+                            case 2:
+                                script_player_take_state();
+                            break;
+                            case 3:
                                 clear_game_flag(BATH_CLOSET_OPEN_FLAG);
                                 end_script();
                             default:

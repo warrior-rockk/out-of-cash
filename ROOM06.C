@@ -270,9 +270,15 @@ void r06_update_room_script()
                                                 script_move_player_to_target();
                                             break;
                                         case 1:
+                                            script_play_sound(sd_doorLockerOpen);
+                                        break;
+                                        case 2:
                                             script_player_take_state();
                                             break;
-                                        case 2:
+                                        case 3:
+                                            script_play_sound(sd_keyFall);
+                                        break;
+                                        case 4:
                                             set_game_flag(KEY_ON_BATH_MAT_FLAG);
                                             script_say("­Eureka! La llave ha ca¡do sobre la alfombrilla");
                                         default:

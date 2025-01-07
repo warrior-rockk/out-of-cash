@@ -671,7 +671,37 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                            break;
+                            case 1:
+                                script_play_sound(sd_switch);
+                            break;
+                            case 2:
+                                script_player_take_state();
+                            break;
+                            case 3:
+                                script_wait(10);
+                            break;
+                            case 4:
+                                script_play_sound(sd_win95Startup);
+                            break;
+                            case 5:
+                                script_wait(63);
+                            break;
+                            case 6:
+                                script_play_sound(sd_w95Error);
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r01_toys:

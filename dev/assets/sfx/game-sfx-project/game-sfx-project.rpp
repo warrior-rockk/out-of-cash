@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.27/win64" 1735985608
+<REAPER_PROJECT 0.1 "7.27/win64" 1736243165
   <NOTES 0 2
   >
   RIPPLE 0
@@ -19,8 +19,8 @@
   PANMODE 3
   PANLAWFLAGS 3
   CURSOR 0
-  ZOOM 392.5177903558814 0 0
-  VZOOMEX 15.66666698 2347
+  ZOOM 777.65866962453663 0 0
+  VZOOMEX 15.66666698 2016
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -34,7 +34,7 @@
   >
   RENDER_FILE "D:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\res\sfx"
   RENDER_PATTERN $track
-  RENDER_FMT 0 2 11025
+  RENDER_FMT 0 2 22050
   RENDER_1X 0
   RENDER_RANGE 2 0 0 18 1000
   RENDER_RESAMPLE 3 0 1
@@ -67,8 +67,8 @@
   GLOBAL_AUTO -1
   TEMPO 120 4 4
   PLAYRATE 1 0 0.25 4
-  SELECTION 0 0.76684422310412
-  SELECTION2 0 0.76684422310412
+  SELECTION 0 0.27133298644519
+  SELECTION2 0 0.27133298644519
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -465,7 +465,7 @@
     >
   >
   <TRACK {41671511-BDCA-408D-B8AD-B963EAB5A12C}
-    NAME misc_12
+    NAME keyFall
     PEAKCOL 16576
     BEAT -1
     AUTOMODE 0
@@ -501,7 +501,7 @@
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 0.32225
+      LENGTH 0.23518766896382
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0 0
@@ -512,7 +512,7 @@
       IID 12
       NAME misc_12.ogg
       VOLPAN 1 0 1 -1
-      SOFFS 0
+      SOFFS 0.00822347104504
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
       GUID {4BC4D41D-1C69-476F-8956-D0D0A21AF69F}
@@ -522,7 +522,7 @@
     >
   >
   <TRACK {B2B6F4EF-C6E5-44D8-8A41-9F0AAE198760}
-    NAME metal_falling_02
+    NAME keyFall
     PEAKCOL 16576
     BEAT -1
     AUTOMODE 0
@@ -553,23 +553,23 @@
       LANEHEIGHT 0 0
       ARM 1
       DEFSHAPE 1 -1 -1
-      PT 0 1 1
+      PT -0 1 1
     >
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 0.95610416666667
+      LENGTH 0.50042118541052
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
+      FADEOUT 1 0.04803004892397 0 1 0 0 0
       MUTE 0 0
       SEL 0
       IGUID {6E9DABBB-8ADC-40CA-9121-03B1B57CB764}
       IID 13
       NAME metal_falling_02.ogg
       VOLPAN 1 0 1 -1
-      SOFFS 0
+      SOFFS 0.02531313389236
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
       GUID {A103C8D7-D087-45F3-A7F6-BA8457B325DA}
@@ -579,7 +579,7 @@
     >
   >
   <TRACK {F917444E-F65D-471C-96D4-E99551AE565A}
-    NAME lock_open_01
+    NAME DoorLockerOpen
     PEAKCOL 16576
     BEAT -1
     AUTOMODE 0
@@ -615,18 +615,18 @@
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 0.73710416666667
+      LENGTH 0.56857193050534
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
+      FADEOUT 1 0.00324527357594 0 1 0 0 0
       MUTE 0 0
       SEL 0
       IGUID {A8BB7094-A053-4004-BBDC-C1594B01F301}
       IID 14
       NAME lock_open_01.ogg
       VOLPAN 1 0 1 -1
-      SOFFS 0
+      SOFFS 0.04519002157116
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
       GUID {16C45549-ED9A-4A2B-B705-3BC4A87A967F}
@@ -756,7 +756,7 @@
     AUTOMODE 0
     PANLAWFLAGS 3
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 2 0
+    MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
@@ -860,63 +860,6 @@
       GUID {5D3B6C85-6D6B-48D2-9938-B69D38E80560}
       <SOURCE VORBIS
         FILE "Media\misc_02.ogg"
-      >
-    >
-  >
-  <TRACK {543AFADE-2F18-436A-9BE6-BC2BB2D1483C}
-    NAME lock_open_01
-    PEAKCOL 16576
-    BEAT -1
-    AUTOMODE 0
-    PANLAWFLAGS 3
-    VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
-    IPHASE 0
-    PLAYOFFS 0 1
-    ISBUS 0 0
-    BUSCOMP 0 0 0 0 0
-    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
-    FIXEDLANES 9 0 0 0 0
-    SEL 0
-    REC 0 0 1 0 0 0 0 0
-    VU 2
-    TRACKHEIGHT 0 0 0 0 0 0 0
-    INQ 0 0 0 0.5 100 0 0 100
-    NCHAN 2
-    FX 1
-    TRACKID {543AFADE-2F18-436A-9BE6-BC2BB2D1483C}
-    PERF 0
-    MIDIOUT -1
-    MAINSEND 1 0
-    <MUTEENV
-      EGUID {84E37ACC-6697-41A6-BD77-BFAB19D1F98A}
-      ACT 1 -1
-      VIS 1 0 1
-      LANEHEIGHT 0 0
-      ARM 1
-      DEFSHAPE 1 -1 -1
-      PT 0 1 1
-    >
-    <ITEM
-      POSITION 0
-      SNAPOFFS 0
-      LENGTH 0.73710416666667
-      LOOP 1
-      ALLTAKES 0
-      FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
-      MUTE 0 0
-      SEL 0
-      IGUID {36123B87-8810-4401-932B-EB9543385923}
-      IID 21
-      NAME lock_open_01.ogg
-      VOLPAN 1 0 1 -1
-      SOFFS 0
-      PLAYRATE 1 1 0 -1 0 0.0025
-      CHANMODE 0
-      GUID {3BF9D32D-20BC-4C7C-B3FA-F7FC5620C6C6}
-      <SOURCE VORBIS
-        FILE "Media\lock_open_01.ogg"
       >
     >
   >
@@ -1041,14 +984,14 @@
     AUTOMODE 0
     PANLAWFLAGS 3
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
+    MUTESOLO 0 2 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 0
+    SEL 1
     REC 0 0 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -1077,7 +1020,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 0
+      SEL 1
       IGUID {D13262DE-E9CC-4D33-8EC5-FAE045ED628C}
       IID 25
       NAME sword-unsheathe4.wav
@@ -1276,7 +1219,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -1305,7 +1248,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0.07897731201405 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {FA2BBC01-FED6-4623-8A3E-D4328D13D20D}
       IID 32
       NAME windows-95-error-sound-effect.mp3
@@ -1316,6 +1259,183 @@
       GUID {A8F6AC89-271B-4281-A71E-48FB86BB04CE}
       <SOURCE MP3
         FILE "Media\windows-95-error-sound-effect.mp3" 1
+      >
+    >
+  >
+  <TRACK {66C94163-33F2-444F-AC56-F8F32AAB8130}
+    NAME keyOpening
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {66C94163-33F2-444F-AC56-F8F32AAB8130}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <MUTEENV
+      EGUID {24A62D44-571A-4E1A-8B8A-C3A8979DCC30}
+      ACT 1 -1
+      VIS 1 0 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 1 -1 -1
+      PT -0 1 1
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 1.48309002420628
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C83F5CCE-E3E7-491F-887A-83C9F20013D7}
+      IID 33
+      NAME "Key Jiggle.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 0.21765688680767
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EDC4A7C4-51B1-4CC9-B4E7-93A5060B7435}
+      <SOURCE WAVE
+        FILE "Media\Key Jiggle.wav"
+      >
+    >
+  >
+  <TRACK {B5CCD594-5BF1-442D-9D31-BB9018C61FEC}
+    NAME closetClose
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {B5CCD594-5BF1-442D-9D31-BB9018C61FEC}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <MUTEENV
+      EGUID {8E6FC030-6E71-4CD0-A486-1EEC0C94F266}
+      ACT 1 -1
+      VIS 1 0 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 1 -1 -1
+      PT 0 1 1
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.56322910951597
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5CAA155A-33BB-437F-B71D-285666F21AAC}
+      IID 34
+      NAME zapsplat_foley_cupboard_closet_door_wooden_old_hinge_creak_squeak_very_short_slight_001_106656.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.04288440822569
+      PLAYRATE 1.6 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6AC5C670-22AC-4140-ABBB-7065FBD3E246}
+      <SOURCE MP3
+        FILE "Media\zapsplat_foley_cupboard_closet_door_wooden_old_hinge_creak_squeak_very_short_slight_001_106656.mp3" 1
+      >
+    >
+  >
+  <TRACK {8B3EAECD-91E7-4CE5-821C-41DB806C24E1}
+    NAME closetOpen
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {8B3EAECD-91E7-4CE5-821C-41DB806C24E1}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <MUTEENV
+      EGUID {8E6FC030-6E71-4CD0-A486-1EEC0C94F266}
+      ACT 1 -1
+      VIS 1 0 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 1 -1 -1
+      PT 0 1 1
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.56322910951597
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4596D2E1-B2B1-4187-AC8B-4790E5EF1E25}
+      IID 34
+      NAME zapsplat_foley_cupboard_closet_door_wooden_old_hinge_creak_squeak_very_short_slight_001_106656.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.18419901654876
+      PLAYRATE 1.6 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {183E573C-9992-4F8E-B8B2-B299028B842B}
+      <SOURCE SECTION
+        LENGTH 0.90116657522555
+        MODE 3
+        STARTPOS 0
+        OVERLAP 0.01
+        <SOURCE MP3
+          FILE "Media\zapsplat_foley_cupboard_closet_door_wooden_old_hinge_creak_squeak_very_short_slight_001_106656.mp3" 1
+        >
       >
     >
   >

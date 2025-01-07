@@ -581,6 +581,9 @@ void r04_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
+                                script_play_sound(sd_closetOpen);
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
                             default:
@@ -603,6 +606,9 @@ void r04_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
+                                script_play_sound(sd_closetClose);
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
                             default:
