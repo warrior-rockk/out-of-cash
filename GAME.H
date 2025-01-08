@@ -335,19 +335,18 @@ struct roomScroll
 } roomScroll;
 
 //sfx voices structure
-#define SFX_GAME_CH         0
-#define SFX_ROOM_CH         1
-#define SFX_NUM_CHANNELS    2
+#define SFX_GAME_VOICE      0
+#define SFX_ROOM_VOICE      1
+#define SFX_NUM_VOICES      2
 struct sfx
 {
-    int voice;
     int position;
     int sampleId;
     bool playing;
     bool paused;
     bool stop;
     bool pause;
-} sfx[SFX_NUM_CHANNELS];
+} sfx[SFX_NUM_VOICES];
 
 //global vars
 static volatile int tick;
@@ -424,6 +423,6 @@ void dialog_draw();
 
 void sfx_init();
 void sfx_update();
-void sfx_play(uint16_t soundId, uint8_t channel, int freq);
+void sfx_play(uint16_t soundId, uint8_t voice, int freq);
 
 #endif

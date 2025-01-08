@@ -1142,7 +1142,7 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                sfx_play((rand() % sd_COUNT), SFX_GAME_CH , 0);
+                sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , 0);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
@@ -2001,11 +2001,18 @@ void dialog_draw()
 //function to init sfx sound system
 void sfx_init()
 {
-    //init all sfx channels
-    for (int i = 0; i < SFX_NUM_CHANNELS; i++)
+    //init all sfx voices
+    for (int i = 0; i < SFX_NUM_VOICES; i++)
     {
-        //get soundcard voice and stores on channel
-        sfx[i].voice = allocate_voice((SAMPLE*)soundDataFile[sd_take].dat);
+        //get soundcard voice (reallocate if exists)
+        if (!voice_check(i))
+        {
+            int voice = allocate_voice((SAMPLE*)soundDataFile[sd_take].dat);
+            TRACE("SFX voice %i allocated to soundcard voice %i\n", i, voice);
+        }
+        else
+            reallocate_voice(i, (SAMPLE*)soundDataFile[sd_take].dat);
+
         sfx[i].sampleId = sd_take;
 
         //init channel flags
@@ -2014,8 +2021,6 @@ void sfx_init()
         sfx[i].pause       = false;
         sfx[i].stop        = false;
         sfx[i].position    = -1;
-
-        TRACE("SFX channel %i allocated to voice %i\n", i, sfx[i].voice);
     }
 
     TRACE("SFX system initialized\n");
@@ -2024,7 +2029,7 @@ void sfx_init()
 //function to update sfx sound system
 void sfx_update()
 {
-    for (int i = 0; i < SFX_NUM_CHANNELS; i++)
+    for (int i = 0; i < SFX_NUM_VOICES; i++)
     {
         //handles sound pause
         if (sfx[i].pause)
@@ -2032,7 +2037,7 @@ void sfx_update()
             if (sfx[i].playing)
             {
                 //do the stop/pause
-                voice_stop(sfx[i].voice);
+                voice_stop(i);
                 //set flag
                 sfx[i].paused = true;
             }
@@ -2046,7 +2051,7 @@ void sfx_update()
         {
             //resume sound if was started
             if (sfx[i].position >= 0)
-                voice_start(sfx[i].voice);
+                voice_start(i);
             //clear flag
             sfx[i].paused = false;
         }
@@ -2056,7 +2061,7 @@ void sfx_update()
         {
             if (sfx[i].playing)
                 //do sound stop
-                voice_stop(sfx[i].voice);
+                voice_stop(i);
             //clear flag
             sfx[i].stop = false;
         }
@@ -2065,7 +2070,7 @@ void sfx_update()
         if (sfx[i].playing && !sfx[i].paused)
         {
             //stores sound position
-            sfx[i].position = voice_get_position(sfx[i].voice);
+            sfx[i].position = voice_get_position(i);
             //clear flag when sound finished
             if (sfx[i].position == -1)
                 sfx[i].playing = false;
@@ -2074,21 +2079,22 @@ void sfx_update()
 }
 
 //function to play a sound
-void sfx_play(uint16_t soundId, uint8_t channel, int freq)
+void sfx_play(uint16_t soundId, uint8_t voice, int freq)
 {
     //reallocate the sample on select voice of selected channel
-    reallocate_voice(sfx[channel].voice, (SAMPLE*)soundDataFile[soundId].dat);
-    sfx.sampleId = soundId;
+    ASSERT(voice < SFX_NUM_VOICES);
+    reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
+    sfx[voice].sampleId = soundId;
 
     //freq = 0: no freq change
     if (freq > 0)
-        voice_set_frequency(sfx[channel].voice, freq);
+        voice_set_frequency(voice, freq);
 
     //start sample allocated on voice channel
-    voice_start(sfx[channel].voice);
+    voice_start(voice);
 
     //set flag
-    sfx[channel].playing = true;
+    sfx[voice].playing = true;
 }
 
 END_OF_MAIN()

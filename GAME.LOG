@@ -2,8 +2,8 @@ Initializing systems and modules
 All system and modules initialized
 Loading game resources
 Game resources loaded
-SFX channel 0 allocated to voice 0
-SFX channel 1 allocated to voice 1
+SFX voice 0 allocated to soundcard voice 0
+SFX voice 1 allocated to soundcard voice 1
 SFX system initialized
 Adding numObject 7 to inventory array position 0
 Game initialized
@@ -11,18 +11,10 @@ Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
 Change game state from 0 to 3
-Change game state from 3 to 5
-Change game state from 5 to 3
-Change game state from 3 to 6
-Change game state from 6 to 3
-Change game state from 3 to 6
-Change game state from 6 to 3
 Change game state from 3 to 6
 Change game state from 6 to 3
 Change game state from 3 to 6
 Change game state from 6 to 1
-SFX channel 0 allocated to voice 2
-SFX channel 1 allocated to voice 3
 SFX system initialized
 Adding numObject 7 to inventory array position 0
 Game initialized
@@ -30,6 +22,5 @@ Change game state from 1 to 3
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Change game state from 3 to 5
-Change game state from 5 to 3
 Change game state from 3 to 6
+Change game state from 6 to 3

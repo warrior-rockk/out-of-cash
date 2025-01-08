@@ -583,29 +583,29 @@ void stop_dialog()
 //function to play game global sound
 void play_sound(int16_t soundId)
 {
-    sfx_play(soundId, SFX_ROOM_CH , 0);
+    sfx_play(soundId, SFX_ROOM_VOICE , 0);
 }
 
 //function to play game global sound with random frecuency mod
 void play_sound_rnd(uint16_t soundId)
 {
-    sfx_play(soundId, SFX_ROOM_CH , 0);
+    sfx_play(soundId, SFX_ROOM_VOICE , 0);
 }
 
 //function to stop sound
 void stop_sound()
 {
-    sfx[SFX_ROOM_CH].stop = true;
+    sfx[SFX_ROOM_VOICE].stop = true;
 }
 
 //function to pause sound
 void pause_sound()
 {
-    sfx[SFX_ROOM_CH].pause = true;
+    sfx[SFX_ROOM_VOICE].pause = true;
 }
 
 //function to resume sound
 void resume_sound()
 {
-    sfx[SFX_ROOM_CH].pause = false;
+    sfx[SFX_ROOM_VOICE].pause = false;
 }
