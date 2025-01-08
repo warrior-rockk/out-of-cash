@@ -583,13 +583,13 @@ void stop_dialog()
 //function to play game global sound
 void play_sound(int16_t soundId)
 {
-    sfx_play(soundId, SFX_ROOM_VOICE , 0);
+    sfx_play(soundId, SFX_ROOM_VOICE , false);
 }
 
 //function to play game global sound with random frecuency mod
 void play_sound_rnd(uint16_t soundId)
 {
-    sfx_play(soundId, SFX_ROOM_VOICE , 0);
+    sfx_play(soundId, SFX_ROOM_VOICE , true);
 }
 
 //function to stop sound

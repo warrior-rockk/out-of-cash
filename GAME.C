@@ -1142,8 +1142,8 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , 0);
-            break;    
+                sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , true);
+            break;
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
             gui.slotSel = (hsColor - GUI_LOAD_SLOT_1_COLOR) + 1;
@@ -2079,17 +2079,31 @@ void sfx_update()
 }
 
 //function to play a sound
-void sfx_play(uint16_t soundId, uint8_t voice, int freq)
+void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
 {
+
     //reallocate the sample on select voice of selected channel
     ASSERT(voice < SFX_NUM_VOICES);
     reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
     sfx[voice].sampleId = soundId;
 
-    //freq = 0: no freq change
-    if (freq > 0)
-        voice_set_frequency(voice, freq);
-
+    //random frequency
+    if (rndFreq)
+    {
+        int freqVariation = (rand() % 8);
+        int sampleFreq = voice_get_frequency(voice);
+        float newFreq;
+        if (freqVariation < 4)
+            newFreq = (float)sampleFreq - ((float)sampleFreq * ((float)freqVariation / 10.0));
+        else
+            newFreq = ((float)sampleFreq * ((float)(freqVariation - 4) / 10.0)) + (float)sampleFreq;
+        voice_set_frequency(voice, (int)newFreq);
+        TRACE("Original freq: %i\n", sampleFreq);
+        TRACE("Variation: %i\n", freqVariation);
+        TRACE("New freq: %f - %i\n", newFreq, (int)newFreq);
+        
+    }
+    
     //start sample allocated on voice channel
     voice_start(voice);
 

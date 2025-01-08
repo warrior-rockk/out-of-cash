@@ -423,6 +423,6 @@ void dialog_draw();
 
 void sfx_init();
 void sfx_update();
-void sfx_play(uint16_t soundId, uint8_t voice, int freq);
+void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq);
 
 #endif
