@@ -169,8 +169,8 @@ void player_update_animation()
      }
 
      #ifdef DEBUGMODE
-     if (player.state != player_st_idle && player.animation.frame != player.animation.lastFrame)
-         TRACE("Draw player with frame %i\n", player.animation.frame);
+     //if (player.state != player_st_idle && player.animation.frame != player.animation.lastFrame)
+     //    TRACE("Draw player with frame %i\n", player.animation.frame);
      #endif
 }
 

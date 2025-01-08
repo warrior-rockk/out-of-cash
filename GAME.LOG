@@ -2,67 +2,34 @@ Initializing systems and modules
 All system and modules initialized
 Loading game resources
 Game resources loaded
+SFX channel 0 allocated to voice 0
+SFX channel 1 allocated to voice 1
+SFX system initialized
 Adding numObject 7 to inventory array position 0
 Game initialized
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
 Change game state from 0 to 3
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
-Draw player with frame 12
-Draw player with frame 13
-Draw player with frame 14
-Draw player with frame 15
-Draw player with frame 16
-Draw player with frame 15
-Draw player with frame 7
-Draw player with frame 8
-Draw player with frame 9
-Draw player with frame 10
-Draw player with frame 11
 Change game state from 3 to 5
--1
 Change game state from 5 to 3
-Draw player with frame 18
-Draw player with frame 19
-Draw player with frame 20
+Change game state from 3 to 6
+Change game state from 6 to 3
+Change game state from 3 to 6
+Change game state from 6 to 3
+Change game state from 3 to 6
+Change game state from 6 to 3
+Change game state from 3 to 6
+Change game state from 6 to 1
+SFX channel 0 allocated to voice 2
+SFX channel 1 allocated to voice 3
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Change game state from 1 to 3
+Change from room -1 to room 1
+Free actual room datafile resources
+Load room datafile: R01DATA.DAT
 Change game state from 3 to 5
-11160
 Change game state from 5 to 3
-Change game state from 3 to 5
-28768
-Change game state from 5 to 3
-Change game state from 3 to 5
-58280
-Change game state from 5 to 3
-Change game state from 3 to 5
-88040
-Change game state from 5 to 3
-Change game state from 3 to 5
-247504
-Change game state from 5 to 3
-Change game state from 3 to 5
-272056
-Change game state from 5 to 3
-Change game state from 3 to 5
-299088
-Change game state from 5 to 3
-Change game state from 3 to 5
--1
-Change game state from 5 to 3
-Change game state from 3 to 5
--1
-Change game state from 5 to 3
-Change game state from 3 to 5
--1
-Change game state from 5 to 3
-Change game state from 3 to 5
--1
-Change game state from 5 to 3
-Change game state from 3 to 5
--1
-Change game state from 5 to 3
+Change game state from 3 to 6

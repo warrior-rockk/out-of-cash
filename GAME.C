@@ -210,7 +210,8 @@ void main_update()
 {
     clear(buffer);
     tick_update();
-
+    sfx_update();
+    
     //debug vars
     show_debug("X",mouse_x);
     show_debug("Y",mouse_y);
@@ -341,7 +342,8 @@ void game_init()
     gui_init();
     hud_init();
     dialog_init();
-
+    sfx_init();
+    
     //initial game inventory object
     inventory_add(id_califications);
     
@@ -398,13 +400,13 @@ void game_update()
             {
                 game.state = PAUSE_STATE;
                 midi_pause();
-                sfx.position = voice_get_position(sfx.voice);
-                voice_stop(sfx.voice);
+                pause_sound();
             }
             else if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = MENU_STATE;
                 //midi_pause();
+                pause_sound();
             }
             else
             {
@@ -416,9 +418,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 midi_resume();
-                TRACE("%i\n", sfx.position);
-                if (sfx.position >= 0)
-                    voice_start(sfx.voice);
+                resume_sound();
             }
             break;
         case MENU_STATE:
@@ -426,6 +426,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 //midi_resume();
+                resume_sound();
             }
             break;
     }
@@ -1141,7 +1142,7 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                play_sound_rnd(rand() % sd_COUNT);
+                sfx_play((rand() % sd_COUNT), SFX_GAME_CH , 0);
             break;    
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
@@ -1815,6 +1816,7 @@ void gui_update()
         case GUI_EXIT_TITLE_STATE:
             game.state = TITLE_STATE;
             stop_midi();
+            stop_sound();
             game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_EXIT_DOS_STATE:
@@ -1994,6 +1996,99 @@ void dialog_draw()
         //reset dialog choices
         dialog.nodeNumLines = 0;
     }
+}
+
+//function to init sfx sound system
+void sfx_init()
+{
+    //init all sfx channels
+    for (int i = 0; i < SFX_NUM_CHANNELS; i++)
+    {
+        //get soundcard voice and stores on channel
+        sfx[i].voice = allocate_voice((SAMPLE*)soundDataFile[sd_take].dat);
+        sfx[i].sampleId = sd_take;
+
+        //init channel flags
+        sfx[i].playing     = false;
+        sfx[i].paused      = false;
+        sfx[i].pause       = false;
+        sfx[i].stop        = false;
+        sfx[i].position    = -1;
+
+        TRACE("SFX channel %i allocated to voice %i\n", i, sfx[i].voice);
+    }
+
+    TRACE("SFX system initialized\n");
+}
+
+//function to update sfx sound system
+void sfx_update()
+{
+    for (int i = 0; i < SFX_NUM_CHANNELS; i++)
+    {
+        //handles sound pause
+        if (sfx[i].pause)
+        {
+            if (sfx[i].playing)
+            {
+                //do the stop/pause
+                voice_stop(sfx[i].voice);
+                //set flag
+                sfx[i].paused = true;
+            }
+            else
+                //clear flag
+                sfx[i].pause = false;
+        }
+    
+        //handles sound resume
+        if (!sfx[i].pause && sfx[i].paused)
+        {
+            //resume sound if was started
+            if (sfx[i].position >= 0)
+                voice_start(sfx[i].voice);
+            //clear flag
+            sfx[i].paused = false;
+        }
+    
+        //handles sound stop
+        if (sfx[i].stop)
+        {
+            if (sfx[i].playing)
+                //do sound stop
+                voice_stop(sfx[i].voice);
+            //clear flag
+            sfx[i].stop = false;
+        }
+    
+        //handles clear sound playing flag
+        if (sfx[i].playing && !sfx[i].paused)
+        {
+            //stores sound position
+            sfx[i].position = voice_get_position(sfx[i].voice);
+            //clear flag when sound finished
+            if (sfx[i].position == -1)
+                sfx[i].playing = false;
+        }
+    }
+}
+
+//function to play a sound
+void sfx_play(uint16_t soundId, uint8_t channel, int freq)
+{
+    //reallocate the sample on select voice of selected channel
+    reallocate_voice(sfx[channel].voice, (SAMPLE*)soundDataFile[soundId].dat);
+    sfx.sampleId = soundId;
+
+    //freq = 0: no freq change
+    if (freq > 0)
+        voice_set_frequency(sfx[channel].voice, freq);
+
+    //start sample allocated on voice channel
+    voice_start(sfx[channel].voice);
+
+    //set flag
+    sfx[channel].playing = true;
 }
 
 END_OF_MAIN()

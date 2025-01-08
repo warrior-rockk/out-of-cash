@@ -231,5 +231,8 @@ bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
 
 void play_sound(int16_t soundId);
 void play_sound_rnd(uint16_t soundId);
+void stop_sound();
+void pause_sound();
+void resume_sound();
 
 #endif

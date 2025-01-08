@@ -583,18 +583,29 @@ void stop_dialog()
 //function to play game global sound
 void play_sound(int16_t soundId)
 {
-    play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, 1000, 0);
+    sfx_play(soundId, SFX_ROOM_CH , 0);
 }
 
 //function to play game global sound with random frecuency mod
 void play_sound_rnd(uint16_t soundId)
 {
-    //play_sample((SAMPLE*)soundDataFile[soundId].dat, gameConfig.soundVolume, 127, rand() % (1200 - 800 + 1) + 800, 0);
-    //if (sfx.voice >= 0)
-    //{
-        sfx.voice = allocate_voice((SAMPLE*)soundDataFile[soundId].dat);
-        //reallocate_voice(sfx.voice, (SAMPLE*)soundDataFile[soundId].dat);
-        voice_start(sfx.voice);
-        //release_voice(sfx.voice);
-    //}
+    sfx_play(soundId, SFX_ROOM_CH , 0);
+}
+
+//function to stop sound
+void stop_sound()
+{
+    sfx[SFX_ROOM_CH].stop = true;
+}
+
+//function to pause sound
+void pause_sound()
+{
+    sfx[SFX_ROOM_CH].pause = true;
+}
+
+//function to resume sound
+void resume_sound()
+{
+    sfx[SFX_ROOM_CH].pause = false;
 }
