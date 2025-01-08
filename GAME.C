@@ -398,6 +398,7 @@ void game_update()
             {
                 game.state = PAUSE_STATE;
                 midi_pause();
+                sfx.position = voice_get_position(sfx.voice);
                 voice_stop(sfx.voice);
             }
             else if (gameKeys[G_KEY_EXIT].pressed)
@@ -415,7 +416,9 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 midi_resume();
-                voice_start(sfx.voice);
+                TRACE("%i\n", sfx.position);
+                if (sfx.position >= 0)
+                    voice_start(sfx.voice);
             }
             break;
         case MENU_STATE:

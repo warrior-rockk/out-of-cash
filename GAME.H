@@ -338,6 +338,7 @@ struct roomScroll
 struct sfx
 {
     int voice;
+    int position;
 } sfx;
 
 //global vars

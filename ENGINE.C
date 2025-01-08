@@ -593,7 +593,8 @@ void play_sound_rnd(uint16_t soundId)
     //if (sfx.voice >= 0)
     //{
         sfx.voice = allocate_voice((SAMPLE*)soundDataFile[soundId].dat);
+        //reallocate_voice(sfx.voice, (SAMPLE*)soundDataFile[soundId].dat);
         voice_start(sfx.voice);
-        release_voice(sfx.voice);
+        //release_voice(sfx.voice);
     //}
 }
