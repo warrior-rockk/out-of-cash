@@ -1142,7 +1142,8 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , true);
+                //sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , true);
+                sfx_play(sd_take, SFX_GAME_VOICE , true);
             break;
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
@@ -2087,20 +2088,35 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
     reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
     sfx[voice].sampleId = soundId;
 
-    //random frequency
+    //randomize frequency
     if (rndFreq)
     {
-        int freqVariation = (rand() % 8);
+        //get a random percent variation from twice of SFX_FREQ_RND_PERCENT (half for negative, half for positive)
+        int freqVariation = (rand() % (SFX_FREQ_RND_PERCENT * 2));
+
+        //get sample original frequency
         int sampleFreq = voice_get_frequency(voice);
+        TRACE("Original freq: %iHz | ", sampleFreq);
+
+        //calculate new frequency
         float newFreq;
-        if (freqVariation < 4)
-            newFreq = (float)sampleFreq - ((float)sampleFreq * ((float)freqVariation / 10.0));
+        //if variation is below half
+        if (freqVariation < SFX_FREQ_RND_PERCENT)
+        {
+            //sub the percentage variation to original freq
+            newFreq = (float)sampleFreq - ((float)sampleFreq * ((float)freqVariation / 100.0));
+            TRACE("Variation: -%i%% | ", freqVariation);
+        }
         else
-            newFreq = ((float)sampleFreq * ((float)(freqVariation - 4) / 10.0)) + (float)sampleFreq;
+        {
+            //add the percentage variation to original freq
+            newFreq = ((float)sampleFreq * ((float)(freqVariation - SFX_FREQ_RND_PERCENT) / 100.0)) + (float)sampleFreq;
+            TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
+        }
+
+        //set the new frequency
         voice_set_frequency(voice, (int)newFreq);
-        TRACE("Original freq: %i\n", sampleFreq);
-        TRACE("Variation: %i\n", freqVariation);
-        TRACE("New freq: %f - %i\n", newFreq, (int)newFreq);
+        TRACE("New freq: %iHz\n", (int)newFreq);
         
     }
     

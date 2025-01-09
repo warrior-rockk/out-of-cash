@@ -111,6 +111,12 @@
 #define DEBUG_Y                 10
 #define DEBUG_FONT_HEIGHT       8
 
+//Sfx
+#define SFX_FREQ_RND_PERCENT    20 //(+/- % freq variation)
+#define SFX_GAME_VOICE          0
+#define SFX_ROOM_VOICE          1
+#define SFX_NUM_VOICES          2
+
 //enums
 
 //game state
@@ -335,9 +341,6 @@ struct roomScroll
 } roomScroll;
 
 //sfx voices structure
-#define SFX_GAME_VOICE      0
-#define SFX_ROOM_VOICE      1
-#define SFX_NUM_VOICES      2
 struct sfx
 {
     int position;
