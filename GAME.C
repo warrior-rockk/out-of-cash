@@ -2021,6 +2021,7 @@ void sfx_init()
         sfx[i].paused      = false;
         sfx[i].pause       = false;
         sfx[i].stop        = false;
+        sfx[i].finished    = false;
         sfx[i].position    = -1;
     }
 
@@ -2065,6 +2066,8 @@ void sfx_update()
                 voice_stop(i);
             //clear flag
             sfx[i].stop = false;
+            //set flag
+            sfx[i].finished = true;
         }
     
         //handles clear sound playing flag
@@ -2074,7 +2077,10 @@ void sfx_update()
             sfx[i].position = voice_get_position(i);
             //clear flag when sound finished
             if (sfx[i].position == -1)
+            {
                 sfx[i].playing = false;
+                sfx[i].finished = true;
+            }
         }
     }
 }
@@ -2125,6 +2131,7 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
 
     //set flag
     sfx[voice].playing = true;
+    sfx[voice].finished = false;
 }
 
 END_OF_MAIN()

@@ -193,6 +193,7 @@ void script_start_dialog(uint8_t dialogId);
 void script_next_dialog_node();
 void script_play_sound(int16_t soundId);
 void script_play_sound_rnd(int16_t soundId);
+void script_play_sound_wait(int16_t soundId);
 
 void dialog_add(char *textLine, uint8_t destNode);
 void dialog_jump(uint8_t node, uint8_t selLine, uint8_t destNode);
@@ -226,6 +227,7 @@ void move_player(int x, int y);
 void move_player_to_target();
 bool is_player_moving();
 void change_player_dir(uint8_t dir);
+void player_take_state();
 
 bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 

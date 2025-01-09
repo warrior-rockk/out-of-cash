@@ -683,22 +683,20 @@ void r01_update_room_script()
                                 script_move_player_to_target();
                             break;
                             case 1:
-                                script_play_sound(sd_computerBoot);
+                                player_take_state();
+                                roomScript.step++;
                             break;
                             case 2:
-                                script_player_take_state();
+                                script_play_sound_wait(sd_computerBoot);
                             break;
                             case 3:
-                                script_wait(100);
+                                script_play_sound_wait(sd_win95Startup);
                             break;
                             case 4:
-                                script_play_sound(sd_win95Startup);
+                                script_play_sound_wait(sd_w95Error);
                             break;
                             case 5:
-                                script_wait(63);
-                            break;
-                            case 6:
-                                script_play_sound(sd_w95Error);
+                                script_say("Odio windows...");
                             break;
                             default:
                                 end_script();

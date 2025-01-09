@@ -347,6 +347,7 @@ struct sfx
     int sampleId;
     bool playing;
     bool paused;
+    bool finished;
     bool stop;
     bool pause;
 } sfx[SFX_NUM_VOICES];

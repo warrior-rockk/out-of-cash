@@ -186,6 +186,7 @@ void script_play_player_animation(int startFrame, int endFrame, int speed)
         player.state = player_st_idle;
     }
 }
+
 //function to change player state to take state
 void script_player_take_state()
 {
@@ -218,6 +219,23 @@ void script_play_sound_rnd(int16_t soundId)
 {
     play_sound_rnd(soundId);
     roomScript.step++;
+}
+
+//function to play game sound and wait for finish
+void script_play_sound_wait(int16_t soundId)
+{
+    if (sfx[SFX_ROOM_VOICE].finished)
+    {
+        if (sfx[SFX_ROOM_VOICE].sampleId == soundId)
+        {
+            roomScript.step++;
+            sfx[SFX_ROOM_VOICE].finished = false;
+        }
+        else
+            sfx[SFX_ROOM_VOICE].finished = false;
+    }
+    else if (!sfx[SFX_ROOM_VOICE].playing)
+        sfx_play(soundId, SFX_ROOM_VOICE , false);
 }
 
 //function to set game flag
@@ -503,6 +521,12 @@ bool is_player_moving()
 void change_player_dir(uint8_t dir)
 {
     player.lookDir = dir;
+}
+
+//function to change player state to take state without script step inc
+void player_take_state()
+{
+    player.state = player_st_taking;
 }
 
 //plays room object animation if object is active. Returns true when finished on ONCE mode
