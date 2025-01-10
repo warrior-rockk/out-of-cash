@@ -587,8 +587,10 @@ void r12_update_room_script()
                                         case 13:
                                             script_say("­Gracias!");
                                         break;
-                                        default:
+                                        case 14:
                                             r12_object[R12_HAND_OBJ_ID].active = false;
+                                            script_say("Genial. Con estas respuestas ya tengo aprobado el examen de matem ticas");
+                                        default:
                                             end_script();
                                             break;
                                     }

@@ -175,8 +175,10 @@ void r04_update_dialog_selection()
                         dialog_add("¨Por qu‚ hay una habitaci¢n que nunca abrimos?", 1);
                         if (!is_game_flag(FATHER_SAY_MONEY_FLAG))
                             dialog_add("Tengo que pedirte una cosa...", 2);
-                        else
+                        else if (!is_game_flag(MATH_APPROVED_FLAG) || !is_game_flag(HISTORY_APPROVED_FLAG) || !is_game_flag(PE_APPROVED_FLAG))
                             dialog_add("¨Qu‚ ten¡a que hacer para que me des el dinero?", 4);
+                        else
+                            dialog_add("­YA HE APROBADO TODO!", 0);
                         dialog_add("Da igual...", 0);
                     break;
                     case 2:
@@ -320,7 +322,7 @@ void r04_update_room_script()
                                             !is_game_flag(PE_APPROVED_FLAG))
                                             roomScript.step++;
                                         else
-                                            roomScript.step = 20;
+                                            start_script(R04_ALL_APPROVED_SCRIPT);
                                     break;
                                     case 2:
                                         script_say_actor("Todav¡a tienes que aprobar:", &r04_dialogActor);
@@ -356,18 +358,6 @@ void r04_update_room_script()
                                     case 6:
                                         script_say_actor("Hasta que no lo apruebes todo no te dar‚ el dinero", &r04_dialogActor);
                                         end_script();
-                                    break;
-                                    case 20:
-                                        script_say_actor("­Muy bien hijo!", &r04_dialogActor);
-                                    break;
-                                    case 21:
-                                        script_say_actor("Al final con trabajo y esfuerzo se consiguen metas", &r04_dialogActor);
-                                    break;
-                                    case 22:
-                                        script_say_actor("Aqu¡ tienes el dinero", &r04_dialogActor);
-                                    break;
-                                    case 23:
-                                        script_add_inv_object(id_money);
                                     break;
                                     default:
                                         end_script();
@@ -619,6 +609,42 @@ void r04_update_room_script()
 
                 }
             break;
+            case R04_ALL_APPROVED_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        script_say_actor("­Muy bien hijo!", &r04_dialogActor);
+                    break;
+                    case 1:
+                        script_say_actor("Al final con trabajo y esfuerzo se consiguen metas", &r04_dialogActor);
+                    break;
+                    case 2:
+                        script_say_actor("Aqu¡ tienes el dinero", &r04_dialogActor);
+                    break;
+                    case 3:
+                        script_remove_inv_object(id_califications);
+                        script_add_inv_object(id_money);
+                    break;
+                    case 4:
+                        script_say("Pero pap , aqui solo hay 4900 pelas");
+                    break;
+                    case 5:
+                        script_say("­La entrada del concierto vale 5000!");
+                    break;
+                    case 6:
+                        script_say_actor("Hijo, toma lo que te dan y suspira por lo que queda", &r04_dialogActor);
+                    break;
+                    case 7:
+                        script_say("Ser  hijop...");                        
+                    break;
+                    case 8:
+                        script_say_actor("Esa boca...", &r04_dialogActor);
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 
@@ -675,7 +701,11 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            if (is_game_flag(FATHER_SAY_MONEY_FLAG))
+                            if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
+                            {
+                                script_say_actor("A ver, ense¤ame las notas...", &r04_dialogActor);
+                            }
+                            else if (is_game_flag(FATHER_SAY_MONEY_FLAG))
                                 script_say_actor("Aprueba Matem ticas, Historia y Educaci¢n f¡sica y te dar‚ el dinero", &r04_dialogActor);
                             else
                                 roomScript.step++;

@@ -1172,12 +1172,16 @@ void inventory_update()
                             script_remove_inv_object(id_oatMixed);
                     break;
                     case 1:
-                        script_play_sound_rnd(sd_paint);
+                        script_move_player(200, 142);
                     break;
                     case 2:
+                        script_play_sound_wait(sd_paint);
+                    break;
+                    case 3:
                         script_say("Emm... ¨Profesor?");
                     break;
                     default:
+                        change_player_dir(DIR_BACK);
                         set_game_flag(SHOW_DISEASE_FLAG);
                         end_script();
                     break;

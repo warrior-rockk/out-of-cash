@@ -1,18 +1,25 @@
 # TO-DO
 
+- [ ] Gameplay:
+    * Use equal to OPEN/CLOSE on doors
+    * On all approved, say it
+    * Sound on approved
+    * Sound on money
+    * father give califications incorrect animation (convert script to dialog?)
+    * dialog hotspot lines fix
+    * set correct dialog actors text color
+
+- [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
 - [ ] Free fonts
 - [ ] Animation for take upper and bottom
-- [ ] Sound effects
-- [ ] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition (music fades and screen fades?)
 - [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Real A* Pathfinding?
-- [ ] Room definition/script tool
 - [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
 multiple scripts?
 - [ ] Separate renderer
@@ -21,6 +28,9 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Don't use ints (32 bits). Use uint16_t or int16_t instead
+- [X] Room definition/script tool
+- [X] Sound effects
 - [X] Add take 2 random
 - [X] Block cursor while script running?
 - [X] New object focused on inventory (blink?. No, go to last inventory page)

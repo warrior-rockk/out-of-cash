@@ -475,7 +475,7 @@ void r11_update_room_script()
                                         if (!is_game_flag(SPORT_WORK_FLAG))
                                             script_say_actor("No s‚ porque me da esto", &r11_dialogActor);
                                         else
-                                            script_say_actor("Esta no es manera de presentar un trabajo", &r11_dialogActor);
+                                            script_say_actor("Esta no es manera adecuada de presentar un trabajo sobre el deporte", &r11_dialogActor);
                                     break;
                                     default:
                                         end_script();
@@ -489,7 +489,7 @@ void r11_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(SPORT_WORK_FLAG))
                                         {
-                                            script_say_actor("No s‚ porque me da esto", &r11_dialogActor);
+                                            script_say_actor("Solo las personas que tengan una enfermedad que les impida realizar prueba tienen que hacer un trabajo", &r11_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -558,6 +558,7 @@ void r11_update_room_script()
                     break;
                     default:
                         set_game_flag(SPORT_WORK_FLAG);
+                        change_player_dir(DIR_RIGHT);
                         end_script();
                     break;
                 }

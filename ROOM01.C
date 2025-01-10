@@ -781,6 +781,31 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No le queda tinta");
+                                break;
+                            case 1:
+                                script_say("Adem s tengo unos problemas con los controladores de Windows 95 y no me funciona");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_fullCartridge:
+                                begin_script();
+                                script_say("Aunque le ponga tinta a esa impresora no funciona bien");
+                                end_script();
+                            break;
+                        }
+                    break;
                     case TAKE:
                         switch (roomScript.step)
                         {

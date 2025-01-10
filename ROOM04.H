@@ -44,6 +44,9 @@
 #define R04_NUM_ANIMATIONS  1
 #define R04_ANIM_FATHER_TALK    r04d_objTalk1, r04d_objTalk9, 1, ANIM_PING_PONG
 
+//define custom scripts >256
+#define R04_ALL_APPROVED_SCRIPT 257
+
 //hotspot code room enumeration
 enum r04_hotspotCode{
     r04_corridor    = 164,
