@@ -1805,7 +1805,7 @@ void gui_init()
 //function to update the gui
 void gui_update()
 {
-    cursor.enabled = true;
+    //cursor.enabled = true;
     
     //reset gui hotspot image
     draw_sprite(gui.hsImage, gui.hsImageMain, 0, 0);
