@@ -429,6 +429,7 @@ void game_update()
             }
             break;
         case MENU_STATE:
+            cursor.enabled = true;
             if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = PLAYING_STATE;
@@ -1509,6 +1510,9 @@ void room_action_update()
     }
     else
     {
+        //disable cursor
+        cursor.enabled = false;
+        
         //sequence timer
         if (gameTick)
         {
