@@ -432,6 +432,8 @@ void game_update()
             if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = PLAYING_STATE;
+                resume_sound();
+                //midi_resume();
             }
             break;
     }
