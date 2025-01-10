@@ -167,6 +167,10 @@ void r01_room_init()
     r01_object[R01_COIN_OBJ_ID].active      = !is_game_flag(GOT_COIN_FLAG);
     r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
 
+    //rewind computer animation
+    r01_animations[R01_COMPUTER_OBJ_ID].frameTime = 0;
+    r01_animations[R01_COMPUTER_OBJ_ID].frame = r01d_objCompBoot1;
+    
     if (!is_game_flag(GAME_START_FLAG))
         start_script(R01_GAME_START_SCRIPT);
         
@@ -191,6 +195,9 @@ void r01_update_room_objects()
 {
     //Stereo
     object_play_animation(&r01_object[R01_STEREO01_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
+
+    //Computer
+    r01_object[R01_COMPUTER_OBJ_ID].active = is_game_flag(USED_COMPUTER_FLAG);
 }
 
 //update dialog selection
@@ -680,25 +687,36 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
+                                script_move_player(235, 142);
                             break;
                             case 1:
                                 player_take_state();
-                                roomScript.step++;
+                                set_game_flag(USED_COMPUTER_FLAG);
+                                script_play_sound(sd_computerBoot);
                             break;
                             case 2:
-                                script_play_sound_wait(sd_computerBoot);
+                                script_object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot1, r01_animations, R01_ANIM_ON_COMPUTER);
                             break;
                             case 3:
-                                script_play_sound_wait(sd_win95Startup);
+                                object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_BIOS_COMPUTER);
+                                script_play_sound_wait(sd_computerBoot);
                             break;
                             case 4:
-                                script_play_sound_wait(sd_w95Error);
+                                script_play_sound_wait(sd_win95Startup);
+                                object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_W95_COMPUTER);
                             break;
                             case 5:
+                                script_play_sound_wait(sd_w95Error);
+                                object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_ERROR_COMPUTER);
+                            break;
+                            case 6:
                                 script_say("Odio windows...");
                             break;
+                            case 7:
+                                script_player_take_state();
+                            break;
                             default:
+                                clear_game_flag(USED_COMPUTER_FLAG);
                                 end_script();
                             break;
                         }

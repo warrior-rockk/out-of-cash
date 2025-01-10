@@ -207,6 +207,14 @@ void script_player_take_state()
     }
 }
 
+//plays room object animation if object is active. Increments script step when finished
+void script_object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
+{
+    //if object animation finish, inc script step
+    if (object_play_animation(object, idleFrame, animation, startFrame, endFrame, speed, mode))
+        roomScript.step++;
+}
+
 //function to play game sound and increment script step
 void script_play_sound(int16_t soundId)
 {

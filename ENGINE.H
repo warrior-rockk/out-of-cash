@@ -186,6 +186,7 @@ void script_move_player_to_target();
 void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObjectNum);
 void script_play_player_animation(int startFrame, int endFrame, int speed);
 void script_player_take_state();
+void script_object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 void script_remove_inv_object(int numObject);
 void script_add_inv_object(uint8_t numObject);
 void script_combine_inv_object(uint8_t numObject1, uint8_t numObject2, uint8_t numObjectAdd);
