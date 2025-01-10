@@ -319,6 +319,18 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_I, false, false},
 };
 
+//sfx voices structure
+typedef struct tSfx
+{
+    int position;
+    int sampleId;
+    bool playing;
+    bool paused;
+    bool finished;
+    bool stop;
+    bool pause;
+} tSfx;
+
 //savegame structure
 struct savegame
 {
@@ -331,6 +343,7 @@ struct savegame
     struct roomScript roomScriptData;
     struct msg msgData;
     struct player playerData;
+    tSfx sfx;
 };
 
 //scroll structure
@@ -339,18 +352,6 @@ struct roomScroll
     int16_t x;
     int16_t y;
 } roomScroll;
-
-//sfx voices structure
-struct sfx
-{
-    int position;
-    int sampleId;
-    bool playing;
-    bool paused;
-    bool finished;
-    bool stop;
-    bool pause;
-} sfx[SFX_NUM_VOICES];
 
 //global vars
 static volatile int tick;
@@ -364,6 +365,7 @@ DATAFILE *playerDataFile;
 DATAFILE *inventoryDataFile;
 DATAFILE *soundDataFile;
 bool gameTick;
+tSfx sfx[SFX_NUM_VOICES];
 
 //function declarations
 void main_init();

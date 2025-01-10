@@ -653,6 +653,7 @@ void game_save(uint8_t slot)
     savegame.roomScriptData = roomScript;
     savegame.msgData        = msg;
     savegame.playerData     = player;
+    savegame.sfx            = sfx[SFX_ROOM_VOICE];
 
     //write the savegame file
     if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
@@ -700,18 +701,26 @@ void game_load(uint8_t slot)
     roomScript  = savegame.roomScriptData;
     msg         = savegame.msgData;
     player      = savegame.playerData;
+    sfx[SFX_ROOM_VOICE]  = savegame.sfx;
 
     //sets audio config
     set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
+
     //loads saved room resources
     room_load(game.actualRoom);
+
     //calculate room image borders
     calculate_image_borders(actualRoom.image, &actualRoom.roomBorders);
     //calculate hotspot/walk image borders
     calculate_image_borders(actualRoom.hsImage, &actualRoom.hsWalkBorders);
+
     //seeks room music to saved position
     midi_seek(game.roomMusicPos);
+    //allocates and seeks sound to saved position
+    reallocate_voice(SFX_ROOM_VOICE, (SAMPLE*)soundDataFile[sfx[SFX_ROOM_VOICE].sampleId].dat);
+    voice_set_position(SFX_ROOM_VOICE, sfx[SFX_ROOM_VOICE].position);
+
     //forces refresh room_init
     roomData[game.actualRoom].room_init();
     //forces refresh inventory
