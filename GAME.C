@@ -396,6 +396,13 @@ void game_update()
             }
             break;
         case PLAYING_STATE:
+            //restore sound based on prev state
+            if (game.prevState == MENU_STATE)
+            {
+                resume_sound();
+                //midi_resume();
+            }
+                
             if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = PAUSE_STATE;
@@ -417,16 +424,14 @@ void game_update()
             if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = PLAYING_STATE;
-                midi_resume();
                 resume_sound();
+                midi_resume();
             }
             break;
         case MENU_STATE:
             if (gameKeys[G_KEY_EXIT].pressed)
             {
                 game.state = PLAYING_STATE;
-                //midi_resume();
-                resume_sound();
             }
             break;
     }
@@ -1142,8 +1147,8 @@ void cursor_action_menu()
             }
             //feedback random global sound
             if (cursor.click)
-                //sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , true);
-                sfx_play(sd_take, SFX_GAME_VOICE , true);
+                sfx_play((rand() % sd_COUNT), SFX_GAME_VOICE , true);
+                //sfx_play(sd_take, SFX_GAME_VOICE , true);
             break;
         case GUI_LOAD_SLOT_1_COLOR ... GUI_LOAD_SLOT_5_COLOR:
             //get slot selected
@@ -1153,6 +1158,7 @@ void cursor_action_menu()
             {
                 //load game slot
                 gui.state = GUI_MAIN_STATE;
+                game.state = PLAYING_STATE;
                 game_load(hsColor - GUI_LOAD_SLOT_1_COLOR);
             }
             break;
@@ -1163,8 +1169,8 @@ void cursor_action_menu()
             if (cursor.click)
             {
                 //save game slot
-                //game.state = PLAYING_STATE;
-                //gui_init();
+                game.state = PLAYING_STATE;
+                gui_init();
                 game_save(hsColor - GUI_SAVE_SLOT_1_COLOR);
             }
             break;
