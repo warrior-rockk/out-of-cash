@@ -9,6 +9,7 @@
     * dialog hotspot lines fix
     * set correct dialog actors text color
 
+- [ ] End game
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed

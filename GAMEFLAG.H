@@ -93,6 +93,7 @@ enum gameFlags{
 
     INTRO_FLAG,
     GAME_START_FLAG,
+    GAME_END_FLAG,
 };
 
 //definition of global game numeric vars index

@@ -415,6 +415,8 @@ void game_update()
                 //midi_pause();
                 pause_sound();
             }
+            else if (is_game_flag(GAME_END_FLAG))
+                game.state = EXIT_STATE;    //temp
             else
             {
                 check_room_changed();

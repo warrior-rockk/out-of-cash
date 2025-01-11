@@ -1234,6 +1234,9 @@ void inventory_update()
                     case 2:
                         script_say("­YA TENGO EL DINERO PARA LA ENTRADA!");
                     break;
+                    case 3:
+                        set_game_flag(GAME_END_FLAG);
+                        end_script();
                     default:
                         end_script();
                     break;

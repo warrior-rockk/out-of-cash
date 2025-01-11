@@ -128,7 +128,8 @@ enum gameState{
     DIALOG_STATE,
     PAUSE_STATE,
     MENU_STATE,
-    EXIT_STATE
+    EXIT_STATE,
+    END_STATE,
 };
 
 //gui state
