@@ -63,7 +63,7 @@ int main()
                 room_front_layer_draw();
                 msg_draw();
 
-                break;
+            break;
             case TITLE_STATE:
                 game_fade_in();
                 cursor.enabled = true;
@@ -76,7 +76,7 @@ int main()
                 game_write("(SIN BLANCA)", SAY_X, SAY_Y + 20, makecol(255,255,255), 2);
                 cursor_draw();
                 
-                break;
+            break;
             case PLAYING_STATE:
                  //update calls
                 game_update();
@@ -97,7 +97,7 @@ int main()
                 cursor_draw();
                 msg_draw();
 
-                break;
+            break;
             case DIALOG_STATE:
                 //update calls
                 game_update();
@@ -119,7 +119,7 @@ int main()
                 cursor_draw();
                 msg_draw();
                 
-                break;
+            break;
             case PAUSE_STATE:
                 //update calls
                 game_update();
@@ -130,7 +130,7 @@ int main()
                 room_front_layer_draw();
                 game_write("PAUSA", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), actualFont);
 
-                break;
+            break;
             case MENU_STATE:
                 //update calls
                 game_update();
@@ -144,9 +144,29 @@ int main()
                 gui_draw();
                 cursor_draw();
                 
-                break;
+            break;
+            case RESTART_STATE:
+                game_update();
+            break;
+            case END_STATE:
+                 //update calls
+                game_update();
+                msg_update();
+                roomData[game.actualRoom].room_update();
+                room_action_update();
+                player_update();
+                
+                //draw calls
+                room_draw();
+                player_draw();
+                room_front_layer_draw();
+                game_write("GRACIAS POR JUGAR", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), actualFont);
+                msg_draw();
+
+            break;
             case EXIT_STATE:
                 game.exit = true;
+            break;
         }
 
         //stateless draw
@@ -394,7 +414,7 @@ void game_update()
                 change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
                 game.state = PLAYING_STATE;
             }
-            break;
+        break;
         case PLAYING_STATE:
             //restore sound based on prev state
             if (game.prevState == MENU_STATE)
@@ -416,12 +436,16 @@ void game_update()
                 pause_sound();
             }
             else if (is_game_flag(GAME_END_FLAG))
-                game.state = EXIT_STATE;    //temp
+            {
+                game_fade_out(FADE_DEFAULT_SPEED);
+                change_room(SCHOOL_ROOM_NUM);
+                game.state = END_STATE;
+            }
             else
             {
                 check_room_changed();
             }
-            break;
+        break;
         case PAUSE_STATE:
             if (gameKeys[G_KEY_PAUSE].pressed)
             {
@@ -429,7 +453,7 @@ void game_update()
                 resume_sound();
                 midi_resume();
             }
-            break;
+        break;
         case MENU_STATE:
             cursor.enabled = true;
             if (gameKeys[G_KEY_EXIT].pressed)
@@ -438,7 +462,21 @@ void game_update()
                 resume_sound();
                 //midi_resume();
             }
-            break;
+        break;
+        case END_STATE:
+            if (gameKeys[G_KEY_EXIT].pressed)
+            {
+                game.state = RESTART_STATE;
+            }
+            else
+                check_room_changed();
+        break;
+        case RESTART_STATE:
+            game_fade_out(FADE_DEFAULT_SPEED);
+            game_init();
+            game.state = LOGO_STATE;
+        break;
+        
     }
 
     if (game.state != game.prevState)

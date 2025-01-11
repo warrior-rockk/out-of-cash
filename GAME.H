@@ -130,6 +130,7 @@ enum gameState{
     MENU_STATE,
     EXIT_STATE,
     END_STATE,
+    RESTART_STATE,
 };
 
 //gui state
