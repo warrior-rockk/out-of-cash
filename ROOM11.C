@@ -524,6 +524,12 @@ void r11_update_room_script()
                                         script_say_actor("Y que se mejore", &r11_dialogActor);
                                         set_game_flag(PE_APPROVED_FLAG);
                                     break;
+                                    case 10:
+                                        if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
+                                            script_say("­Genial! ­Ya he aprobado todo!");
+                                        else
+                                            end_script();
+                                    break;
                                     default:
                                         end_script();
                                     break;

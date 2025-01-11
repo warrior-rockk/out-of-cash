@@ -2,7 +2,7 @@
 
 - [ ] Gameplay:
     * Use equal to OPEN/CLOSE on doors
-    * On all approved, say it
+    ? On all approved, say it
     * Sound on approved
     * Sound on money
     * father give califications incorrect animation (convert script to dialog?)

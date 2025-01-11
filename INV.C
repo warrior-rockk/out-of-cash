@@ -539,7 +539,24 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_money:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        start_script(COMBINE_MONEY_SCRIPT);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_emptyCartridge      :
@@ -744,13 +761,30 @@ void inventory_update()
                                 script_say("4900 pelas que mi padre me ha dado por aprobar las asignaturas");
                                 break;
                             case 1:
-                                script_say("­Ya estoy mas cerca de poder comprar la entrada!");
+                                script_say("­Me faltan 100 pesetas para poder comprar la entrada!");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_coin:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        start_script(COMBINE_MONEY_SCRIPT);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_oat                 :
@@ -1183,6 +1217,24 @@ void inventory_update()
                     default:
                         change_player_dir(DIR_BACK);
                         set_game_flag(SHOW_DISEASE_FLAG);
+                        end_script();
+                    break;
+                }
+            break;
+            case COMBINE_MONEY_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_combine_inv_object(id_money, id_coin, id_guitar);
+                    break;
+                    case 1:
+                        script_say("­POR FIN!");
+                    break;
+                    case 2:
+                        script_say("­YA TENGO EL DINERO PARA LA ENTRADA!");
+                    break;
+                    default:
                         end_script();
                     break;
                 }

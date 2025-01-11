@@ -26,6 +26,7 @@
 #define OAT_MIXED_SCRIPT            1004
 #define SPORT_WORK_SCRIPT           1005
 #define APPLY_OAT_SCRIPT            1006
+#define COMBINE_MONEY_SCRIPT        1007
 
 //data structures
 struct inventory
