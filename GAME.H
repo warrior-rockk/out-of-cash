@@ -20,6 +20,7 @@
 //Game colors
 #define TRANSPARENT_COLOR   1
 #define BLACK_COLOR         251
+#define WHITE_COLOR         31
 #define BORDER_COLOR        BLACK_COLOR
 
 //Game

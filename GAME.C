@@ -592,10 +592,10 @@ void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex)
     while (ch)
     {
         //print black outline text
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x+1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x-1, posY, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY+1, makecol(1,1,1), -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY-1, makecol(1,1,1), -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x+1, posY, BLACK_COLOR, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x-1, posY, BLACK_COLOR, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY+1, BLACK_COLOR, -1, "%s", ch);
+        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY-1, BLACK_COLOR, -1, "%s", ch);
 
         //print text
         textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY, color, -1, "%s", ch);

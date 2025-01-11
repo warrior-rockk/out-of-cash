@@ -7,9 +7,8 @@
     * Sound on money
     * father give califications incorrect animation (convert script to dialog?)
     * dialog hotspot lines fix
-    * set correct dialog actors text color
+    * computer room hotspot descriptions
 
-- [ ] End game
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
@@ -29,6 +28,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] End game
 - [X] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [X] Room definition/script tool
 - [X] Sound effects
