@@ -96,6 +96,8 @@ char replace_unicode(char character)
             return CHAR_MAS_ORDINAL;
         case '¦':
             return CHAR_FEM_ORDINAL;
+        case 'à':
+            return CHAR_O_ACCENT_CAP;
         /*case 'A':
             return CHAR_A_ACCENT_CAP;
         case 'E':

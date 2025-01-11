@@ -16,3 +16,8 @@ Change from room 1 to room 8
 Free actual room datafile resources
 Load room datafile: R08DATA.DAT
 Change game state from 6 to 3
+Change game state from 3 to 6
+Change from room 8 to room 4
+Free actual room datafile resources
+Load room datafile: R04DATA.DAT
+Change game state from 6 to 3
