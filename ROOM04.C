@@ -291,7 +291,13 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ejem... ¨Pap ?");
+                                if (is_game_flag(GOT_MONEY_FLAG))
+                                {
+                                    script_say("Ya tengo el dinero. No necesito hablar nada con ‚l");
+                                    end_script();
+                                }
+                                else
+                                    script_say("Ejem... ¨Pap ?");
                                 break;
                             default:
                                 script_start_dialog(1);                                
@@ -639,6 +645,7 @@ void r04_update_room_script()
                     break;
                     case 8:
                         script_say_actor("Esa boca...", &r04_dialogActor);
+                        set_game_flag(GOT_MONEY_FLAG);
                     break;
                     default:
                         end_script();

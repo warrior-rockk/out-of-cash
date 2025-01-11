@@ -3,6 +3,10 @@
 
 //definition of global game flags index
 enum gameFlags{
+    INTRO_FLAG,
+    GAME_START_FLAG,
+    GAME_END_FLAG,
+    
     GOT_CASSETTE_FLAG,
     GOT_GUITAR_FLAG,
     USED_COMPUTER_FLAG,
@@ -26,7 +30,8 @@ enum gameFlags{
     GOT_OAT_FLAG,
     FATHER_SAY_MONEY_FLAG,
     KITCHEN_CLOSET_OPEN_FLAG,
-
+    GOT_MONEY_FLAG,
+    
     GOT_BRAIN_FLAG,
     GOT_BLACK_BRAIN_FLAG,
     GOT_KNIFE_FLAG,
@@ -91,9 +96,6 @@ enum gameFlags{
     JEANS_COSTUME_FLAG,
     HISTORY_APPROVED_FLAG,
 
-    INTRO_FLAG,
-    GAME_START_FLAG,
-    GAME_END_FLAG,
 };
 
 //definition of global game numeric vars index

@@ -513,13 +513,31 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
+                                script_say("Los ordenadores del instituto siguen siendo unos 486");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No tengo tiempo para jugar ahora");
+                            break;
+                            case 1:
+                                script_say("He de aprobar las asignaturas que me quedan para conseguir el dinero");
+                            break;
+                            case 2:
+                                script_say("Ademas ese ordenador tiene el virus Barrotes");
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r08_manual:
@@ -531,14 +549,30 @@ void r08_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Un manual de Q-Basic para MS-DOS");
-                                break;
+                            break;
                             case 1:
                                 script_say("Aprenda a programar desde el juego Gorillas al Snake");
+                            break;
                             default:
                                 end_script();
-                                break;
+                            break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No me hace falta");
+                            break;
+                            case 1:
+                                script_say("Yo ya me pas‚ a programar en C");
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r08_computer1:
@@ -549,13 +583,28 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
+                                script_say("Parece que est  jugando a alg£n tipo de juego de estrategia");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No puedo usarlo");
+                            break;
+                            case 1:
+                                script_say("El friki est  jugando");
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r08_nerd:
@@ -566,8 +615,14 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Friki");
+                                script_say("Este chaval es el rarito del instituto");
                                 break;
+                            case 1:
+                                script_say("Lo £nico que le interesa son las guerras hist¢ricas y las grandes haza¤as");
+                            break;
+                            case 2:
+                                script_say("No parece que tenga muchos amigos");
+                            break;
                             default:
                                 end_script();
                                 break;
@@ -679,13 +734,31 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ordenador");
+                                script_say("­Vaya! ­Si tambi‚n hay un 386!");
                                 break;
+                            case 1:
+                                script_say("­Viva la educaci¢n p£blica!");
+                            break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Mmmm, no");
+                                break;
+                            case 1:
+                                script_say("Despu‚s de tener un Pentium en casa un 386 se me hace tortuga");
+                            break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r08_chair:
