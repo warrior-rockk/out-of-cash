@@ -128,7 +128,7 @@ void r12_update_dialog_selection()
                             dialog_add("¨A que te refieres con curso y asignatura?",2);
                         else
                             dialog_add("Necesito las respuestas de M tematicas de 1§ de BUP", 3);
-                        if (!is_game_flag(DIALOG_KNOW_ANSWERS))
+                        if (!is_game_flag(DIALOG_KNOW_ANSWERS) || is_game_flag(HISTORY_APPROVED_FLAG))
                             dialog_add("¨Que haces ah¡ dentro?",2);
                         else if (is_game_flag(ASKED_BY_HISTORY_ANSWERS))
                             dialog_add("¨Ya tienes las respuestas de Historia de 1§ de BUP?", 1);
@@ -144,7 +144,8 @@ void r12_update_dialog_selection()
                         dialog_add("Pero esto no es muy legal ¨no?",2);
                         dialog_add("¨Como s‚ que eres de fiar y son correctas las respuestas?",2);
                         dialog_add("­Genial! Necesito las respuestas de M tematicas de 1§ de BUP", 3);
-                        dialog_add("­Perfecto! Necesito las respuestas de Historia de 1§ de BUP", 2);
+                        if (!is_game_flag(HISTORY_APPROVED_FLAG))
+                            dialog_add("­Perfecto! Necesito las respuestas de Historia de 1§ de BUP", 2);
                         dialog_add("Gracias, pero no, gracias", 1);
                     break;
                     case 3:
@@ -203,7 +204,7 @@ void r12_update_room_script()
                         dialog_jump(2, 3, 3);
                 break;
                 case 2:
-                    if (!is_game_flag(DIALOG_KNOW_ANSWERS))
+                    if (!is_game_flag(DIALOG_KNOW_ANSWERS) || is_game_flag(HISTORY_APPROVED_FLAG))
                     {
                         switch (roomScript.step)
                         {

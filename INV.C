@@ -974,6 +974,11 @@ void inventory_update()
                             case id_blackStarClock:
                                 start_script(STAR_SHIRT_SCRIPT);
                             break;
+                            case id_starClock:
+                                begin_script();
+                                script_say("¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
+                                end_script();
+                            break;
                         }
                     break;
                 }
@@ -1023,6 +1028,11 @@ void inventory_update()
                         {
                             case id_openedFullCartridge:
                                 start_script(BLACK_STAR_CLOCK_SCRIPT);
+                            break;
+                            case id_shirt:
+                                begin_script();
+                                script_say("¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
+                                end_script();
                             break;
                         }
                     break;
@@ -1146,6 +1156,7 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
+                        play_sound_rnd(sd_paint);
                         script_combine_inv_object(id_shirt, id_blackStarClock, id_starShirt);
                     break;
                     case 1:

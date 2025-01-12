@@ -647,6 +647,24 @@ void r08_update_room_script()
                     case GIVE:
                         switch (roomScript.invObject)
                         {
+                            case id_brain:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(NERD_HELP_FLAG))
+                                        {
+                                            script_say_actor("¨Y qu‚ hago con eso?", &r08_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say_actor("Podr¡a servir como pelo, pero el color es muy claro", &r08_dialogActor);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
                             case id_blackBrain:
                                 switch (roomScript.step)
                                 {
@@ -721,6 +739,46 @@ void r08_update_room_script()
                                         end_script();
                                     break;
                                 }
+                            break;
+                            case id_shirt:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        if (!is_game_flag(NERD_HELP_FLAG))
+                                        {
+                                            script_say_actor("Oye, no me molestes", &r08_dialogActor);
+                                            end_script();
+                                        }
+                                        else
+                                            script_say_actor("Mmm. Se parece un poco a tu camiseta pero no lo suficiente", &r08_dialogActor);
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            default:
+                                begin_script();
+                                switch (rand() % 4)
+                                {
+                                    case 0:
+                                        script_say_actor("No me interrumpas. Estoy jugando", &r08_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_say_actor("No quiero eso", &r08_dialogActor);
+                                    break;
+                                    case 2:
+                                        script_say_actor("Me est s desconcentrando", &r08_dialogActor);
+                                    break;
+                                    case 3:
+                                        script_say_actor("No me des tus trastos", &r08_dialogActor);
+                                    break;
+                                    case 4:
+                                        script_say_actor("D‚jame. Estoy concentrado en el juego", &r08_dialogActor);
+                                    break;
+                                }
+                                end_script();
                             break;
                         }
                     break;

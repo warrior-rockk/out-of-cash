@@ -2,13 +2,13 @@
 
 - [ ] Gameplay:
     * Use equal to OPEN/CLOSE on doors
-    ? On all approved, say it
     * Sound on approved
     * Sound on money
     * father give califications incorrect animation (convert script to dialog?)
     * dialog hotspot lines fix
-    ? got money don't talk to father
-    
+    * random give to responses as nerd
+
+- [ ] Global frame non repeat number?
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
