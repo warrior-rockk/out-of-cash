@@ -415,10 +415,12 @@ void r04_update_room_script()
                                 begin_script();
                                 script_say("Un rollo de papel de cocina");
                                 break;
-                            default:
+                            case 1:
                                 script_say("Que raro que est‚ en la cocina");
+                            break;
+                            default:
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }

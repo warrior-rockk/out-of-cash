@@ -188,7 +188,13 @@ void player_update_scale()
     if (checkColor == NO_SCALE_COLOR || checkColor == 0 || checkColor == -1)
         player.scale = ftofix(1.0);
     else
+    {
         player.scale = ftofix(((checkColor - SCALE_INI_COLOR) + 1) * SCALE_COLOR_SCALE);
+        //check scale outbounds
+        if (player.scale < ftofix(PLAYER_MIN_SCALE) || player.scale > ftofix(PLAYER_MAX_SCALE))
+            player.scale = ftofix(1.0);
+    }
+
 }
 
 //function to draw the player

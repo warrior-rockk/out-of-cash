@@ -8,7 +8,6 @@
     * father give califications incorrect animation (convert script to dialog?)
     * dialog hotspot lines fix
     ? got money don't talk to father
-    * bug player scale overflow (on bedroom)
     
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?

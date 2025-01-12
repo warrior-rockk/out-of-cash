@@ -590,12 +590,13 @@ void r01_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Mi otro grupo favorito: Los de Marras");
-                                break;
+                            break;
                             case 1:
                                 script_say("Tengo el presentimiento que a este grupo le va a ir muy bien en el futuro");
+                            break;
                             default:
                                 end_script();
-                                break;
+                            break;
                         }
                     break;                    
                 }

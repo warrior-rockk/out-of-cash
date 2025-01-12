@@ -15,6 +15,8 @@
 #define SCALE_INI_COLOR     32
 #define NO_SCALE_COLOR      247
 #define SCALE_COLOR_SCALE   0.2
+#define PLAYER_MIN_SCALE    SCALE_COLOR_SCALE
+#define PLAYER_MAX_SCALE    3.0
 
 //player states
 enum playerStates{
