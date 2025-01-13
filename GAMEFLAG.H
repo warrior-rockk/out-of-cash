@@ -88,6 +88,7 @@ enum gameFlags{
     SHOW_DISEASE_FLAG,
     SPORT_WORK_FLAG,
     PE_APPROVED_FLAG,
+    APPLIED_OAT_FLAG,
     
     NERD_SIDE_FLAG,
     NERD_HELP_FLAG,

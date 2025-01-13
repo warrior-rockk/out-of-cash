@@ -23,7 +23,8 @@ enum playerStates{
     player_st_idle,
     player_st_moving,
     player_st_talking,
-    player_st_taking
+    player_st_taking,
+    player_st_animating,
 };
 
 //player struct

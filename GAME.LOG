@@ -7,6 +7,15 @@ SFX voice 1 allocated to soundcard voice 1
 SFX system initialized
 Adding numObject 7 to inventory array position 0
 Game initialized
+Change from room -1 to room 1
+Free actual room datafile resources
+Load room datafile: R01DATA.DAT
+Change game state from 0 to 4
+Change game state from 4 to 7
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Change game state from 7 to 0
 Change game state from 0 to 1
 Change game state from 1 to 3
 Change from room -1 to room 0
@@ -20,3 +29,4 @@ Change game state from 2 to 4
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
+Change game state from 4 to 7

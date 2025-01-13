@@ -177,9 +177,11 @@ void script_combine_inv_object(uint8_t numObject1, uint8_t numObject2, uint8_t n
     roomScript.step++;
 }
 
-//function to play animation and increments script step when finished (DEPRECATED)
-void script_play_player_animation(int startFrame, int endFrame, int speed)
+//function to play animation and increments script step when finished (ignores mode)
+void script_play_player_animation(int startFrame, int endFrame, int speed, uint8_t mode)
 {
+    player.state = player_st_animating;
+    
     if (play_animation(&player.animation, startFrame, endFrame, speed, ANIM_ONCE))
     {
         roomScript.step++;
@@ -502,6 +504,13 @@ void show_debug(char *varName, int var)
     #endif
 }
 
+//function to set position of player(without moving)
+void set_player_position(int x, int y)
+{
+    player.x = itofix(x);
+    player.y = itofix(y);
+}
+
 //function to move the player
 void move_player(int x, int y)
 {
@@ -510,6 +519,11 @@ void move_player(int x, int y)
     player.moveFast = cursor.dblClick;
     player.destX = x;
     player.destY = y;
+
+    if (x < fixtoi(player.x))
+        change_player_dir(DIR_LEFT);
+    else
+        change_player_dir(DIR_RIGHT);
 }
 
 //function to move the player to pointer target
@@ -537,6 +551,19 @@ void player_take_state()
     player.state = player_st_taking;
 }
 
+//function to play player animation
+void play_player_animation(int startFrame, int endFrame, int speed, uint8_t mode)
+{
+    player.state = player_st_animating;
+    play_animation(&player.animation, startFrame, endFrame, speed, mode);
+}
+
+//function to stop player animation
+void stop_player_animation()
+{
+    player.state = player_st_idle;
+}
+
 //plays room object animation if object is active. Returns true when finished on ONCE mode
 bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
 {
@@ -554,6 +581,13 @@ bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *anima
     object->objId = animation[object->animationId - 1].frame;
 
     return finished;
+}
+
+//position object on player position
+void object_pos_on_player(tObject *object)
+{
+    object->x = fixtoi(player.x);
+    object->y = fixtoi(player.y);
 }
 
 //starts a dialog and increments script step

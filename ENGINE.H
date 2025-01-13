@@ -184,7 +184,7 @@ void script_wait(int time);
 void script_move_player(int x, int y);
 void script_move_player_to_target();
 void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObjectNum);
-void script_play_player_animation(int startFrame, int endFrame, int speed);
+void script_play_player_animation(int startFrame, int endFrame, int speed, uint8_t mode0);
 void script_player_take_state();
 void script_object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 void script_remove_inv_object(int numObject);
@@ -224,13 +224,18 @@ void begin_script();
 void end_script();
 void start_script(uint16_t scriptNumber);
 void show_debug(char *varName, int var);
+
+void set_player_position(int x, int y);
 void move_player(int x, int y);
 void move_player_to_target();
 bool is_player_moving();
 void change_player_dir(uint8_t dir);
 void player_take_state();
+void play_player_animation(int startFrame, int endFrame, int speed, uint8_t mode);
+void stop_player_animation();
 
 bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
+void object_pos_on_player(tObject *object);
 
 void play_sound(int16_t soundId);
 void play_sound_rnd(uint16_t soundId);

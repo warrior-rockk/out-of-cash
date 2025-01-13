@@ -103,6 +103,8 @@ void r11_update_room_objects()
     else
         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objReading1, r11_animations, R11_ANIM_READING);
 
+    r11_object[R11_PLY_BACK_OAT_OBJ_ID].active = is_game_flag(APPLIED_OAT_FLAG);
+
     if (is_game_flag(SHOW_DISEASE_FLAG))
     {
         start_script(R11_SHOW_DISEASE_SCRIPT);
@@ -544,27 +546,37 @@ void r11_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_say("Me temo que no podr‚ hacer la prueba de nataci¢n");
+                        object_pos_on_player(&r11_object[R11_PLY_BACK_OAT_OBJ_ID]);
+                        change_player_dir(DIR_BACK);
+                        script_say("Emm... ¨Profesor?");
                     break;
                     case 1:
+                        script_say("Me temo que no podr‚ hacer la prueba de nataci¢n");
+                        object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_SURPRISE);
+                    break;
+                    case 2:
                         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_SURPRISE);
                         script_say("Me ha salido una fea erupci¢n en la pierna");
                     break;
-                    case 2:
+                    case 3:
                         script_say_actor("­Desde luego, hijo! No se preocupe", &r11_dialogActor);
                     break;
-                    case 3:
+                    case 4:
                         script_say_actor("Eso no tiene buena pinta y debe ser examinado por un m‚dico", &r11_dialogActor);
                     break;
-                    case 4:
+                    case 5:
                         script_say_actor("Y no se preocupe por la prueba", &r11_dialogActor);
                     break;
-                    case 5:
+                    case 6:
                         script_say_actor("Entr‚gueme un trabajo sobre el deporte y le aprobar‚ la asignatura", &r11_dialogActor);
+                    break;
+                    case 7:
+                        change_player_dir(DIR_RIGHT);
+                        clear_game_flag(APPLIED_OAT_FLAG);
+                        script_play_player_animation(ANIM_PLY_END_OAT);
                     break;
                     default:
                         set_game_flag(SPORT_WORK_FLAG);
-                        change_player_dir(DIR_RIGHT);
                         end_script();
                     break;
                 }

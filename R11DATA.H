@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R11DATA.DAT */
-/* Date: Mon Dec 30 14:53:49 2024 */
+/* Date: Mon Jan 13 13:07:47 2025 */
 /* Do not hand edit! */
 
 #define r11d_image                       0        /* BMP  */
@@ -21,5 +21,6 @@
 #define r11d_objTalk9                    15       /* BMP  */
 #define r11d_objSurprise                 16       /* BMP  */
 #define r11d_objTake                     17       /* BMP  */
-#define r11d_COUNT                       18
+#define r11d_objBackOat                  18       /* BMP  */
+#define r11d_COUNT                       19
 

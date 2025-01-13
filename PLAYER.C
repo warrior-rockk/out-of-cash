@@ -148,24 +148,24 @@ void player_update_animation()
                 play_animation(&player.animation, ANIM_PLY_IDLE);
             else
                 play_animation(&player.animation, ANIM_PLY_BACK);
-            break;
+        break;
         case player_st_moving:
             //walk animation
             play_animation(&player.animation, ANIM_PLY_WALK);
-            break;
+        break;
         case player_st_talking:
             //talk animation
             if (player.lookDir == DIR_BACK)
                 play_animation(&player.animation, ANIM_PLY_BACK_TALK);
             else
                 play_animation(&player.animation, ANIM_PLY_TALK);
-            break;
+        break;
         case player_st_taking:
             if (play_animation(&player.animation, ANIM_PLY_TAKE))
             {
                 player.state = player_st_idle;
             }
-            break;
+        break;
      }
 
      #ifdef DEBUGMODE

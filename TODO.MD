@@ -7,6 +7,7 @@
     * father give califications incorrect animation (convert script to dialog?)
     * random give to responses as nerd
 
+- [ ] Bug on player direction when script_move()
 - [ ] Global frame non repeat number?
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?

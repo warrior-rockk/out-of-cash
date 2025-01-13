@@ -1220,14 +1220,22 @@ void inventory_update()
                         script_move_player(200, 142);
                     break;
                     case 2:
-                        script_play_sound_wait(sd_paint);
+                        change_player_dir(DIR_RIGHT);
+                        script_play_player_animation(ANIM_PLY_APPLY_OAT_1);
                     break;
                     case 3:
-                        script_say("Emm... ¨Profesor?");
+                        play_player_animation(ANIM_PLY_APPLY_OAT_STILL);
+                        script_play_sound_wait(sd_paint);
+                    break;
+                    case 4:
+                        script_play_player_animation(ANIM_PLY_APPLY_OAT_2);
+                    break;
+                    case 5:
+                        script_play_player_animation(ANIM_PLY_APPLY_OAT_STILL_2);
                     break;
                     default:
-                        change_player_dir(DIR_BACK);
                         set_game_flag(SHOW_DISEASE_FLAG);
+                        set_game_flag(APPLIED_OAT_FLAG);
                         end_script();
                     break;
                 }

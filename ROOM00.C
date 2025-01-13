@@ -286,7 +286,9 @@ void r00_update_room_script()
                         script_move_player(160, 120);
                     break;
                     case 1:
-                        script_say("Um...");
+                        //script_say("Um...");
+                        play_player_animation(ANIM_PLY_SURPRISE);
+                        script_wait(20);
                     break;
                     case 2:
                         script_move_player(80, 120);
