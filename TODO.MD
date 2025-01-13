@@ -2,7 +2,6 @@
 
 - [ ] Gameplay:
     * Use equal to OPEN/CLOSE on doors
-    * Sound on money
     * father give califications incorrect animation (convert script to dialog?)
     * random give to responses as nerd
 

@@ -630,6 +630,7 @@ void r04_update_room_script()
                         script_say_actor("Aqu¡ tienes el dinero", &r04_dialogActor);
                     break;
                     case 3:
+                        play_sound(sd_money);
                         script_remove_inv_object(id_califications);
                         script_add_inv_object(id_money);
                     break;
