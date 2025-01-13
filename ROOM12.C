@@ -127,7 +127,7 @@ void r12_update_dialog_selection()
                         if (!is_game_flag(DIALOG_KNOW_ANSWERS))
                             dialog_add("¨A que te refieres con curso y asignatura?",2);
                         else
-                            dialog_add("Necesito las respuestas de M tematicas de 1§ de BUP", 3);
+                            dialog_add("De verdad que necesito las respuestas de M tematicas de 1§ de BUP", 3);
                         if (!is_game_flag(DIALOG_KNOW_ANSWERS) || is_game_flag(HISTORY_APPROVED_FLAG))
                             dialog_add("¨Que haces ah¡ dentro?",2);
                         else if (is_game_flag(ASKED_BY_HISTORY_ANSWERS))
@@ -593,6 +593,7 @@ void r12_update_room_script()
                                                 play_sound(sd_completed);
                                             else
                                                 play_sound(sd_approved);
+                                            roomScript.step++;
                                         break;
                                         case 15:
                                             r12_object[R12_HAND_OBJ_ID].active = false;

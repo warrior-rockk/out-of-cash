@@ -283,29 +283,58 @@ void r00_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_move_player(160, 120);
+                        script_wait(10);
                     break;
                     case 1:
-                        //script_say("Um...");
-                        play_player_animation(ANIM_PLY_SURPRISE);
-                        script_wait(20);
+                        script_move_player(160, 120);
                     break;
                     case 2:
-                        script_move_player(80, 120);
+                        script_wait(10);
                     break;
                     case 3:
-                        change_player_dir(DIR_BACK);
-                        script_wait(20);
+                        play_player_animation(ANIM_PLY_SURPRISE);
+                        script_wait(10);
                     break;
                     case 4:
-                        script_say("­Concierto de Reincidentes!");
+                        script_say("¨He le¡do bien?");
                     break;
                     case 5:
-                        script_say("5000 pelas la entrada");
+                        script_move_player(80, 120);
                     break;
                     case 6:
+                        change_player_dir(DIR_BACK);
+                        script_say("­Concierto de Reincidentes!");
+                    break;
+                    case 7:
+                        script_say("­Mola!");
+                    break;
+                    case 8:
+                        script_say("Presentando nuevo disco");
+                    break;
+                    case 9:
+                        script_say("­­Mola!!");
+                    break;
+                    case 10:
+                        script_say("5000 pelas la entrada");
+                    break;
+                    case 11:
                         change_player_dir(DIR_RIGHT);
-                        script_say("Tengo que conseguir el dinero como sea");
+                        script_say("­No mola!");
+                    break;
+                    case 12:
+                        script_say("¨5000 pelas la entrada? Yo no tengo tanto dinero");
+                    break;
+                    case 13:
+                        script_wait(2);
+                    break;
+                    case 14:
+                        script_say("Bueno, ni tanto ni tan poco... ­Estoy sin blanca!");
+                    break;
+                    case 15:
+                        script_say("Pero he de ir a ese concierto a toda costa");
+                    break;
+                    case 16:
+                        script_say("­Tengo que conseguir el dinero como sea!");
                     break;
                     default:
                         clear_game_flag(INTRO_FLAG);

@@ -469,6 +469,8 @@ void inventory_update()
                                     is_game_flag(MATH_APPROVED_FLAG) ||
                                     is_game_flag(PE_APPROVED_FLAG))
                                     script_say("Pero ya he aprobado:");
+                                else
+                                    end_script();
                                 break;    
                             case 3:
                                 if (is_game_flag(MATH_APPROVED_FLAG))
