@@ -264,8 +264,16 @@ void r06_update_room_script()
                                             begin_script();
                                             if (!is_game_flag(BATH_MAT_IN_DOOR_FLAG))
                                             {
-                                                script_say("Si meto el escalpelo por la cerradura caer  al suelo y no podr‚ recuperar la llave");
-                                                end_script();
+                                                if (is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
+                                                {
+                                                    script_say("La alfombrilla est  muy hacia afuera y no llega hasta donde puede caer la llave");
+                                                    end_script();
+                                                }
+                                                else
+                                                {
+                                                    script_say("Si meto el escalpelo por la cerradura caer  al suelo y no podr‚ recuperar la llave");
+                                                    end_script();
+                                                }
                                             }
                                             else if(is_game_flag(KEY_ON_BATH_MAT_FLAG))
                                             {
@@ -300,9 +308,13 @@ void r06_update_room_script()
                                             script_move_player_to_target();
                                             break;
                                         case 1:
+                                            play_sound(sd_doorLockerOpen);
+                                            roomScript.step++;
+                                        break;
+                                        case 2:
                                             script_player_take_state();
                                             break;
-                                        case 2:
+                                        case 3:
                                             set_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG);
                                             script_remove_inv_object(id_key);
                                         default:
@@ -401,8 +413,8 @@ void r06_update_room_script()
                                         script_move_player_to_target();
                                         break;
                                     case 1:
-                                        r06_object[R06_BATHMATIN_OBJ_ID].active = true;
-                                        set_game_flag(BATH_MAT_IN_DOOR_FLAG);
+                                        r06_object[R06_BATHMATOUT_OBJ_ID].active = true;
+                                        set_game_flag(BATH_MAT_OUT_DOOR_FLAG);
                                         script_remove_inv_object(id_bathMat);
                                         break;
                                     case 2:
