@@ -123,6 +123,7 @@
 //game state
 enum gameState{
     LOGO_STATE,
+    DOS_LOGO_STATE,
     TITLE_STATE,
     INTRO_STATE,
     PLAYING_STATE,

@@ -21,12 +21,12 @@ int main()
     //initialization
     main_init();
     game_init();
-    game_fade_out(FADE_DEFAULT_SPEED);
+    game_fade_out(FADE_SLOW_SPEED);
 
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
     
@@ -47,6 +47,15 @@ int main()
 
                 //placeholder logo
                 game_write("WARCOM SOFT PRESENTS", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
+            break;
+            case DOS_LOGO_STATE:
+                game_fade_in();
+                cursor.enabled = false;
+
+                game_update();
+
+                //draw ms-dos club logo
+                draw_sprite(buffer, (BITMAP *)gameDataFile[gd_msdosLogo].dat, (RES_X>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->w>>1), (RES_Y>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->h>>1));
             break;
             case INTRO_STATE:
                  //update calls
@@ -387,7 +396,17 @@ void game_update()
             if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
             {
                 timeCounter = 0;
-                game_fade_out(FADE_DEFAULT_SPEED);
+                game_fade_out(FADE_SLOW_SPEED);
+                game.state = DOS_LOGO_STATE;
+            }
+        break;
+        case DOS_LOGO_STATE:
+            if (gameTick)
+                timeCounter++;
+            if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
+            {
+                timeCounter = 0;
+                game_fade_out(FADE_SLOW_SPEED);
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }
@@ -778,7 +797,7 @@ void game_do_fade_in()
 {
     if (game.fadeIn)
     {
-        fade_in(gamePalette, FADE_DEFAULT_SPEED);
+        fade_in(gamePalette, game.fadeSpeed);
         game.fadeIn     = false;
         game.fadeOut    = false;
     }
