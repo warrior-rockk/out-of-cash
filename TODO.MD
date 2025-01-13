@@ -5,7 +5,6 @@
     * Sound on approved
     * Sound on money
     * father give califications incorrect animation (convert script to dialog?)
-    * dialog hotspot lines fix
     * random give to responses as nerd
 
 - [ ] Global frame non repeat number?
