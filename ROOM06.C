@@ -176,6 +176,12 @@ void r06_update_room_objects()
 {
     r06_object[R06_BATHMATIN_OBJ_ID].active     = is_game_flag(BATH_MAT_IN_DOOR_FLAG);
     r06_object[R06_BATHMATOUT_OBJ_ID].active    = is_game_flag(BATH_MAT_OUT_DOOR_FLAG);
+
+    if (is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
+        r06_object[R06_BATHMATOUT_OBJ_ID].objId = r06d_objBathMatFull;
+    else
+        r06_object[R06_BATHMATOUT_OBJ_ID].objId = r06d_objBathMatOut;
+    
     r06_object[R06_KEY_OBJ_ID].active = is_game_flag(BATH_MAT_OUT_DOOR_FLAG) && is_game_flag(KEY_ON_BATH_MAT_FLAG);
 
     r06_object[R06_MAINTDOOROPEN_OBJ_ID].active = is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG) && is_game_flag(MAINT_LOCKER_LIGHT_ON_FLAG);
@@ -431,7 +437,13 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
+                                if (is_game_flag(GOT_KEY_FLAG))
+                                {
+                                    script_say("Est  bien donde est ");
+                                    end_script();
+                                }
+                                else
+                                    script_move_player_to_target();
                                 break;
                             case 1:
                                 toggle_game_flag(BATH_MAT_IN_DOOR_FLAG);
@@ -661,8 +673,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                //script_move_player_to_target();
-                                script_move_player(692, 80);
+                                script_move_player_to_target();
                                 break;
                             default:
                                 change_room(LOCKER_ROOM_NUM);

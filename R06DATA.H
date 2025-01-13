@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R06DATA.DAT */
-/* Date: Mon Dec 23 11:54:55 2024 */
+/* Date: Mon Jan 13 16:09:44 2025 */
 /* Do not hand edit! */
 
 #define r06d_image                       0        /* BMP  */
@@ -11,5 +11,6 @@
 #define r06d_objKey                      5        /* BMP  */
 #define r06d_objMaintDoorOpen            6        /* BMP  */
 #define r06d_objMaintDoorOpenLight       7        /* BMP  */
-#define r06d_COUNT                       8
+#define r06d_objBathMatFull              8        /* BMP  */
+#define r06d_COUNT                       9
 
