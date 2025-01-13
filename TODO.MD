@@ -2,14 +2,10 @@
 
 - [ ] Gameplay:
     * Use equal to OPEN/CLOSE on doors
-    * Sound on approved
     * Sound on money
     * father give califications incorrect animation (convert script to dialog?)
     * random give to responses as nerd
-    * move mat on first try
-    * sound on open door maint
 
-- [ ] Bug on player direction when script_move()
 - [ ] Global frame non repeat number?
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?

@@ -589,11 +589,21 @@ void r12_update_room_script()
                                             script_say("­Gracias!");
                                         break;
                                         case 14:
+                                            if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
+                                                play_sound(sd_completed);
+                                            else
+                                                play_sound(sd_approved);
+                                        break;
+                                        case 15:
                                             r12_object[R12_HAND_OBJ_ID].active = false;
                                             if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
+                                            {
                                                 script_say("­Genial! ­Ya he aprobado todo!");
+                                            }
                                             else
+                                            {
                                                 script_say("Con estas respuestas ya tengo aprobado el examen de matem ticas");
+                                            }
                                         break;
                                         default:
                                             end_script();
