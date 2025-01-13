@@ -661,7 +661,8 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
+                                //script_move_player_to_target();
+                                script_move_player(692, 80);
                                 break;
                             default:
                                 change_room(LOCKER_ROOM_NUM);

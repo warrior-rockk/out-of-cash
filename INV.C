@@ -1205,23 +1205,30 @@ void inventory_update()
                         begin_script();
                         if (!is_game_flag(INFO_SPORT_WORK_FLAG))
                         {
-                            script_say("La idea de aplicarme avena no es mala pero, ¨cual es el motivo de hacerlo?");
+                            script_say("La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?");
                             end_script();
                         }
                         else if (get_actual_room() != PE_OFFICE_ROOM_NUM)
                         {
-                            script_say("No deber¡a hacer esto aqu¡. Se me puede resbalar y caer");
-                            end_script();
+                            script_say("Si me pongo esta masa grumosa en el cuerpo quiz s pueda simular una enfermedad");
                         }
                         else
                             script_remove_inv_object(id_oatMixed);
                     break;
                     case 1:
-                        script_move_player(200, 142);
+                        if (get_actual_room() != PE_OFFICE_ROOM_NUM)
+                            script_say("Pero no deber¡a hacer esto aqu¡");
+                        else
+                            script_move_player(200, 142);
                     break;
                     case 2:
-                        change_player_dir(DIR_RIGHT);
-                        script_play_player_animation(ANIM_PLY_APPLY_OAT_1);
+                        if (get_actual_room() != PE_OFFICE_ROOM_NUM)
+                            end_script();
+                        else
+                        {
+                            change_player_dir(DIR_RIGHT);
+                            script_play_player_animation(ANIM_PLY_APPLY_OAT_1);
+                        }
                     break;
                     case 3:
                         play_player_animation(ANIM_PLY_APPLY_OAT_STILL);
