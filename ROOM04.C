@@ -370,6 +370,28 @@ void r04_update_room_script()
                                     break;
                                 }
                             break;
+                            default:
+                                begin_script();
+                                switch (rand() % 4)
+                                {
+                                    case 0:
+                                        script_say_actor("Hijo, guarda tus cosas", &r04_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_say_actor("Estoy leyendo. No me interrumpas", &r04_dialogActor);
+                                    break;
+                                    case 2:
+                                        script_say_actor("No quiero nada de eso", &r04_dialogActor);
+                                    break;
+                                    case 3:
+                                        script_say_actor("Muy bonito, pero para ti", &r04_dialogActor);
+                                    break;
+                                    case 4:
+                                        script_say_actor("No molestes, hijo", &r04_dialogActor);
+                                    break;
+                                }
+                                end_script();
+                            break;
                         }
                     break;
                 }

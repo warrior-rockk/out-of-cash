@@ -528,6 +528,7 @@ void r12_update_room_script()
                                 break;
                         }
                     break;
+                    case USE_WITH:
                     case GIVE:
                         switch (roomScript.invObject)
                         {
@@ -611,6 +612,28 @@ void r12_update_room_script()
                                             break;
                                     }
                                 }
+                            break;
+                            default:
+                                begin_script();
+                                switch (rand() % 4)
+                                {
+                                    case 0:
+                                        script_say_actor("­Tio! ¨Para que quiero esto?", &r12_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_say_actor("Paso, colega", &r12_dialogActor);
+                                    break;
+                                    case 2:
+                                        script_say_actor("Nasti de plasti", &r12_dialogActor);
+                                    break;
+                                    case 3:
+                                        script_say_actor("No, gracias", &r12_dialogActor);
+                                    break;
+                                    case 4:
+                                        script_say_actor("Para ti, tio", &r12_dialogActor);
+                                    break;
+                                }
+                                end_script();
                             break;
                         }
                     break;

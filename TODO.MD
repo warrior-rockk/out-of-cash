@@ -3,13 +3,13 @@
 - [ ] Gameplay:
     * Use equal to OPEN/USE on doors
     * father give califications incorrect animation (convert script to dialog?)
-    * random give to responses as nerd
     * position on bath closet
     * position to talk father
     * position to printer to take sheets, cartridge, photocopy...
     * more look descriptions on stationery?
+    ? random give to responses as nerd
     ? say father: door closed - lo lleva tu madre
-    ? look schedule: total, no voy a ir a clase
+    ? look schedule: total, no voy a ir a clase§
     ? description use spatula on maint door locker
     ? description look main door locker remove "pero no esta cerrada"
     ? hint on combine full cartridge closed on star clock

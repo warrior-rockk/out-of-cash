@@ -333,7 +333,7 @@ void r08_update_room_script()
                             script_say_actor("¨A qu‚ te refieres?", &r08_dialogActor);
                         break;
                         case 5:
-                            script_say("Estaba pensando en que hicieras tu el examen por mi");
+                            script_say("Estaba pensando en que hicieras t£ el examen por mi");
                         break;
                         case 6:
                             script_wait(20);
@@ -345,10 +345,10 @@ void r08_update_room_script()
                             script_wait(10);
                         break;
                         case 9:
-                            script_say_actor("¨no ser¡a meterme en un l¡o muy grande?", &r08_dialogActor);
+                            script_say_actor("¨No ser¡a meterme en un l¡o muy grande?", &r08_dialogActor);
                         break;
                         case 10:
-                            script_say("­Que va! Lo tengo todo pensado. Te disfrazar‚ de mi y te presentas al examen");
+                            script_say("­Que va! Lo tengo todo pensado. Te disfrazas de mi y te presentas al examen");
                         break;
                         case 11:
                             script_say("­Nadie lo notar !");
@@ -376,7 +376,7 @@ void r08_update_room_script()
                             script_say_actor("De acuerdo, ­te ayudar‚!", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen por ti", &r08_dialogActor);
+                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -393,7 +393,7 @@ void r08_update_room_script()
                             script_say_actor("Si, te ayudar‚", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen por ti", &r08_dialogActor);
+                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();

@@ -542,6 +542,28 @@ void r11_update_room_script()
                                     break;
                                 }
                             break;
+                            default:
+                                begin_script();
+                                switch (rand() % 4)
+                                {
+                                    case 0:
+                                        script_say_actor("No me interrumpa. Estoy corrigiendo", &r11_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_say_actor("No s‚ porqu‚ me da eso", &r11_dialogActor);
+                                    break;
+                                    case 2:
+                                        script_say_actor("No, gracias", &r11_dialogActor);
+                                    break;
+                                    case 3:
+                                        script_say_actor("No le he pedido nada", &r11_dialogActor);
+                                    break;
+                                    case 4:
+                                        script_say_actor("Eso para usted", &r11_dialogActor);
+                                    break;
+                                }
+                                end_script();
+                            break;
                         }
                     break;
                 }
