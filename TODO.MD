@@ -19,7 +19,8 @@
     ? more descriptions on bedroom take objects
     ? more default verbs says
     
-- [ ] reorder inventory on remove item??
+- [ ] Bug on inventory pagination
+- [X] reorder inventory on remove item?? clean unused inventory positions
 - [ ] Global frame non repeat number?
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?

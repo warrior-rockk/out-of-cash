@@ -22,16 +22,23 @@ Free actual room datafile resources
 Load room datafile: R01DATA.DAT
 Change game state from 4 to 7
 Free actual room datafile resources
-Load room datafile: R08DATA.DAT
+Load room datafile: R04DATA.DAT
 Change game state from 7 to 4
-Adding numObject 23 to inventory array position 13
-Original freq: 11025Hz | Variation: +0% | New freq: 11025Hz
-Adding numObject 3 to inventory array position 13
-Original freq: 11025Hz | Variation: +8% | New freq: 11907Hz
-Adding numObject 32 to inventory array position 12
-Change from room 8 to room 6
+Change game state from 4 to 7
 Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Change game state from 4 to 7
+Load room datafile: R04DATA.DAT
 Change game state from 7 to 4
 Change game state from 4 to 7
+Change game state from 7 to 4
+Original freq: 11025Hz | Variation: -9% | New freq: 10032Hz
+Adding numObject 3 to inventory array position 7
+Change game state from 4 to 7
+Free actual room datafile resources
+Load room datafile: R11DATA.DAT
+Change game state from 7 to 4
+Change game state from 4 to 7
+Free actual room datafile resources
+Load room datafile: R04DATA.DAT
+Change game state from 7 to 4
+Original freq: 11025Hz | Variation: +0% | New freq: 11025Hz
+Adding numObject 3 to inventory array position 7

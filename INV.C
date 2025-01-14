@@ -69,15 +69,24 @@ void inventory_remove(uint8_t numObject)
 {
     //inventory number must be higher than zero to remove
     ASSERT(inventory.numObjects > 0);
-    
+
+    //run for existing inventory items
     for (int i = 0; i < inventory.numObjects; i++)
     {
+        //on founded
         if (inventory.objIndex[i] == (numObject + 1))
         {
+            //remove inventory item
             inventory.objIndex[i] = 0;
-            for (int j = i; j < inventory.numObjects - 1; j++)
+            //run for next inventory items to move position
+            for (int j = i; j < inventory.numObjects; j++)
             {
-                inventory.objIndex[j] = inventory.objIndex[j + 1];
+                if (j < inventory.numObjects - 1)
+                    //move next item to previous
+                    inventory.objIndex[j] = inventory.objIndex[j + 1];
+                else
+                    //clearlast item
+                    inventory.objIndex[j] = 0;
             }
         }
     }
