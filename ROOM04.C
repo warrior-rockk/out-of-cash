@@ -701,6 +701,9 @@ void r04_update_room_script()
                         case 2:
                             script_say_actor("Adem s, no lo s‚", &r04_dialogActor);
                         break;
+                        case 3:
+                            script_say_actor("Eso lo lleva tu madre", &r04_dialogActor);
+                        break;
                         default:
                             script_next_dialog_node();
                             end_script();

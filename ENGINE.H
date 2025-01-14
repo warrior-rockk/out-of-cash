@@ -12,7 +12,7 @@
 
 //Definitions
 #define NUM_VERBS               10
-#define NUM_RAND_ANSWERS        4
+#define NUM_RAND_ANSWERS        6
 
 //dialogs
 #define MAX_DIALOG_LINE_LENGTH  100

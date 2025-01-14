@@ -1,21 +1,23 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * Use equal to OPEN/CLOSE on doors
+    * Use equal to OPEN/USE on doors
     * father give califications incorrect animation (convert script to dialog?)
     * random give to responses as nerd
     * position on bath closet
     * position to talk father
     * position to printer to take sheets, cartridge, photocopy...
-    * say father: door closed - lo lleva tu madre
-    * look schedule: total, no voy a ir a clase
     * more look descriptions on stationery?
-    * description use spatula on maint door locker
-    * description look main door locker remove "pero no esta cerrada"
-    * hint on combine full cartridge closed on star clock
-    * description on open cartridge
-    * remove full cartridge on paint star clock
-    * remove blackStarClock on paint shirt
+    ? say father: door closed - lo lleva tu madre
+    ? look schedule: total, no voy a ir a clase
+    ? description use spatula on maint door locker
+    ? description look main door locker remove "pero no esta cerrada"
+    ? hint on combine full cartridge closed on star clock
+    ? description on open cartridge
+    ? remove full cartridge on paint star clock
+    ? remove blackStarClock on paint shirt
+    ? more descriptions on bedroom take objects
+    ? more default verbs says
     
 - [ ] reorder inventory on remove item??
 - [ ] Global frame non repeat number?

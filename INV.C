@@ -621,11 +621,31 @@ void inventory_update()
                                 break;
                         }
                     break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Est  muy duro. No puedo con las manos");
+                                break;
+                            case 1:
+                                script_say("Necesitar¡a utilizar algo");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                     case USE_WITH:
                         switch(roomScript.invObject)
                         {
                             case id_knife:
                                 start_script(OPEN_FULL_CARTRIDGE_SCRIPT);
+                            break;
+                            case id_starClock:
+                                begin_script();
+                                script_say("Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro");
+                                end_script();
                             break;
                         }
                     break;
@@ -931,6 +951,9 @@ void inventory_update()
                                 begin_script();
                                 script_say("Es el horario del instituto impreso por ambas caras");
                                 break;
+                            case 1:
+                                script_say("No s‚ para que lo quiero. No pienso ir a clase");
+                            break;
                             default:
                                 end_script();
                                 break;
@@ -1036,6 +1059,11 @@ void inventory_update()
                                 script_say("¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
                                 end_script();
                             break;
+                            case id_fullCartridge:
+                                begin_script();
+                                script_say("Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro");
+                                end_script();
+                            break;
                         }
                     break;
                 }
@@ -1125,7 +1153,7 @@ void inventory_update()
                     case 0:
                         begin_script();
                         play_sound_rnd(sd_greasy);
-                        script_combine_inv_object(id_starClock, 0, id_blackStarClock);
+                        script_combine_inv_object(id_starClock, id_openedFullCartridge, id_blackStarClock);
                     break;
                     case 1:
                         script_say("El reloj con forma de estrella ahora est  cubierto de pintura negra");

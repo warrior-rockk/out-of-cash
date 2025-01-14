@@ -376,10 +376,19 @@ void default_verb_action(enum verbs roomVerb)
             {
                 case 0:
                     say("Nada destacable");
-                    break;
+                break;
                 case 1:
                     say("No veo nada");
-                    break;
+                break;
+                case 2:
+                    say("Nada de especial");
+                break;
+                case 3:
+                    say("Nada interesante");
+                break;
+                case 4:
+                    say("Sin inter‚s");
+                break;
                 default:
                     say("No hay nada que ver");
                     break;
@@ -394,6 +403,15 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("Est  bien donde est ");
                     break;
+                case 2:
+                    say("Tampoco voy a llenar el inventario de trastos in£tiles");
+                    break;
+                case 3:
+                    say("No quiero llev rmelo");
+                    break;
+                case 4:
+                    say("Mejor que no");
+                    break;
                 default:
                     say("No quiero acumular trastos");
                     break;
@@ -406,10 +424,13 @@ void default_verb_action(enum verbs roomVerb)
                     say("Est  bien como est ");
                     break;
                 case 1:
-                    say("No hace falta abrirlo");
+                    say("No es para abrir");
+                    break;
+                case 2:
+                    say("No es necesario abrirlo");
                     break;
                 default:
-                    say("No se puede abrir");
+                    say("No hace falta abrirlo");
                     break;
             }
             break;
@@ -420,15 +441,74 @@ void default_verb_action(enum verbs roomVerb)
                     say("Est  bien como est ");
                     break;
                 case 1:
-                    say("No hace falta cerrarlo");
+                    say("No es para cerrar");
                     break;
+                case 2:
+                    say("No es necesario cerrarlo");
+                break;
                 default:
-                    say("No se puede cerrar");
+                    say("No hace falta cerrarlo");
                     break;
             }
             break;
         case USE_WITH:
-            say("Esas cosas no combinan");
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No parece que funcione");
+                    break;
+                case 1:
+                    say("No va bien juntas");
+                    break;
+                case 2:
+                    say("No hace nada");
+                break;
+                default:
+                    say("Esas cosas no combinan");
+                    break;
+            }
+            break;
+        case GIVE:
+            switch (rndNumber)
+            {
+                case 0:
+                    say("Prefiero qued rmelo");
+                    break;
+                case 1:
+                    say("Mejor me lo guardo");
+                    break;
+                default:
+                    say("No lo quiere");
+                    break;
+            }
+            break;
+        case TALK:
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No s‚ si quiere hablar");
+                    break;
+                case 1:
+                    say("Mejor estar callado");
+                    break;
+                default:
+                    say("No tengo nada que decirle");
+                    break;
+            }
+            break;
+        case MOVE:
+            switch (rndNumber)
+            {
+                case 0:
+                    say("No necesito moverlo");
+                    break;
+                case 1:
+                    say("Est  bien as¡");
+                    break;
+                default:
+                    say("No creo que se mueva");
+                    break;
+            }
             break;
         default:
             switch (rndNumber)

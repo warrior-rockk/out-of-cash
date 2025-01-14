@@ -245,7 +245,7 @@ void r06_update_room_script()
                                 case 0:
                                     begin_script();
                                     if (!is_game_flag(KEY_ON_BATH_MAT_FLAG))
-                                        script_say("Veo por la cerradura que la llave esta metido por dentro, pero no cerrada");
+                                        script_say("Veo por la cerradura que la llave esta metida por dentro");
                                     else
                                         script_say("Parece que la llave ha ca¡do a la alfombrilla por el otro lado");
                                     break;
@@ -320,6 +320,18 @@ void r06_update_room_script()
                                         default:
                                             end_script();
                                             break;
+                                    }
+                                break;
+                                case id_spatula:
+                                    switch (roomScript.step)
+                                    {
+                                        case 0:
+                                            begin_script();
+                                            script_say("La esp tula es demasiado grande y no cabe por el ojo de la cerradura");
+                                        break;
+                                        default:
+                                            end_script();
+                                        break;
                                     }
                                 break;
                             }

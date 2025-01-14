@@ -233,6 +233,7 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case USE:
                     case TAKE:
                         switch (roomScript.step)
                         {
@@ -419,7 +420,19 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No creo que una ara¤a de juguete sea de mucha utilidad");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_drums:
@@ -440,7 +453,19 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Ya dej‚ el tambor hace mucho tiempo");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_thing:
@@ -525,6 +550,7 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case USE:
                     case TAKE:
                         switch (roomScript.step)
                         {
@@ -598,7 +624,19 @@ void r01_update_room_script()
                                 end_script();
                             break;
                         }
-                    break;                    
+                    break;
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Est  mejor enganchado a la pared");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_draws:
@@ -616,6 +654,7 @@ void r01_update_room_script()
                                 break;
                         }
                     break;
+                    case USE:
                     case OPEN:
                         switch (roomScript.step)
                         {
@@ -847,7 +886,20 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Ya tuve bastante con leerlo en el colegio");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_book4:
@@ -867,7 +919,23 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No lo necesito");
+                                break;
+                            case 1:
+                                script_say("Yo no soy dummy de MS-DOS");
+                            break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r01_book2:
@@ -920,7 +988,20 @@ void r01_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Sin dinero para comprar, no tiene mucho inter‚s");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
             break;
             case R01_GAME_START_SCRIPT:
