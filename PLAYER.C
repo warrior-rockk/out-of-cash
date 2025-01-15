@@ -44,7 +44,11 @@ void player_init()
 //function to destroy player (free resources)
 void player_destroy()
 {
+    TRACE("Destroy PLAYER system\n");
+    
     destroy_bitmap(playerData.tempImage);
+
+    TRACE("PLAYER system destroyed\n");
 }
 
 //function to update the player

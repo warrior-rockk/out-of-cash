@@ -1895,7 +1895,11 @@ void gui_init()
 //function to destroy gui (free resources)
 void gui_destroy()
 {
+    TRACE("Destroy GUI system\n");
+
     destroy_bitmap(gui.hsImage);
+
+    TRACE("Destroy GUI system\n");
 }
 
 //function to update the gui
@@ -2145,6 +2149,8 @@ void sfx_init()
 //function to destroy sfx system (free resources)
 void sfx_destroy()
 {
+    TRACE("Destroy SFX system\n");
+    
     //free all sfx voices
     for (int i = 0; i < SFX_NUM_VOICES; i++)
     {
@@ -2152,6 +2158,8 @@ void sfx_destroy()
         if (!voice_check(i))
             deallocate_voice(i);
     }
+
+    TRACE("SFX system destroyed\n");
 }
 
 //function to update sfx sound system

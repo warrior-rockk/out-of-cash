@@ -47,7 +47,11 @@ void get_all_inv_objects()
 //function to destroy inventory (free resources)
 void inventory_destroy()
 {
+    TRACE("Destroy INVENTORY system\n");
+    
     destroy_bitmap(inventoryImage);
+
+    TRACE("Destroy INVENTORY system\n");
 }
 
 //add object to inventory
