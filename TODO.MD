@@ -7,6 +7,7 @@
     * position to talk father
     * position to printer to take sheets, cartridge, photocopy...
     * more look descriptions on stationery?
+    * dog barf ms-dos club podcast audio on look bedroom window
     ? random give to responses as nerd
     ? say father: door closed - lo lleva tu madre
     ? look schedule: total, no voy a ir a clase§
