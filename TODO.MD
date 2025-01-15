@@ -2,12 +2,12 @@
 
 - [ ] Gameplay:
     * Use equal to OPEN/USE on doors
-    * father give califications incorrect animation (convert script to dialog?)
     * position on bath closet
     * position to talk father
     * position to printer to take sheets, cartridge, photocopy...
     * more look descriptions on stationery?
     * dog barf ms-dos club podcast audio on look bedroom window
+    ? father give califications incorrect animation (flag talking)
     ? random give to responses as nerd
     ? say father: door closed - lo lleva tu madre
     ? look schedule: total, no voy a ir a clase§

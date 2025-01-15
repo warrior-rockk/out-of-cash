@@ -151,7 +151,7 @@ void r04_update_room_objects()
     //father actor
     if (r04_dialogActor.talking)
         object_play_animation(&r04_object[R04_FATHER_OBJ_ID], r04d_objIdle, r04_animations, R04_ANIM_FATHER_TALK);
-    else if (dialog.active)
+    else if (dialog.active || is_game_flag(FATHER_TALKING_FLAG))
         r04_object[R04_FATHER_OBJ_ID].objId = r04d_objTalk7;
     else
         r04_object[R04_FATHER_OBJ_ID].objId = r04d_objIdle;
@@ -314,6 +314,7 @@ void r04_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
+                                        set_game_flag(FATHER_TALKING_FLAG);
                                         if (is_game_flag(FATHER_SAY_MONEY_FLAG))
                                             script_say_actor("Veamos...", &r04_dialogActor);
                                         else
@@ -366,6 +367,7 @@ void r04_update_room_script()
                                         end_script();
                                     break;
                                     default:
+                                        clear_game_flag(FATHER_TALKING_FLAG);
                                         end_script();
                                     break;
                                 }
@@ -643,6 +645,7 @@ void r04_update_room_script()
                 switch (roomScript.step)
                 {
                     case 0:
+                        set_game_flag(FATHER_TALKING_FLAG);
                         script_say_actor("­Muy bien hijo!", &r04_dialogActor);
                     break;
                     case 1:
@@ -673,6 +676,7 @@ void r04_update_room_script()
                         set_game_flag(GOT_MONEY_FLAG);
                     break;
                     default:
+                        clear_game_flag(FATHER_TALKING_FLAG);
                         end_script();
                     break;
                 }

@@ -97,6 +97,7 @@ enum gameFlags{
     JEANS_COSTUME_FLAG,
     HISTORY_APPROVED_FLAG,
 
+    FATHER_TALKING_FLAG,
 };
 
 //definition of global game numeric vars index
