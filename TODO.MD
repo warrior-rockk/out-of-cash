@@ -23,7 +23,7 @@
     ? more descriptions on bedroom take objects
     ? more default verbs says
     
-- [ ] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
+- [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [?] Free fonts
 - [ ] Bug on inventory pagination
 - [X] reorder inventory on remove item?? clean unused inventory positions
