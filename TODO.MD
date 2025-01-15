@@ -23,6 +23,7 @@
     ? more descriptions on bedroom take objects
     ? more default verbs says
     
+- [ ] Text font size configurable?
 - [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [?] Free fonts
 - [ ] Bug on inventory pagination
