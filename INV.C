@@ -44,6 +44,12 @@ void get_all_inv_objects()
 }
 #endif
 
+//function to destroy inventory (free resources)
+void inventory_destroy()
+{
+    destroy_bitmap(inventoryImage);
+}
+
 //add object to inventory
 void inventory_add(uint8_t numObject)
 {

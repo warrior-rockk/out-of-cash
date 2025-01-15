@@ -426,6 +426,7 @@ void msg_draw();
 int get_msg_length(char *text, int *lines);
 
 void gui_init();
+void gui_destroy();
 void gui_update();
 void gui_draw();
 
@@ -433,6 +434,7 @@ void dialog_init();
 void dialog_draw();
 
 void sfx_init();
+void sfx_destroy();
 void sfx_update();
 void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq);
 

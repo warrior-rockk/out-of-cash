@@ -904,6 +904,12 @@ void game_exit()
     //free game resources
     game_free_resources();
 
+    //destroy game modules
+    player_destroy();
+    inventory_destroy();
+    gui_destroy();
+    sfx_destroy();
+    
     TRACE("Quit allegro modules");
     
     //quit allegro modules
@@ -1886,6 +1892,12 @@ void gui_init()
     gui.state = GUI_MAIN_STATE;
 }
 
+//function to destroy gui (free resources)
+void gui_destroy()
+{
+    destroy_bitmap(gui.hsImage);
+}
+
 //function to update the gui
 void gui_update()
 {
@@ -2128,6 +2140,18 @@ void sfx_init()
     }
 
     TRACE("SFX system initialized\n");
+}
+
+//function to destroy sfx system (free resources)
+void sfx_destroy()
+{
+    //free all sfx voices
+    for (int i = 0; i < SFX_NUM_VOICES; i++)
+    {
+        //get soundcard voice (reallocate if exists)
+        if (!voice_check(i))
+            deallocate_voice(i);
+    }
 }
 
 //function to update sfx sound system

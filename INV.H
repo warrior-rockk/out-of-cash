@@ -43,6 +43,7 @@ static BITMAP *inventoryImage;
 
 //funtion definitions
 void inventory_init();
+void inventory_destroy();
 void inventory_add(uint8_t numObject);
 void inventory_remove(uint8_t numObject);
 void inventory_update();

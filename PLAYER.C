@@ -41,6 +41,12 @@ void player_init()
 
 }
 
+//function to destroy player (free resources)
+void player_destroy()
+{
+    destroy_bitmap(playerData.tempImage);
+}
+
 //function to update the player
 void player_update()
 {

@@ -54,6 +54,7 @@ struct playerData{
 
 //function declarations
 void player_init();
+void player_destroy();
 void player_update();
 void player_update_pos();
 void player_update_animation();
