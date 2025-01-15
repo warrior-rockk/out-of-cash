@@ -1,0 +1,55 @@
+OUT OF CASH 
+(Sin Blanca)
+------------
+
+Tu grupo de rock favorito viene a la ciudad, pero no tienes el dinero suficiente para comprarte la entrada. 
+Necesitarás conseguir el dinero, pero que las notas del instituto no te hayan ido muy bien no será de gran ayuda para conseguir tu objetivo.
+
+Cuando el trabajo duro e "incar los codos" ya están descartados de tu plan, solo queda utilizar el engaño, la picardía y la "jeta" para poder alcanzar tu sueño.
+
+¿Serás capaz de conseguirlo?
+
+Out of Cash (Sin Blanca) es una aventura gráfica "point and click" en tono de comedia ambientada en el instituto de EGB-BUP-COU de los años 90 y repleta de referencias culturas a la época.
+
+COMO JUGAR
+----------
+
+Movimiento del raton: 	
+
+	-Con el puntero del raton puedes seleccionar un verbo a realizar en la zona inferior de seleccion de verbos y aplicar esa acción sobre un objeto en la zona principal de juego.
+	
+	-Al pasar el ratón sobre los objetos de la escena, podrás ver una descripción del objeto y haciendo click realizar la acción sobre éste.
+
+Click izquierdo:
+
+	-En la zona principal de juego: realiza el verbo seleccionado sobre el objeto apuntado o mientras un personaje está hablando, permite saltar la frase si ya se ha leído
+	
+	-En la seleccion de líneas de diálogo: selecciona una linea de diálogo
+	
+	-En la zona de verbos: selecciona el verbo apuntado
+	
+	-En las flechas del inventario: sube y baja por las páginas del inventario
+	
+	-Sobre el inventario: realiza el verbo seleccionado en el objeto del inventario apuntado
+	
+Click derecho:
+
+	-En la zona principal del juego: Ejecuta el verbo por defecto del objeto apuntado o si no hay objeto apuntado, deselecciona el verbo actual y selecciona por defecto el verbo de IR
+	
+	-En la zona de verbos: deselecciona el verbo y selecciona por defecto el verbo de IR
+	
+	-En las flechas de inventario: mueve a la primera o última página del inventario respectivamente
+	
+	-Sobre el inventario: ¿?¿
+	
+Doble click:
+	
+	-En la zona principal del juego: con el verbo seleccionado de IR, se mueve a mayor velocidad
+	
+Tecla ESC durante la partida:
+	
+	-Muestra el menú del juego para guardar/salvar partida, configurar las opciones, reiniciar partida o salir del juego
+
+Tecla ESPACIO durante la partida:
+	
+	-Pausa el juego
