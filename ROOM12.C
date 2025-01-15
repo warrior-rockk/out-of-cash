@@ -392,6 +392,7 @@ void r12_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -454,7 +455,21 @@ void r12_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                    case TAKE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Prefiero que no");
+                                break;
+                            default:
+                                script_say("Este papel corta mas que seca");
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r12_washbowl:
@@ -471,7 +486,19 @@ void r12_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Inserte animaci¢n aqu¡");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r12_closedDoor:
@@ -488,7 +515,22 @@ void r12_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                    case USE:
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Miedo me da entrar ah¡ si no est  en servicio...");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    
                 }
                 break;            
             case r12_hole:
@@ -647,13 +689,38 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Parece que est  ocupado...");
+                                script_say("La puerta de este WC tiene un agujero sospechoso...");
                                 break;
                             default:
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case OPEN:
+                    case USE:
+                    case GO:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_move_player_to_target();
+                            break;
+                            case 1:
+                                script_player_take_state();
+                            break;
+                            case 2:
+                                script_say_actor("­Ocupado!", &r12_dialogActor);
+                                play_player_animation(ANIM_PLY_SURPRISE);
+                            break;
+                            case 3:
+                                stop_player_animation();
+                                script_say("­Perd¢n!");
+                            break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
 

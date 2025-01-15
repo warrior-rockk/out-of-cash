@@ -216,6 +216,7 @@ void r02_update_room_script()
                         }
                     break;
                     case OPEN:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -353,6 +354,7 @@ void r02_update_room_script()
                         }
                     break;
                     case OPEN:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:

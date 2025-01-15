@@ -220,6 +220,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -355,6 +356,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -549,6 +551,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:                    
                         switch (roomScript.step)
                         {
                             case 0:
@@ -598,6 +601,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -663,6 +667,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -693,6 +698,7 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:
