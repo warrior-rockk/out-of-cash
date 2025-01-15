@@ -383,6 +383,7 @@ void game_init();
 void game_update();
 void game_exit();
 void game_load_resources();
+void game_free_resources();
 void game_do_fade_in();
 void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex);
 void game_save(uint8_t slot);

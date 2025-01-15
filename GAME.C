@@ -325,6 +325,25 @@ void game_load_resources()
     TRACE("Game resources loaded\n");
 }
 
+//function to free game resources
+void game_free_resources()
+{
+    TRACE("Freeing game resources\n");
+    
+    unload_datafile(gameDataFile);
+    unload_datafile(playerDataFile);
+    unload_datafile(inventoryDataFile);
+
+    destroy_datafile_index(actualRoom.musicDataFileIndex);
+    
+    unload_datafile(soundDataFile);
+
+    for (int i = 0; i < 6; i++)
+        destroy_font(gameFont[i]);
+
+    TRACE("Game resources free completed\n");
+}
+
 //function to init game
 void game_init()
 {
@@ -880,11 +899,13 @@ void calculate_image_borders(BITMAP *image, tBorders *border)
 //function that handles game exit
 void game_exit()
 {
-    //free resources
-    unload_datafile(gameDataFile);
-    unload_datafile(playerDataFile);
-    unload_datafile(inventoryDataFile);
+    TRACE("Exiting game\n");
+    
+    //free game resources
+    game_free_resources();
 
+    TRACE("Quit allegro modules");
+    
     //quit allegro modules
     allegro_exit();
 }

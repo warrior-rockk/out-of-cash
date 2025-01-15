@@ -6,8 +6,9 @@
     * position to printer to take sheets, cartridge, photocopy...
     * more look descriptions on stationery?
     * dog barf ms-dos club podcast audio on look bedroom window
-    * animation and sound for use school wc
+    * animation and sound for use school wc lavatory
     * animation wc open and enter and use??
+    * font for load/save game
     ? Use equal to OPEN/USE on doors
     ? father give califications incorrect animation (flag talking)
     ? random give to responses as nerd
@@ -22,6 +23,8 @@
     ? more descriptions on bedroom take objects
     ? more default verbs says
     
+- [ ] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
+- [?] Free fonts
 - [ ] Bug on inventory pagination
 - [X] reorder inventory on remove item?? clean unused inventory positions
 - [ ] Global frame non repeat number?
@@ -29,7 +32,6 @@
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
-- [ ] Free fonts
 - [ ] Animation for take upper and bottom
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Iterate On-screen debug system (multiple vars)
