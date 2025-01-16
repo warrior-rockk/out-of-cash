@@ -297,8 +297,12 @@ void r04_update_room_script()
                                     end_script();
                                 }
                                 else
-                                    script_say("Ejem... ¨Pap ?");
+                                    script_move_player(97, 109);
                                 break;
+                            case 1:
+                                change_player_dir(DIR_RIGHT);
+                                script_say("Ejem... ¨Pap ?");
+                            break;
                             default:
                                 script_start_dialog(1);                                
                                 end_script();

@@ -1,19 +1,15 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * position on bath closet
-    * position to talk father
-    * position to printer to take sheets, cartridge, photocopy...
     * more look descriptions on stationery?
     * dog barf ms-dos club podcast audio on look bedroom window
     * animation and sound for use school wc lavatory
     * animation wc open and enter and use??
     * font for load/save game
-    ? Use equal to OPEN/USE on doors
+	* endgame concert. After credits, nerd playing with the costume
+	* more dialog lines on actors
+	? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
     ? father give califications incorrect animation (flag talking)
-    ? random give to responses as nerd
-    ? say father: door closed - lo lleva tu madre
-    ? look schedule: total, no voy a ir a clase§
     ? description use spatula on maint door locker
     ? description look main door locker remove "pero no esta cerrada"
     ? hint on combine full cartridge closed on star clock

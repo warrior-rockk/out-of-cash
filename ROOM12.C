@@ -559,9 +559,13 @@ void r12_update_room_script()
                                     end_script();
                                 }
                                 else
-                                    script_say("¨Hola?");
+                                    script_move_player(148, 133);
                                 break;
                             case 1:
+                                change_player_dir(DIR_RIGHT);
+                                script_say("¨Hola?");
+                            break;
+                            case 2:
                                 script_say_actor("¨Curso y asignatura?", &r12_dialogActor);
                                 break;
                             default:

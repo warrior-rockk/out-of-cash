@@ -625,9 +625,10 @@ void r05_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_move_player_to_target();
+                                    script_move_player(R05_PRINTER_X, R05_PRINTER_Y);
                                     break;
                                 case 1:
+                                    change_player_dir(DIR_RIGHT);
                                     if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                     {
                                         script_take_object(&r05_object[R05_SHEETSPHOTO_OBJ_ID].active, GOT_PHOTOCOPY_STOLEN_FLAG, id_photocopy);
@@ -670,9 +671,10 @@ void r05_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_move_player_to_target();
+                                    script_move_player(R05_PRINTER_X, R05_PRINTER_Y);
                                     break;
                                 case 1:
+                                    change_player_dir(DIR_RIGHT);
                                     if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
                                     {
                                         set_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG);
@@ -843,9 +845,10 @@ void r05_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_move_player_to_target();
+                                    script_move_player(R05_PRINTER_X, R05_PRINTER_Y);
                                     break;
                                 case 1:
+                                    change_player_dir(DIR_RIGHT);
                                     if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
                                     {
                                         clear_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG);
@@ -928,12 +931,15 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say_actor("­Hola! ¨En que te puedo ayudar?", &r05_dialogActor);
-                                break;
+                                script_move_player(137, 88);
+                            break;
                             case 1:
+                                script_say_actor("­Hola! ¨En que te puedo ayudar?", &r05_dialogActor);
+                            break;
+                            case 2:
                                 script_start_dialog(1);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                     case GIVE:

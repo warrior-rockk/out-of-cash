@@ -635,10 +635,17 @@ void r08_update_room_script()
                             case 0:
                                 begin_script();
                                 if (!is_game_flag(HISTORY_APPROVED_FLAG))
-                                    script_start_dialog(1);
+                                    script_move_player(214, 126);
                                 else
+                                {
                                     script_say("Ya me ha sido de suficiente ayuda");
+                                    end_script();
+                                }
                                 break;
+                            case 1:
+                                change_player_dir(DIR_LEFT);
+                                script_start_dialog(1);
+                            break;
                             default:
                                 end_script();
                                 break;

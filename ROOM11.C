@@ -456,9 +456,13 @@ void r11_update_room_script()
                                     script_say("Ahora que ya he aprobado no necesito nada de ‚l");
                                 }
                                 else
-                                    script_say("Disculpe profesor...");
+                                    script_move_player(136, 106);
                             break;
                             case 1:
+                                change_player_dir(DIR_RIGHT);
+                                script_say("Disculpe profesor...");
+                            break;
+                            case 2:
                                 script_start_dialog(1);
                             break;
                             default:

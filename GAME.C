@@ -329,16 +329,18 @@ void game_load_resources()
 void game_free_resources()
 {
     TRACE("Freeing game resources\n");
+
+    TRACE("Destroying data file index\n");
+    destroy_datafile_index(actualRoom.musicDataFileIndex);
     
+    TRACE("Unloading data files\n");
     unload_datafile(gameDataFile);
     unload_datafile(playerDataFile);
     unload_datafile(inventoryDataFile);
-
-    destroy_datafile_index(actualRoom.musicDataFileIndex);
-    
     unload_datafile(soundDataFile);
 
-    for (int i = 0; i < 6; i++)
+    TRACE("Unloading fonts\n");
+    for (int i = 1; i <= 5; i++)
         destroy_font(gameFont[i]);
 
     TRACE("Game resources free completed\n");

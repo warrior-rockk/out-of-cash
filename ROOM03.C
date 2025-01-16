@@ -214,9 +214,10 @@ void r03_update_room_script()
                                     end_script();
                                 }
                                 else                                
-                                    script_move_player_to_target();
+                                    script_move_player(148, 71);
                                 break;
                             case 1:
+                                change_player_dir(DIR_RIGHT);
                                 script_play_sound(sd_closetOpen);
                             break;
                             case 2:
