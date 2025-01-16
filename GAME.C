@@ -2083,6 +2083,8 @@ void dialog_draw()
 {
     static int iniPos = 0;
     static int lastLine = 0;
+    static int scrollDelay = 0;
+    
     char strScroll[MAX_DIALOG_LINE_SCROLL + 1];
     
     if (dialog.state == DIALOG_ST_SELECT)
@@ -2096,8 +2098,13 @@ void dialog_draw()
                 //increment scroll string pos on game tick
                 if (gameTick)
                 {
-                    if ((iniPos + MAX_DIALOG_LINE_SCROLL) < strlen(dialog.lineText[i]))
-                        iniPos++;
+                    if (scrollDelay >= DIALOG_TEXT_SCROLL_DELAY)
+                    {
+                        if ((iniPos + MAX_DIALOG_LINE_SCROLL) < strlen(dialog.lineText[i]))
+                            iniPos++;
+                    }
+                    else
+                        scrollDelay++;
                 }
 
                 //compone string scroll substring
@@ -2109,7 +2116,10 @@ void dialog_draw()
 
                 //reset iniPos string scroll on line change
                 if (lastLine != dialog.highlightLine)
+                {
                     iniPos = 0;
+                    scrollDelay = 0;
+                }
                 lastLine = dialog.highlightLine;
             }
             else
@@ -2119,6 +2129,12 @@ void dialog_draw()
    
         //reset dialog choices
         dialog.nodeNumLines = 0;
+    }
+    else
+    {
+        lastLine = 0;
+        iniPos = 0;
+        scrollDelay = 0;
     }
 }
 

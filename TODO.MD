@@ -6,9 +6,10 @@
     * animation and sound for use school wc lavatory
     * animation wc open and enter and use??
     * font for load/save game
-	* endgame concert. After credits, nerd playing with the costume
-	* more dialog lines on actors
-	? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
+    * endgame concert. After credits, nerd playing with the costume
+    * more dialog lines on actors
+    * teacher say x to much near to player. Move to right
+    ? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
     ? father give califications incorrect animation (flag talking)
     ? description use spatula on maint door locker
     ? description look main door locker remove "pero no esta cerrada"
@@ -23,7 +24,6 @@
 - [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [?] Free fonts
 - [ ] Global frame non repeat number?
-- [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
@@ -41,6 +41,7 @@ internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 - [ ] Separate gui on header / .c?
 
+- [X] Delay on text dialog selection scroll?
 - [X] End game
 - [X] Don't use ints (32 bits). Use uint16_t or int16_t instead
 - [X] Room definition/script tool
