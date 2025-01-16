@@ -1045,7 +1045,7 @@ void cursor_update()
     cursor_button_handler();
 
     //check cursor behaviour
-    if (cursor.enabled)
+    if (cursor.enabled && !msg.msgActive && !roomScript.active)
     {
         switch (game.state)
         {

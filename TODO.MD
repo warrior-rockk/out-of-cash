@@ -10,15 +10,7 @@
     * more dialog lines on actors
     ? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
     ? father give califications incorrect animation (flag talking)
-    ? description use spatula on maint door locker
-    ? description look main door locker remove "pero no esta cerrada"
-    ? hint on combine full cartridge closed on star clock
-    ? description on open cartridge
-    ? remove full cartridge on paint star clock
-    ? remove blackStarClock on paint shirt
-    ? more descriptions on bedroom take objects
-    ? more default verbs says
-    
+      
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
        

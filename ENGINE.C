@@ -365,7 +365,7 @@ void default_verb_action(enum verbs roomVerb)
     }
     while (rndNumber == lastRndNumber);
     lastRndNumber = rndNumber;
-    
+
     switch(roomVerb)
     {
         case GO:
@@ -491,6 +491,18 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("Mejor estar callado");
                     break;
+                case 2:
+                    say("Creo que eso no habla");
+                    break;
+                case 3:
+                    say("Me he quedado sin palabras");
+                    break;
+                case 4:
+                    say("No creo que conteste");
+                    break;
+                case 5:
+                    say("Las cosas no hablan");
+                    break;
                 default:
                     say("No tengo nada que decirle");
                     break;
@@ -505,6 +517,18 @@ void default_verb_action(enum verbs roomVerb)
                 case 1:
                     say("Est  bien as¡");
                     break;
+                case 2:
+                    say("No me apetece moverlo");
+                    break;
+                case 3:
+                    say("No hace falta mover");
+                    break;
+                case 4:
+                    say("Est  mejor quieto");
+                    break;
+                case 5:
+                    say("No");
+                    break;    
                 default:
                     say("No creo que se mueva");
                     break;
