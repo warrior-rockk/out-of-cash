@@ -22,8 +22,6 @@
 - [ ] Text font size configurable?
 - [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [?] Free fonts
-- [ ] Bug on inventory pagination
-- [X] reorder inventory on remove item?? clean unused inventory positions
 - [ ] Global frame non repeat number?
 - [ ] Delay on text dialog selection scroll?
 - [ ] Time base below 100ms?

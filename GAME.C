@@ -1108,8 +1108,10 @@ void cursor_action_HUD()
 
         if (cursor.click)
         {
+            uint8_t invLastPage =  inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
+
             //scroll down inventory page
-            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) && inventory.page < MAX_INV_PAGE)
+            if (hsColor == INV_SCROLL_DOWN_CODE && inventory.page < invLastPage)
             {
                 inventory.page++;
                 inventory.refresh = true;
@@ -1131,7 +1133,8 @@ void cursor_action_HUD()
             //go to last inventory page
             if (hsColor == INV_SCROLL_DOWN_CODE)
             {
-                inventory.page = inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
+                uint8_t invLastPage =  inventory.numObjects <= INV_OBJECTS_PER_PAGE ? 0 : ((inventory.numObjects - 1) / INV_OBJECTS_PER_ROW) - 1;
+                inventory.page = invLastPage;
                 inventory.refresh = true;
                 //set flag for highlight button
                 hud.selDownButton = true;
