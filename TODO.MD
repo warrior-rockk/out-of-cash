@@ -20,6 +20,21 @@
     ? more default verbs says
     
 - [ ] Custom fade in/out with get_color / set_color?
+    RGB color;
+       
+       if (gameTick)
+       {
+       for (int i = 1; i < 256; i++)
+        {
+            get_color(i, &color);
+            
+            color.r = color.r >= 1 ? color.r - 1 : 0;
+            color.g = color.g >= 1 ? color.g - 1 :  0;
+            color.b = color.b >= 1 ? color.b - 1 : 0;
+
+            set_color(i, &color);
+        }
+        }
 - [ ] Text font size configurable?
 - [ ] Global frame non repeat number?
 - [ ] Time base below 100ms?
