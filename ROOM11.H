@@ -64,7 +64,7 @@ static tObject r11_object[R11_ROOM_NUM_OBJS] =
 static tAnimation r11_animations[R11_NUM_ANIMATIONS];
 
 //declare room dialog actor
-static tActorTalk r11_dialogActor = {120, 50, 82, false};
+static tActorTalk r11_dialogActor = {211, 10, 82, false};
 
 //declare room functions called from game
 void r11_get_hotspot_name(uint8_t colorCode, char *s);

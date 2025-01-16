@@ -8,7 +8,6 @@
     * font for load/save game
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
-    * teacher say x to much near to player. Move to right
     ? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
     ? father give califications incorrect animation (flag talking)
     ? description use spatula on maint door locker
@@ -20,9 +19,8 @@
     ? more descriptions on bedroom take objects
     ? more default verbs says
     
+- [ ] Custom fade in/out with get_color / set_color?
 - [ ] Text font size configurable?
-- [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
-- [?] Free fonts
 - [ ] Global frame non repeat number?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
@@ -31,16 +29,14 @@
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition (music fades and screen fades?)
-- [ ] Headers reestructuration (prevent circular includes) and improve engine structure
 - [ ] Real A* Pathfinding?
-- [ ] Temporaly using roomScript as inventory script too. Rename roomScript a script or
-multiple scripts?
 - [ ] Separate renderer
 - [ ] Hud structure doesn't need BITMAP array of selected verbs images. Could use the
 internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
-- [ ] Separate gui on header / .c?
 
+- [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
+- [X] Free fonts
 - [X] Delay on text dialog selection scroll?
 - [X] End game
 - [X] Don't use ints (32 bits). Use uint16_t or int16_t instead
