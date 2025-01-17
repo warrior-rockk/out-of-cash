@@ -4,7 +4,6 @@
     * more look descriptions on stationery?
     * animation and sound for use school wc lavatory
     * animation wc open and enter and use??
-    * font for load/save game
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
     ? father give califications incorrect animation (flag talking)

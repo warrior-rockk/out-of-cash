@@ -1980,11 +1980,11 @@ void gui_draw()
                     //draw slot selection
                     draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
                     //draw savegame text (dark)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
                 }
                 else
                     //draw savegame text (bright)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiLoadSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
@@ -2000,11 +2000,11 @@ void gui_draw()
                     //draw slot selection
                     draw_sprite(buffer, gui.imageSlotSel, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_SEL_Y + (GUI_SLOTS_Y_SPACING * i));
                     //draw savegame text (dark)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), GUI_SEL_SLOT_TEXT_COLOR, -1, "%i.%s", i + 1, saveDate);
                 }
                 else
                     //draw savegame text (bright)
-                    textprintf_ex(buffer, font, gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
+                    textprintf_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + GUI_SLOTS_X, gui.y + GUI_CONTENT_Y + GUI_SLOTS_Y + (GUI_SLOTS_Y_SPACING * i), makecol(255,255,255), -1, "%i.%s", i + 1, saveDate);
             }
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiSaveSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
