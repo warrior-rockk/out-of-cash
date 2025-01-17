@@ -124,6 +124,7 @@
 enum gameState{
     LOGO_STATE,
     DOS_LOGO_STATE,
+    PROLOGUE_STATE,
     TITLE_STATE,
     INTRO_STATE,
     PLAYING_STATE,
@@ -356,6 +357,13 @@ struct roomScroll
     int16_t x;
     int16_t y;
 } roomScroll;
+
+//sequence struct
+struct seq
+{
+    uint16_t timeCounter;
+    uint8_t step;
+} seq;
 
 //global vars
 static volatile int tick;

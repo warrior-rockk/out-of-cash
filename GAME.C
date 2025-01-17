@@ -57,6 +57,25 @@ int main()
                 //draw ms-dos club logo
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_msdosLogo].dat, (RES_X>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->w>>1), (RES_Y>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->h>>1));
             break;
+            case PROLOGUE_STATE:
+                game_fade_in();
+                cursor.enabled = false;
+
+                game_update();
+
+                switch (seq.step)
+                {
+                    case 0:
+                        game_write("En un lugar cualquiera en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                    break;
+                    case 1:
+                        game_write("Nuestro protagonista pasea por la calle como otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                    break;
+                    case 2:
+                        game_write("Cuando una noticia llama su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                    break;
+                }
+            break;
             case INTRO_STATE:
                  //update calls
                 game_update();
@@ -404,8 +423,6 @@ void game_init()
 //game update function
 void game_update()
 {
-    static uint16_t timeCounter;
-    
     //call to game keys handler
     game_keys_handler();
 
@@ -414,10 +431,10 @@ void game_update()
     {
         case LOGO_STATE:
             if (gameTick)
-                timeCounter++;
-            if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
+                seq.timeCounter++;
+            if (seq.timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
             {
-                timeCounter = 0;
+                seq.timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
                 sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
@@ -425,14 +442,32 @@ void game_update()
         break;
         case DOS_LOGO_STATE:
             if (gameTick)
-                timeCounter++;
-            if (timeCounter >= 60 || gameKeys[G_KEY_EXIT].pressed)
+                seq.timeCounter++;
+            if (seq.timeCounter >= 60 || gameKeys[G_KEY_EXIT].pressed)
             {
-                timeCounter = 0;
+                seq.timeCounter = 0;
+                seq.step = 0;
+                game_fade_out(FADE_SLOW_SPEED);
+                game.state = PROLOGUE_STATE;
+                sfx[SFX_GAME_VOICE].stop = true;
+            }
+        break;
+        case PROLOGUE_STATE:
+            if (gameTick)
+                seq.timeCounter++;
+            if (seq.timeCounter >= 30)
+            {
+                game_fade_out(FADE_FAST_SPEED);
+                seq.step++;
+                seq.timeCounter = 0;
+            }
+            if (seq.step > 2)
+            {
+                seq.timeCounter = 0;
+                seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
-                sfx[SFX_GAME_VOICE].stop = true;
             }
         break;
         case INTRO_STATE:
