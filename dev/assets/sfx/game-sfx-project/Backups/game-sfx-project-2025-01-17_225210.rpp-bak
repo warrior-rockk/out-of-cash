@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.26/macOS-arm64" 1737150823
+<REAPER_PROJECT 0.1 "7.26/macOS-arm64" 1737150730
   <NOTES 0 2
   >
   RIPPLE 0
@@ -19,8 +19,8 @@
   PANMODE 3
   PANLAWFLAGS 3
   CURSOR 0
-  ZOOM 107.93423867497987 0 0
-  VZOOMEX 15.66666698 3849
+  ZOOM 133.64408909780914 0 0
+  VZOOMEX 15.66666698 3575
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -1756,14 +1756,14 @@
     AUTOMODE 0
     PANLAWFLAGS 3
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
+    MUTESOLO 0 2 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 0
+    SEL 1
     REC 0 0 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -1783,7 +1783,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 0
+      SEL 1
       IGUID {DEF511EF-1F31-C343-9D84-EC5BBD3C0C8D}
       IID 54
       NAME zapsplat_household_bathroom_sink_faucet_turn_on_wash_hands_then_off_001_111062.mp3
@@ -1794,102 +1794,6 @@
       GUID {0081B04F-8285-A242-B54A-2FE5698FE989}
       <SOURCE MP3
         FILE "Media/zapsplat_household_bathroom_sink_faucet_turn_on_wash_hands_then_off_001_111062.mp3" 1
-      >
-    >
-  >
-  <TRACK {2E70B015-CB66-9B4B-ABDE-65A6D060EA07}
-    NAME toiletFlush
-    PEAKCOL 16576
-    BEAT -1
-    AUTOMODE 0
-    PANLAWFLAGS 3
-    VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
-    IPHASE 0
-    PLAYOFFS 0 1
-    ISBUS 0 0
-    BUSCOMP 0 0 0 0 0
-    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
-    FIXEDLANES 9 0 0 0 0
-    SEL 0
-    REC 0 0 1 0 0 0 0 0
-    VU 2
-    TRACKHEIGHT 0 0 0 0 0 0 0
-    INQ 0 0 0 0.5 100 0 0 100
-    NCHAN 2
-    FX 1
-    TRACKID {2E70B015-CB66-9B4B-ABDE-65A6D060EA07}
-    PERF 0
-    MIDIOUT -1
-    MAINSEND 1 0
-    <ITEM
-      POSITION 0
-      SNAPOFFS 0
-      LENGTH 7.21735762037278
-      LOOP 1
-      ALLTAKES 0
-      FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0.58368874208406 0 1 0 0 0
-      MUTE 0 0
-      SEL 0
-      IGUID {8D15A3DA-82A0-8547-88E3-2B631B21C9F2}
-      IID 55
-      NAME zapsplat_household_toilet_flush_close_up_in_bowl_lid_open_91651.mp3
-      VOLPAN 1 0 1 -1
-      SOFFS 0
-      PLAYRATE 1 1 0 -1 0 0.0025
-      CHANMODE 0
-      GUID {04CA81B6-74F5-DA4C-B116-14047538BB32}
-      <SOURCE MP3
-        FILE "Media/zapsplat_household_toilet_flush_close_up_in_bowl_lid_open_91651.mp3" 1
-      >
-    >
-  >
-  <TRACK {1A3A6E19-A3D0-E04E-9DD1-FCACECE705DD}
-    NAME urinating
-    PEAKCOL 16576
-    BEAT -1
-    AUTOMODE 0
-    PANLAWFLAGS 3
-    VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 2 0
-    IPHASE 0
-    PLAYOFFS 0 1
-    ISBUS 0 0
-    BUSCOMP 0 0 0 0 0
-    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
-    FIXEDLANES 9 0 0 0 0
-    SEL 1
-    REC 0 0 1 0 0 0 0 0
-    VU 2
-    TRACKHEIGHT 0 0 0 0 0 0 0
-    INQ 0 0 0 0.5 100 0 0 100
-    NCHAN 2
-    FX 1
-    TRACKID {1A3A6E19-A3D0-E04E-9DD1-FCACECE705DD}
-    PERF 0
-    MIDIOUT -1
-    MAINSEND 1 0
-    <ITEM
-      POSITION 0
-      SNAPOFFS 0
-      LENGTH 17.636125
-      LOOP 1
-      ALLTAKES 0
-      FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
-      MUTE 0 0
-      SEL 1
-      IGUID {20563BB2-E330-3349-A3FC-A427C0FCF16E}
-      IID 56
-      NAME zapsplat_human_urinate_male_toilet_64790.mp3
-      VOLPAN 1 0 1 -1
-      SOFFS 0
-      PLAYRATE 1 1 0 -1 0 0.0025
-      CHANMODE 0
-      GUID {6F820E3A-6E78-6B49-A589-796ECC4F809E}
-      <SOURCE MP3
-        FILE "Media/zapsplat_human_urinate_male_toilet_64790.mp3" 1
       >
     >
   >
