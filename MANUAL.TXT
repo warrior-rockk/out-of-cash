@@ -40,7 +40,7 @@ Click derecho:
 	
 	-En las flechas de inventario: mueve a la primera o última página del inventario respectivamente
 	
-	-Sobre el inventario: ¿?¿
+	-Sobre el inventario: ejecuta el verbo por defecto del objeto de inventario apuntado
 	
 Doble click:
 	
