@@ -69,8 +69,8 @@
 #define R05_WELLCOME_SCRIPT 256
 
 //custom room define data
-#define R05_PRINTER_X   216
-#define R05_PRINTER_Y   118
+#define R05_PRINTER_X   215
+#define R05_PRINTER_Y   140
 
 //hotspot code room enumeration
 enum r05_hotspotCode{

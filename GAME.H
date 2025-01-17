@@ -13,7 +13,7 @@
 #define RES_X  320
 #define RES_Y  240
 #define C_X    (RES_X >> 1)
-#define C_Y    (RES_Y >> 1)
+#define C_Y    (HUD_Y >> 1)
 
 //Draw layers
 #define BACK_LAYER  0

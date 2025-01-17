@@ -8,7 +8,6 @@
     * font for load/save game
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
-    ? position to printer to take sheets, cartridge, photocopy... (216, 118) COLLISION
     ? father give califications incorrect animation (flag talking)
       
 - [ ] Custom fade in/out with get_color / set_color?
