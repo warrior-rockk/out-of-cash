@@ -128,7 +128,7 @@ void script_move_player_no_clip(int x, int y)
         else
         {
             //disable noclip
-            //player.noclip = false;
+            player.noclip = false;
             //increment step when finish moving
             roomScript.step++;
         }

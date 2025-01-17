@@ -493,9 +493,14 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Inserte animaci¢n aqu¡");
-                                break;
+                                script_move_player_to_target();
+                            break;
+                            case 1:
+                                change_player_dir(DIR_BACK);
+                                script_say("Lavando");
+                            break;
                             default:
+                                change_player_dir(DIR_RIGHT);
                                 end_script();
                                 break;
                         }
@@ -518,6 +523,8 @@ void r12_update_room_script()
                         }
                     break;
                     case OPEN:
+                    case USE:
+                    case GO:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -528,32 +535,28 @@ void r12_update_room_script()
                                 set_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
                                 script_player_take_state();
                             break;
-                            default:
-                                end_script();
-                                break;
-                        }
-                    break;
-                    case CLOSE:
-                        switch (roomScript.step)
-                        {
-                            case 0:
-                                begin_script();
-                                //script_move_player_to_target();
-                                script_move_player_no_clip(172, 92);
+                            case 2:
+                                script_move_player_no_clip(258, 92);
                             break;
-                            case 1:
-                                clear_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+                            case 3:
+                                script_wait(20);
+                            break;
+                            case 4:
+                                script_say("Uso el vater");
+                            break;
+                            case 5:
+                                script_move_player_no_clip(170, 92);
+                            break;
+                            case 6:
+                                change_player_dir(DIR_RIGHT);
                                 script_player_take_state();
                             break;
-                            case 2:
-                                script_move_player_no_clip(172, 92);
-                            break;
                             default:
+                                clear_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
                                 end_script();
                                 break;
                         }
                     break;
-                    
                 }
                 break;            
             case r12_hole:

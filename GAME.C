@@ -247,6 +247,7 @@ void main_update()
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
     show_debug("Script.step", roomScript.step);
+
 }
 
 //general draw
