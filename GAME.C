@@ -46,7 +46,7 @@ int main()
                 game_update();
 
                 //placeholder logo
-                game_write("WARCOM SOFT PRESENTS", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
+                game_write("WARCOM SOFT PRESENTS", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
             break;
             case DOS_LOGO_STATE:
                 game_fade_in();
@@ -81,8 +81,8 @@ int main()
                 game_update();
 
                 //placeholder test (and game title)
-                game_write("OUT OF CASH", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), 4);
-                game_write("(SIN BLANCA)", SAY_X, SAY_Y + 20, makecol(255,255,255), 2);
+                game_write("OUT OF CASH", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
+                game_write("(SIN BLANCA)", C_X, C_Y + 20, makecol(255,255,255), 2);
                 cursor_draw();
                 
             break;
@@ -137,7 +137,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("PAUSA", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), actualFont);
+                game_write("PAUSA", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
 
             break;
             case MENU_STATE:
@@ -169,7 +169,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("GRACIAS POR JUGAR", SAY_X, SAY_Y, makecol(GAME_TEXT_COLOR), actualFont);
+                game_write("GRACIAS POR JUGAR", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
                 msg_draw();
 
             break;
@@ -1045,7 +1045,7 @@ void cursor_update()
     cursor_button_handler();
 
     //check cursor behaviour
-    if (cursor.enabled && !msg.msgActive && !roomScript.active)
+    if (cursor.enabled && ((!msg.msgActive && !roomScript.active) || game.state == MENU_STATE))
     {
         switch (game.state)
         {

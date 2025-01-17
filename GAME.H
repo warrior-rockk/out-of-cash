@@ -10,8 +10,10 @@
 //Definitions
 
 //Screen
-#define RES_X    320
-#define RES_Y    240
+#define RES_X  320
+#define RES_Y  240
+#define C_X    (RES_X >> 1)
+#define C_Y    (RES_Y >> 1)
 
 //Draw layers
 #define BACK_LAYER  0
@@ -32,7 +34,7 @@
 #define SAVEGAME_DATE_CHARS     20      //19 chars + zero terminator
 
 //Status bar
-#define STATUS_BAR_X            RES_X / 2
+#define STATUS_BAR_X            (RES_X / 2)
 #define STATUS_BAR_Y            179
 #define STATUS_BAR_TEXT_Y       166
 
@@ -101,8 +103,6 @@
 #define MAX_MSG_LENGTH          200
 #define MAX_MSG_LINE_LENGTH     20
 #define MSG_LINE_SPACING        10
-#define SAY_X                   RES_X / 2
-#define SAY_Y                   162 / 2
 #define TEXT_ACTOR_MARGIN       10
 
 //Text colors

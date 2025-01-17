@@ -28,6 +28,12 @@
         }
         }
 - [ ] Text font size configurable?
+    gameFont[0] = font; <- system font. Not to bad for text but it's DOS generic
+    char *fontName2[1] = {"verdana8", NULL}; <-very thick. Delete
+    ->char *fontName3[2] = {"verdana8Bold", NULL}; <-good normal font for say
+    char *fontName4[3] = {"verdana9", NULL}; <-very tick. Delete
+    char *fontName5[4] = {"verdana9Bold", NULL}; <- good big font for say (configurable?)
+    char *fontName1[5] = {"gameFont", NULL}; <-smallest font. Is the font of verbs buttons
 - [ ] Global frame non repeat number?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
