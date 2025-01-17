@@ -75,6 +75,9 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
         case r01_book4:
                 strcpy(s, "Libro");
             break;
+        case r01_window:
+                strcpy(s, "Ventana");
+            break;
         default:
             strcpy(s, "");
     }
@@ -1004,6 +1007,48 @@ void r01_update_room_script()
                     break;
                 }
             break;
+            case r01_window:
+                switch(roomScript.verb)
+                {
+                    case LOOK:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("La ventana que da a mi callej¢n");
+                            break;
+                            case 1:
+                                script_play_sound_wait(sd_dogBarf);
+                                play_player_animation(ANIM_PLY_SURPRISE);
+                            break;
+                            case 2:
+                                stop_player_animation();
+                                script_say("Otra vez los perros del callej¢n haciendo ruido");
+                            break;
+                            case 3:
+                                script_say("Menos mal que no me dedico a grabar podcasts");
+                            break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
+                    case USE:
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Mejor la dejo cerrada");
+                                break;
+                            case 1:
+                                script_say("Aunque no grabe podcasts aprecio el silencio");
+                                end_script();
+                                break;
+                        }
+                    break;
+                }
+                break;            
             case R01_GAME_START_SCRIPT:
                 switch(roomScript.step)
                 {

@@ -2,7 +2,6 @@
 
 - [ ] Gameplay:
     * more look descriptions on stationery?
-    * dog barf ms-dos club podcast audio on look bedroom window
     * animation and sound for use school wc lavatory
     * animation wc open and enter and use??
     * font for load/save game

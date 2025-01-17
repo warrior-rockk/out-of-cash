@@ -419,17 +419,19 @@ void game_update()
                 timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
+                sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
             }
         break;
         case DOS_LOGO_STATE:
             if (gameTick)
                 timeCounter++;
-            if (timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
+            if (timeCounter >= 60 || gameKeys[G_KEY_EXIT].pressed)
             {
                 timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
+                sfx[SFX_GAME_VOICE].stop = true;
             }
         break;
         case INTRO_STATE:
