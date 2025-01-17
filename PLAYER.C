@@ -33,6 +33,7 @@ void player_init()
     player.scale = 0;
 
     player.moveFast = false;
+    player.noclip = false;
     player.flip = false;
     player.lookDir = 0;
 
@@ -108,18 +109,23 @@ void player_update_pos()
             player.vY = itofix(0);
 
         //check walk map (block with color 0 or out screen)
-        int pixelColorX = getpixel(actualRoom.wImage, fixtoi(relX + player.vX) - actualRoom.hsWalkBorders.left, fixtoi(relY) - actualRoom.hsWalkBorders.up);
-        if (pixelColorX == 0 || pixelColorX == -1)
+        if (!player.noclip)
         {
-            player.vX = itofix(0);
-        }
-
-        int pixelColorY = getpixel(actualRoom.wImage, fixtoi(relX) - actualRoom.hsWalkBorders.left, fixtoi(relY + player.vY) - actualRoom.hsWalkBorders.up);
-        if (pixelColorY == 0 || pixelColorY == -1)
-        {
-            player.vY = itofix(0);
-        }
+            int pixelColorX = getpixel(actualRoom.wImage, fixtoi(relX + player.vX) - actualRoom.hsWalkBorders.left, fixtoi(relY) - actualRoom.hsWalkBorders.up);
+            if (pixelColorX == 0 || pixelColorX == -1)
+            {
+                player.vX = itofix(0);
+            }
     
+            int pixelColorY = getpixel(actualRoom.wImage, fixtoi(relX) - actualRoom.hsWalkBorders.left, fixtoi(relY + player.vY) - actualRoom.hsWalkBorders.up);
+            if (pixelColorY == 0 || pixelColorY == -1)
+            {
+                player.vY = itofix(0);
+            }
+        }
+        else
+            TRACE("NO CLIP\n");
+        
         //player blocked
         if (player.vX == itofix(0) && player.vY == itofix(0))
         {

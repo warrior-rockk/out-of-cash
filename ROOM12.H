@@ -16,10 +16,10 @@
 //define room properties
 #define R12_START_POS_X         77
 #define R12_START_POS_Y         80
-#define R12_ROOM_NUM_OBJS       2
+#define R12_ROOM_NUM_OBJS       4
 #define R12_MUSIC_ID            0
 #define R12_FADE                false
-#define R12_LIGHTS_OFF                false
+#define R12_LIGHTS_OFF          false
 
 //define room data (compose room properties and function pointers)
 #define R12_DATA R12_START_POS_X, R12_START_POS_Y, R12_ROOM_NUM_OBJS, R12_MUSIC_ID, R12_FADE , R12_LIGHTS_OFF , &r12_room_init, &r12_room_update, &r12_get_hotspot_name, &r12_get_default_hotspot_verb, &r12_get_object_info
@@ -27,10 +27,14 @@
 //define object array alias
 #define R12_HAND_OBJ_ID         0
 #define R12_HANDEXAM_OBJ_ID     1
+#define R12_DOOROPEN_OBJ_ID     2
+#define R12_FRONTDOOR_OBJ_ID    3
 
 //define object data (objId, x, y, animId, active, layer)
 #define R12_OBJ_0           r12d_objHand,       236, 96,  0, false, 0
 #define R12_OBJ_1           r12d_objHandExam,   237, 97,  0, false, 0
+#define R12_OBJ_2           r12d_objDoorOpen,   174, 60,  0, false, 0
+#define R12_OBJ_3           r12d_objFrontDoor,  236, 73,  0, false, 1
 
 //define room animations
 #define R12_NUM_ANIMATIONS  0
@@ -51,6 +55,8 @@ static tObject r12_object[R12_ROOM_NUM_OBJS] =
 {
     {R12_OBJ_0},
     {R12_OBJ_1},
+    {R12_OBJ_2},
+    {R12_OBJ_3},
 };
 
 //declare room objects animations array

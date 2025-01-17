@@ -107,7 +107,8 @@ void r12_room_update()
 //update room objects
 void r12_update_room_objects()
 {
-
+    r12_object[R12_DOOROPEN_OBJ_ID].active = is_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+    r12_object[R12_FRONTDOOR_OBJ_ID].active = is_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -517,14 +518,36 @@ void r12_update_room_script()
                         }
                     break;
                     case OPEN:
-                    case USE:
-                    case GO:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
-                                script_say("Miedo me da entrar ah¡ si no est  en servicio...");
+                                script_move_player_to_target();
+                            break;
+                            case 1:
+                                set_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
+                            default:
+                                end_script();
                                 break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                //script_move_player_to_target();
+                                script_move_player_no_clip(172, 92);
+                            break;
+                            case 1:
+                                clear_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
+                            case 2:
+                                script_move_player_no_clip(172, 92);
+                            break;
                             default:
                                 end_script();
                                 break;

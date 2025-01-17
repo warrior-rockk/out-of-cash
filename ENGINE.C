@@ -97,7 +97,7 @@ void script_move_player(int x, int y)
         if (player.prevState != player_st_moving )
         {
             //call move_player
-            move_player(x, y);
+            move_player(x, y, false);
         }
         else
         {
@@ -111,6 +111,28 @@ void script_move_player(int x, int y)
 void script_move_player_to_target()
 {
     script_move_player(roomScript.hsX, roomScript.hsY);
+}
+
+//function to move player with no clip and autoincrements script step
+void script_move_player_no_clip(int x, int y)
+{
+    //if player is not moving
+    if (!is_player_moving())
+    {
+        if (player.prevState != player_st_moving )
+        {
+            //call move_player
+            player.noclip = true;
+            move_player(x, y, true);
+        }
+        else
+        {
+            //disable noclip
+            //player.noclip = false;
+            //increment step when finish moving
+            roomScript.step++;
+        }
+    }
 }
 
 //function to take and object (inactives the object, sets the game flag and adds object
@@ -369,7 +391,7 @@ void default_verb_action(enum verbs roomVerb)
     switch(roomVerb)
     {
         case GO:
-            move_player(cursor.x, cursor.y);
+            move_player(cursor.x, cursor.y, false);
             break;
         case LOOK:
             switch (rndNumber)
@@ -616,7 +638,7 @@ void set_player_position(int x, int y)
 }
 
 //function to move the player
-void move_player(int x, int y)
+void move_player(int x, int y, bool noclip)
 {
     //set the flag and positions
     player.state = player_st_moving;
@@ -634,7 +656,7 @@ void move_player(int x, int y)
 void move_player_to_target()
 {
     //move the player to the roomScript pointed
-    move_player(roomScript.hsX, roomScript.hsY);
+    move_player(roomScript.hsX, roomScript.hsY, false);
 }
 
 //function to return if player is moving

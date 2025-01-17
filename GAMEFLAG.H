@@ -29,6 +29,7 @@ enum gameFlags{
     GOT_SPATULA_FLAG,
     GOT_OAT_FLAG,
     FATHER_SAY_MONEY_FLAG,
+    FATHER_TALKING_FLAG,
     KITCHEN_CLOSET_OPEN_FLAG,
     GOT_MONEY_FLAG,
     
@@ -83,7 +84,8 @@ enum gameFlags{
     ASKED_BY_HISTORY_ANSWERS,
     MATH_APPROVED_FLAG,
     SCHOOLBATH_MIRROR_MSG_FLAG,
-
+    SCHOOL_BATH_DOOR_OPEN_FLAG,
+    
     INFO_SPORT_WORK_FLAG,
     SHOW_DISEASE_FLAG,
     SPORT_WORK_FLAG,
@@ -96,8 +98,6 @@ enum gameFlags{
     SHIRT_COSTUME_FLAG,
     JEANS_COSTUME_FLAG,
     HISTORY_APPROVED_FLAG,
-
-    FATHER_TALKING_FLAG,
 };
 
 //definition of global game numeric vars index

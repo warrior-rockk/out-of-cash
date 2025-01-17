@@ -44,6 +44,7 @@ struct player{
     tActorTalk talk;
     uint8_t lookDir;
     bool moveFast;
+    bool noclip;
     bool flip;
 } player;
 
