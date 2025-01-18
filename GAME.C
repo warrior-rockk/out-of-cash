@@ -25,8 +25,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
     
@@ -1975,11 +1975,10 @@ void gui_update()
             draw_sprite(gui.hsImage, gui.hsImageExit , GUI_CONTENT_X, GUI_CONTENT_Y);
             break;
         case GUI_EXIT_TITLE_STATE:
-            game.state = LOGO_STATE;
+            game.state = RESTART_STATE;
             stop_midi();
             stop_sound();
             game_fade_out(FADE_DEFAULT_SPEED);
-            game_init();
             break;
         case GUI_EXIT_DOS_STATE:
             game.state = EXIT_STATE;
