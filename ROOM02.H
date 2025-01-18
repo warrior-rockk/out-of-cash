@@ -28,7 +28,7 @@
 #define R02_BATHDOOR_OBJ_ID 0
 
 //define object data (objId, x, y, animId, active, layer)
-#define R02_OBJ_0           r02d_objBathDoor,   144, 32,  0, false, 0
+#define R02_OBJ_0           r02d_objBathDoor,   141, 33,  0, false, 0
 
 //define room animations
 #define R02_NUM_ANIMATIONS  0

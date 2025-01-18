@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\SDATA.DAT */
-/* Date: Sat Jan 18 19:03:30 2025 */
+/* Date: Sat Jan 18 21:29:31 2025 */
 /* Do not hand edit! */
 
 #define sd_approved                      0        /* SAMP */
@@ -21,14 +21,16 @@
 #define sd_money                         15       /* SAMP */
 #define sd_msDosJingle                   16       /* SAMP */
 #define sd_paint                         17       /* SAMP */
-#define sd_printer                       18       /* SAMP */
-#define sd_switch                        19       /* SAMP */
-#define sd_take                          20       /* SAMP */
-#define sd_take2                         21       /* SAMP */
-#define sd_toiletFlush                   22       /* SAMP */
-#define sd_urinating                     23       /* SAMP */
-#define sd_w95Error                      24       /* SAMP */
-#define sd_washHands                     25       /* SAMP */
-#define sd_win95Startup                  26       /* SAMP */
-#define sd_COUNT                         27
+#define sd_paper                         18       /* SAMP */
+#define sd_printer                       19       /* SAMP */
+#define sd_switch                        20       /* SAMP */
+#define sd_take                          21       /* SAMP */
+#define sd_take2                         22       /* SAMP */
+#define sd_toiletFlush                   23       /* SAMP */
+#define sd_unglue                        24       /* SAMP */
+#define sd_urinating                     25       /* SAMP */
+#define sd_w95Error                      26       /* SAMP */
+#define sd_washHands                     27       /* SAMP */
+#define sd_win95Startup                  28       /* SAMP */
+#define sd_COUNT                         29
 
