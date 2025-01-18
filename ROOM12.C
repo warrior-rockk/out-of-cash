@@ -497,7 +497,7 @@ void r12_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_BACK);
-                                script_say("Lavando");
+                                script_play_sound_wait(sd_washHands);
                             break;
                             default:
                                 change_player_dir(DIR_RIGHT);
@@ -515,7 +515,7 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Este WC parece que no est  en servicio");
+                                script_say("Un WC con todas las condiciones higui‚nicas que podr¡as esperar");
                                 break;
                             default:
                                 end_script();
@@ -532,22 +532,34 @@ void r12_update_room_script()
                                 script_move_player_to_target();
                             break;
                             case 1:
+                                script_play_sound(sd_doorOpen);
+                            break;
+                            case 2:
                                 set_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
                                 script_player_take_state();
                             break;
-                            case 2:
+                            case 3:
                                 script_move_player_no_clip(258, 92);
                             break;
-                            case 3:
-                                script_wait(20);
-                            break;
                             case 4:
-                                script_say("Uso el vater");
+                                script_play_sound_wait(sd_urinating);
                             break;
                             case 5:
-                                script_move_player_no_clip(170, 92);
+                                script_play_sound(sd_toiletFlush);
                             break;
                             case 6:
+                                script_wait(40);
+                            break;
+                            case 7:
+                                script_move_player_no_clip(170, 92);
+                            break;
+                            case 8:
+                                script_say("Buf... Iba a esperarme a terminar la aventura pero no pod¡a mas");
+                            break;
+                            case 9:
+                                script_play_sound(sd_doorClose);
+                            break;
+                            case 10:
                                 change_player_dir(DIR_RIGHT);
                                 script_player_take_state();
                             break;

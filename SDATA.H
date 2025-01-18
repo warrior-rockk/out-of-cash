@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\SDATA.DAT */
-/* Date: Fri Jan 17 16:01:20 2025 */
+/* Date: Sat Jan 18 19:03:30 2025 */
 /* Do not hand edit! */
 
 #define sd_approved                      0        /* SAMP */
@@ -25,7 +25,10 @@
 #define sd_switch                        19       /* SAMP */
 #define sd_take                          20       /* SAMP */
 #define sd_take2                         21       /* SAMP */
-#define sd_w95Error                      22       /* SAMP */
-#define sd_win95Startup                  23       /* SAMP */
-#define sd_COUNT                         24
+#define sd_toiletFlush                   22       /* SAMP */
+#define sd_urinating                     23       /* SAMP */
+#define sd_w95Error                      24       /* SAMP */
+#define sd_washHands                     25       /* SAMP */
+#define sd_win95Startup                  26       /* SAMP */
+#define sd_COUNT                         27
 
