@@ -135,7 +135,7 @@ void r11_update_dialog_selection()
                         dialog_add("¨10 largos? ¨Pero quien cree que soy, Aquaman?",2);
                         dialog_add("Ah pero, ¨tenemos piscina en este instituto?", 2);
                         if (!is_game_flag(INFO_SPORT_WORK_FLAG))
-                            dialog_add("Y no hay otra cosa que pueda hacer para aprobar", 2);
+                            dialog_add("¨Y no hay otra cosa que pueda hacer para aprobar?", 2);
                         else
                             dialog_add("¨Que dec¡a de una enfermedad en la piel?", 2);
                         dialog_add("Bah... el agua para los patos", 1);
@@ -516,10 +516,10 @@ void r11_update_room_script()
                                         script_remove_inv_object(id_fullFolder);
                                     break;
                                     case 5:
-                                        script_say_actor("Veamos...", &r11_dialogActor);
+                                        roomScript.step++;
                                     break;
                                     case 6:
-                                        script_wait(20);
+                                        roomScript.step++;
                                     break;
                                     case 7:
                                         script_say_actor("Muy bien, muy buen trabajo", &r11_dialogActor);

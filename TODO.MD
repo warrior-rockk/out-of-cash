@@ -2,11 +2,10 @@
 
 - [ ] Gameplay:
     * more look descriptions on stationery?
-    * animation and sound for use school wc lavatory
-    * animation wc open and enter and use??
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
-    ? father give califications incorrect animation (flag talking)
+    * teacher more hints on dissease
+    * nerd correct dialog not on first
       
 - [ ] No twice replace_unicode (game_write and say_actor)
 

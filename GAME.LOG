@@ -21,17 +21,18 @@ Change game state from 3 to 5
 Change from room -1 to room 1
 Free actual room datafile resources
 Load room datafile: R01DATA.DAT
-Adding numObject 4 to inventory array position 1
-Original freq: 11025Hz | Variation: +3% | New freq: 11355Hz
-Adding numObject 8 to inventory array position 2
-Original freq: 11025Hz | Variation: -9% | New freq: 10032Hz
-Change from room 1 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Change from room 2 to room 1
-Free actual room datafile resources
-Load room datafile: R01DATA.DAT
 Change game state from 5 to 8
+Free actual room datafile resources
+Load room datafile: R12DATA.DAT
+Change game state from 8 to 5
+Change game state from 5 to 8
+Change from room 12 to room 4
+Free actual room datafile resources
+Load room datafile: R04DATA.DAT
+Change game state from 8 to 5
+Change game state from 5 to 6
+Change game state from 6 to 5
+Adding numObject 19 to inventory array position 27
 Exiting game
 Freeing game resources
 Destroying data file index
