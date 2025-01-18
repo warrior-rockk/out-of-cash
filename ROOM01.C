@@ -28,7 +28,10 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Puerta");
             break;
         case r01_cassette:
+            if (!is_game_flag(GOT_CASSETTE_FLAG))
                 strcpy(s, "Casete");
+            else
+                strcpy(s, "");    
             break;
         case r01_spider:
                 strcpy(s, "Ara¤a");
@@ -37,7 +40,10 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Tambor");
             break;
         case r01_thing:
+            if (!is_game_flag(GOT_COIN_FLAG))
                 strcpy(s, "Cosa");
+            else
+                strcpy(s, "");
             break;
         case r01_glasses:
                 strcpy(s, "Gafas");
@@ -67,7 +73,10 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Libro");
             break;
         case r01_book2:
+            if (!is_game_flag(GOT_CASSETTE_FLAG))
                 strcpy(s, "Libro");
+            else
+                strcpy(s, "");
             break;
         case r01_book3:
                 strcpy(s, "Libro");
@@ -163,13 +172,6 @@ tObject* r01_get_object_info(uint8_t numObject)
 //function to init room
 void r01_room_init()
 {
-    //update room objects state
-    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE_FLAG);
-    //r01_object[R01_GUITAR_OBJ_ID].active  = !is_game_flag(GOT_GUITAR_FLAG);
-    r01_object[R01_STEREO01_OBJ_ID].active  = is_game_flag(STEREO_ON_FLAG);
-    r01_object[R01_COIN_OBJ_ID].active      = !is_game_flag(GOT_COIN_FLAG);
-    r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
-
     //rewind computer animation
     r01_animations[R01_COMPUTER_OBJ_ID].frameTime = 0;
     r01_animations[R01_COMPUTER_OBJ_ID].frame = r01d_objCompBoot1;
@@ -197,10 +199,14 @@ void r01_room_update()
 void r01_update_room_objects()
 {
     //Stereo
+    r01_object[R01_STEREO01_OBJ_ID].active  = is_game_flag(STEREO_ON_FLAG);
     object_play_animation(&r01_object[R01_STEREO01_OBJ_ID], r01d_objStereo01, r01_animations, R01_ANIM_PLAY_STEREO);
 
-    //Computer
-    r01_object[R01_COMPUTER_OBJ_ID].active = is_game_flag(USED_COMPUTER_FLAG);
+    r01_object[R01_COMPUTER_OBJ_ID].active  = is_game_flag(USED_COMPUTER_FLAG);
+    r01_object[R01_COIN_OBJ_ID].active      = !is_game_flag(GOT_COIN_FLAG);
+    r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE_FLAG);
+    r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
+    //r01_object[R01_GUITAR_OBJ_ID].active  = !is_game_flag(GOT_GUITAR_FLAG);
 }
 
 //update dialog selection
@@ -517,14 +523,17 @@ void r01_update_room_script()
                                         script_move_player_to_target();
                                         break;
                                     case 1:
+                                        script_play_sound(sd_unglue);
+                                    break;
+                                    case 2:
                                         set_game_flag(GOT_COIN_FLAG);
                                         r01_object[R01_COIN_OBJ_ID].active = false;
                                         script_add_inv_object(id_coin);
                                         break;
-                                    case 2:
+                                    case 3:
                                         script_say("­Eureka! Con la esp tula lo he podido despegar");
                                         break;
-                                    case 3:
+                                    case 4:
                                         script_say("­Es una moneda de 100 pesetas!");
                                         end_script();
                                         break;

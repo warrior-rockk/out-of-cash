@@ -493,7 +493,7 @@ void r12_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
+                                script_move_player(138, roomScript.hsY);
                             break;
                             case 1:
                                 change_player_dir(DIR_BACK);

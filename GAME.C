@@ -67,7 +67,7 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("En una ciudad cualquier de 1994", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("En una ciudad cualquiera de 1994", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
                         game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
@@ -459,7 +459,7 @@ void game_update()
         case PROLOGUE_STATE:
             if (gameTick)
                 seq.timeCounter++;
-            if (seq.timeCounter >= 30 || cursor.click)
+            if (seq.timeCounter >= 40 || cursor.click)
             {
                 game_fade_out(FADE_FAST_SPEED);
                 seq.step++;

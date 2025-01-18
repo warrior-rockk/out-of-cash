@@ -401,6 +401,7 @@ void inventory_update()
                                 break;
                             case 1:
                                 script_add_inv_object(id_bookSheets);
+                                play_sound(sd_paper);
                                 break;
                             case 2:
                                 script_say("He arrancado las hojas del libro que me parec¡an interesantes");
@@ -1238,6 +1239,7 @@ void inventory_update()
                     case 0:
                         begin_script();
                         script_combine_inv_object(id_bookSheets, id_folder, id_fullFolder);
+                        play_sound(sd_paper);
                     break;
                     case 1:
                         script_say("He metido las hojas del libro de deporte en la carpeta");
