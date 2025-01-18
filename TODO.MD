@@ -8,6 +8,8 @@
     * more dialog lines on actors
     ? father give califications incorrect animation (flag talking)
       
+- [ ] No twice replace_unicode (game_write and say_actor)
+
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
        

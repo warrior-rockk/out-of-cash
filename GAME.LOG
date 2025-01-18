@@ -24,11 +24,6 @@ Load room datafile: R01DATA.DAT
 Change from room 1 to room 2
 Free actual room datafile resources
 Load room datafile: R02DATA.DAT
-Object 0 Position x: 142 Position y: 33
-Object 0 Position x: 141 Position y: 33
-Change game state from 5 to 8
-Change game state from 8 to 5
-Change game state from 5 to 8
 Exiting game
 Freeing game resources
 Destroying data file index

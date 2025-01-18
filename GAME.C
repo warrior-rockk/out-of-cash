@@ -61,18 +61,22 @@ int main()
                 game_fade_in();
                 cursor.enabled = false;
 
+                cursor_update();
                 game_update();
 
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("En un lugar cualquiera en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("En una ciudad cualquier de 1994", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
-                        game_write("Nuestro protagonista pasea por la calle como otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 2:
-                        game_write("Cuando una noticia llama su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Las notas del instituto no le han ido muy bien", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                    break;
+                    case 3:
+                        game_write("Pero no parece importarle hasta\nque una noticia llama su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                 }
             break;
@@ -249,7 +253,7 @@ void main_init()
 
     //init debug
     #ifdef DEBUGMODE
-    debug.showDebugInfo = true;
+        //debug.showDebugInfo = true;
     #endif
 }
 
@@ -455,13 +459,13 @@ void game_update()
         case PROLOGUE_STATE:
             if (gameTick)
                 seq.timeCounter++;
-            if (seq.timeCounter >= 30)
+            if (seq.timeCounter >= 30 || cursor.click)
             {
                 game_fade_out(FADE_FAST_SPEED);
                 seq.step++;
                 seq.timeCounter = 0;
             }
-            if (seq.step > 2)
+            if (seq.step > 3 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 seq.step = 0;
@@ -659,6 +663,9 @@ void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex)
     char s[MAX_MSG_LENGTH];
     char *ch;
 
+    //replace unicode Latin-1 chars
+    replace_unicode_str(text);
+    
     //make a copy of the string for tokenizer
     strcpy(s, text);
     //first token
