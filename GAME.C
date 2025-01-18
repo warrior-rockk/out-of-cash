@@ -465,13 +465,19 @@ void game_update()
                 seq.step++;
                 seq.timeCounter = 0;
             }
-            if (seq.step > 3 || gameKeys[G_KEY_EXIT].pressed)
+            if (seq.step > 3)
             {
                 seq.timeCounter = 0;
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
+            }
+            else if(gameKeys[G_KEY_EXIT].pressed)
+            {
+                game_fade_out(FADE_DEFAULT_SPEED);
+                change_room(BEDROOM_ROOM_NUM);
+                game.state = TITLE_STATE;
             }
         break;
         case INTRO_STATE:
