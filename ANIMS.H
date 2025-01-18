@@ -17,5 +17,6 @@
 #define ANIM_PLY_APPLY_OAT_STILL_2  pd_applyOat6,   pd_applyOat6,   3, ANIM_ONCE
 #define ANIM_PLY_END_OAT            pd_endOat1,     pd_endOat3,     3, ANIM_ONCE
 #define ANIM_PLY_SURPRISE           pd_surprise,    pd_surprise,    1, ANIM_LOOP
+#define ANIM_PLY_WASH_HANDS         pd_washHands01, pd_washHands03, 3, ANIM_PING_PONG
 
 #endif  //H_ANIMS

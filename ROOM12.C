@@ -497,9 +497,11 @@ void r12_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_BACK);
+                                play_player_animation(ANIM_PLY_WASH_HANDS);
                                 script_play_sound_wait(sd_washHands);
                             break;
                             default:
+                                stop_player_animation();
                                 change_player_dir(DIR_RIGHT);
                                 end_script();
                                 break;
