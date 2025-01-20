@@ -660,8 +660,7 @@ void r04_update_room_script()
                     break;
                     case 3:
                         play_sound(sd_money);
-                        script_remove_inv_object(id_califications);
-                        script_add_inv_object(id_money);
+                        script_combine_inv_object(id_califications, 0, id_money);
                     break;
                     case 4:
                         script_say("Pero pap , aqui solo hay 4900 pelas");
@@ -746,7 +745,7 @@ void r04_update_room_script()
                         case 1:
                             if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             {
-                                script_say_actor("A ver, ense¤ame las notas...", &r04_dialogActor);
+                                script_say_actor("Hasta que no vea tus notas no lo creer‚", &r04_dialogActor);
                             }
                             else if (is_game_flag(FATHER_SAY_MONEY_FLAG))
                                 script_say_actor("Aprueba Matem ticas, Historia y Educaci¢n f¡sica y te dar‚ el dinero", &r04_dialogActor);

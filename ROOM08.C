@@ -870,15 +870,16 @@ void r08_update_room_script()
                         roomScript.step++;
                     break;
                     case 4:
-                        play_sound(sd_approved);
+                        script_play_sound(sd_approved);
                     break;
                     case 5:
                         script_say_actor("Ha estado chupado. ­Examen aprobado!", &r08_dialogActor);
                         set_game_flag(HISTORY_APPROVED_FLAG);
                     break;
                     case 6:
-                    if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
-                        play_sound(sd_completed);
+                        if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
+                            play_sound(sd_completed);
+                        roomScript.step++;
                     break;
                     case 7:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
