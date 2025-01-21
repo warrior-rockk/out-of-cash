@@ -159,12 +159,13 @@ void r08_update_dialog_selection()
                         dialog_add("No te molesto", 0);
                     break;
                     case 2:
-                        dialog_add("Parece que se te dan muy bien los juegos de estrategia",3);
                         dialog_add("El juego de estrategia definitivo es el Civilization",2);
+                        dialog_add("Parece que se te dan muy bien los juegos de estrategia",3);
                         dialog_add("Prefiero las aventuras gr ficas", 2);
                         dialog_add("No te quiero distraer", 1);
                     break;
                     case 3:
+                        dialog_add("No tienes un poco de obsesi¢n con las guerras hist¢ricas", 3);
                         dialog_add("Si se te da tan bien la historia, ¨no podr¡as ayudarme?",4);
                         dialog_add("Muy interesante", 2);
                     break;
@@ -253,7 +254,7 @@ void r08_update_room_script()
                             script_say_actor("Y t£ le dijiste a tus padres que te compraran el ordenador para estudiar", &r08_dialogActor);
                         break;
                         case 2:
-                            script_wait(10);
+                            script_wait(3);
                         break;
                         case 3:
                             script_say("Touch‚");
@@ -264,7 +265,7 @@ void r08_update_room_script()
                         break;
                     }
                 break;
-                case 101:
+                case 102:
                     switch (roomScript.step)
                     {
                         case 1:
@@ -284,7 +285,7 @@ void r08_update_room_script()
                         break;
                     }
                 break;
-                case 102:
+                case 101:
                     switch (roomScript.step)
                     {
                         case 1:
@@ -317,6 +318,32 @@ void r08_update_room_script()
                     }
                 break;
                 case 201:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("No lo creas", &r08_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("Creo que es una afici¢n muy sana", &r08_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Y tampoco es que me vaya a dar un d¡a por entrar al colegio armado con un fusil", &r08_dialogActor);
+                        break;
+                        case 4:
+                            set_game_flag(NERD_SIDE_FLAG);
+                            script_wait(20);
+                        break;
+                        case 5:
+                            clear_game_flag(NERD_SIDE_FLAG);
+                            script_say_actor("No, no... No ser¡a muy noble...", &r08_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
+                case 202:
                     switch (roomScript.step)
                     {
                         case 1:
