@@ -4,7 +4,6 @@
     * more look descriptions on stationery?
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
-    * teacher more hints on dissease
       
 - [ ] No twice replace_unicode (game_write and say_actor)
 

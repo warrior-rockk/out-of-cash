@@ -381,12 +381,58 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un libro titulado: Del deporte tambi‚n se sale");
-                                break;
+                                if (get_game_var(SPORT_BOOK_VAR) == 0)
+                                    script_say("\"Del deporte tambi‚n se sale\"");
+                                else
+                                    roomScript.step++;
+                            break;
                             case 1:
-                                script_say("Eso es lo que he dicho yo siempre...");
-                                break;
+                                switch (get_game_var(SPORT_BOOK_VAR))
+                                {
+                                    case 0:
+                                        script_say("Cap¡tulo 1: La pereza es tu aliada");
+                                    break;
+                                    case 1:
+                                        script_say("Cap¡tulo 2: Cuida tus rodillas");
+                                    break;
+                                    case 2:
+                                        script_say("Cap¡tulo 3: Enfermedades deportivas");
+                                    break;
+                                }
+                            break;
+                            case 2:
+                                switch (get_game_var(SPORT_BOOK_VAR))
+                                {
+                                    case 0:
+                                        script_say("Todo aquello que supone un esfuerzo es susceptible de aplazarlo");
+                                    break;
+                                    case 1:
+                                        script_say("Recientes estudios demuestran la relaci¢n entre hacer deporte y el deterioro de tus rodillas");
+                                    break;
+                                    case 2:
+                                        script_say("La mejor manera de librarse del deporte es con una enfermedad que te impida realizarla");
+                                    break;
+                                }
+                            break;
+                            case 3:
+                                switch (get_game_var(SPORT_BOOK_VAR))
+                                {
+                                    case 0:
+                                        script_say("Deja para ma¤ana lo que no quieras hacer hoy");
+                                    break;
+                                    case 1:
+                                        script_say("Un cuerpo sano es un cuerpo descansado");
+                                    break;
+                                    case 2:
+                                        script_say("Las enfermedades de la piel pueden presentar una textura grumosa y en algunos casos viscosa");
+                                    break;
+                                }
+                            break;
                             default:
+                                if (get_game_var(SPORT_BOOK_VAR) < 2)
+                                    inc_game_var(SPORT_BOOK_VAR);
+                                else
+                                    set_game_var(SPORT_BOOK_VAR, 0);
                                 end_script();
                                 break;
                         }

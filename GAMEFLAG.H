@@ -104,6 +104,7 @@ enum gameFlags{
 enum gameVars{
     MIRROR_MSG_COUNT_VAR,
     BULLETIN_BOARD_VAR,
+    SPORT_BOOK_VAR,
 };
 
 #endif //H_GAME_FLAGS
