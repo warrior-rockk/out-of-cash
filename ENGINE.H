@@ -54,6 +54,7 @@
 #define MAINT_LOCKER_ROOM_NUM   10
 #define PE_OFFICE_ROOM_NUM      11
 #define SCHOOL_BATH_ROOM_NUM    12
+#define ENDING_ROOM_NUM         13
 
 //Fade speeds
 #define FADE_SLOW_SPEED         2

@@ -526,7 +526,7 @@ void game_update()
             else if (is_game_flag(GAME_END_FLAG))
             {
                 game_fade_out(FADE_DEFAULT_SPEED);
-                change_room(SCHOOL_ROOM_NUM);
+                change_room(ENDING_ROOM_NUM);
                 game.state = END_STATE;
             }
             else
