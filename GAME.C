@@ -183,17 +183,17 @@ int main()
             case END_STATE:
                  //update calls
                 game_update();
-                msg_update();
+                //msg_update();
                 roomData[game.actualRoom].room_update();
                 room_action_update();
-                player_update();
+                //player_update();
                 
                 //draw calls
                 room_draw();
-                player_draw();
-                room_front_layer_draw();
+                //player_draw();
+                //room_front_layer_draw();
                 game_write("GRACIAS POR JUGAR", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
-                msg_draw();
+                //msg_draw();
 
             break;
             case EXIT_STATE:

@@ -19,60 +19,18 @@ Free actual room datafile resources
 Load room datafile: R01DATA.DAT
 Change game state from 5 to 8
 Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R12DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Change from room 11 to room 4
-Free actual room datafile resources
 Load room datafile: R04DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 6
-Change game state from 6 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R12DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Change from room 12 to room 4
-Free actual room datafile resources
-Load room datafile: R04DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 6
-Change game state from 6 to 5
-Adding numObject 19 to inventory array position 27
-Change game state from 5 to 8
 Change game state from 8 to 5
 Adding numObject 15 to inventory array position 26
 Change game state from 5 to 10
 Change from room 4 to room 13
 Free actual room datafile resources
 Load room datafile: R13DATA.DAT
+Change game state from 10 to 11
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Change game state from 11 to 0
 Exiting game
 Freeing game resources
 Destroying data file index
