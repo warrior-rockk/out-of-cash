@@ -25,8 +25,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        //game.state = PLAYING_STATE;
+        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        game.state = PLAYING_STATE;
     #endif
 
     
@@ -186,15 +186,16 @@ int main()
                 //msg_update();
                 roomData[game.actualRoom].room_update();
                 room_action_update();
-                //player_update();
+                cursor_update();
+                player_update();
                 
                 //draw calls
                 room_draw();
-                //player_draw();
+                player_draw();
                 //room_front_layer_draw();
                 game_write("GRACIAS POR JUGAR", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
                 //msg_draw();
-
+                cursor_draw();
             break;
             case EXIT_STATE:
                 game.exit = true;
@@ -579,11 +580,11 @@ void game_update()
             game.state = EXIT_STATE;
 
         //toogle show room walk image
-        if (gameKeys[G_KEY_W].pressed && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_W].pressed)
             debug.showWalkImage = !debug.showWalkImage;
             
         //toogle show room hotspot image
-        if (gameKeys[G_KEY_H].pressed && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_H].pressed)
             debug.showHotspotImage = !debug.showHotspotImage;
 
         //toogle show debug info
@@ -591,7 +592,7 @@ void game_update()
             debug.showDebugInfo = !debug.showDebugInfo;
 
         //toogle cursor room objects
-        if (gameKeys[G_KEY_O].pressed && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_O].pressed && (game.state == PLAYING_STATE || game.state == END_STATE))
         {
             if (!debug.cursorRoomObjects)
             {
@@ -603,7 +604,7 @@ void game_update()
         }
 
         //cycle up cursor room objects
-        if (gameKeys[G_KEY_UP].pressed && (key_shifts & KB_SHIFT_FLAG) && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_UP].pressed && (key_shifts & KB_SHIFT_FLAG) && (game.state == PLAYING_STATE || game.state == END_STATE))
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject < roomData[game.actualRoom].room_num_objects)
                 debug.numCursorRoomObject++;
@@ -612,7 +613,7 @@ void game_update()
         }
 
         //cycle down cursor room objects
-        if (gameKeys[G_KEY_DOWN].pressed && (key_shifts & KB_SHIFT_FLAG) && game.state == PLAYING_STATE)
+        if (gameKeys[G_KEY_DOWN].pressed && (key_shifts & KB_SHIFT_FLAG) && (game.state == PLAYING_STATE || game.state == END_STATE))
         {
             if (debug.cursorRoomObjects && debug.numCursorRoomObject > 0)
                 debug.numCursorRoomObject--;
@@ -621,7 +622,7 @@ void game_update()
         }
 
         //log object placement position
-        if (game.state == PLAYING_STATE && debug.cursorRoomObjects && cursor.click)
+        if ((game.state == PLAYING_STATE || game.state == END_STATE) && debug.cursorRoomObjects && cursor.click)
             TRACE("Object %i Position x: %i Position y: %i\n", debug.numCursorRoomObject, cursor.x, cursor.y);
 
         //move cursor with arrows

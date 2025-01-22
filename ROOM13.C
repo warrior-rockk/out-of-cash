@@ -47,6 +47,8 @@ tObject* r13_get_object_info(uint8_t numObject)
 void r13_room_init()
 {
     game_fade_in();
+
+    start_script(R13_ENDING_SCRIPT);
 }
 
 //global funcion to update room
@@ -65,7 +67,11 @@ void r13_room_update()
 //update room objects
 void r13_update_room_objects()
 {
-
+    object_play_animation(&r13_object[R13_CROWD_OBJ_ID], r13d_objCrowd1, r13_animations, R13_ANIM_CROWD);
+    object_play_animation(&r13_object[R13_SPEAKERS_OBJ_ID], r13d_objSpeakers1, r13_animations, R13_ANIM_SPEAKERS);
+    object_play_animation(&r13_object[R13_GUITAR_1_OBJ_ID], r13d_objGuitar11, r13_animations, R13_ANIM_GUITAR_1);
+    object_play_animation(&r13_object[R13_GUITAR_2_OBJ_ID], r13d_objGuitar21, r13_animations, R13_ANIM_GUITAR_2);
+    object_play_animation(&r13_object[R13_DRUMS_OBJ_ID], r13d_objDrums1, r13_animations, R13_ANIM_DRUMS);
 }
 
 //update dialog selection
@@ -83,7 +89,25 @@ void r13_update_room_script()
         //sequence actions
         switch (roomScript.object)
         {
-
+            case R13_ENDING_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_wait(10);
+                    break;
+                    case 1:
+                        script_move_player_no_clip(79, 253);
+                    break;
+                    case 2:
+                        change_player_dir(DIR_BACK);
+                        script_wait(10);
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }
