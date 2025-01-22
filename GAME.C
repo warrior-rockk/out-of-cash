@@ -45,8 +45,10 @@ int main()
 
                 game_update();
 
-                //placeholder logo
-                game_write("WARCOM SOFT PRESENTS", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
+                //draw warcom logo
+                draw_sprite(buffer, (BITMAP *)gameDataFile[gd_warcomLogo].dat, (GAME_WARCOM_LOGO_POS_X) - (((BITMAP *)gameDataFile[gd_warcomLogo].dat)->w>>1), (GAME_WARCOM_LOGO_POS_Y) - (((BITMAP *)gameDataFile[gd_warcomLogo].dat)->h>>1));
+                //write text
+                game_write("WARCOM SOFT 2025", C_X, GAME_WARCOM_TEXT_POS_Y, 114, 4);
             break;
             case DOS_LOGO_STATE:
                 game_fade_in();

@@ -26,6 +26,9 @@
 #define BORDER_COLOR        BLACK_COLOR
 
 //logos
+#define GAME_WARCOM_LOGO_POS_X      C_X + 10
+#define GAME_WARCOM_LOGO_POS_Y      102
+#define GAME_WARCOM_TEXT_POS_Y      190
 #define GAME_TITLE_POS_Y            70
 #define GAME_TITLE_ESP_POS_Y        120
 #define GAME_TITLE_FOOTER_POS_Y     200
