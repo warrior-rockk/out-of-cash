@@ -25,6 +25,10 @@
 #define WHITE_COLOR         31
 #define BORDER_COLOR        BLACK_COLOR
 
+//logos
+#define GAME_TITLE_POS_Y            70
+#define GAME_TITLE_ESP_POS_Y        120
+#define GAME_TITLE_FOOTER_POS_Y     200
 //Game
 
 #define MAX_GAME_FLAGS          32

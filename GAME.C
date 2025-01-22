@@ -103,9 +103,10 @@ int main()
                 cursor_update();
                 game_update();
 
-                //placeholder test (and game title)
-                game_write("OUT OF CASH", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
-                game_write("(SIN BLANCA)", C_X, C_Y + 20, makecol(255,255,255), 2);
+                //draw game title
+                draw_sprite(buffer, (BITMAP *)gameDataFile[gd_title].dat, (C_X) - (((BITMAP *)gameDataFile[gd_title].dat)->w>>1), (GAME_TITLE_POS_Y) - (((BITMAP *)gameDataFile[gd_title].dat)->h>>1));
+                game_write("(SIN BLANCA)", C_X, GAME_TITLE_ESP_POS_Y, makecol(255,255,255), 2);
+                game_write("Haz click para comenzar", C_X, GAME_TITLE_FOOTER_POS_Y, makecol(255,233,12), 2);
                 cursor_draw();
                 
             break;
