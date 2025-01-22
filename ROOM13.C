@@ -103,6 +103,10 @@ void r13_update_room_script()
                         change_player_dir(DIR_BACK);
                         script_wait(10);
                     break;
+                    case 3:
+                        play_player_animation(ANIM_PLY_ROCKING);
+                        script_wait(100);
+                    break;
                     default:
                         end_script();
                     break;
