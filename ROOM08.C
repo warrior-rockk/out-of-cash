@@ -113,8 +113,25 @@ void r08_room_update()
 void r08_update_room_objects()
 {
     //nerd object
-    if (is_game_flag(NERD_SIDE_FLAG))
+    if (is_game_flag(NERD_COSTUME_FLAG))
     {
+        r08_object[R08_NERD_OBJ_ID].x = 135;
+        r08_object[R08_NERD_OBJ_ID].y = 106;
+
+        if (r08_dialogActor.talking)
+        {
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_COSTUME_TALK);
+        }
+        else
+        {
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_COSTUME_IDLE);
+        }
+    }
+    else if (is_game_flag(NERD_SIDE_FLAG))
+    {
+        r08_object[R08_NERD_OBJ_ID].x = 115;
+        r08_object[R08_NERD_OBJ_ID].y = 100;
+        
         if (r08_dialogActor.talking)
         {
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TALK);
@@ -126,6 +143,9 @@ void r08_update_room_objects()
     }
     else
     {
+        r08_object[R08_NERD_OBJ_ID].x = 115;
+        r08_object[R08_NERD_OBJ_ID].y = 100;
+        
         if (r08_dialogActor.talking)
         {
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_TALK_PLAYING);
@@ -891,6 +911,8 @@ void r08_update_room_script()
                     break;
                     case 2:
                         script_wait(20);
+                        set_game_flag(NERD_COSTUME_FLAG);
+                        play_player_animation(ANIM_PLY_SURPRISE);
                     break;
                     case 3:
                         game_fade_in();
@@ -904,11 +926,18 @@ void r08_update_room_script()
                         set_game_flag(HISTORY_APPROVED_FLAG);
                     break;
                     case 6:
+                        stop_player_animation();
+                        roomScript.step++;
+                    break;
+                    case 7:
+                        script_say("Esto es demasiado raro...");
+                    break;
+                    case 8:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             play_sound(sd_completed);
                         roomScript.step++;
                     break;
-                    case 7:
+                    case 9:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             script_say("­Genial! ­Ya he aprobado todo!");
                         else

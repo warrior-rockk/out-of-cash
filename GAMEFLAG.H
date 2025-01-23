@@ -100,6 +100,7 @@ enum gameFlags{
     HISTORY_APPROVED_FLAG,
 
     PLAYER_ROCKING_FLAG,
+    NERD_COSTUME_FLAG,
 };
 
 //definition of global game numeric vars index

@@ -12,14 +12,12 @@ Free actual room datafile resources
 Load room datafile: R01DATA.DAT
 Change game state from 0 to 5
 Change game state from 5 to 8
-Change from room 1 to room 11
 Free actual room datafile resources
-Load room datafile: R11DATA.DAT
+Load room datafile: R08DATA.DAT
 Change game state from 8 to 5
-Change game state from 5 to 6
-Change game state from 6 to 5
-Change game state from 5 to 6
-Change game state from 6 to 5
+Change from room 8 to room 6
+Free actual room datafile resources
+Load room datafile: R06DATA.DAT
 Exiting game
 Freeing game resources
 Destroying data file index
