@@ -72,6 +72,9 @@ void r13_update_room_objects()
     object_play_animation(&r13_object[R13_GUITAR_1_OBJ_ID], r13d_objGuitar11, r13_animations, R13_ANIM_GUITAR_1);
     object_play_animation(&r13_object[R13_GUITAR_2_OBJ_ID], r13d_objGuitar21, r13_animations, R13_ANIM_GUITAR_2);
     object_play_animation(&r13_object[R13_DRUMS_OBJ_ID], r13d_objDrums1, r13_animations, R13_ANIM_DRUMS);
+
+    if (is_game_flag(PLAYER_ROCKING_FLAG))
+        play_player_animation(ANIM_PLY_ROCKING);
 }
 
 //update dialog selection
@@ -104,8 +107,8 @@ void r13_update_room_script()
                         script_wait(10);
                     break;
                     case 3:
-                        play_player_animation(ANIM_PLY_ROCKING);
-                        script_wait(100);
+                        set_game_flag(PLAYER_ROCKING_FLAG);
+                        script_wait(10);
                     break;
                     default:
                         end_script();

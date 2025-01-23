@@ -98,6 +98,8 @@ enum gameFlags{
     SHIRT_COSTUME_FLAG,
     JEANS_COSTUME_FLAG,
     HISTORY_APPROVED_FLAG,
+
+    PLAYER_ROCKING_FLAG,
 };
 
 //definition of global game numeric vars index

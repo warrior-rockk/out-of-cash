@@ -31,7 +31,7 @@
 #define GAME_WARCOM_TEXT_POS_Y      190
 #define GAME_TITLE_POS_Y            70
 #define GAME_TITLE_ESP_POS_Y        120
-#define GAME_TITLE_FOOTER_POS_Y     200
+#define GAME_TITLE_FOOTER_POS_Y     175
 //Game
 
 #define MAX_GAME_FLAGS          32

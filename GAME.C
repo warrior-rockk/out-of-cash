@@ -25,11 +25,13 @@ int main()
 
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
-    
+    actualRoom.musicDataFile  = load_datafile_object_indexed(actualRoom.musicDataFileIndex, 3);
+    play_midi((MIDI *)actualRoom.musicDataFile[0].dat, 0);
+                
     //main game loop
     while (!game.exit)
     {
@@ -380,7 +382,7 @@ void game_init()
     //default game config (each savegame file stores custom config)
     gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 20;
-    gameConfig.musicVolume  = 0; //200
+    gameConfig.musicVolume  = 200;
     gameConfig.soundVolume  = 200;
 
     //sets audio config
@@ -440,12 +442,13 @@ void game_update()
         case LOGO_STATE:
             if (gameTick)
                 seq.timeCounter++;
-            if (seq.timeCounter >= 30 || gameKeys[G_KEY_EXIT].pressed)
+            if (seq.timeCounter >= 50 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
                 sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
+                stop_midi();
             }
         break;
         case DOS_LOGO_STATE:
