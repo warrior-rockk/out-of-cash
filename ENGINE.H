@@ -16,9 +16,9 @@
 
 //dialogs
 #define MAX_DIALOG_LINE_LENGTH      100
-#define MAX_DIALOG_LINE_SCROLL      52  //49
+#define MAX_DIALOG_LINE_SCROLL      49  //49
 #define DIALOG_TEXT_SCROLL_DELAY    3   //300ms
-#define NUM_MAX_DIALOG_LINES        5
+#define NUM_MAX_DIALOG_LINES        6
 #define DIALOG_ST_SELECT            0
 #define DIALOG_ST_SCRIPT            1
 

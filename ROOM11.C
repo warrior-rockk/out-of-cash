@@ -138,6 +138,7 @@ void r11_update_dialog_selection()
                             dialog_add("¨Y no hay otra cosa que pueda hacer para aprobar?", 2);
                         else
                             dialog_add("¨Que dec¡a de una enfermedad en la piel?", 2);
+                        dialog_add("Entonces ¨Tengo que superar una prueba arcade de nadar?", 2);
                         dialog_add("Bah... el agua para los patos", 1);
                     break;
                     case 4:
@@ -308,6 +309,24 @@ void r11_update_room_script()
                         break;
                     }
                 break;
+                case 105:
+                    switch (roomScript.step)
+                    {
+                        case 1:
+                            script_say_actor("No diga tonter¡as", &r11_dialogActor);
+                        break;
+                        case 2:
+                            script_say_actor("En las verdaderas aventuras gr ficas no hay mini-juegos arcade", &r11_dialogActor);
+                        break;
+                        case 3:
+                            script_say_actor("Eso va contra la filosof¡a del jugador de aventuras", &r11_dialogActor);
+                        break;
+                        default:
+                            script_next_dialog_node();
+                            end_script();
+                        break;
+                    }
+                break;
                 default:
                     script_next_dialog_node();
                     end_script();
@@ -441,7 +460,7 @@ void r11_update_room_script()
                                 script_say("Este profesor parece mas bien un terrorista de la pel¡cula Junga de Cristal");
                                 break;
                             default:
-                                script_say("­YIPIEE YAI EII MOTHERFUCKER!");
+                                script_say("­YIPPEE KI YAY MOTHERFUCKER!");
                                 end_script();
                                 break;
                         }
@@ -454,6 +473,7 @@ void r11_update_room_script()
                                 if (is_game_flag(PE_APPROVED_FLAG))
                                 {
                                     script_say("Ahora que ya he aprobado no necesito nada de ‚l");
+                                    end_script();
                                 }
                                 else
                                     script_move_player(136, 106);

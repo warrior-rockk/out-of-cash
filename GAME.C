@@ -25,8 +25,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        //game.state = PLAYING_STATE;
+        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        game.state = PLAYING_STATE;
     #endif
 
     actualRoom.musicDataFile  = load_datafile_object_indexed(actualRoom.musicDataFileIndex, 3);
@@ -442,7 +442,7 @@ void game_update()
         case LOGO_STATE:
             if (gameTick)
                 seq.timeCounter++;
-            if (seq.timeCounter >= 50 || gameKeys[G_KEY_EXIT].pressed)
+            if (seq.timeCounter >= 55 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
@@ -2148,7 +2148,7 @@ void dialog_draw()
     {
         //run all the lines of the select dialog node
         for (int i = 0; i < dialog.nodeNumLines; i++)
-        {
+        {        
             //if actual draw line is the hightlighted line
             if ((dialog.highlightLine - 1) == i)
             {
@@ -2157,7 +2157,7 @@ void dialog_draw()
                 {
                     if (scrollDelay >= DIALOG_TEXT_SCROLL_DELAY)
                     {
-                        if ((iniPos + MAX_DIALOG_LINE_SCROLL) < strlen(dialog.lineText[i]))
+                        if ((iniPos + MAX_DIALOG_LINE_SCROLL) <= strlen(dialog.lineText[i]))
                             iniPos++;
                     }
                     else
@@ -2180,8 +2180,14 @@ void dialog_draw()
                 lastLine = dialog.highlightLine;
             }
             else
+            {
+                //compose string scroll substring
+                strncpy(strScroll, dialog.lineText[i], MAX_DIALOG_LINE_SCROLL);
+                strScroll[MAX_DIALOG_LINE_SCROLL] = '\0';
+            
                 //draw dialog line on regular color
-                textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", dialog.lineText[i]);
+                textprintf_ex(buffer, gameFont[actualFont], 0, HUD_Y + DEBUG_FONT_HEIGHT + (DEBUG_FONT_HEIGHT*i), makecol(200,200,200), -1, "%s", strScroll);
+            }
         }
    
         //reset dialog choices

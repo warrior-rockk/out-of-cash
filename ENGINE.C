@@ -748,6 +748,7 @@ void script_next_dialog_node()
 void dialog_add(char *textLine, uint8_t destNode)
 {
     ASSERT(strlen(textLine) <= MAX_DIALOG_LINE_LENGTH);
+    ASSERT(dialog.nodeNumLines < NUM_MAX_DIALOG_LINES);
     
     dialog.nodeNumLines++;
 
