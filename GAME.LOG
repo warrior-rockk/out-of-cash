@@ -33,6 +33,17 @@ Stopping midi
 Load music data file object
 Play midi music
 Change game state from 2 to 3
+Stopping midi
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Change game state from 3 to 5
+Change from room -1 to room 1
+Free actual room datafile resources
+Load room datafile: R01DATA.DAT
+Stopping midi
+Load music data file object
+Play midi music
 Exiting game
 Freeing game resources
 Destroying data file index

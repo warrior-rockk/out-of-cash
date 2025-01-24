@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.27/win64" 1737733772
+<REAPER_PROJECT 0.1 "7.27/win64" 1737734413
   <NOTES 0 2
   >
   RIPPLE 0
@@ -18,8 +18,8 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 11.076923076923
-  ZOOM 71.04526911253215 388 0
+  CURSOR 11.45192307692306
+  ZOOM 50.47430263272115 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
   RECMODE 1
@@ -174,11 +174,11 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkAAQAAAAAAAAAAAAAAACAPwAAgD8AADBBAACAQgAAMEEAAIBCAACAQwAAAAA6AAAAACAAAAAAAAAA
-        AAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAGAAAAAAgAAAAAAAAAAAAAH8AAABAAAAAKAAAAAAAAABAAAAAAAAAADAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkAAQAAAAAAAAAAAAAAACAPwAAgD8AADBBAACAQgAAMEEAAIBCAACAQwAAAAA8AAAAACAAAAAAAAAA
+        AAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAHAAAAAAgAAAAAAAAAAAAAH8AAABAAAAAKAAAAAAAAABAAAAAAAAAADAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAA
         AAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAGQAAABAAAAAKAAAAAAAAABAAAAAAAAAAAAAAAAA
         IAAAAAAAAAAAAABkAAAAQAAAACgAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAGQAAABA
-        AAAAKAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAAAAAAQAAAAHkAAAAAAAAAACAAAAAAAAAAAAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAA
+        AAAAKAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAA
         AAAAAAAAAAAgAAAAAAAAAAAAAGQAAABAAAAAKAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAA
         AAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAGQAAABAAAAAKAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAABkAAAAQAAAACgAAAAA
         AAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAZAAAAEAAAAAoAAAAAAAAAEAAAAAAAAAAAAAAAQ==
@@ -362,7 +362,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {BF80F8E1-B496-4CC0-A223-544805681F13}
       IID 30
       NAME "02-Midi CH1-MIDI"
@@ -378,7 +378,7 @@
         POOLEDEVTS {52FCA985-F684-4369-B2D5-4A8B3EA649DF}
         E 0 b0 00 79
         E 0 b0 20 00
-        E 0 c0 3a 00
+        E 0 c0 3c 00
         e 920 e0 00 40
         e 0 90 40 7f
         e 418 e0 00 40
@@ -497,7 +497,7 @@
         IGNTEMPO 0 120 4 4
         SRCCOLOR 56
         VELLANE 131 267 0 0 1
-        CFGEDITVIEW -6373.186076 0.038143 45 12 0 -1 0 0 0 0.5
+        CFGEDITVIEW 846.488161 0.051129 45 12 0 -1 0 0 0 0.5
         KEYSNAP 0
         TRACKSEL 189
         EVTFILTER 1 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
@@ -629,162 +629,162 @@
         POOLEDEVTS {B5C8DA77-4CCB-4342-978B-951B51629667}
         E 0 b1 00 79
         E 0 b1 20 00
-        E 0 c1 18 00
+        E 0 c1 1c 00
         e 155 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
-        e 0 91 4f 7f
+        e 0 91 4f 40
         e 12 81 4f 00
         e 24 e1 00 40
-        e 0 91 30 7f
-        e 0 91 3c 7f
+        e 0 91 30 40
+        e 0 91 3c 40
         e 944 81 37 00
         e 0 81 30 00
         e 0 81 3c 00
         e 454 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 36 e1 00 40
-        e 0 91 34 7f
+        e 0 91 34 40
         e 12 81 34 00
         e 12 e1 00 40
-        e 0 91 30 7f
+        e 0 91 30 40
         e 23 e1 00 40
-        e 0 91 34 7f
+        e 0 91 34 40
         e 12 81 34 00
         e 347 81 37 00
         e 48 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
         e 0 81 30 00
-        e 0 91 30 7f
+        e 0 91 30 40
         e 824 81 3c 00
         e 12 81 37 00
         e 12 81 30 00
         e 466 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 12 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 71 e1 00 40
-        e 0 91 30 7f
+        e 0 91 30 40
         e 395 81 3c 00
         e 0 81 37 00
         e 0 81 30 00
         e 489 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 60 e1 00 40
-        e 0 91 30 7f
+        e 0 91 30 40
         e 358 81 3c 00
         e 60 e1 00 40
         e 0 81 37 00
         e 0 81 30 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 418 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 72 e1 00 40
-        e 0 91 30 7f
+        e 0 91 30 40
         e 12 81 30 00
         e 466 e1 00 40
         e 0 81 37 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 36 e1 00 40
         e 0 81 3c 00
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 107 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 12 81 48 00
         e 789 81 37 00
         e 12 e1 00 40
-        e 0 91 38 7f
+        e 0 91 38 40
         e 23 e1 00 40
         e 0 81 38 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 24 e1 00 40
-        e 0 91 43 7f
+        e 0 91 43 40
         e 12 81 43 00
         e 108 81 3c 00
         e 12 e1 00 40
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 24 e1 00 40
-        e 0 91 32 7f
+        e 0 91 32 40
         e 418 81 3b 00
         e 131 81 37 00
         e 12 81 32 00
         e 263 e1 00 40
-        e 0 91 3f 7f
+        e 0 91 3f 40
         e 12 e1 00 40
         e 0 81 3f 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 60 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 12 e1 00 40
         e 0 81 41 00
-        e 0 91 2e 7f
-        e 0 91 35 7f
-        e 0 91 46 7f
+        e 0 91 2e 40
+        e 0 91 35 40
+        e 0 91 46 40
         e 24 81 2e 00
         e 11 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 622 81 41 00
         e 24 81 3e 00
         e 12 81 35 00
         e 215 81 46 00
         e 346 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 60 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 71 e1 00 40
-        e 0 91 3a 7f
+        e 0 91 3a 40
         e 12 e1 00 40
-        e 0 91 35 7f
+        e 0 91 35 40
         e 60 e1 00 40
         e 0 81 3a 00
-        e 0 91 3a 7f
-        e 0 91 46 7f
+        e 0 91 3a 40
+        e 0 91 46 40
         e 359 81 3a 00
         e 35 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 12 e1 00 40
         e 0 81 41 00
-        e 0 91 3a 7f
-        e 0 91 41 7f
+        e 0 91 3a 40
+        e 0 91 41 40
         e 72 e1 00 40
-        e 0 91 4d 7f
+        e 0 91 4d 40
         e 12 81 4d 00
         e 585 81 35 00
         e 0 81 41 00
         e 36 81 3e 00
         e 24 81 3a 00
         e 227 e1 00 40
-        e 0 91 2d 7f
+        e 0 91 2d 40
         e 48 81 2d 00
         e 251 e1 00 40
         e 0 81 46 00
-        e 0 91 47 7f
+        e 0 91 47 40
         e 36 e1 00 40
         e 0 81 47 00
-        e 0 91 46 7f
-        e 0 91 47 7f
+        e 0 91 46 40
+        e 0 91 47 40
         e 12 e1 00 40
         e 0 81 47 00
-        e 0 91 41 7f
+        e 0 91 41 40
         e 35 e1 00 40
-        e 0 91 2e 7f
+        e 0 91 2e 40
         e 12 81 2e 00
         e 12 e1 00 40
-        e 0 91 3a 7f
-        e 0 91 3e 7f
+        e 0 91 3a 40
+        e 0 91 3e 40
         e 24 e1 00 40
-        e 0 91 2e 7f
+        e 0 91 2e 40
         e 24 e1 00 40
-        e 0 91 35 7f
+        e 0 91 35 40
         e 12 81 35 00
         e 24 e1 00 40
-        e 0 91 35 7f
+        e 0 91 35 40
         e 442 81 35 00
         e 24 81 41 00
         e 24 e1 00 40
@@ -792,60 +792,60 @@
         e 0 81 3a 00
         e 0 81 3e 00
         e 0 81 2e 00
-        e 0 91 46 7f
+        e 0 91 46 40
         e 263 e1 00 40
         e 0 81 46 00
-        e 0 91 46 7f
+        e 0 91 46 40
         e 83 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 12 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 24 e1 00 40
-        e 0 91 35 7f
-        e 0 91 3a 7f
+        e 0 91 35 40
+        e 0 91 3a 40
         e 454 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 48 81 35 00
         e 0 81 3e 00
         e 12 81 41 00
         e 36 e1 00 40
         e 0 81 46 00
         e 0 81 3a 00
-        e 0 91 46 7f
+        e 0 91 46 40
         e 274 e1 00 40
         e 0 81 46 00
-        e 0 91 2e 7f
-        e 0 91 46 7f
+        e 0 91 2e 40
+        e 0 91 46 40
         e 12 81 2e 00
         e 48 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 60 e1 00 40
-        e 0 91 35 7f
-        e 0 91 3a 7f
+        e 0 91 35 40
+        e 0 91 3a 40
         e 36 e1 00 40
-        e 0 91 2e 7f
+        e 0 91 2e 40
         e 12 81 2e 00
         e 382 81 3a 00
         e 95 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 24 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 36 e1 00 40
         e 0 81 46 00
-        e 0 91 46 7f
+        e 0 91 46 40
         e 359 81 3e 00
         e 11 81 41 00
         e 12 81 35 00
         e 502 e1 00 40
-        e 0 91 2e 7f
-        e 0 91 3e 7f
+        e 0 91 2e 40
+        e 0 91 3e 40
         e 24 e1 00 40
-        e 0 91 35 7f
-        e 0 91 3a 7f
+        e 0 91 35 40
+        e 0 91 3a 40
         e 12 e1 00 40
-        e 0 91 41 7f
+        e 0 91 41 40
         e 227 81 3e 00
         e 36 81 2e 00
         e 0 81 3a 00
@@ -853,53 +853,53 @@
         e 0 81 41 00
         e 95 81 35 00
         e 562 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 48 e1 00 40
-        e 0 91 33 7f
-        e 0 91 3f 7f
+        e 0 91 33 40
+        e 0 91 3f 40
         e 12 81 33 00
         e 12 e1 00 40
-        e 0 91 33 7f
-        e 0 91 44 7f
+        e 0 91 33 40
+        e 0 91 44 40
         e 12 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 680 81 3f 00
         e 0 81 48 00
         e 12 81 3c 00
         e 12 81 33 00
         e 120 e1 00 40
-        e 0 91 28 7f
+        e 0 91 28 40
         e 466 e1 00 40
-        e 0 91 3f 7f
+        e 0 91 3f 40
         e 24 e1 00 40
         E 0 91 52 0a
         e 24 81 28 00
         e 23 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 60 e1 00 40
         E 0 81 52 00
-        e 0 91 2c 7f
+        e 0 91 2c 40
         e 12 e1 00 40
-        e 0 91 33 7f
+        e 0 91 33 40
         e 48 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 12 81 48 00
         e 334 e1 00 40
         e 0 81 2c 00
-        e 0 91 2c 7f
+        e 0 91 2c 40
         e 12 e1 00 40
         e 0 81 3c 00
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 48 e1 00 40
         e 0 81 44 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 48 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 83 e1 00 40
         e 0 81 3f 00
         e 0 81 48 00
-        e 0 91 38 7f
-        e 0 91 3f 7f
+        e 0 91 38 40
+        e 0 91 3f 40
         e 454 81 3c 00
         e 24 81 33 00
         e 12 81 3f 00
@@ -907,89 +907,89 @@
         e 60 e1 00 40
         e 0 81 44 00
         e 0 81 38 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 167 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 155 81 3c 00
         e 239 e1 00 40
         e 0 81 44 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 72 e1 00 40
-        e 0 91 3f 7f
+        e 0 91 3f 40
         e 24 e1 00 40
-        e 0 91 2c 7f
-        e 0 91 3c 7f
+        e 0 91 2c 40
+        e 0 91 3c 40
         e 36 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 12 e1 00 40
-        e 0 91 33 7f
+        e 0 91 33 40
         e 24 e1 00 40
         e 0 81 2c 00
-        e 0 91 38 7f
+        e 0 91 38 40
         e 430 81 33 00
         e 12 e1 00 40
         e 0 81 44 00
         e 0 81 3f 00
         e 0 81 48 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 215 81 38 00
         e 107 e1 00 40
         e 0 81 44 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 60 e1 00 40
         e 0 81 3c 00
-        e 0 91 2c 7f
-        e 0 91 3c 7f
-        e 0 91 3f 7f
+        e 0 91 2c 40
+        e 0 91 3c 40
+        e 0 91 3f 40
         e 36 e1 00 40
-        e 0 91 30 7f
+        e 0 91 30 40
         e 12 81 30 00
         e 24 e1 00 40
-        e 0 91 33 7f
-        e 0 91 38 7f
+        e 0 91 33 40
+        e 0 91 38 40
         e 525 81 3f 00
         e 12 81 33 00
         e 12 81 3c 00
         e 215 e1 00 40
         e 0 81 44 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 12 81 38 00
         e 24 81 2c 00
         e 48 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 24 e1 00 40
-        e 0 91 3f 7f
+        e 0 91 3f 40
         e 48 e1 00 40
-        e 0 91 2c 7f
+        e 0 91 2c 40
         e 11 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 12 81 48 00
         e 24 e1 00 40
-        e 0 91 48 7f
+        e 0 91 48 40
         e 12 81 48 00
         e 418 e1 00 40
         e 0 81 2c 00
-        e 0 91 2c 7f
-        e 0 91 33 7f
+        e 0 91 2c 40
+        e 0 91 33 40
         e 12 e1 00 40
         e 0 81 3f 00
-        e 0 91 3f 7f
+        e 0 91 3f 40
         e 132 81 44 00
         e 322 81 3f 00
         e 12 81 33 00
         e 12 81 2c 00
         e 60 e1 00 40
         e 0 81 3c 00
-        e 0 91 44 7f
+        e 0 91 44 40
         e 382 e1 00 40
-        e 0 91 2c 7f
+        e 0 91 2c 40
         e 12 e1 00 40
-        e 0 91 3c 7f
+        e 0 91 3c 40
         e 36 e1 00 40
-        e 0 91 33 7f
-        e 0 91 3f 7f
+        e 0 91 33 40
+        e 0 91 3f 40
         e 12 e1 00 40
-        e 0 91 38 7f
+        e 0 91 38 40
         e 251 81 44 00
         e 48 81 3c 00
         e 12 81 2c 00
@@ -997,174 +997,174 @@
         e 83 81 33 00
         e 0 81 3f 00
         e 36 e1 00 40
-        e 0 91 32 7f
+        e 0 91 32 40
         e 227 81 32 00
         e 96 e1 00 40
-        e 0 91 2b 7f
-        e 0 91 32 7f
+        e 0 91 2b 40
+        e 0 91 32 40
         e 12 81 2b 00
         e 59 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 12 e1 00 40
         e 0 81 37 00
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 72 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 12 e1 00 40
         e 0 81 2b 00
-        e 0 91 2b 7f
-        e 0 91 37 7f
+        e 0 91 2b 40
+        e 0 91 37 40
         e 36 e1 00 40
-        e 0 91 43 7f
+        e 0 91 43 40
         e 633 81 3b 00
         e 71 81 3e 00
         e 12 81 32 00
         e 36 81 2b 00
         e 96 81 43 00
         e 72 e1 00 40
-        e 0 91 29 7f
+        e 0 91 29 40
         e 35 81 29 00
         e 24 e1 00 40
-        e 0 91 28 7f
-        e 0 91 43 7f
+        e 0 91 28 40
+        e 0 91 43 40
         e 24 81 43 00
         e 132 e1 00 40
         e 0 81 37 00
         e 0 81 28 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 47 e1 00 40
-        e 0 91 43 7f
+        e 0 91 43 40
         e 132 e1 00 40
         e 0 81 37 00
         e 0 81 43 00
-        e 0 91 43 7f
+        e 0 91 43 40
         e 24 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 36 e1 00 40
-        e 0 91 47 7f
+        e 0 91 47 40
         e 11 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 24 e1 00 40
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 36 e1 00 40
         e 0 81 37 00
-        e 0 91 2b 7f
-        e 0 91 32 7f
+        e 0 91 2b 40
+        e 0 91 32 40
         e 454 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 48 e1 00 40
         e 0 81 47 00
-        e 0 91 47 7f
+        e 0 91 47 40
         e 12 e1 00 40
         e 0 81 43 00
         e 0 81 3b 00
         e 0 81 2b 00
         e 0 81 32 00
-        e 0 91 3b 7f
-        e 0 91 43 7f
+        e 0 91 3b 40
+        e 0 91 43 40
         e 12 e1 00 40
-        e 0 91 37 7f
+        e 0 91 37 40
         e 394 81 3e 00
         e 24 e1 00 40
-        e 0 91 3d 7f
+        e 0 91 3d 40
         e 36 81 3d 00
         e 71 81 47 00
         e 24 81 3b 00
         e 48 81 37 00
         e 12 81 43 00
         e 299 e1 00 40
-        e 0 91 28 7f
+        e 0 91 28 40
         e 12 81 28 00
         e 36 e1 00 40
-        e 0 91 28 7f
+        e 0 91 28 40
         e 95 e1 00 40
         e 0 81 28 00
-        e 0 91 29 7f
+        e 0 91 29 40
         e 12 e1 00 40
         e 0 81 29 00
-        e 0 91 2a 7f
+        e 0 91 2a 40
         e 12 e1 00 40
         e 0 81 2a 00
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 167 e1 00 40
-        e 0 91 43 7f
+        e 0 91 43 40
         e 48 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 36 e1 00 40
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 36 e1 00 40
-        e 0 91 32 7f
+        e 0 91 32 40
         e 12 e1 00 40
         e 0 81 2b 00
-        e 0 91 2b 7f
-        e 0 91 37 7f
+        e 0 91 2b 40
+        e 0 91 37 40
         e 298 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 180 81 32 00
         e 23 81 3e 00
         e 24 81 2b 00
         e 12 81 3b 00
         e 251 e1 00 40
         e 0 81 43 00
-        e 0 91 43 7f
+        e 0 91 43 40
         e 12 e1 00 40
         e 0 81 37 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 48 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 12 e1 00 40
-        e 0 91 3b 7f
-        e 0 91 47 7f
+        e 0 91 3b 40
+        e 0 91 47 40
         e 48 e1 00 40
-        e 0 91 32 7f
+        e 0 91 32 40
         e 167 81 47 00
         e 12 e1 00 40
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 227 81 3e 00
         e 48 81 3b 00
         e 12 81 32 00
         e 310 e1 00 40
         e 0 81 2b 00
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 12 e1 00 40
         e 0 81 37 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 24 e1 00 40
         e 0 81 43 00
-        e 0 91 43 7f
+        e 0 91 43 40
         e 12 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 60 e1 00 40
         e 0 81 2b 00
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 36 e1 00 40
-        e 0 91 2b 7f
-        e 0 91 32 7f
+        e 0 91 2b 40
+        e 0 91 32 40
         e 23 81 2b 00
         e 192 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 12 e1 00 40
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 238 e1 00 40
         e 0 81 37 00
-        e 0 91 37 7f
+        e 0 91 37 40
         e 12 e1 00 40
         e 0 81 3b 00
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 12 e1 00 40
         e 0 81 3e 00
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 60 e1 00 40
         e 0 81 2b 00
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 24 e1 00 40
         e 0 81 43 00
-        e 0 91 43 7f
+        e 0 91 43 40
         e 346 81 3b 00
         e 60 81 3e 00
         e 24 81 32 00
@@ -1172,16 +1172,16 @@
         e 60 81 37 00
         e 0 81 43 00
         e 334 e1 00 40
-        e 0 91 3b 7f
+        e 0 91 3b 40
         e 24 e1 00 40
-        e 0 91 2b 7f
+        e 0 91 2b 40
         e 12 e1 00 40
-        e 0 91 3e 7f
+        e 0 91 3e 40
         e 12 e1 00 40
-        e 0 91 32 7f
+        e 0 91 32 40
         e 48 e1 00 40
-        e 0 91 37 7f
-        e 0 91 43 7f
+        e 0 91 37 40
+        e 0 91 43 40
         e 12 81 37 00
         e 358 81 3b 00
         e 60 81 2b 00
@@ -1327,12 +1327,13 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 0
+    SEL 1
     REC 0 0 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 70 0 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
+    MIDIBANKPROGFN "D:\Instalables\REAPER\Data\GM.reabank"
     FX 1
     TRACKID {5DF09276-1F4D-4CDC-BB52-F317C2C3D073}
     PERF 0
@@ -1398,6 +1399,462 @@
         TRACKSEL 205
         EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
         CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.125 0 0 0 0 1 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 11.07692307692306
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {14009E5E-D578-4CE9-AB0B-374312F3BC04}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AE94B9B8-0D38-4EE2-8894-9EA29E6E8AE2}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {8D70AB6B-4C2C-45A9-A228-37FA068AB04F}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 12.5769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5B17A2F3-9C1E-49AF-9688-6667AEA98274}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {907ABE70-8928-4DB8-B47E-8B3485E63A5D}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {D4AAC83F-0055-4EF9-9C0A-BF3F940229D5}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 14.0769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C81EEE2B-7104-4771-A468-87B85F4DBE4A}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {1C80CFC5-96B3-4710-B37A-CE11DFC5B51E}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {279D09A0-3558-44F0-909D-40D4A4D5A30F}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 15.5769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C827463B-22B5-440C-9F0D-AE8D0426112C}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {78B1BFC1-C095-464F-A60E-DBEE9D6EBD4E}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {9A795549-F3BD-43E4-BFEE-90FB3B4455C2}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 17.0769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {AD2D5897-428D-4B29-BE23-DF83E74CC676}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BBDAA507-BD23-4E24-B192-9E22EE7C44F2}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {F5049990-36F3-47E7-8B81-53A11812D68C}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 18.5769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D917F35F-FDF1-4B12-A03D-095B408B6CCE}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DE14B612-0261-4A6B-9AFC-C65CDF6C438E}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {75F8DF69-97D7-4A50-BF94-BFF9ED0BE5A7}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 20.0769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3CE82518-42F1-4305-8502-69E23780F883}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {70A79F57-E9F0-4F08-A433-726448FCB4E1}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {BCD8D4B3-D41A-492F-95EC-D0CB2494C21A}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 21.5769230768783
+      SNAPOFFS 0
+      LENGTH 1.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {8F4EA7DC-C29F-47E7-9650-0F7EE8DAAE72}
+      IID 38
+      NAME "05-Midi Drums CH10-MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BF676DD2-61F9-41BC-BF35-986456DCF481}
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {36B21AF9-410E-4A04-A94E-7EAC30391188}
+        E 0 b9 00 79
+        E 0 b9 20 00
+        E 0 c9 00 00
+        E 0 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 840 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 840 99 24 7f
+        E 0 99 2c 7f
+        E 120 89 24 00
+        E 0 89 2c 00
+        E 360 99 24 7f
+        E 120 89 24 00
+        E 360 99 26 7f
+        E 0 99 2c 7f
+        E 120 89 26 00
+        E 0 89 2c 00
+        E 27720 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03061998-7922-4CB7-A25E-A2110FA4B6F0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE 131 267 0 0 1
+        CFGEDITVIEW -233.354432 0.167969 80 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 189
+        EVTFILTER 512 -1 -1 -1 -1 9 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 16 1 1 10 1 1 0.5 -39 571 1881 1005 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
       >
     >
   >
