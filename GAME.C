@@ -166,7 +166,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("PAUSA", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
+                game_write("PAUSA", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
 
             break;
             case MENU_STATE:
