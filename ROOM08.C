@@ -94,6 +94,9 @@ tObject* r08_get_object_info(uint8_t numObject)
 void r08_room_init()
 {
     game_fade_in();
+
+    //if (is_game_flag(PLAYER_ROCKING_FLAG))
+        start_script(R08_EPILOGUE_SCRIPT);
 }
 
 //global funcion to update room
@@ -980,6 +983,63 @@ void r08_update_room_script()
                         set_game_flag(NERD_COSTUME_PLAYING_FLAG);
                         change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
                         roomScript.step++;
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case R08_EPILOGUE_SCRIPT:
+                switch (roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_say_actor("­Vamos!", &r08_dialogActor);
+                    break;
+                    case 1:
+                        script_wait(10);
+                    break;
+                    case 2:
+                        begin_script();
+                        script_say_actor("­Morid malditos!", &r08_dialogActor);
+                    break;
+                    case 3:
+                        script_wait(10);
+                    break;
+                    case 4:
+                        begin_script();
+                        script_say_actor("Que mis enemigos sufran mi odio", &r08_dialogActor);
+                    break;
+                    case 5:
+                        script_wait(10);
+                    break;
+                    case 6:
+                        begin_script();
+                        script_say_actor("Os odio tanto como a mis compa¤eros de clase", &r08_dialogActor);
+                    break;
+                    case 7:
+                        script_wait(5);
+                    break;
+                    case 8:
+                        begin_script();
+                        script_say_actor("Y a los profesores...", &r08_dialogActor);
+                    break;
+                    case 9:
+                        script_wait(5);
+                    break;
+                    case 10:
+                        begin_script();
+                        script_say_actor("Y a aquella chica que me llam¢ raro", &r08_dialogActor);
+                    break;
+                    case 11:
+                        script_wait(5);
+                    break;
+                    case 12:
+                        begin_script();
+                        script_say_actor("Un dia voy a llevar un fusil al instituto y voy a...", &r08_dialogActor);
+                    break;
+                    case 13:
+                        script_wait(10);
                     break;
                     default:
                         end_script();

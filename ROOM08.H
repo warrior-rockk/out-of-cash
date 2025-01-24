@@ -43,6 +43,7 @@
 
 //define custom scripts (>256)
 #define R08_COSTUME_COMPLETE_SCRIPT 257
+#define R08_EPILOGUE_SCRIPT         258
 
 //hotspot code room enumeration
 enum r08_hotspotCode{

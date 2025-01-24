@@ -1,6 +1,10 @@
 # TO-DO
 
 - [ ] Gameplay:
+    * nerd costume playing talk animation
+    * nerd computer hangs
+    * nerd animation on windows hangs
+    * nerd playing animation move mouse and keyboard
     * more look descriptions on stationery?
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors

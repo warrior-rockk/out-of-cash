@@ -108,7 +108,11 @@ void r13_update_room_script()
                     break;
                     case 3:
                         set_game_flag(PLAYER_ROCKING_FLAG);
-                        script_wait(10);
+                        script_wait(30);
+                    break;
+                    case 4:
+                        change_room_pos(COMPUTER_ROOM_NUM, 350, 200);
+                        end_script();
                     break;
                     default:
                         end_script();
