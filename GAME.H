@@ -183,7 +183,6 @@ struct actualRoom
     uint8_t musicId;
     DATAFILE_INDEX *musicDataFileIndex;
     DATAFILE *musicDataFile;
-    MIDI    *music;
 } actualRoom;
 
 //game structure
@@ -453,4 +452,6 @@ void sfx_destroy();
 void sfx_update();
 void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq);
 
+void play_music(uint16_t musicId, int loop);
+void stop_music();
 #endif

@@ -15,6 +15,7 @@
 #include "GDATA.H"
 #include "IDATA.H"
 #include "SDATA.H"
+#include "MDATA.H"
 
 int main()
 {
@@ -29,9 +30,8 @@ int main()
         game.state = PLAYING_STATE;
     #endif
 
-    actualRoom.musicDataFile  = load_datafile_object_indexed(actualRoom.musicDataFileIndex, 3);
-    play_midi((MIDI *)actualRoom.musicDataFile[0].dat, 0);
-                
+    play_music(md_warcomLogo, 0);
+
     //main game loop
     while (!game.exit)
     {
@@ -373,6 +373,13 @@ void game_free_resources()
     for (int i = 1; i <= 5; i++)
         destroy_font(gameFont[i]);
 
+    //free music resources
+    if (actualRoom.musicDataFile)
+    {
+        TRACE("Unload music data file object\n");
+        unload_datafile_object(actualRoom.musicDataFile);
+    }
+    
     TRACE("Game resources free completed\n");
 }
 
@@ -440,15 +447,13 @@ void game_update()
     switch (game.state)
     {
         case LOGO_STATE:
-            if (gameTick)
-                seq.timeCounter++;
-            if (seq.timeCounter >= 55 || gameKeys[G_KEY_EXIT].pressed)
+            if (midi_pos < 0 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
                 sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
-                stop_midi();
+                stop_music();
             }
         break;
         case DOS_LOGO_STATE:
@@ -485,6 +490,7 @@ void game_update()
                 game_fade_out(FADE_DEFAULT_SPEED);
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
+                play_music(md_title, -1);
             }
         break;
         case INTRO_STATE:
@@ -493,18 +499,16 @@ void game_update()
                 game_fade_out(FADE_DEFAULT_SPEED);
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
+                play_music(md_title, -1);
             }
             else
                 check_room_changed();
         break;
         case TITLE_STATE:
-            if (gameKeys[G_KEY_EXIT].pressed)
-            {
-                game.state = EXIT_STATE;
-            }
-            else if (cursor.click)
+            if (cursor.click)
             {
                 game_fade_out(FADE_SLOW_SPEED);
+                stop_music();
                 game_init();
                 change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
                 game.state = PLAYING_STATE;
@@ -570,6 +574,7 @@ void game_update()
             game_fade_out(FADE_DEFAULT_SPEED);
             game_init();
             game.state = LOGO_STATE;
+            play_music(md_warcomLogo, 0);
         break;
         
     }
@@ -1722,21 +1727,11 @@ void room_load(uint8_t roomNumber)
     //check if room music has to need changed
     if (actualRoom.musicId != roomData[game.actualRoom].roomMusicId)
     {
-        //stop actual music
-        stop_midi();
-        //free music resources
-        unload_datafile_object(actualRoom.musicDataFile);
-        actualRoom.music            = NULL;
-
-        //load room music
-        actualRoom.musicDataFile    = load_datafile_object_indexed(actualRoom.musicDataFileIndex, roomData[game.actualRoom].roomMusicId);
-        actualRoom.music            = (MIDI *)actualRoom.musicDataFile[0].dat;
-
         //assign actual room music id
         actualRoom.musicId = roomData[game.actualRoom].roomMusicId;
 
         //play room music
-        play_midi(actualRoom.music, -1);
+        play_music(0, -1);
     }
 }
 
@@ -1996,7 +1991,7 @@ void gui_update()
             break;
         case GUI_EXIT_TITLE_STATE:
             game.state = RESTART_STATE;
-            stop_midi();
+            stop_music();
             stop_sound();
             game_fade_out(FADE_DEFAULT_SPEED);
             break;
@@ -2350,6 +2345,29 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
     //set flag
     sfx[voice].playing = true;
     sfx[voice].finished = false;
+}
+
+//function to play midi music
+void play_music(uint16_t musicId, int loop)
+{
+    //stop actual music
+    stop_music();
+
+    //load index music index
+    TRACE("Load music data file object\n");
+    actualRoom.musicDataFile  = load_datafile_object_indexed(actualRoom.musicDataFileIndex, musicId);
+    
+    //play midi
+    TRACE("Play midi music\n");
+    play_midi((MIDI *)actualRoom.musicDataFile[0].dat, loop);
+}
+
+//function to stop midi music
+void stop_music()
+{
+    //stop actual music
+    TRACE("Stopping midi\n");
+    stop_midi();
 }
 
 END_OF_MAIN()
