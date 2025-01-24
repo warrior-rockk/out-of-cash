@@ -95,7 +95,7 @@ void r08_room_init()
 {
     game_fade_in();
 
-    //if (is_game_flag(PLAYER_ROCKING_FLAG))
+    if (is_game_flag(PLAYER_ROCKING_FLAG))
         start_script(R08_EPILOGUE_SCRIPT);
 }
 
@@ -1042,6 +1042,7 @@ void r08_update_room_script()
                         script_wait(10);
                     break;
                     default:
+                        set_game_flag(END_FINISH_FLAG);
                         end_script();
                     break;
                 }

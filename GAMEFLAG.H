@@ -102,6 +102,7 @@ enum gameFlags{
     PLAYER_ROCKING_FLAG,
     NERD_COSTUME_FLAG,
     NERD_COSTUME_PLAYING_FLAG,
+    END_FINISH_FLAG,
 };
 
 //definition of global game numeric vars index

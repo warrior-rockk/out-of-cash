@@ -564,7 +564,7 @@ void game_update()
             }
         break;
         case END_STATE:
-            if (gameKeys[G_KEY_EXIT].pressed)
+            if (gameKeys[G_KEY_EXIT].pressed || is_game_flag(END_FINISH_FLAG))
             {
                 game.state = RESTART_STATE;
             }
@@ -572,7 +572,7 @@ void game_update()
                 check_room_changed();
         break;
         case RESTART_STATE:
-            game_fade_out(FADE_DEFAULT_SPEED);
+            game_fade_out(FADE_SLOW_SPEED);
             game_init();
             game.state = LOGO_STATE;
             play_music(md_warcomLogo, 0);
