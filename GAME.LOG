@@ -18,7 +18,6 @@ Load music data file object
 Play midi music
 Change game state from 0 to 5
 Change game state from 5 to 8
-Change from room 1 to room 8
 Free actual room datafile resources
 Load room datafile: R08DATA.DAT
 Change game state from 8 to 5
@@ -26,7 +25,6 @@ Change game state from 5 to 8
 Free actual room datafile resources
 Load room datafile: R04DATA.DAT
 Change game state from 8 to 5
-Adding numObject 15 to inventory array position 26
 Change game state from 5 to 10
 Change from room 4 to room 13
 Free actual room datafile resources

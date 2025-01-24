@@ -372,6 +372,17 @@ struct seq
     uint8_t step;
 } seq;
 
+//credits struct
+#define CREDITS_NUM             6
+#define CREDITS_LINE_SPACING    14
+#define CREDITS_GROUP_SPACING   22
+struct credits
+{
+    char line[CREDITS_NUM][20];
+    uint8_t color[CREDITS_NUM];
+    int16_t pos_y[CREDITS_NUM];
+} credits;
+
 //global vars
 static volatile int tick;
 static BITMAP *cursorImage;
@@ -455,4 +466,7 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq);
 
 void play_music(uint16_t musicId, int loop);
 void stop_music();
+
+void credits_init();
+void credits_draw();
 #endif

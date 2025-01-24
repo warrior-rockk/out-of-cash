@@ -111,6 +111,14 @@ void r13_update_room_script()
                         script_wait(30);
                     break;
                     case 4:
+                        set_game_flag(START_CREDITS_FLAG);
+                        roomScript.step++;
+                    break;
+                    case 5:
+                        if (is_game_flag(END_CREDITS_FLAG))
+                            roomScript.step++;
+                    break;
+                    case 6:
                         change_room_pos(COMPUTER_ROOM_NUM, 350, 200);
                         end_script();
                     break;

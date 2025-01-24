@@ -199,7 +199,8 @@ int main()
                 room_draw();
                 player_draw();
                 //room_front_layer_draw();
-                game_write("GRACIAS POR JUGAR", C_X, C_Y, makecol(GAME_TEXT_COLOR), actualFont);
+                if (is_game_flag(START_CREDITS_FLAG))
+                    credits_draw();
                 msg_draw();
                 cursor_draw();
             break;
@@ -538,6 +539,7 @@ void game_update()
             else if (is_game_flag(GAME_END_FLAG))
             {
                 game_fade_out(FADE_DEFAULT_SPEED);
+                credits_init();
                 change_room(ENDING_ROOM_NUM);
                 game.state = END_STATE;
             }
@@ -569,15 +571,16 @@ void game_update()
                 game.state = RESTART_STATE;
             }
             else
+            {
                 check_room_changed();
+            }
         break;
         case RESTART_STATE:
             game_fade_out(FADE_SLOW_SPEED);
             game_init();
             game.state = LOGO_STATE;
             play_music(md_warcomLogo, 0);
-        break;
-        
+        break;        
     }
 
     if (game.state != game.prevState)
@@ -2370,6 +2373,49 @@ void stop_music()
     //stop actual music
     TRACE("Stopping midi\n");
     stop_midi();
+}
+
+//function to init credits
+void credits_init()
+{
+    strcpy(credits.line[0], "Programaci¢n");
+    strcpy(credits.line[1], "Warrior");
+    strcpy(credits.line[2], "Gr ficos");
+    strcpy(credits.line[3], "Warrior");
+    strcpy(credits.line[4], "M£sica");
+    strcpy(credits.line[5], "Warrior");
+    
+    for (int i = 0; i < CREDITS_NUM; i+=2)
+    {
+        if (i == 0)
+        {
+            credits.pos_y[i] = RES_Y + 10;
+        }
+        else
+            credits.pos_y[i] = credits.pos_y[i - 1] + CREDITS_GROUP_SPACING;
+    
+        credits.pos_y[i + 1] = credits.pos_y[i] + CREDITS_LINE_SPACING;
+        
+        credits.color[i]    = GAME_TEXT_COLOR;
+        credits.color[i+1]  = WHITE_COLOR;    
+    }
+}
+
+//function to draw credits
+void credits_draw()
+{
+    for (int i = 0; i < CREDITS_NUM; i++)
+    {
+        if (credits.pos_y[i] > - 12)
+        {
+            credits.pos_y[i] -= gameTick;
+            if (credits.pos_y[i] <= 248)
+                game_write(credits.line[i], C_X, credits.pos_y[i], credits.color[i], 4);
+        }
+    }
+
+    if (credits.pos_y[CREDITS_NUM - 1] <= -12)
+        set_game_flag(END_CREDITS_FLAG);
 }
 
 END_OF_MAIN()
