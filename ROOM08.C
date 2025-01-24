@@ -919,29 +919,39 @@ void r08_update_room_script()
                         roomScript.step++;
                     break;
                     case 4:
-                        script_play_sound(sd_approved);
+                        script_say_actor("­Ha estado chupado!", &r08_dialogActor);
                     break;
                     case 5:
-                        script_say_actor("Ha estado chupado. ­Examen aprobado!", &r08_dialogActor);
-                        set_game_flag(HISTORY_APPROVED_FLAG);
+                        script_say_actor("Con este disfraz he podido hacer el examen por ti", &r08_dialogActor);
                     break;
                     case 6:
+                        script_play_sound(sd_approved);
+                    break;
+                    case 7:
+                        script_say_actor("­Examen aprovado!", &r08_dialogActor);
+                        set_game_flag(HISTORY_APPROVED_FLAG);
+                    break;
+                    case 8:
                         stop_player_animation();
                         roomScript.step++;
                     break;
-                    case 7:
-                        script_say("Esto es demasiado raro...");
+                    case 9:
+                        script_say("Emm... ­Gracias!");
                     break;
-                    case 8:
+                    case 10:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             play_sound(sd_completed);
                         roomScript.step++;
                     break;
-                    case 9:
+                    case 11:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             script_say("­Genial! ­Ya he aprobado todo!");
                         else
-                            end_script();
+                            roomScript.step++;
+                    break;
+                    case 12:
+                        change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
+                        roomScript.step++;
                     break;
                     default:
                         end_script();

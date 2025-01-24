@@ -389,7 +389,7 @@ void game_init()
     //default game config (each savegame file stores custom config)
     gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 20;
-    gameConfig.musicVolume  = 200;
+    gameConfig.musicVolume  = 160;
     gameConfig.soundVolume  = 200;
 
     //sets audio config
