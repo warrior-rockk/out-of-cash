@@ -6,7 +6,7 @@
     * more dialog lines on actors
     * take animation and position costumes to nerd
     
-- [ ] no click bypass text near to end time
+
 - [ ] No twice replace_unicode (game_write and say_actor)
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
@@ -45,6 +45,7 @@
 internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 
+- [X] no click bypass text near to end time
 - [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [X] Free fonts
 - [X] Delay on text dialog selection scroll?

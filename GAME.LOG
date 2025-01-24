@@ -17,16 +17,6 @@ Stopping midi
 Load music data file object
 Play midi music
 Change game state from 0 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
-Change game state from 8 to 5
-Change from room 8 to room 6
-Free actual room datafile resources
-Load room datafile: R06DATA.DAT
-Change from room 6 to room 8
-Free actual room datafile resources
-Load room datafile: R08DATA.DAT
 Exiting game
 Freeing game resources
 Destroying data file index

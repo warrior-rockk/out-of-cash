@@ -1,3 +1,4 @@
+
 //on compiler flags
 //#define DEBUGMODE
 
@@ -1523,7 +1524,7 @@ void msg_update()
             //convert to 100ms base
             msgDuration *= 10;
 
-            if (msg.msgTime >= msgDuration || cursor.click)
+            if (msg.msgTime >= msgDuration || (cursor.click && msg.msgTime > TEXT_MIN_TIME_BYPASS))
             {
                 msg.msgFinished = true;
                 msg.actorTalk->talking = false;

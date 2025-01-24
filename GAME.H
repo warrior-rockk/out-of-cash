@@ -32,8 +32,8 @@
 #define GAME_TITLE_POS_Y            70
 #define GAME_TITLE_ESP_POS_Y        120
 #define GAME_TITLE_FOOTER_POS_Y     175
-//Game
 
+//Game
 #define MAX_GAME_FLAGS          32
 #define MAX_GAME_VARS           10
 #define SAVEGAME_FILE_VERSION   1
@@ -111,6 +111,7 @@
 #define MAX_MSG_LINE_LENGTH     20
 #define MSG_LINE_SPACING        10
 #define TEXT_ACTOR_MARGIN       10
+#define TEXT_MIN_TIME_BYPASS    4 //400ms
 
 //Text colors
 #define GAME_TEXT_COLOR         255,0,255
