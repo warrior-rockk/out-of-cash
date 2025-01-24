@@ -150,6 +150,10 @@ void r08_update_room_objects()
         {
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_TALK_PLAYING);
         }
+        else if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
+        {
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_COSTUME_PLAYING);
+        }
         else
         {
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_PLAYING);
@@ -663,9 +667,18 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Este chaval es el rarito del instituto");
+                                if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
+                                    script_say("Supuestamente est  disfrazado de mi");
+                                else
+                                    script_say("Este chaval es el rarito del instituto");
                                 break;
                             case 1:
+                                if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
+                                {
+                                    script_say("Creo que esto va a ser material para mis pesadillas");
+                                    end_script();
+                                }
+                                else
                                 script_say("Lo £nico que le interesa son las guerras hist¢ricas y las grandes haza¤as");
                             break;
                             case 2:
@@ -900,13 +913,16 @@ void r08_update_room_script()
                             is_game_flag(JEANS_COSTUME_FLAG)
                             )
                         {
-                            script_say_actor("Creo que ya tengo todo lo necesario para el disfraz", &r08_dialogActor);
+                            set_game_flag(NERD_SIDE_FLAG);
+                            script_say_actor("Creo que ya tengo todo lo que necesito", &r08_dialogActor);
                         }
                         else
                             end_script();
                     break;
                     case 1:
                         game_fade_out(FADE_SLOW_SPEED);
+                        clear_game_flag(NERD_SIDE_FLAG);
+                        set_player_position(216, 104);
                         roomScript.step++;
                     break;
                     case 2:
@@ -916,40 +932,52 @@ void r08_update_room_script()
                     break;
                     case 3:
                         game_fade_in();
-                        roomScript.step++;
+                        script_wait(10);
                     break;
                     case 4:
                         script_say_actor("­Ha estado chupado!", &r08_dialogActor);
                     break;
                     case 5:
-                        script_say_actor("Con este disfraz he podido hacer el examen por ti", &r08_dialogActor);
+                        script_wait(6);
                     break;
                     case 6:
-                        script_play_sound(sd_approved);
+                        script_say_actor("Disfrazado as¡ he podido hacer el examen por ti", &r08_dialogActor);
                     break;
                     case 7:
-                        script_say_actor("­Examen aprovado!", &r08_dialogActor);
-                        set_game_flag(HISTORY_APPROVED_FLAG);
+                        script_play_sound(sd_approved);
                     break;
                     case 8:
-                        stop_player_animation();
-                        roomScript.step++;
+                        script_say_actor("­Asignatura aprobada!", &r08_dialogActor);
+                        set_game_flag(HISTORY_APPROVED_FLAG);
                     break;
                     case 9:
-                        script_say("Emm... ­Gracias!");
+                        stop_player_animation();
+                        script_say("Emm...");
                     break;
                     case 10:
+                        script_say("Gracias");
+                    break;
+                    case 11:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             play_sound(sd_completed);
                         roomScript.step++;
                     break;
-                    case 11:
+                    case 12:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             script_say("­Genial! ­Ya he aprobado todo!");
                         else
                             roomScript.step++;
                     break;
-                    case 12:
+                    case 13:
+                        change_player_dir(DIR_RIGHT);
+                        script_say("Casi que me voy de aqu¡ antes de que esto se ponga raro");
+                    break;
+                    case 14:
+                        script_move_player(320, 104);
+                    break;
+                    case 15:
+                        clear_game_flag(NERD_COSTUME_FLAG);
+                        set_game_flag(NERD_COSTUME_PLAYING_FLAG);
                         change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
                         roomScript.step++;
                     break;
