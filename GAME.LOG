@@ -17,6 +17,31 @@ Stopping midi
 Load music data file object
 Play midi music
 Change game state from 0 to 5
+Change game state from 5 to 8
+Free actual room datafile resources
+Load room datafile: R08DATA.DAT
+Change game state from 8 to 5
+Change from room 8 to room 6
+Free actual room datafile resources
+Load room datafile: R06DATA.DAT
+Change game state from 5 to 8
+Original freq: 11025Hz | Variation: -9% | New freq: 10032Hz
+Original freq: 22050Hz | Variation: +8% | New freq: 23814Hz
+Original freq: 11025Hz | Variation: -16% | New freq: 9261Hz
+Original freq: 11025Hz | Variation: +19% | New freq: 13119Hz
+Original freq: 11025Hz | Variation: +11% | New freq: 12237Hz
+Original freq: 11025Hz | Variation: +5% | New freq: 11576Hz
+Original freq: 22050Hz | Variation: +13% | New freq: 24916Hz
+Original freq: 11025Hz | Variation: -6% | New freq: 10363Hz
+Original freq: 11025Hz | Variation: -12% | New freq: 9702Hz
+Original freq: 22050Hz | Variation: -7% | New freq: 20506Hz
+Original freq: 11025Hz | Variation: +8% | New freq: 11907Hz
+Original freq: 11025Hz | Variation: +3% | New freq: 11355Hz
+Original freq: 11025Hz | Variation: +12% | New freq: 12348Hz
+Original freq: 11025Hz | Variation: -9% | New freq: 10032Hz
+Original freq: 22050Hz | Variation: +7% | New freq: 23593Hz
+Original freq: 22050Hz | Variation: +4% | New freq: 22932Hz
+Original freq: 11025Hz | Variation: -0% | New freq: 11025Hz
 Exiting game
 Freeing game resources
 Destroying data file index

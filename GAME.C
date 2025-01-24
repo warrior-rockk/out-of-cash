@@ -1470,15 +1470,16 @@ void debug_draw()
 //draws the status bar
 void status_bar_draw()
 {
-    //check if the verb is USE_WITH to print object inventory or not
-    if (cursor.selectedVerb == USE_WITH)
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
-    else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s a %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
-    else
-        textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
-
-
+    if (!roomScript.active)
+    {
+        //check if the verb is USE_WITH to print object inventory or not
+        if (cursor.selectedVerb == USE_WITH)
+            textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s con %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
+        else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
+            textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s a %s", verbName[cursor.selectedVerb], cursor.invObjName, cursor.objectName);
+        else
+            textprintf_centre_ex(buffer, font, STATUS_BAR_X, STATUS_BAR_TEXT_Y, makecol(255,255,255), -1, "%s %s", verbName[cursor.selectedVerb], cursor.objectName);
+    }
 }
 
 //function to init msg structure
