@@ -116,7 +116,28 @@ void r08_room_update()
 void r08_update_room_objects()
 {
     //nerd object
-    if (is_game_flag(NERD_COSTUME_FLAG))
+    if (is_game_flag(NERD_ERROR_2_FLAG))
+    {
+        r08_object[R08_NERD_OBJ_ID].x = 115;
+        r08_object[R08_NERD_OBJ_ID].y = 100;
+
+        if (r08_dialogActor.talking)
+        {
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_ERROR_TALK);
+        }
+        else
+        {
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_ERROR_IDLE);
+        }
+    }
+    else if (is_game_flag(NERD_ERROR_FLAG))
+    {
+        r08_object[R08_NERD_OBJ_ID].x = 115;
+        r08_object[R08_NERD_OBJ_ID].y = 100;
+
+        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_ERROR);
+    }
+    else if (is_game_flag(NERD_COSTUME_FLAG))
     {
         r08_object[R08_NERD_OBJ_ID].x = 135;
         r08_object[R08_NERD_OBJ_ID].y = 106;
@@ -1039,7 +1060,21 @@ void r08_update_room_script()
                         script_say_actor("Un dia voy a llevar un fusil al instituto y voy a...", &r08_dialogActor);
                     break;
                     case 13:
+                        set_game_flag(NERD_ERROR_FLAG);
+                        script_play_sound(sd_w95Error);
+                    break;
+                    case 14:
                         script_wait(10);
+                    break;
+                    case 15:
+                        set_game_flag(NERD_ERROR_2_FLAG);
+                        script_wait(5);
+                    break;
+                    case 16:
+                        script_say_actor("Pero sobretodo, odio a Windows", &r08_dialogActor);
+                    break;
+                    case 17:
+                        script_wait(20);
                     break;
                     default:
                         set_game_flag(END_FINISH_FLAG);
