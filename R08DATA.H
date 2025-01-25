@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R08DATA.DAT */
-/* Date: Thu Jan 23 19:22:17 2025 */
+/* Date: Sat Jan 25 09:01:29 2025 */
 /* Do not hand edit! */
 
 #define r08d_image                       0        /* BMP  */
@@ -38,5 +38,6 @@
 #define r08d_objCostumeTalk2             32       /* BMP  */
 #define r08d_objCostumeTalk3             33       /* BMP  */
 #define r08d_objCostumeTalk4             34       /* BMP  */
-#define r08d_COUNT                       35
+#define r08d_objTake                     35       /* BMP  */
+#define r08d_COUNT                       36
 
