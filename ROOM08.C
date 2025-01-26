@@ -974,62 +974,68 @@ void r08_update_room_script()
                             end_script();
                     break;
                     case 1:
+                        script_say_actor("Voy a prepararme el disfraz y me presentar‚ a tu examen", &r08_dialogActor);
+                    break;
+                    case 2:
                         game_fade_out(FADE_SLOW_SPEED);
                         clear_game_flag(NERD_SIDE_FLAG);
                         set_player_position(216, 104);
                         roomScript.step++;
                     break;
-                    case 2:
+                    case 3:
                         script_wait(20);
                         set_game_flag(NERD_COSTUME_FLAG);
                         play_player_animation(ANIM_PLY_SURPRISE);
                     break;
-                    case 3:
+                    case 4:
                         game_fade_in();
                         script_wait(10);
                     break;
-                    case 4:
+                    case 5:
                         script_say_actor("­Ha estado chupado!", &r08_dialogActor);
                     break;
-                    case 5:
+                    case 6:
                         script_wait(6);
                     break;
-                    case 6:
-                        script_say_actor("Disfrazado as¡ he podido hacer el examen por ti", &r08_dialogActor);
-                    break;
                     case 7:
-                        script_play_sound(sd_approved);
+                        script_say_actor("Disfrazado as¡, nadie se ha dado cuenta de que no eras t£", &r08_dialogActor);
                     break;
                     case 8:
-                        script_say_actor("­Asignatura aprobada!", &r08_dialogActor);
-                        set_game_flag(HISTORY_APPROVED_FLAG);
+                        script_say("Salta a la vista");
                     break;
                     case 9:
+                        script_play_sound(sd_approved);
+                    break;
+                    case 10:
+                        script_say_actor("­Tienes la asignatura aprobada!", &r08_dialogActor);
+                        set_game_flag(HISTORY_APPROVED_FLAG);
+                    break;
+                    case 11:
                         stop_player_animation();
                         script_say("Emm...");
                     break;
-                    case 10:
+                    case 12:
                         script_say("Gracias");
                     break;
-                    case 11:
+                    case 13:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             play_sound(sd_completed);
                         roomScript.step++;
                     break;
-                    case 12:
+                    case 14:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             script_say("­Genial! ­Ya he aprobado todo!");
                         else
                             roomScript.step++;
                     break;
-                    case 13:
+                    case 15:
                         change_player_dir(DIR_RIGHT);
                         script_say("Casi que me voy de aqu¡ antes de que esto se ponga raro");
                     break;
-                    case 14:
+                    case 16:
                         script_move_player(320, 104);
                     break;
-                    case 15:
+                    case 17:
                         clear_game_flag(NERD_COSTUME_FLAG);
                         set_game_flag(NERD_COSTUME_PLAYING_FLAG);
                         change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
@@ -1059,7 +1065,7 @@ void r08_update_room_script()
                     break;
                     case 4:
                         begin_script();
-                        script_say_actor("Que mis enemigos sufran mi odio", &r08_dialogActor);
+                        script_say_actor("Odio a todos mis enemigos", &r08_dialogActor);
                     break;
                     case 5:
                         script_wait(10);
@@ -1101,7 +1107,7 @@ void r08_update_room_script()
                         script_wait(5);
                     break;
                     case 16:
-                        script_say_actor("Pero sobretodo, odio Windows", &r08_dialogActor);
+                        script_say_actor("Pero sobretodo odio Windows", &r08_dialogActor);
                     break;
                     case 17:
                         script_wait(20);

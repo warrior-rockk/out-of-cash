@@ -520,43 +520,47 @@ void r11_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_say("Disculpe profesor...");
+                                            script_move_player(140, 106);
                                     break;
                                     case 1:
-                                        script_say("Aqu¡ tiene el trabajo sobre el deporte");
+                                        change_player_dir(DIR_RIGHT);
+                                        script_say("Disculpe profesor...");
                                     break;
                                     case 2:
-                                        script_move_player_to_target();
+                                        script_say("Aqu¡ tiene el trabajo sobre el deporte");
                                     break;
                                     case 3:
+                                        script_move_player(165, 106);
+                                    break;
+                                    case 4:
                                         object_play_animation(&r11_object[R11_TEACHER_OBJ_ID], r11d_objTalk7, r11_animations, R11_ANIM_TAKE);
                                         script_player_take_state();
                                     break;
-                                    case 4:
-                                        script_remove_inv_object(id_fullFolder);
-                                    break;
                                     case 5:
-                                        roomScript.step++;
+                                        script_remove_inv_object(id_fullFolder);
                                     break;
                                     case 6:
                                         roomScript.step++;
                                     break;
                                     case 7:
-                                        script_say_actor("Muy bien, muy buen trabajo", &r11_dialogActor);
+                                        roomScript.step++;
                                     break;
                                     case 8:
-                                        script_say_actor("Tiene usted la asignatura aprobada", &r11_dialogActor);
+                                        script_say_actor("Muy bien, muy buen trabajo", &r11_dialogActor);
                                     break;
                                     case 9:
+                                        script_say_actor("Tiene usted la asignatura aprobada", &r11_dialogActor);
+                                    break;
+                                    case 10:
                                         script_say_actor("Y que se mejore", &r11_dialogActor);
                                         set_game_flag(PE_APPROVED_FLAG);
                                     break;
-                                    case 10:
+                                    case 11:
                                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                                             play_sound(sd_completed);
                                         roomScript.step++;
                                     break;
-                                    case 11:
+                                    case 12:
                                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                                             script_say("­Genial! ­Ya he aprobado todo!");
                                         else

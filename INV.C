@@ -549,8 +549,10 @@ void inventory_update()
                                 {
                                     if (is_game_flag(PE_APPROVED_FLAG))
                                         script_say("Historia");
-                                    else
+                                    else if (is_game_flag(MATH_APPROVED_FLAG))
                                         script_say("e Historia");
+                                    else
+                                        script_say("Historia");
                                 }
                                 else
                                     roomScript.step++;

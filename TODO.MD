@@ -1,14 +1,13 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * incorrect look califications only history approved
-    * correct position teacher take
     * more look descriptions on stationery?
-    * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
-    * take animation and position costumes to nerd
+    * open oven and fridge kitchen?
+    * open school doors?
     
 
+- [ ] Bug on load game when actor talking
 - [ ] No twice replace_unicode (game_write and say_actor)
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
