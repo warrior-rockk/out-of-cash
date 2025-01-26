@@ -76,6 +76,7 @@ tObject* r11_get_object_info(uint8_t numObject)
 //function to init room
 void r11_room_init()
 {
+    r11_dialogActor.talking = false;
     game_fade_in();
 }
 

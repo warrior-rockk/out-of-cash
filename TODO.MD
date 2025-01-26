@@ -5,9 +5,7 @@
     * more dialog lines on actors
     * open oven and fridge kitchen?
     * open school doors?
-    
 
-- [ ] Bug on load game when actor talking
 - [ ] No twice replace_unicode (game_write and say_actor)
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
@@ -46,6 +44,7 @@
 internal grabber number def (same for gui)
 - [ ] BUG: player walks slow on game start?
 
+- [X] Bug on load game when actor talking
 - [X] no click bypass text near to end time
 - [X] On exit: destroy bitmaps and game modules exit (deallocate voices, etc..)
 - [X] Free fonts

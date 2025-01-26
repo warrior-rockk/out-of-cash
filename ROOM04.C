@@ -123,6 +123,7 @@ tObject* r04_get_object_info(uint8_t numObject)
 //function to init room
 void r04_room_init()
 {
+    r04_dialogActor.talking = false;
     game_fade_in();
 }
 

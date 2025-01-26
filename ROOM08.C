@@ -93,6 +93,8 @@ tObject* r08_get_object_info(uint8_t numObject)
 //function to init room
 void r08_room_init()
 {
+    r08_dialogActor.talking = false;
+    
     game_fade_in();
 
     if (is_game_flag(PLAYER_ROCKING_FLAG))

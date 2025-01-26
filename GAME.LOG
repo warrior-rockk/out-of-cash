@@ -18,20 +18,9 @@ Load music data file object
 Play midi music
 Change game state from 0 to 5
 Change game state from 5 to 8
+Change from room 1 to room 5
 Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
-Change game state from 8 to 5
-Change game state from 5 to 8
-Free actual room datafile resources
-Load room datafile: R11DATA.DAT
+Load room datafile: R05DATA.DAT
 Change game state from 8 to 5
 Exiting game
 Freeing game resources

@@ -127,6 +127,7 @@ tObject* r05_get_object_info(uint8_t numObject)
 //function to init room
 void r05_room_init()
 {
+    r05_dialogActor.talking = false;
     start_script(R05_WELLCOME_SCRIPT);
     game_fade_in();
 }
