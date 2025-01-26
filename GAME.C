@@ -72,7 +72,7 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("En una ciudad cualquiera de 1994", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("A¤o 1991 de una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
                         game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
@@ -2384,6 +2384,8 @@ void credits_init()
     strcpy(credits.line[3], "Warrior");
     strcpy(credits.line[4], "M£sica");
     strcpy(credits.line[5], "Warrior");
+    strcpy(credits.line[6], "Sonido");
+    strcpy(credits.line[7], "Warrior");
     
     for (int i = 0; i < CREDITS_NUM; i+=2)
     {
@@ -2396,7 +2398,7 @@ void credits_init()
     
         credits.pos_y[i + 1] = credits.pos_y[i] + CREDITS_LINE_SPACING;
         
-        credits.color[i]    = GAME_TEXT_COLOR;
+        credits.color[i]    = PURPLE_COLOR;
         credits.color[i+1]  = WHITE_COLOR;    
     }
 }
@@ -2414,7 +2416,7 @@ void credits_draw()
         }
     }
 
-    //if (credits.pos_y[CREDITS_NUM - 1] <= -12)
+    if (credits.pos_y[CREDITS_NUM - 1] <= -12)
         set_game_flag(END_CREDITS_FLAG);
 }
 

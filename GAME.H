@@ -23,6 +23,7 @@
 #define TRANSPARENT_COLOR   1
 #define BLACK_COLOR         251
 #define WHITE_COLOR         31
+#define PURPLE_COLOR        118
 #define BORDER_COLOR        BLACK_COLOR
 
 //logos
@@ -373,7 +374,7 @@ struct seq
 } seq;
 
 //credits struct
-#define CREDITS_NUM             6
+#define CREDITS_NUM             8
 #define CREDITS_LINE_SPACING    14
 #define CREDITS_GROUP_SPACING   22
 struct credits
