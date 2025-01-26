@@ -2414,7 +2414,7 @@ void credits_draw()
         }
     }
 
-    if (credits.pos_y[CREDITS_NUM - 1] <= -12)
+    //if (credits.pos_y[CREDITS_NUM - 1] <= -12)
         set_game_flag(END_CREDITS_FLAG);
 }
 

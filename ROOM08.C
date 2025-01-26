@@ -151,6 +151,16 @@ void r08_update_room_objects()
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_COSTUME_IDLE);
         }
     }
+    else if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
+    {
+        r08_object[R08_NERD_OBJ_ID].x = 115;
+        r08_object[R08_NERD_OBJ_ID].y = 100;
+        
+        if (r08_dialogActor.talking)
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_COSTUME_PLAY_TALK);
+        else
+            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_COSTUME_PLAYING);
+    }
     else if (is_game_flag(NERD_SIDE_FLAG))
     {
         r08_object[R08_NERD_OBJ_ID].x = 115;
@@ -169,14 +179,10 @@ void r08_update_room_objects()
     {
         r08_object[R08_NERD_OBJ_ID].x = 115;
         r08_object[R08_NERD_OBJ_ID].y = 100;
-        
+
         if (r08_dialogActor.talking)
         {
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_TALK_PLAYING);
-        }
-        else if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
-        {
-            object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_COSTUME_PLAYING);
         }
         else
         {
@@ -768,13 +774,21 @@ void r08_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("­Perfecto! Usaremos esto para el disfraz", &r08_dialogActor);
+                                            script_move_player(186, 130);
                                     break;
                                     case 1:
+                                        change_player_dir(DIR_LEFT);
+                                        script_player_take_state();
+                                        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TAKE);
+                                    break;
+                                    case 2:
                                         script_remove_inv_object(id_blackBrain);
                                         set_game_flag(BRAIN_COSTUME_FLAG);
                                     break;
-                                    case 2:
+                                    case 3:
+                                        script_say_actor("­Perfecto! Usaremos esto para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
                                     break;
                                     default:
@@ -793,13 +807,21 @@ void r08_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("­Muy bien! Esto servir  para el disfraz", &r08_dialogActor);
+                                            script_move_player(186, 130);
                                     break;
                                     case 1:
+                                        change_player_dir(DIR_LEFT);
+                                        script_player_take_state();
+                                        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TAKE);
+                                    break;
+                                    case 2:
                                         script_remove_inv_object(id_starShirt);
                                         set_game_flag(SHIRT_COSTUME_FLAG);
                                     break;
-                                    case 2:
+                                    case 3:
+                                        script_say_actor("­Muy bien! Esto servir  para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
                                     break;
                                     default:
@@ -818,13 +840,21 @@ void r08_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("­Oh si! Esto nos vendr  bien para el disfraz", &r08_dialogActor);
+                                            script_move_player(186, 130);                                            
                                     break;
                                     case 1:
+                                        change_player_dir(DIR_LEFT);
+                                        script_player_take_state();
+                                        object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objIdle, r08_animations, R08_ANIM_TAKE);
+                                    break;
+                                    case 2:
                                         script_remove_inv_object(id_jeans);
                                         set_game_flag(JEANS_COSTUME_FLAG);
                                     break;
-                                    case 2:
+                                    case 3:
+                                        script_say_actor("­Oh si! Esto nos vendr  bien para el disfraz", &r08_dialogActor);
+                                    break;
+                                    case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
                                     break;
                                     default:
@@ -1043,14 +1073,14 @@ void r08_update_room_script()
                     break;
                     case 8:
                         begin_script();
-                        script_say_actor("Y a los profesores...", &r08_dialogActor);
+                        script_say_actor("Y odio a los profesores...", &r08_dialogActor);
                     break;
                     case 9:
                         script_wait(5);
                     break;
                     case 10:
                         begin_script();
-                        script_say_actor("Y a aquella chica que me llam¢ raro", &r08_dialogActor);
+                        script_say_actor("Y odio a aquella chica que me llam¢ raro", &r08_dialogActor);
                     break;
                     case 11:
                         script_wait(5);
@@ -1071,7 +1101,7 @@ void r08_update_room_script()
                         script_wait(5);
                     break;
                     case 16:
-                        script_say_actor("Pero sobretodo, odio a Windows", &r08_dialogActor);
+                        script_say_actor("Pero sobretodo, odio Windows", &r08_dialogActor);
                     break;
                     case 17:
                         script_wait(20);

@@ -39,10 +39,12 @@
 #define R08_ANIM_TALK_PLAYING       r08d_objTalkPlay1, r08d_objTalkPlay6, 1, ANIM_PING_PONG
 #define R08_ANIM_COSTUME_PLAYING    r08d_objCostumePlaying1, r08d_objCostumePlaying6, 6, ANIM_PING_PONG
 #define R08_ANIM_COSTUME_TALK       r08d_objCostumeTalk1, r08d_objCostumeTalk4, 1, ANIM_PING_PONG
+#define R08_ANIM_COSTUME_PLAY_TALK  r08d_objCostumePlayTalk1, r08d_objCostumePlayTalk6, 1, ANIM_PING_PONG
 #define R08_ANIM_COSTUME_IDLE       r08d_objCostumeTalk3, r08d_objCostumeTalk3, 1, ANIM_LOOP
 #define R08_ANIM_ERROR              r08d_objError, r08d_objError, 1, ANIM_LOOP
 #define R08_ANIM_ERROR_IDLE         r08d_objErrorIdle, r08d_objErrorIdle, 1, ANIM_LOOP
 #define R08_ANIM_ERROR_TALK         r08d_objErrorTalk1, r08d_objErrorTalk4, 1, ANIM_PING_PONG
+#define R08_ANIM_TAKE               r08d_objTake, r08d_objTake, 1, ANIM_LOOP
 
 //define custom scripts (>256)
 #define R08_COSTUME_COMPLETE_SCRIPT 257

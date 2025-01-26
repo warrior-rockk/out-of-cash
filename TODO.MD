@@ -1,10 +1,8 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * nerd costume playing talk animation
-    * nerd computer hangs
-    * nerd animation on windows hangs
-    * nerd playing animation move mouse and keyboard
+    * incorrect look califications only history approved
+    * correct position teacher take
     * more look descriptions on stationery?
     * endgame concert. After credits, nerd playing with the costume
     * more dialog lines on actors
