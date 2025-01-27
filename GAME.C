@@ -72,16 +72,13 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("A¤o 1991 de una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Corr¡a el a¤o 1991 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
                         game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 2:
-                        game_write("Las notas del instituto no le han ido muy bien", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
-                    break;
-                    case 3:
-                        game_write("Pero no parece importarle hasta\nque una noticia llama su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                 }
             break;
