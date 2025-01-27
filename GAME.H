@@ -374,7 +374,7 @@ struct seq
 } seq;
 
 //credits struct
-#define CREDITS_NUM             8
+#define CREDITS_NUM             20
 #define CREDITS_LINE_SPACING    14
 #define CREDITS_GROUP_SPACING   22
 struct credits

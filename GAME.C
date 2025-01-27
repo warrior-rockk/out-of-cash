@@ -2376,14 +2376,26 @@ void stop_music()
 //function to init credits
 void credits_init()
 {
-    strcpy(credits.line[0], "Programaci¢n");
+    strcpy(credits.line[0], "Un juego de:");
     strcpy(credits.line[1], "Warrior");
-    strcpy(credits.line[2], "Gr ficos");
+    strcpy(credits.line[2], "Programaci¢n");
     strcpy(credits.line[3], "Warrior");
-    strcpy(credits.line[4], "M£sica");
+    strcpy(credits.line[4], "Gr ficos");
     strcpy(credits.line[5], "Warrior");
-    strcpy(credits.line[6], "Sonido");
+    strcpy(credits.line[6], "M£sica");
     strcpy(credits.line[7], "Warrior");
+    strcpy(credits.line[8], "Sonido");
+    strcpy(credits.line[9], "Warrior\nOpenGameArt");
+    strcpy(credits.line[10], "Productor ejecutivo");
+    strcpy(credits.line[11], "Emm... Warrior");
+    strcpy(credits.line[12], "Productor asociado");
+    strcpy(credits.line[13], "Umm ¨Warrior?");
+    strcpy(credits.line[14], "Marketing");
+    strcpy(credits.line[15], "­Ah si! Warrior");
+    strcpy(credits.line[16], "Contabilidad");
+    strcpy(credits.line[17], "Casio");    
+    strcpy(credits.line[18], "Control de calidad");
+    strcpy(credits.line[19], "Cali..¨qu‚?");
     
     for (int i = 0; i < CREDITS_NUM; i+=2)
     {
