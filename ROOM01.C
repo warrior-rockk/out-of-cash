@@ -73,7 +73,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Libro");
             break;
         case r01_book2:
-            if (!is_game_flag(GOT_CASSETTE_FLAG))
+            if (!is_game_flag(GOT_BOOK_FLAG))
                 strcpy(s, "Libro");
             else
                 strcpy(s, "");

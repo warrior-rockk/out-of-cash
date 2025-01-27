@@ -140,7 +140,11 @@ void script_move_player_no_clip(int x, int y)
 void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObjectNum)
 {
     //set player state
-    player.state = player_st_taking;
+    if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
+        player.state = player_st_takingUp;
+    else
+        player.state = player_st_taking;
+
     //deactivate room object
     if (objActive)
         *objActive = false;
@@ -216,12 +220,15 @@ void script_player_take_state()
 {
     static bool memTaking;
 
-    if (player.state != player_st_taking)
+    if (player.state != player_st_taking && player.state != player_st_takingUp)
     {
         if (!memTaking)
         {
             memTaking = true;
-            player.state = player_st_taking;
+            if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
+                player.state = player_st_takingUp;
+            else
+                player.state = player_st_taking;
         }
         else
         {
@@ -674,7 +681,10 @@ void change_player_dir(uint8_t dir)
 //function to change player state to take state without script step inc
 void player_take_state()
 {
-    player.state = player_st_taking;
+    if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
+        player.state = player_st_takingUp;
+    else
+        player.state = player_st_taking;
 }
 
 //function to play player animation

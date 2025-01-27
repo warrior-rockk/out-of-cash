@@ -10,6 +10,7 @@
 #define ANIM_PLY_WALK               pd_walk01,      pd_walk06,      1, ANIM_LOOP
 #define ANIM_PLY_TALK               pd_talk01,      pd_talk11,      1, ANIM_PING_PONG
 #define ANIM_PLY_TAKE               pd_take,        pd_take,        5, ANIM_ONCE
+#define ANIM_PLY_TAKE_UP            pd_takeUp,      pd_takeUp,      5, ANIM_ONCE
 #define ANIM_PLY_BACK_TALK          pd_backTalk01,  pd_backTalk04,  1, ANIM_PING_PONG
 #define ANIM_PLY_APPLY_OAT_1        pd_applyOat1,   pd_applyOat3,   3, ANIM_ONCE
 #define ANIM_PLY_APPLY_OAT_STILL    pd_applyOat4,   pd_applyOat4,   1, ANIM_LOOP
