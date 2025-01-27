@@ -28,7 +28,7 @@ void r00_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Papeler¡a");
             break;
         case r00_school:
-                strcpy(s, "Colegio");
+                strcpy(s, "Instituto");
             break;
         case r00_shop:
                 strcpy(s, "Tienda");

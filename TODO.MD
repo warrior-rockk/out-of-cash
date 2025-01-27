@@ -5,7 +5,10 @@
     * more dialog lines on actors
     * open oven and fridge kitchen?
     * open school doors?
+    * front player?
+    * front player when nerd says nobody plays point and click games?
 
+- [ ] Funtion to move player to specific velocity?
 - [ ] No twice replace_unicode (game_write and say_actor)
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
@@ -30,13 +33,11 @@
     char *fontName4[3] = {"verdana9", NULL}; <-very tick. Delete
     char *fontName5[4] = {"verdana9Bold", NULL}; <- good big font for say (configurable?)
     char *fontName1[5] = {"gameFont", NULL}; <-smallest font. Is the font of verbs buttons
-- [ ] Global frame non repeat number?
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
-- [ ] Animation for take upper and bottom
+- [ ] Animation for take bottom
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
-- [ ] Iterate On-screen debug system (multiple vars)
 - [ ] Music smooth transition (music fades and screen fades?)
 - [ ] Real A* Pathfinding?
 - [ ] Separate renderer

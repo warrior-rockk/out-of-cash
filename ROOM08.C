@@ -275,25 +275,34 @@ void r08_update_room_script()
                             script_say_actor("Estoy usando todos mis conocimientos de la guerra para hacer partidas perfectas", &r08_dialogActor);
                         break;
                         case 4:
-                            set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("Si quieres puedes jugar conmigo", &r08_dialogActor);
+                            script_say_actor("Me encanta jugar a ser un se¤or de la guerra y aplastar a mis enemigos", &r08_dialogActor);
                         break;
                         case 5:
-                            script_say_actor("O venir a mi casa y te ense¤o mas juegos que tengo", &r08_dialogActor);
+                            set_game_flag(NERD_SIDE_FLAG);                            
+                            script_say_actor("Mi terapeuta dice que canaliza el odio que tengo dentro", &r08_dialogActor);
                         break;
                         case 6:
-                            script_say_actor("O podemos merendar y jugar al Dragones y Mazmorras", &r08_dialogActor);
+                            script_wait(3);
                         break;
                         case 7:
-                            script_say_actor("Tengo una campa¤a pensada que es la bomb", &r08_dialogActor);
+                            script_say_actor("Si quieres puedes jugar conmigo", &r08_dialogActor);
                         break;
                         case 8:
-                            script_say("­BASTA!");
+                            script_say_actor("O venir a mi casa y te ense¤o mas juegos que tengo", &r08_dialogActor);
                         break;
                         case 9:
-                            script_say("No me interesa, gracias");
+                            script_say_actor("O podemos merendar y jugar al Dragones y Mazmorras", &r08_dialogActor);
                         break;
                         case 10:
+                            script_say_actor("Tengo una campa¤a pensada que es la bomb...", &r08_dialogActor);
+                        break;
+                        case 11:
+                            script_say("­BASTA!");
+                        break;
+                        case 12:
+                            script_say("No me interesa, gracias");
+                        break;
+                        case 13:
                             script_say_actor("Como quieras", &r08_dialogActor);
                         break;
                         default:
@@ -310,7 +319,7 @@ void r08_update_room_script()
                             script_say_actor("Y t£ le dijiste a tus padres que te compraran el ordenador para estudiar", &r08_dialogActor);
                         break;
                         case 2:
-                            script_wait(3);
+                            script_wait(2);
                         break;
                         case 3:
                             script_say("Touch‚");
@@ -332,7 +341,10 @@ void r08_update_room_script()
                             script_say_actor("Todo lo que tenga que ver con la historia y las guerras", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Y no solo juego, eh. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
+                            script_say_actor("Y destruir ej‚rcitos enemigos con mi gran poder", &r08_dialogActor);
+                        break;
+                        case 4:
+                            script_say_actor("Y no te creas que solo juego. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -391,7 +403,7 @@ void r08_update_room_script()
                         break;
                         case 5:
                             clear_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("No, no... No ser¡a muy noble...", &r08_dialogActor);
+                            script_say_actor("No, no... No estar¡a bien...", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
