@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\PDATA.DAT */
-/* Date: Wed Jan 22 21:54:04 2025 */
+/* Date: Mon Jan 27 08:06:05 2025 */
 /* Do not hand edit! */
 
 #define pd_applyOat1                     0        /* BMP  */
@@ -21,25 +21,26 @@
 #define pd_rocking02                     15       /* BMP  */
 #define pd_surprise                      16       /* BMP  */
 #define pd_take                          17       /* BMP  */
-#define pd_talk01                        18       /* BMP  */
-#define pd_talk02                        19       /* BMP  */
-#define pd_talk03                        20       /* BMP  */
-#define pd_talk04                        21       /* BMP  */
-#define pd_talk05                        22       /* BMP  */
-#define pd_talk06                        23       /* BMP  */
-#define pd_talk07                        24       /* BMP  */
-#define pd_talk08                        25       /* BMP  */
-#define pd_talk09                        26       /* BMP  */
-#define pd_talk10                        27       /* BMP  */
-#define pd_talk11                        28       /* BMP  */
-#define pd_walk01                        29       /* BMP  */
-#define pd_walk02                        30       /* BMP  */
-#define pd_walk03                        31       /* BMP  */
-#define pd_walk04                        32       /* BMP  */
-#define pd_walk05                        33       /* BMP  */
-#define pd_walk06                        34       /* BMP  */
-#define pd_washHands01                   35       /* BMP  */
-#define pd_washHands02                   36       /* BMP  */
-#define pd_washHands03                   37       /* BMP  */
-#define pd_COUNT                         38
+#define pd_takeUp                        18       /* BMP  */
+#define pd_talk01                        19       /* BMP  */
+#define pd_talk02                        20       /* BMP  */
+#define pd_talk03                        21       /* BMP  */
+#define pd_talk04                        22       /* BMP  */
+#define pd_talk05                        23       /* BMP  */
+#define pd_talk06                        24       /* BMP  */
+#define pd_talk07                        25       /* BMP  */
+#define pd_talk08                        26       /* BMP  */
+#define pd_talk09                        27       /* BMP  */
+#define pd_talk10                        28       /* BMP  */
+#define pd_talk11                        29       /* BMP  */
+#define pd_walk01                        30       /* BMP  */
+#define pd_walk02                        31       /* BMP  */
+#define pd_walk03                        32       /* BMP  */
+#define pd_walk04                        33       /* BMP  */
+#define pd_walk05                        34       /* BMP  */
+#define pd_walk06                        35       /* BMP  */
+#define pd_washHands01                   36       /* BMP  */
+#define pd_washHands02                   37       /* BMP  */
+#define pd_washHands03                   38       /* BMP  */
+#define pd_COUNT                         39
 
