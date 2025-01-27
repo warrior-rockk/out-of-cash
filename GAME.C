@@ -476,7 +476,7 @@ void game_update()
                 seq.step++;
                 seq.timeCounter = 0;
             }
-            if (seq.step > 3)
+            if (seq.step > 2)
             {
                 seq.timeCounter = 0;
                 seq.step = 0;

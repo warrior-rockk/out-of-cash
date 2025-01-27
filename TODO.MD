@@ -1,6 +1,36 @@
 # TO-DO
 
 - [ ] Gameplay:
+    * take empty cartridge animation too fast?
+    * say cassette on hifi?
+    * surprise on w95 error
+    * cursor and status bar disabled when talking with script ended?
+    * use bath washbol sentence
+    * 131, 66 position on open kitchen closet
+    * say "o cualquier cosa viscosa" on look spatula
+    * father response to math dificult
+    * responses of father asignatures return to them
+    * 117,105 go to street poster
+    * stationery walk map folders furniture
+    * stationery walk map scale on door
+    * look dir right on talk stationery
+    * use cartridge on printer walk to
+    * stationery employee hotspot fix
+    * on exit stationery with printed photocopy, say it's schedule
+    * alternatives bathmat on door say: it's too small or something with paper, califications, sheets, etc.
+    * open school door is GO
+    * nerd hotspot
+    * nerd look: don't say historic wars
+    * locker closed with key
+    * say paint bucket with star clock
+    * say use spatula with full cartridge
+    * say use open cartridge on shirt
+    * street walk map
+    * use knife on thing (too much sharp)
+    * credits openGameArt error
+    * disable cursor on ending
+    * slow fade on endings and epilogue
+
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?
