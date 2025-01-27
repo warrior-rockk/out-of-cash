@@ -591,6 +591,12 @@ void begin_script()
 {
     cursor.enabled = false;
     roomScript.scriptAssigned = true;
+
+    TRACE("Begin Script\n");
+    TRACE("  Script Object:%i\n", roomScript.object);
+    TRACE("  Script InvObject:%i\n", roomScript.invObject);
+    TRACE("  Script Verb:%i\n", roomScript.verb);
+    TRACE("  Script Type:%i\n", roomScript.type);    
 }
 
 //actions when script ends
@@ -606,6 +612,8 @@ void end_script()
     roomScript.type = ROOM_SCRIPT_TYPE;
 
     cursor.enabled = true;
+
+    TRACE("End Script\n");
 }
 
 //starts room custom script
