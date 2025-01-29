@@ -6,10 +6,9 @@
 	* cassette sound on stereo?
 	* sound of cassette playing?
 	
-    * credits openGameArt error
+    * final credits message
     * disable cursor on ending
-    * slow fade on endings and epilogue
-
+    
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?

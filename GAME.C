@@ -537,7 +537,7 @@ void game_update()
             }
             else if (is_game_flag(GAME_END_FLAG))
             {
-                game_fade_out(FADE_DEFAULT_SPEED);
+                game_fade_out(FADE_SLOW_SPEED);
                 credits_init();
                 change_room(ENDING_ROOM_NUM);
                 game.state = END_STATE;
@@ -2387,7 +2387,7 @@ void credits_init()
     strcpy(credits.line[6], "M£sica");
     strcpy(credits.line[7], "Warrior");
     strcpy(credits.line[8], "Sonido");
-    strcpy(credits.line[9], "Warrior\nOpenGameArt");
+    strcpy(credits.line[9], "Warrior");
     strcpy(credits.line[10], "Productor ejecutivo");
     strcpy(credits.line[11], "Emm... Warrior");
     strcpy(credits.line[12], "Productor asociado");
