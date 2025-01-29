@@ -221,6 +221,7 @@ void r06_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -439,6 +440,55 @@ void r06_update_room_script()
                                         break;
                                 }
                             break;
+                            case id_califications:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Son mis notas");
+                                    break;
+                                    default:
+                                        script_say("No querr¡a da¤arlas");
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_sheet:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Es demasiada fina");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_answers:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Estas respuestas son demasiado valiosas para usarlas aqu¡");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
+                            case id_photocopy:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Es demasiado valioso para usarlo aqu¡");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
                         }
                     break;
                 }
@@ -551,7 +601,8 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
-                    case USE:                    
+                    case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -602,6 +653,7 @@ void r06_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -668,6 +720,7 @@ void r06_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -699,6 +752,7 @@ void r06_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
@@ -764,6 +818,8 @@ void r06_update_room_script()
                         }
                     break;
                     case GO:
+                    case OPEN:
+                    case USE:
                         switch (roomScript.step)
                         {
                             case 0:

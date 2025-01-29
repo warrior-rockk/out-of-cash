@@ -107,6 +107,7 @@ enum gameFlags{
     END_CREDITS_FLAG,
     NERD_ERROR_FLAG,
     NERD_ERROR_2_FLAG,
+    EMPLOYEER_STOLEN_ADVICE_FLAG,
 };
 
 //definition of global game numeric vars index

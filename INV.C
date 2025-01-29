@@ -505,6 +505,21 @@ void inventory_update()
                             case id_paintBucket:
                                 start_script(BLACK_BRAIN_SCRIPT);
                             break;
+                            case id_openedFullCartridge:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Puede ser buena idea pintar el cerebro");
+                                    break;
+                                    case 1:
+                                        script_say("Pero en el cartucho no hay suficiente pintura para pintarlo");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
                         }
                     break;
                 }
@@ -943,11 +958,26 @@ void inventory_update()
                             case id_starClock:
                                 start_script(BLACK_STAR_CLOCK_SCRIPT);
                             break;
+                            case id_brain:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Puede ser buena idea pintar el cerebro");
+                                    break;
+                                    case 1:
+                                        script_say("Pero en el cartucho no hay suficiente pintura para pintarlo");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                            break;
                         }
                     break;
                 }
                 break;            
-            case id_paintBucket         :
+            case id_paintBucket:
                 switch(roomScript.verb)
                 {
                     case LOOK:
@@ -967,6 +997,21 @@ void inventory_update()
                         {
                             case id_brain:
                                 start_script(BLACK_BRAIN_SCRIPT);
+                            break;
+                            case id_starClock:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("La idea de pintar el reloj en forma de estrella no es mala");
+                                    break;
+                                    case 1:
+                                        script_say("Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
                             break;
                         }
                     break;
@@ -1085,10 +1130,13 @@ void inventory_update()
                             case 0:
                                 begin_script();
                                 script_say("Una esp tula de cocina para aplicar mejunges");
-                                break;
+                            break;
+                            case 1:
+                                script_say("O cualquier cosa viscosa");
+                            break;
                             default:
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                     case USE_WITH:
@@ -1131,6 +1179,21 @@ void inventory_update()
                                 begin_script();
                                 script_say("Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro");
                                 end_script();
+                            break;
+                            case id_paintBucket:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("La idea de pintar el reloj en forma de estrella no es mala");
+                                    break;
+                                    case 1:
+                                        script_say("Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
                             break;
                         }
                     break;

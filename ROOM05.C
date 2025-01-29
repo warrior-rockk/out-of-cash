@@ -472,19 +472,37 @@ void r05_update_room_script()
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
                             case 1:
-                                if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
-                                    script_say_actor("Disculpa, no puedes llevarte las fotocopias de Dragon Ball sin pagar", &r05_dialogActor);
+                                if ((is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) || is_game_flag(GOT_PHOTOCOPY_FLAG)) && !is_game_flag(EMPLOYEER_STOLEN_ADVICE_FLAG))
+                                    script_say_actor("­Oye! ¨Que llevas ah¡?", &r05_dialogActor);
                                 else
                                 {
                                     change_room_pos(STREET_ROOM_NUM, 258, 138);
                                     end_script();
                                 }
-                                break;
+                            break;
                             case 2:
-                                script_say_actor("Si no tienes dinero te agradecer¡a que me las devolvieras", &r05_dialogActor);
-                                break;    
+                                change_player_dir(DIR_RIGHT);
+                                if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+                                    script_say_actor("Disculpa pero no puedes llevarte las fotocopias de Dragon Ball sin pagar", &r05_dialogActor);
+                                else
+                                    script_say("Nada. Llevo la hoja del horario del instituto que me has impreso");
+                            break;
+                            case 3:
+                                if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
+                                {
+                                    script_say_actor("Si no tienes dinero te agradecer¡a que me las devolvieras", &r05_dialogActor);
+                                    end_script();
+                                }
+                                else
+                                    script_say_actor("Ah si perdona. No me acordaba", &r05_dialogActor);
+                                break;
+                            case 4:
+                                set_game_flag(EMPLOYEER_STOLEN_ADVICE_FLAG);
+                                change_room_pos(STREET_ROOM_NUM, 258, 138);
+                                end_script();
+                            break;
                             default:
                                 end_script();
                                 break;
@@ -770,7 +788,7 @@ void r05_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_move_player_to_target();
+                                            script_move_player(R05_PRINTER_X, R05_PRINTER_Y);
                                     break;
                                     case 1:
                                         script_player_take_state();
@@ -797,7 +815,7 @@ void r05_update_room_script()
                                             end_script();
                                         }
                                         else
-                                            script_move_player_to_target();
+                                            script_move_player(R05_PRINTER_X, R05_PRINTER_Y);
                                     break;
                                     case 1:
                                         script_player_take_state();
@@ -935,6 +953,7 @@ void r05_update_room_script()
                                 script_move_player(137, 88);
                             break;
                             case 1:
+                                change_player_dir(DIR_RIGHT);
                                 script_say_actor("­Hola! ¨En que te puedo ayudar?", &r05_dialogActor);
                             break;
                             case 2:

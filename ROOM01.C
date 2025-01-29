@@ -266,15 +266,22 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es mi minicadena Hifi £ltimo modelo");
+                                if (!is_game_flag(STEREO_ON_FLAG))
+                                    script_say("Es mi minicadena Hifi £ltimo modelo");
+                                else
+                                {
+                                    script_say("La minicadena est  en marcha");
+                                    end_script();
+                                }
                                 break;
                             case 1:
-                                begin_script();
                                 script_say("Con doble pletina, sintonizador de radio y equalizador gr fico");
                                 break;
                             case 2:
-                                begin_script();
-                                script_say("­Alucina!");
+                                if (!is_game_flag(USED_CASSETTE_FLAG))
+                                    script_say("­Alucina!");
+                                else
+                                    script_say("Ahora tiene una cinta dentro");
                                 break;
                             default:
                                 end_script();
@@ -539,6 +546,21 @@ void r01_update_room_script()
                                         break;
                                 }
                                 break;
+                            case id_knife:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("Tiene muy poca superficie para hacer palanca");
+                                    break;
+                                    case 1:
+                                        script_say("Necesito algo mas ancho");
+                                    break;
+                                    default:
+                                        end_script();
+                                    break;
+                                }
+                                break;
                         }
                         break;
                 }
@@ -758,6 +780,7 @@ void r01_update_room_script()
                                 object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_W95_COMPUTER);
                             break;
                             case 5:
+                                play_player_animation(ANIM_PLY_SURPRISE);
                                 script_play_sound_wait(sd_w95Error);
                                 object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_ERROR_COMPUTER);
                             break;
@@ -869,7 +892,7 @@ void r01_update_room_script()
                                 script_take_object(NULL, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
                                 break;
                             case 2:
-                                script_wait(1);
+                                script_wait(5);
                                 break;
                             case 3:
                                 script_say("Me llevo el cartucho de tinta vac¡o");

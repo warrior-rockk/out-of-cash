@@ -160,18 +160,23 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Zurraspa Producciones presenta:");
-                                break;
+                                script_move_player(76, 125);
+                            break;
                             case 1:
+                                change_player_dir(DIR_BACK);
+                                script_say("Zurraspa Producciones presenta:");
+                            break;
+                            case 2:
                                 script_say("Reincidentes en concierto");
                                 break;
-                            case 2:
+                            case 3:
                                 script_say("Presentando su £ltimo disco en directo");
                                 break;
-                            case 3:
+                            case 4:
                                 script_say("Precio de la entrada: 5000 pesetas");
                                 break;    
-                            case 4:
+                            case 5:
+                                change_player_dir(DIR_RIGHT);
                                 script_say("Tengo que conseguir el dinero como sea");
                                 break;
                             default:

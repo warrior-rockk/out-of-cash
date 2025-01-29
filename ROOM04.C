@@ -193,9 +193,10 @@ void r04_update_dialog_selection()
                         dialog_add("­­Vengaa!! ­Har‚ lo que sea!", 4);
                     break;
                     case 4:
-                        dialog_add("­Pero es que las Matem ticas son muy dif¡ciles!", 1);
-                        dialog_add("­Pero es que Historia es un rollo!", 1);
-                        dialog_add("¨Educaci¢n F¡sica? ¨Para qu‚ me sirve?", 1);
+                        dialog_add("­Pero es que las Matem ticas son muy dif¡ciles!", 4);
+                        dialog_add("­Pero es que Historia es un rollo!", 4);
+                        dialog_add("¨Educaci¢n F¡sica? ¨Para qu‚ me sirve?", 4);
+                        dialog_add("Pues vaya rollo...", 1);
                     break;
                 }
             break;
@@ -492,11 +493,14 @@ void r04_update_room_script()
                             case 0:
                                 begin_script();
                                 script_say("Una esp tula para reposter¡a");
-                                break;
-                            default:
+                            break;
+                            case 1:
                                 script_say("Sirve para extender el chocolate en las tartas, por ejemplo");
+                            break;
+                            default:
+                                script_say("O cualquier cosa viscosa");
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                     case TAKE:
@@ -605,9 +609,10 @@ void r04_update_room_script()
                                     end_script();
                                 }
                                 else
-                                    script_move_player_to_target();
+                                    script_move_player(131, 86);
                                 break;
                             case 1:
+                                change_player_dir(DIR_RIGHT);
                                 script_play_sound(sd_closetOpen);
                             break;
                             case 2:
@@ -820,7 +825,7 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Es tu obligaci¢n saber aprender las Matem ticas", &r04_dialogActor);
+                            script_say_actor("Es tu obligaci¢n aprender las Matem ticas", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();

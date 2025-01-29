@@ -723,7 +723,7 @@ void r08_update_room_script()
                                     end_script();
                                 }
                                 else
-                                script_say("Lo £nico que le interesa son las guerras hist¢ricas y las grandes haza¤as");
+                                script_say("Siempre esta metido en su mundo b‚lico y de juegos de rol");
                             break;
                             case 2:
                                 script_say("No parece que tenga muchos amigos");

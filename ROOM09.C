@@ -276,7 +276,19 @@ void r09_update_room_script()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Me gusta estar de pie");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
+                    break;
                 }
                 break;            
             case r09_shirt:
@@ -691,13 +703,14 @@ void r09_update_room_script()
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
                             case 1:
                                 script_say("Esta bloqueada. No se puede abrir");
+                            break;
                             default:
                                 script_say("Y tampoco tengo mucho inter‚s en abrirla");
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                     case CLOSE:

@@ -275,6 +275,19 @@ void r03_update_room_script()
                                 end_script();
                                 break;
                         }
+                    break;
+                    case OPEN:
+                    case USE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("No tengo las manos sucias");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
                     break;                    
                 }
                 break;            
