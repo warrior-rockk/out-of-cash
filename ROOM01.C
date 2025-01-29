@@ -302,9 +302,12 @@ void r01_update_room_script()
                                     script_move_player_to_target();
                                 break;
                             case 1:
+                                script_play_sound(sd_cassettePlay);
+                            break;
+                            case 2:
                                 script_player_take_state();
                                 break;
-                            case 2:
+                            case 3:
                                 toggle_game_flag(STEREO_ON_FLAG);
                                 r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON_FLAG);
                                 end_script();
@@ -325,9 +328,12 @@ void r01_update_room_script()
                                         script_move_player_to_target();
                                         break;
                                     case 1:
+                                        script_play_sound(sd_cassettePut);
+                                    break;
+                                    case 2:
                                         script_player_take_state();
                                         break;
-                                    case 2:
+                                    case 3:
                                         script_remove_inv_object(id_cassette);
                                         set_game_flag(USED_CASSETTE_FLAG);
                                         end_script();
