@@ -17,7 +17,7 @@
 #define R06_START_POS_X         57
 #define R06_START_POS_Y         103
 #define R06_ROOM_NUM_OBJS       5
-#define R06_MUSIC_ID            0
+#define R06_MUSIC_ID            5
 #define R06_FADE                true
 #define R06_LIGHTS_OFF          false
 

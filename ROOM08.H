@@ -17,7 +17,7 @@
 #define R08_START_POS_X         245
 #define R08_START_POS_Y         100
 #define R08_ROOM_NUM_OBJS       1
-#define R08_MUSIC_ID            0
+#define R08_MUSIC_ID            8
 #define R08_FADE                false
 #define R08_LIGHTS_OFF          false
 

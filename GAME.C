@@ -465,6 +465,7 @@ void game_update()
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = PROLOGUE_STATE;
                 sfx[SFX_GAME_VOICE].stop = true;
+                play_music(md_Song07, 0);
             }
         break;
         case PROLOGUE_STATE:
@@ -481,12 +482,14 @@ void game_update()
                 seq.timeCounter = 0;
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
+                stop_midi();
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }
             else if(gameKeys[G_KEY_EXIT].pressed)
             {
                 game_fade_out(FADE_DEFAULT_SPEED);
+                stop_midi();
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
                 play_music(md_title, -1);
@@ -1734,7 +1737,7 @@ void room_load(uint8_t roomNumber)
         actualRoom.musicId = roomData[game.actualRoom].roomMusicId;
 
         //play room music
-        play_music(0, -1);
+        play_music(actualRoom.musicId, -1);
     }
 }
 

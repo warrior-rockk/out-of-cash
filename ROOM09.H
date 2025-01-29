@@ -17,7 +17,7 @@
 #define R09_START_POS_X         229
 #define R09_START_POS_Y         129
 #define R09_ROOM_NUM_OBJS       6
-#define R09_MUSIC_ID            0
+#define R09_MUSIC_ID            9
 #define R09_FADE                false
 #define R09_LIGHTS_OFF                false
 

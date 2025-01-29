@@ -17,7 +17,7 @@
 #define R11_START_POS_X         76
 #define R11_START_POS_Y         99
 #define R11_ROOM_NUM_OBJS       2
-#define R11_MUSIC_ID            0
+#define R11_MUSIC_ID            11
 #define R11_FADE                false
 #define R11_LIGHTS_OFF          false
 

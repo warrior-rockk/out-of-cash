@@ -17,7 +17,7 @@
 #define R02_START_POS_X         179
 #define R02_START_POS_Y         117
 #define R02_ROOM_NUM_OBJS       1
-#define R02_MUSIC_ID            0
+#define R02_MUSIC_ID            1
 #define R02_FADE                false
 #define R02_LIGHTS_OFF                false
 
