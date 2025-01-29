@@ -1,4 +1,3 @@
-
 //on compiler flags
 //#define DEBUGMODE
 
@@ -1024,7 +1023,7 @@ void debug_init()
 //draws the pointer cursor
 void cursor_draw()
 {
-    if (cursor.enabled)
+    if (cursor.enabled && ((!msg.msgActive && !roomScript.active) || game.state == MENU_STATE))
         draw_sprite(buffer, cursorImage, mouse_x - (cursorImage->w>>1), mouse_y - (cursorImage->h>>1));
 
     #ifdef DEBUGMODE
@@ -1473,7 +1472,7 @@ void debug_draw()
 //draws the status bar
 void status_bar_draw()
 {
-    if (!roomScript.active)
+    if (!roomScript.active && !msg.msgActive)
     {
         //check if the verb is USE_WITH to print object inventory or not
         if (cursor.selectedVerb == USE_WITH)
