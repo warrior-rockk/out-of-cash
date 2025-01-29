@@ -5,10 +5,7 @@
 	* open oat box inventory oat dry?
 	* cassette sound on stereo?
 	* sound of cassette playing?
-	* bug on street: click GO and when moving, click GO to JUMP Store	
-    * cursor and status bar disabled when talking with script ended?          	           
-      
-    * use knife on thing (too much sharp)
+	
     * credits openGameArt error
     * disable cursor on ending
     * slow fade on endings and epilogue
@@ -27,7 +24,7 @@
        
        if (gameTick)
        {
-       for (int i = 1; i < 256; i++)
+       for (int i = 1; i < 256; i++)	
         {
             get_color(i, &color);
             

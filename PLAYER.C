@@ -141,7 +141,12 @@ void player_update_pos()
         }
 
     }
-    
+    else
+    {
+        player.vX = itofix(0);
+        player.vY = itofix(0);
+    }
+
     //update position
     player.x += player.vX;
     player.y += player.vY;
