@@ -142,6 +142,8 @@ void script_take_object(bool *objActive, enum gameFlags gameFlag, uint8_t invObj
     //set player state
     if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
         player.state = player_st_takingUp;
+    else if (roomScript.hsY > fixtoi(player.y) + PLAYER_TAKE_LOW_OFFSET)
+        player.state = player_st_takingLow;
     else
         player.state = player_st_taking;
 
@@ -220,13 +222,15 @@ void script_player_take_state()
 {
     static bool memTaking;
 
-    if (player.state != player_st_taking && player.state != player_st_takingUp)
+    if (player.state != player_st_taking && player.state != player_st_takingUp && player.state != player_st_takingLow)
     {
         if (!memTaking)
         {
             memTaking = true;
             if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
                 player.state = player_st_takingUp;
+            else if (roomScript.hsY > fixtoi(player.y) + PLAYER_TAKE_LOW_OFFSET)
+                player.state = player_st_takingLow;
             else
                 player.state = player_st_taking;
         }
@@ -691,6 +695,8 @@ void player_take_state()
 {
     if (roomScript.hsY < fixtoi(player.y) - PLAYER_TAKE_UP_OFFSET)
         player.state = player_st_takingUp;
+    else if (roomScript.hsY > fixtoi(player.y) + PLAYER_TAKE_LOW_OFFSET)
+        player.state = player_st_takingLow;
     else
         player.state = player_st_taking;
 }

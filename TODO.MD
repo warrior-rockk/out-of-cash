@@ -1,9 +1,7 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * more contrast on ms-dos letters on run computer
-	* open oat box inventory oat dry?
-	* cassette sound on stereo?
+    * open oat box inventory oat dry?	
 	* sound of cassette playing?
 	
     * final credits message
@@ -44,7 +42,6 @@
 - [ ] Time base below 100ms?
 - [ ] Different player walk speed based on configured speed
 - [ ] Remove lightsOff of rooms data structure
-- [ ] Animation for take bottom
 - [ ] Bug: continue actual sentence say when load savegame (I'm not sure because the new talk system)
 - [ ] Music smooth transition (music fades and screen fades?)
 - [ ] Real A* Pathfinding?

@@ -193,6 +193,12 @@ void player_update_animation()
                 player.state = player_st_idle;
             }
         break;
+        case player_st_takingLow:
+            if (play_animation(&player.animation, ANIM_PLY_TAKE_LOW))
+            {
+                player.state = player_st_idle;
+            }
+        break;
      }
 
      #ifdef DEBUGMODE
