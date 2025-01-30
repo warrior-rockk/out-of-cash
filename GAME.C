@@ -1679,7 +1679,7 @@ void room_action_update()
         //reset step timer on step change
         if (roomScript.step != roomScript.lastStep)
         {
-            TRACE("Script step from %i to %i\n", roomScript.lastStep, roomScript.step);
+            TRACE("    Script step from %i to %i\n", roomScript.lastStep, roomScript.step);
             roomScript.stepTime = 0;
             roomScript.lastStep = roomScript.step;
         }
