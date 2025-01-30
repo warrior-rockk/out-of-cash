@@ -47,7 +47,7 @@ tObject* r13_get_object_info(uint8_t numObject)
 void r13_room_init()
 {
     game_fade_in();
-
+    r13_object[R13_CROWD_OBJ_ID].layer = 1;
     start_script(R13_ENDING_SCRIPT);
 }
 
@@ -100,25 +100,33 @@ void r13_update_room_script()
                         script_wait(10);
                     break;
                     case 1:
-                        script_move_player_no_clip(79, 253);
+                        script_move_player_no_clip(350, 160);
                     break;
                     case 2:
+                        script_wait(10);
+                        r13_object[R13_CROWD_OBJ_ID].layer = 0;
+                        set_player_position(350, 253);
+                    break;
+                    case 3:
+                        script_move_player_no_clip(79, 253);
+                    break;
+                    case 4:
                         change_player_dir(DIR_BACK);
                         script_wait(10);
                     break;
-                    case 3:
+                    case 5:
                         set_game_flag(PLAYER_ROCKING_FLAG);
                         script_wait(30);
                     break;
-                    case 4:
+                    case 6:
                         set_game_flag(START_CREDITS_FLAG);
                         roomScript.step++;
                     break;
-                    case 5:
+                    case 7:
                         if (is_game_flag(END_CREDITS_FLAG))
                             roomScript.step++;
                     break;
-                    case 6:
+                    case 8:
                         game_fade_out(FADE_SLOW_SPEED);
                         change_room_pos(COMPUTER_ROOM_NUM, 350, 200);
                         end_script();

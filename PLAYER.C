@@ -123,9 +123,7 @@ void player_update_pos()
                 player.vY = itofix(0);
             }
         }
-        else
-            TRACE("NO CLIP\n");
-        
+
         //player blocked
         if (player.vX == itofix(0) && player.vY == itofix(0))
         {

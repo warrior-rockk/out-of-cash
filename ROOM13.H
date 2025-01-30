@@ -14,8 +14,8 @@
 #include "R13DATA.H"
 
 //define room properties
-#define R13_START_POS_X         350
-#define R13_START_POS_Y         253
+#define R13_START_POS_X         -20
+#define R13_START_POS_Y         160
 #define R13_ROOM_NUM_OBJS       5
 #define R13_MUSIC_ID            14
 #define R13_FADE                false
@@ -32,7 +32,7 @@
 #define R13_DRUMS_OBJ_ID        4
 
 //define object data (objId, x, y, animId, active, layer)
-#define R13_OBJ_0           r13d_objCrowd1,       160, 184,  1, true, 0
+#define R13_OBJ_0           r13d_objCrowd1,       160, 185,  1, true, 1
 #define R13_OBJ_1           r13d_objSpeakers1,    160, 97,  2, true, 0
 #define R13_OBJ_2           r13d_objGuitar11,     88,  65,  3, true, 0
 #define R13_OBJ_3           r13d_objGuitar21,     244, 62,  4, true, 0

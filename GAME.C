@@ -194,7 +194,7 @@ int main()
                 //draw calls
                 room_draw();
                 player_draw();
-                //room_front_layer_draw();
+                room_objects_draw(FRONT_LAYER);
                 if (is_game_flag(START_CREDITS_FLAG))
                     credits_draw();
                 msg_draw();
