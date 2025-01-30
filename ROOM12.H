@@ -17,7 +17,7 @@
 #define R12_START_POS_X         77
 #define R12_START_POS_Y         80
 #define R12_ROOM_NUM_OBJS       4
-#define R12_MUSIC_ID            0
+#define R12_MUSIC_ID            9
 #define R12_FADE                false
 #define R12_LIGHTS_OFF          false
 

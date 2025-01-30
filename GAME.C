@@ -464,7 +464,8 @@ void game_update()
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = PROLOGUE_STATE;
                 sfx[SFX_GAME_VOICE].stop = true;
-                play_music(md_Song07, 0);
+                play_music(md_intro, 0);
+                actualRoom.musicId = md_intro;
             }
         break;
         case PROLOGUE_STATE:
@@ -481,7 +482,6 @@ void game_update()
                 seq.timeCounter = 0;
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
-                stop_midi();
                 set_game_flag(INTRO_FLAG);
                 game.state = INTRO_STATE;
             }

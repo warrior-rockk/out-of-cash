@@ -17,6 +17,58 @@ Stopping midi
 Load music data file object
 Play midi music
 Change game state from 0 to 5
+Change game state from 5 to 8
+Stopping midi
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 8 to 0
+Stopping midi
+Change game state from 0 to 1
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 1 to 2
+Change game state from 2 to 4
+Change from room -1 to room 0
+Free actual room datafile resources
+Load room datafile: R00DATA.DAT
+    Script step from 0 to 1
+    Script step from 1 to 2
+    Script step from 2 to 3
+    Script step from 3 to 4
+    Script step from 4 to 5
+    Script step from 5 to 6
+    Script step from 6 to 7
+    Script step from 7 to 8
+    Script step from 8 to 9
+    Script step from 9 to 10
+    Script step from 10 to 11
+    Script step from 11 to 12
+    Script step from 12 to 13
+    Script step from 13 to 14
+    Script step from 14 to 15
+    Script step from 15 to 16
+    Script step from 16 to 17
+End Script
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 4 to 3
+Stopping midi
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Change game state from 3 to 5
+Change from room -1 to room 1
+Free actual room datafile resources
+Load room datafile: R01DATA.DAT
+Stopping midi
+Load music data file object
+Play midi music
     Script step from 0 to 1
     Script step from 1 to 2
 End Script
@@ -30,117 +82,14 @@ End Script
 Change from room 1 to room 2
 Free actual room datafile resources
 Load room datafile: R02DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:6
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 2 to room 3
-Free actual room datafile resources
-Load room datafile: R03DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-End Script
-End Script
-Begin Script
-    Script Object:138
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 3 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-End Script
-Begin Script
-    Script Object:153
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 2 to room 4
-Free actual room datafile resources
-Load room datafile: R04DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-End Script
-End Script
-End Script
-End Script
-End Script
-Begin Script
-    Script Object:164
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 4 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
 Change game state from 5 to 8
-Change from room 2 to room 0
-Free actual room datafile resources
-Load room datafile: R00DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-Change game state from 8 to 5
-Begin Script
-    Script Object:34
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 0 to room 5
-Free actual room datafile resources
-Load room datafile: R05DATA.DAT
-Stopping midi
-Load music data file object
-Play midi music
-    Script step from 0 to 1
-    Script step from 1 to 2
-    Script step from 2 to 3
-End Script
-End Script
-End Script
-End Script
-Change game state from 5 to 8
-Change from room 5 to room 6
+Change from room 2 to room 6
 Free actual room datafile resources
 Load room datafile: R06DATA.DAT
 Stopping midi
 Load music data file object
 Play midi music
 Change game state from 8 to 5
-End Script
-End Script
-End Script
-End Script
-End Script
 End Script
 Change game state from 5 to 8
 Change from room 6 to room 7
@@ -159,6 +108,10 @@ Load music data file object
 Play midi music
 Change game state from 8 to 5
 End Script
+End Script
+End Script
+End Script
+End Script
 Change game state from 5 to 8
 Change from room 8 to room 9
 Free actual room datafile resources
@@ -168,6 +121,9 @@ Load music data file object
 Play midi music
 Change game state from 8 to 5
 End Script
+End Script
+Change game state from 5 to 8
+Change game state from 8 to 5
 Change game state from 5 to 8
 Change from room 9 to room 10
 Free actual room datafile resources
@@ -175,6 +131,9 @@ Load room datafile: R10DATA.DAT
 Stopping midi
 Load music data file object
 Play midi music
+Change game state from 8 to 5
+End Script
+Change game state from 5 to 8
 Change game state from 8 to 5
 Change game state from 5 to 8
 Change from room 10 to room 11
@@ -184,6 +143,48 @@ Stopping midi
 Load music data file object
 Play midi music
 Change game state from 8 to 5
+End Script
+End Script
+End Script
+End Script
+End Script
+End Script
+Change game state from 5 to 8
+Change game state from 8 to 5
+End Script
+End Script
+End Script
+Change game state from 5 to 8
+Change from room 11 to room 12
+Free actual room datafile resources
+Load room datafile: R12DATA.DAT
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 8 to 5
+End Script
+End Script
+End Script
+End Script
+End Script
+Begin Script
+    Script Object:36
+    Script InvObject:0
+    Script Verb:6
+    Script Type:0
+    Script step from 0 to 1
+    Script step from 1 to 2
+    Script step from 2 to 3
+    Script step from 3 to 4
+    Script step from 4 to 5
+    Script step from 5 to 6
+    Script step from 6 to 7
+    Script step from 7 to 8
+    Script step from 8 to 9
+    Script step from 9 to 10
+    Script step from 10 to 11
+End Script
+Change game state from 5 to 8
 Exiting game
 Freeing game resources
 Destroying data file index

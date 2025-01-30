@@ -17,7 +17,7 @@
 #define R10_START_POS_X         134
 #define R10_START_POS_Y         95
 #define R10_ROOM_NUM_OBJS       5
-#define R10_MUSIC_ID            10
+#define R10_MUSIC_ID            8
 #define R10_FADE                false
 #define R10_LIGHTS_OFF          true
 

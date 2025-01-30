@@ -17,7 +17,7 @@
 #define R04_START_POS_X         84
 #define R04_START_POS_Y         99
 #define R04_ROOM_NUM_OBJS       6
-#define R04_MUSIC_ID            3
+#define R04_MUSIC_ID            0
 #define R04_FADE                false
 #define R04_LIGHTS_OFF          false
 
