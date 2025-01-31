@@ -108,6 +108,12 @@ enum gameFlags{
     NERD_ERROR_FLAG,
     NERD_ERROR_2_FLAG,
     EMPLOYEER_STOLEN_ADVICE_FLAG,
+
+    COMPUTER_DOOR_OPEN_FLAG,
+    SCIENCE_DOOR_OPEN_FLAG,
+    BATHROOM_DOOR_OPEN_FLAG,
+    LOCKER_DOOR_OPEN_FLAG,
+    PEOFFICE_DOOR_OPEN_FLAG,
 };
 
 //definition of global game numeric vars index

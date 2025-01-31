@@ -641,6 +641,14 @@ void start_script(uint16_t scriptNumber)
     roomScript.scriptAssigned = true;
     roomScript.step = 0;
     roomScript.stepTime = 0;
+
+    #ifdef DEBUGMODE
+        TRACE("Begin Script\n");
+        TRACE("    Script Object:%i\n", roomScript.object);
+        TRACE("    Script InvObject:%i\n", roomScript.invObject);
+        TRACE("    Script Verb:%i\n", roomScript.verb);
+        TRACE("    Script Type:%i\n", roomScript.type);
+    #endif
 }
 
 //global debug vars function

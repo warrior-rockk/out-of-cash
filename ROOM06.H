@@ -16,7 +16,7 @@
 //define room properties
 #define R06_START_POS_X         57
 #define R06_START_POS_Y         103
-#define R06_ROOM_NUM_OBJS       5
+#define R06_ROOM_NUM_OBJS       10
 #define R06_MUSIC_ID            3
 #define R06_FADE                true
 #define R06_LIGHTS_OFF          false
@@ -30,6 +30,11 @@
 #define R06_BATHMATIN_OBJ_ID            2
 #define R06_BATHMATOUT_OBJ_ID           3
 #define R06_KEY_OBJ_ID                  4
+#define R06_COMPUTER_DOOR_OBJ_ID        5
+#define R06_SCIENCE_DOOR_OBJ_ID         6
+#define R06_BATHROOM_DOOR_OBJ_ID        7
+#define R06_LOCKER_DOOR_OBJ_ID          8
+#define R06_PE_OFFICE_DOOR_OBJ_ID       9
 
 //define object data (objId, x, y, animId, active, layer)
 #define R06_OBJ_0           r06d_objMaintDoorOpen,      115, 77,  0, false, 0
@@ -38,8 +43,21 @@
 #define R06_OBJ_3           r06d_objBathMatOut,         128, 107,  0, false, 0
 #define R06_OBJ_4           r06d_objKey,                136, 107,  0, false, 0
 
+#define R06_OBJ_5           r06d_objComputerDoor,       260, 76,   0, false, 0
+#define R06_OBJ_6           r06d_objScienceDoor,        408, 74,   0, false, 0
+#define R06_OBJ_7           r06d_objBathDoor,           585, 71,   0, false, 0
+#define R06_OBJ_8           r06d_objLockerDoor,         676, 69 ,  0, false, 0
+#define R06_OBJ_9           r06d_objPEOfficeDoor,       894, 68,   0, false, 0
+
 //define room animations
 #define R06_NUM_ANIMATIONS  0
+
+//define custom scripts (>256)
+#define R06_COMPUTER_DOOR_CLOSE_SCRIPT  257
+#define R06_SCIENCE_DOOR_CLOSE_SCRIPT   258
+#define R06_BATHROOM_DOOR_CLOSE_SCRIPT  259
+#define R06_LOCKER_DOOR_CLOSE_SCRIPT    260
+#define R06_PEOFFICE_DOOR_CLOSE_SCRIPT  261
 
 //hotspot code room enumeration
 enum r06_hotspotCode{
@@ -68,6 +86,11 @@ static tObject r06_object[R06_ROOM_NUM_OBJS] =
     {R06_OBJ_2},
     {R06_OBJ_3},
     {R06_OBJ_4},
+    {R06_OBJ_5},
+    {R06_OBJ_6},
+    {R06_OBJ_7},
+    {R06_OBJ_8},
+    {R06_OBJ_9},
 };
 
 //declare room objects animations array
