@@ -62,6 +62,7 @@ int main()
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_msdosLogo].dat, (RES_X>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->w>>1), (RES_Y>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->h>>1));
             break;
             case PROLOGUE_STATE:
+                game_fade_in();
                 cursor.enabled = false;
 
                 cursor_update();
@@ -79,7 +80,6 @@ int main()
                         game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                 }
-                game_fade_in();
             break;
             case INTRO_STATE:
                  //update calls
@@ -448,6 +448,7 @@ void game_update()
             if (midi_pos < 0 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
+                seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
                 sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
@@ -571,6 +572,20 @@ void game_update()
             }
             else
             {
+                switch (seq.step)
+                {
+                    case 1:
+                        seq.timeCounter += gameTick;
+                        if (seq.timeCounter >= 60)
+                        {
+                            seq.timeCounter = 0;
+                            seq.step++;
+                        }
+                    break;
+                    case 2:
+                        set_game_flag(END_CREDITS_FLAG);
+                    break;
+                }
                 check_room_changed();
             }
         break;
@@ -2401,8 +2416,11 @@ void credits_init()
     strcpy(credits.line[17], "Casio");    
     strcpy(credits.line[18], "Control de calidad");
     strcpy(credits.line[19], "Cali..¨qu‚?");
-    
-    for (int i = 0; i < CREDITS_NUM; i+=2)
+
+    strcpy(credits.line[20], "GRACIAS POR JUGAR");
+
+    //init credits position and color
+    for (int i = 0; i < CREDITS_NUM - 1; i+=2)
     {
         if (i == 0)
         {
@@ -2416,6 +2434,10 @@ void credits_init()
         credits.color[i]    = PURPLE_COLOR;
         credits.color[i+1]  = WHITE_COLOR;    
     }
+
+    //init final message credits pos and color
+    credits.pos_y[20] = credits.pos_y[20 - 1] + ((CREDITS_GROUP_SPACING + CREDITS_LINE_SPACING) * 4);
+    credits.color[20] = WHITE_COLOR;
 }
 
 //function to draw credits
@@ -2425,14 +2447,22 @@ void credits_draw()
     {
         if (credits.pos_y[i] > - 12)
         {
-            credits.pos_y[i] -= gameTick;
+            if (seq.step == 0)
+                credits.pos_y[i] -= gameTick;
             if (credits.pos_y[i] <= 248)
                 game_write(credits.line[i], C_X, credits.pos_y[i], credits.color[i], 4);
         }
     }
 
-    if (credits.pos_y[CREDITS_NUM - 1] <= -12)
-        set_game_flag(END_CREDITS_FLAG);
+    //if final credit on center screen
+    if (credits.pos_y[20] <= (RES_Y>>1) && seq.step == 0)
+    {
+        //next end sequence
+        seq.step = 1;
+    }
+
+    //if (credits.pos_y[CREDITS_NUM - 1] <= -12)
+    //    set_game_flag(END_CREDITS_FLAG);
 }
 
 END_OF_MAIN()

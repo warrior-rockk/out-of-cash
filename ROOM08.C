@@ -94,6 +94,7 @@ tObject* r08_get_object_info(uint8_t numObject)
 void r08_room_init()
 {
     r08_dialogActor.talking = false;
+    clear_game_flag(START_CREDITS_FLAG);
     
     game_fade_in();
 

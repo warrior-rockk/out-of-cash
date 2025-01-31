@@ -612,7 +612,7 @@ void begin_script()
 void end_script()
 {
     #ifdef DEBUGMODE
-    if (roomScript.active)
+    if (roomScript.scriptAssigned)
     {
         TRACE("End Script\n");
     }
