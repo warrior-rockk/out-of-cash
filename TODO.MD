@@ -1,12 +1,10 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * open oat box inventory oat dry?	
+    * open oat box : too dry
+	* use oat box with washbowl: too liquid
 	* sound of cassette playing?
-	
-    * final credits message
-    * disable cursor on ending
-    
+	  
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?
