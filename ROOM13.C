@@ -97,36 +97,46 @@ void r13_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_wait(10);
+                        script_wait(20);
                     break;
                     case 1:
-                        script_move_player_no_clip(350, 160);
+                        script_move_player_no_clip(120, 160);
                     break;
                     case 2:
+                        script_wait(10);
+                    break;
+                    case 3:
+                        play_player_animation(ANIM_PLY_HAPPY);
+                        script_wait(10);
+                    break;
+                    case 4:
+                        script_move_player_no_clip(350, 160);
+                    break;
+                    case 5:
                         script_wait(10);
                         r13_object[R13_CROWD_OBJ_ID].layer = 0;
                         set_player_position(350, 253);
                     break;
-                    case 3:
+                    case 6:
                         script_move_player_no_clip(79, 253);
                     break;
-                    case 4:
+                    case 7:
                         change_player_dir(DIR_BACK);
                         script_wait(10);
                     break;
-                    case 5:
+                    case 8:
                         set_game_flag(PLAYER_ROCKING_FLAG);
                         script_wait(30);
                     break;
-                    case 6:
+                    case 9:
                         set_game_flag(START_CREDITS_FLAG);
                         roomScript.step++;
                     break;
-                    case 7:
+                    case 10:
                         if (is_game_flag(END_CREDITS_FLAG))
                             roomScript.step++;
                     break;
-                    case 8:
+                    case 11:
                         game_fade_out(FADE_SLOW_SPEED);
                         change_room_pos(COMPUTER_ROOM_NUM, 350, 200);
                         end_script();
