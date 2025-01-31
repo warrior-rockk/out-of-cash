@@ -62,7 +62,6 @@ int main()
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_msdosLogo].dat, (RES_X>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->w>>1), (RES_Y>>1) - (((BITMAP *)gameDataFile[gd_msdosLogo].dat)->h>>1));
             break;
             case PROLOGUE_STATE:
-                game_fade_in();
                 cursor.enabled = false;
 
                 cursor_update();
@@ -80,6 +79,7 @@ int main()
                         game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                 }
+                game_fade_in();
             break;
             case INTRO_STATE:
                  //update calls
@@ -464,7 +464,7 @@ void game_update()
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = PROLOGUE_STATE;
                 sfx[SFX_GAME_VOICE].stop = true;
-                play_music(md_intro, 0);
+                play_music(md_intro, -1);
                 actualRoom.musicId = md_intro;
             }
         break;
@@ -473,7 +473,7 @@ void game_update()
                 seq.timeCounter++;
             if (seq.timeCounter >= 40 || cursor.click)
             {
-                game_fade_out(FADE_FAST_SPEED);
+                game_fade_out(FADE_SLOW_SPEED);
                 seq.step++;
                 seq.timeCounter = 0;
             }
@@ -487,7 +487,7 @@ void game_update()
             }
             else if(gameKeys[G_KEY_EXIT].pressed)
             {
-                game_fade_out(FADE_DEFAULT_SPEED);
+                game_fade_out(FADE_SLOW_SPEED);
                 stop_midi();
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
@@ -497,7 +497,7 @@ void game_update()
         case INTRO_STATE:
             if (!is_game_flag(INTRO_FLAG) || gameKeys[G_KEY_EXIT].pressed)
             {
-                game_fade_out(FADE_DEFAULT_SPEED);
+                game_fade_out(FADE_SLOW_SPEED);
                 change_room(BEDROOM_ROOM_NUM);
                 game.state = TITLE_STATE;
                 play_music(md_title, -1);
@@ -1732,6 +1732,8 @@ void room_load(uint8_t roomNumber)
     //check if room music has to need changed
     if (actualRoom.musicId != roomData[game.actualRoom].roomMusicId)
     {
+        ASSERT(roomData[game.actualRoom].roomMusicId < md_COUNT);
+        
         //assign actual room music id
         actualRoom.musicId = roomData[game.actualRoom].roomMusicId;
 
@@ -2306,9 +2308,10 @@ void sfx_update()
 //function to play a sound
 void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
 {
+    ASSERT(voice < SFX_NUM_VOICES);
+    ASSERT(soundId < sd_COUNT);
 
     //reallocate the sample on select voice of selected channel
-    ASSERT(voice < SFX_NUM_VOICES);
     reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
     sfx[voice].sampleId = soundId;
 

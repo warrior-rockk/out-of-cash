@@ -17,7 +17,7 @@
 #define R13_START_POS_X         -20
 #define R13_START_POS_Y         160
 #define R13_ROOM_NUM_OBJS       5
-#define R13_MUSIC_ID            14
+#define R13_MUSIC_ID            13
 #define R13_FADE                false
 #define R13_LIGHTS_OFF          false
 
