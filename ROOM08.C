@@ -100,6 +100,9 @@ void r08_room_init()
 
     if (is_game_flag(PLAYER_ROCKING_FLAG))
         start_script(R08_EPILOGUE_SCRIPT);
+    else if (is_game_flag(COMPUTER_DOOR_OPEN_FLAG))
+        start_script(R08_DOOR_CLOSE_SCRIPT);
+        
 }
 
 //global funcion to update room
@@ -192,6 +195,8 @@ void r08_update_room_objects()
             object_play_animation(&r08_object[R08_NERD_OBJ_ID], r08d_objPlay1, r08_animations, R08_ANIM_PLAYING);
         }
     }
+
+    r08_object[R08_DOOR_OBJ_ID].active =  is_game_flag(COMPUTER_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -571,16 +576,25 @@ void r08_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
+                            case 1:
+                                play_sound_rnd(sd_doorOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
+                                set_game_flag(COMPUTER_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
                             default:
                                 change_room_pos(SCHOOL_ROOM_NUM, 272, 84);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }
@@ -1129,6 +1143,28 @@ void r08_update_room_script()
                     break;
                     default:
                         set_game_flag(END_FINISH_FLAG);
+                        end_script();
+                    break;
+                }
+            break;
+            case R08_DOOR_CLOSE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        change_player_dir(DIR_RIGHT);
+                        script_wait(1);
+                    break;
+                    case 1:
+                        roomScript.hsY = 90;
+                        script_player_take_state();
+                    break;
+                    case 2:
+                        play_sound_rnd(sd_doorClose);
+                        clear_game_flag(COMPUTER_DOOR_OPEN_FLAG);
+                        roomScript.step++;
+                    break;
+                    default:
+                        change_player_dir(DIR_LEFT);
                         end_script();
                     break;
                 }

@@ -189,6 +189,9 @@ tObject* r09_get_object_info(uint8_t numObject)
 //function to init room
 void r09_room_init()
 {
+    if (is_game_flag(LOCKER_DOOR_OPEN_FLAG))
+        start_script(R09_DOOR_CLOSE_SCRIPT);
+        
     game_fade_in();
 }
 
@@ -214,6 +217,8 @@ void r09_update_room_objects()
 
     r09_object[R09_SHIRT_OBJ_ID].active = is_game_flag(LOCKER_1_OPEN_FLAG) && !is_game_flag(GOT_SHIRT_FLAG);
     r09_object[R09_JEANS_OBJ_ID].active = is_game_flag(LOCKER_3_OPEN_FLAG) && !is_game_flag(GOT_JEANS_FLAG);
+
+    r09_object[R09_DOOR_OBJ_ID].active      = is_game_flag(LOCKER_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -248,16 +253,25 @@ void r09_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
+                            case 1:
+                                play_sound_rnd(sd_doorOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
+                                set_game_flag(LOCKER_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
                             default:
                                 change_room_pos(SCHOOL_ROOM_NUM, 686, 82);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }
@@ -726,8 +740,28 @@ void r09_update_room_script()
                         }
                     break;
                 }
-                break;            
-                        
+            break;
+            case R09_DOOR_CLOSE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        change_player_dir(DIR_RIGHT);
+                        script_wait(1);
+                    break;
+                    case 1:
+                        roomScript.hsY = 90;
+                        script_player_take_state();
+                    break;
+                    case 2:
+                        play_sound_rnd(sd_doorClose);
+                        clear_game_flag(LOCKER_DOOR_OPEN_FLAG);
+                        roomScript.step++;
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;            
                         
 
         }

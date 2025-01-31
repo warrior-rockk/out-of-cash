@@ -120,6 +120,9 @@ void r07_room_init()
 {
     change_player_dir(DIR_RIGHT);
 
+    if (is_game_flag(SCIENCE_DOOR_OPEN_FLAG))
+        start_script(R07_DOOR_CLOSE_SCRIPT);
+        
     game_fade_in();
 }
 
@@ -141,6 +144,7 @@ void r07_update_room_objects()
 {
     r07_object[R07_KNIFE_OBJ_ID].active = !is_game_flag(GOT_KNIFE_FLAG);
     r07_object[R07_BRAIN_OBJ_ID].active = !is_game_flag(GOT_BRAIN_FLAG);
+    r07_object[R07_DOOR_OBJ_ID].active  =  is_game_flag(SCIENCE_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -175,16 +179,25 @@ void r07_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
+                            case 1:
+                                play_sound_rnd(sd_doorOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
+                                set_game_flag(SCIENCE_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
                             default:
                                 change_room_pos(SCHOOL_ROOM_NUM, 428, 87);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }
@@ -401,7 +414,28 @@ void r07_update_room_script()
                     break;                    
                 }
                 break;            
-
+             case R07_DOOR_CLOSE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        change_player_dir(DIR_LEFT);
+                        script_wait(1);
+                    break;
+                    case 1:
+                        roomScript.hsY = 90;
+                        script_player_take_state();
+                    break;
+                    case 2:
+                        play_sound_rnd(sd_doorClose);
+                        clear_game_flag(SCIENCE_DOOR_OPEN_FLAG);
+                        roomScript.step++;
+                    break;
+                    default:
+                        change_player_dir(DIR_RIGHT);
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }

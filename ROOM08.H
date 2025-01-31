@@ -16,7 +16,7 @@
 //define room properties
 #define R08_START_POS_X         245
 #define R08_START_POS_Y         100
-#define R08_ROOM_NUM_OBJS       2
+#define R08_ROOM_NUM_OBJS       3
 #define R08_MUSIC_ID            9
 #define R08_FADE                false
 #define R08_LIGHTS_OFF          false
@@ -26,9 +26,11 @@
 
 //define object array alias
 #define R08_NERD_OBJ_ID        0
+#define R08_DOOR_OBJ_ID        1
 
 //define object data (objId, x, y, animId, active, layer)
 #define R08_OBJ_0           r08d_objPlay1,   115, 100,  1, true, 0
+#define R08_OBJ_1           r08d_objDoor,    249, 94,   0, false, 0
 
 //define room animations
 #define R08_NUM_ANIMATIONS  1
@@ -49,6 +51,7 @@
 //define custom scripts (>256)
 #define R08_COSTUME_COMPLETE_SCRIPT 257
 #define R08_EPILOGUE_SCRIPT         258
+#define R08_DOOR_CLOSE_SCRIPT       259
 
 //hotspot code room enumeration
 enum r08_hotspotCode{
@@ -66,6 +69,7 @@ enum r08_hotspotCode{
 static tObject r08_object[R08_ROOM_NUM_OBJS] =
 {
     {R08_OBJ_0},
+    {R08_OBJ_1},
 };
 
 //declare room objects animations array

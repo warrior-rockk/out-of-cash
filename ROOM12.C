@@ -90,6 +90,9 @@ void r12_room_init()
 {
     r12_dialogActor.talking = false;
 
+    if (is_game_flag(BATHROOM_DOOR_OPEN_FLAG))
+        start_script(R12_DOOR_CLOSE_SCRIPT);
+        
     game_fade_in();
 }
 
@@ -109,8 +112,9 @@ void r12_room_update()
 //update room objects
 void r12_update_room_objects()
 {
-    r12_object[R12_DOOROPEN_OBJ_ID].active = is_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+    r12_object[R12_DOOROPEN_OBJ_ID].active  = is_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
     r12_object[R12_FRONTDOOR_OBJ_ID].active = is_game_flag(SCHOOL_BATH_DOOR_OPEN_FLAG);
+    r12_object[R12_DOOR_OBJ_ID].active      = is_game_flag(BATHROOM_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -396,16 +400,25 @@ void r12_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
+                            case 1:
+                                play_sound_rnd(sd_doorOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
+                                set_game_flag(BATHROOM_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
                             default:
                                 change_room_pos(SCHOOL_ROOM_NUM, 607, 79);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }
@@ -768,7 +781,28 @@ void r12_update_room_script()
                         }
                     break;
                 }
-                break;            
+            break;
+            case R12_DOOR_CLOSE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        change_player_dir(DIR_RIGHT);
+                        script_wait(1);
+                    break;
+                    case 1:
+                        roomScript.hsY = 90;
+                        script_player_take_state();
+                    break;
+                    case 2:
+                        play_sound_rnd(sd_doorClose);
+                        clear_game_flag(BATHROOM_DOOR_OPEN_FLAG);
+                        roomScript.step++;
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
 
         }
     }

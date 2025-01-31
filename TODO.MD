@@ -2,13 +2,12 @@
 
 - [ ] Gameplay:
     * open oat box : too dry
-	* use oat box with washbowl: too liquid
-	* sound of cassette playing?
-	  
+    * use oat box with washbowl: too liquid
+    * sound of cassette playing?
+
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?
-    * open school doors?
     * front player?
     * front player when nerd says nobody plays point and click games?
 
@@ -19,7 +18,7 @@
        
        if (gameTick)
        {
-       for (int i = 1; i < 256; i++)	
+       for (int i = 1; i < 256; i++)
         {
             get_color(i, &color);
             

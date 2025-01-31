@@ -77,6 +77,9 @@ tObject* r11_get_object_info(uint8_t numObject)
 void r11_room_init()
 {
     r11_dialogActor.talking = false;
+    if (is_game_flag(PEOFFICE_DOOR_OPEN_FLAG))
+        start_script(R11_DOOR_CLOSE_SCRIPT);
+        
     game_fade_in();
 }
 
@@ -111,6 +114,8 @@ void r11_update_room_objects()
         start_script(R11_SHOW_DISEASE_SCRIPT);
         clear_game_flag(SHOW_DISEASE_FLAG);
     }
+
+    r11_object[R11_DOOR_OBJ_ID].active      = is_game_flag(PEOFFICE_DOOR_OPEN_FLAG);
 }
 
 //update dialog selection
@@ -359,16 +364,25 @@ void r11_update_room_script()
                     break;
                     case GO:
                     case USE:
+                    case OPEN:
                         switch (roomScript.step)
                         {
                             case 0:
                                 begin_script();
                                 script_move_player_to_target();
-                                break;
+                            break;
+                            case 1:
+                                play_sound_rnd(sd_doorOpen);
+                                roomScript.step++;
+                            break;
+                            case 2:
+                                set_game_flag(PEOFFICE_DOOR_OPEN_FLAG);
+                                script_player_take_state();
+                            break;
                             default:
                                 change_room_pos(SCHOOL_ROOM_NUM, 901, 82);
                                 end_script();
-                                break;
+                            break;
                         }
                     break;
                 }
@@ -638,7 +652,27 @@ void r11_update_room_script()
                     break;
                 }
             break;
-
+            case R11_DOOR_CLOSE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        change_player_dir(DIR_RIGHT);
+                        script_wait(1);
+                    break;
+                    case 1:
+                        roomScript.hsY = 90;
+                        script_player_take_state();
+                    break;
+                    case 2:
+                        play_sound_rnd(sd_doorClose);
+                        clear_game_flag(PEOFFICE_DOOR_OPEN_FLAG);
+                        roomScript.step++;
+                    break;
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
         }
     }
 }

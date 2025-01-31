@@ -16,7 +16,7 @@
 //define room properties
 #define R12_START_POS_X         77
 #define R12_START_POS_Y         80
-#define R12_ROOM_NUM_OBJS       4
+#define R12_ROOM_NUM_OBJS       5
 #define R12_MUSIC_ID            2
 #define R12_FADE                false
 #define R12_LIGHTS_OFF          false
@@ -29,15 +29,20 @@
 #define R12_HANDEXAM_OBJ_ID     1
 #define R12_DOOROPEN_OBJ_ID     2
 #define R12_FRONTDOOR_OBJ_ID    3
+#define R12_DOOR_OBJ_ID         4
 
 //define object data (objId, x, y, animId, active, layer)
 #define R12_OBJ_0           r12d_objHand,       236, 96,  0, false, 0
 #define R12_OBJ_1           r12d_objHandExam,   237, 97,  0, false, 0
 #define R12_OBJ_2           r12d_objDoorOpen,   174, 60,  0, false, 0
 #define R12_OBJ_3           r12d_objFrontDoor,  236, 73,  0, false, 1
+#define R12_OBJ_4           r12d_objDoor,       74,  58,  0, false, 0
 
 //define room animations
 #define R12_NUM_ANIMATIONS  0
+
+//define custom scripts (>256)
+#define R12_DOOR_CLOSE_SCRIPT    257
 
 //hotspot code room enumeration
 enum r12_hotspotCode{
@@ -57,6 +62,7 @@ static tObject r12_object[R12_ROOM_NUM_OBJS] =
     {R12_OBJ_1},
     {R12_OBJ_2},
     {R12_OBJ_3},
+    {R12_OBJ_4},
 };
 
 //declare room objects animations array

@@ -16,7 +16,7 @@
 //define room properties
 #define R09_START_POS_X         229
 #define R09_START_POS_Y         129
-#define R09_ROOM_NUM_OBJS       6
+#define R09_ROOM_NUM_OBJS       7
 #define R09_MUSIC_ID            7
 #define R09_FADE                false
 #define R09_LIGHTS_OFF                false
@@ -25,12 +25,13 @@
 #define R09_DATA R09_START_POS_X, R09_START_POS_Y, R09_ROOM_NUM_OBJS, R09_MUSIC_ID, R09_FADE , R09_LIGHTS_OFF , &r09_room_init, &r09_room_update, &r09_get_hotspot_name, &r09_get_default_hotspot_verb, &r09_get_object_info
 
 //define object array alias
-#define R09_BENCH_OBJ_ID 0
-#define R09_LOCKER1OPEN_OBJ_ID 1
-#define R09_LOCKER2OPEN_OBJ_ID 2
-#define R09_LOCKER3OPEN_OBJ_ID 3
-#define R09_SHIRT_OBJ_ID 4
-#define R09_JEANS_OBJ_ID 5
+#define R09_BENCH_OBJ_ID        0
+#define R09_LOCKER1OPEN_OBJ_ID  1
+#define R09_LOCKER2OPEN_OBJ_ID  2
+#define R09_LOCKER3OPEN_OBJ_ID  3
+#define R09_SHIRT_OBJ_ID        4
+#define R09_JEANS_OBJ_ID        5
+#define R09_DOOR_OBJ_ID         6
 
 //define object data (objId, x, y, animId, active, layer)
 #define R09_OBJ_0           r09d_objBench,         149, 154,  0, true, 1
@@ -39,9 +40,13 @@
 #define R09_OBJ_3           r09d_objLocker3Open,   189, 79,  0, false, 0
 #define R09_OBJ_4           r09d_objShirt,         84,  58,  0, false, 0
 #define R09_OBJ_5           r09d_objJeans,         175, 76,  0, false, 0
+#define R09_OBJ_6           r09d_objJeans,          175, 76,  0, false, 0
 
 //define room animations
 #define R09_NUM_ANIMATIONS  0
+
+//define custom scripts (>256)
+#define R09_DOOR_CLOSE_SCRIPT   257
 
 //hotspot code room enumeration
 enum r09_hotspotCode{
@@ -69,6 +74,7 @@ static tObject r09_object[R09_ROOM_NUM_OBJS] =
     {R09_OBJ_3},
     {R09_OBJ_4},
     {R09_OBJ_5},
+    {R09_OBJ_6},
 };
 
 //declare room objects animations array
