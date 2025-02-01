@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R09DATA.DAT */
-/* Date: Sun Dec 22 17:52:52 2024 */
+/* Date: Sat Feb 01 19:33:01 2025 */
 /* Do not hand edit! */
 
 #define r09d_image                       0        /* BMP  */
@@ -12,5 +12,6 @@
 #define r09d_objLocker3Open              6        /* BMP  */
 #define r09d_objShirt                    7        /* BMP  */
 #define r09d_objJeans                    8        /* BMP  */
-#define r09d_COUNT                       9
+#define r09d_objDoor                     9        /* BMP  */
+#define r09d_COUNT                       10
 
