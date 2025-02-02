@@ -71,7 +71,7 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("Corr¡a el a¤o 1991 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Corr¡a el a¤o 1995 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
                         game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);

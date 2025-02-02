@@ -236,6 +236,8 @@ void change_player_dir(uint8_t dir);
 void player_take_state();
 void play_player_animation(int startFrame, int endFrame, int speed, uint8_t mode);
 void stop_player_animation();
+int get_player_pos_x();
+int get_player_pos_y();
 
 bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode);
 void object_pos_on_player(tObject *object);

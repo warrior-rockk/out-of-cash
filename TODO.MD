@@ -1,7 +1,8 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * function to get player position (for open doors)
+    * on ESC MENU, stop possible sounds
+    * ABOUT menu?
     * review school walk on lower zone (bottom border?)
     * open oat box : too dry
     * use oat box with washbowl: too liquid
