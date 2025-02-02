@@ -1,7 +1,6 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * on ESC MENU, stop possible sounds
     * ABOUT menu?
     * review school walk on lower zone (bottom border?)
     * open oat box : too dry

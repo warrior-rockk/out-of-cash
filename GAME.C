@@ -562,6 +562,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 resume_sound();
+                sfx[SFX_GAME_VOICE].stop = true;
                 //midi_resume();
             }
         break;
@@ -2015,6 +2016,7 @@ void gui_update()
             game.state = RESTART_STATE;
             stop_music();
             stop_sound();
+            sfx[SFX_GAME_VOICE].stop = true;
             game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_EXIT_DOS_STATE:
