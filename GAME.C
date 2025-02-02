@@ -964,7 +964,7 @@ void calculate_image_borders(BITMAP *image, tBorders *border)
     else
     {
         border->left = 0;
-        border->right = 0;
+        border->right = RES_X;
     }
 
     //if image height is smaller than room screen area
@@ -976,7 +976,7 @@ void calculate_image_borders(BITMAP *image, tBorders *border)
     else
     {
         border->up = 0;
-        border->down = 0;
+        border->down = RES_Y;
     }
 }
 

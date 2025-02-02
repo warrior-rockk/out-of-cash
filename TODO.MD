@@ -2,7 +2,6 @@
 
 - [ ] Gameplay:
     * ABOUT menu?
-    * review school walk on lower zone (bottom border?)
     * open oat box : too dry
     * use oat box with washbowl: too liquid
     * sound of cassette playing?
