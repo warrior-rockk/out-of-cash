@@ -14,8 +14,8 @@
 #include "R09DATA.H"
 
 //define room properties
-#define R09_START_POS_X         229
-#define R09_START_POS_Y         129
+#define R09_START_POS_X         230
+#define R09_START_POS_Y         109
 #define R09_ROOM_NUM_OBJS       7
 #define R09_MUSIC_ID            7
 #define R09_FADE                false
@@ -40,7 +40,7 @@
 #define R09_OBJ_3           r09d_objLocker3Open,   189, 79,  0, false, 0
 #define R09_OBJ_4           r09d_objShirt,         84,  58,  0, false, 0
 #define R09_OBJ_5           r09d_objJeans,         175, 76,  0, false, 0
-#define R09_OBJ_6           r09d_objJeans,          175, 76,  0, false, 0
+#define R09_OBJ_6           r09d_objDoor,          241, 95,  0, false, 0
 
 //define room animations
 #define R09_NUM_ANIMATIONS  0

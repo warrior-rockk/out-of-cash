@@ -416,7 +416,7 @@ void r12_update_room_script()
                                 script_player_take_state();
                             break;
                             default:
-                                change_room_pos(SCHOOL_ROOM_NUM, 607, 79);
+                                change_room_pos(SCHOOL_ROOM_NUM, 607, 84);
                                 end_script();
                             break;
                         }

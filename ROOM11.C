@@ -380,7 +380,7 @@ void r11_update_room_script()
                                 script_player_take_state();
                             break;
                             default:
-                                change_room_pos(SCHOOL_ROOM_NUM, 901, 82);
+                                change_room_pos(SCHOOL_ROOM_NUM, 901, 84);
                                 end_script();
                             break;
                         }
