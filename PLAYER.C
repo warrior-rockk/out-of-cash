@@ -103,7 +103,8 @@ void player_update_pos()
 
         if (!in_range_y)
         {
-            player.vY = fixtoi(relY) < player.destY ? actualSpeed : -actualSpeed;
+            //y movement speed = 1/3 of x speed
+            player.vY = fixtoi(relY) < player.destY ? fixdiv(actualSpeed, itofix(3)) : -fixdiv(actualSpeed, itofix(3));
         }
         else
             player.vY = itofix(0);
