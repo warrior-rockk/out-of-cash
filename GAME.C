@@ -71,7 +71,7 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("Corr¡a el a¤o 1991 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Corr¡a el a¤o 1995 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
                     break;
                     case 1:
                         game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
@@ -562,6 +562,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 resume_sound();
+                sfx[SFX_GAME_VOICE].stop = true;
                 //midi_resume();
             }
         break;
@@ -963,7 +964,7 @@ void calculate_image_borders(BITMAP *image, tBorders *border)
     else
     {
         border->left = 0;
-        border->right = 0;
+        border->right = RES_X;
     }
 
     //if image height is smaller than room screen area
@@ -975,7 +976,7 @@ void calculate_image_borders(BITMAP *image, tBorders *border)
     else
     {
         border->up = 0;
-        border->down = 0;
+        border->down = RES_Y;
     }
 }
 
@@ -2015,6 +2016,7 @@ void gui_update()
             game.state = RESTART_STATE;
             stop_music();
             stop_sound();
+            sfx[SFX_GAME_VOICE].stop = true;
             game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_EXIT_DOS_STATE:

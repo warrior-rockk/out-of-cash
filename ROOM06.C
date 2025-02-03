@@ -643,6 +643,7 @@ void r06_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(COMPUTER_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
@@ -702,6 +703,7 @@ void r06_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(SCIENCE_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
@@ -777,6 +779,7 @@ void r06_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(BATHROOM_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
@@ -809,6 +812,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
+                                roomScript.hsY = get_player_pos_y();
                                 script_move_player_to_target();
                             break;
                             case 1:
@@ -817,6 +821,7 @@ void r06_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(LOCKER_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
@@ -892,6 +897,7 @@ void r06_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(PEOFFICE_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
@@ -909,7 +915,7 @@ void r06_update_room_script()
                             script_wait(1);
                         break;
                         case 1:
-                            roomScript.hsY = 90;
+                            roomScript.hsY = get_player_pos_y();
                             script_player_take_state();
                         break;
                         case 2:
@@ -929,7 +935,7 @@ void r06_update_room_script()
                             script_wait(1);
                         break;
                         case 1:
-                            roomScript.hsY = 90;
+                            roomScript.hsY = get_player_pos_y();
                             script_player_take_state();
                         break;
                         case 2:
@@ -949,7 +955,7 @@ void r06_update_room_script()
                             script_wait(1);
                         break;
                         case 1:
-                            roomScript.hsY = 90;
+                            roomScript.hsY = get_player_pos_y();
                             script_player_take_state();
                         break;
                         case 2:
@@ -969,7 +975,7 @@ void r06_update_room_script()
                             script_wait(1);
                         break;
                         case 1:
-                            roomScript.hsY = 90;
+                            roomScript.hsY = get_player_pos_y();
                             script_player_take_state();
                         break;
                         case 2:
@@ -989,7 +995,7 @@ void r06_update_room_script()
                             script_wait(1);
                         break;
                         case 1:
-                            roomScript.hsY = 90;
+                            roomScript.hsY = get_player_pos_y();
                             script_player_take_state();
                         break;
                         case 2:

@@ -413,10 +413,11 @@ void r12_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(BATHROOM_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
-                                change_room_pos(SCHOOL_ROOM_NUM, 607, 79);
+                                change_room_pos(SCHOOL_ROOM_NUM, 607, 84);
                                 end_script();
                             break;
                         }
@@ -790,7 +791,7 @@ void r12_update_room_script()
                         script_wait(1);
                     break;
                     case 1:
-                        roomScript.hsY = 90;
+                        roomScript.hsY = get_player_pos_y();
                         script_player_take_state();
                     break;
                     case 2:

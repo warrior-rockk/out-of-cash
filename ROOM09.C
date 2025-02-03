@@ -266,10 +266,11 @@ void r09_update_room_script()
                             break;
                             case 2:
                                 set_game_flag(LOCKER_DOOR_OPEN_FLAG);
+                                roomScript.hsY = get_player_pos_y();
                                 script_player_take_state();
                             break;
                             default:
-                                change_room_pos(SCHOOL_ROOM_NUM, 686, 82);
+                                change_room_pos(SCHOOL_ROOM_NUM, 686, 84);
                                 end_script();
                             break;
                         }
@@ -749,7 +750,7 @@ void r09_update_room_script()
                         script_wait(1);
                     break;
                     case 1:
-                        roomScript.hsY = 90;
+                        roomScript.hsY = get_player_pos_y();
                         script_player_take_state();
                     break;
                     case 2:
@@ -758,6 +759,7 @@ void r09_update_room_script()
                         roomScript.step++;
                     break;
                     default:
+                        change_player_dir(DIR_LEFT);
                         end_script();
                     break;
                 }

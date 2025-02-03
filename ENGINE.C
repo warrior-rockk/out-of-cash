@@ -732,6 +732,18 @@ void stop_player_animation()
     player.state = player_st_idle;
 }
 
+//function to get x player position
+int get_player_pos_x()
+{
+    return fixtoi(player.x);
+}
+
+//function to get y player position
+int get_player_pos_y()
+{
+    return fixtoi(player.y);
+}
+
 //plays room object animation if object is active. Returns true when finished on ONCE mode
 bool object_play_animation(tObject *object, uint8_t idleFrame, tAnimation *animation, int startFrame, int endFrame, int speed, uint8_t mode)
 {
