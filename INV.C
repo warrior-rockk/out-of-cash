@@ -137,7 +137,7 @@ void inventory_draw()
                         draw_sprite(inventoryImage, (BITMAP *)inventoryDataFile[inventory.objIndex[objIndex]-1].dat, invX, invY);
                         //debug: print inv object index
                         #ifdef DEBUGMODE
-                            textprintf_centre_ex(inventoryImage, font, invX, invY, makecol(255,255,255), -1, "%i", objIndex);
+                            //textprintf_centre_ex(inventoryImage, font, invX, invY, makecol(255,255,255), -1, "%i", objIndex);
                         #endif
                     }
                 }

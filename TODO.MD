@@ -2,7 +2,6 @@
 
 - [ ] Gameplay:
     * ABOUT menu?
-    * sound of cassette playing?
 
     * more look descriptions on stationery?
     * more dialog lines on actors
