@@ -582,6 +582,9 @@ void default_verb_action(enum verbs roomVerb)
                 case 3:
                     say("No s‚ que pretendes que suceda");
                     break;
+                case 4:
+                    say("Creo que eso no funciona");
+                    break;
                 default:
                     say("Tampoco tengo que hacer todo lo que digas...");
                     break;

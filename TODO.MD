@@ -2,11 +2,8 @@
 
 - [ ] Gameplay:
     * ABOUT menu?
-    * open oat box : too dry
-    * use oat box with washbowl: too liquid
     * sound of cassette playing?
-	* explain more the subjects to approve
-	
+
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?

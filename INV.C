@@ -910,6 +910,20 @@ void inventory_update()
                                 break;
                         }
                     break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                script_say("Estos granos de avena est n un poco secos");
+                                break;
+                            case 1:
+                                script_say("Deber¡a mezclarlos con algo");
+                                break;
+                            default:
+                                end_script();
+                                break;
+                        }
                     case USE_WITH:
                         switch(roomScript.invObject)
                         {

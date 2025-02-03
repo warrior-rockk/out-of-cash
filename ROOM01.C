@@ -70,19 +70,19 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Impresora");
             break;
         case r01_book1:
-                strcpy(s, "Libro");
+                strcpy(s, "Libro 1");
             break;
         case r01_book2:
             if (!is_game_flag(GOT_BOOK_FLAG))
-                strcpy(s, "Libro");
+                strcpy(s, "Libro 3");
             else
                 strcpy(s, "");
             break;
         case r01_book3:
-                strcpy(s, "Libro");
+                strcpy(s, "Revista");
             break;
         case r01_book4:
-                strcpy(s, "Libro");
+                strcpy(s, "Libro 2");
             break;
         case r01_window:
                 strcpy(s, "Ventana");

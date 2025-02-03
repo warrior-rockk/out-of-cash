@@ -523,6 +523,24 @@ void r12_update_room_script()
                                 break;
                         }
                     break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_oat:
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        script_say("No deberia mojar los granos de avena con agua");
+                                        break;
+                                    default:
+                                        script_say("Deber¡a usar algo mas viscoso");
+                                        end_script();
+                                        break;
+                                }
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case r12_closedDoor:

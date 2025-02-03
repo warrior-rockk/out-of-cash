@@ -813,6 +813,9 @@ void r04_update_room_script()
                         break;
                         case 3:
                             script_say_actor("Si apruebas las asignaturas que has suspendido, te dar‚ el dinero", &r04_dialogActor);
+                        break;
+                        case 4:
+                            script_say_actor("Para ello tendr s que aprobar Matem ticas, Historia y Educaci¢n F¡sica", &r04_dialogActor);
                             set_game_flag(FATHER_SAY_MONEY_FLAG);
                         break;
                         default:
