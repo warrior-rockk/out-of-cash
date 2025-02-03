@@ -827,7 +827,9 @@ void game_save(uint8_t slot)
     //write the savegame file
     if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
         abort_on_error("Error escribiendo el archivo de guardado");
-    
+    else
+        TRACE("Saved game on slot %i with date: %s\n", (slot + 1), savegame.saveDate);
+
     //close and clear savegame
     fclose(saveFile);
 }
@@ -898,6 +900,9 @@ void game_load(uint8_t slot)
     
     //close savegame file
     fclose(loadFile);
+
+    TRACE("Loaded game from slot %i with date: %s\n", (slot + 1), savegame.saveDate);
+    TRACE("Game saved play time: %02dh %02dm\n", savegame.playTime.hours, savegame.playTime.minutes);
 }
 
 //function to do pending fade in
