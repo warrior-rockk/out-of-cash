@@ -16,7 +16,7 @@
 //define room properties
 #define R02_START_POS_X         179
 #define R02_START_POS_Y         117
-#define R02_ROOM_NUM_OBJS       1
+#define R02_ROOM_NUM_OBJS       2
 #define R02_MUSIC_ID            0
 #define R02_FADE                false
 #define R02_LIGHTS_OFF                false
@@ -25,10 +25,12 @@
 #define R02_DATA R02_START_POS_X, R02_START_POS_Y, R02_ROOM_NUM_OBJS, R02_MUSIC_ID, R02_FADE , R02_LIGHTS_OFF , &r02_room_init, &r02_room_update, &r02_get_hotspot_name, &r02_get_default_hotspot_verb, &r02_get_object_info
 
 //define object array alias
-#define R02_BATHDOOR_OBJ_ID 0
+#define R02_BATHDOOR_OBJ_ID  0
+#define R02_DOORFRAME_OBJ_ID 1
 
 //define object data (objId, x, y, animId, active, layer)
 #define R02_OBJ_0           r02d_objBathDoor,   141, 33,  0, false, 0
+#define R02_OBJ_1           r02d_objDoorFrame,  234, 75,  0, true, 1
 
 //define room animations
 #define R02_NUM_ANIMATIONS  0
@@ -51,6 +53,7 @@ enum r02_hotspotCode{
 static tObject r02_object[R02_ROOM_NUM_OBJS] =
 {
     {R02_OBJ_0},
+    {R02_OBJ_1},
 };
 
 //declare room objects animations array
