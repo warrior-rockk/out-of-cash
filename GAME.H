@@ -161,6 +161,14 @@ enum guiState{
 
 //structures
 
+//playtime counter struct
+struct playTime{
+    uint16_t centSeconds;
+    uint8_t minutes;
+    uint16_t hours;
+} playTime;
+
+//room borders structs
 typedef struct tBorders
 {
     int16_t left;
@@ -351,6 +359,7 @@ struct savegame
 {
     uint8_t version;
     char saveDate[SAVEGAME_DATE_CHARS];
+    struct playTime playTime;
     struct gameConfig gameConfigData;
     struct game gameData;
     struct inventory invData;
@@ -385,13 +394,6 @@ struct credits
     uint8_t color[CREDITS_NUM];
     int16_t pos_y[CREDITS_NUM];
 } credits;
-
-//playtime counter strucut
-struct playTime{
-    uint16_t centSeconds;
-    uint8_t minutes;
-    uint16_t hours;
-} playTime;
 
 //global vars
 static volatile int tick;

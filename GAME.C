@@ -813,6 +813,7 @@ void game_save(uint8_t slot)
     //sets the contents of savegame file
     savegame.version        = SAVEGAME_FILE_VERSION;
     get_actual_date(savegame.saveDate);
+    savegame.playTime       = playTime;
     savegame.gameConfigData = gameConfig;
     game.roomMusicPos       = midi_pos;
     savegame.gameData       = game;
@@ -862,6 +863,7 @@ void game_load(uint8_t slot)
         abort_on_error("Version de archivo de guardado incompatible");
 
     //writes savegame data to game
+    playTime    = savegame.playTime;
     gameConfig  = savegame.gameConfigData;
     game        = savegame.gameData;
     inventory   = savegame.invData;
@@ -998,7 +1000,7 @@ void game_exit()
     sfx_destroy();
     
     TRACE("Quit allegro modules\n");
-    TRACE("Game played for: %i:%i\n", playTime.hours, playTime.minutes);
+    TRACE("Game played for: %02dh %02dm\n", playTime.hours, playTime.minutes);
     //quit allegro modules
     allegro_exit();
 }
@@ -2483,7 +2485,7 @@ void playTime_update()
 {
     if (gameTick)
     {
-        if (playTime.centSeconds >= 60)
+        if (playTime.centSeconds >= 600)
         {
             if (playTime.minutes >= 59)
             {
