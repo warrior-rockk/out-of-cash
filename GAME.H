@@ -386,6 +386,13 @@ struct credits
     int16_t pos_y[CREDITS_NUM];
 } credits;
 
+//playtime counter strucut
+struct playTime{
+    uint16_t centSeconds;
+    uint8_t minutes;
+    uint16_t hours;
+} playTime;
+
 //global vars
 static volatile int tick;
 static BITMAP *cursorImage;
@@ -472,4 +479,7 @@ void stop_music();
 
 void credits_init();
 void credits_draw();
+
+void playTime_init();
+void playTime_update();
 #endif

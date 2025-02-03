@@ -120,6 +120,7 @@ int main()
                 room_action_update();
                 cursor_update();
                 player_update();
+                playTime_update();
                 
                 //draw calls
                 room_draw();
@@ -429,6 +430,7 @@ void game_init()
     hud_init();
     dialog_init();
     sfx_init();
+    playTime_init();
     
     //initial game inventory object
     inventory_add(id_califications);
@@ -995,8 +997,8 @@ void game_exit()
     gui_destroy();
     sfx_destroy();
     
-    TRACE("Quit allegro modules");
-    
+    TRACE("Quit allegro modules\n");
+    TRACE("Game played for: %i:%i\n", playTime.hours, playTime.minutes);
     //quit allegro modules
     allegro_exit();
 }
@@ -2468,4 +2470,33 @@ void credits_draw()
     //    set_game_flag(END_CREDITS_FLAG);
 }
 
+//function to init playTime
+void playTime_init()
+{
+    playTime.centSeconds    = 0;
+    playTime.minutes        = 0;
+    playTime.hours          = 0;
+}
+
+//function to update playTime
+void playTime_update()
+{
+    if (gameTick)
+    {
+        if (playTime.centSeconds >= 60)
+        {
+            if (playTime.minutes >= 59)
+            {
+                playTime.hours++;
+                playTime.minutes = 0;
+            }
+            else
+                playTime.minutes++;
+
+            playTime.centSeconds = 0;
+        }
+        else
+            playTime.centSeconds++;
+    }
+}
 END_OF_MAIN()
