@@ -220,6 +220,7 @@ void main_init()
     //set env var trace log file
     setenv("ALLEGRO_TRACE", "GAME.LOG", 1);
 
+    TRACE("Outcash (Sin blanca) version %i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     TRACE("Initializing systems and modules\n");
     
     //set unicode format
