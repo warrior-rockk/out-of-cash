@@ -298,6 +298,11 @@ void r01_update_room_script()
                                     script_say("No hay ning£n casete dentro para escuchar");
                                     end_script();
                                 }
+                                else if (is_game_flag(CASSETTE_BROKEN_FLAG))
+                                {
+                                    script_say("La cinta se ha enganchado");
+                                    end_script();
+                                }
                                 else
                                     script_move_player_to_target();
                                 break;
@@ -310,8 +315,23 @@ void r01_update_room_script()
                             case 3:
                                 toggle_game_flag(STEREO_ON_FLAG);
                                 r01_object[R01_STEREO01_OBJ_ID].active = is_game_flag(STEREO_ON_FLAG);
-                                end_script();
-                                break;
+                                roomScript.step++;
+                            break;
+                            case 4:
+                                script_play_sound(sd_cassetteSong);
+                            break;
+                            case 5:
+                                script_wait(110);
+                            break;
+                            case 6:
+                                play_player_animation(ANIM_PLY_SURPRISE);
+                                script_wait(20);
+                            break;
+                            case 7:
+                                clear_game_flag(STEREO_ON_FLAG);
+                                set_game_flag(CASSETTE_BROKEN_FLAG);
+                                script_say("Ya se ha enganchado la cinta");
+                            break;
                             default:
                                 end_script();
                                 break;

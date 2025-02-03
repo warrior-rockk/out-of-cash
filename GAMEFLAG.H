@@ -114,6 +114,7 @@ enum gameFlags{
     BATHROOM_DOOR_OPEN_FLAG,
     LOCKER_DOOR_OPEN_FLAG,
     PEOFFICE_DOOR_OPEN_FLAG,
+    CASSETTE_BROKEN_FLAG,
 };
 
 //definition of global game numeric vars index

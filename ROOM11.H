@@ -32,7 +32,7 @@
 //define object data (objId, x, y, animId, active, layer)
 #define R11_OBJ_0           r11d_objReading1,   211, 64,  1, true, 0
 #define R11_OBJ_1           r11d_objBackOat,    198, 120,  0, false, 1
-#define R11_OBJ_2           r11d_objDoor,       69, 83,  0, false, 0
+#define R11_OBJ_2           r11d_objDoor,       67, 85,  0, false, 0
 
 //define room animations
 #define R11_NUM_ANIMATIONS  1
