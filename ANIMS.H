@@ -8,6 +8,7 @@
 #define ANIM_PLY_IDLE               pd_idle,        pd_idle,        1, ANIM_ONCE
 #define ANIM_PLY_BACK               pd_backTalk01,  pd_backTalk01,  1, ANIM_ONCE
 #define ANIM_PLY_WALK               pd_walk01,      pd_walk06,      1, ANIM_LOOP
+#define ANIM_PLY_WALK_BACK          pd_walkBack01,  pd_walkBack06,  2, ANIM_LOOP
 #define ANIM_PLY_TALK               pd_talk01,      pd_talk11,      1, ANIM_PING_PONG
 #define ANIM_PLY_TAKE               pd_take,        pd_take,        5, ANIM_ONCE
 #define ANIM_PLY_TAKE_UP            pd_takeUp,      pd_takeUp,      5, ANIM_ONCE
