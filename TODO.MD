@@ -1,8 +1,6 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * ABOUT menu?
-
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?

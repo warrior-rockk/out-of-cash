@@ -9,7 +9,7 @@
 
 //Definitions
 #define MAJOR_VERSION   0
-#define MINOR_VERSION   1
+#define MINOR_VERSION   2
 
 //Screen
 #define RES_X  320
@@ -72,6 +72,8 @@
 #define GUI_NUM_OPTIONS         7
 #define GUI_CONTENT_X           105
 #define GUI_CONTENT_Y           18
+#define GUI_CONTENT_H           118
+#define GUI_CONTENT_W           171
 
 #define GUI_BUTTONS_X           11
 #define GUI_BUTTONS_Y           17

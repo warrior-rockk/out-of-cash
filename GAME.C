@@ -2119,7 +2119,7 @@ void gui_draw()
             break;
         case GUI_ABOUT_STATE:
             //draw gui contents
-            //draw_sprite(buffer, (BITMAP *)guiDataFile[dGui_Options].dat, gui.x + GUI_CONTENT_X, gui.y + GUI_CONTENT_Y);
+            game_write("Out Of Cash\n(Sin Blanca)\n \nProgramado por Warrior\n \nWarcom Soft.2025", gui.x + GUI_CONTENT_X + (GUI_CONTENT_W>>1), gui.y + GUI_CONTENT_Y, 74, 2);
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiAboutSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
