@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\PDATA.DAT */
-/* Date: Wed Feb 05 16:12:52 2025 */
+/* Date: Thu Feb 06 13:39:52 2025 */
 /* Do not hand edit! */
 
 #define pd_applyOat1                     0        /* BMP  */
@@ -47,8 +47,14 @@
 #define pd_walkBack06                    41       /* BMP  */
 #define pd_walkBack4                     42       /* BMP  */
 #define pd_walkBack5                     43       /* BMP  */
-#define pd_washHands01                   44       /* BMP  */
-#define pd_washHands02                   45       /* BMP  */
-#define pd_washHands03                   46       /* BMP  */
-#define pd_COUNT                         47
+#define pd_walkFront01                   44       /* BMP  */
+#define pd_walkFront02                   45       /* BMP  */
+#define pd_walkFront03                   46       /* BMP  */
+#define pd_walkFront04                   47       /* BMP  */
+#define pd_walkFront05                   48       /* BMP  */
+#define pd_walkFront06                   49       /* BMP  */
+#define pd_washHands01                   50       /* BMP  */
+#define pd_washHands02                   51       /* BMP  */
+#define pd_washHands03                   52       /* BMP  */
+#define pd_COUNT                         53
 
