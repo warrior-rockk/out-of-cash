@@ -171,7 +171,7 @@ void player_update_animation()
         break;
         case player_st_moving:
             //walk animation
-            if (player.vX == fixtoi(0))
+            if (player.vX == fixtoi(0)) // || abs(player.destY - fixtoi(player.y)) > abs(player.destX - fixtoi(player.x)))
             {
                 if (player.vY < fixtoi(0))
                     play_animation(&player.animation, ANIM_PLY_WALK_BACK);
