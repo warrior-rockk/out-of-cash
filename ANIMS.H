@@ -21,6 +21,7 @@
 #define ANIM_PLY_APPLY_OAT_STILL_2  pd_applyOat6,   pd_applyOat6,   3, ANIM_ONCE
 #define ANIM_PLY_END_OAT            pd_endOat1,     pd_endOat3,     3, ANIM_ONCE
 #define ANIM_PLY_SURPRISE           pd_surprise,    pd_surprise,    1, ANIM_LOOP
+#define ANIM_PLY_HAPPY_IDLE         pd_talk01,      pd_talk01,      1, ANIM_LOOP
 #define ANIM_PLY_HAPPY              pd_happy,       pd_happy,       1, ANIM_LOOP
 #define ANIM_PLY_WASH_HANDS         pd_washHands01, pd_washHands03, 3, ANIM_PING_PONG
 #define ANIM_PLY_ROCKING            pd_rocking01,   pd_rocking02,   4, ANIM_LOOP

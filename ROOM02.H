@@ -30,7 +30,7 @@
 
 //define object data (objId, x, y, animId, active, layer)
 #define R02_OBJ_0           r02d_objBathDoor,   141, 33,  0, false, 0
-#define R02_OBJ_1           r02d_objDoorFrame,  234, 75,  0, true, 1
+#define R02_OBJ_1           r02d_objDoorFrame,  247, 99,  0, false, 1
 
 //define room animations
 #define R02_NUM_ANIMATIONS  0

@@ -806,6 +806,7 @@ void r01_update_room_script()
                                 script_play_sound_wait(sd_computerBoot);
                             break;
                             case 4:
+                                play_player_animation(ANIM_PLY_HAPPY_IDLE);
                                 script_play_sound_wait(sd_win95Startup);
                                 object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_W95_COMPUTER);
                             break;

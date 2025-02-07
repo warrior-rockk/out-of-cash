@@ -109,6 +109,8 @@ tObject* r02_get_object_info(uint8_t numObject)
 //function to init room
 void r02_room_init()
 {
+    r02_object[R02_DOORFRAME_OBJ_ID].active = false;
+    
     game_fade_in();
 }
 
@@ -227,12 +229,12 @@ void r02_update_room_script()
                                     end_script();
                                 }
                                 else                                
-                                    script_move_player_to_target();
+                                    script_move_player(153, 53);
                                 break;
                             case 1:
+                                script_player_take_state();
                                 play_sound(sd_doorOpen);
                                 set_game_flag(BATH_DOOR_OPEN_FLAG);
-                                end_script();
                             default:
                                 end_script();
                                 break;
@@ -249,16 +251,16 @@ void r02_update_room_script()
                                     end_script();
                                 }
                                 else                                
-                                    script_move_player_to_target();
-
+                                    script_move_player(153, 53);
                                 break;
                             case 1:
+                                script_player_take_state();
                                 play_sound(sd_doorClose);
                                 clear_game_flag(BATH_DOOR_OPEN_FLAG);
-                                end_script();
+                            break;
                             default:
                                 end_script();
-                                break;
+                            §break;
                         }
                     break;
                 }
@@ -328,12 +330,16 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
-                                break;
+                                script_move_player(221, 117);
+                            break;
                             case 1:
+                                r02_object[R02_DOORFRAME_OBJ_ID].active = true;
+                                script_move_player_no_clip(250, 117);
+                            break;
+                            case 2:
                                 change_room(KITCHEN_ROOM_NUM);
                                 end_script();
-                                break;
+                            break;
                         }
                         break;                    
                 }
