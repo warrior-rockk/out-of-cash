@@ -400,9 +400,12 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player(roomScript.hsX,200);
-                                break;
+                                script_move_player(roomScript.hsX,154);
+                            break;
                             case 1:
+                                script_move_player_no_clip(roomScript.hsX, 240);
+                            break;
+                            case 2:
                                 change_room_pos(CORRIDOR_ROOM_NUM,174,38);
                                 end_script();
                                 break;

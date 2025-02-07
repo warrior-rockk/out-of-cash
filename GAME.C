@@ -26,8 +26,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
     play_music(md_warcomLogo, 0);
@@ -389,7 +389,7 @@ void game_init()
     //default game config (each savegame file stores custom config)
     gameConfig.textSpeed    = 10;   //chars per second
     gameConfig.playerSpeed  = 20;
-    gameConfig.musicVolume  = 180;
+    gameConfig.musicVolume  = 225;
     gameConfig.soundVolume  = 200;
 
     //sets audio config
