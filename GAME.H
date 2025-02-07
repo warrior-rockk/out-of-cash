@@ -316,7 +316,7 @@ typedef struct tKey{
     bool memPressed;
 } tKey;
 
-#define GAME_KEYS_NUM 11
+#define GAME_KEYS_NUM 12
 static tKey gameKeys[GAME_KEYS_NUM] =
 {
     #define G_KEY_PAUSE     0
@@ -330,6 +330,7 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     #define G_KEY_RIGHT     8
     #define G_KEY_D         9
     #define G_KEY_I         10
+    #define G_KEY_F         11
     
     {KEY_SPACE, false, false},
     {KEY_ESC, false, false},
@@ -342,6 +343,7 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_RIGHT, false, false},
     {KEY_D, false, false},
     {KEY_I, false, false},
+    {KEY_F, false, false},
 };
 
 //sfx voices structure
@@ -425,7 +427,7 @@ void game_exit();
 void game_load_resources();
 void game_free_resources();
 void game_do_fade_in();
-void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex);
+void game_write(char *text, int x, int y, uint8_t fontIndex, uint8_t color, uint8_t backColor);
 void game_save(uint8_t slot);
 bool game_save_exists(uint8_t slot, char *s);
 void game_load(uint8_t slot);

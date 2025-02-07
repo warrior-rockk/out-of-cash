@@ -26,8 +26,8 @@ int main()
 
 
     #ifdef DEBUGMODE
-        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        //game.state = PLAYING_STATE;
+        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        game.state = PLAYING_STATE;
     #endif
 
     play_music(md_warcomLogo, 0);
@@ -50,7 +50,7 @@ int main()
                 //draw warcom logo
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_warcomLogo].dat, (GAME_WARCOM_LOGO_POS_X) - (((BITMAP *)gameDataFile[gd_warcomLogo].dat)->w>>1), (GAME_WARCOM_LOGO_POS_Y) - (((BITMAP *)gameDataFile[gd_warcomLogo].dat)->h>>1));
                 //write text
-                game_write("WARCOM SOFT 2025", C_X, GAME_WARCOM_TEXT_POS_Y, 114, 4);
+                game_write("WARCOM SOFT 2025", C_X, GAME_WARCOM_TEXT_POS_Y, 4, 114, 0);
             break;
             case DOS_LOGO_STATE:
                 game_fade_in();
@@ -71,13 +71,13 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("Corr¡a el a¤o 1995 en una ciudad cualquiera", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Corr¡a el a¤o 1995 en una ciudad cualquiera", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 1:
-                        game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 2:
-                        game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, makecol(GAME_TEXT_COLOR), 2);
+                        game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                 }
             break;
@@ -106,8 +106,8 @@ int main()
 
                 //draw game title
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_title].dat, (C_X) - (((BITMAP *)gameDataFile[gd_title].dat)->w>>1), (GAME_TITLE_POS_Y) - (((BITMAP *)gameDataFile[gd_title].dat)->h>>1));
-                game_write("(SIN BLANCA)", C_X, GAME_TITLE_ESP_POS_Y, makecol(255,255,255), 2);
-                game_write("Haz click para comenzar", C_X, GAME_TITLE_FOOTER_POS_Y, makecol(255,233,12), 2);
+                game_write("(SIN BLANCA)", C_X, GAME_TITLE_ESP_POS_Y, 2, WHITE_COLOR, 0);
+                game_write("Haz click para comenzar", C_X, GAME_TITLE_FOOTER_POS_Y, 2, makecol(255,233,12), 0);
                 cursor_draw();
                 
             break;
@@ -163,7 +163,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("PAUSA", C_X, C_Y, makecol(GAME_TEXT_COLOR), 4);
+                game_write("JUEGO EN PAUSA", C_X, C_Y, 4, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
 
             break;
             case MENU_STATE:
@@ -624,6 +624,10 @@ void game_update()
         if (gameKeys[G_KEY_D].pressed)
             debug.showDebugInfo = !debug.showDebugInfo;
 
+        //set game flag
+        if (gameKeys[G_KEY_F].pressed)
+            ;//set_game_flag(GAME_END_FLAG);
+
         //toogle cursor room objects
         if (gameKeys[G_KEY_O].pressed && (game.state == PLAYING_STATE || game.state == END_STATE))
         {
@@ -697,7 +701,7 @@ void game_keys_handler()
 }
 
 //function to write text on screen
-void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex)
+void game_write(char *text, int x, int y, uint8_t fontIndex, uint8_t color, uint8_t backColor)
 {
     int posY;
     char s[MAX_MSG_LENGTH];
@@ -716,12 +720,15 @@ void game_write(char *text, int x, int y, uint8_t color, uint8_t fontIndex)
     //while ch != NULL (tokens left)
     while (ch)
     {
-        //print black outline text
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x+1, posY, BLACK_COLOR, -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x-1, posY, BLACK_COLOR, -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY+1, BLACK_COLOR, -1, "%s", ch);
-        textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY-1, BLACK_COLOR, -1, "%s", ch);
-
+        //print outline text
+        if (backColor != 0)
+        {
+            textprintf_centre_ex(buffer, gameFont[fontIndex], x+1, posY, backColor, -1, "%s", ch);
+            textprintf_centre_ex(buffer, gameFont[fontIndex], x-1, posY, backColor, -1, "%s", ch);
+            textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY+1, backColor, -1, "%s", ch);
+            textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY-1, backColor, -1, "%s", ch);
+        }
+        
         //print text
         textprintf_centre_ex(buffer, gameFont[fontIndex], x, posY, color, -1, "%s", ch);
         
@@ -1605,7 +1612,7 @@ void msg_draw()
             msgY = MSG_LINE_SPACING;
             
         //call to write text
-        game_write(msg.msg, msgX, msgY, msg.actorTalk->textColor, actualFont);
+        game_write(msg.msg, msgX, msgY, actualFont, msg.actorTalk->textColor, BLACK_COLOR);
     }
 }
 
@@ -2119,7 +2126,9 @@ void gui_draw()
             break;
         case GUI_ABOUT_STATE:
             //draw gui contents
-            game_write("Out Of Cash\n(Sin Blanca)\n \nProgramado por Warrior\n \nWarcom Soft.2025", gui.x + GUI_CONTENT_X + (GUI_CONTENT_W>>1), gui.y + GUI_CONTENT_Y, 74, 2);
+            game_write("Out Of Cash\n(Sin Blanca)\n \nProgramado por Warrior\n \nWarcom Soft.2025", gui.x + GUI_CONTENT_X + (GUI_CONTENT_W>>1), gui.y + GUI_CONTENT_Y, 2, 74, 170);
+            //game version
+            textprintf_right_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + (GUI_CONTENT_W), gui.y + GUI_CONTENT_Y + GUI_CONTENT_H - text_height(gameFont[2]), 74, -1, "v%i.%i", MAJOR_VERSION, MINOR_VERSION);
             //draw button highlighted
             draw_sprite(buffer, (BITMAP *)gameDataFile[gd_guiAboutSel].dat, gui.x + GUI_BUTTONS_X, gui.y + GUI_BUTTONS_Y + (GUI_BUTTONS_SPACING * gui.state));
             break;
@@ -2462,7 +2471,7 @@ void credits_draw()
             if (seq.step == 0)
                 credits.pos_y[i] -= gameTick;
             if (credits.pos_y[i] <= 248)
-                game_write(credits.line[i], C_X, credits.pos_y[i], credits.color[i], 4);
+                game_write(credits.line[i], C_X, credits.pos_y[i], 4, credits.color[i], BLACK_COLOR);
         }
     }
 
