@@ -1,0 +1,194 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15" version="24.8.4">
+  <diagram name="Página-1" id="QHHXrg2mRl5-b7X2TywC">
+    <mxGraphModel dx="1158" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-1" target="Bbxf4_YgA1EfQ1HTEHGS-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-1" target="Bbxf4_YgA1EfQ1HTEHGS-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-1" value="Necesitas dinero para ir al concierto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-2" target="Bbxf4_YgA1EfQ1HTEHGS-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-2" target="Bbxf4_YgA1EfQ1HTEHGS-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-2" target="Bbxf4_YgA1EfQ1HTEHGS-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-2" value="Hablar con padre y te da dinero si apruebas 3 asignaturas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-4" target="Bbxf4_YgA1EfQ1HTEHGS-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-4" value="Aprobar Historia" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-7" target="Bbxf4_YgA1EfQ1HTEHGS-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-7" value="Aprobar Matemáticas" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-9" target="Bbxf4_YgA1EfQ1HTEHGS-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-9" value="Aprobar E.Física" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-11" target="Bbxf4_YgA1EfQ1HTEHGS-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-11" value="Hablar con friki para disfrazarse de ti y hacer el examen" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-13" target="Bbxf4_YgA1EfQ1HTEHGS-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-13" target="Bbxf4_YgA1EfQ1HTEHGS-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-13" target="Bbxf4_YgA1EfQ1HTEHGS-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-13" value="DISFRAZ DE TI" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-15" target="Bbxf4_YgA1EfQ1HTEHGS-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-15" value="Pantalon azul de taquillas colegio" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-18" target="Bbxf4_YgA1EfQ1HTEHGS-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-18" value="Camiseta Roja de taquillas colegio" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="380" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-20" target="Bbxf4_YgA1EfQ1HTEHGS-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-20" value="Reloj estrella de cocina + cartucho tinta papelería" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="380" y="890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-23" target="Bbxf4_YgA1EfQ1HTEHGS-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-23" value="Cerebro de clase ciencias + pintura negra armario mantenimiento" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-25" target="Bbxf4_YgA1EfQ1HTEHGS-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-25" value="Dar cosa a friki y APROBADO" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1090" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-35" target="Bbxf4_YgA1EfQ1HTEHGS-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-35" value="Persona baño colegio tiene respuestas. Quiere fot. Dragon Ball a cambio" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-37" target="Bbxf4_YgA1EfQ1HTEHGS-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-37" value="Intercambiar cartucho tinta papelería por vacío habitación" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-39" target="Bbxf4_YgA1EfQ1HTEHGS-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-39" value="Poner fot. Dragon Ball en bandeja Impresora papelería" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-41" target="Bbxf4_YgA1EfQ1HTEHGS-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-41" value="Pedir horarios colegio" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-43" target="Bbxf4_YgA1EfQ1HTEHGS-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-43" value="Dar fot. Dragon Ball y conseguir respuestas examen.&lt;div&gt;APROBADO&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="990" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-45" target="Bbxf4_YgA1EfQ1HTEHGS-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-45" value="Hablas con profesor para librarte por trabajo si tienes enfermedad" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-47" target="Bbxf4_YgA1EfQ1HTEHGS-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-47" value="Simulas enfermedad aplicando avena de cocina y gel del baño con espátula&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-49" target="Bbxf4_YgA1EfQ1HTEHGS-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-49" value="Tienes que hacer trabajo sobre el deporte" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-51" target="Bbxf4_YgA1EfQ1HTEHGS-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-51" value="Hoja libro deporte habitacion+carpeta papelería" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-53" target="Bbxf4_YgA1EfQ1HTEHGS-60">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="1120" />
+              <mxPoint x="650" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-53" value="Lo entregas y APROBADO" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="990" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-55" target="Bbxf4_YgA1EfQ1HTEHGS-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-55" value="Armario Mant. cerrado con llave dentro" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-57" target="Bbxf4_YgA1EfQ1HTEHGS-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-57" value="Con cuchilla clase de ciencias+alfombrilla baño, sacas la llave" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="990" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-60" target="Bbxf4_YgA1EfQ1HTEHGS-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-60" value="Con todo aprobado tu padre te da el dinero menos 100ptas" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bbxf4_YgA1EfQ1HTEHGS-67" target="Bbxf4_YgA1EfQ1HTEHGS-70">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="1190" />
+              <mxPoint x="900" y="1190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-67" value="Con espatula clase ciencias despegas 100ptas" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="967" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bbxf4_YgA1EfQ1HTEHGS-70" value="FIN JUEGO" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1249" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
