@@ -626,7 +626,7 @@ void game_update()
 
         //set game flag
         if (gameKeys[G_KEY_F].pressed)
-            ;//set_game_flag(GAME_END_FLAG);
+            set_game_flag(GAME_END_FLAG);
 
         //toogle cursor room objects
         if (gameKeys[G_KEY_O].pressed && (game.state == PLAYING_STATE || game.state == END_STATE))
@@ -2434,11 +2434,13 @@ void credits_init()
     strcpy(credits.line[14], "Marketing");
     strcpy(credits.line[15], "­Ah si! Warrior");
     strcpy(credits.line[16], "Contabilidad");
-    strcpy(credits.line[17], "Casio");    
+    strcpy(credits.line[17], "Calculadora Casio");
     strcpy(credits.line[18], "Control de calidad");
-    strcpy(credits.line[19], "Cali..¨qu‚?");
-
-    strcpy(credits.line[20], "GRACIAS POR JUGAR");
+    strcpy(credits.line[19], "Control de...¨qu‚?");
+    strcpy(credits.line[20], "Agradecimientos especiales");
+    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nLuqquino");
+    
+    strcpy(credits.line[22], "GRACIAS POR JUGAR");
 
     //init credits position and color
     for (int i = 0; i < CREDITS_NUM - 1; i+=2)
@@ -2457,8 +2459,8 @@ void credits_init()
     }
 
     //init final message credits pos and color
-    credits.pos_y[20] = credits.pos_y[20 - 1] + ((CREDITS_GROUP_SPACING + CREDITS_LINE_SPACING) * 4);
-    credits.color[20] = WHITE_COLOR;
+    credits.pos_y[22] = credits.pos_y[22 - 1] + ((CREDITS_GROUP_SPACING + CREDITS_LINE_SPACING) * 4);
+    credits.color[22] = WHITE_COLOR;
 }
 
 //function to draw credits
@@ -2476,7 +2478,7 @@ void credits_draw()
     }
 
     //if final credit on center screen
-    if (credits.pos_y[20] <= (RES_Y>>1) && seq.step == 0)
+    if (credits.pos_y[22] <= (RES_Y>>1) && seq.step == 0)
     {
         //next end sequence
         seq.step = 1;

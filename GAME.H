@@ -389,12 +389,12 @@ struct seq
 } seq;
 
 //credits struct
-#define CREDITS_NUM             21
+#define CREDITS_NUM             23
 #define CREDITS_LINE_SPACING    14
 #define CREDITS_GROUP_SPACING   22
 struct credits
 {
-    char line[CREDITS_NUM][20];
+    char line[CREDITS_NUM][40];
     uint8_t color[CREDITS_NUM];
     int16_t pos_y[CREDITS_NUM];
 } credits;

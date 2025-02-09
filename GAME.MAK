@@ -49,10 +49,10 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 
 OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
 	room03.o room04.o room05.o room06.o room07.o room08.o room09.o\
-	room10.o room11.o room12.o utils.o
+	room10.o room11.o room12.o room13.o utils.o
 ALL_OBJFILES=anim.o engine.o game.o inv.o player.o room00.o room01.o\
 	room02.o room03.o room04.o room05.o room06.o room07.o room08.o\
-	room09.o room10.o room11.o room12.o utils.o
+	room09.o room10.o room11.o room12.o room13.o utils.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -65,7 +65,7 @@ EDITORS=
 MAIN_TARGET=game.exe
 PROJECT_ITEMS=anim.c engine.c game.c inv.c player.c room00.c room01.c\
 	room02.c room03.c room04.c room05.c room06.c room07.c room08.c\
-	room09.c room10.c room11.c room12.c utils.c
+	room09.c room10.c room11.c room12.c room13.c utils.c
 DEFAULT_MASK=*.[acfghimnops]*
 RHIDE_BIN_DIR=c:/djgpp/bin
 PASCAL_TYPE=GPC
@@ -361,7 +361,7 @@ clean::
 	rm -f $(CLEAN_FILES)
 DEPS_0= anim.o engine.o game.o inv.o player.o room00.o room01.o room02.o\
 	room03.o room04.o room05.o room06.o room07.o room08.o room09.o\
-	room10.o room11.o room12.o utils.o 
+	room10.o room11.o room12.o room13.o utils.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 game.exe:: $(DEPS_0)
@@ -420,7 +420,10 @@ room11.o:: $(DEPS_17)
 DEPS_18=room12.c
 room12.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.c.o)
-DEPS_19=utils.c
-utils.o:: $(DEPS_19)
+DEPS_19=room13.c
+room13.o:: $(DEPS_19)
+	$(RHIDE_COMPILE.c.o)
+DEPS_20=utils.c
+utils.o:: $(DEPS_20)
 	$(RHIDE_COMPILE.c.o)
 all:: game.exe

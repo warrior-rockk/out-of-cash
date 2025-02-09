@@ -138,6 +138,12 @@ void r13_update_room_script()
                     break;
                     case 11:
                         game_fade_out(FADE_SLOW_SPEED);
+                        roomScript.step++;
+                    break;
+                    case 12:
+                        script_wait(10);
+                    break;
+                    case 13:
                         change_room_pos(COMPUTER_ROOM_NUM, 350, 200);
                         end_script();
                     break;
