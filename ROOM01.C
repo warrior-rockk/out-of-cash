@@ -422,7 +422,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es un casete de lo £ltimo que ha sacado Reincidentes");
+                                script_say("Es un casete de lo £ltimo que ha sacado \"Reincidientes\"");
                                 break;
                             case 1:
                                 begin_script();

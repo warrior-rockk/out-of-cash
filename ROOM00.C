@@ -167,7 +167,7 @@ void r00_update_room_script()
                                 script_say("Zurraspa Producciones presenta:");
                             break;
                             case 2:
-                                script_say("Reincidentes en concierto");
+                                script_say("\"Reincidientes\" en concierto");
                                 break;
                             case 3:
                                 script_say("Presentando su £ltimo disco en directo");
@@ -308,7 +308,7 @@ void r00_update_room_script()
                     break;
                     case 6:
                         change_player_dir(DIR_BACK);
-                        script_say("­Concierto de Reincidentes!");
+                        script_say("­Concierto de \"Reincidientes\"!");
                     break;
                     case 7:
                         script_say("­Mola!");

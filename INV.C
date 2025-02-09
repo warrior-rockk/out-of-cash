@@ -598,7 +598,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un casete del £ltimo disco de Reincidentes");
+                                script_say("Un casete del £ltimo disco de \"Reincidientes\"");
                                 break;
                             default:
                                 end_script();
