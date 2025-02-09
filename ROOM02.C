@@ -451,11 +451,17 @@ void r02_update_room_script()
                                 break;
                             case 1:
                                 if (is_game_flag(FATHER_SAY_MONEY_FLAG))
-                                    change_room_pos(STREET_ROOM_NUM, 160, 100);
+                                    script_move_player_no_clip(roomScript.hsX, 230);
                                 else
+                                {
                                     script_say("Deber¡a pensar en como conseguir el dinero del concierto antes de irme de casa");
-                                end_script();
+                                    end_script();
+                                }
                                 break;
+                            default:
+                                change_room_pos(STREET_ROOM_NUM, 160, 100);
+                                end_script();
+                            break;
                         }
                         break;                    
                 }
