@@ -510,6 +510,8 @@ void game_update()
                 check_room_changed();
         break;
         case TITLE_STATE:
+            if (gameTick)
+                seq.timeCounter++;
             if (cursor.click)
             {
                 game_fade_out(FADE_SLOW_SPEED);
@@ -517,6 +519,12 @@ void game_update()
                 game_init();
                 change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
                 game.state = PLAYING_STATE;
+            }
+            //timeout
+            if (seq.timeCounter >= 610)
+            {
+                seq.timeCounter = 0;
+                game.state = RESTART_STATE;
             }
         break;
         case PLAYING_STATE:
