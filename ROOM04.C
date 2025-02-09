@@ -463,7 +463,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A£n huele a pizza");
+                                script_say("Mmm...A£n huele a pizza");
                                 break;
                             default:
                                 end_script();
@@ -480,6 +480,21 @@ void r04_update_room_script()
                             default:
                                 end_script();
                                 break;
+                        }
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_starClock:
+                                begin_script();
+                                script_say("Si pretend¡as carbonizar el reloj, no es buena idea");
+                                end_script();
+                            break;
+                            case id_brain:
+                                begin_script();
+                                script_say("Si pretend¡as carbonizar el cerebro, no es buena idea");
+                                end_script();
+                            break;
                         }
                     break;
                 }

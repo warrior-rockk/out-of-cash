@@ -260,7 +260,7 @@ void r02_update_room_script()
                             break;
                             default:
                                 end_script();
-                            §break;
+                            break;
                         }
                     break;
                 }

@@ -733,6 +733,11 @@ void r12_update_room_script()
                                     }
                                 }
                             break;
+                            case id_coin:
+                                begin_script();
+                                script_say("Deber¡a guardarme todo el dinero que pueda para comprar la entrada");
+                                end_script();
+                            break;
                             default:
                                 begin_script();
                                 switch (rand() % 4)

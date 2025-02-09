@@ -982,9 +982,31 @@ void r05_update_room_script()
                                     break;
                                 }
                             break;
+                            case id_coin:
+                                begin_script();
+                                script_say("Deber¡a guardarme todo el dinero que pueda para comprar la entrada");
+                                end_script();
+                            break;
                             default:
                                 begin_script();
-                                script_say_actor("Oh...Gracias, pero no sabr¡a que hacer con esto", &r05_dialogActor);
+                                switch (rand() % 4)
+                                {
+                                    case 0:
+                                        script_say_actor("Oh...Gracias, pero no sabr¡a que hacer con esto", &r05_dialogActor);
+                                    break;
+                                    case 1:
+                                        script_say_actor("Muy amable, pero no lo necesito", &r05_dialogActor);
+                                    break;
+                                    case 2:
+                                        script_say_actor("No gracias, no utilizamos ese tipo de art¡culos", &r05_dialogActor);
+                                    break;
+                                    case 3:
+                                        script_say_actor("Ummm, no estoy interesado", &r05_dialogActor);
+                                    break;
+                                    case 4:
+                                        script_say_actor("Te puede hacer mas falta que a mi", &r05_dialogActor);
+                                    break;
+                                }
                                 end_script();
                             break;
                         }

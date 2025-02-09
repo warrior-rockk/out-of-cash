@@ -26,99 +26,27 @@ Change game state from 0 to 5
     Script step from 0 to 1
     Script step from 1 to 2
 End Script
-Begin Script
-    Script Object:236
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-    Script step from 1 to 2
-End Script
-Change from room 1 to room 2
+Change game state from 5 to 8
+Change game state from 8 to 5
+Change game state from 5 to 8
+Change from room 1 to room 12
 Free actual room datafile resources
-Load room datafile: R02DATA.DAT
+Load room datafile: R12DATA.DAT
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 8 to 5
 Begin Script
-    Script Object:153
-    Script InvObject:0
-    Script Verb:0
+    Script Object:37
+    Script InvObject:9
+    Script Verb:5
     Script Type:0
-    Script step from 0 to 1
-    Script step from 1 to 2
-End Script
-Change from room 2 to room 4
-Free actual room datafile resources
-Load room datafile: R04DATA.DAT
-Begin Script
-    Script Object:164
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 4 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:6
-    Script Type:0
-    Script step from 0 to 1
 End Script
 Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:0
+    Script Object:37
+    Script InvObject:9
+    Script Verb:5
     Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 2 to room 3
-Free actual room datafile resources
-Load room datafile: R03DATA.DAT
-Begin Script
-    Script Object:138
-    Script InvObject:0
-    Script Verb:0
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Change from room 3 to room 2
-Free actual room datafile resources
-Load room datafile: R02DATA.DAT
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:7
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:6
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:7
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:6
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:127
-    Script InvObject:0
-    Script Verb:7
-    Script Type:0
-    Script step from 0 to 1
 End Script
 Exiting game
 Freeing game resources
@@ -136,4 +64,4 @@ Destroy GUI system
 Destroy SFX system
 SFX system destroyed
 Quit allegro modules
-Game played for: 00h 00m
+Game played for: 00h 01m
