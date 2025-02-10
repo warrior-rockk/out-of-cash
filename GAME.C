@@ -598,6 +598,12 @@ void game_update()
                         set_game_flag(END_CREDITS_FLAG);
                     break;
                 }
+                if (midi_pos >= 218)
+                    set_game_flag(END_STOP_GUITARS_FLAG);
+                if (midi_pos >= 225)
+                    set_game_flag(END_STOP_DRUMS_FLAG);
+                //TRACE("midi pos %ld\n", midi_pos);
+                
                 check_room_changed();
             }
         break;

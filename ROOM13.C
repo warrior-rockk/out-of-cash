@@ -69,9 +69,22 @@ void r13_update_room_objects()
 {
     object_play_animation(&r13_object[R13_CROWD_OBJ_ID], r13d_objCrowd1, r13_animations, R13_ANIM_CROWD);
     object_play_animation(&r13_object[R13_SPEAKERS_OBJ_ID], r13d_objSpeakers1, r13_animations, R13_ANIM_SPEAKERS);
-    object_play_animation(&r13_object[R13_GUITAR_1_OBJ_ID], r13d_objGuitar11, r13_animations, R13_ANIM_GUITAR_1);
-    object_play_animation(&r13_object[R13_GUITAR_2_OBJ_ID], r13d_objGuitar21, r13_animations, R13_ANIM_GUITAR_2);
-    object_play_animation(&r13_object[R13_DRUMS_OBJ_ID], r13d_objDrums1, r13_animations, R13_ANIM_DRUMS);
+
+    if (!is_game_flag(END_STOP_GUITARS_FLAG))
+    {
+       object_play_animation(&r13_object[R13_GUITAR_1_OBJ_ID], r13d_objGuitar11, r13_animations, R13_ANIM_GUITAR_1);
+       object_play_animation(&r13_object[R13_GUITAR_2_OBJ_ID], r13d_objGuitar21, r13_animations, R13_ANIM_GUITAR_2);
+    }
+    else
+    {
+        object_play_animation(&r13_object[R13_GUITAR_1_OBJ_ID], r13d_objGuitar11, r13_animations, r13d_objGuitar11, r13d_objGuitar11, 1, ANIM_LOOP);
+        object_play_animation(&r13_object[R13_GUITAR_2_OBJ_ID], r13d_objGuitar21, r13_animations, r13d_objGuitar21, r13d_objGuitar21, 1, ANIM_LOOP);
+    }
+
+    if (!is_game_flag(END_STOP_DRUMS_FLAG))
+        object_play_animation(&r13_object[R13_DRUMS_OBJ_ID], r13d_objDrums1, r13_animations, R13_ANIM_DRUMS);
+    else
+        object_play_animation(&r13_object[R13_DRUMS_OBJ_ID], r13d_objDrums1, r13_animations, r13d_objDrums1, r13d_objDrums1, 1, ANIM_LOOP);
 
     if (is_game_flag(PLAYER_ROCKING_FLAG))
         play_player_animation(ANIM_PLY_ROCKING);
