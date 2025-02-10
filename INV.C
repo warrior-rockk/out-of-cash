@@ -1127,9 +1127,45 @@ void inventory_update()
                                 start_script(STAR_SHIRT_SCRIPT);
                             break;
                             case id_starClock:
-                                begin_script();
-                                script_say("¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
-                                end_script();
+                                switch (roomScript.step)
+                                {
+                                    case 0:
+                                        begin_script();
+                                        change_player_dir(DIR_FRONT);
+                                        script_say("¨Ya est ?");
+                                    break;
+                                    case 1:
+                                        script_say("¨Eso es lo que se te ocurre?");
+                                    break;
+                                    case 2:
+                                        script_wait(5);
+                                    break;
+                                    case 3:
+                                        script_say("¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
+                                    break;
+                                    case 4:
+                                        script_wait(5);
+                                    break;
+                                    case 5:
+                                        script_say("¨Asi por arte de magia?");
+                                    break;
+                                    case 6:
+                                        script_wait(5);
+                                    break;
+                                    case 7:
+                                        script_say("¨Que por acercarlo se transfiera su silueta?");
+                                    break;
+                                    case 8:
+                                        script_wait(5);
+                                    break;
+                                    case 9:
+                                        script_say("Creo que no");
+                                    break;
+                                    default:
+                                        change_player_dir(DIR_RIGHT);
+                                        end_script();
+                                    break;
+                                }
                             break;
                         }
                     break;

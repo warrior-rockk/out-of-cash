@@ -394,9 +394,11 @@ void r05_update_room_script()
                                script_say("­Espera!... mejor no, gracias");
                            break;
                            case 11:
-                               script_say("(Si imprimo el horario sobre la fotocopia de Dragon Ball la voy a estropear)");
+                               change_player_dir(DIR_FRONT);
+                               script_say("Si imprimo el horario sobre la fotocopia de Dragon Ball la voy a estropear");
                            break;
                            default:
+                               change_player_dir(DIR_RIGHT);
                                r05_object[R05_PRINTER_OBJ_ID].active = false;
                                clear_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                                if (is_game_flag(EMPLOYEE_AT_COMPUTER_FLAG))

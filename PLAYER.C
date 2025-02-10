@@ -164,10 +164,18 @@ void player_update_animation()
     {
         case player_st_idle:
             //idle animation
-            if (player.lookDir != DIR_BACK)
-                play_animation(&player.animation, ANIM_PLY_IDLE);
-            else
-                play_animation(&player.animation, ANIM_PLY_BACK);
+            switch (player.lookDir)
+            {
+                case DIR_BACK:
+                    play_animation(&player.animation, ANIM_PLY_BACK);
+                break;
+                case DIR_FRONT:
+                    play_animation(&player.animation, ANIM_PLY_FRONT_IDLE);
+                break;
+                default:
+                    play_animation(&player.animation, ANIM_PLY_IDLE);
+                break;
+            }
         break;
         case player_st_moving:
             //walk animation
@@ -183,10 +191,18 @@ void player_update_animation()
         break;
         case player_st_talking:
             //talk animation
-            if (player.lookDir == DIR_BACK)
-                play_animation(&player.animation, ANIM_PLY_BACK_TALK);
-            else
-                play_animation(&player.animation, ANIM_PLY_TALK);
+            switch (player.lookDir)
+            {
+                case DIR_BACK:
+                    play_animation(&player.animation, ANIM_PLY_BACK_TALK);
+                break;
+                case DIR_FRONT:
+                    play_animation(&player.animation, ANIM_PLY_FRONT_TALK);
+                break;
+                default:
+                    play_animation(&player.animation, ANIM_PLY_TALK);
+                break;
+            }
         break;
         case player_st_taking:
             if (play_animation(&player.animation, ANIM_PLY_TAKE))
