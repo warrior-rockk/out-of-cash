@@ -40,7 +40,10 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Toalla");
             break;
         case r03_bathMat:
+            if (r03_object[R03_BATHMAT_OBJ_ID].active)
                 strcpy(s, "Alfombrilla");
+            else
+                strcpy(s, "");
             break;
         case r03_switch:
                 strcpy(s, "Interruptor");
