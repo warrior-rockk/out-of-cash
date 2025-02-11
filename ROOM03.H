@@ -32,11 +32,11 @@
 #define R03_BATHMAT_OBJ_ID 4
 
 //define object data (objId, x, y, animId, active, layer)
-#define R03_OBJ_0           r03d_objBath,   162, 148,  0, true, 1
-#define R03_OBJ_1           r03d_objBathClosetOpen,   167, 60,  0, false, 0
-#define R03_OBJ_2           r03d_objGel,   169, 41,  0, false, 0
-#define R03_OBJ_3           r03d_objBathDoorOpen,   217, 83,  0, false, 0
-#define R03_OBJ_4           r03d_objBathMat,   161, 135,  0, true, 0
+#define R03_OBJ_0           r03d_objBath,           157, 140,  0, true, 1
+#define R03_OBJ_1           r03d_objBathClosetOpen, 162, 52,  0, false, 0
+#define R03_OBJ_2           r03d_objGel,            164, 33,  0, false, 0
+#define R03_OBJ_3           r03d_objBathDoorOpen,   212, 75,  0, false, 0
+#define R03_OBJ_4           r03d_objBathMat,        156, 127,  0, true, 0
 
 //define room animations
 #define R03_NUM_ANIMATIONS  0
