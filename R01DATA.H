@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
 /* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\R01DATA.DAT */
-/* Date: Fri Jan 10 13:03:30 2025 */
+/* Date: Wed Feb 12 14:31:24 2025 */
 /* Do not hand edit! */
 
 #define r01d_room01                      0        /* BMP  */
@@ -21,5 +21,7 @@
 #define r01d_objCompBoot5                15       /* BMP  */
 #define r01d_objCompBoot6                16       /* BMP  */
 #define r01d_objCompBoot7                17       /* BMP  */
-#define r01d_COUNT                       18
+#define r01d_objOpenPrinter              18       /* BMP  */
+#define r01d_objCartridge                19       /* BMP  */
+#define r01d_COUNT                       20
 

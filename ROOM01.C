@@ -66,6 +66,12 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
         case r01_toys:
                 strcpy(s, "Figuras");
             break;
+        case r01_cartridge:
+            if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+            {
+                strcpy(s, "Cartucho vac¡o");
+                break;
+            }
         case r01_printer:
                 strcpy(s, "Impresora");
             break;
@@ -140,6 +146,12 @@ enum verbs r01_get_default_hotspot_verb(uint8_t colorCode)
         case r01_toys:
             return LOOK;
             break;
+        case r01_cartridge:
+            if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+            {
+                return LOOK;
+                break;
+            }
         case r01_printer:
             return LOOK;
             break;
@@ -207,6 +219,9 @@ void r01_update_room_objects()
     r01_object[R01_CASSETTE_OBJ_ID].active  = !is_game_flag(GOT_CASSETTE_FLAG);
     r01_object[R01_BOOK_OBJ_ID].active      = !is_game_flag(GOT_BOOK_FLAG);
     //r01_object[R01_GUITAR_OBJ_ID].active  = !is_game_flag(GOT_GUITAR_FLAG);
+
+    r01_object[R01_OPENPRINTER_OBJ_ID].active   = is_game_flag(OPEN_PRINTER_FLAG);
+    r01_object[R01_CARTRIDGE_OBJ_ID].active     = is_game_flag(OPEN_PRINTER_FLAG) && !is_game_flag(GOT_EMPTY_CARTRIDGE_FLAG);
 }
 
 //update dialog selection
@@ -866,6 +881,47 @@ void r01_update_room_script()
                     break;
                 }
                 break;            
+            case r01_cartridge:
+                if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("Es el cartucho de tinta de la impresora");
+                                break;
+                                case 1:
+                                    script_say("Pero est  vac¡o");
+                                break;
+                                default:
+                                    end_script();
+                                break;
+                            }
+                        break;
+                        case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_move_player_to_target();
+                                    break;
+                                case 1:
+                                    script_take_object(NULL, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
+                                    break;
+                                case 2:
+                                    script_wait(5);
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                break;
+                }
             case r01_printer:
                 switch(roomScript.verb)
                 {
@@ -877,10 +933,13 @@ void r01_update_room_script()
                                 script_say("Mi impresora de inyecci¢n");
                                 break;
                             case 1:
-                                script_say("Solo tiene cartucho de tinta negra");
+                                if (!is_game_flag(OPEN_PRINTER_FLAG))
+                                    script_say("Solo tiene cartucho de tinta negra");
+                                else
+                                    script_say("Con la tapa abierta veo el cartucho de tinta");
                                 break;
                             case 2:
-                                script_say("Y encima no le queda tinta");
+                                script_say("Pero no le queda tinta");
                                 break;
                             default:
                                 end_script();
@@ -917,21 +976,62 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_move_player_to_target();
-                                break;
-                            case 1:
-                                script_take_object(NULL, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
-                                break;
-                            case 2:
-                                script_wait(5);
-                                break;
-                            case 3:
-                                script_say("Me llevo el cartucho de tinta vac¡o");
-                                break;
+                                script_say("¨Que quieres que me lleve la impresora entera?");
+                            break;
                             default:
                                 end_script();
-                                break;
+                            break;
                         }       
+                    break;
+                    case OPEN:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (!is_game_flag(OPEN_PRINTER_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                {
+                                    script_say("Ya est  abierta");
+                                    end_script();
+                                }
+                            break;
+                            case 1:
+                                script_play_sound(sd_lidOpen);
+                            break;
+                            case 2:
+                                script_player_take_state();
+                                set_game_flag(OPEN_PRINTER_FLAG);
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
+                    break;
+                    case CLOSE:
+                        switch (roomScript.step)
+                        {
+                            case 0:
+                                begin_script();
+                                if (is_game_flag(OPEN_PRINTER_FLAG))
+                                    script_move_player_to_target();
+                                else
+                                {
+                                    script_say("Ya est  cerrada");
+                                    end_script();
+                                }
+                            break;
+                            case 1:
+                                script_play_sound(sd_lidClose);
+                            break;
+                            case 2:
+                                script_player_take_state();
+                                clear_game_flag(OPEN_PRINTER_FLAG);
+                            break;
+                            default:
+                                end_script();
+                            break;
+                        }
                     break;
                 }
                 break;            

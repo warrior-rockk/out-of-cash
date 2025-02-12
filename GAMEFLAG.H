@@ -15,7 +15,9 @@ enum gameFlags{
     GOT_EMPTY_CARTRIDGE_FLAG,
     GOT_BOOK_FLAG,
     GOT_COIN_FLAG,
-    
+    CASSETTE_BROKEN_FLAG,
+    OPEN_PRINTER_FLAG,
+
     BATH_CLOSET_OPEN_FLAG,
     BATH_DOOR_OPEN_FLAG,
     GOT_GEL_FLAG,
@@ -116,7 +118,6 @@ enum gameFlags{
     BATHROOM_DOOR_OPEN_FLAG,
     LOCKER_DOOR_OPEN_FLAG,
     PEOFFICE_DOOR_OPEN_FLAG,
-    CASSETTE_BROKEN_FLAG,
 };
 
 //definition of global game numeric vars index
