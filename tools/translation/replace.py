@@ -17,16 +17,17 @@ def reemplazar_texto_desde_csv(nombre_archivo, nombre_archivo_csv):
             # Saltar la primera fila si contiene encabezados
             next(lector_csv, None)
 
-            with open(nombre_archivo, 'r', encoding='utf-8') as archivo_texto:
+            with open(nombre_archivo, 'r', encoding='latin_1') as archivo_texto:
                 contenido = archivo_texto.read()
 
             for fila in lector_csv:
                 if len(fila) >= 2:  # Asegurarse de que haya al menos dos columnas
-                    cadenas_a_buscar = fila[:-1]  # Todas las columnas excepto la última son cadenas a buscar
-                    cadena_de_reemplazo = fila[-1]  # La última columna es la cadena de reemplazo
+                    if fila[-1]:    #Asegurarse de que la cadena de reemplazo no esta vacia
+                        cadenas_a_buscar = fila[:-1]  # Todas las columnas excepto la última son cadenas a buscar
+                        cadena_de_reemplazo = fila[-1]  # La última columna es la cadena de reemplazo
 
-                    for cadena_original in cadenas_a_buscar:
-                        contenido = contenido.replace(cadena_original, cadena_de_reemplazo)
+                        for cadena_original in cadenas_a_buscar:
+                            contenido = contenido.replace(cadena_original, cadena_de_reemplazo)
 
             with open(nombre_archivo, 'w', encoding='utf-8') as archivo_texto:
                 archivo_texto.write(contenido)

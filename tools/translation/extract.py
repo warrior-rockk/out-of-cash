@@ -13,13 +13,19 @@ def extraer_cadenas_con_comillas(archivo_entrada, archivo_salida):
     """
 
     try:
-        with open(archivo_entrada, 'r') as f_entrada, open(archivo_salida, 'w') as f_salida:
+        with open(archivo_entrada, 'r', encoding='latin_1') as f_entrada, open(archivo_salida, 'w') as f_salida:
+            #encabezado
+            f_salida.write("sp,eng\n")
+
             for linea in f_entrada:
                 # Encuentra todas las cadenas entre comillas (escapadas o no) en la línea actual
                 cadenas = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', linea)  
                 for cadena in cadenas:
                     if cadena:  # Verifica si la cadena no está vacía
                         f_salida.write(cadena + ',' + '\n')
+    
+            print(f"Cadenas extraídas en fichero {archivo_salida}")
+                                
     except FileNotFoundError:
         print(f"Error: Uno o ambos archivos no fueron encontrados.")
     except Exception as e:
