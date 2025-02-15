@@ -19,22 +19,22 @@ void r06_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r06_door:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_maintLockerLock:
             if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
             {
-                strcpy(s, "Lock");
+                strcpy(s, "Locks");
                 break;
             }
             else
                 strcpy(s, "");
         case r06_maintLockerDoor:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_maintLockerBathMat:
             if (is_game_flag(BATH_MAT_IN_DOOR_FLAG) || is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
-                strcpy(s, "mat");
+                strcpy(s, "CARPET");
             else
                 strcpy(s, "");
             break;
@@ -45,34 +45,34 @@ void r06_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             break;
         case r06_paint:
-                strcpy(s, "Chart");
+                strcpy(s, "Profile");
             break;
         case r06_computerRoomDoor:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_window:
                 strcpy(s, "Window");
             break;
         case r06_scienceRoomDoor:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_board:
-                strcpy(s, "Plank");
+                strcpy(s, "Tabl¢n");
             break;
         case r06_schoolBathDoor:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_lockerDoor:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         case r06_orla:
-                strcpy(s, "Fringe");
+                strcpy(s, "Orle");
             break;
         case r06_bench:
                 strcpy(s, "Bank");
             break;
         case r06_PEOfficeRoom:
-                strcpy(s, "Door");
+                strcpy(s, "Gate");
             break;
         default:
             strcpy(s, "");
@@ -239,10 +239,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("The door of the institute");
+                                script_say("The high school door");
                                 break;
                             default:
-                                script_say("The sadness that makes me see her in the morning and the joy of seeing her when I leave");
+                                script_say("The sadness that it gives me to see her in the mornings and the joy of seeing her when I leave");
                                 end_script();
                                 break;
                         }
@@ -275,9 +275,9 @@ void r06_update_room_script()
                                 case 0:
                                     begin_script();
                                     if (!is_game_flag(KEY_ON_BATH_MAT_FLAG))
-                                        script_say("I see through the lock that the key is stuck inside.");
+                                        script_say("I see through the lock that the key is stuck inside");
                                     else
-                                        script_say("It seems that the key has fallen onto the mat on the other side");
+                                        script_say("It seems that the key has fallen to the mat on the other side");
                                     break;
                                 default:
                                     end_script();
@@ -296,12 +296,12 @@ void r06_update_room_script()
                                             {
                                                 if (is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
                                                 {
-                                                    script_say("The mat is too far out and doesn't reach where the key can fall.");
+                                                    script_say("The mat is  very far out and does not go as far as the key can fall");
                                                     end_script();
                                                 }
                                                 else
                                                 {
-                                                    script_say("If I put the scalpel through the lock it will fall to the floor and I won't be able to get the key back.");
+                                                    script_say(" it will fall  to the ground and I will not be able to retrieve the key");
                                                     end_script();
                                                 }
                                             }
@@ -324,7 +324,7 @@ void r06_update_room_script()
                                         break;
                                         case 4:
                                             set_game_flag(KEY_ON_BATH_MAT_FLAG);
-                                            script_say("Eureka! The key has fallen on the mat");
+                                            script_say("­Eureka! The key has fallen on the mat");
                                         default:
                                             end_script();
                                             break;
@@ -357,7 +357,7 @@ void r06_update_room_script()
                                     {
                                         case 0:
                                             begin_script();
-                                            script_say("The spatula is too big and won't fit through the keyhole");
+                                            script_say("The spit is too large and does not fit through the keyhole");
                                         break;
                                         default:
                                             end_script();
@@ -377,7 +377,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's the maintenance closet door.");
+                                script_say("It is the door of the maintenance cabinet");
                                 break;
                             default:
                                 end_script();
@@ -396,7 +396,7 @@ void r06_update_room_script()
                                 if (is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG) && is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
                                     change_room(MAINT_LOCKER_ROOM_NUM);
                                 else
-                                    script_say("The door is closed");
+                                    script_say("The Door has shut?");
                                 break;
                             default:
                                 end_script();
@@ -412,11 +412,11 @@ void r06_update_room_script()
                                 break;
                             default:
                                 if (!is_game_flag(GOT_KEY_FLAG))
-                                    script_say("The door is closed y no tengo la llave");
+                                    script_say("The Door has shut? y no tengo la llave");
                                 else if (!is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG))
-                                    script_say("The door is closed con llave");
+                                    script_say("The Door has shut? con llave");
                                 else if (is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
-                                    script_say("It is now open");
+                                    script_say("Already open");
                                 else
                                 {
                                     play_sound(sd_doorOpen);
@@ -435,7 +435,7 @@ void r06_update_room_script()
                                 break;
                             default:
                                 if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
-                                    script_say("It is already closed");
+                                    script_say("Already closed");
                                 else
                                 {
                                     clear_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG);
@@ -473,10 +473,10 @@ void r06_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("They are my notes");
+                                        script_say("This is what my notes look like");
                                     break;
                                     default:
-                                        script_say("I wouldn't want to damage them");
+                                        script_say("I don't want da¤arlas");
                                         end_script();
                                     break;
                                 }
@@ -529,7 +529,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I put the mat under the door");
+                                script_say("I tucked the mat under the door");
                                 break;
                             default:
                                 end_script();
@@ -543,7 +543,7 @@ void r06_update_room_script()
                                 begin_script();
                                 if (is_game_flag(GOT_KEY_FLAG))
                                 {
-                                    script_say("It's fine where it is ");
+                                    script_say("It's  good where it is ");
                                     end_script();
                                 }
                                 else
@@ -603,10 +603,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A picture of a photograph of the institute surrounded by trees and gardens");
+                                script_say("A picture of a high school photograph surrounded by trees and gardens");
                                 break;
                             default:
-                                script_say("Now everything is cement");
+                                script_say("Now it's all cement");
                                 end_script();
                                 break;
                         }
@@ -621,7 +621,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the door to the computer classroom");
+                                script_say("It is the door to the IT classroom");
                                 break;
                             default:
                                 end_script();
@@ -663,10 +663,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the window of the computer classroom");
+                                script_say("It is the window of the IT classroom");
                                 break;
                             default:
-                                script_say("This way you can see if there is a computer available");
+                                script_say("So you can see if there is any computer available");
                                 end_script();
                                 break;
                         }
@@ -681,7 +681,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the door to the science classroom");
+                                script_say("It's the door to the science classroom");
                                 break;
                             default:
                                 end_script();
@@ -725,16 +725,16 @@ void r06_update_room_script()
                                 switch (get_game_var(BULLETIN_BOARD_VAR))
                                 {
                                     case 0:
-                                        script_say("The institute notice board");
+                                        script_say("The institute's bulletin board");
                                         break;
                                     case 1:
-                                        script_say("Private mathematics classes are given. Contact 555-5555");
+                                        script_say("Private math classes are given. Contact 555-5555");
                                         break;
                                     case 2:
                                         script_say("Rock music group looking for solo guitarist with own equipment");
                                         break;
                                     case 3:
-                                        script_say("Vote Carlos for class representative. When there is only one candidate, solo hay una elecci¢n");
+                                        script_say(" there is only one election, there is only one election");
                                         break;
                                 }
                                 break;
@@ -757,7 +757,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the door that leads to the bathrooms");
+                                script_say("It is the door that leads to thebaths");
                                 break;
                             default:
                                 end_script();
@@ -798,7 +798,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's the door that goes to the locker room");
+                                script_say("It's the door to the locker room");
                                 break;
                             default:
                                 end_script();
@@ -840,10 +840,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the border of the generation of teachers of '57");
+                                script_say("It is the edge of the 57th generation of teachers");
                                 break;
                             default:
-                                script_say("A herd of dinosaurs is what they are...");
+                                script_say("A herd of dinosaurs is what they are…");
                                 end_script();
                                 break;
                         }
@@ -858,7 +858,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I don't think I've ever sat on this bench.");
+                                script_say("I don't think I've ever sat on this bench");
                                 break;
                             default:
                                 end_script();
@@ -875,7 +875,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the door that leads to the physical education teacher's office");
+                                script_say("It is the door to the physical education teacher's office");
                                 break;
                             default:
                                 end_script();

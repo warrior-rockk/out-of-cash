@@ -13,6 +13,8 @@ def reemplazar_texto_desde_csv(nombre_archivo, nombre_archivo_csv):
 
     try:
         with open(nombre_archivo_csv, 'r', encoding='utf-8') as archivo_csv:
+            count = 0
+
             lector_csv = csv.reader(archivo_csv)
             # Saltar la primera fila si contiene encabezados
             next(lector_csv, None)
@@ -28,11 +30,11 @@ def reemplazar_texto_desde_csv(nombre_archivo, nombre_archivo_csv):
 
                         for cadena_original in cadenas_a_buscar:
                             contenido = contenido.replace(cadena_original, cadena_de_reemplazo)
-
+                            count = count + 1
             with open(nombre_archivo, 'w', encoding='utf-8') as archivo_texto:
                 archivo_texto.write(contenido)
 
-        print(f"Se han realizado reemplazos en '{nombre_archivo}' usando datos de '{nombre_archivo_csv}'")
+        print(f"Se han realizado {count} reemplazos en '{nombre_archivo}' usando datos de '{nombre_archivo_csv}'")
 
     except FileNotFoundError:
         print(f"Error: No se encontró el archivo '{nombre_archivo}' o '{nombre_archivo_csv}'")

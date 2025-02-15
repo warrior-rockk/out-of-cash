@@ -1,6 +1,7 @@
 import re
 import argparse
 import os
+from translate import Translator
 
 def extraer_cadenas_con_comillas(archivo_entrada, archivo_salida):
     """
@@ -9,11 +10,15 @@ def extraer_cadenas_con_comillas(archivo_entrada, archivo_salida):
 
     Args:
         archivo_entrada: La ruta al archivo de texto de entrada.
-        archivo_salida: La ruta al archivo de texto de salida.
+        archivo_salida: La ruta al archivo de texto de salida.   
     """
+    #Creamos el objeto translator
+    traductor = Translator(from_lang="es" , to_lang="en")
 
     try:
         with open(archivo_entrada, 'r', encoding='latin_1') as f_entrada, open(archivo_salida, 'w') as f_salida:
+            print(f"Extrayendo y traduciendo las cadenas de texto...\n")
+            count = 0
             #encabezado
             f_salida.write("sp,eng\n")
 
@@ -22,9 +27,11 @@ def extraer_cadenas_con_comillas(archivo_entrada, archivo_salida):
                 cadenas = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', linea)  
                 for cadena in cadenas:
                     if cadena:  # Verifica si la cadena no está vacía
-                        f_salida.write(cadena + ',' + '\n')
+                        f_salida.write(cadena + ',' + traductor.translate(cadena) + '\n')
+                        count = count + 1
+                        print(f"Cadenas procesadas: {count}", end='\r')
     
-            print(f"Cadenas extraídas en fichero {archivo_salida}")
+            print(f"{count} cadenas extraídas en fichero {archivo_salida}")
                                 
     except FileNotFoundError:
         print(f"Error: Uno o ambos archivos no fueron encontrados.")
