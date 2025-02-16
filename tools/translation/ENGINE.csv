@@ -1,0 +1,66 @@
+sp,eng
+engine.h,engine.h
+utils.h,utils.h
+game.h,game.h
+inv.h,inv.h
+player.h,player.h
+use with,use with
+give x to,give x to
+Nada destacable,Not at all noteworthy
+No veo nada,I can't see anything.
+Nada de especial,Well, nothing special.
+Nada interesante,Not at all exciting
+Sin inters,No interest
+No hay nada que ver,Nothing to see here
+No lo necesito,Not needed
+Est  bien donde est ,It's  good where it is 
+Tampoco voy a llenar el inventario de trastos in£tiles,Nor will I fill the junk inventory in£tiles
+No quiero llev rmelo,I don't want to wear it
+Mejor que no,He'd better not be.
+No quiero acumular trastos,I don't want to accumulate junk
+Est  bien como est ,It's fine as est 
+No es para abrir,Not for opening
+No es necesario abrirlo,No need to open it
+No hace falta abrirlo,No need to open it
+Est  bien como est ,It's fine as est 
+No es para cerrar,Not to close
+No es necesario cerrarlo,No need to close it
+No hace falta cerrarlo,No need to close it
+No parece que funcione,Doesn't seem to work
+No va bien juntas,It doesn't go well together
+No hace nada,Does nothing
+Esas cosas no combinan,Those things don't go together
+Prefiero qued rmelo,I prefer to stay rmelo
+Mejor me lo guardo,I'd better keep it
+No lo quiere,It doesn’t want it…
+No s si quiere hablar,Not if you want to talk
+Mejor estar callado,Better to be quiet
+Creo que eso no habla,I think that doesn't speak
+Me he quedado sin palabras,I've run out of words.
+No creo que conteste,I don't think he'll answer
+Las cosas no hablan,Things don't talk
+No tengo nada que decirle,I have nothing to say to him.
+No necesito moverlo,I don't need to move it
+Est  bien as¡,It's  okay like that!
+No me apetece moverlo,I don't feel like moving it
+No hace falta mover,No need to move
+Est  mejor quieto,Be  better still
+No,No
+No creo que se mueva,I don't think it's moving
+No es necesario,It isn't necessary
+No tengo nada programado,I don't have anything scheduled
+Prefiero que no,I prefer you not to
+No s que pretendes que suceda,I don't know what you intend to happen
+Creo que eso no funciona,I think that doesn't work
+Tampoco tengo que hacer todo lo que digas...,I don't have to do everything you say either...
+Begin Script\n,Begin Script\n
+    Script Object:%i\n,Script Object:%i\n
+    Script InvObject:%i\n,InvObject script:%i\n
+    Script Verb:%i\n,Verb script:%i\n
+    Script Type:%i\n,Script Type:%i\n
+End Script\n,End Script\n
+Begin Script\n,Begin Script\n
+    Script Object:%i\n,Script Object:%i\n
+    Script InvObject:%i\n,InvObject script:%i\n
+    Script Verb:%i\n,Verb script:%i\n
+    Script Type:%i\n,Script Type:%i\n
