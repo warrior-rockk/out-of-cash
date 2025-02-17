@@ -1,6 +1,6 @@
 SRC_DIR := ../../
 SRCS	:= $(wildcard ${SRC_DIR}*.C)
-OBJ_DIR := ./
+OBJ_DIR := csv/
 OBJS    := $(patsubst ${SRC_DIR}%.C, ${OBJ_DIR}%.csv, ${SRCS})
 
 extract: ${OBJS}
