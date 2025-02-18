@@ -31,7 +31,8 @@ void player_init()
     player.destX = 0;
     player.destY = 0;
     player.scale = 0;
-
+    player.diagonalTime = 0;
+    
     player.moveFast = false;
     player.noclip = false;
     player.flip = false;
@@ -144,6 +145,7 @@ void player_update_pos()
     {
         player.vX = itofix(0);
         player.vY = itofix(0);
+        player.diagonalTime = 0;
     }
 
     //update position
@@ -181,13 +183,24 @@ void player_update_animation()
             //walk animation
             if (player.vX == fixtoi(0)) // || abs(player.destY - fixtoi(player.y)) > abs(player.destX - fixtoi(player.x)))
             {
-                if (player.vY < fixtoi(0))
-                    play_animation(&player.animation, ANIM_PLY_WALK_BACK);
+                if (player.diagonalTime > 1)
+                {
+                    if (player.vY < fixtoi(0))
+                        play_animation(&player.animation, ANIM_PLY_WALK_BACK);
+                    else
+                        play_animation(&player.animation, ANIM_PLY_WALK_FRONT);
+                }
                 else
-                    play_animation(&player.animation, ANIM_PLY_WALK_FRONT);
+                {
+                    play_animation(&player.animation, ANIM_PLY_WALK);
+                    player.diagonalTime+= gameTick;
+                }
             }
             else
+            {
                 play_animation(&player.animation, ANIM_PLY_WALK);
+                player.diagonalTime = 0;
+            }
         break;
         case player_st_talking:
             //talk animation

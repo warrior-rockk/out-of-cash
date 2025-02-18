@@ -47,6 +47,7 @@ struct player{
     tAnimation animation;
     tActorTalk talk;
     uint8_t lookDir;
+    uint8_t diagonalTime;
     bool moveFast;
     bool noclip;
     bool flip;
