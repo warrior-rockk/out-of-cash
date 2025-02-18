@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 17 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+#include "engine.h"
+#include "room06.h"
 
 //Funtion to return the name of hotspot by color code
 void r06_get_hotspot_name(uint8_t colorCode, char *s)
@@ -19,60 +19,60 @@ void r06_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r06_door:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_maintLockerLock:
             if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
             {
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Cerradura");
                 break;
             }
             else
                 strcpy(s, "");
         case r06_maintLockerDoor:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_maintLockerBathMat:
             if (is_game_flag(BATH_MAT_IN_DOOR_FLAG) || is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 15 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Alfombrilla");
             else
                 strcpy(s, "");
             break;
         case r06_maintLockerKey:
             if (is_game_flag(KEY_ON_BATH_MAT_FLAG) && is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 15 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Llave");
             else
                 strcpy(s, "");
             break;
         case r06_paint:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 14 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Cuadro");
             break;
         case r06_computerRoomDoor:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_window:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 14 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Ventana");
             break;
         case r06_scienceRoomDoor:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_board:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 13 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Tabl¢n");
             break;
         case r06_schoolBathDoor:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_lockerDoor:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r06_orla:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 12 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Orla");
             break;
         case r06_bench:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Banco");
             break;
         case r06_PEOfficeRoom:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         default:
             strcpy(s, "");
@@ -239,10 +239,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("La puerta del instituto");
                                 break;
                             default:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 10 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("La tristeza que me da verla por las ma¤anas y la alegr¡a de verla cuando me voy");
                                 end_script();
                                 break;
                         }
@@ -275,9 +275,9 @@ void r06_update_room_script()
                                 case 0:
                                     begin_script();
                                     if (!is_game_flag(KEY_ON_BATH_MAT_FLAG))
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 10 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Veo por la cerradura que la llave esta metida por dentro");
                                     else
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 10 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Parece que la llave ha ca¡do a la alfombrilla por el otro lado");
                                     break;
                                 default:
                                     end_script();
@@ -296,18 +296,18 @@ void r06_update_room_script()
                                             {
                                                 if (is_game_flag(BATH_MAT_OUT_DOOR_FLAG))
                                                 {
-                                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                                    script_say("La alfombrilla est  muy hacia afuera y no llega hasta donde puede caer la llave");
                                                     end_script();
                                                 }
                                                 else
                                                 {
-                                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                                    script_say("Si meto el escalpelo por la cerradura caer  al suelo y no podr‚ recuperar la llave");
                                                     end_script();
                                                 }
                                             }
                                             else if(is_game_flag(KEY_ON_BATH_MAT_FLAG))
                                             {
-                                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                                script_say("La llave ya ha ca¡do sobre la alfombrilla");
                                                 end_script();
                                             }
                                             else
@@ -324,7 +324,7 @@ void r06_update_room_script()
                                         break;
                                         case 4:
                                             set_game_flag(KEY_ON_BATH_MAT_FLAG);
-                                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 08 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                            script_say("­Eureka! La llave ha ca¡do sobre la alfombrilla");
                                         default:
                                             end_script();
                                             break;
@@ -357,7 +357,7 @@ void r06_update_room_script()
                                     {
                                         case 0:
                                             begin_script();
-                                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 08 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                            script_say("La esp tula es demasiado grande y no cabe por el ojo de la cerradura");
                                         break;
                                         default:
                                             end_script();
@@ -377,7 +377,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 08 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta del armario de mantenimiento");
                                 break;
                             default:
                                 end_script();
@@ -396,7 +396,7 @@ void r06_update_room_script()
                                 if (is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG) && is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
                                     change_room(MAINT_LOCKER_ROOM_NUM);
                                 else
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 07 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("La puerta est  cerrada");
                                 break;
                             default:
                                 end_script();
@@ -412,11 +412,11 @@ void r06_update_room_script()
                                 break;
                             default:
                                 if (!is_game_flag(GOT_KEY_FLAG))
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 07 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE y no tengo la llave");
+                                    script_say("La puerta est  cerrada y no tengo la llave");
                                 else if (!is_game_flag(MAINT_LOCKER_DOOR_UNLOCKED_FLAG))
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 07 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE con llave");
+                                    script_say("La puerta est  cerrada con llave");
                                 else if (is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  abierta");
                                 else
                                 {
                                     play_sound(sd_doorOpen);
@@ -435,7 +435,7 @@ void r06_update_room_script()
                                 break;
                             default:
                                 if (!is_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG))
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  cerrada");
                                 else
                                 {
                                     clear_game_flag(MAINT_LOCKER_DOOR_OPEN_FLAG);
@@ -473,10 +473,10 @@ void r06_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Son mis notas");
                                     break;
                                     default:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 05 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("No querr¡a da¤arlas");
                                         end_script();
                                     break;
                                 }
@@ -486,7 +486,7 @@ void r06_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 05 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Es demasiada fina");
                                     break;
                                     default:
                                         end_script();
@@ -498,7 +498,7 @@ void r06_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 05 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Estas respuestas son demasiado valiosas para usarlas aqu¡");
                                     break;
                                     default:
                                         end_script();
@@ -510,7 +510,7 @@ void r06_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Es demasiado valioso para usarlo aqu¡");
                                     break;
                                     default:
                                         end_script();
@@ -529,7 +529,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("He metido la alfombrilla por debajo de la puerta");
                                 break;
                             default:
                                 end_script();
@@ -543,7 +543,7 @@ void r06_update_room_script()
                                 begin_script();
                                 if (is_game_flag(GOT_KEY_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Est  bien donde est ");
                                     end_script();
                                 }
                                 else
@@ -570,7 +570,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("La llave de la puerta del almac‚n de mantenimiento reposa sobre la alfombrilla");
                                 break;
                             default:
                                 end_script();
@@ -603,10 +603,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Un cuadro de una fotograf¡a del instituto rodeada de arboles y jardines");
                                 break;
                             default:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Ahora todo es cemento");
                                 end_script();
                                 break;
                         }
@@ -621,7 +621,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta del aula de inform tica");
                                 break;
                             default:
                                 end_script();
@@ -663,10 +663,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la ventana del aula de inform tica");
                                 break;
                             default:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("As¡ puedes ver si hay alg£n ordenador disponible");
                                 end_script();
                                 break;
                         }
@@ -681,7 +681,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta al aula de ciencia");
                                 break;
                             default:
                                 end_script();
@@ -725,16 +725,16 @@ void r06_update_room_script()
                                 switch (get_game_var(BULLETIN_BOARD_VAR))
                                 {
                                     case 0:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("El tabl¢n de anuncios del instituto");
                                         break;
                                     case 1:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Se dan clases de matem ticas particulares. Contacto 555-5555");
                                         break;
                                     case 2:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 57 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Grupo de m£sica rock busca guitarrista solista con equipo propio");
                                         break;
                                     case 3:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Vota a Carlos para delegado de clase. Cuando solo hay un candidato, solo hay una elecci¢n");
                                         break;
                                 }
                                 break;
@@ -757,7 +757,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta que da a los ba¤os");
                                 break;
                             default:
                                 end_script();
@@ -798,7 +798,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta que va a los vestuarios");
                                 break;
                             default:
                                 end_script();
@@ -840,10 +840,10 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 58 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la orla de la generaci¢n de profesores del 57");
                                 break;
                             default:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 58 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Una manada de dinosaurios es lo que son...");
                                 end_script();
                                 break;
                         }
@@ -858,7 +858,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 58 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Creo que nunca me he sentado en este banco");
                                 break;
                             default:
                                 end_script();
@@ -875,7 +875,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 57 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta que da al despacho del profesor de educaci¢n f¡sica");
                                 break;
                             default:
                                 end_script();

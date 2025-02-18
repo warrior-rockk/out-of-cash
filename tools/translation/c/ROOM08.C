@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 46 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 46 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+#include "engine.h"
+#include "room08.h"
 
 //Funtion to return the name of hotspot by color code
 void r08_get_hotspot_name(uint8_t colorCode, char *s)
@@ -18,28 +18,28 @@ void r08_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r08_door:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 46 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         case r08_window:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 45 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Ventana");
             break;
         case r08_computer3:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 45 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Ordenador");
             break;
         case r08_manual:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 45 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Manual");
             break;
         case r08_computer1:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 45 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Ordenador");
             break;
         case r08_nerd:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 44 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Friki");
             break;
         case r08_computer2:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 45 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Ordenador");
             break;
         case r08_chair:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 43 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Silla");
             break;
         default:
             strcpy(s, "");
@@ -214,32 +214,32 @@ void r08_update_dialog_selection()
                     break;
                     case 1:
                         if (!is_game_flag(NERD_HELP_FLAG))
-                            dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 43 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",2);
+                            dialog_add("¨A qu‚ est s jugando?",2);
                         else
-                            dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 42 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 42 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",6);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 42 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",1);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 41 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 0);
+                            dialog_add("Entonces, ¨me ayudar s a aprobar el ex men de historia?",6);
+                        dialog_add("¨Est s usando el aula de inform tica para jugar?",1);
+                        dialog_add("No te molesto", 0);
                     break;
                     case 2:
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 40 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",2);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 40 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",3);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 40 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 2);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 39 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 1);
+                        dialog_add("El juego de estrategia definitivo es el Civilization",2);
+                        dialog_add("Parece que se te dan muy bien los juegos de estrategia",3);
+                        dialog_add("Prefiero las aventuras gr ficas", 2);
+                        dialog_add("No te quiero distraer", 1);
                     break;
                     case 3:
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 39 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 3);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 39 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 39 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",4);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 2);
+                        dialog_add("No tienes un poco de obsesi¢n con las guerras hist¢ricas", 3);
+                        dialog_add("Si se te da tan bien la historia, ¨no podr¡as ayudarme?",4);
+                        dialog_add("Muy interesante", 2);
                     break;
                     case 4:
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",0);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",0);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 38 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 37 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",0);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 37 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 37 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", 0);
+                        dialog_add("Si me ayudas, puedes decir a la gente que somos amigos",0);
+                        dialog_add("Si me ayudas, ir‚ una tarde a merendar leche con galletas a tu casa",0);
+                        dialog_add("Si me ayudas, te ense¤are a hacer niveles chulos para el DOOM",0);
+                        dialog_add("Bueno, d‚jalo...", 0);
                     break;
                     case 6:
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 37 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",0);
-                        dialog_add("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 36 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 36 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",0);
+                        dialog_add("¨Qu‚ necesito para el disfraz?",0);
+                        dialog_add("Genial, ­Gracias!",0);
                     break;
                 }
             break;
@@ -261,8 +261,8 @@ void r08_update_room_script()
         }
         else
         {
-            //encode dialog id,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MOREde and selLine on integer value
-            //1 digit for dialog id, 2 digit for dialogMYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MOREde and 1 digit for selLine
+            //encode dialog id, node and selLine on integer value
+            //1 digit for dialog id, 2 digit for dialog node and 1 digit for selLine
             switch (((dialog.dialogId - 1) * 1000) + ((dialog.node - 1) * 100) + dialog.selLine)
             {
                 case 1:
@@ -270,46 +270,46 @@ void r08_update_room_script()
                     {
                         case 1:
                             if (!is_game_flag(NERD_HELP_FLAG))
-                                script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 36 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
                             else
                                 dialog_jump(5, 1, 6);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 36 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("El juego de estrategia definitivo", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 35 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Estoy usando todos mis conocimientos de la guerra para hacer partidas perfectas", &r08_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 35 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Me encanta jugar a ser un se¤or de la guerra y aplastar a mis enemigos", &r08_dialogActor);
                         break;
                         case 5:
                             set_game_flag(NERD_SIDE_FLAG);                            
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 35 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Mi terapeuta dice que canaliza el odio que tengo dentro", &r08_dialogActor);
                         break;
                         case 6:
                             script_wait(3);
                         break;
                         case 7:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 34 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Si quieres puedes jugar conmigo", &r08_dialogActor);
                         break;
                         case 8:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 34 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("O venir a mi casa y te ense¤o mas juegos que tengo", &r08_dialogActor);
                         break;
                         case 9:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("O podemos merendar y jugar al Dragones y Mazmorras", &r08_dialogActor);
                         break;
                         case 10:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Tengo una campa¤a pensada que es la bomb...", &r08_dialogActor);
                         break;
                         case 11:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("­BASTA!");
                         break;
                         case 12:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("No me interesa, gracias");
                         break;
                         case 13:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Como quieras", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -322,13 +322,13 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y t£ le dijiste a tus padres que te compraran el ordenador para estudiar", &r08_dialogActor);
                         break;
                         case 2:
                             script_wait(2);
                         break;
                         case 3:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("Touch‚");
                         break;
                         default:
                             script_next_dialog_node();
@@ -341,16 +341,16 @@ void r08_update_room_script()
                     {
                         case 1:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Me encantan los juegos de estrategia", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Todo lo que tenga que ver con la historia y las guerras", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 30 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y destruir ej‚rcitos enemigos con mi gran poder", &r08_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 30 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y no te creas que solo juego. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -363,14 +363,14 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Tambi‚n me encanta", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Todo lo que tenga que ver con la historia y las guerras", &r08_dialogActor);
                         break;
                         case 3:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y no solo juego, eh. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -383,7 +383,7 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("¨Qui‚n juega a eso en estos tiempos?", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -395,13 +395,13 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("No lo creas", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Creo que es una afici¢n muy sana", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y tampoco es que me vaya a dar un d¡a por entrar al colegio armado con un fusil", &r08_dialogActor);
                         break;
                         case 4:
                             set_game_flag(NERD_SIDE_FLAG);
@@ -409,7 +409,7 @@ void r08_update_room_script()
                         break;
                         case 5:
                             clear_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE... MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE estarÂ¡a bien...", &r08_dialogActor);
+                            script_say_actor("No, no... No estar¡a bien...", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -421,41 +421,41 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("Necesito aprobar el ex men de historia");
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 26 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("­Claro amigo! Podemos quedar en mi casa y te ense¤o todo lo que tienes que saber", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 26 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("Mmm... estaba pensando mejor en otra manera de ayuda");
                         break;
                         case 4:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 25 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("¨A qu‚ te refieres?", &r08_dialogActor);
                         break;
                         case 5:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 25 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("Estaba pensando en que hicieras t£ el examen por mi");
                         break;
                         case 6:
                             script_wait(20);
                         break;
                         case 7:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 25 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Pero...", &r08_dialogActor);
                         break;
                         case 8:
                             script_wait(10);
                         break;
                         case 9:
-                            script_say_actor("Â¨MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE serÂ¡a meterme en un lÂ¡o muy grande?", &r08_dialogActor);
+                            script_say_actor("¨No ser¡a meterme en un l¡o muy grande?", &r08_dialogActor);
                         break;
                         case 10:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 24 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("­Que va! Lo tengo todo pensado. Te disfrazas de mi y te presentas al examen");
                         break;
                         case 11:
-                            script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 24 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                            script_say("­Nadie lo notar !");
                         break;
                         case 12:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE sÂ‚... MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE lo veo claro...", &r08_dialogActor);
+                            script_say_actor("No s‚... No lo veo claro...", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -471,13 +471,13 @@ void r08_update_room_script()
                     {
                         case 1:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 23 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("­Oh! ¨En serio?", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 23 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 23 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("De acuerdo, ­te ayudar‚!", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -491,10 +491,10 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Si, te ayudar‚", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -506,11 +506,11 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 21 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Pues no s‚...", &r08_dialogActor);
                         break;
                         case 2:
                             if (!is_game_flag(BRAIN_COSTUME_FLAG))
-                                script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 21 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                script_say_actor("Consigue algo para el pelo", &r08_dialogActor);
                             else
                                 roomScript.step++;
                         break;
@@ -518,9 +518,9 @@ void r08_update_room_script()
                             if (!is_game_flag(SHIRT_COSTUME_FLAG))
                             {
                                 if (is_game_flag(BRAIN_COSTUME_FLAG))
-                                    script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 21 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                    script_say_actor("Consigue alguna camiseta como las tuyas", &r08_dialogActor);
                                 else
-                                    script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 20 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                    script_say_actor("alguna camiseta como las tuyas", &r08_dialogActor);
                             }
                             else
                                 roomScript.step++;
@@ -529,15 +529,15 @@ void r08_update_room_script()
                             if (!is_game_flag(JEANS_COSTUME_FLAG))
                             {
                                 if (is_game_flag(BRAIN_COSTUME_FLAG) || is_game_flag(SHIRT_COSTUME_FLAG))
-                                    script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 20 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                    script_say_actor("Consigue alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
                                 else
-                                    script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 19 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                    script_say_actor("y alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
                             }
                             else
                                 roomScript.step++;
                         break;
                         case 5:
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 19 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Y con eso lo tendremos listo", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -567,7 +567,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 19 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Es la puerta que da al pasillo");
                                 break;
                             default:
                                 end_script();
@@ -608,7 +608,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 18 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Esta ventana al exterior impide que la gente haga uso fraudulentos con los ordenadores");
                                 break;
                             default:
                                 end_script();
@@ -625,7 +625,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 18 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Los ordenadores del instituto siguen siendo unos 486");
                                 break;
                             default:
                                 end_script();
@@ -637,13 +637,13 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE tengo tiempo para jugar ahora");
+                                script_say("No tengo tiempo para jugar ahora");
                             break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 17 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("He de aprobar las asignaturas que me quedan para conseguir el dinero");
                             break;
                             case 2:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 17 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Ademas ese ordenador tiene el virus Barrotes");
                             break;
                             default:
                                 end_script();
@@ -660,10 +660,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 17 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Un manual de Q-Basic para MS-DOS");
                             break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Aprenda a programar desde el juego Gorillas al Snake");
                             break;
                             default:
                                 end_script();
@@ -675,10 +675,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE me hace falta");
+                                script_say("No me hace falta");
                             break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 16 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Yo ya me pas‚ a programar en C");
                             break;
                             default:
                                 end_script();
@@ -695,7 +695,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 15 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Parece que est  jugando a alg£n tipo de juego de estrategia");
                                 break;
                             default:
                                 end_script();
@@ -707,10 +707,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE puedo usarlo");
+                                script_say("No puedo usarlo");
                             break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 15 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("El friki est  jugando");
                             break;
                             default:
                                 end_script();
@@ -728,21 +728,21 @@ void r08_update_room_script()
                             case 0:
                                 begin_script();
                                 if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 14 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Supuestamente est  disfrazado de mi");
                                 else
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 14 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Este chaval es el rarito del instituto");
                                 break;
                             case 1:
                                 if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 14 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Creo que esto va a ser material para mis pesadillas");
                                     end_script();
                                 }
                                 else
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MOREempre esta metido en su mundo bÂ‚lico y de juegos de rol");
+                                script_say("Siempre esta metido en su mundo b‚lico y de juegos de rol");
                             break;
                             case 2:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE parece que tenga muchos amigos");
+                                script_say("No parece que tenga muchos amigos");
                             break;
                             default:
                                 end_script();
@@ -758,7 +758,7 @@ void r08_update_room_script()
                                     script_move_player(214, 126);
                                 else
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 13 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya me ha sido de suficiente ayuda");
                                     end_script();
                                 }
                                 break;
@@ -782,11 +782,11 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 12 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("¨Y qu‚ hago con eso?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 12 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 12 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("Podr¡a servir como pelo, pero el color es muy claro", &r08_dialogActor);
                                     break;
                                     default:
                                         end_script();
@@ -800,7 +800,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -816,7 +816,7 @@ void r08_update_room_script()
                                         set_game_flag(BRAIN_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                        script_say_actor("­Perfecto! Usaremos esto para el disfraz", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -833,7 +833,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -849,7 +849,7 @@ void r08_update_room_script()
                                         set_game_flag(SHIRT_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 10 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                        script_say_actor("­Muy bien! Esto servir  para el disfraz", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -866,7 +866,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 11 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -882,7 +882,7 @@ void r08_update_room_script()
                                         set_game_flag(JEANS_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 10 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                        script_say_actor("­Oh si! Esto nos vendr  bien para el disfraz", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -899,11 +899,11 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("Oye, no me molestes", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 09 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                            script_say_actor("Mmm. Se parece un poco a tu camiseta pero no lo suficiente", &r08_dialogActor);
                                     break;
                                     default:
                                         end_script();
@@ -915,19 +915,19 @@ void r08_update_room_script()
                                 switch (rand() % 4)
                                 {
                                     case 0:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE me interrumpas. Estoy jugando", &r08_dialogActor);
+                                        script_say_actor("No me interrumpas. Estoy jugando", &r08_dialogActor);
                                     break;
                                     case 1:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE quiero eso", &r08_dialogActor);
+                                        script_say_actor("No quiero eso", &r08_dialogActor);
                                     break;
                                     case 2:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 08 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                        script_say_actor("Me est s desconcentrando", &r08_dialogActor);
                                     break;
                                     case 3:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE me des tus trastos", &r08_dialogActor);
+                                        script_say_actor("No me des tus trastos", &r08_dialogActor);
                                     break;
                                     case 4:
-                                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 07 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                                        script_say_actor("D‚jame. Estoy concentrado en el juego", &r08_dialogActor);
                                     break;
                                 }
                                 end_script();
@@ -944,10 +944,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Â­Vaya! Â­MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 22 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE tambiÂ‚n hay un 386!");
+                                script_say("­Vaya! ­Si tambi‚n hay un 386!");
                                 break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 07 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("­Viva la educaci¢n p£blica!");
                             break;
                             default:
                                 end_script();
@@ -959,10 +959,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE,MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Mmmm, no");
                                 break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Despu‚s de tener un Pentium en casa un 386 se me hace tortuga");
                             break;
                             default:
                                 end_script();
@@ -979,7 +979,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("àjala en el futuro hagan sillas de ordenador m s c¢modas y que sirvan para largas sesiones de juego");
                                 break;
                             default:
                                 end_script();
@@ -998,13 +998,13 @@ void r08_update_room_script()
                             )
                         {
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 05 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                            script_say_actor("Creo que ya tengo todo lo que necesito", &r08_dialogActor);
                         }
                         else
                             end_script();
                     break;
                     case 1:
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 05 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Voy a prepararme el disfraz y me presentar‚ a tu examen", &r08_dialogActor);
                     break;
                     case 2:
                         game_fade_out(FADE_SLOW_SPEED);
@@ -1022,30 +1022,30 @@ void r08_update_room_script()
                         script_wait(10);
                     break;
                     case 5:
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("­Ha estado chupado!", &r08_dialogActor);
                     break;
                     case 6:
                         script_wait(6);
                     break;
                     case 7:
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE, nadie se ha dado cuenta de queMYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 06 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE eras tÂ£", &r08_dialogActor);
+                        script_say_actor("Disfrazado as¡, nadie se ha dado cuenta de que no eras t£", &r08_dialogActor);
                     break;
                     case 8:
-                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                        script_say("Salta a la vista");
                     break;
                     case 9:
                         script_play_sound(sd_approved);
                     break;
                     case 10:
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("­Tienes la asignatura aprobada!", &r08_dialogActor);
                         set_game_flag(HISTORY_APPROVED_FLAG);
                     break;
                     case 11:
                         stop_player_animation();
-                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                        script_say("Emm...");
                     break;
                     case 12:
-                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                        script_say("Gracias");
                     break;
                     case 13:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
@@ -1054,13 +1054,13 @@ void r08_update_room_script()
                     break;
                     case 14:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
-                            script_say("Â­MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 36 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE! Â­Ya he aprobado todo!");
+                            script_say("­Genial! ­Ya he aprobado todo!");
                         else
                             roomScript.step++;
                     break;
                     case 15:
                         change_player_dir(DIR_RIGHT);
-                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                        script_say("Casi que me voy de aqu¡ antes de que esto se ponga raro");
                     break;
                     case 16:
                         script_move_player(320, 104);
@@ -1081,49 +1081,49 @@ void r08_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("­Vamos!", &r08_dialogActor);
                     break;
                     case 1:
                         script_wait(10);
                     break;
                     case 2:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("­Morid malditos!", &r08_dialogActor);
                     break;
                     case 3:
                         script_wait(10);
                     break;
                     case 4:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Odio a todos mis enemigos", &r08_dialogActor);
                     break;
                     case 5:
                         script_wait(10);
                     break;
                     case 6:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Os odio tanto como a mis compa¤eros de clase", &r08_dialogActor);
                     break;
                     case 7:
                         script_wait(5);
                     break;
                     case 8:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Y odio a los profesores...", &r08_dialogActor);
                     break;
                     case 9:
                         script_wait(5);
                     break;
                     case 10:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 56 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Y odio a aquella chica que me llam¢ raro", &r08_dialogActor);
                     break;
                     case 11:
                         script_wait(5);
                     break;
                     case 12:
                         begin_script();
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 55 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Un dia voy a llevar un fusil al instituto y voy a...", &r08_dialogActor);
                     break;
                     case 13:
                         set_game_flag(NERD_ERROR_FLAG);
@@ -1137,7 +1137,7 @@ void r08_update_room_script()
                         script_wait(5);
                     break;
                     case 16:
-                        script_say_actor("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 55 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE", &r08_dialogActor);
+                        script_say_actor("Pero sobretodo odio Windows", &r08_dialogActor);
                     break;
                     case 17:
                         script_wait(20);

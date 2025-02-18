@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 34 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-#include "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 34 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+#include "engine.h"
+#include "room03.h"
 
 //Funtion to return the name of hotspot by color code
 void r03_get_hotspot_name(uint8_t colorCode, char *s)
@@ -21,35 +21,35 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
         case r03_gel:
             if (r03_object[R03_GEL_OBJ_ID].active)
             {
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Gel");
                 break;
             }
             else
                 strcpy(s, "");
             //break;
         case r03_closet:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Armario");
             break;
         case r03_washbowl:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 33 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Lavabo");
             break;
         case r03_mirror:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Espejo");
             break;
         case r03_towel:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 32 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Toalla");
             break;
         case r03_bathMat:
             if (r03_object[R03_BATHMAT_OBJ_ID].active)
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Alfombrilla");
             else
                 strcpy(s, "");
             break;
         case r03_switch:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Interruptor");
             break;
         case r03_door:
-                strcpy(s, "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 31 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                strcpy(s, "Puerta");
             break;
         default:
             strcpy(s, "");
@@ -165,10 +165,10 @@ void r03_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 30 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Un bote de gel de ducha");
                                     break;
                                 case 1:
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 30 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Parece muy viscoso...");
                                 default:
                                     end_script();
                                     break;
@@ -199,7 +199,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 30 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("El cl sico armario del ba¤o donde acabas acumulando cientos de productos");
                                 break;
                             default:
                                 end_script();
@@ -213,7 +213,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (is_game_flag(BATH_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  abierto");
                                     end_script();
                                 }
                                 else                                
@@ -241,7 +241,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  cerrado");
                                     end_script();
                                 }
                                 else                                
@@ -272,7 +272,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 29 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("No olviden lavarse las manos antes de reincorporarse al trabajo...");
                                 break;
                             default:
                                 end_script();
@@ -285,7 +285,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("No tengo las manos sucias");
                                 break;
                             default:
                                 end_script();
@@ -300,10 +300,10 @@ void r03_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("No deberia mojar los granos de avena con agua");
                                         break;
                                     default:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 28 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Deber¡a usar algo mas viscoso");
                                         end_script();
                                         break;
                                 }
@@ -328,13 +328,13 @@ void r03_update_room_script()
                                 switch (get_game_var(MIRROR_MSG_COUNT_VAR))
                                 {
                                     case 1:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
                                         break;
                                     case 2:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Otro espejo con reflejo sin programar...");
                                         break;
                                     case 3:
-                                        script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 27 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                        script_say("Con lo poco que cuesta programar los reflejos...");
                                         break;
                                 }
                                 break;
@@ -353,10 +353,10 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 26 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Esta toalla lleva en la familia muchos a¤os");
                                 break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 26 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Deberiamos pensar en lavarla...");
                             default:
                                 end_script();
                                 break;
@@ -372,10 +372,10 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 26 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("La alfombrilla para secarte los pies despu‚s de la ducha");
                                 break;
                             case 1:
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 25 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Tambi‚n es un nido de microbios y moho");
                             default:
                                 end_script();
                                 break;
@@ -405,7 +405,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 25 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("Hay algo placentero en el sonido de un interruptor accion ndose");
                                 break;
                             default:
                                 end_script();
@@ -447,7 +447,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 24 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("La puerta est  cerrada");
                                     end_script();
                                 }
                                 else
@@ -466,7 +466,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 24 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                script_say("La puerta del ba¤o que da al pasillo");
                                 break;
                             default:
                                 end_script();
@@ -480,7 +480,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 24 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  abierta");
                                     end_script();
                                 }
                                 else                                
@@ -502,7 +502,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  12 HOURS 58 MINUTES 23 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE");
+                                    script_say("Ya est  cerrada");
                                     end_script();
                                 }
                                 else                                
