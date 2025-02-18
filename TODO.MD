@@ -4,7 +4,6 @@
     * more look descriptions on stationery?
     * more dialog lines on actors
     * open oven and fridge kitchen?
-    * front player when nerd says nobody plays point and click games?
 
 - [ ] Funtion to move player to specific velocity?
 - [ ] No twice replace_unicode (game_write and say_actor)

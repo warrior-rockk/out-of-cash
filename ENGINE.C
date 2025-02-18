@@ -609,6 +609,13 @@ void begin_script()
 
     cursor.enabled = false;
     roomScript.scriptAssigned = true;
+
+    //reset player moving state to prevent skip move_player reach target
+    if (player.state == player_st_moving)
+    {
+        player.state = player_st_idle;
+        player.prevState = player_st_idle;
+    }
 }
 
 //actions when script ends
