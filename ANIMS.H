@@ -27,5 +27,7 @@
 #define ANIM_PLY_HAPPY              pd_happy,       pd_happy,       1, ANIM_LOOP
 #define ANIM_PLY_WASH_HANDS         pd_washHands01, pd_washHands03, 3, ANIM_PING_PONG
 #define ANIM_PLY_ROCKING            pd_rocking01,   pd_rocking02,   4, ANIM_LOOP
+#define ANIM_PLY_LOOK_FRONT         pd_lookFront,   pd_lookFront,   1, ANIM_LOOP
+#define ANIM_PLY_SMILE_FRONT        pd_smileFront,  pd_smileFront,  1, ANIM_LOOP
 
 #endif  //H_ANIMS
