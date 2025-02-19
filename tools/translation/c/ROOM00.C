@@ -19,16 +19,16 @@ void r00_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r00_door:
-                strcpy(s, "Gate");
+                strcpy(s, "Door");
             break;
         case r00_sign:
-                strcpy(s, "Event Image");
+                strcpy(s, "Poster");
             break;
         case r00_stationery:
-                strcpy(s, "Papeler¡a");
+                strcpy(s, "Stationery");
             break;
         case r00_school:
-                strcpy(s, "Institute");
+                strcpy(s, "High School");
             break;
         case r00_shop:
                 strcpy(s, "Store");
@@ -164,20 +164,20 @@ void r00_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_BACK);
-                                script_say("Zurraspa Producciones presents:");
+                                script_say("Zurraspa Productions presents:");
                             break;
                             case 2:
-                                script_say("\"Repeat Offenders\" in concert");
+                                script_say("\"The Repeat Offenders\" in concert");
                                 break;
                             case 3:
-                                script_say("Presenting their £last live album");
+                                script_say("Introducing their last live album");
                                 break;
                             case 4:
-                                script_say("Entrance fee: 5000 pesetas");
+                                script_say("Entrance fee: 30 bucks");
                                 break;    
                             case 5:
                                 change_player_dir(DIR_RIGHT);
-                                script_say("I have to get the money anyway");
+                                script_say("I have to get the money somehow");
                                 break;
                             default:
                                 end_script();
@@ -194,7 +194,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("That's where you go to thetrash!");
+                                script_say("That's where you go to stationery");
                                 break;
                             default:
                                 end_script();
@@ -226,7 +226,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Sohe goes to my high school");
+                                script_say("That's where you to my high school");
                                 break;
                             default:
                                 end_script();
@@ -258,7 +258,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("My Trusted Computer Store");
+                                script_say("My trusted computer store");
                                 break;
                             case 1:
                                 script_say("Here I buy my Pentium 100 for a good price");
@@ -275,7 +275,7 @@ void r00_update_room_script()
                                 script_say(" I already spent all my money on the Pentium, I already spent all my money on the Pentium");
                                 break;
                             case 1:
-                                script_say(" everything I get I need to go to the concert");
+                                script_say(" I need everything I get to go to the concert");
                             default:
                                 end_script();
                                 break;
@@ -301,45 +301,45 @@ void r00_update_room_script()
                         script_wait(10);
                     break;
                     case 4:
-                        script_say("Do I do you good?");
+                        script_say("Did I read correctly?");
                     break;
                     case 5:
                         script_move_player(80, 120);
                     break;
                     case 6:
                         change_player_dir(DIR_BACK);
-                        script_say("-Concert of \"Repeat Offenders\"!");
+                        script_say("Concert of \"The Repeat Offenders\"!");
                     break;
                     case 7:
-                        script_say("-Mola!");
+                        script_say("Cool!");
                     break;
                     case 8:
-                        script_say("Introducing New Album");
+                        script_say("Introducing new album");
                     break;
                     case 9:
-                        script_say("­-Mola!!");
+                        script_say("­Cool!!");
                     break;
                     case 10:
-                        script_say("5000 peels the entrance");
+                        script_say("30 bucks for ticket");
                     break;
                     case 11:
                         change_player_dir(DIR_RIGHT);
-                        script_say("-It's not cool!");
+                        script_say("Not cool!");
                     break;
                     case 12:
-                        script_say("¨5000 peels the entrance? Yo no tengo tanto dinero");
+                        script_say("¨30 bucks for ticket? Yo no tengo tanto dinero");
                     break;
                     case 13:
                         script_wait(2);
                     break;
                     case 14:
-                        script_say(" not so much and not so little... I'm penniless!, not so much and not so little... I'm penniless!");
+                        script_say(" not so much and not so little... I'm out of cash!, not so much and not so little... I'm out of cash!");
                     break;
                     case 15:
                         script_say("But I have to go to that concert at all costs");
                     break;
                     case 16:
-                        script_say("­I have to get the money anyway!");
+                        script_say("­I have to get the money somehow!");
                     break;
                     default:
                         clear_game_flag(INTRO_FLAG);
