@@ -620,12 +620,12 @@ void game_update()
         TRACE("Change game state from %i to %i\n", game.prevState, game.state);
         game.prevState = game.state;
     }
-    
-    #ifdef DEBUGMODE
-        //force game exit
-        if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
-            game.state = EXIT_STATE;
 
+    //force game exit
+    if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
+        game.state = EXIT_STATE;
+
+    #ifdef DEBUGMODE
         //toogle show room walk image
         if (gameKeys[G_KEY_W].pressed)
             debug.showWalkImage = !debug.showWalkImage;
