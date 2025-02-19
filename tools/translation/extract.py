@@ -20,14 +20,14 @@ def extraer_cadenas_con_comillas(archivo_entrada, archivo_salida):
             print(f"Extrayendo y traduciendo las cadenas de texto...\n")
             count = 0
             #encabezado
-            f_salida.write("sp,eng\n")
+            f_salida.write("sp;eng\n")
 
             for linea in f_entrada:
                 # Encuentra todas las cadenas entre comillas (escapadas o no) en la línea actual
                 cadenas = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', linea)  
                 for cadena in cadenas:
                     if cadena:  # Verifica si la cadena no está vacía
-                        f_salida.write(cadena + ',' + traductor.translate(cadena) + '\n')
+                        f_salida.write(cadena + ';' + traductor.translate(cadena) + '\n')
                         count = count + 1
                         print(f"Cadenas procesadas: {count}", end='\r')
     

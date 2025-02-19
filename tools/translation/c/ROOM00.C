@@ -272,10 +272,10 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say(" I already spent all my money on the Pentium, I already spent all my money on the Pentium");
+                                script_say("Nah, I already spent all my money on the Pentium");
                                 break;
                             case 1:
-                                script_say(" I need everything I get to go to the concert");
+                                script_say("Also I need everything I get to go to the concert");
                             default:
                                 end_script();
                                 break;
@@ -333,7 +333,7 @@ void r00_update_room_script()
                         script_wait(2);
                     break;
                     case 14:
-                        script_say(" not so much and not so little... I'm out of cash!, not so much and not so little... I'm out of cash!");
+                        script_say("Well, not so much and not so little... I'm out of cash!");
                     break;
                     case 15:
                         script_say("But I have to go to that concert at all costs");

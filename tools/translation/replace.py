@@ -15,7 +15,7 @@ def reemplazar_texto_desde_csv(nombre_archivo, nombre_archivo_csv):
         with open(nombre_archivo_csv, 'r', encoding='utf-8') as archivo_csv:
             count = 0
 
-            lector_csv = csv.reader(archivo_csv)
+            lector_csv = csv.reader(archivo_csv, delimiter=";")
             # Saltar la primera fila si contiene encabezados
             next(lector_csv, None)
 
