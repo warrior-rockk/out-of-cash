@@ -1,35 +1,33 @@
-sp,eng
-engine.h,engine.h
-room02.h,room02.h
-Espejo,Mirror
-Puerta,Gate
-Flores,Flowers
-Figura,Figure
-Cocina,Kitchen
-Puerta,Gate
-Cuadro,Profile
-Habitaci¢n,Room
-Calle,Street
-L mpara,L lamp
-El programador del juego ha sido tan vago como para no programar los reflejos...,The game programmer has been so vague as not to program the reflexes...
-Otro espejo con reflejo sin programar...,Another mirror with unprogrammed reflection...
-Con lo poco que cuesta programar los reflejos...,With how little it costs to program the reflexes...
-La puerta est  cerrada,The Door has shut?
-Es la puerta que da al ba¤o,It is the door that leads to the bathroom
-Ya est  abierta,Already open
-Ya est  cerrada,Already closed
-Un jarr¢n con flores cuya fragancia se existingu¢ hace mucho tiempo,A vase with flowers whose fragrance existed a long time ago
-Es una figura de un elefante,It is a figure of an elephant
-Mi madre siempre decia que tener un elefante con la trompa orientada a la entrada, atra¡a el dinero,My mother always said that having an elephant with its trunk facing the entrance, attracts money
-Y aqu¡ me tienes... Sin dinero para el concierto...,And here you have me... No money for the concert...
-Es la cocina,THIS IS THE KITCHEN
-Puede parecer extra¤o, pero llevo en esta casa toda mi vida y no s a donde lleva esa puerta,It may seem extra¤o, but I've been in this house my whole life and I don't know where that door leads
-No se puede abrir. Siempre ha estado cerrada,Cannot open. It has always been closed
-Este cuadro es la £nica cosa de valor en toda la casa,This painting is the only thing of value in the whole house
-Creo que lo pint¢ mi padre,I think my father painted it
-La puerta que da a la habitaci¢n,The door to theroom
-La puerta que da a la calle,The door to the street
-­­A la libertad!!,­­To freedom!!
-Deber¡a pensar en como conseguir el dinero del concierto antes de irme de casa,I should think about how to get the concert money before I leave home!
-Una l mpara para crear un rinc¢n acogedor,A l lamp to create a cozy corner
-Nunca la encendemos,We never turn it on
+sp;eng
+Espejo;Mirror
+Puerta;Door
+Flores;Flowers
+Figura;Figure
+Cocina;Kitchen
+Puerta;
+Cuadro;Picture
+Habitaci¢n;Room
+Calle;Street
+L mpara;Lamp
+El programador del juego ha sido tan vago como para no programar los reflejos...;The game programmer has been so lazy as not to program the reflexes...
+Otro espejo con reflejo sin programar...;Another mirror with unprogrammed reflection...
+Con lo poco que cuesta programar los reflejos...;With how little it costs to program the reflexes...
+La puerta est  cerrada;The door is closed
+Es la puerta que da al ba¤o;It´s the door that leads to the bathroom
+Ya est  abierta;Already open
+Ya est  cerrada;Already closed
+Un jarr¢n con flores cuya fragancia se existingu¢ hace mucho tiempo;A vase with flowers whose fragrance existed a long time ago
+Es una figura de un elefante;It´s a figure of an elephant
+Mi madre siempre decia que tener un elefante con la trompa orientada a la entrada, atra¡a el dinero;My mother always said that having an elephant with its trunk facing the entrance, attracts money
+Y aqu¡ me tienes... Sin dinero para el concierto...;And here you have me... With no money for the concert...
+Es la cocina;This is the kitchen
+Puede parecer extra¤o, pero llevo en esta casa toda mi vida y no s a donde lleva esa puerta;It may seem strange, but I've been in this house my whole life and I don't know where that door leads
+No se puede abrir. Siempre ha estado cerrada;Cannot open. It has always been closed
+Este cuadro es la £nica cosa de valor en toda la casa;This painting is the only thing of value in the whole house
+Creo que lo pint¢ mi padre;I think my father painted it
+La puerta que da a la habitaci¢n;The door to the bedroom
+La puerta que da a la calle;The door to the street
+­­A la libertad!!;­­To freedom!!
+Deber¡a pensar en como conseguir el dinero del concierto antes de irme de casa;I should think about how to get the concert money before I leave home
+Una l mpara para crear un rinc¢n acogedor;A lamp to create a cozy corner
+Nunca la encendemos;We never turn it on
