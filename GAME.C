@@ -2452,7 +2452,7 @@ void credits_init()
     strcpy(credits.line[18], "Control de calidad");
     strcpy(credits.line[19], "Control de...¨qu‚?");
     strcpy(credits.line[20], "Agradecimientos especiales");
-    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nLuqquino");
+    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nJota\nLuqquino");
     
     strcpy(credits.line[22], "GRACIAS POR JUGAR");
 

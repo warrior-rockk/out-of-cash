@@ -22,19 +22,19 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Guitar");
             break;
         case r01_stereo:
-                strcpy(s, "Mini Chain");
+                strcpy(s, "Stereo");
             break;
         case r01_door:
-                strcpy(s, "Gate");
+                strcpy(s, "Door");
             break;
         case r01_cassette:
             if (!is_game_flag(GOT_CASSETTE_FLAG))
-                strcpy(s, "Compact Cassette");
+                strcpy(s, "Cassette");
             else
                 strcpy(s, "");    
             break;
         case r01_spider:
-                strcpy(s, "9 beta Arabinofuranosyladenine");
+                strcpy(s, "Spider");
             break;
         case r01_drums:
                 strcpy(s, "Drum");
@@ -55,10 +55,10 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Poster");
             break;
         case r01_draws:
-                strcpy(s, "Tills");
+                strcpy(s, "Drawers");
             break;
         case r01_sofa:
-                strcpy(s, "Zeph.&#09;");
+                strcpy(s, "Couch");
             break;
         case r01_computer:
                 strcpy(s, "Computer");
@@ -85,7 +85,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             break;
         case r01_book3:
-                strcpy(s, "Revista");
+                strcpy(s, "Magazine");
             break;
         case r01_book4:
                 strcpy(s, "Book 2");
@@ -266,7 +266,7 @@ void r01_update_room_script()
                                 script_say("It's better to stay in the case");
                                 break;
                             case 1:
-                                script_say(" and for the sake ofmusic, and for the sake ofmusic");
+                                script_say("For my sake, and for the sake of music");
                                 end_script();
                                 break;
                         }
@@ -282,21 +282,21 @@ void r01_update_room_script()
                             case 0:
                                 begin_script();
                                 if (!is_game_flag(STEREO_ON_FLAG))
-                                    script_say("Is my mini chain Hifi £last model");
+                                    script_say("Is my brand new Hifi Stereo");
                                 else
                                 {
-                                    script_say("The mini-chain is running");
+                                    script_say("The stereo is running");
                                     end_script();
                                 }
                                 break;
                             case 1:
-                                script_say(" radio tuner and graphic equalizer, radio tuner and graphic equalizer");
+                                script_say("With double platen, radio tuner and graphic equalizer");
                                 break;
                             case 2:
                                 if (!is_game_flag(USED_CASSETTE_FLAG))
-                                    script_say("-Hallucinating!");
+                                    script_say("Amazing!");
                                 else
-                                    script_say("You now have a tape inside");
+                                    script_say("Now it have a tape inside");
                                 break;
                             default:
                                 end_script();
@@ -315,7 +315,7 @@ void r01_update_room_script()
                                 }
                                 else if (is_game_flag(CASSETTE_BROKEN_FLAG))
                                 {
-                                    script_say("Tape has snagged");
+                                    script_say("The tape has snagged");
                                     end_script();
                                 }
                                 else
@@ -345,7 +345,7 @@ void r01_update_room_script()
                             case 7:
                                 clear_game_flag(STEREO_ON_FLAG);
                                 set_game_flag(CASSETTE_BROKEN_FLAG);
-                                script_say("Tape has already been hooked");
+                                script_say("Tape has already been snagged");
                             break;
                             default:
                                 end_script();
@@ -387,7 +387,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the door leading to the corridor");
+                                script_say("It's the door leading to the corridor");
                                 break;
                             default:
                                 end_script();
@@ -399,7 +399,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's always  open");
+                                script_say("It's always open");
                                 break;
                             case 1:
                                 begin_script();
@@ -437,11 +437,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is a cassette of the last thing that\ "Repeaters\" has taken out");
+                                script_say("It's a cassette of the last album that\ "The Repeaters Offenders\" has taken out");
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("Thelast purchase I was able to make when I had money");
+                                script_say("The last purchase I was able to make when I had money");
                                 break;
                             default:
                                 end_script();
@@ -471,11 +471,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is my exclusive ara¤a figure from the He-man series");
+                                script_say("It's my exclusive spider figure from the He-man series");
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("-BY THE POWER OF GREYSKULL!");
+                                script_say("BY THE POWER OF GREYSKULL!");
                                 break;
                             default:
                                 end_script();
@@ -487,7 +487,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I don't think a toy earring is very useful");
+                                script_say("I don't think that a spider toy would be very useful");
                                 break;
                             default:
                                 end_script();
@@ -504,11 +504,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's my drum from my drummer bit");
+                                script_say("It's my drum from my drummer ages");
                                 break;
                             case 1:
                                 begin_script();
-                                script_say(" I had not yet discovered rock");
+                                script_say("In that time, I had not yet discovered rock");
                                 break;
                             default:
                                 end_script();
@@ -541,7 +541,7 @@ void r01_update_room_script()
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("It shines a little and seems to be stuck to the ground...");
+                                script_say("It shines a little and seems to be glued to the floor...");
                                 break;
                             default:
                                 end_script();
@@ -557,7 +557,7 @@ void r01_update_room_script()
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("It is  very close to the ground");
+                                script_say("It's very glued to the floor");
                                 break;
                             default:
                                 end_script();
@@ -583,10 +583,10 @@ void r01_update_room_script()
                                         script_add_inv_object(id_coin);
                                         break;
                                     case 3:
-                                        script_say("­Eureka! With the sputum I was able to take it off");
+                                        script_say("Eureka! With the spatula I was able to take it off");
                                         break;
                                     case 4:
-                                        script_say("-It's a 100 pesetas coin!");
+                                        script_say("It's a quarter coin!");
                                         end_script();
                                         break;
                                 }
@@ -618,11 +618,11 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say(" far and reading, far and reading");
+                                script_say("They are my glasses for near, for far and for reading");
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("I also wear them when I wear contact lenses");
+                                script_say("I also wear them when using contact lenses");
                                 break;
                             default:
                                 end_script();
@@ -639,7 +639,7 @@ void r01_update_room_script()
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("With this 320x240 VGA resolution the pixels are like pu¤os");
+                                script_say("With this 320x240 VGA resolution the pixels are like bricks");
                                 break;
                             default:
                                 end_script();
@@ -662,7 +662,7 @@ void r01_update_room_script()
                                 script_say("It's supposed to be the music format of the future");
                                 break;
                             case 2:
-                                script_say(" I have it hanging there because it shines");
+                                script_say("As at the moment I have nothing to reproduce it so I have it hanging there because it shines");
                                 break;
                             default:
                                 end_script();
@@ -674,7 +674,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ah¡it 's  okay");
+                                script_say("It's ok there");
                                 break;
                             case 1:
                                 script_say("Its brightness drives away mosquitoes");
@@ -709,7 +709,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is  better attached to the wall");
+                                script_say("It's better attached to the wall");
                                 break;
                             default:
                                 end_script();
@@ -726,7 +726,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("These drawers keep nothing but porquer¡a inside");
+                                script_say("These drawers keep nothing but trash");
                                 break;
                             default:
                                 end_script();
@@ -756,7 +756,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("How many kids can afford to have a sofa in their room?");
+                                script_say("How many kids can afford to have a couch in their room?");
                                 break;
                             default:
                                 end_script();
@@ -791,7 +791,7 @@ void r01_update_room_script()
                                 script_say("My brand new 100Mhz Pentium");
                                 break;
                             case 1:
-                                script_say("I recently installed Windows 95 for you");
+                                script_say("I recently installed Windows 95");
                                 break;
                             case 2:
                                 script_say("But I still prefer my old MS-DOS");
@@ -831,7 +831,7 @@ void r01_update_room_script()
                                 object_play_animation(&r01_object[R01_COMPUTER_OBJ_ID], r01d_objCompBoot6, r01_animations, R01_ANIM_ERROR_COMPUTER);
                             break;
                             case 6:
-                                script_say("I hate windows...");
+                                script_say("I hate Windows...");
                             break;
                             case 7:
                                 script_player_take_state();
@@ -891,10 +891,10 @@ void r01_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("It is the ink cartridge of the printer");
+                                    script_say("It´s the ink cartridge of the printer");
                                 break;
                                 case 1:
-                                    script_say("But it is  empty");
+                                    script_say("But it´s empty");
                                 break;
                                 default:
                                     end_script();
@@ -930,7 +930,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("My Injection Printer");
+                                script_say("My injection printer");
                                 break;
                             case 1:
                                 if (!is_game_flag(OPEN_PRINTER_FLAG))
@@ -954,7 +954,7 @@ void r01_update_room_script()
                                 script_say("No ink left");
                                 break;
                             case 1:
-                                script_say("Also I have some problems with the Windows 95 drivers and it doesn't work for me");
+                                script_say("Also I have some problems with the Windows 95 drivers and it doesn't work");
                                 break;
                             default:
                                 end_script();
@@ -966,7 +966,7 @@ void r01_update_room_script()
                         {
                             case id_fullCartridge:
                                 begin_script();
-                                script_say(" it doesn't work well");
+                                script_say("Even if I put ink on that printer, it doesn't work well");
                                 end_script();
                             break;
                         }
@@ -976,7 +976,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("What do you want me to take the entire printer with me?");
+                                script_say("What do you want? To take the entire printer with me?");
                             break;
                             default:
                                 end_script();
@@ -1115,7 +1115,7 @@ void r01_update_room_script()
                                 script_say("\"You also get out of the sport\"");
                                 break;
                             case 1:
-                                script_say("DIEGO MARADONA 1980");
+                                script_say("by DIEGO MARADONA");
                                 break;
                             default:
                                 end_script();
@@ -1145,10 +1145,10 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is a musical logo of the Tipo store");
+                                script_say("It is a musical store magazine");
                                 break;
                             case 1:
-                                script_say("But I no longer have money to buyany records");
+                                script_say("But I no longer have money to buy any records");
                                 break;
                             default:
                                 end_script();
@@ -1161,7 +1161,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say(" not much interest, not much interest");
+                                script_say("With no money to buy, not much interest");
                                 break;
                             default:
                                 end_script();
@@ -1205,7 +1205,7 @@ void r01_update_room_script()
                                 script_say("I better leave it closed");
                                 break;
                             case 1:
-                                script_say(" I appreciate the silence");
+                                script_say("Even if I don't record podcasts, I appreciate the silence");
                                 end_script();
                                 break;
                         }
@@ -1220,7 +1220,7 @@ void r01_update_room_script()
                         script_say("And how do I get the money for the concert?");
                     break;
                     case 1:
-                        script_say("Have to find out.");
+                        script_say("Have to find out...");
                     break;
                     case 2:
                         set_game_flag(GAME_START_FLAG);
