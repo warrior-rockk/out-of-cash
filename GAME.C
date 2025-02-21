@@ -1272,6 +1272,9 @@ void cursor_action_HUD()
         //on give verb, don't allow give inv object to inv object
         else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
             strcpy(cursor.objectName, "");
+        //forbidden take verb on inventory object
+        else if (cursor.selectedVerb == TAKE)
+            strcpy(cursor.objectName, "");
         else
             //gets the object name
             get_inv_obj_name(get_inv_obj_position(hsColor), cursor.objectName);

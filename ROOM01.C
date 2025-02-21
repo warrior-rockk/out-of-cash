@@ -1000,7 +1000,7 @@ void r01_update_room_script()
                                 script_play_sound(sd_lidOpen);
                             break;
                             case 2:
-                                script_player_take_state();
+                                script_play_player_animation(ANIM_PLY_TAKE);
                                 set_game_flag(OPEN_PRINTER_FLAG);
                             break;
                             default:
@@ -1025,7 +1025,7 @@ void r01_update_room_script()
                                 script_play_sound(sd_lidClose);
                             break;
                             case 2:
-                                script_player_take_state();
+                                script_play_player_animation(ANIM_PLY_TAKE);
                                 clear_game_flag(OPEN_PRINTER_FLAG);
                             break;
                             default:

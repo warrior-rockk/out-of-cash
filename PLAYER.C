@@ -235,6 +235,11 @@ void player_update_animation()
                 player.state = player_st_idle;
             }
         break;
+        /*case player_st_animating:
+            TRACE("Player frame time %i\n", player.animation.frameTime);
+            TRACE("Player frame %i\n", player.animation.frame);
+            TRACE("Player last frame %i\n", player.animation.lastFrame);
+        break;*/
      }
 
      #ifdef DEBUGMODE

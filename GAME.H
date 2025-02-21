@@ -8,8 +8,8 @@
 #include "player.h"
 
 //Definitions
-#define MAJOR_VERSION   0
-#define MINOR_VERSION   4
+#define MAJOR_VERSION   1
+#define MINOR_VERSION   0
 
 //Screen
 #define RES_X  320
