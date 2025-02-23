@@ -882,7 +882,7 @@ void r01_update_room_script()
                 }
                 break;            
             case r01_cartridge:
-                if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+                if (r01_object[R01_CARTRIDGE_OBJ_ID].active)
                 {
                     switch(roomScript.verb)
                     {
@@ -922,6 +922,8 @@ void r01_update_room_script()
                     }
                 break;
                 }
+                else
+                    roomScript.object = r01_printer;
             case r01_printer:
                 switch(roomScript.verb)
                 {

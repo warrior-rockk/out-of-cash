@@ -27,7 +27,9 @@ bool play_animation(tAnimation *animation, int startFrame, int endFrame, int spe
 
     //increment frame time
     if (gameTick)
+    {
         animation->frameTime += 1;
+    }
     
     //if frame time reached
     if (animation->frameTime >= speed)
