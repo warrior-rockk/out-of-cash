@@ -19,42 +19,42 @@ void r04_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r04_corridor:
-                strcpy(s, "Pasillo");
+                strcpy(s, "Corridor");
             break;
         case r04_fridge:
-                strcpy(s, "Nevera");
+                strcpy(s, "Fridge");
             break;
         case r04_father:
-                strcpy(s, "Pap ");
+                strcpy(s, "Dad");
             break;
         case r04_trash:
-                strcpy(s, "Papelera");
+                strcpy(s, "Trash");
             break;
         case r04_paper:
-                strcpy(s, "Papel de cocina");
+                strcpy(s, "Kitchen paper");
             break;
         case r04_oven:
-                strcpy(s, "Horno");
+                strcpy(s, "Oven");
             break;
         case r04_spatula:
-                strcpy(s, "Esp tula");
+                strcpy(s, "Spatula");
             break;
         case r04_clock:
                 if (!is_game_flag(GOT_CLOCK_FLAG))
-                    strcpy(s, "Reloj de cocina");
+                    strcpy(s, "Kitchen clock");
                 else
                     strcpy(s, "");
             break;
         case r04_oat:
                 if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG) && !is_game_flag(GOT_OAT_FLAG))
                 {
-                    strcpy(s, "Caja avena");
+                    strcpy(s, "Oat box");
                     break;
                 }
                 else
                     strcpy(s, "");
         case r04_closet:
-            strcpy(s, "Armario");
+            strcpy(s, "Closet");
             break;
         default:
             strcpy(s, "");
@@ -172,31 +172,31 @@ void r04_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("¨Por qu‚ siempre estas leyendo el peri¢dico?", 1);
-                        dialog_add("¨Por qu‚ hay una habitaci¢n que nunca abrimos?", 1);
+                        dialog_add("Why are you always reading the newspaper?", 1);
+                        dialog_add("Why is there a room we never open?", 1);
                         if (!is_game_flag(FATHER_SAY_MONEY_FLAG))
-                            dialog_add("Tengo que pedirte una cosa...", 2);
+                            dialog_add("I have to ask you something...", 2);
                         else if (!is_game_flag(MATH_APPROVED_FLAG) || !is_game_flag(HISTORY_APPROVED_FLAG) || !is_game_flag(PE_APPROVED_FLAG))
-                            dialog_add("¨Qu‚ ten¡a que hacer para que me des el dinero?", 4);
+                            dialog_add("What did I have to do to give me the money?", 4);
                         else
-                            dialog_add("­YA HE APROBADO TODO!", 0);
+                            dialog_add("I HAVE ALREADY APPROVED EVERYTHING!", 0);
                         dialog_add("Da igual...", 0);
                     break;
                     case 2:
-                        dialog_add("Hay un concierto al que quiero ir...", 3);
-                        dialog_add("¨Me das pasta, viejo?", 2);
-                        dialog_add("En realidad no era nada...", 1);
+                        dialog_add("There's a concert I want to go to...", 3);
+                        dialog_add("Can I have some dough, man?", 2);
+                        dialog_add("Forget about it...", 1);
                     break;
                     case 3:
-                        dialog_add("Vaaa, porfavor... Me hace mucha ilusi¢n", 4);
-                        dialog_add("¨De verdad no quieres ser el mejor padre?", 4);
-                        dialog_add("­­Vengaa!! ­Har‚ lo que sea!", 4);
+                        dialog_add("Pleeaseee... I'm very excited", 4);
+                        dialog_add("You really don't want to be the best father?", 4);
+                        dialog_add("Come on!! I will do anything!", 4);
                     break;
                     case 4:
-                        dialog_add("­Pero es que las Matem ticas son muy dif¡ciles!", 4);
-                        dialog_add("­Pero es que Historia es un rollo!", 4);
-                        dialog_add("¨Educaci¢n F¡sica? ¨Para qu‚ me sirve?", 4);
-                        dialog_add("Pues vaya rollo...", 1);
+                        dialog_add("But it's just that mathematics is very difficult!", 4);
+                        dialog_add("But history sucks!", 4);
+                        dialog_add("Physical Education? What it's usefulness?"", 4);
+                        dialog_add("Fuck...", 1);
                     break;
                 }
             break;
@@ -221,7 +221,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Por esa puerta se va al pasillo");
+                                script_say("You go through that door into the corridor");
                                 break;
                             default:
                                 end_script();
@@ -251,7 +251,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La nevera de la cocina rellena de rica comida");
+                                script_say("The kitchen fridge is filled with delicious food");
                                 break;
                             default:
                                 end_script();
@@ -264,7 +264,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No tengo hambre");
+                                script_say("Iâ€™m not hungry ");
                                 break;
                             default:
                                 end_script();
@@ -281,7 +281,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Creo que tengo mas recuerdos de mi padre leyendo el peri¢dico que jugando conmigo");
+                                script_say("I think I have more memories of my father reading the newspaperthan than playing with me");
                                 break;
                             default:
                                 end_script();
@@ -295,7 +295,7 @@ void r04_update_room_script()
                                 begin_script();
                                 if (is_game_flag(GOT_MONEY_FLAG))
                                 {
-                                    script_say("Ya tengo el dinero. No necesito hablar nada con ‚l");
+                                    script_say("I already have the money. I don't need to talk to him");
                                     end_script();
                                 }
                                 else
@@ -303,7 +303,7 @@ void r04_update_room_script()
                                 break;
                             case 1:
                                 change_player_dir(DIR_RIGHT);
-                                script_say("Ejem... ¨Pap ?");
+                                script_say("Ejem... Â¨Dad?");
                             break;
                             default:
                                 script_start_dialog(1);                                
@@ -322,10 +322,10 @@ void r04_update_room_script()
                                         begin_script();
                                         set_game_flag(FATHER_TALKING_FLAG);
                                         if (is_game_flag(FATHER_SAY_MONEY_FLAG))
-                                            script_say_actor("Veamos...", &r04_dialogActor);
+                                            script_say_actor("Let's see ", &r04_dialogActor);
                                         else
                                         {
-                                            script_say("Uf... Mejor deber¡a hablar con mi padre primero antes de ense¤arle las notas");
+                                            script_say("Ugh... I'd better talk to my dad first before showing him the notes");
                                             end_script();
                                         }
                                     break;
@@ -338,11 +338,11 @@ void r04_update_room_script()
                                             start_script(R04_ALL_APPROVED_SCRIPT);
                                     break;
                                     case 2:
-                                        script_say_actor("Todav¡a tienes que aprobar:", &r04_dialogActor);
+                                        script_say_actor("You still need to pass:", &r04_dialogActor);
                                     break;
                                     case 3:
                                         if (!is_game_flag(MATH_APPROVED_FLAG))
-                                            script_say_actor("Matem ticas", &r04_dialogActor);
+                                            script_say_actor("Mathematics", &r04_dialogActor);
                                         else
                                             roomScript.step++;
                                     break;
@@ -350,9 +350,9 @@ void r04_update_room_script()
                                         if (!is_game_flag(HISTORY_APPROVED_FLAG))
                                         {
                                             if (!is_game_flag(PE_APPROVED_FLAG))
-                                                script_say_actor("Historia", &r04_dialogActor);
+                                                script_say_actor("History", &r04_dialogActor);
                                             else
-                                                script_say_actor("e Historia", &r04_dialogActor);
+                                                script_say_actor("e History", &r04_dialogActor);
                                         }
                                         else
                                             roomScript.step++;
@@ -361,15 +361,15 @@ void r04_update_room_script()
                                         if (!is_game_flag(PE_APPROVED_FLAG))
                                         {
                                             if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG))
-                                                script_say_actor("Educaci¢n f¡sica", &r04_dialogActor);
+                                                script_say_actor("Physical education", &r04_dialogActor);
                                             else
-                                                script_say_actor("y Educaci¢n f¡sica", &r04_dialogActor);
+                                                script_say_actor("y Physical education", &r04_dialogActor);
                                         }
                                         else
                                             roomScript.step++;
                                     break;
                                     case 6:
-                                        script_say_actor("Hasta que no lo apruebes todo no te dar‚ el dinero", &r04_dialogActor);
+                                        script_say_actor("Until you approve everything, I don't give you the money", &r04_dialogActor);
                                         end_script();
                                     break;
                                     default:
@@ -383,19 +383,19 @@ void r04_update_room_script()
                                 switch (rand() % 4)
                                 {
                                     case 0:
-                                        script_say_actor("Hijo, guarda tus cosas", &r04_dialogActor);
+                                        script_say_actor("Son, put away your things.", &r04_dialogActor);
                                     break;
                                     case 1:
-                                        script_say_actor("Estoy leyendo. No me interrumpas", &r04_dialogActor);
+                                        script_say_actor("I'm reading. Don't interrupt me", &r04_dialogActor);
                                     break;
                                     case 2:
-                                        script_say_actor("No quiero nada de eso", &r04_dialogActor);
+                                        script_say_actor("I did not want that at all.", &r04_dialogActor);
                                     break;
                                     case 3:
-                                        script_say_actor("Muy bonito, pero para ti", &r04_dialogActor);
+                                        script_say_actor("Very nice, but for you", &r04_dialogActor);
                                     break;
                                     case 4:
-                                        script_say_actor("No molestes, hijo", &r04_dialogActor);
+                                        script_say_actor("Don't bother son", &r04_dialogActor);
                                     break;
                                 }
                                 end_script();
@@ -412,7 +412,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La papelera donde tiramos la basura de la cocina");
+                                script_say("The trash can where we throw the kitchen garbage");
                                 break;
                             default:
                                 end_script();
@@ -425,10 +425,10 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Est  vac¡a");
+                                script_say("It's empty");
                                 break;
                             default:
-                                script_say("Acabo de tirar la basura hace poco");
+                                script_say("I just threw out the trash recently");
                                 end_script();
                                 break;
                         }
@@ -443,10 +443,10 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un rollo de papel de cocina");
+                                script_say("A kitchen roll");
                                 break;
                             case 1:
-                                script_say("Que raro que est‚ en la cocina");
+                                script_say("It's weird that it's in the kitchen");
                             break;
                             default:
                                 end_script();
@@ -463,7 +463,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Mmm...A£n huele a pizza");
+                                script_say("Hmm...It's smells like pizza yet");
                                 break;
                             default:
                                 end_script();
@@ -475,7 +475,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Si tuviera hambre, me har¡a una pizza");
+                                script_say("If I'm hungry, I would make me a pizza");
                                 break;
                             default:
                                 end_script();
@@ -487,12 +487,12 @@ void r04_update_room_script()
                         {
                             case id_starClock:
                                 begin_script();
-                                script_say("Si pretend¡as carbonizar el reloj, no es buena idea");
+                                script_say("If you intend to carbonize the clock, it's not a good idea");
                                 end_script();
                             break;
                             case id_brain:
                                 begin_script();
-                                script_say("Si pretend¡as carbonizar el cerebro, no es buena idea");
+                                script_say("If you're trying to carbonize the brain, it's not a good idea");
                                 end_script();
                             break;
                         }
@@ -507,13 +507,13 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una esp tula para reposter¡a");
+                                script_say("A spatula for confectionery");
                             break;
                             case 1:
-                                script_say("Sirve para extender el chocolate en las tartas, por ejemplo");
+                                script_say("It is used to spread chocolate on cakes, for example");
                             break;
                             default:
-                                script_say("O cualquier cosa viscosa");
+                                script_say("Or anything viscous");
                                 end_script();
                             break;
                         }
@@ -542,7 +542,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un est£pido reloj de cocina en forma de estrella que compraron mis padres de viaje");
+                                script_say("A star-shaped kitchen clock that my parents bought on a trip");
                                 break;
                             default:
                                 end_script();
@@ -575,7 +575,7 @@ void r04_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Una caja de copos de avena");
+                                    script_say("A box of oat flakes");
                                     break;
                                 default:
                                     end_script();
@@ -606,7 +606,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un armario de la cocina");
+                                script_say("Kitchen closet");
                                 break;
                             default:
                                 end_script();
@@ -620,7 +620,7 @@ void r04_update_room_script()
                                 begin_script();
                                 if (is_game_flag(KITCHEN_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  abierto");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 else
@@ -646,7 +646,7 @@ void r04_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(KITCHEN_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  cerrado");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 else
@@ -671,32 +671,32 @@ void r04_update_room_script()
                 {
                     case 0:
                         set_game_flag(FATHER_TALKING_FLAG);
-                        script_say_actor("­Muy bien hijo!", &r04_dialogActor);
+                        script_say_actor("Congratulations son!", &r04_dialogActor);
                     break;
                     case 1:
-                        script_say_actor("Al final con trabajo y esfuerzo se consiguen metas", &r04_dialogActor);
+                        script_say_actor("In the end, with work and effort, goals are achieved", &r04_dialogActor);
                     break;
                     case 2:
-                        script_say_actor("Aqu¡ tienes el dinero", &r04_dialogActor);
+                        script_say_actor("Here's the money", &r04_dialogActor);
                     break;
                     case 3:
                         play_sound(sd_money);
                         script_combine_inv_object(id_califications, 0, id_money);
                     break;
                     case 4:
-                        script_say("Pero pap , aqui solo hay 4900 pelas");
+                        script_say("But, Dad, there are only 29 bucks here");
                     break;
                     case 5:
-                        script_say("­La entrada del concierto vale 5000!");
+                        script_say("The concert ticket is worth 30!");
                     break;
                     case 6:
-                        script_say_actor("Hijo, toma lo que te dan y suspira por lo que queda", &r04_dialogActor);
+                        script_say_actor("Son, take what you're given and sigh for what's left", &r04_dialogActor);
                     break;
                     case 7:
-                        script_say("Ser  hijop...");                        
+                        script_say("You motherf...");                        
                     break;
                     case 8:
-                        script_say_actor("Esa boca...", &r04_dialogActor);
+                        script_say_actor("That mouth...", &r04_dialogActor);
                         set_game_flag(GOT_MONEY_FLAG);
                     break;
                     default:
@@ -728,13 +728,13 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("En la vida hay que estar informado, muchacho", &r04_dialogActor);
+                            script_say_actor("In life, you have to be informed, boy", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Y el peri¢dico es el £nico modo de enterarme de la verdad", &r04_dialogActor);
+                            script_say_actor("And newspapers is the only way to find out the truth", &r04_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Y no de esas bazofias que dicen por la tele", &r04_dialogActor);
+                            script_say_actor("And not those bullshit things they say on TV", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -746,13 +746,13 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Si te lo dijera tendr¡a que matarte", &r04_dialogActor);
+                            script_say_actor("If I told you I'd have to kill you", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Adem s, no lo s‚", &r04_dialogActor);
+                            script_say_actor("Besides, I don't know", &r04_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Eso lo lleva tu madre", &r04_dialogActor);
+                            script_say_actor("That's your mother matters", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -766,10 +766,10 @@ void r04_update_room_script()
                         case 1:
                             if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
                             {
-                                script_say_actor("Hasta que no vea tus notas no lo creer‚", &r04_dialogActor);
+                                script_say_actor("Until I see your califications don't believe it", &r04_dialogActor);
                             }
                             else if (is_game_flag(FATHER_SAY_MONEY_FLAG))
-                                script_say_actor("Aprueba Matem ticas, Historia y Educaci¢n f¡sica y te dar‚ el dinero", &r04_dialogActor);
+                                script_say_actor("Aprueba Mathematics, History y Physical education y te darÂ‚ el dinero", &r04_dialogActor);
                             else
                                 roomScript.step++;
                         break;
@@ -783,19 +783,19 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say("Es de mi grupo favorito");
+                            script_say("It's from my favorite group");
                         break;
                         case 2:
-                            script_say("Acaban de sacar disco y vienen a la ciudad a presentarlo");
+                            script_say("They just put out a record and come to the city to present it");
                         break;
                         case 3:
-                            script_say("El problema es que no tengo dinero y la entrada vale 5000 pelas");
+                            script_say("The problem is that I have no money and the ticket is worth 30 bucks");
                         break;
                         case 4:
-                            script_say("Ser¡as el mejor padre del mundo si me dejas el dinero");
+                            script_say("You will be the best father in the world if you give me the money");
                         break;
                         case 5:
-                            script_say_actor("Ni lo sue¤es", &r04_dialogActor);
+                            script_say_actor("Neither in your dreams", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -807,7 +807,7 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("­Modera tu lenguaje jovenzuelo!", &r04_dialogActor);
+                            script_say_actor("Moderate your language, youthful boy!", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -824,13 +824,13 @@ void r04_update_room_script()
                             script_say_actor("Mmmm...", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Vamos a hacer un trato", &r04_dialogActor);
+                            script_say_actor("Let's make a deal.", &r04_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Si apruebas las asignaturas que has suspendido, te dar‚ el dinero", &r04_dialogActor);
+                            script_say_actor("If you pass the subjects you failed, I will give you the money", &r04_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("Para ello tendr s que aprobar Matem ticas, Historia y Educaci¢n F¡sica", &r04_dialogActor);
+                            script_say_actor("Para ello tendrÂ s que aprobar Mathematics, History y EducaciÂ¢n FÂ¡sica", &r04_dialogActor);
                             set_game_flag(FATHER_SAY_MONEY_FLAG);
                         break;
                         default:
@@ -843,7 +843,7 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Es tu obligaci¢n aprender las Matem ticas", &r04_dialogActor);
+                            script_say_actor("Es tu obligaciÂ¢n aprender las Mathematics", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -855,7 +855,7 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Para afrontar el futuro tienes que conocer bien el pasado", &r04_dialogActor);
+                            script_say_actor("To face the future you have to know the past well", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -867,13 +867,13 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Hijo", &r04_dialogActor);
+                            script_say_actor("Son", &r04_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Educaci¢n F¡sica es una asignatura tan respetable e importante como las dem s", &r04_dialogActor);
+                            script_say_actor("Physical Education is a subject as respectable and important as the other", &r04_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Adem s te est s poniendo fond¢n", &r04_dialogActor);
+                            script_say_actor("Besides, you are getting fatty", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
