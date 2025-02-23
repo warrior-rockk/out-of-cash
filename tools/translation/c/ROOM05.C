@@ -19,52 +19,52 @@ void r05_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r05_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r05_folders:
-                strcpy(s, "Carpetas");
+                strcpy(s, "Folders");
             break;
         case r05_stationeryMaterial:
-                strcpy(s, "Material papeler¡a");
+                strcpy(s, "Stationery material");
             break;
         case r05_photocopies:
             if (!r05_object[R05_PHOTOCOPY_OBJ_ID].active)
                 strcpy(s, "");
             else
-                strcpy(s, "Fotocopias");
+                strcpy(s, "Photocopies");
             break;
         case r05_paper:
             if (r05_object[R05_SHEETS_OBJ_ID].active || r05_object[R05_SHEETSPHOTO_OBJ_ID].active)
-                strcpy(s, "Papel");
+                strcpy(s, "Paper");
             else
                 strcpy(s, "");
             break;
         case r05_printer:
-                strcpy(s, "Impresora");
+                strcpy(s, "Printer");
             break;    
         case r05_cartridge:
             if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                 strcpy(s, "");
             else
-                strcpy(s, "Cartucho ");
+                strcpy(s, "Cartridge");
             break;
         case r05_printedPaper:
             if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) ||
                 is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) ||
                 is_game_flag(PRINTED_PHOTOCOPY_FLAG) ||
                 is_game_flag(PRINTED_SHEET_FLAG))
-                strcpy(s, "Papel impreso");
+                strcpy(s, "Paper impreso");
             else
                 strcpy(s, "");
             break;
         case r05_mouse:
-                strcpy(s, "Rat¢n");
+                strcpy(s, "Mouse");
             break;
         case r05_monitor:
                 strcpy(s, "Monitor");
             break;
         case r05_employee:
-            strcpy(s, "Dependiente");
+            strcpy(s, "Dependent");
             break;
         default:
             strcpy(s, "");
@@ -192,21 +192,21 @@ void r05_update_dialog_selection()
                         stop_dialog();
                     break;
                     case 1:
-                        dialog_add("Bonita papeler¡a...",1);
-                        dialog_add("¨Puedo llevarme una carpeta?",1);
-                        dialog_add("¨Qu‚ son estas fotocopias que ten‚is?",3);
+                        dialog_add("Nice stationery...",1);
+                        dialog_add("Can I take a folder?",1);
+                        dialog_add("What are these photocopies you have?",3);
                         if (!is_game_flag(SCHEDULE_INFO_FLAG))
-                            dialog_add("¨Para qu‚ es la impresora?",1);
+                            dialog_add("What is the printer for?",1);
                         else
-                            dialog_add("¨Me puedes imprimir un horario?",0);
-                        dialog_add("No necesito nada, gracias",0);
+                            dialog_add("Can you print me a schedule?",0);
+                        dialog_add("I donâ€™t need anything, thanks.",0);
                     break;
                     case 3:
-                        dialog_add("Me gustar¡a llevarme una fotocopia de Dragon Ball",4);
+                        dialog_add("I like to take a Dragon Ball photocopy",4);
                     break;
                     case 4:
-                        dialog_add("No tengo dinero...",1);
-                        dialog_add("No me interesa, gracias", 0);
+                        dialog_add("I have no money",1);
+                        dialog_add("No interest in that, thanks", 0);
                     break;
                     
                 }
@@ -237,13 +237,13 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Gracias", &r05_dialogActor);
+                            script_say_actor("Thank you", &r05_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Es un negocio familiar de hace muchos a¤os y le ponemos mucho cari¤o", &r05_dialogActor);
+                            script_say_actor("It is a family business of many years ago and we put a lot of love into it", &r05_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Queremos que nuestros clientes est‚n siempre satisfechos", &r05_dialogActor);
+                            script_say_actor("We want our customers to always be satisfied", &r05_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -255,13 +255,13 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Por supuesto", &r05_dialogActor);
+                            script_say_actor("Of course", &r05_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Tenemos tanta confianza en nuestras carpetas que puedes llevarte una para probarla", &r05_dialogActor);
+                            script_say_actor("We're so confident in our folders that you can take one with you to try out", &r05_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Tambi‚n imprimimos los horarios del instituto gratis", &r05_dialogActor);
+                            script_say_actor("We also print school schedules for free", &r05_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -273,13 +273,13 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Son fotocopias de la serie anime del momento: Dragon Ball", &r05_dialogActor);
+                            script_say_actor("They are photocopies of the anime series of the moment: Dragon Ball", &r05_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Son muy codiciadas por su valor coleccionista", &r05_dialogActor);
+                            script_say_actor("They are highly coveted for their collector value", &r05_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Adem s a la gente les gusta calcarlas y pintarlas por ellos mismos", &r05_dialogActor);
+                            script_say_actor("Besides, people like to trace and paint them themselves", &r05_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -293,10 +293,10 @@ void r05_update_room_script()
                         switch (roomScript.step)
                         {
                             case 1:
-                                script_say_actor("Tenemos un convenio con el instituto e imprimimos los horarios a quien lo necesite", &r05_dialogActor);
+                                script_say_actor("We have an agreement with the collegue and we print the schedules to those who need it", &r05_dialogActor);
                             break;
                             case 2:
-                                script_say_actor("Lo hacemos sin coste alguno para los alumnos", &r05_dialogActor);
+                                script_say_actor("We do it at no cost to students", &r05_dialogActor);
                             break;
                             default:
                                 script_next_dialog_node();
@@ -310,7 +310,7 @@ void r05_update_room_script()
                        switch (roomScript.step)
                        {
                            case 1:
-                               script_say_actor("Por supuesto", &r05_dialogActor);
+                               script_say_actor("Of course", &r05_dialogActor);
                            break;
                            case 2:
                                if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG) && !is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
@@ -324,7 +324,7 @@ void r05_update_room_script()
                                }
                            break;
                            case 3:
-                               script_say_actor("Te lo imprimo ahora mismo", &r05_dialogActor);
+                               script_say_actor("I'll print it out for you right now", &r05_dialogActor);
                                set_game_flag(EMPLOYEE_AT_COMPUTER_FLAG);
                                set_game_flag(EMPLOYEE_USING_COMPUTER_FLAG);
                            break;
@@ -333,11 +333,11 @@ void r05_update_room_script()
                            break;
                            case 5:
                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
-                                   script_say_actor("­Oh vaya! Creo que ya hay un horario impreso de antes", &r05_dialogActor);
+                                   script_say_actor("Â­Oh wow! I think there's already a printed schedule from before", &r05_dialogActor);
                                else if (is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
-                                   script_say_actor("Ummm... Lo siento, me he quedado sin hojas en la impresora", &r05_dialogActor);
+                                   script_say_actor("Ummm... sorry, I ran out of sheets in the printer", &r05_dialogActor);
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
-                                   script_say_actor("Ummm... Lo siento, la impresora me dice error de cartucho", &r05_dialogActor);
+                                   script_say_actor("Ummm... sorry, the printer tells me cartridge error", &r05_dialogActor);
                                else
                                {
                                    roomScript.step = 20;
@@ -386,16 +386,16 @@ void r05_update_room_script()
                                }
                            break;
                            case 21:
-                               script_say_actor("Ya lo tienes", &r05_dialogActor);
+                               script_say_actor("You got it ", &r05_dialogActor);
                                r05_object[R05_PRINTER_OBJ_ID].active = false;
                                r05_animations[r05_object[R05_PRINTER_OBJ_ID].animationId - 1].frame = 0;
                            break;
                            case 10:
-                               script_say("­Espera!... mejor no, gracias");
+                               script_say("Wait!... better than not, thank you");
                            break;
                            case 11:
                                change_player_dir(DIR_FRONT);
-                               script_say("Si imprimo el horario sobre la fotocopia de Dragon Ball la voy a estropear");
+                               script_say("If I print the schedule on the photocopy of Dragon Ball I will damaged it");
                            break;
                            default:
                                change_player_dir(DIR_RIGHT);
@@ -416,7 +416,7 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Cada fotocopia vale 25 pesetas", &r05_dialogActor);
+                            script_say_actor("Each photocopy is worth one dime", &r05_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -428,10 +428,10 @@ void r05_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Lo siento. No te puedo regalar una fotocopia", &r05_dialogActor);
+                            script_say_actor("Sorry. I can't give you a photocopy", &r05_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Es un art¡culo muy preciado", &r05_dialogActor);
+                            script_say_actor("It is a very precious item", &r05_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -461,7 +461,7 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puerta");
+                                script_say("Door");
                                 break;
                             default:
                                 end_script();
@@ -477,7 +477,7 @@ void r05_update_room_script()
                             break;
                             case 1:
                                 if ((is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG) || is_game_flag(GOT_PHOTOCOPY_FLAG)) && !is_game_flag(EMPLOYEER_STOLEN_ADVICE_FLAG))
-                                    script_say_actor("­Oye! ¨Que llevas ah¡?", &r05_dialogActor);
+                                    script_say_actor("Hey! What do you have there?", &r05_dialogActor);
                                 else
                                 {
                                     change_room_pos(STREET_ROOM_NUM, 258, 138);
@@ -487,18 +487,18 @@ void r05_update_room_script()
                             case 2:
                                 change_player_dir(DIR_RIGHT);
                                 if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
-                                    script_say_actor("Disculpa pero no puedes llevarte las fotocopias de Dragon Ball sin pagar", &r05_dialogActor);
+                                    script_say_actor("Excuse me but you can't take Dragon Ball photocopies without paying", &r05_dialogActor);
                                 else
-                                    script_say("Nada. Llevo la hoja del horario del instituto que me has impreso");
+                                    script_say("Nothing. I have the school schechule sheet that you have printed for me");
                             break;
                             case 3:
                                 if (is_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG))
                                 {
-                                    script_say_actor("Si no tienes dinero te agradecer¡a que me las devolvieras", &r05_dialogActor);
+                                    script_say_actor("If you don't have any money, I prefer for returning it to me!", &r05_dialogActor);
                                     end_script();
                                 }
                                 else
-                                    script_say_actor("Ah si perdona. No me acordaba", &r05_dialogActor);
+                                    script_say_actor("Oh, excuse me. I didn't remember", &r05_dialogActor);
                                 break;
                             case 4:
                                 set_game_flag(EMPLOYEER_STOLEN_ADVICE_FLAG);
@@ -520,13 +520,13 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Unas bonitas carpetas para meter folios");
+                                script_say("Nice folders to put sheets in");
                                 break;
                             case 1:
-                                script_say("Y de muy alta calidad y acabados");
+                                script_say("And very high quality and finishes");
                                 break;
                             case 2:
-                                script_say_actor("Puedes llevarte una gratis para probarla y asegurarte de su calidad", &r05_dialogActor);
+                                script_say_actor("You can get one for free to try it out and make sure it's quality", &r05_dialogActor);
                                 break;
                             default:
                                 end_script();
@@ -540,7 +540,7 @@ void r05_update_room_script()
                                     begin_script();
                                     if (is_game_flag(GOT_FOLDER_FLAG))
                                     {
-                                        script_say("El dependiente ha dicho que solo me puedo llevar una gratis");
+                                        script_say("The clerk said I can only take one for free");
                                         end_script();
                                     }
                                     else
@@ -550,7 +550,7 @@ void r05_update_room_script()
                                     script_take_object(NULL, GOT_FOLDER_FLAG, id_folder);
                                     break;
                                 case 2:
-                                    script_say_actor("Tenemos tanta confianza en nuestras carpetas que puedes llevarte una gratis para probarla", &r05_dialogActor);
+                                    script_say_actor("We're so confident in our folders that you can take one for free to try it out", &r05_dialogActor);
                                     break;
                                 default:
                                     end_script();
@@ -567,13 +567,13 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Siempre me han encantado las papeler¡as y las cosas que venden en ellas");
+                                script_say("I've always loved stationery and the things they sell on it");
                                 break;
                             case 1:
-                                script_say("Pero no me interesa nada de lo que tienen aqu¡");
+                                script_say("But I'm not interested in anything you have here!");
                                 break;
                             case 2:
-                                script_say_actor("Todo nuestro material es de primera y a unos precios incre¡bles", &r05_dialogActor);
+                                script_say_actor("All our material is top notch and at incredible prices", &r05_dialogActor);
                                 break;
                             default:
                                 end_script();
@@ -590,13 +590,13 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son unas fotocopias con dibujos de la serie Dragon Ball");
+                                script_say("These are photocopies with drawings from the Dragon Ball series");
                                 break;
                             case 1:
-                                script_say_actor("Todo chaval del instituto sabe que lo mas mol¢n es tener estas fotocopias", &r05_dialogActor);
+                                script_say_actor("Every kid in high school knows that the cool thing is to have these photocopies", &r05_dialogActor);
                                 break;
                             case 2:
-                                script_say_actor("Por 25 pesetas puedes llevarte la que mas te guste", &r05_dialogActor);
+                                script_say_actor("For one dime, you can take the one you like the most", &r05_dialogActor);
                                 break;
                             default:
                                 end_script();
@@ -629,14 +629,14 @@ void r05_update_room_script()
                                 begin_script();
                                 if (is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                 {
-                                    script_say("He sustituido las hojas de la impresora por una fotocopia de Dragon Ball");
+                                    script_say("I replaced the printer sheet with a photocopy of Dragon Ball");
                                     end_script();
                                 }
                                 else
-                                    script_say("Es el papel que hay cargado en la impresora");
+                                    script_say("It's the paper that is loaded in the printer");
                                 break;
                             default:
-                                script_say("Un A4 est ndar...");
+                                script_say("A regular A4...");
                                 end_script();
                                 break;
                         }
@@ -676,13 +676,13 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el cartucho de tinta de la impresora");
+                                script_say("It is the ink cartridge of the printer");
                                 break;
                             default:
                                 if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
-                                    script_say("Parece lleno");
+                                    script_say("Looks full");
                                 else if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
-                                    script_say("Parece vac¡o");
+                                    script_say("Looks empty");
                                 end_script();
                                 break;
                         }
@@ -722,7 +722,7 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la impresora de la papeler¡a");
+                                script_say("It's the stationery's printer");
                                 break;
                             default:
                                 end_script();
@@ -761,7 +761,7 @@ void r05_update_room_script()
                                             script_move_player_to_target();
                                         else
                                         {
-                                            script_say("Mejor me la guardo");
+                                            script_say("I better keep it");
                                             end_script();
                                         }
                                     break;
@@ -786,7 +786,7 @@ void r05_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG))
                                         {
-                                            script_say("Ya hay un cartucho en la impresora");
+                                            script_say("There is already a cartridge in the printer");
                                             end_script();
                                         }
                                         else
@@ -813,7 +813,7 @@ void r05_update_room_script()
                                         begin_script();
                                         if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                         {
-                                            script_say("Ya hay un cartucho en la impresora");
+                                            script_say("There is already a cartridge in the printer");
                                             end_script();
                                         }
                                         else
@@ -846,13 +846,13 @@ void r05_update_room_script()
                             case 0:
                                 begin_script();
                                 if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG))
-                                    script_say("La impresora ha impreso el horario del instituto por las 2 caras");
+                                    script_say("The printer has printed the high school schedule on both sides");
                                 else if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG))
-                                    script_say("La impresora ha impreso el horario del instituto encima de la fotocopia de Dragon Ball");
+                                    script_say("The printer has printed the high school schedule on top of the Dragon Ball photocopy");
                                 else if (is_game_flag(PRINTED_PHOTOCOPY_FLAG))
-                                    script_say("Como el cartucho no tenia tinta, la impresora ha sacado la fotocopia de Dragon Ball sin ning£n da¤o");
+                                    script_say("As the cartridge had no ink, the printer took out the photocopy of Dragon Ball without any damage");
                                 else if (is_game_flag(PRINTED_SHEET_FLAG))
-                                    script_say("Como el cartucho no tenia tinta, la impresora ha sacado el folio sin imprimir nada");
+                                    script_say("As the cartridge had no ink, the printer took out the sheet without printing anything");
                                 else
                                     end_script();
                                 break;
@@ -906,7 +906,7 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el rat¢n del ordenador de la papeler¡a");
+                                script_say("It's the mouse of the stationery computer");
                                 break;
                             default:
                                 end_script();
@@ -923,7 +923,7 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el monitor del ordenador de la papeler¡a");
+                                script_say("It's the monitor of the stationery computer");
                                 break;
                             default:
                                 end_script();
@@ -940,7 +940,7 @@ void r05_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el servicial dependiente de la papeler¡a");
+                                script_say("It's the helpful stationery dependent");
                                 break;
                             default:
                                 end_script();
@@ -956,7 +956,7 @@ void r05_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_RIGHT);
-                                script_say_actor("­Hola! ¨En que te puedo ayudar?", &r05_dialogActor);
+                                script_say_actor("Hi! How can I help you?", &r05_dialogActor);
                             break;
                             case 2:
                                 script_start_dialog(1);
@@ -972,7 +972,7 @@ void r05_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say_actor("Graaaacias", &r05_dialogActor);
+                                        script_say_actor("Thaaaaank youuuuu", &r05_dialogActor);
                                     break;
                                     case 1:
                                         clear_game_flag(GOT_PHOTOCOPY_STOLEN_FLAG);
@@ -986,7 +986,7 @@ void r05_update_room_script()
                             break;
                             case id_coin:
                                 begin_script();
-                                script_say("Deber¡a guardarme todo el dinero que pueda para comprar la entrada");
+                                script_say("I must keep as much money as I can to buy the ticket");
                                 end_script();
                             break;
                             default:
@@ -994,19 +994,19 @@ void r05_update_room_script()
                                 switch (rand() % 4)
                                 {
                                     case 0:
-                                        script_say_actor("Oh...Gracias, pero no sabr¡a que hacer con esto", &r05_dialogActor);
+                                        script_say_actor("Oh...Thank you, pero no sabrÂ¡a que hacer con esto", &r05_dialogActor);
                                     break;
                                     case 1:
-                                        script_say_actor("Muy amable, pero no lo necesito", &r05_dialogActor);
+                                        script_say_actor("Very kind, but I don't need it", &r05_dialogActor);
                                     break;
                                     case 2:
-                                        script_say_actor("No gracias, no utilizamos ese tipo de art¡culos", &r05_dialogActor);
+                                        script_say_actor("No thanks, we don't use those kinds of items", &r05_dialogActor);
                                     break;
                                     case 3:
-                                        script_say_actor("Ummm, no estoy interesado", &r05_dialogActor);
+                                        script_say_actor("Ummm, I am not interested", &r05_dialogActor);
                                     break;
                                     case 4:
-                                        script_say_actor("Te puede hacer mas falta que a mi", &r05_dialogActor);
+                                        script_say_actor("You may need it more than me", &r05_dialogActor);
                                     break;
                                 }
                                 end_script();
@@ -1021,18 +1021,18 @@ void r05_update_room_script()
                     case 0:
                         begin_script();
                         if (!is_game_flag(WELLCOME_FLAG))
-                            script_say_actor("­Hola! Bienvenido a nuestra papeler¡a", &r05_dialogActor);
+                            script_say_actor("Hi! Welcome to our stationery", &r05_dialogActor);
                         else
                         {
-                            script_say_actor("­Hola! Bienvenido de nuevo", &r05_dialogActor);
+                            script_say_actor("Hi! Welcome back", &r05_dialogActor);
                             end_script();
                         }
                         break;
                     case 1:
-                        script_say_actor("Mira todo lo que necesites y pregunta lo que quieras", &r05_dialogActor);
+                        script_say_actor("See what you need and ask what you want", &r05_dialogActor);
                         break;
                     case 2:
-                        script_say_actor("Estamos aqu¡ para ayudar", &r05_dialogActor);
+                        script_say_actor("I'm Here to help", &r05_dialogActor);
                         set_game_flag(WELLCOME_FLAG);
                         break;
                     default:
