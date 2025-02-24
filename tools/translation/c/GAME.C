@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include "allegroo.h"
+#include "allegro.h"
 #include "engine.h"
 #include "game.h"
 #include "rooms.h"
@@ -620,12 +620,12 @@ void game_update()
         TRACE("Change game state from %i to %i\n", game.prevState, game.state);
         game.prevState = game.state;
     }
-    
-    #ifdef DEBUGMODE
-        //force game exit
-        if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
-            game.state = EXIT_STATE;
 
+    //force game exit
+    if (key[KEY_X] && (key_shifts & KB_CTRL_FLAG))
+        game.state = EXIT_STATE;
+
+    #ifdef DEBUGMODE
         //toogle show room walk image
         if (gameKeys[G_KEY_W].pressed)
             debug.showWalkImage = !debug.showWalkImage;
@@ -1271,6 +1271,9 @@ void cursor_action_HUD()
             strcpy(cursor.objectName, "");
         //on give verb, don't allow give inv object to inv object
         else if (cursor.selectedVerb == GIVE && cursor.invObjName[0] != '\0')
+            strcpy(cursor.objectName, "");
+        //forbidden take verb on inventory object
+        else if (cursor.selectedVerb == TAKE)
             strcpy(cursor.objectName, "");
         else
             //gets the object name
@@ -2452,7 +2455,7 @@ void credits_init()
     strcpy(credits.line[18], "Control de calidad");
     strcpy(credits.line[19], "Control de...¨qu‚?");
     strcpy(credits.line[20], "Agradecimientos especiales");
-    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nLuqquino");
+    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nJota\nLuqquino");
     
     strcpy(credits.line[22], "GRACIAS POR JUGAR");
 
