@@ -385,7 +385,19 @@ void r08_update_room_script()
                         case 1:
                             script_say_actor("¨Qui‚n juega a eso en estos tiempos?", &r08_dialogActor);
                         break;
+                        case 2:
+                            script_wait(5);
+                        break;
+                        case 3:
+                            play_player_animation(ANIM_PLY_LOOK_FRONT);
+                            script_wait(10);
+                        break;
+                        case 4:
+                            play_player_animation(ANIM_PLY_SMILE_FRONT);
+                            script_wait(10);
+                        break;
                         default:
+                            stop_player_animation();
                             script_next_dialog_node();
                             end_script();
                         break;
