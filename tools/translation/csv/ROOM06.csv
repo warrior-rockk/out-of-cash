@@ -1,57 +1,49 @@
-sp,eng
-engine.h,engine.h
-room06.h,room06.h
-Puerta,Gate
-Cerradura,Locks
-Puerta,Gate
-Alfombrilla,CARPET
-Llave,Key
-Cuadro,Profile
-Puerta,Gate
-Ventana,Window
-Puerta,Gate
-Tabl¢n,Tabl¢n
-Puerta,Gate
-Puerta,Gate
-Orla,Orle
-Banco,Bank
-Puerta,Gate
-La puerta del instituto,The high school door
-La tristeza que me da verla por las ma¤anas y la alegr¡a de verla cuando me voy,The sadness that it gives me to see her in the mornings and the joy of seeing her when I leave
-Veo por la cerradura que la llave esta metida por dentro,I see through the lock that the key is stuck inside
-Parece que la llave ha ca¡do a la alfombrilla por el otro lado,It seems that the key has fallen to the mat on the other side
-La alfombrilla est  muy hacia afuera y no llega hasta donde puede caer la llave,The mat is  very far out and does not go as far as the key can fall
-Si meto el escalpelo por la cerradura caer  al suelo y no podr recuperar la llave,If I put the scalpel through the lock, it will fall  to the ground and I will not be able to retrieve the key
-La llave ya ha ca¡do sobre la alfombrilla,The key has already fallen on the mat
-­Eureka! La llave ha ca¡do sobre la alfombrilla,­Eureka! The key has fallen on the mat
-La esp tula es demasiado grande y no cabe por el ojo de la cerradura,The spit is too large and does not fit through the keyhole
-Es la puerta del armario de mantenimiento,It is the door of the maintenance cabinet
-La puerta est  cerrada,The Door has shut?
-La puerta est  cerrada y no tengo la llave,The door is  locked and I don't have the key
-La puerta est  cerrada con llave,The door is locked with a key
-Ya est  abierta,Already open
-Ya est  cerrada,Already closed
-Son mis notas,This is what my notes look like
-No querr¡a da¤arlas,I don't want da¤arlas
-Es demasiada fina,It's too thin
-Estas respuestas son demasiado valiosas para usarlas aqu¡,These answers are too valuable to use here!
-Es demasiado valioso para usarlo aqu¡,It's too valuable to use here!
-He metido la alfombrilla por debajo de la puerta,I tucked the mat under the door
-Est  bien donde est ,It's  good where it is 
-La llave de la puerta del almacn de mantenimiento reposa sobre la alfombrilla,The key to the maintenance warehouse door rests on the mat
-Un cuadro de una fotograf¡a del instituto rodeada de arboles y jardines,A picture of a high school photograph surrounded by trees and gardens
-Ahora todo es cemento,Now it's all cement
-Es la puerta del aula de inform tica,It is the door to the IT classroom
-Es la ventana del aula de inform tica,It is the window of the IT classroom
-As¡ puedes ver si hay alg£n ordenador disponible,So you can see if there is any computer available
-Es la puerta al aula de ciencia,It's the door to the science classroom
-El tabl¢n de anuncios del instituto,The institute's bulletin board
-Se dan clases de matem ticas particulares. Contacto 555-5555,Private math classes are given. Contact 555-5555
-Grupo de m£sica rock busca guitarrista solista con equipo propio,Rock music group looking for solo guitarist with own equipment
-Vota a Carlos para delegado de clase. Cuando solo hay un candidato, solo hay una elecci¢n,Vote for Carlos for class delegate. When there is only one candidate, there is only one election
-Es la puerta que da a los ba¤os,It is the door that leads to thebaths
-Es la puerta que va a los vestuarios,It's the door to the locker room
-Es la orla de la generaci¢n de profesores del 57,It is the edge of the 57th generation of teachers
-Una manada de dinosaurios es lo que son...,A herd of dinosaurs is what they are…
-Creo que nunca me he sentado en este banco,I don't think I've ever sat on this bench
-Es la puerta que da al despacho del profesor de educaci¢n f¡sica,It is the door to the physical education teacher's office
+sp;eng
+Puerta;Door
+Cerradura;Lock
+Alfombrilla;Mat
+Llave;Key
+Cuadro;Picture
+Ventana;Window
+Tabl¢n;Bulletin Board
+Orla;Clash Photo
+Banco;Bench
+La puerta del instituto;The high school door
+La tristeza que me da verla por las ma¤anas y la alegr¡a de verla cuando me voy;The sadness that it gives me to see it in the mornings and the joy of seeing it when I leave
+Veo por la cerradura que la llave esta metida por dentro;I see through the lock that the key is stuck inside
+Parece que la llave ha ca¡do a la alfombrilla por el otro lado;It seems that the key has fallen to the mat on the other side
+La alfombrilla est  muy hacia afuera y no llega hasta donde puede caer la llave;The mat is very far out and does not reach as far as the key can fall
+Si meto el escalpelo por la cerradura caer  al suelo y no podr recuperar la llave;If I put the scalpel through the lock, it will fall to the ground and I will not be able to retrieve the key
+La llave ya ha ca¡do sobre la alfombrilla;The key has already fallen on the mat
+­Eureka! La llave ha ca¡do sobre la alfombrilla;Eureka! The key has fallen on the mat
+La esp tula es demasiado grande y no cabe por el ojo de la cerradura;The spatula is too large and does not fit through the keyhole
+Es la puerta del armario de mantenimiento;It's the door of the maintenance cabinet
+La puerta est  cerrada;The Door is locked
+La puerta est  cerrada y no tengo la llave;The door is locked and I don't have the key
+La puerta est  cerrada con llave;The door is locked with a key
+Ya est  abierta;Already open
+Ya est  cerrada;Already closed
+Son mis notas;This are my califications
+No querr¡a da¤arlas;I don't want hurt them
+Es demasiada fina;It's too thin
+Estas respuestas son demasiado valiosas para usarlas aqu¡;These answers are too valuable to use here!
+Es demasiado valioso para usarlo aqu¡;It's too valuable to use here!
+He metido la alfombrilla por debajo de la puerta;I put the mat under the door
+Est  bien donde est ;It's fine where it is
+La llave de la puerta del almacn de mantenimiento reposa sobre la alfombrilla;The key to the maintenance closet door rests on the mat
+Un cuadro de una fotograf¡a del instituto rodeada de arboles y jardines;A picture of a high school photograph surrounded by trees and gardens
+Ahora todo es cemento;Now it's all concrete
+Es la puerta del aula de inform tica;It´s the door to the computers classroom
+Es la ventana del aula de inform tica;It´s the window of the computers classroom
+As¡ puedes ver si hay alg£n ordenador disponible;So you can see if there is any computer available
+Es la puerta al aula de ciencia;It's the door to the science classroom
+El tabl¢n de anuncios del instituto;The high school bulletin board
+Se dan clases de matem ticas particulares. Contacto 555-5555;Private math classes are given. Contact: 555-5555
+Grupo de m£sica rock busca guitarrista solista con equipo propio;Rock music band looking for lead guitarist with own equipment
+Vota a Carlos para delegado de clase. Cuando solo hay un candidato, solo hay una elecci¢n;Vote for Carlos for class delegate. When there is only one candidate, there is only one choice
+Es la puerta que da a los ba¤os;It's the door that leads to the bathroom
+Es la puerta que va a los vestuarios;It's the door to the locker room
+Es la orla de la generaci¢n de profesores del 57;It is the school photograph of the 57th generation of teachers
+Una manada de dinosaurios es lo que son...;A herd of dinosaurs is what they are…
+Creo que nunca me he sentado en este banco;I don't think I've ever sat on this bench
+Es la puerta que da al despacho del profesor de educaci¢n f¡sica;It´s the door to the physical education teacher's office
