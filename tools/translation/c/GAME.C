@@ -71,13 +71,13 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("Corr¡a el a¤o 1995 en una ciudad cualquiera", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                        game_write("Long time ago, on the year 1995 in a vulgar city", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 1:
-                        game_write("Nuestro protagonista pasea despreocupado\npor la calle como cualquier otro d¡a", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                        game_write("Our protagonist walks carefree\nin the street like any other day", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 2:
-                        game_write("Nada parece importarle en la vida hasta\nque una noticia llama poderosamente su atenci¢n", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                        game_write("Nothing seems to worry him in life until\na poster powerfully calls his attention", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                 }
             break;
@@ -107,7 +107,7 @@ int main()
                 //draw game title
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_title].dat, (C_X) - (((BITMAP *)gameDataFile[gd_title].dat)->w>>1), (GAME_TITLE_POS_Y) - (((BITMAP *)gameDataFile[gd_title].dat)->h>>1));
                 game_write("(SIN BLANCA)", C_X, GAME_TITLE_ESP_POS_Y, 2, WHITE_COLOR, 0);
-                game_write("Haz click para comenzar", C_X, GAME_TITLE_FOOTER_POS_Y, 2, makecol(255,233,12), 0);
+                game_write("Click to start", C_X, GAME_TITLE_FOOTER_POS_Y, 2, makecol(255,233,12), 0);
                 cursor_draw();
                 
             break;
@@ -163,7 +163,7 @@ int main()
                 room_draw();
                 player_draw();
                 room_front_layer_draw();
-                game_write("JUEGO EN PAUSA", C_X, C_Y, 4, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                game_write("GAME IS PAUSED", C_X, C_Y, 4, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
 
             break;
             case MENU_STATE:
@@ -221,7 +221,7 @@ void main_init()
     //set env var trace log file
     setenv("ALLEGRO_TRACE", "GAME.LOG", 1);
 
-    TRACE("Outcash (Sin blanca) version %i.%i\n", MAJOR_VERSION, MINOR_VERSION);
+    TRACE("Outcash version %i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     TRACE("Initializing systems and modules\n");
     
     //set unicode format
@@ -828,7 +828,7 @@ void game_save(uint8_t slot)
         char txtError[100];
         strcpy(txtError, strerror(errno));
         abort_on_error(txtError);
-        //abort_on_error("No se puede crear el archivo de guardado");
+        //abort_on_error("Unable to create save file");
     }
     
     //sets the contents of savegame file
@@ -847,7 +847,7 @@ void game_save(uint8_t slot)
 
     //write the savegame file
     if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
-        abort_on_error("Error escribiendo el archivo de guardado");
+        abort_on_error("Error writing save file");
     else
         TRACE("Saved game on slot %i with date: %s\n", (slot + 1), savegame.saveDate);
 
@@ -871,7 +871,7 @@ void game_load(uint8_t slot)
         char txtError[100];
         strcpy(txtError, strerror(errno));
         abort_on_error(txtError);
-        //abort_on_error("No se puede abrir el archivo de guardado");
+        //abort_on_error("Unable to open save file");
     }
 
     //rewind the file
@@ -879,11 +879,11 @@ void game_load(uint8_t slot)
         
     //read contents of savegame file
     if (!fread(&savegame, sizeof(struct savegame), 1, loadFile))
-        abort_on_error("Error leyendo el archivo de guardado");
+        abort_on_error("Error reading save file");
 
     //check version
     if (savegame.version != SAVEGAME_FILE_VERSION)
-        abort_on_error("Version de archivo de guardado incompatible");
+        abort_on_error("Incompatible save file version");
 
     //writes savegame data to game
     playTime    = savegame.playTime;
@@ -1700,7 +1700,7 @@ DATAFILE* room_load_datafile(uint8_t roomNumber)
 
     //check datafile
     if (!df)
-        abort_on_error("Archivo %s invalido o inexistente", filename);
+        abort_on_error("Invalid or non-existent %s file", filename);
     else
         return df;
 }
@@ -1856,7 +1856,7 @@ void room_objects_draw(uint8_t layer)
         obj = roomData[game.actualRoom].room_get_object_info(i);
         //check null pointer
         if (obj == NULL)
-            abort_on_error("Error accediendo a indice de objecto no existente");
+            abort_on_error("Error accessing non-existent object index");
         //check object active and layer
         else if (obj->active && obj->layer == layer)
         {
@@ -2143,7 +2143,7 @@ void gui_draw()
             break;
         case GUI_ABOUT_STATE:
             //draw gui contents
-            game_write("Out Of Cash\n(Sin Blanca)\n \nProgramado por Warrior\n \nWarcom Soft.2025", gui.x + GUI_CONTENT_X + (GUI_CONTENT_W>>1), gui.y + GUI_CONTENT_Y, 2, 74, 170);
+            game_write("Out Of Cash\n \nProgrammed by Warrior\n \nWarcom Soft.2025", gui.x + GUI_CONTENT_X + (GUI_CONTENT_W>>1), gui.y + GUI_CONTENT_Y, 2, 74, 170);
             //game version
             textprintf_right_ex(buffer, gameFont[2], gui.x + GUI_CONTENT_X + (GUI_CONTENT_W), gui.y + GUI_CONTENT_Y + GUI_CONTENT_H - text_height(gameFont[2]), 74, -1, "v%i.%i", MAJOR_VERSION, MINOR_VERSION);
             //draw button highlighted
@@ -2434,30 +2434,30 @@ void stop_music()
 //function to init credits
 void credits_init()
 {
-    strcpy(credits.line[0], "Un juego de:");
+    strcpy(credits.line[0], "A game by");
     strcpy(credits.line[1], "Warrior");
-    strcpy(credits.line[2], "Programaci¢n");
+    strcpy(credits.line[2], "Programming");
     strcpy(credits.line[3], "Warrior");
-    strcpy(credits.line[4], "Gr ficos");
+    strcpy(credits.line[4], "Graphics");
     strcpy(credits.line[5], "Warrior");
-    strcpy(credits.line[6], "M£sica");
+    strcpy(credits.line[6], "Music");
     strcpy(credits.line[7], "Warrior");
-    strcpy(credits.line[8], "Sonido");
+    strcpy(credits.line[8], "Sound ");
     strcpy(credits.line[9], "Warrior");
-    strcpy(credits.line[10], "Productor ejecutivo");
+    strcpy(credits.line[10], "Executive producer");
     strcpy(credits.line[11], "Emm... Warrior");
-    strcpy(credits.line[12], "Productor asociado");
-    strcpy(credits.line[13], "Umm ¨Warrior?");
+    strcpy(credits.line[12], "Associate Producer");
+    strcpy(credits.line[13], "Umm Warrior?");
     strcpy(credits.line[14], "Marketing");
-    strcpy(credits.line[15], "­Ah si! Warrior");
-    strcpy(credits.line[16], "Contabilidad");
-    strcpy(credits.line[17], "Calculadora Casio");
-    strcpy(credits.line[18], "Control de calidad");
-    strcpy(credits.line[19], "Control de...¨qu‚?");
-    strcpy(credits.line[20], "Agradecimientos especiales");
-    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nJota\nLuqquino");
+    strcpy(credits.line[15], "-Ah yes! Warrior");
+    strcpy(credits.line[16], "Accounting");
+    strcpy(credits.line[17], "CASIO calculator");
+    strcpy(credits.line[18], "Quality control");
+    strcpy(credits.line[19], "Control of... what?");
+    strcpy(credits.line[20], "Special thanks");
+    strcpy(credits.line[21], "Cris Cros\nProfesor Pixel\nJota\nLuqquino");
     
-    strcpy(credits.line[22], "GRACIAS POR JUGAR");
+    strcpy(credits.line[22], "Thanks for playing!");
 
     //init credits position and color
     for (int i = 0; i < CREDITS_NUM - 1; i+=2)
