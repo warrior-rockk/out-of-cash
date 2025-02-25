@@ -1,19 +1,17 @@
-sp,eng
-engine.h,engine.h
-room10.h,room10.h
-Puerta,Gate
-Interruptor,Switch
-Telara¤a,Telara¤a
-Cubo de pintura,Paint Bucket
-Escoba,Broom
-Caja,Box
-Armario,Cabinet
-Por esa puerta se va al pasillo del instituto,Through that door you go to the high school hallway
-¨Cual ser  la funci¢n de este interruptor?,"What is  the function of this switch?"
-Quien dir¡a que pudiera haber ara¤as en este cuarto de mantenimiento tan aseado,Who's to say there could be plows in this neat maintenance room
-Un cubo de pintura negra,A cube of black paint
-No entiendo porque hay tantas cajas vac¡as en este juego...,I don't understand why there are so many empty boxes in this game...
-No me hagas mucho caso pero dir¡a que es una escoba,Don't pay much attention to me but say it's a broom
-Parece el armario donde el personal de mantenimiento guarda el material,It looks like the cabinet where the maintenance staff keeps the material
-Ya est  abierto,Already open
-Ya est  cerrado,Already closed
+sp;eng
+Puerta;Door
+Interruptor;Switch
+Telara¤a;Spider web
+Cubo de pintura;Paint Bucket
+Escoba;Broom
+Caja;Box
+Armario;Closet
+Por esa puerta se va al pasillo del instituto;Through that door you go to the high school hallway
+¨Cual ser  la funci¢n de este interruptor?;What is the function of this switch?"
+Quien dir¡a que pudiera haber ara¤as en este cuarto de mantenimiento tan aseado;Who's to say there could be spiders in this clean maintenance room
+Un cubo de pintura negra;A black paint bucket
+No entiendo porque hay tantas cajas vac¡as en este juego...;I don't understand why there are so many empty boxes in this game...
+No me hagas mucho caso pero dir¡a que es una escoba;I not sure but say it's a broom
+Parece el armario donde el personal de mantenimiento guarda el material;It looks like the cabinet where the maintenance staff keeps the material
+Ya est  abierto;Already open
+Ya est  cerrado;Already closed

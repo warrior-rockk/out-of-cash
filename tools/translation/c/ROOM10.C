@@ -18,18 +18,18 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r10_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r10_switch:
-                strcpy(s, "Interruptor");
+                strcpy(s, "Switch");
             break;
         case r10_spiderWeb:
-                strcpy(s, "Telara¤a");
+                strcpy(s, "Spider web");
             break;
         case r10_paintBucket:
             if (r10_object[R10_PAINTBUCKET_OBJ_ID].active)
             {
-                strcpy(s, "Cubo de pintura");
+                strcpy(s, "Paint Bucket");
                 break;
             }
             else
@@ -37,7 +37,7 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
         case r10_broom:
             if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
             {
-                strcpy(s, "Escoba");
+                strcpy(s, "Broom");
                 break;
             }
             else
@@ -45,13 +45,13 @@ void r10_get_hotspot_name(uint8_t colorCode, char *s)
         case r10_box:
             if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
             {
-                strcpy(s, "Caja");
+                strcpy(s, "Box");
                 break;
             }
             else
                 strcpy(s, "");
         case r10_closet:
-                strcpy(s, "Armario");
+                strcpy(s, "Closet");
             break;
         default:
             strcpy(s, "");
@@ -164,7 +164,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Por esa puerta se va al pasillo del instituto");
+                                script_say("Through that door you go to the high school hallway");
                                 break;
                             default:
                                 end_script();
@@ -195,7 +195,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("¨Cual ser  la funci¢n de este interruptor?");
+                                script_say("What is the function of this switch?"");
                                 break;
                             default:
                                 end_script();
@@ -235,7 +235,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Quien dir¡a que pudiera haber ara¤as en este cuarto de mantenimiento tan aseado");
+                                script_say("Who's to say there could be spiders in this clean maintenance room");
                                 break;
                             default:
                                 end_script();
@@ -254,7 +254,7 @@ void r10_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Un cubo de pintura negra");
+                                    script_say("A black paint bucket");
                                     break;
                                 default:
                                     end_script();
@@ -288,7 +288,7 @@ void r10_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("No entiendo porque hay tantas cajas vac¡as en este juego...");
+                                    script_say("I don't understand why there are so many empty boxes in this game...");
                                     break;
                                 default:
                                     end_script();
@@ -308,7 +308,7 @@ void r10_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("No me hagas mucho caso pero dir¡a que es una escoba");
+                                    script_say("I not sure but say it's a broom");
                                     break;
                                 default:
                                     end_script();
@@ -326,7 +326,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Parece el armario donde el personal de mantenimiento guarda el material");
+                                script_say("It looks like the cabinet where the maintenance staff keeps the material");
                                 break;
                             default:
                                 end_script();
@@ -340,7 +340,7 @@ void r10_update_room_script()
                                 begin_script();
                                 if (is_game_flag(MAINT_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  abierto");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 else                                
@@ -368,7 +368,7 @@ void r10_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(MAINT_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  cerrado");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 else                                
