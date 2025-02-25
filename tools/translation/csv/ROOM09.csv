@@ -1,42 +1,37 @@
-sp,eng
-engine.h,engine.h
-room09.h,room09.h
-Puerta,Gate
-Banco,Bank
-Camiseta,T-shirt
-Libros,Books
-Taquilla,Ticket Office
-Poster,Poster
-Zapatillas,Slippers
-Mochila,Backpack
-Taquilla,Ticket Office
-Pantalones,Trousers
-Caja,Box
-Taquilla,Ticket Office
-Taquilla,Ticket Office
-Es la puerta que da al pasillo del instituto,It is the door that leads to the high school hallway
-Un banco para sentarse y poder cambiarse,A bench to sit on and be able to change
-Me gusta estar de pie,I like to stand
-Una camiseta roja muy parecida a la m¡a,A red T-shirt very similar to mine
-Parecen libros de algunas asignaturas,They look like books of some subjects
-No tengo ning£n inters en tener esos libros,I have no interest in having those books
-Una taquilla com£n de instituto,A box office com£n high school
-Ya est  abierta,Already open
-Ya est  cerrada,Already closed
-Un bonito poster de los Village People,A nice Village People poster
-Buaj...Estas zapatillas huelen fatal,Buaj...These sneakers smell awful
-La mochila de alg£n estudiante,Some student's backpack
-¨Por quin me tomas? No soy un ladr¢n,"Which do you take me for?" I am not athief
-Una taquilla est ndar de instituto,A high school standard locker
-Ya est  abierta,Already open
-Ya est  cerrada,Already closed
-Unos pantalones vaqueros perfectamente doblados,Perfectly folded jeans
-Yo uso la misma marca,I use the same brand
-¨Quien guardar¡a una caja vac¡a en una taquilla?,"Who keeps an empty box in a locker?
-Una taquilla normal de instituto,A normal high school locker
-Ya est  abierta,Already open
-Ya est  cerrada,Already closed
-Una taquilla cl sica de instituto,A classic high school box office
-Esta bloqueada. No se puede abrir,It is locked. Cannot be opened
-Y tampoco tengo mucho inters en abrirla,And I don't have much interest in opening it either
-Ya est  cerrada,Already closed
+sp;eng
+Puerta;Door
+Banco;Bench
+Camiseta;T-shirt
+Libros;Books
+Taquilla;Locker
+Poster;Poster
+Zapatillas;Shoes
+Mochila;Bag
+Pantalones;Trousers
+Caja;Box
+Es la puerta que da al pasillo del instituto;It is the door that leads to the high school hallway
+Un banco para sentarse y poder cambiarse;A bench to sit on and be able to dress
+Me gusta estar de pie;I like to stand on my foot
+Una camiseta roja muy parecida a la m¡a;A red t-shirt very similar to mine
+Parecen libros de algunas asignaturas;They look like books of some subjects
+No tengo ning£n inters en tener esos libros;I have no interest in having those books
+Una taquilla com£n de instituto;A regular high school locker
+Ya est  abierta;Already open
+Ya est  cerrada;Already closed
+Un bonito poster de los Village People;A nice Village People poster
+Buaj...Estas zapatillas huelen fatal;Buaj...These sneakers smell awful
+La mochila de alg£n estudiante;Some student's bag
+¨Por quin me tomas? No soy un ladr¢n;Which do you take me for? I am not a thief
+Una taquilla est ndar de instituto;A high school standard locker
+Ya est  abierta;Already open
+Ya est  cerrada;Already closed
+Unos pantalones vaqueros perfectamente doblados;Perfectly folded jeans
+Yo uso la misma marca;I use the same brand
+¨Quien guardar¡a una caja vac¡a en una taquilla?;Who keeps an empty box in a locker?
+Una taquilla normal de instituto;A normal high school locker
+Ya est  abierta;Already open
+Ya est  cerrada;Already closed
+Una taquilla cl sica de instituto;A classic high school locker
+Esta bloqueada. No se puede abrir;It's locked. Cannot be opened
+Y tampoco tengo mucho inters en abrirla;And I don't have much interest in opening it either
+Ya est  cerrada;Already closed
