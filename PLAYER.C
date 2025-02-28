@@ -76,6 +76,7 @@ void player_update_pos()
 {
     bool in_range_x;
     bool in_range_y;
+    fixed validRange;
     fixed actualSpeed;
     static int lastRetrace;
     
@@ -84,11 +85,7 @@ void player_update_pos()
         //calculate player relative position (on feet)
         fixed relX = fixadd(player.x, itofix(PLAYER_POS_X_OFFSET));
         fixed relY = fixadd(player.y, itofix(PLAYER_POS_Y_OFFSET));
-        
-        //check destination in range
-        in_range_x = in_range(fixtoi(relX), player.destX, 2);
-        in_range_y = in_range(fixtoi(relY), player.destY, 2);
-    
+
         //assign actual speed
         actualSpeed = fixdiv(itofix(gameConfig.playerSpeed), itofix(100));
         if (player.moveFast)
@@ -99,11 +96,16 @@ void player_update_pos()
         if (retrace_count - lastRetrace != 0)
             actualSpeed = fixmul(actualSpeed, itofix((retrace_count - lastRetrace) * 4));
 
+        //calculate valid range based on speed
+        validRange = actualSpeed <= itofix(1) ? itofix(2) : actualSpeed;
+        //check destination in range        
+        in_range_x = fix_in_range(relX, itofix(player.destX), validRange);
+        in_range_y = fix_in_range(relY, itofix(player.destY), validRange);
+        
         //decompose movement
         if (!in_range_x)
         {
             player.vX = fixtoi(relX) < player.destX ? actualSpeed : -actualSpeed;
-
         }
         else
             player.vX = itofix(0);

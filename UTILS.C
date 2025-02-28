@@ -9,6 +9,12 @@ bool in_range(int value, int target, int offset)
     return ( value <= (target + offset) && value >= (target - offset) );
 }
 
+//retuns true if the value is on target +/- the offset with fixed numbers
+bool fix_in_range(fixed value, fixed target, fixed offset)
+{
+    return ( value <= (target + offset) && value >= (target - offset) );
+}
+
 //clamp value between min and max
 int clamp(int value, int min, int max)
 {

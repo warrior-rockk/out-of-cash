@@ -29,6 +29,7 @@
 
 //function definitions
 bool in_range(int value, int target, int offset);
+bool fix_in_range(fixed value, fixed target, fixed offset);
 
 int clamp(int value, int min, int max);
 fixed fix_clamp(fixed value, fixed min, fixed max);
