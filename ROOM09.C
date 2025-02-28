@@ -26,7 +26,10 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
             break;
         case r09_shirt:
             if (!r09_object[R09_SHIRT_OBJ_ID].active)
-                strcpy(s, "");
+            {
+                strcpy(s, "Taquilla");
+                break;
+            }
             else
             {
                 strcpy(s, "Camiseta");
@@ -72,7 +75,10 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
             break;
         case r09_jeans:
             if (!r09_object[R09_JEANS_OBJ_ID].active)
-                strcpy(s, "");
+            {
+                strcpy(s, "Taquilla");
+                break;
+            }
             else
             {
                 strcpy(s, "Pantalones");
@@ -111,10 +117,12 @@ enum verbs r09_get_default_hotspot_verb(uint8_t colorCode)
             break;
         case r09_shirt:
             if (r09_object[R09_SHIRT_OBJ_ID].active)
-            {
                 return LOOK;
-                break;
-            }
+            else if (is_game_flag(LOCKER_1_OPEN_FLAG))
+                return CLOSE;
+            else
+                return OPEN;
+            break;
         case r09_books:
             if (is_game_flag(LOCKER_1_OPEN_FLAG))
             {
@@ -153,10 +161,12 @@ enum verbs r09_get_default_hotspot_verb(uint8_t colorCode)
             break;
         case r09_jeans:
             if (r09_object[R09_SHIRT_OBJ_ID].active)
-            {
                 return LOOK;
-                break;
-            }
+            else if (is_game_flag(LOCKER_3_OPEN_FLAG))
+                return CLOSE;
+            else
+                return OPEN;
+            break;
         case r09_box:
             if (is_game_flag(LOCKER_3_OPEN_FLAG))
             {
@@ -338,6 +348,12 @@ void r09_update_room_script()
                             }
                         break;
                     }
+                    break;
+                }
+                else
+                {
+                    begin_script();
+                    roomScript.object = r09_locker1;
                     break;
                 }
             case r09_books:
@@ -609,6 +625,12 @@ void r09_update_room_script()
                             }
                         break;
                     }
+                    break;
+                }
+                else
+                {
+                    begin_script();
+                    roomScript.object = r09_locker3;
                     break;
                 }
             case r09_box:

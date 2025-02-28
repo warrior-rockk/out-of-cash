@@ -23,65 +23,45 @@ Begin Script
     Script Verb:0
     Script Type:0
 Change game state from 0 to 5
+Change game state from 5 to 7
+Change game state from 7 to 5
     Script step from 0 to 1
     Script step from 1 to 2
 End Script
+Change game state from 5 to 8
+Change from room 1 to room 9
+Free actual room datafile resources
+Load room datafile: R09DATA.DAT
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 8 to 5
 Begin Script
-    Script Object:216
+    Script Object:37
+    Script InvObject:0
+    Script Verb:6
+    Script Type:0
+    Script step from 0 to 1
+    Script step from 1 to 2
+    Script step from 2 to 3
+End Script
+Begin Script
+    Script Object:38
     Script InvObject:0
     Script Verb:1
     Script Type:0
     Script step from 0 to 1
-Adding numObject 8 to inventory array position 1
+Adding numObject 16 to inventory array position 1
 Original freq: 11025Hz | Variation: +3% | New freq: 11356Hz
 End Script
 Begin Script
-    Script Object:234
+    Script Object:38
     Script InvObject:0
-    Script Verb:1
+    Script Verb:7
     Script Type:0
     Script step from 0 to 1
+    Script step from 1 to 2
 End Script
-Begin Script
-    Script Object:107
-    Script InvObject:0
-    Script Verb:1
-    Script Type:0
-    Script step from 0 to 1
-Adding numObject 4 to inventory array position 2
-Original freq: 11025Hz | Variation: -9% | New freq: 10033Hz
-End Script
-Change game state from 5 to 8
-Change from room 1 to room 4
-Free actual room datafile resources
-Load room datafile: R04DATA.DAT
-Change game state from 8 to 5
-Begin Script
-    Script Object:32
-    Script InvObject:0
-    Script Verb:1
-    Script Type:0
-    Script step from 0 to 1
-Adding numObject 31 to inventory array position 3
-Original freq: 11025Hz | Variation: +8% | New freq: 11907Hz
-End Script
-Begin Script
-    Script Object:205
-    Script InvObject:0
-    Script Verb:1
-    Script Type:0
-    Script step from 0 to 1
-Adding numObject 30 to inventory array position 4
-Original freq: 11025Hz | Variation: -16% | New freq: 9261Hz
-End Script
-Change game state from 5 to 8
-Original freq: 11025Hz | Variation: +19% | New freq: 13120Hz
-Original freq: 11025Hz | Variation: +11% | New freq: 12238Hz
-Original freq: 11025Hz | Variation: +5% | New freq: 11576Hz
-Original freq: 11025Hz | Variation: +13% | New freq: 12458Hz
-Original freq: 11025Hz | Variation: -6% | New freq: 10364Hz
-Original freq: 11025Hz | Variation: -12% | New freq: 9702Hz
-Original freq: 11025Hz | Variation: -7% | New freq: 10253Hz
 Exiting game
 Freeing game resources
 Destroying data file index
