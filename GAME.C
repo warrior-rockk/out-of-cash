@@ -2391,24 +2391,24 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
         TRACE("Original freq: %iHz | ", sampleFreq);
 
         //calculate new frequency
-        float newFreq;
+        fixed newFreq;
         //if variation is below half
         if (freqVariation < SFX_FREQ_RND_PERCENT)
         {
             //sub the percentage variation to original freq
-            newFreq = (float)sampleFreq - ((float)sampleFreq * ((float)freqVariation / 100.0));
+            newFreq = itofix(sampleFreq) - fixmul(itofix(sampleFreq),(fixdiv(itofix(freqVariation),itofix(100))));
             TRACE("Variation: -%i%% | ", freqVariation);
         }
         else
         {
             //add the percentage variation to original freq
-            newFreq = ((float)sampleFreq * ((float)(freqVariation - SFX_FREQ_RND_PERCENT) / 100.0)) + (float)sampleFreq;
+            newFreq = fixmul(itofix(sampleFreq), fixdiv(itofix(freqVariation - SFX_FREQ_RND_PERCENT), itofix(100.0))) + itofix(sampleFreq);
             TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
         }
 
         //set the new frequency
-        voice_set_frequency(voice, (int)newFreq);
-        TRACE("New freq: %iHz\n", (int)newFreq);
+        voice_set_frequency(voice, fixtoi(newFreq));
+        TRACE("New freq: %iHz\n", fixtoi(newFreq));
         
     }
     
