@@ -225,6 +225,8 @@ void main_init()
     
     //set unicode format
     set_uformat(U_ASCII);
+
+    printf("Loading Out of Cash v%i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     
     //initialize and install modules
     allegro_init();
@@ -237,6 +239,11 @@ void main_init()
     if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0) != 0)
         abort_on_error("Error iniciando el sonido");
 
+    TRACE("All system and modules initialized\n");
+
+    //load game resources
+    game_load_resources();
+        
     //set video mode
     set_color_depth(8);
     if (set_gfx_mode(GFX_AUTODETECT, RES_X, RES_Y, 0, 0) != 0)
@@ -245,10 +252,9 @@ void main_init()
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
 
-    TRACE("All system and modules initialized\n");
-    
-    //load game resources
-    game_load_resources();
+    //sets and get the game palette
+    set_palette((RGB*)gameDataFile[gd_gamePal].dat);
+    get_palette(gamePalette);
 
     //set game initial state
     game.state = LOGO_STATE;
@@ -305,37 +311,44 @@ void game_load_resources()
 {
     TRACE("Loading game resources\n");
     
+    printf("\rLoading game resources.");
+    
     //loads game main data file
     gameDataFile = load_datafile("GDATA.DAT");
     if (!gameDataFile)
         abort_on_error("Archivo GDATA.DAT invalido o inexistente");
 
+    printf("\rLoading game resources..");
+    
     //loads player data file
     playerDataFile = load_datafile("PDATA.DAT");
     if (!playerDataFile)
         abort_on_error("Archivo PDATA.DAT invalido o inexistente");
+
+    printf("\rLoading game resources...");
 
     //loads inventory data file
     inventoryDataFile = load_datafile("IDATA.DAT");
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
         
+    printf("\rLoading game resources....");
+    
     //creates music dat file index to load individual music objects
     actualRoom.musicDataFileIndex = create_datafile_index("MDATA.DAT");
     if (!actualRoom.musicDataFileIndex)
         abort_on_error("Archivo MDATA.DAT invalido o inexistente");
 
+    printf("\rLoading game resources.....");
+    
     //loads sound fata file
     soundDataFile = load_datafile("SDATA.DAT");
     if (!soundDataFile)
         abort_on_error("Archivo SDATA.DAT invalido o inexistente");
 
-    //sets and get the game palette
-    set_palette((RGB*)gameDataFile[gd_gamePal].dat);
-    get_palette(gamePalette);
-
+    printf("\rLoading game resources......");
+    
     //loads game font
-    //PALETTE pal;
     gameFont[0] = font;
     char *fontName2[] = {"verdana8", NULL};
     gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
@@ -346,12 +359,9 @@ void game_load_resources()
     char *fontName5[] = {"verdana9Bold", NULL};
     gameFont[4] = load_dat_font("GDATA.DAT", NULL, fontName5);
     char *fontName1[] = {"gameFont", NULL};
-    gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);;
-    
-    /*gameFont = load_dat_font("GDATA.DAT", NULL, fontName[0]);
-    if (!gameFont)
-        abort_on_error("Error cargando fuente de texto");
-    */
+    gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);
+
+    printf("\nGame resources loaded\n");
     TRACE("Game resources loaded\n");
 }
 
