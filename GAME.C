@@ -350,16 +350,16 @@ void game_load_resources()
     
     //loads game font
     gameFont[0] = font;
-    char *fontName2[] = {"verdana8", NULL};
-    gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
+    //char *fontName2[] = {"verdana8", NULL};
+    //gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
     char *fontName3[] = {"verdana8Bold", NULL};
     gameFont[2] = load_dat_font("GDATA.DAT", NULL, fontName3);
-    char *fontName4[] = {"verdana9", NULL};
-    gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
+    //char *fontName4[] = {"verdana9", NULL};
+    //gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
     char *fontName5[] = {"verdana9Bold", NULL};
     gameFont[4] = load_dat_font("GDATA.DAT", NULL, fontName5);
-    char *fontName1[] = {"gameFont", NULL};
-    gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);
+    //char *fontName1[] = {"gameFont", NULL};
+    //gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);
 
     printf("\nGame resources loaded\n");
     TRACE("Game resources loaded\n");
@@ -380,9 +380,11 @@ void game_free_resources()
     unload_datafile(soundDataFile);
 
     TRACE("Unloading fonts\n");
-    for (int i = 1; i <= 5; i++)
-        destroy_font(gameFont[i]);
-
+    //for (int i = 1; i <= 5; i++)
+    //    destroy_font(gameFont[i]);
+    destroy_font(gameFont[2]);
+    destroy_font(gameFont[4]);
+    
     //free music resources
     if (actualRoom.musicDataFile)
     {
