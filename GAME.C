@@ -24,7 +24,6 @@ int main()
     game_init();
     game_fade_out(FADE_SLOW_SPEED);
 
-
     #ifdef DEBUGMODE
         change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
         game.state = PLAYING_STATE;
@@ -276,6 +275,7 @@ void main_update()
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
     show_debug("Script.step", roomScript.step);
+
 
 }
 

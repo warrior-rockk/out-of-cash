@@ -77,6 +77,7 @@ void player_update_pos()
     bool in_range_x;
     bool in_range_y;
     fixed actualSpeed;
+    static int lastRetrace;
     
     if (player.state == player_st_moving)
     {
@@ -94,10 +95,15 @@ void player_update_pos()
             //double speed
             actualSpeed = fixmul(actualSpeed,itofix(2));
 
+        //adjust player speed based on frame rate
+        if (retrace_count - lastRetrace != 0)
+            actualSpeed = fixmul(actualSpeed, itofix((retrace_count - lastRetrace) * 4));
+
         //decompose movement
         if (!in_range_x)
         {
             player.vX = fixtoi(relX) < player.destX ? actualSpeed : -actualSpeed;
+
         }
         else
             player.vX = itofix(0);
@@ -156,6 +162,8 @@ void player_update_pos()
     player.talk.msgX = fixtoi(player.x) - roomScroll.x;
     player.talk.msgY = fixtoi(player.y) - fixtoi((fixmul((itofix(playerData.image[player.animation.frame]->h>>1)), player.scale)));
 
+    //update frame retrace
+    lastRetrace = retrace_count;
 }
 
 //function to update player animation
