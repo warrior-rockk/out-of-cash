@@ -1039,8 +1039,12 @@ void game_exit()
     
     TRACE("Quit allegro modules\n");
     TRACE("Game played for: %02dh %02dm\n", playTime.hours, playTime.minutes);
+
     //quit allegro modules
     allegro_exit();
+
+    printf("Thanks for playing Out of Cash!\n");
+    printf("Game played for: %02dhours and %02dminutes\n", playTime.hours, playTime.minutes);
 }
 
 //function to initialize cursor
