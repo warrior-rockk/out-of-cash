@@ -394,7 +394,7 @@ struct seq
 #define CREDITS_GROUP_SPACING   22
 struct credits
 {
-    char line[CREDITS_NUM][40];
+    char line[CREDITS_NUM][50];
     uint8_t color[CREDITS_NUM];
     int16_t pos_y[CREDITS_NUM];
 } credits;
