@@ -153,7 +153,7 @@ void player_update_pos()
     {
         player.vX = itofix(0);
         player.vY = itofix(0);
-        player.diagonalTime = 0;
+        //player.diagonalTime = 0;
     }
 
     //update position
