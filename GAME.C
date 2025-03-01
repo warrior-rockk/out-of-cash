@@ -207,6 +207,7 @@ int main()
 
         //stateless draw
         main_draw();
+        frameCount++;
     }
 
     //quits the game
@@ -281,7 +282,7 @@ void main_update()
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
     show_debug("Script.step", roomScript.step);
-
+    show_debug("FPS", fps);
 
 }
 
@@ -296,15 +297,26 @@ void main_draw()
 
     //do pending fade in
     game_do_fade_in();
+
+    //sync to video refresh (60fps aprox)
+    vsync();
 }
 
 //timer function callback
-void incTick(void)
+static void incTick(void)
 {
     //increment on 100ms
     tick++;;
 }
 END_OF_FUNCTION(incTick);
+
+//update fps callback
+static void update_fps(void)
+{
+    fps = frameCount;
+    frameCount = 0;
+}
+END_OF_FUNCTION(update_fps);
 
 //function to load game resources
 void game_load_resources()
@@ -1979,6 +1991,14 @@ void tick_init()
     LOCK_VARIABLE(tick);
     LOCK_FUNCTION(incTick);
     install_int(incTick, 100);  //100ms
+
+    #ifdef DEBUGMODE
+        fps = 0;
+        frameCount = 0;
+        LOCK_VARIABLE(fps);
+        LOCK_VARIABLE(frameCount);
+        install_int_ex(update_fps, BPS_TO_TIMER(1));
+    #endif
 }
 
 //check 1seg tick

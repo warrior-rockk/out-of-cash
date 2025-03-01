@@ -400,7 +400,7 @@ struct credits
 } credits;
 
 //global vars
-static volatile int tick;
+static volatile int tick, fps, frameCount;
 static BITMAP *cursorImage;
 PALETTE gamePalette;
 FONT *gameFont[6];
@@ -418,7 +418,8 @@ void main_init();
 void main_update();
 void main_draw();
 
-void incTick(void);
+static void incTick(void);
+static void update_fps(void);
 void abort_on_error(const char *format, ...);
 
 void game_init();

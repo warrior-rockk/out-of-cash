@@ -26,7 +26,6 @@ Change game state from 0 to 5
     Script step from 0 to 1
     Script step from 1 to 2
 End Script
-Change game state from 5 to 8
 Exiting game
 Freeing game resources
 Destroying data file index
