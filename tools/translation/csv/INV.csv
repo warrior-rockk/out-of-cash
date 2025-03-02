@@ -1,141 +1,132 @@
-sp,eng
-inv.h,inv.h
-globals.h,globals.h
-engine.h,engine.h
-IDATA.H,IDATA.H
-Destroy INVENTORY system\n,Destroy INVENTORY system\n
-Destroy INVENTORY system\n,Destroy INVENTORY system\n
-Adding numObject %i to inventory array position %i\n,Adding numObject %i to inventory array position %i\n
-No me caben mas objetos\n en el inventario...,I can't fit any more items\n in the inventory...
-%i,%i
-Hoja respuestas,Answer sheet
-Alfombrilla,CARPET
-Cerebro Negro,Black Brain
-Reloj Negro,Black Watch
-Libro,Book
-Hojas libro,Book sheets
-Cerebro,Brain
-Notas,Grades
-Casete,Compact Cassette
-Moneda,Currency
-Cartucho vac¡o,Empty cartridge
-Carpeta,Folder
-Cartucho lleno,Cartridge full
-Carpeta llena,folder is full
-Gel,Gel
-Guitarra,Guitar
-Pantalones,Trousers
-Llave,Key
-Escalpelo,Scalpel
-Dinero,Money
-Avena,Oats
-Cartucho vac¡o,Empty cartridge
-Cartucho lleno,Cartridge full
-Bote pintura,Paint pot
-Fotocopia,Photocopy
-Fotocopia,Photocopy
-Horario,Schedule
-Hoja,Sheet
-Camiseta,T-shirt
-Esp tula,Esp tula
-Reloj,Watch
-Camiseta,T-shirt
-Avena viscosa,Viscous oats
-Son las respuestas del examen de matem ticas,They are the answers to the mathematics exam
-Es la alfombrilla del ba¤o,It is the mat of the bathroom
-Un cerebro pintado de negro,A brain painted black
-El reloj de cocina en forma de estrella pintado de negro,The star-shaped kitchen clock painted black
-A£n gotea la pintura,A£n drips paint
-\"Del deporte tambin se sale\",\"You also get out of the sport\"
-Cap¡tulo 1: La pereza es tu aliada,Chapter 1: Laziness is your ally
-Cap¡tulo 2: Cuida tus rodillas,Chapter 2: Take Care of Your Knees
-Cap¡tulo 3: Enfermedades deportivas,Chapter 3: Sports Diseases
-Todo aquello que supone un esfuerzo es susceptible de aplazarlo,Everything that involves an effort can be postponed
-Recientes estudios demuestran la relaci¢n entre hacer deporte y el deterioro de tus rodillas,Recent studies show the relationship between playing sports and the deterioration of your knees
-La mejor manera de librarse del deporte es con una enfermedad que te impida realizarla,The best way to get rid of sport is with an illness that prevents you from doing it
-Deja para ma¤ana lo que no quieras hacer hoy,Leave for tomorrow what you don't want to do today
-Un cuerpo sano es un cuerpo descansado,A healthy body is a rested body
-Las enfermedades de la piel pueden presentar una textura grumosa y en algunos casos viscosa,Skin diseases can have a lumpy and in some cases viscous texture
-He arrancado las hojas del libro que me parec¡an interesantes,I have torn out the leaves of the book that I found interesting
-Son las hojas arrancadas del libro de deporte,They are the leaves torn from the sports book
-¨Ser  este cerebro de alg£n antiguo alumno?,"To be  this brain of some former student?
-Puede ser buena idea pintar el cerebro,It may be a good idea to paint the brain
-Pero en el cartucho no hay suficiente pintura para pintarlo,But there's not enough paint on the cartridge to paint it
-Son mis notas del instituto,These are my high school grades
-­He aprobado todo!,-I have approved everything!
-He suspendido Matem ticas, Historia y Educaci¢n F¡sica,I have failed Mathematics, History and PhysicalEducation
-Pero ya he aprobado:,But I've already passed:
-Matem ticas,Mathematics
-Historia,History
-e Historia,and History
-Historia,History
-y Educaci¢n F¡sica,and Physical Education
-Educaci¢n F¡sica,Physical Education
-Un casete del £ltimo disco de \"Reincidientes\",A cassette of the last\"Repeat Offenders\" record
-Una moneda de 100 pesetas,A 100 pesetas coin
-No es una fortuna pero por algo se empieza,It is not a fortune but for something you start
-Un cartucho de tinta de impresora vac¡o,An empty printer ink cartridge
-Una carpeta verde muy bonita,A very nice green folder
-Un cartucho de tinta de impresora,A printer ink cartridge
-Parece que a£n tiene tinta,Looks like £n has ink
-Est  muy duro. No puedo con las manos,It's very hard. I can't with my hands
-Necesitar¡a utilizar algo,Need to use something
-Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro,I would have to open the cartridge somehow to be able to use the ink inside
-La carpeta est  llena de las hojas del libro de deporte,The folder is  filled with the sheets of the sports book
-Un bote lleno de gel de ducha,A jar full of shower gel
-Parece bastante viscoso,Looks pretty slimy
-Guitarra,Guitar
-Espero que nadie necesitara estos pantalones...,I hope no one needed these pants...
-La llave del almacn de mantenimiento,The key to the maintenance warehouse
-Un escalpelo afilado,A sharp scalpel
-4900 pelas que mi padre me ha dado por aprobar las asignaturas,4900 pelas that my father has given me for passing the subjects
-­Me faltan 100 pesetas para poder comprar la entrada!,I'm 100 pesetas away from being able to buy the ticket!
-Una caja de copos de avena,A box of oat flakes
-Pone que son copos pero a mi me parecen granos,It says that they are flakes but to me they look like grains
-Estos granos de avena est n un poco secos,These oat grains are a little dry
-Deber¡a mezclarlos con algo,You should mix them with something
-Un cartucho de tinta de impresora vac¡o y abierto,An empty and open printer ink cartridge
-Un cartucho de tinta de impresora abierto y con tinta,An open, ink-filled printer ink cartridge
-Puede ser buena idea pintar el cerebro,It may be a good idea to paint the brain
-Pero en el cartucho no hay suficiente pintura para pintarlo,But there's not enough paint on the cartridge to paint it
-Es un bote de pintura negra,It's a pot of black paint
-La idea de pintar el reloj en forma de estrella no es mala,The idea of painting the watch in the shape of a star is not a bad one
-Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa,But I don't need as much paint for it and I'm sure I need it for something else
-Una fotocopia de la serie Dragon Ball,A photocopy of the Dragon Ball series
-­Ademas creo que es de Goku!,-Besides, I think it's Goku's!
-Es una fotocopia de Dragon Ball con el horario del instituto impreso por encima,It's a photocopy of Dragon Ball with the high school schedule printed above
-Es el horario del instituto impreso por ambas caras,It is the high school schedule printed on both sides
-No s para que lo quiero. No pienso ir a clase,Not that I want it. I'm not going to class
-Una hoja vac¡a,An empty sheet ¡a
-Yo tengo una camiseta del mismo color,I have a T-shirt of the same color
-¨Ya est ?,"Already?
-¨Eso es lo que se te ocurre?,“Is that what you think?”
-¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?,"Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?
-¨Asi por arte de magia?,-Was it magic?
-¨Que por acercarlo se transfiera su silueta?,"That by bringing him closer, his silhouette is transferred?"
-Creo que no,I don't think so. 
-Una esp tula de cocina para aplicar mejunges,A kitchen spot for applying mushrooms
-O cualquier cosa viscosa,Or anything viscous
-Un est£pido reloj de cocina en forma de estrella,A star-shaped kitchen clock is ordered
-¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?,"Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?
-Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro,I would have to open the cartridge somehow to be able to use the ink inside
-La idea de pintar el reloj en forma de estrella no es mala,The idea of painting the watch in the shape of a star is not a bad one
-Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa,But I don't need as much paint for it and I'm sure I need it for something else
-Una camiseta con una estrella negra impresa en medio,A T-shirt with a black star printed in the middle
-Ahora si que es clavadita a la m¡a,Now it is nailed to the bone
-Son los copos de avena mezclados con el gel de ducha,It's the oat flakes mixed with the shower gel
-Han formado una masa viscosa grumosa,They have formed a lumpy viscous mass
-No querr¡a tocar esta masa con las manos,You don't want to touch this dough with your hands
-Necesitar¡a algo con lo que aplicarlo,Need something to apply it to
-Ahora tengo un bonito cerebro pintado de negro,Now I have a nice brain painted black
-El reloj con forma de estrella ahora est  cubierto de pintura negra,The star-shaped watch is now covered in black paint
-Y la pintura a£n mancha...,And the paint at£n stains...
-He podido abrir el cartucho y est  lleno de tinta negra,I was able to open the cartridge and it is  full of black ink
-El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella,The ink-covered watch has left a stain on the star-shaped T-shirt
-Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa,The oat flakes mixed with the gel have formed a viscous, lumpy mass
-He metido las hojas del libro de deporte en la carpeta,I have put the sheets of the sports book in the folder
-La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,The idea of stuffing myself with oats is not bad but, "what is the reason for doing it?
-Si me pongo esta masa grumosa en el cuerpo quiz s pueda simular una enfermedad,If I put this lumpy mass on my body, maybe I can simulate a disease
-Pero no deber¡a hacer esto aqu¡,But you shouldn't ¡do this here¡
-­POR FIN!,-AT LAST!
-­YA TENGO EL DINERO PARA LA ENTRADA!,- I ALREADY HAVE THE MONEY FOR THE ENTRANCE!
+sp;eng
+No me caben mas objetos\n en el inventario...;I can't fit any more items\n in the inventory...
+Hoja respuestas;Answers sheet
+Alfombrilla;Bath Mat
+Cerebro Negro;Black Brain
+Reloj Negro;Black Clock
+Libro;Book
+Hojas libro;Book sheets
+Cerebro;Brain
+Notas;Califications
+Casete;Cassette
+Moneda;Quarter
+Cartucho vac¡o;Empty cartridge
+Carpeta;Folder
+Cartucho lleno;Cartridge full
+Carpeta llena;Folder full
+Gel;Gel
+Guitarra;Guitar
+Pantalones;Jeans
+Llave;Key
+Escalpelo;Scalpel
+Dinero;Money
+Avena;Oat
+Cartucho vac¡o;Empty cartridge
+Cartucho lleno;Cartridge full
+Bote pintura;Paint bucket
+Fotocopia;Photocopy
+Horario;Schedule
+Hoja;Sheet
+Camiseta;T-shirt
+Esp tula;Spatula
+Reloj;Clock
+Camiseta;T-shirt
+Avena viscosa;Viscous oat
+Son las respuestas del examen de matem ticas;They are the answers to the mathematics exam
+Es la alfombrilla del ba¤o;It's the mat of the bathroom
+Un cerebro pintado de negro;A black painted brain
+El reloj de cocina en forma de estrella pintado de negro;The star-shaped kitchen clock painted black
+A£n gotea la pintura;Drips paint yet
+\"Del deporte tambin se sale\";\"You also get out of the sport\"
+Cap¡tulo 1: La pereza es tu aliada;Chapter 1: Laziness is your ally
+Cap¡tulo 2: Cuida tus rodillas;Chapter 2: Take Care of Your Knees
+Cap¡tulo 3: Enfermedades deportivas;Chapter 3: Sports Diseases
+Todo aquello que supone un esfuerzo es susceptible de aplazarlo;Everything that involves an effort can be postponed
+Recientes estudios demuestran la relaci¢n entre hacer deporte y el deterioro de tus rodillas;Recent studies show the relationship between playing sports and the deterioration of your knees
+La mejor manera de librarse del deporte es con una enfermedad que te impida realizarla;The best way to get rid of sport is with an illness that prevents you from doing it
+Deja para ma¤ana lo que no quieras hacer hoy;Leave for tomorrow what you don't want to do today
+Un cuerpo sano es un cuerpo descansado;A healthy body is a rested body
+Las enfermedades de la piel pueden presentar una textura grumosa y en algunos casos viscosa;Skin diseases can have a lumpy and in some cases viscous texture
+He arrancado las hojas del libro que me parec¡an interesantes;I have torn out the sheets of the book that I found interesting
+Son las hojas arrancadas del libro de deporte;They are the sheets torn from the sports book
+¨Ser  este cerebro de alg£n antiguo alumno?;Could this be the brain of some former student?
+Puede ser buena idea pintar el cerebro;It may be a good idea to paint the brain
+Pero en el cartucho no hay suficiente pintura para pintarlo;But there's not enough paint on the cartridge to paint it
+Son mis notas del instituto;These are my high school califications
+­He aprobado todo!;I have approved everything!
+He suspendido Matem ticas,Historia y Educaci¢n F¡sica;I have failed Mathematics, History and Physical Education
+Pero ya he aprobado:;But I've already passed:
+Matem ticas;Mathematics
+Historia;History
+e Historia;and History
+Historia;History
+y Educaci¢n F¡sica;and Physical Education
+Educaci¢n F¡sica;Physical Education
+Un casete del £ltimo disco de \"Reincidientes\";A cassette of the last \"The Repeat Offenders\" record
+Una moneda de 100 pesetas;A one quarter coin
+No es una fortuna pero por algo se empieza;It's not a fortune but it's a start
+Un cartucho de tinta de impresora vac¡o;An empty printer ink cartridge
+Una carpeta verde muy bonita;A very nice green folder
+Un cartucho de tinta de impresora;A printer ink cartridge
+Parece que a£n tiene tinta;Looks like it has ink yet
+Est  muy duro. No puedo con las manos;It's very solid. I can't with my hands
+Necesitar¡a utilizar algo;I would need to use something
+Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro;I would have to open the cartridge somehow to be able to use the ink inside
+La carpeta est  llena de las hojas del libro de deporte;The folder is filled with the sheets of the sports book
+Un bote lleno de gel de ducha;A bottle full of shower gel
+Parece bastante viscoso;Looks pretty slimy
+Guitarra;Guitar
+Espero que nadie necesitara estos pantalones...;I hope no one needed these pants...
+La llave del almacn de mantenimiento;The key to the maintenance warehouse
+Un escalpelo afilado;A sharp scalpel
+4900 pelas que mi padre me ha dado por aprobar las asignaturas;29 bucks and 75 pennies that my father has given me for passing the subjects
+­Me faltan 100 pesetas para poder comprar la entrada!;I'm one quarter away from being able to buy the concert ticket!
+Una caja de copos de avena;A box of oat flakes
+Pone que son copos pero a mi me parecen granos;It says that they are flakes but to me they look like grains
+Estos granos de avena est n un poco secos;These oat grains are a little dry
+Deber¡a mezclarlos con algo;I should mix them with something
+Un cartucho de tinta de impresora vac¡o y abierto;An empty and open printer ink cartridge
+Un cartucho de tinta de impresora abierto y con tinta;An open ink-filled printer cartridge
+Puede ser buena idea pintar el cerebro;It may be a good idea to paint the brain
+Pero en el cartucho no hay suficiente pintura para pintarlo;But there's not enough ink on the cartridge to paint it
+Es un bote de pintura negra;It's a bucket of black paint
+La idea de pintar el reloj en forma de estrella no es mala;The idea of painting the star clock is not a bad one
+Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa;But I don't need as much paint for it and I'm sure I need it for something else
+Una fotocopia de la serie Dragon Ball;A photocopy of the Dragon Ball series
+­Ademas creo que es de Goku!;And I think it's Goku's!
+Es una fotocopia de Dragon Ball con el horario del instituto impreso por encima;It's a photocopy of Dragon Ball with the high school schedule printed above
+Es el horario del instituto impreso por ambas caras;It is the high school schedule printed on both sides
+No s para que lo quiero. No pienso ir a clase;Not that I want it. I'm not going to class
+Una hoja vac¡a;An empty sheet
+Yo tengo una camiseta del mismo color;I have a t-shirt of the same color
+¨Ya est ?;That's it?
+¨Eso es lo que se te ocurre?;Is that what you think?”
+¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?;Did you expect that by pairing a watch with a t-shirt it would become a star t-shirt?
+¨Asi por arte de magia?;Like some kind of magic?
+¨Que por acercarlo se transfiera su silueta?;That by bringing it closer, his silhouette is transferred?
+Creo que no;I don't think so 
+Una esp tula de cocina para aplicar mejunges;A kitchen spatula for applying concoctions
+O cualquier cosa viscosa;Or anything viscous
+Un est£pido reloj de cocina en forma de estrella;A stupid star-shaped kitchen clock 
+¨Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?;Did you expect that by pairing a clock with a t-shirt it would become a star t-shirt?
+Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro;I would have to open the cartridge somehow to be able to use the ink inside
+La idea de pintar el reloj en forma de estrella no es mala;The idea of painting the watch in the shape of a star is not a bad one
+Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa;But I don't need as much paint for it and I'm sure I need it for something else
+Una camiseta con una estrella negra impresa en medio;A t-shirt with a black star printed in the middle
+Ahora si que es clavadita a la m¡a;Now it is nailed to mine
+Son los copos de avena mezclados con el gel de ducha;It's the oat flakes mixed with the shower gel
+Han formado una masa viscosa grumosa;They have formed a lumpy viscous mass
+No querr¡a tocar esta masa con las manos;You don't want to touch this dough with your hands
+Necesitar¡a algo con lo que aplicarlo;Need something to apply it to
+Ahora tengo un bonito cerebro pintado de negro;Now I have a nice brain painted black
+El reloj con forma de estrella ahora est  cubierto de pintura negra;The star-shaped clock is now covered in black paint
+Y la pintura a£n mancha...;And the paint stains yet...
+He podido abrir el cartucho y est  lleno de tinta negra;I was able to open the cartridge and it is full of black ink
+El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella;The ink-covered clock has left a star-shaped stain on the t-shirt
+Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa;The oat flakes mixed with the gel have formed a viscous lumpy mass
+He metido las hojas del libro de deporte en la carpeta;I have put the sheets of the sports book in the folder
+La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?;The idea of stuffing myself with oats is not bad but, what is the reason for doing it?
+Si me pongo esta masa grumosa en el cuerpo quiz s pueda simular una enfermedad;If I put this lumpy mass on my body, maybe I can simulate a disease
+Pero no deber¡a hacer esto aqu¡;But I shouldn't do this here
+­POR FIN!;AT LAST!
+­YA TENGO EL DINERO PARA LA ENTRADA!;I ALREADY HAVE THE MONEY FOR THE TICKET!

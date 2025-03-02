@@ -180,16 +180,16 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
         switch (inventory.objIndex[objIndex - 1] - 1)
         {
             case id_answers:
-                strcpy(s, "Answer sheet");
+                strcpy(s, "Answers sheet");
             break;
             case id_bathMat             :
-                strcpy(s, "CARPET");
+                strcpy(s, "Bath Mat");
             break;
             case id_blackBrain          :
                     strcpy(s, "Black Brain");
                 break;
             case id_blackStarClock      :
-                    strcpy(s, "Black Watch");
+                    strcpy(s, "Black Clock");
                 break;
             case id_book                :
                     strcpy(s, "Book");
@@ -201,13 +201,13 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Brain");
                 break;
             case id_califications       :
-                    strcpy(s, "Grades");
+                    strcpy(s, "Califications");
                 break;
             case id_cassette            :
-                    strcpy(s, "Compact Cassette");
+                    strcpy(s, "Cassette");
                 break;
             case id_coin                :
-                    strcpy(s, "Currency");
+                    strcpy(s, "Quarter");
                 break;
             case id_emptyCartridge      :
                     strcpy(s, "Empty cartridge");
@@ -228,7 +228,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Guitar");
                 break;
             case id_jeans               :
-                    strcpy(s, "Trousers");
+                    strcpy(s, "Jeans");
                 break;
             case id_key                 :
                     strcpy(s, "Key");
@@ -240,7 +240,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Money");
                 break;
             case id_oat                 :
-                    strcpy(s, "Oats");
+                    strcpy(s, "Oat");
                 break;
             case id_openedEmptyCartridge:
                     strcpy(s, "Empty cartridge");
@@ -249,7 +249,7 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "Cartridge full");
                 break;
             case id_paintBucket         :
-                    strcpy(s, "Paint pot");
+                    strcpy(s, "Paint bucket");
                 break;
             case id_photocopy           :
                     strcpy(s, "Photocopy");
@@ -267,16 +267,16 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
                     strcpy(s, "T-shirt");
                 break;
             case id_spatula             :
-                    strcpy(s, "Esp tula");
+                    strcpy(s, "Spatula");
                 break;
             case id_starClock           :
-                    strcpy(s, "Watch");
+                    strcpy(s, "Clock");
                 break;
             case id_starShirt           :
                     strcpy(s, "T-shirt");
                 break;
             case id_oatMixed:
-                    strcpy(s, "Oats viscosa");
+                    strcpy(s, "Oat viscosa");
                 break;
             default:
                 strcpy(s, "");
@@ -319,7 +319,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It is the mat of the bathroom");
+                                script_say("It's the mat of the bathroom");
                                 break;
                             default:
                                 end_script();
@@ -336,7 +336,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A brain painted black");
+                                script_say("A black painted brain");
                                 break;
                             default:
                                 end_script();
@@ -356,7 +356,7 @@ void inventory_update()
                                 script_say("The star-shaped kitchen clock painted black");
                                 break;
                             case 1:
-                                script_say("A£n drips paint");
+                                script_say("Drips paint yet");
                                 break;
                             default:
                                 end_script();
@@ -450,7 +450,7 @@ void inventory_update()
                                 play_sound(sd_paper);
                                 break;
                             case 2:
-                                script_say("I have torn out the leaves of the book that I found interesting");
+                                script_say("I have torn out the sheets of the book that I found interesting");
                                 break;
                             default:
                                 end_script();
@@ -467,7 +467,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("They are the leaves torn from the sports book");
+                                script_say("They are the sheets torn from the sports book");
                                 break;
                             default:
                                 end_script();
@@ -492,7 +492,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A cassette of the last\"Repeat Offenders\" record");
+                                script_say("Could this be the brain of some former student?");
                                 break;
                             default:
                                 end_script();
@@ -532,30 +532,30 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son mis notas del instituto");
+                                script_say("These are my high school califications");
                                 break;
                             case 1:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) &&
                                     is_game_flag(MATH_APPROVED_FLAG) &&
                                     is_game_flag(PE_APPROVED_FLAG))
                                 {
-                                    script_say("­He aprobado todo!");
+                                    script_say("I have approved everything!");
                                     end_script();
                                 }
                                 else
-                                    script_say("He suspendido Matem ticas, Historia y Educaci¢n F¡sica");
+                                    script_say("He suspendido Mathematics, History and Physical Education");
                                 break;
                             case 2:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) ||
                                     is_game_flag(MATH_APPROVED_FLAG) ||
                                     is_game_flag(PE_APPROVED_FLAG))
-                                    script_say("Pero ya he aprobado:");
+                                    script_say("But I've already passed:");
                                 else
                                     end_script();
                                 break;    
                             case 3:
                                 if (is_game_flag(MATH_APPROVED_FLAG))
-                                    script_say("Matem ticas");
+                                    script_say("Mathematics");
                                 else
                                     roomScript.step++;
                                 break;
@@ -563,11 +563,11 @@ void inventory_update()
                                 if (is_game_flag(HISTORY_APPROVED_FLAG))
                                 {
                                     if (is_game_flag(PE_APPROVED_FLAG))
-                                        script_say("Historia");
+                                        script_say("History");
                                     else if (is_game_flag(MATH_APPROVED_FLAG))
-                                        script_say("e Historia");
+                                        script_say("e History");
                                     else
-                                        script_say("Historia");
+                                        script_say("History");
                                 }
                                 else
                                     roomScript.step++;
@@ -576,9 +576,9 @@ void inventory_update()
                                 if (is_game_flag(PE_APPROVED_FLAG))
                                 {
                                     if (is_game_flag(MATH_APPROVED_FLAG) || is_game_flag(HISTORY_APPROVED_FLAG))
-                                        script_say("y Educaci¢n F¡sica");
+                                        script_say("and Physical Education");
                                     else
-                                        script_say("Educaci¢n F¡sica");
+                                        script_say("Physical Education");
                                 }
                                 else
                                     roomScript.step++;
@@ -598,7 +598,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un casete del £ltimo disco de \"Reincidientes\"");
+                                script_say("A cassette of the last \"The Repeat Offenders\" record");
                                 break;
                             default:
                                 end_script();
@@ -615,10 +615,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A 100 pesetas coin");
+                                script_say("A one quarter coin");
                                 break;
                             case 1:
-                                script_say("It is not a fortune but for something you start");
+                                script_say("It's not a fortune but it's a start");
                                 break;
                             default:
                                 end_script();
@@ -697,7 +697,7 @@ void inventory_update()
                                 script_say("A printer ink cartridge");
                                 break;
                             case 1:
-                                script_say("Looks like £n has ink");
+                                script_say("Looks like it has ink yet");
                                 break;
                             default:
                                 end_script();
@@ -709,10 +709,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's very hard. I can't with my hands");
+                                script_say("It's very solid. I can't with my hands");
                                 break;
                             case 1:
-                                script_say("Need to use something");
+                                script_say("I would need to use something");
                                 break;
                             default:
                                 end_script();
@@ -742,7 +742,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("The folder is  filled with the sheets of the sports book");
+                                script_say("The folder is filled with the sheets of the sports book");
                                 break;
                             default:
                                 end_script();
@@ -759,7 +759,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A jar full of shower gel");
+                                script_say("A bottle full of shower gel");
                                 break;
                             case 1:
                                 script_say("Looks pretty slimy");
@@ -863,10 +863,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("4900 pelas that my father has given me for passing the subjects");
+                                script_say("29 bucks and 75 pennies that my father has given me for passing the subjects");
                                 break;
                             case 1:
-                                script_say("I'm 100 pesetas away from being able to buy the ticket!");
+                                script_say("I'm one quarter away from being able to buy the concert ticket!");
                                 break;
                             default:
                                 end_script();
@@ -918,7 +918,7 @@ void inventory_update()
                                 script_say("These oat grains are a little dry");
                                 break;
                             case 1:
-                                script_say("You should mix them with something");
+                                script_say("I should mix them with something");
                                 break;
                             default:
                                 end_script();
@@ -999,7 +999,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's a pot of black paint");
+                                script_say("It's a bucket of black paint");
                                 break;
                             default:
                                 end_script();
@@ -1017,7 +1017,7 @@ void inventory_update()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("The idea of painting the watch in the shape of a star is not a bad one");
+                                        script_say("The idea of painting the star clock is not a bad one");
                                     break;
                                     case 1:
                                         script_say("But I don't need as much paint for it and I'm sure I need it for something else");
@@ -1042,7 +1042,7 @@ void inventory_update()
                                 script_say("A photocopy of the Dragon Ball series");
                                 break;
                             case 1:
-                                script_say(" I think it's Goku's!");
+                                script_say("And I think it's Goku's!");
                                 break;
                             default:
                                 end_script();
@@ -1096,7 +1096,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("An empty sheet ¡a");
+                                script_say("An empty sheet");
                                 break;
                             default:
                                 end_script();
@@ -1113,7 +1113,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I have a T-shirt of the same color");
+                                script_say("I have a t-shirt of the same color");
                                 break;
                             default:
                                 end_script();
@@ -1132,70 +1132,34 @@ void inventory_update()
                                     case 0:
                                         begin_script();
                                         change_player_dir(DIR_FRONT);
-                                        script_say("Already?
-¨Eso es lo que se te ocurre?,“Is that what you think?”
-Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?
-Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro,I would have to open the cartridge somehow to be able to use the ink inside
-La idea de pintar el reloj en forma de estrella no es mala,The idea of painting the watch in the shape of a star is not a bad one
-Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa,But I don't need as much paint for it and I'm sure I need it for something else
-Una camiseta con una estrella negra impresa en medio,A T-shirt with a black star printed in the middle
-Ahora si que es clavadita a la m¡a,Now it is nailed to the bone
-Son los copos de avena mezclados con el gel de ducha,It's the oat flakes mixed with the shower gel
-Han formado una masa viscosa grumosa,They have formed a lumpy viscous mass
-No querr¡a tocar esta masa con las manos,You don't want to touch this dough with your hands
-Necesitar¡a algo con lo que aplicarlo,Need something to apply it to
-Ahora tengo un bonito cerebro pintado de negro,Now I have a nice brain painted black
-El reloj con forma de estrella ahora est  cubierto de pintura negra,The star-shaped watch is now covered in black paint
-Y la pintura a£n mancha...,And the paint at£n stains...
-He podido abrir el cartucho y est  lleno de tinta negra,I was able to open the cartridge and it is  full of black ink
-El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella,The ink-covered watch has left a stain on the star-shaped T-shirt
-Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa,The oat flakes mixed with the gel have formed a viscous, lumpy mass
-He metido las hojas del libro de deporte en la carpeta,I have put the sheets of the sports book in the folder
-La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,The idea of stuffing myself with oats is not bad but, what is the reason for doing it?,Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?");
+                                        script_say("That's it?");
                                     break;
                                     case 1:
-                                        script_say("¨Eso es lo que se te ocurre?");
+                                        script_say("Is that what you think?”");
                                     break;
                                     case 2:
                                         script_wait(5);
                                     break;
                                     case 3:
-                                        script_say("Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?
-Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro,I would have to open the cartridge somehow to be able to use the ink inside
-La idea de pintar el reloj en forma de estrella no es mala,The idea of painting the watch in the shape of a star is not a bad one
-Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa,But I don't need as much paint for it and I'm sure I need it for something else
-Una camiseta con una estrella negra impresa en medio,A T-shirt with a black star printed in the middle
-Ahora si que es clavadita a la m¡a,Now it is nailed to the bone
-Son los copos de avena mezclados con el gel de ducha,It's the oat flakes mixed with the shower gel
-Han formado una masa viscosa grumosa,They have formed a lumpy viscous mass
-No querr¡a tocar esta masa con las manos,You don't want to touch this dough with your hands
-Necesitar¡a algo con lo que aplicarlo,Need something to apply it to
-Ahora tengo un bonito cerebro pintado de negro,Now I have a nice brain painted black
-El reloj con forma de estrella ahora est  cubierto de pintura negra,The star-shaped watch is now covered in black paint
-Y la pintura a£n mancha...,And the paint at£n stains...
-He podido abrir el cartucho y est  lleno de tinta negra,I was able to open the cartridge and it is  full of black ink
-El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella,The ink-covered watch has left a stain on the star-shaped T-shirt
-Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa,The oat flakes mixed with the gel have formed a viscous, lumpy mass
-He metido las hojas del libro de deporte en la carpeta,I have put the sheets of the sports book in the folder
-La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,The idea of stuffing myself with oats is not bad but, what is the reason for doing it?");
+                                        script_say("Did you expect that by pairing a watch with a t-shirt it would become a star t-shirt?");
                                     break;
                                     case 4:
                                         script_wait(5);
                                     break;
                                     case 5:
-                                        script_say("-Was it magic?");
+                                        script_say("Like some kind of magic?");
                                     break;
                                     case 6:
                                         script_wait(5);
                                     break;
                                     case 7:
-                                        script_say("That by bringing him closer, his silhouette is transferred?");
+                                        script_say("That by bringing it closer, his silhouette is transferred?");
                                     break;
                                     case 8:
                                         script_wait(5);
                                     break;
                                     case 9:
-                                        script_say("I don't think so. ");
+                                        script_say("I don't think so ");
                                     break;
                                     default:
                                         change_player_dir(DIR_RIGHT);
@@ -1215,7 +1179,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         {
                             case 0:
                                 begin_script();
-                                script_say("A kitchen spot for applying mushrooms");
+                                script_say("A kitchen spatula for applying concoctions");
                             break;
                             case 1:
                                 script_say("Or anything viscous");
@@ -1243,7 +1207,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         {
                             case 0:
                                 begin_script();
-                                script_say("A star-shaped kitchen clock is ordered");
+                                script_say("A stupid star-shaped kitchen clock ");
                                 break;
                             default:
                                 end_script();
@@ -1258,24 +1222,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                             break;
                             case id_shirt:
                                 begin_script();
-                                script_say("Did you expect that by pairing a watch with a T-shirt it would become a star T-shirt?
-Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro,I would have to open the cartridge somehow to be able to use the ink inside
-La idea de pintar el reloj en forma de estrella no es mala,The idea of painting the watch in the shape of a star is not a bad one
-Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa,But I don't need as much paint for it and I'm sure I need it for something else
-Una camiseta con una estrella negra impresa en medio,A T-shirt with a black star printed in the middle
-Ahora si que es clavadita a la m¡a,Now it is nailed to the bone
-Son los copos de avena mezclados con el gel de ducha,It's the oat flakes mixed with the shower gel
-Han formado una masa viscosa grumosa,They have formed a lumpy viscous mass
-No querr¡a tocar esta masa con las manos,You don't want to touch this dough with your hands
-Necesitar¡a algo con lo que aplicarlo,Need something to apply it to
-Ahora tengo un bonito cerebro pintado de negro,Now I have a nice brain painted black
-El reloj con forma de estrella ahora est  cubierto de pintura negra,The star-shaped watch is now covered in black paint
-Y la pintura a£n mancha...,And the paint at£n stains...
-He podido abrir el cartucho y est  lleno de tinta negra,I was able to open the cartridge and it is  full of black ink
-El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella,The ink-covered watch has left a stain on the star-shaped T-shirt
-Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa,The oat flakes mixed with the gel have formed a viscous, lumpy mass
-He metido las hojas del libro de deporte en la carpeta,I have put the sheets of the sports book in the folder
-La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,The idea of stuffing myself with oats is not bad but, what is the reason for doing it?");
+                                script_say("Did you expect that by pairing a watch with a t-shirt it would become a star t-shirt?");
                                 end_script();
                             break;
                             case id_fullCartridge:
@@ -1288,7 +1235,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("The idea of painting the watch in the shape of a star is not a bad one");
+                                        script_say("The idea of painting the star clock is not a bad one");
                                     break;
                                     case 1:
                                         script_say("But I don't need as much paint for it and I'm sure I need it for something else");
@@ -1310,10 +1257,10 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una camiseta con una estrella negra impresa en medio");
+                                script_say("A t-shirt with a black star printed in the middle");
                                 break;
                             case 1:
-                                script_say("Ahora si que es clavadita a la m¡a");
+                                script_say("Now it is nailed to mine");
                                 break;
                             default:
                                 end_script();
@@ -1330,10 +1277,10 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son los copos de avena mezclados con el gel de ducha");
+                                script_say("It's the oat flakes mixed with the shower gel");
                                 break;
                             case 1:
-                                script_say("Han formado una masa viscosa grumosa");
+                                script_say("They have formed a lumpy viscous mass");
                                 break;
                             default:
                                 end_script();
@@ -1345,10 +1292,10 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         {
                             case 0:
                                 begin_script();
-                                script_say("No querr¡a tocar esta masa con las manos");
+                                script_say("You don't want to touch this dough with your hands");
                                 break;
                             case 1:
-                                script_say("Necesitar¡a algo con lo que aplicarlo");
+                                script_say("Need something to apply it to");
                                 break;
                             default:
                                 end_script();
@@ -1374,7 +1321,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_brain, id_paintBucket, id_blackBrain);
                     break;
                     case 1:
-                        script_say("Ahora tengo un bonito cerebro pintado de negro");
+                        script_say("Now I have a nice brain painted black");
                     break;
                     default:
                         end_script();
@@ -1390,10 +1337,10 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_starClock, id_openedFullCartridge, id_blackStarClock);
                     break;
                     case 1:
-                        script_say("El reloj con forma de estrella ahora est  cubierto de pintura negra");
+                        script_say("The star-shaped clock is now covered in black paint");
                     break;
                     case 3:
-                        script_say("Y la pintura a£n mancha...");
+                        script_say("And the paint stains yet...");
                     break;
                     default:
                         end_script();
@@ -1408,7 +1355,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_fullCartridge, 0, id_openedFullCartridge);
                     break;
                     case 1:
-                        script_say("He podido abrir el cartucho y est  lleno de tinta negra");
+                        script_say("I was able to open the cartridge and it is full of black ink");
                     break;
                     default:
                         end_script();
@@ -1424,7 +1371,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_shirt, id_blackStarClock, id_starShirt);
                     break;
                     case 1:
-                        script_say("El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella");
+                        script_say("The ink-covered clock has left a star-shaped stain on the t-shirt");
                     break;
                     default:
                         end_script();
@@ -1440,7 +1387,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_gel, id_oat, id_oatMixed);
                     break;
                     case 1:
-                        script_say("Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa");
+                        script_say("The oat flakes mixed with the gel have formed a viscous lumpy mass");
                     break;
                     default:
                         end_script();
@@ -1456,7 +1403,7 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         play_sound(sd_paper);
                     break;
                     case 1:
-                        script_say("He metido las hojas del libro de deporte en la carpeta");
+                        script_say("I have put the sheets of the sports book in the folder");
                     break;
                     default:
                         end_script();
@@ -1470,19 +1417,19 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         begin_script();
                         if (!is_game_flag(INFO_SPORT_WORK_FLAG))
                         {
-                            script_say("La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?");
+                            script_say("The idea of stuffing myself with oats is not bad but, what is the reason for doing it?");
                             end_script();
                         }
                         else if (get_actual_room() != PE_OFFICE_ROOM_NUM)
                         {
-                            script_say(" maybe I can simulate a disease");
+                            script_say("If I put this lumpy mass on my body, maybe I can simulate a disease");
                         }
                         else
                             script_remove_inv_object(id_oatMixed);
                     break;
                     case 1:
                         if (get_actual_room() != PE_OFFICE_ROOM_NUM)
-                            script_say("But you shouldn't ¡do this here¡");
+                            script_say("But I shouldn't do this here");
                         else
                             script_move_player(200, 142);
                     break;
@@ -1520,10 +1467,10 @@ La idea de pringarme con avena no es mala pero, ¨cual es el motivo de hacerlo?,
                         script_combine_inv_object(id_money, id_coin, id_guitar);
                     break;
                     case 1:
-                        script_say("-AT LAST!");
+                        script_say("AT LAST!");
                     break;
                     case 2:
-                        script_say("- I ALREADY HAVE THE MONEY FOR THE ENTRANCE!");
+                        script_say("I ALREADY HAVE THE MONEY FOR THE TICKET!");
                     break;
                     case 3:
                         set_game_flag(GAME_END_FLAG);
