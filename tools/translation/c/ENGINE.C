@@ -408,16 +408,16 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Not at all noteworthy");
+                    say("Nothing remarkable");
                 break;
                 case 1:
                     say("I can't see anything.");
                 break;
                 case 2:
-                    say(" nothing special.");
+                    say("Nothing special.");
                 break;
                 case 3:
-                    say("Not at all exciting");
+                    say("Nothing of interest");
                 break;
                 case 4:
                     say("No interest");
@@ -434,16 +434,16 @@ void default_verb_action(enum verbs roomVerb)
                     say("Not needed");
                     break;
                 case 1:
-                    say("It's  good where it is ");
+                    say("It's good where it is");
                     break;
                 case 2:
-                    say("Nor will I fill the junk inventory in£tiles");
+                    say("I'm not going to fill the inventory with useless junk either");
                     break;
                 case 3:
-                    say("I don't want to wear it");
+                    say("I don't want to take it");
                     break;
                 case 4:
-                    say("He'd better not be.");
+                    say("It's better than not");
                     break;
                 default:
                     say("I don't want to accumulate junk");
@@ -454,7 +454,7 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("It's fine as est ");
+                    say("It's fine as it is");
                     break;
                 case 1:
                     say("Not for opening");
@@ -471,7 +471,7 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("It's fine as est ");
+                    say("It's fine as it is");
                     break;
                 case 1:
                     say("Not to close");
@@ -505,13 +505,13 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("I prefer to stay rmelo");
+                    say("I prefer to keep it");
                     break;
                 case 1:
                     say("I'd better keep it");
                     break;
                 default:
-                    say("It doesn’t want it…");
+                    say("He doesn’t want it…");
                     break;
             }
             break;
@@ -519,7 +519,7 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Not if you want to talk");
+                    say("I don't know if he want to talk");
                     break;
                 case 1:
                     say("Better to be quiet");
@@ -548,7 +548,7 @@ void default_verb_action(enum verbs roomVerb)
                     say("I don't need to move it");
                     break;
                 case 1:
-                    say("It's  okay like that!");
+                    say("It's okay like that!");
                     break;
                 case 2:
                     say("I don't feel like moving it");
@@ -557,7 +557,7 @@ void default_verb_action(enum verbs roomVerb)
                     say("No need to move");
                     break;
                 case 4:
-                    say("Be  better still");
+                    say("Better be still");
                     break;
                 case 5:
                     say("No");
@@ -574,10 +574,10 @@ void default_verb_action(enum verbs roomVerb)
                     say("It isn't necessary");
                     break;
                 case 1:
-                    say("I don't have anything scheduled");
+                    say("I don't have anything programmed");
                     break;
                 case 2:
-                    say("I prefer you not to");
+                    say("I prefer not");
                     break;
                 case 3:
                     say("I don't know what you intend to happen");
@@ -600,15 +600,22 @@ void begin_script()
     if (!roomScript.scriptAssigned)
     {
         TRACE("Begin Script\n");
-        TRACE("Script Object:%i\n", roomScript.object);
-        TRACE("InvObject script:%i\n", roomScript.invObject);
-        TRACE("Verb script:%i\n", roomScript.verb);
-        TRACE("Script Type:%i\n", roomScript.type);
+        TRACE("    Script Object:%i\n", roomScript.object);
+        TRACE("    Script InvObject:%i\n", roomScript.invObject);
+        TRACE("    Script Verb:%i\n", roomScript.verb);
+        TRACE("    Script Type:%i\n", roomScript.type);
     }
     #endif
 
     cursor.enabled = false;
     roomScript.scriptAssigned = true;
+
+    //reset player moving state to prevent skip move_player reach target
+    if (player.state == player_st_moving)
+    {
+        player.state = player_st_idle;
+        player.prevState = player_st_idle;
+    }
 }
 
 //actions when script ends
@@ -647,10 +654,10 @@ void start_script(uint16_t scriptNumber)
 
     #ifdef DEBUGMODE
         TRACE("Begin Script\n");
-        TRACE("Script Object:%i\n", roomScript.object);
-        TRACE("InvObject script:%i\n", roomScript.invObject);
-        TRACE("Verb script:%i\n", roomScript.verb);
-        TRACE("Script Type:%i\n", roomScript.type);
+        TRACE("    Script Object:%i\n", roomScript.object);
+        TRACE("    Script InvObject:%i\n", roomScript.invObject);
+        TRACE("    Script Verb:%i\n", roomScript.verb);
+        TRACE("    Script Type:%i\n", roomScript.type);
     #endif
 }
 
