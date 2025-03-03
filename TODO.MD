@@ -6,7 +6,6 @@
     * open oven and fridge kitchen?
 
 - [ ] Funtion to move player to specific velocity?
-- [ ] No twice replace_unicode (game_write and say_actor)
 - [ ] Custom fade in/out with get_color / set_color?
     RGB color;
        
