@@ -1316,6 +1316,9 @@ void cursor_action_HUD()
             //if valid inv object, set default inv object verb
             if (cursor.objectName[0] != '\0')
                 cursor.selectedVerb = LOOK;
+            //reset USE_WITH verb
+            else if (cursor.selectedVerb == USE_WITH)
+                cursor.selectedVerb = USE;
         }
         
         //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
