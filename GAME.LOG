@@ -26,80 +26,13 @@ Change game state from 0 to 5
     Script step from 0 to 1
     Script step from 1 to 2
 End Script
-Begin Script
-    Script Object:113
-    Script InvObject:0
-    Script Verb:1
-    Script Type:0
-    Script step from 0 to 1
-End Script
-Begin Script
-    Script Object:113
-    Script InvObject:0
-    Script Verb:6
-    Script Type:0
-    Script step from 0 to 1
-    Script step from 1 to 2
-    Script step from 2 to 3
-End Script
-Begin Script
-    Script Object:48
-    Script InvObject:0
-    Script Verb:1
-    Script Type:0
-    Script step from 0 to 1
-Adding numObject 10 to inventory array position 1
-Original freq: 11025Hz | Variation: +2% | New freq: 11245Hz
-    Script step from 1 to 2
-End Script
-Change game state from 5 to 8
-Change from room 1 to room 7
+Change game state from 5 to 10
+Change from room 1 to room 13
 Free actual room datafile resources
-Load room datafile: R07DATA.DAT
+Load room datafile: R13DATA.DAT
 Stopping midi
 Load music data file object
 Play midi music
-Change game state from 8 to 5
-Begin Script
-    Script Object:1008
-    Script InvObject:18
-    Script Verb:9
-    Script Type:2
-    Script step from 0 to 1
-    Script step from 1 to 2
-    Script step from 2 to 3
-End Script
-Begin Script
-    Script Object:31
-    Script InvObject:22
-    Script Verb:9
-    Script Type:2
-End Script
-Begin Script
-    Script Object:22
-    Script InvObject:31
-    Script Verb:9
-    Script Type:2
-End Script
-Change game state from 5 to 8
-Stopping midi
-SFX system initialized
-Adding numObject 7 to inventory array position 0
-Game initialized
-Stopping midi
-Load music data file object
-Play midi music
-Change game state from 8 to 0
-Stopping midi
-Change game state from 0 to 1
-Stopping midi
-Load music data file object
-Play midi music
-Change game state from 1 to 2
-Change game state from 2 to 4
-Change from room -1 to room 0
-Free actual room datafile resources
-Load room datafile: R00DATA.DAT
 Begin Script
     Script Object:257
     Script InvObject:0
@@ -112,31 +45,35 @@ Begin Script
     Script step from 4 to 5
     Script step from 5 to 6
     Script step from 6 to 7
+    Script step from 7 to 8
+    Script step from 8 to 9
+    Script step from 9 to 10
+    Script step from 10 to 11
+    Script step from 11 to 12
+    Script step from 12 to 13
 End Script
-Stopping midi
-Load music data file object
-Play midi music
-Change game state from 4 to 3
-Stopping midi
-SFX system initialized
-Adding numObject 7 to inventory array position 0
-Game initialized
-Change game state from 3 to 5
-Change from room -1 to room 1
+Change from room 13 to room 8
 Free actual room datafile resources
-Load room datafile: R01DATA.DAT
+Load room datafile: R08DATA.DAT
 Stopping midi
 Load music data file object
 Play midi music
 Begin Script
-    Script Object:257
+    Script Object:258
     Script InvObject:0
     Script Verb:0
     Script Type:0
     Script step from 0 to 1
     Script step from 1 to 2
-End Script
-Change game state from 5 to 8
+    Script step from 2 to 3
+Change game state from 10 to 11
+SFX system initialized
+Adding numObject 7 to inventory array position 0
+Game initialized
+Stopping midi
+Load music data file object
+Play midi music
+Change game state from 11 to 0
 Exiting game
 Freeing game resources
 Destroying data file index

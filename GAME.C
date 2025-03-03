@@ -227,7 +227,7 @@ void main_init()
     //set unicode format
     set_uformat(U_ASCII);
 
-    printf("Loading Out of Cash v%i.%i\n", MAJOR_VERSION, MINOR_VERSION);
+    printf("Starting Out of Cash v%i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     
     //initialize and install modules
     allegro_init();
