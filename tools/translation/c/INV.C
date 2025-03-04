@@ -658,7 +658,15 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_knife:
+                                start_script(OPEN_EMPTY_CARTRIDGE_SCRIPT);
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_folder              :
@@ -851,6 +859,9 @@ void inventory_update()
                             case id_fullCartridge:
                                 start_script(OPEN_FULL_CARTRIDGE_SCRIPT);
                             break;
+                            case id_emptyCartridge:
+                                start_script(OPEN_EMPTY_CARTRIDGE_SCRIPT);
+                            break;
                         }
                     break;
                 }
@@ -948,7 +959,17 @@ void inventory_update()
                                 end_script();
                                 break;
                         }
-                    break;                    
+                    break;
+                    case USE_WITH:
+                        switch (roomScript.invObject)
+                        {
+                            case id_starClock:
+                                begin_script();
+                                script_say("Cartridge has no ink to paint it");
+                                end_script();
+                            break;
+                        }
+                    break;
                 }
                 break;            
             case id_openedFullCartridge :
@@ -1230,6 +1251,11 @@ void inventory_update()
                                 script_say("I would have to open the cartridge somehow to be able to use the ink inside");
                                 end_script();
                             break;
+                            case id_openedEmptyCartridge:
+                                begin_script();
+                                script_say("Cartridge has no ink to paint it");
+                                end_script();
+                            break;
                             case id_paintBucket:
                                 switch (roomScript.step)
                                 {
@@ -1475,6 +1501,24 @@ void inventory_update()
                     case 3:
                         set_game_flag(GAME_END_FLAG);
                         end_script();
+                    default:
+                        end_script();
+                    break;
+                }
+            break;
+            case OPEN_EMPTY_CARTRIDGE_SCRIPT:
+                switch(roomScript.step)
+                {
+                    case 0:
+                        begin_script();
+                        script_combine_inv_object(id_emptyCartridge, 0, id_openedEmptyCartridge);
+                    break;
+                    case 1:
+                        script_say("I was able to open the cartridge but it has no ink");
+                    break;
+                    case 2:
+                        script_say("I don't think it helps me much");
+                    break;
                     default:
                         end_script();
                     break;

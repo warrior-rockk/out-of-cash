@@ -35,8 +35,8 @@ int say_actor(char *message, tActorTalk *actorTalk)
         //assign actor talk pointer
         msg.actorTalk = actorTalk;
 
-        //replace Latin 1 chars and wrap text on lines
-        replace_unicode_and_wrap(message, MAX_MSG_LINE_LENGTH);
+        //Wrap text onto lines
+        wrap_text(message, MAX_MSG_LINE_LENGTH, false);
         
         //copy message to structure
         strcpy(msg.msg, message);

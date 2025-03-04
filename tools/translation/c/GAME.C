@@ -24,7 +24,6 @@ int main()
     game_init();
     game_fade_out(FADE_SLOW_SPEED);
 
-
     #ifdef DEBUGMODE
         change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
         game.state = PLAYING_STATE;
@@ -208,6 +207,7 @@ int main()
 
         //stateless draw
         main_draw();
+        frameCount++;
     }
 
     //quits the game
@@ -226,6 +226,8 @@ void main_init()
     
     //set unicode format
     set_uformat(U_ASCII);
+
+    printf("Starting Out of Cash v%i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     
     //initialize and install modules
     allegro_init();
@@ -238,6 +240,11 @@ void main_init()
     if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0) != 0)
         abort_on_error("Error iniciando el sonido");
 
+    TRACE("All system and modules initialized\n");
+
+    //load game resources
+    game_load_resources();
+        
     //set video mode
     set_color_depth(8);
     if (set_gfx_mode(GFX_AUTODETECT, RES_X, RES_Y, 0, 0) != 0)
@@ -246,10 +253,9 @@ void main_init()
      //screen buffer creation
     buffer = create_bitmap(RES_X, RES_Y);
 
-    TRACE("All system and modules initialized\n");
-    
-    //load game resources
-    game_load_resources();
+    //sets and get the game palette
+    set_palette((RGB*)gameDataFile[gd_gamePal].dat);
+    get_palette(gamePalette);
 
     //set game initial state
     game.state = LOGO_STATE;
@@ -276,6 +282,7 @@ void main_update()
     show_debug("Player x", fixtoi(player.x));
     show_debug("Player y", fixtoi(player.y));
     show_debug("Script.step", roomScript.step);
+    show_debug("FPS", fps);
 
 }
 
@@ -290,68 +297,83 @@ void main_draw()
 
     //do pending fade in
     game_do_fade_in();
+
+    //sync to video refresh (60fps aprox)
+    vsync();
 }
 
 //timer function callback
-void incTick(void)
+static void incTick(void)
 {
     //increment on 100ms
     tick++;;
 }
 END_OF_FUNCTION(incTick);
 
+//update fps callback
+static void update_fps(void)
+{
+    fps = frameCount;
+    frameCount = 0;
+}
+END_OF_FUNCTION(update_fps);
+
 //function to load game resources
 void game_load_resources()
 {
     TRACE("Loading game resources\n");
+    
+    printf("\rLoading game resources.");
     
     //loads game main data file
     gameDataFile = load_datafile("GDATA.DAT");
     if (!gameDataFile)
         abort_on_error("Archivo GDATA.DAT invalido o inexistente");
 
+    printf("\rLoading game resources..");
+    
     //loads player data file
     playerDataFile = load_datafile("PDATA.DAT");
     if (!playerDataFile)
         abort_on_error("Archivo PDATA.DAT invalido o inexistente");
+
+    printf("\rLoading game resources...");
 
     //loads inventory data file
     inventoryDataFile = load_datafile("IDATA.DAT");
     if (!inventoryDataFile)
         abort_on_error("Archivo IDATA.DAT invalido o inexistente");
         
+    printf("\rLoading game resources....");
+    
     //creates music dat file index to load individual music objects
     actualRoom.musicDataFileIndex = create_datafile_index("MDATA.DAT");
     if (!actualRoom.musicDataFileIndex)
         abort_on_error("Archivo MDATA.DAT invalido o inexistente");
 
+    printf("\rLoading game resources.....");
+    
     //loads sound fata file
     soundDataFile = load_datafile("SDATA.DAT");
     if (!soundDataFile)
         abort_on_error("Archivo SDATA.DAT invalido o inexistente");
 
-    //sets and get the game palette
-    set_palette((RGB*)gameDataFile[gd_gamePal].dat);
-    get_palette(gamePalette);
-
+    printf("\rLoading game resources......");
+    
     //loads game font
-    //PALETTE pal;
     gameFont[0] = font;
-    char *fontName2[] = {"verdana8", NULL};
-    gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
+    //char *fontName2[] = {"verdana8", NULL};
+    //gameFont[1] = load_dat_font("GDATA.DAT", NULL, fontName2);
     char *fontName3[] = {"verdana8Bold", NULL};
     gameFont[2] = load_dat_font("GDATA.DAT", NULL, fontName3);
-    char *fontName4[] = {"verdana9", NULL};
-    gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
+    //char *fontName4[] = {"verdana9", NULL};
+    //gameFont[3] = load_dat_font("GDATA.DAT", NULL, fontName4);
     char *fontName5[] = {"verdana9Bold", NULL};
     gameFont[4] = load_dat_font("GDATA.DAT", NULL, fontName5);
-    char *fontName1[] = {"gameFont", NULL};
-    gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);;
-    
-    /*gameFont = load_dat_font("GDATA.DAT", NULL, fontName[0]);
-    if (!gameFont)
-        abort_on_error("Error cargando fuente de texto");
-    */
+    //char *fontName1[] = {"gameFont", NULL};
+    //gameFont[5] = load_dat_font("GDATA.DAT", NULL, fontName1);
+
+    printf("\nGame resources loaded\n");
     TRACE("Game resources loaded\n");
 }
 
@@ -370,9 +392,11 @@ void game_free_resources()
     unload_datafile(soundDataFile);
 
     TRACE("Unloading fonts\n");
-    for (int i = 1; i <= 5; i++)
-        destroy_font(gameFont[i]);
-
+    //for (int i = 1; i <= 5; i++)
+    //    destroy_font(gameFont[i]);
+    destroy_font(gameFont[2]);
+    destroy_font(gameFont[4]);
+    
     //free music resources
     if (actualRoom.musicDataFile)
     {
@@ -1027,8 +1051,12 @@ void game_exit()
     
     TRACE("Quit allegro modules\n");
     TRACE("Game played for: %02dh %02dm\n", playTime.hours, playTime.minutes);
+
     //quit allegro modules
     allegro_exit();
+
+    printf("Thanks for playing Out of Cash!\n");
+    printf("Game played for: %02dhours and %02dminutes\n", playTime.hours, playTime.minutes);
 }
 
 //function to initialize cursor
@@ -1288,6 +1316,9 @@ void cursor_action_HUD()
             //if valid inv object, set default inv object verb
             if (cursor.objectName[0] != '\0')
                 cursor.selectedVerb = LOOK;
+            //reset USE_WITH verb
+            else if (cursor.selectedVerb == USE_WITH)
+                cursor.selectedVerb = USE;
         }
         
         //if cursor click on valid inv object or rightClick (default verb assigned) and selected ver isn't GO
@@ -1963,6 +1994,14 @@ void tick_init()
     LOCK_VARIABLE(tick);
     LOCK_FUNCTION(incTick);
     install_int(incTick, 100);  //100ms
+
+    #ifdef DEBUGMODE
+        fps = 0;
+        frameCount = 0;
+        LOCK_VARIABLE(fps);
+        LOCK_VARIABLE(frameCount);
+        install_int_ex(update_fps, BPS_TO_TIMER(1));
+    #endif
 }
 
 //check 1seg tick
@@ -2379,24 +2418,24 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
         TRACE("Original freq: %iHz | ", sampleFreq);
 
         //calculate new frequency
-        float newFreq;
+        fixed newFreq;
         //if variation is below half
         if (freqVariation < SFX_FREQ_RND_PERCENT)
         {
             //sub the percentage variation to original freq
-            newFreq = (float)sampleFreq - ((float)sampleFreq * ((float)freqVariation / 100.0));
+            newFreq = itofix(sampleFreq) - fixmul(itofix(sampleFreq),(fixdiv(itofix(freqVariation),itofix(100))));
             TRACE("Variation: -%i%% | ", freqVariation);
         }
         else
         {
             //add the percentage variation to original freq
-            newFreq = ((float)sampleFreq * ((float)(freqVariation - SFX_FREQ_RND_PERCENT) / 100.0)) + (float)sampleFreq;
+            newFreq = fixmul(itofix(sampleFreq), fixdiv(itofix(freqVariation - SFX_FREQ_RND_PERCENT), itofix(100.0))) + itofix(sampleFreq);
             TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
         }
 
         //set the new frequency
-        voice_set_frequency(voice, (int)newFreq);
-        TRACE("New freq: %iHz\n", (int)newFreq);
+        voice_set_frequency(voice, fixtoi(newFreq));
+        TRACE("New freq: %iHz\n", fixtoi(newFreq));
         
     }
     
@@ -2447,15 +2486,15 @@ void credits_init()
     strcpy(credits.line[10], "Executive producer");
     strcpy(credits.line[11], "Emm... Warrior");
     strcpy(credits.line[12], "Associate Producer");
-    strcpy(credits.line[13], "Umm Warrior?");
+    strcpy(credits.line[13], "Umm ¨Warrior?");
     strcpy(credits.line[14], "Marketing");
     strcpy(credits.line[15], "-Ah yes! Warrior");
     strcpy(credits.line[16], "Accounting");
     strcpy(credits.line[17], "CASIO calculator");
     strcpy(credits.line[18], "Quality control");
-    strcpy(credits.line[19], "Control of... what?");
+    strcpy(credits.line[19], "Control de...¨qu?");
     strcpy(credits.line[20], "Special thanks");
-    strcpy(credits.line[21], "Cris Cros\nProfesor Pixel\nJota\nLuqquino");
+    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nJota\nMeraki\nLuqquino");
     
     strcpy(credits.line[22], "Thanks for playing!");
 
