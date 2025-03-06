@@ -1,55 +1,65 @@
-OUT OF CASH 
+OUT OF CASH
 (Sin Blanca)
 ------------
 
-Tu grupo de rock favorito viene a la ciudad, pero no tienes el dinero suficiente para comprarte la entrada. 
-Necesitarás conseguir el dinero, pero que las notas del instituto no te hayan ido muy bien no será de gran ayuda para conseguir tu objetivo.
+Your favorite rock band is coming to town, but you don't have enough money to buy a ticket.
+You'll need to get the money, but not having good califications at school won't help you much in achieving your goal.
 
-Cuando el trabajo duro e "hincar los codos" ya están descartados de tu plan, solo queda utilizar el engaño, la picardía y la "jeta" para poder alcanzar tu sueño.
+When hard work and "studying hard" are already out of your plan, all that's left is to use deception, cunning and cheek to achieve your dream.
 
-¿Serás capaz de conseguirlo?
+Will you be able to do it?
 
-Out of Cash (Sin Blanca) es una aventura gráfica "point and click" en tono de comedia ambientada en el instituto de EGB-BUP-COU de los años 90 y repleta de referencias culturales de la época.
+Out of Cash (Sin Blanca) is a point and click graphic adventure in a comedy tone set in the first grades of high school of the 90s and full of cultural references of the time.
 
-COMO JUGAR
+HOW TO PLAY
 ----------
 
-Movimiento del raton: 	
+Mouse movement:
 
-	-Con el puntero del raton puedes seleccionar un verbo a realizar en la zona inferior de seleccion de verbos y aplicar esa acción sobre un objeto en la zona principal de juego.
-	
-	-Al pasar el ratón sobre los objetos de la escena, podrás ver una descripción del objeto y haciendo click realizar la acción sobre éste.
+-With the mouse pointer you can select a verb to perform in the lower verb selection area and apply that action to an object in the main game area.
 
-Click izquierdo:
+-When you hover over objects in the scene, you will be able to see a description of the object and, by clicking, perform the action on it.
 
-	-En la zona principal de juego: realiza el verbo seleccionado sobre el objeto apuntado o mientras un personaje está hablando, permite saltar la frase si ya se ha leído
-	
-	-En la seleccion de líneas de diálogo: selecciona una linea de diálogo
-	
-	-En la zona de verbos: selecciona el verbo apuntado
-	
-	-En las flechas del inventario: sube y baja por las páginas del inventario
-	
-	-Sobre el inventario: realiza el verbo seleccionado en el objeto del inventario apuntado
-	
-Click derecho:
+Left click:
 
-	-En la zona principal del juego: Ejecuta el verbo por defecto del objeto apuntado o si no hay objeto apuntado, deselecciona el verbo actual y selecciona por defecto el verbo de IR
-	
-	-En la zona de verbos: deselecciona el verbo y selecciona por defecto el verbo de IR
-	
-	-En las flechas de inventario: mueve a la primera o última página del inventario respectivamente
-	
-	-Sobre el inventario: ejecuta el verbo por defecto del objeto de inventario apuntado
-	
-Doble click:
-	
-	-En la zona principal del juego: con el verbo seleccionado de IR, se mueve a mayor velocidad
-	
-Tecla ESC durante la partida:
-	
-	-Muestra el menú del juego para guardar/salvar partida, configurar las opciones, reiniciar partida o salir del juego
+-In the main game area: Perform the selected verb on the pointed object or while a character is speaking, allows you to skip the sentence if it has already been read
 
-Tecla ESPACIO durante la partida:
-	
-	-Pausa el juego
+-In the dialogue line selection: Select a dialogue line
+
+-In the verb area: Select the pointed verb
+
+-In the inventory arrows: Move up and down through the inventory pages
+
+-On the inventory: Perform the selected verb on the pointed inventory object
+
+Right click:
+
+-In the main game area: Perform the default verb of the pointed object or if there is no pointed object, deselect the current verb and select the default GO verb
+
+-In the verb area: Deselect the verb and select the default GO verb
+
+-On the inventory arrows: Move to the first or last page of the inventory respectively
+
+-On the inventory: Perform the default verb of the pointed inventory object
+
+Double click:
+
+-In the main game area: Perform the default verb of the pointed inventory object or if there is no pointed object, deselect the current verb and select the default GO verb
+
+-In the verb area: Deselect the verb and select the default GO verb
+
+-On the inventory arrows: Move to the first or last page of the inventory respectively
+
+-On the inventory: Perform the default verb of the pointed inventory object
+
+Double click:
+
+-In the main game area: Perform the default verb of the pointed inventory object Main game key: With GO verb selected, moves at a faster speed
+
+ESC key during gameplay:
+
+-Displays the game menu to save/save the game, configure options, restart the game or exit the game
+
+SPACE key during gameplay:
+
+-Pauses the game
