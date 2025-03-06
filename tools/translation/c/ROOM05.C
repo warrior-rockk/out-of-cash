@@ -704,7 +704,10 @@ void r05_update_room_script()
                                     else if (is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
                                     {
                                         clear_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
-                                        script_take_object(&r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
+                                        if (!is_game_flag(OPENED_EMPTY_CARTRIDGE_FLAG))
+                                            script_take_object(&r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active, GOT_EMPTY_CARTRIDGE_FLAG, id_emptyCartridge);
+                                        else
+                                            script_take_object(&r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active, GOT_EMPTY_CARTRIDGE_FLAG, id_openedEmptyCartridge);
                                     }
                                     break;
                                 default:
@@ -780,6 +783,7 @@ void r05_update_room_script()
                                 }
                             break;
                             case id_emptyCartridge:
+                            case id_openedEmptyCartridge:
                                 switch (roomScript.step)
                                 {
                                     case 0:
@@ -799,7 +803,7 @@ void r05_update_room_script()
                                         r05_object[R05_CARTRIDGEEMPTY_OBJ_ID].active = true;
                                         set_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG);
                                         clear_game_flag(GOT_EMPTY_CARTRIDGE_FLAG);
-                                        script_remove_inv_object(id_emptyCartridge);
+                                        script_remove_inv_object(roomScript.invObject);
                                     break;
                                     default:
                                         end_script();

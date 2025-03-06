@@ -1511,6 +1511,7 @@ void inventory_update()
                 {
                     case 0:
                         begin_script();
+                        set_game_flag(OPENED_EMPTY_CARTRIDGE_FLAG);
                         script_combine_inv_object(id_emptyCartridge, 0, id_openedEmptyCartridge);
                     break;
                     case 1:
