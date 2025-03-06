@@ -19,43 +19,43 @@ void r07_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r07_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r07_blackBoard:
-                strcpy(s, "Pizarra");
+                strcpy(s, "Blackboard");
             break;
         case r07_notes:
-                strcpy(s, "Apuntes");
+                strcpy(s, "Notes");
             break;
         case r07_brain:
             if (!is_game_flag(GOT_BRAIN_FLAG))
-                strcpy(s, "Cerebro");
+                strcpy(s, "Brain");
             else
                 strcpy(s, "");
             break;
         case r07_washer1:
-                strcpy(s, "Pica");
+                strcpy(s, "Sink");
             break;
         case r07_testTube:
-                strcpy(s, "Probetas");
+                strcpy(s, "Test tubes");
             break;
         case r07_sheets:
-                strcpy(s, "Hojas");
+                strcpy(s, "Sheets");
             break;
         case r07_washer2:
-                strcpy(s, "Pica");
+                strcpy(s, "Sink");
             break;
         case r07_glass:
-                strcpy(s, "Vaso");
+                strcpy(s, "Cup");
             break;
         case r07_knife:
             if (!is_game_flag(GOT_KNIFE_FLAG))
-                strcpy(s, "Bistur¡");
+                strcpy(s, "Scalpel");
             else
                 strcpy(s, "");
             break;
         case r07_labMaterial:
-                strcpy(s, "Material laboratorio");
+                strcpy(s, "Laboratory material");
             break;
         default:
             strcpy(s, "");
@@ -170,7 +170,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la puerta que da al pasillo del instituto");
+                                script_say("ItÂ´s the door that leads to the high school hallway");
                                 break;
                             default:
                                 end_script();
@@ -211,7 +211,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Creo que en esa f¢rmula han olvidado que se llevan una");
+                                script_say("I think that in that formula they have forgotten that they carry one");
                                 break;
                             default:
                                 end_script();
@@ -228,10 +228,10 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Apuntes sobre alguna clase de ciencias que no logro comprender");
+                                script_say("Notes sobre alguna clase de ciencias que no logro comprender");
                                 break;
                             default:
-                                script_say("Al menos la letra es bonita");
+                                script_say("At least the handwriting is nice");
                                 end_script();
                                 break;
                         }
@@ -246,16 +246,16 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cerebro humano flotando en formol");
+                                script_say("A human brain floating in formaldehyde");
                                 break;
                             case 1:
-                                script_say("Triste analog¡a de la efeversencia del pensamiento");
+                                script_say("Sad analogy of the effeversity of thought");
                                 break;
                             case 2:
                                 script_wait(10);
                                 break;
                             default:
-                                script_say("Lo le¡ en una servilleta");
+                                script_say("I readed it on a napkin");
                                 end_script();
                                 break;
                         }
@@ -288,7 +288,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("A£n se puede oler el £ltimo experimento que vertieron al desague");
+                                script_say("You can smell yet the last experiment they poured into the drain");
                                 break;
                             default:
                                 end_script();
@@ -305,10 +305,10 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Siempre he sentido fascinaci¢n por el material de laboratorio");
+                                script_say("I have always been fascinated by laboratory material");
                                 break;
                             default:
-                                script_say("Creo que viene de la frustaci¢n de que mis padres no me dejaran jugar con el Quimicefa");
+                                script_say("I think it comes from the frustration that my parents would not let me play with Quimicefa");
                                 end_script();
                                 break;
                         }
@@ -323,7 +323,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hojas y hojas llenadas de garabatos que significaran algo para alguien");
+                                script_say("Sheets y hojas llenadas de garabatos que significaran algo para alguien");
                                 break;
                             default:
                                 end_script();
@@ -340,7 +340,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Esta pica esta impoluta");
+                                script_say("This sink is pristine");
                                 break;
                             default:
                                 end_script();
@@ -357,7 +357,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una matraz de laboratorio para realizar mezclas");
+                                script_say("A laboratory flask for mixing");
                                 break;
                             default:
                                 end_script();
@@ -374,7 +374,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Este bistur¡ est  muy afilado");
+                                script_say("This scalpel is very sharp");
                                 break;
                             default:
                                 end_script();
@@ -406,7 +406,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Material diverso de laboratorio sin ning£n inter‚s aparente");
+                                script_say("Miscellaneous laboratory material with no apparent interest");
                                 break;
                             default:
                                 end_script();

@@ -19,19 +19,19 @@ void r00_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r00_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r00_sign:
-                strcpy(s, "Cartel");
+                strcpy(s, "Poster");
             break;
         case r00_stationery:
-                strcpy(s, "Papeler¡a");
+                strcpy(s, "Stationery");
             break;
         case r00_school:
-                strcpy(s, "Instituto");
+                strcpy(s, "High School");
             break;
         case r00_shop:
-                strcpy(s, "Tienda");
+                strcpy(s, "Store");
             break;
         default:
             strcpy(s, "");
@@ -130,7 +130,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la puerta de entrada a mi casa");
+                                script_say("It's the front door to my house");
                                 break;
                             default:
                                 end_script();
@@ -164,20 +164,20 @@ void r00_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_BACK);
-                                script_say("Zurraspa Producciones presenta:");
+                                script_say("Zurraspa Productions presents:");
                             break;
                             case 2:
-                                script_say("\"Reincidientes\" en concierto");
+                                script_say("\"The Repeat Offenders\" in concert");
                                 break;
                             case 3:
-                                script_say("Presentando su £ltimo disco en directo");
+                                script_say("Introducing their last live album");
                                 break;
                             case 4:
-                                script_say("Precio de la entrada: 5000 pesetas");
+                                script_say("Entrance fee: 30 bucks");
                                 break;    
                             case 5:
                                 change_player_dir(DIR_RIGHT);
-                                script_say("Tengo que conseguir el dinero como sea");
+                                script_say("I have to get the money somehow");
                                 break;
                             default:
                                 end_script();
@@ -194,7 +194,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Por all¡ se va a la papeler¡a");
+                                script_say("That's where you go to stationery");
                                 break;
                             default:
                                 end_script();
@@ -226,7 +226,7 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Por ah¡ se va hacia mi instituto");
+                                script_say("That's where you to my high school");
                                 break;
                             default:
                                 end_script();
@@ -258,10 +258,10 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Mi tienda de ordenadores de confianza");
+                                script_say("My trusted computer store");
                                 break;
                             case 1:
-                                script_say("Aqui me compr‚ mi Pentium 100 por un buen precio");
+                                script_say("Here I buy my Pentium 100 for a good price");
                             default:
                                 end_script();
                                 break;
@@ -272,10 +272,10 @@ void r00_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Nah, ya me gast‚ todo mi dinero en el Pentium");
+                                script_say("Nah, I already spent all my money on the Pentium");
                                 break;
                             case 1:
-                                script_say("Adem s todo el que consiga lo necesito para ir al concierto");
+                                script_say("Also I need everything I get to go to the concert");
                             default:
                                 end_script();
                                 break;
@@ -301,45 +301,45 @@ void r00_update_room_script()
                         script_wait(10);
                     break;
                     case 4:
-                        script_say("¨He le¡do bien?");
+                        script_say("Did I read correctly?");
                     break;
                     case 5:
                         script_move_player(80, 120);
                     break;
                     case 6:
                         change_player_dir(DIR_BACK);
-                        script_say("­Concierto de \"Reincidientes\"!");
+                        script_say("Concert of \"The Repeat Offenders\"!");
                     break;
                     case 7:
-                        script_say("­Mola!");
+                        script_say("Cool!");
                     break;
                     case 8:
-                        script_say("Presentando nuevo disco");
+                        script_say("Introducing new album");
                     break;
                     case 9:
-                        script_say("­­Mola!!");
+                        script_say("Â­Cool!!");
                     break;
                     case 10:
-                        script_say("5000 pelas la entrada");
+                        script_say("30 bucks for ticket");
                     break;
                     case 11:
                         change_player_dir(DIR_RIGHT);
-                        script_say("­No mola!");
+                        script_say("Not cool!");
                     break;
                     case 12:
-                        script_say("¨5000 pelas la entrada? Yo no tengo tanto dinero");
+                        script_say("Â¨30 bucks for ticket? Yo no tengo tanto dinero");
                     break;
                     case 13:
                         script_wait(2);
                     break;
                     case 14:
-                        script_say("Bueno, ni tanto ni tan poco... ­Estoy sin blanca!");
+                        script_say("Well, not so much and not so little... I'm out of cash!");
                     break;
                     case 15:
-                        script_say("Pero he de ir a ese concierto a toda costa");
+                        script_say("But I have to go to that concert at all costs");
                     break;
                     case 16:
-                        script_say("­Tengo que conseguir el dinero como sea!");
+                        script_say("Â­I have to get the money somehow!");
                     break;
                     default:
                         clear_game_flag(INTRO_FLAG);

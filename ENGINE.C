@@ -408,22 +408,22 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Nada destacable");
+                    say("Nothing remarkable");
                 break;
                 case 1:
-                    say("No veo nada");
+                    say("I can't see anything.");
                 break;
                 case 2:
-                    say("Nada de especial");
+                    say("Nothing special.");
                 break;
                 case 3:
-                    say("Nada interesante");
+                    say("Nothing of interest");
                 break;
                 case 4:
-                    say("Sin inter‚s");
+                    say("No interest");
                 break;
                 default:
-                    say("No hay nada que ver");
+                    say("Nothing to see here");
                     break;
             }
             break;
@@ -431,22 +431,22 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("No lo necesito");
+                    say("Not needed");
                     break;
                 case 1:
-                    say("Est  bien donde est ");
+                    say("It's good where it is");
                     break;
                 case 2:
-                    say("Tampoco voy a llenar el inventario de trastos in£tiles");
+                    say("I'm not going to fill the inventory with useless junk either");
                     break;
                 case 3:
-                    say("No quiero llev rmelo");
+                    say("I don't want to take it");
                     break;
                 case 4:
-                    say("Mejor que no");
+                    say("It's better than not");
                     break;
                 default:
-                    say("No quiero acumular trastos");
+                    say("I don't want to accumulate junk");
                     break;
             }
             break;
@@ -454,16 +454,16 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Est  bien como est ");
+                    say("It's fine as it is");
                     break;
                 case 1:
-                    say("No es para abrir");
+                    say("Not for opening");
                     break;
                 case 2:
-                    say("No es necesario abrirlo");
+                    say("No need to open it");
                     break;
                 default:
-                    say("No hace falta abrirlo");
+                    say("No need to open it");
                     break;
             }
             break;
@@ -471,16 +471,16 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Est  bien como est ");
+                    say("It's fine as it is");
                     break;
                 case 1:
-                    say("No es para cerrar");
+                    say("Not to close");
                     break;
                 case 2:
-                    say("No es necesario cerrarlo");
+                    say("No need to close it");
                 break;
                 default:
-                    say("No hace falta cerrarlo");
+                    say("No need to close it");
                     break;
             }
             break;
@@ -488,16 +488,16 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("No parece que funcione");
+                    say("Doesn't seem to work");
                     break;
                 case 1:
-                    say("No va bien juntas");
+                    say("It doesn't go well together");
                     break;
                 case 2:
-                    say("No hace nada");
+                    say("Does nothing");
                 break;
                 default:
-                    say("Esas cosas no combinan");
+                    say("Those things don't go together");
                     break;
             }
             break;
@@ -505,13 +505,13 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("Prefiero qued rmelo");
+                    say("I prefer to keep it");
                     break;
                 case 1:
-                    say("Mejor me lo guardo");
+                    say("I'd better keep it");
                     break;
                 default:
-                    say("No lo quiere");
+                    say("He doesnâ€™t want itâ€¦");
                     break;
             }
             break;
@@ -519,25 +519,25 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("No s‚ si quiere hablar");
+                    say("I don't know if he want to talk");
                     break;
                 case 1:
-                    say("Mejor estar callado");
+                    say("Better to be quiet");
                     break;
                 case 2:
-                    say("Creo que eso no habla");
+                    say("I think that doesn't speak");
                     break;
                 case 3:
-                    say("Me he quedado sin palabras");
+                    say("I've run out of words.");
                     break;
                 case 4:
-                    say("No creo que conteste");
+                    say("I don't think he'll answer");
                     break;
                 case 5:
-                    say("Las cosas no hablan");
+                    say("Things don't talk");
                     break;
                 default:
-                    say("No tengo nada que decirle");
+                    say("I have nothing to say to him.");
                     break;
             }
             break;
@@ -545,25 +545,25 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("No necesito moverlo");
+                    say("I don't need to move it");
                     break;
                 case 1:
-                    say("Est  bien as¡");
+                    say("It's okay like that!");
                     break;
                 case 2:
-                    say("No me apetece moverlo");
+                    say("I don't feel like moving it");
                     break;
                 case 3:
-                    say("No hace falta mover");
+                    say("No need to move");
                     break;
                 case 4:
-                    say("Est  mejor quieto");
+                    say("Better be still");
                     break;
                 case 5:
                     say("No");
                     break;    
                 default:
-                    say("No creo que se mueva");
+                    say("I don't think it's moving");
                     break;
             }
             break;
@@ -571,22 +571,22 @@ void default_verb_action(enum verbs roomVerb)
             switch (rndNumber)
             {
                 case 0:
-                    say("No es necesario");
+                    say("It isn't necessary");
                     break;
                 case 1:
-                    say("No tengo nada programado");
+                    say("I don't have anything programmed");
                     break;
                 case 2:
-                    say("Prefiero que no");
+                    say("I prefer not");
                     break;
                 case 3:
-                    say("No s‚ que pretendes que suceda");
+                    say("I don't know what you intend to happen");
                     break;
                 case 4:
-                    say("Creo que eso no funciona");
+                    say("I think that doesn't work");
                     break;
                 default:
-                    say("Tampoco tengo que hacer todo lo que digas...");
+                    say("I don't have to do everything you say either...");
                     break;
             }
             break;

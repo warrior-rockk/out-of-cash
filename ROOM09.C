@@ -19,20 +19,20 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r09_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r09_bench:
-                strcpy(s, "Banco");
+                strcpy(s, "Bench");
             break;
         case r09_shirt:
             if (!r09_object[R09_SHIRT_OBJ_ID].active)
             {
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
                 break;
             }
             else
             {
-                strcpy(s, "Camiseta");
+                strcpy(s, "T-shirt");
                 break;
             }
         case r09_books:
@@ -40,11 +40,11 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             else
             {
-                strcpy(s, "Libros");
+                strcpy(s, "Books");
                 break;
             }
         case r09_locker1:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
             break;
         case r09_poster:
             if (!is_game_flag(LOCKER_2_OPEN_FLAG))
@@ -59,7 +59,7 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             else
             {
-                strcpy(s, "Zapatillas");
+                strcpy(s, "Shoes");
                 break;
             }
         case r09_bag:
@@ -67,21 +67,21 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             else
             {
-                strcpy(s, "Mochila");
+                strcpy(s, "Bag");
                 break;
             }
         case r09_locker2:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
             break;
         case r09_jeans:
             if (!r09_object[R09_JEANS_OBJ_ID].active)
             {
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
                 break;
             }
             else
             {
-                strcpy(s, "Pantalones");
+                strcpy(s, "Trousers");
                 break;
             }
         case r09_box:
@@ -89,14 +89,14 @@ void r09_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             else
             {
-                strcpy(s, "Caja");
+                strcpy(s, "Box");
                 break;
             }
         case r09_locker3:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
             break;
         case r09_locker4:
-                strcpy(s, "Taquilla");
+                strcpy(s, "Locker");
             break;
         default:
             strcpy(s, "");
@@ -254,7 +254,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la puerta que da al pasillo del instituto");
+                                script_say("It is the door that leads to the high school hallway");
                                 break;
                             default:
                                 end_script();
@@ -295,7 +295,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un banco para sentarse y poder cambiarse");
+                                script_say("A bench to sit on and be able to dress");
                                 break;
                             default:
                                 end_script();
@@ -307,7 +307,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Me gusta estar de pie");
+                                script_say("I like to stand on my foot");
                                 break;
                             default:
                                 end_script();
@@ -326,7 +326,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Una camiseta roja muy parecida a la m¡a");
+                                    script_say("A red t-shirt very similar to mine");
                                     break;
                                 default:
                                     end_script();
@@ -366,7 +366,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Parecen libros de algunas asignaturas");
+                                    script_say("They look like books of some subjects");
                                     break;
                                 default:
                                     end_script();
@@ -378,7 +378,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("No tengo ning£n inter‚s en tener esos libros");
+                                    script_say("I have no interest in having those books");
                                     break;
                                 default:
                                     end_script();
@@ -396,7 +396,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una taquilla com£n de instituto");
+                                script_say("A regular high school locker");
                                 break;
                             default:
                                 end_script();
@@ -412,7 +412,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  abierta");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 break;
@@ -438,7 +438,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  cerrada");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 break;
@@ -464,7 +464,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Un bonito poster de los Village People");
+                                    script_say("A nice Village People poster");
                                     break;
                                 default:
                                     end_script();
@@ -484,7 +484,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Buaj...Estas zapatillas huelen fatal");
+                                    script_say("Buaj...These sneakers smell awful");
                                     break;
                                 default:
                                     end_script();
@@ -504,7 +504,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("La mochila de alg£n estudiante");
+                                    script_say("Some student's bag");
                                     break;
                                 default:
                                     end_script();
@@ -516,7 +516,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("¨Por qui‚n me tomas? No soy un ladr¢n");
+                                    script_say("Which do you take me for? I am not a thief");
                                     break;
                                 default:
                                     end_script();
@@ -534,7 +534,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una taquilla est ndar de instituto");
+                                script_say("A high school standard locker");
                                 break;
                             default:
                                 end_script();
@@ -550,7 +550,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  abierta");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 break;
@@ -576,7 +576,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  cerrada");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 break;
@@ -602,10 +602,10 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Unos pantalones vaqueros perfectamente doblados");
+                                    script_say("Perfectly folded jeans");
                                     break;
                                 default:
-                                    script_say("Yo uso la misma marca");
+                                    script_say("I use the same brand");
                                     end_script();
                                     break;
                             }
@@ -643,7 +643,7 @@ void r09_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("¨Quien guardar¡a una caja vac¡a en una taquilla?");
+                                    script_say("Who keeps an empty box in a locker?");
                                     break;
                                 default:
                                     end_script();
@@ -661,7 +661,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una taquilla normal de instituto");
+                                script_say("A normal high school locker");
                                 break;
                             default:
                                 end_script();
@@ -677,7 +677,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  abierta");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 break;
@@ -703,7 +703,7 @@ void r09_update_room_script()
                                     script_move_player_to_target();
                                 else
                                 {
-                                    script_say("Ya est  cerrada");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 break;
@@ -727,7 +727,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una taquilla cl sica de instituto");
+                                script_say("A classic high school locker");
                                 break;
                             default:
                                 end_script();
@@ -742,10 +742,10 @@ void r09_update_room_script()
                                 script_move_player_to_target();
                             break;
                             case 1:
-                                script_say("Esta bloqueada. No se puede abrir");
+                                script_say("It's locked. Cannot be opened");
                             break;
                             default:
-                                script_say("Y tampoco tengo mucho inter‚s en abrirla");
+                                script_say("And I don't have much interest in opening it either");
                                 end_script();
                             break;
                         }
@@ -755,7 +755,7 @@ void r09_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Ya est  cerrada");
+                                script_say("Already closed");
                                 break;
                             default:
                                 end_script();

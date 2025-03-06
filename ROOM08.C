@@ -18,28 +18,28 @@ void r08_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r08_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r08_window:
-                strcpy(s, "Ventana");
+                strcpy(s, "Window");
             break;
         case r08_computer3:
-                strcpy(s, "Ordenador");
+                strcpy(s, "Computer");
             break;
         case r08_manual:
                 strcpy(s, "Manual");
             break;
         case r08_computer1:
-                strcpy(s, "Ordenador");
+                strcpy(s, "Computer");
             break;
         case r08_nerd:
-                strcpy(s, "Friki");
+                strcpy(s, "Nerd");
             break;
         case r08_computer2:
-                strcpy(s, "Ordenador");
+                strcpy(s, "Computer");
             break;
         case r08_chair:
-                strcpy(s, "Silla");
+                strcpy(s, "Chair");
             break;
         default:
             strcpy(s, "");
@@ -214,32 +214,32 @@ void r08_update_dialog_selection()
                     break;
                     case 1:
                         if (!is_game_flag(NERD_HELP_FLAG))
-                            dialog_add("¨A qu‚ est s jugando?",2);
+                            dialog_add("What game are you playing?",2);
                         else
-                            dialog_add("Entonces, ¨me ayudar s a aprobar el ex men de historia?",6);
-                        dialog_add("¨Est s usando el aula de inform tica para jugar?",1);
-                        dialog_add("No te molesto", 0);
+                            dialog_add("So, you will help me to pass the history exam?",6);
+                        dialog_add("Are you using the computer room to play games?",1);
+                        dialog_add("I don't bother you", 0);
                     break;
                     case 2:
-                        dialog_add("El juego de estrategia definitivo es el Civilization",2);
-                        dialog_add("Parece que se te dan muy bien los juegos de estrategia",3);
-                        dialog_add("Prefiero las aventuras gr ficas", 2);
-                        dialog_add("No te quiero distraer", 1);
+                        dialog_add("The ultimate strategy game is Civilization",2);
+                        dialog_add("You seem to be very good at strategy games",3);
+                        dialog_add("I prefer point and click games", 2);
+                        dialog_add("I don't want to distract you", 1);
                     break;
                     case 3:
-                        dialog_add("No tienes un poco de obsesi¢n con las guerras hist¢ricas", 3);
-                        dialog_add("Si se te da tan bien la historia, ¨no podr¡as ayudarme?",4);
-                        dialog_add("Muy interesante", 2);
+                        dialog_add("Don't you have a bit of an obsession with historical wars?", 3);
+                        dialog_add("If you're so good at the history, Couldn't you help me?",4);
+                        dialog_add("Very interesting", 2);
                     break;
                     case 4:
-                        dialog_add("Si me ayudas, puedes decir a la gente que somos amigos",0);
-                        dialog_add("Si me ayudas, ir‚ una tarde a merendar leche con galletas a tu casa",0);
-                        dialog_add("Si me ayudas, te ense¤are a hacer niveles chulos para el DOOM",0);
-                        dialog_add("Bueno, d‚jalo...", 0);
+                        dialog_add("If you help me, you can tell people that we're friends",0);
+                        dialog_add("If you help me, I will go for an afternoon snack with milk and biscuits at your house",0);
+                        dialog_add("If you help me, I wil teach you how to do cool levels for DOOM",0);
+                        dialog_add("Well, forget it...", 0);
                     break;
                     case 6:
-                        dialog_add("¨Qu‚ necesito para el disfraz?",0);
-                        dialog_add("Genial, ­Gracias!",0);
+                        dialog_add("What do I need for the costume?",0);
+                        dialog_add("Great, Thank you!",0);
                     break;
                 }
             break;
@@ -270,46 +270,46 @@ void r08_update_room_script()
                     {
                         case 1:
                             if (!is_game_flag(NERD_HELP_FLAG))
-                                script_say_actor("­Estoy jugando al Age of Empires!", &r08_dialogActor);
+                                script_say_actor("I'm playing Age of Empires!", &r08_dialogActor);
                             else
                                 dialog_jump(5, 1, 6);
                         break;
                         case 2:
-                            script_say_actor("El juego de estrategia definitivo", &r08_dialogActor);
+                            script_say_actor("The Ultimate Strategy Game", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Estoy usando todos mis conocimientos de la guerra para hacer partidas perfectas", &r08_dialogActor);
+                            script_say_actor("I'm using all my war knowledge to make perfect game", &r08_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("Me encanta jugar a ser un se¤or de la guerra y aplastar a mis enemigos", &r08_dialogActor);
+                            script_say_actor("I love to play that i'm a warlord and crush my enemies", &r08_dialogActor);
                         break;
                         case 5:
                             set_game_flag(NERD_SIDE_FLAG);                            
-                            script_say_actor("Mi terapeuta dice que canaliza el odio que tengo dentro", &r08_dialogActor);
+                            script_say_actor("My therapist says it channels the hatred I have inside", &r08_dialogActor);
                         break;
                         case 6:
                             script_wait(3);
                         break;
                         case 7:
-                            script_say_actor("Si quieres puedes jugar conmigo", &r08_dialogActor);
+                            script_say_actor("If you want you can play with me", &r08_dialogActor);
                         break;
                         case 8:
-                            script_say_actor("O venir a mi casa y te ense¤o mas juegos que tengo", &r08_dialogActor);
+                            script_say_actor("Or come to my house and I will show you more games I have", &r08_dialogActor);
                         break;
                         case 9:
-                            script_say_actor("O podemos merendar y jugar al Dragones y Mazmorras", &r08_dialogActor);
+                            script_say_actor("Or we can have a snack and play Dragons and Dungeons", &r08_dialogActor);
                         break;
                         case 10:
-                            script_say_actor("Tengo una campa¤a pensada que es la bomb...", &r08_dialogActor);
+                            script_say_actor("I have a campaign that I think is the bes...", &r08_dialogActor);
                         break;
                         case 11:
-                            script_say("­BASTA!");
+                            script_say("ENOUGH!");
                         break;
                         case 12:
-                            script_say("No me interesa, gracias");
+                            script_say("No interest in that, thanks.");
                         break;
                         case 13:
-                            script_say_actor("Como quieras", &r08_dialogActor);
+                            script_say_actor("Whatever", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -322,13 +322,13 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Y t£ le dijiste a tus padres que te compraran el ordenador para estudiar", &r08_dialogActor);
+                            script_say_actor("And you told your parents to buy you the computer to study", &r08_dialogActor);
                         break;
                         case 2:
                             script_wait(2);
                         break;
                         case 3:
-                            script_say("Touch‚");
+                            script_say("TouchÃ©");
                         break;
                         default:
                             script_next_dialog_node();
@@ -341,16 +341,16 @@ void r08_update_room_script()
                     {
                         case 1:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("Me encantan los juegos de estrategia", &r08_dialogActor);
+                            script_say_actor("I love strategy games", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Todo lo que tenga que ver con la historia y las guerras", &r08_dialogActor);
+                            script_say_actor("Everything to do with history and wars", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Y destruir ej‚rcitos enemigos con mi gran poder", &r08_dialogActor);
+                            script_say_actor("And destroy enemy armies with my great power", &r08_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("Y no te creas que solo juego. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
+                            script_say_actor("And don't think I'm just playing. I love reading history books and reading feats of great battles", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -363,14 +363,14 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Tambi‚n me encanta", &r08_dialogActor);
+                            script_say_actor("I also love it", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Todo lo que tenga que ver con la historia y las guerras", &r08_dialogActor);
+                            script_say_actor("Everything to do with history and wars", &r08_dialogActor);
                         break;
                         case 3:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("Y no solo juego, eh. Me encanta leer libros de historia y leer haza¤as de grandes batallas", &r08_dialogActor);
+                            script_say_actor("And I don't just play, I love reading history books and reading feats of great battles", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -383,7 +383,7 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("¨Qui‚n juega a eso en estos tiempos?", &r08_dialogActor);
+                            script_say_actor("Who plays that kind of games these days?", &r08_dialogActor);
                         break;
                         case 2:
                             script_wait(5);
@@ -407,13 +407,13 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("No lo creas", &r08_dialogActor);
+                            script_say_actor("Don't believe it.", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Creo que es una afici¢n muy sana", &r08_dialogActor);
+                            script_say_actor("I think it's a very healthy hobby", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Y tampoco es que me vaya a dar un d¡a por entrar al colegio armado con un fusil", &r08_dialogActor);
+                            script_say_actor("And it's not like I'm going to the school armed with a rifle", &r08_dialogActor);
                         break;
                         case 4:
                             set_game_flag(NERD_SIDE_FLAG);
@@ -421,7 +421,7 @@ void r08_update_room_script()
                         break;
                         case 5:
                             clear_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("No, no... No estar¡a bien...", &r08_dialogActor);
+                            script_say_actor("No, no... I won't be okay...", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -433,41 +433,41 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say("Necesito aprobar el ex men de historia");
+                            script_say("I need to pass the history exam");
                         break;
                         case 2:
-                            script_say_actor("­Claro amigo! Podemos quedar en mi casa y te ense¤o todo lo que tienes que saber", &r08_dialogActor);
+                            script_say_actor("Of course my friend! We can meet at my house and teach you everything you need to know", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say("Mmm... estaba pensando mejor en otra manera de ayuda");
+                            script_say("Hmm... I was thinking better about another way to help");
                         break;
                         case 4:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("¨A qu‚ te refieres?", &r08_dialogActor);
+                            script_say_actor("What do you mean?", &r08_dialogActor);
                         break;
                         case 5:
-                            script_say("Estaba pensando en que hicieras t£ el examen por mi");
+                            script_say("I was thinking about you taking the exam for me");
                         break;
                         case 6:
                             script_wait(20);
                         break;
                         case 7:
-                            script_say_actor("Pero...", &r08_dialogActor);
+                            script_say_actor("But...", &r08_dialogActor);
                         break;
                         case 8:
                             script_wait(10);
                         break;
                         case 9:
-                            script_say_actor("¨No ser¡a meterme en un l¡o muy grande?", &r08_dialogActor);
+                            script_say_actor("I don't wanna get in trouble...", &r08_dialogActor);
                         break;
                         case 10:
-                            script_say("­Que va! Lo tengo todo pensado. Te disfrazas de mi y te presentas al examen");
+                            script_say("Don't worry! I've got it all figured out. You dress up as me and pass the exam");
                         break;
                         case 11:
-                            script_say("­Nadie lo notar !");
+                            script_say("No one notices!");
                         break;
                         case 12:
-                            script_say_actor("No s‚... No lo veo claro...", &r08_dialogActor);
+                            script_say_actor("I don't know... I don't see it...", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -483,13 +483,13 @@ void r08_update_room_script()
                     {
                         case 1:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("­Oh! ¨En serio?", &r08_dialogActor);
+                            script_say_actor("Â­Oh! Really?", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("De acuerdo, ­te ayudar‚!", &r08_dialogActor);
+                            script_say_actor("Okay, I will help you!", &r08_dialogActor);
                         break;
                         case 3:
-                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
+                            script_say_actor("Get me something to disguise myself as you and I will take the exam", &r08_dialogActor);
                         break;
                         default:
                             clear_game_flag(NERD_SIDE_FLAG);
@@ -503,10 +503,10 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Si, te ayudar‚", &r08_dialogActor);
+                            script_say_actor("Yes, I help you", &r08_dialogActor);
                         break;
                         case 2:
-                            script_say_actor("Cons¡gueme algo para disfrazarme de ti y har‚ el examen", &r08_dialogActor);
+                            script_say_actor("Get me something to disguise myself as you and I will take the exam", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -518,11 +518,11 @@ void r08_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Pues no s‚...", &r08_dialogActor);
+                            script_say_actor("You know...", &r08_dialogActor);
                         break;
                         case 2:
                             if (!is_game_flag(BRAIN_COSTUME_FLAG))
-                                script_say_actor("Consigue algo para el pelo", &r08_dialogActor);
+                                script_say_actor("Get something for the hair", &r08_dialogActor);
                             else
                                 roomScript.step++;
                         break;
@@ -530,9 +530,9 @@ void r08_update_room_script()
                             if (!is_game_flag(SHIRT_COSTUME_FLAG))
                             {
                                 if (is_game_flag(BRAIN_COSTUME_FLAG))
-                                    script_say_actor("Consigue alguna camiseta como las tuyas", &r08_dialogActor);
+                                    script_say_actor("Get a t-shirt like yours", &r08_dialogActor);
                                 else
-                                    script_say_actor("alguna camiseta como las tuyas", &r08_dialogActor);
+                                    script_say_actor("a t-shirt like yours", &r08_dialogActor);
                             }
                             else
                                 roomScript.step++;
@@ -541,15 +541,15 @@ void r08_update_room_script()
                             if (!is_game_flag(JEANS_COSTUME_FLAG))
                             {
                                 if (is_game_flag(BRAIN_COSTUME_FLAG) || is_game_flag(SHIRT_COSTUME_FLAG))
-                                    script_say_actor("Consigue alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
+                                    script_say_actor("Get some pants similar to yours", &r08_dialogActor);
                                 else
-                                    script_say_actor("y alg£n pantal¢n parecido al tuyo", &r08_dialogActor);
+                                    script_say_actor("and some pants similar to yours", &r08_dialogActor);
                             }
                             else
                                 roomScript.step++;
                         break;
                         case 5:
-                            script_say_actor("Y con eso lo tendremos listo", &r08_dialogActor);
+                            script_say_actor("And with that we'll have it ready", &r08_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
@@ -579,7 +579,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la puerta que da al pasillo");
+                                script_say("It is the door leading to the corridor");
                                 break;
                             default:
                                 end_script();
@@ -620,7 +620,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Esta ventana al exterior impide que la gente haga uso fraudulentos con los ordenadores");
+                                script_say("This window to the outside prevents people from fraudulently using computers");
                                 break;
                             default:
                                 end_script();
@@ -637,7 +637,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Los ordenadores del instituto siguen siendo unos 486");
+                                script_say("The institute's computers are still 486");
                                 break;
                             default:
                                 end_script();
@@ -649,13 +649,13 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No tengo tiempo para jugar ahora");
+                                script_say("I have no time for games");
                             break;
                             case 1:
-                                script_say("He de aprobar las asignaturas que me quedan para conseguir el dinero");
+                                script_say("I have to pass the remaining subjects to get the money");
                             break;
                             case 2:
-                                script_say("Ademas ese ordenador tiene el virus Barrotes");
+                                script_say("In addition, that computer has the Barrotes virus");
                             break;
                             default:
                                 end_script();
@@ -672,10 +672,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un manual de Q-Basic para MS-DOS");
+                                script_say("A Q-Basic manual for MS-DOS");
                             break;
                             case 1:
-                                script_say("Aprenda a programar desde el juego Gorillas al Snake");
+                                script_say("Learn to program from the game Gorillas to Snake");
                             break;
                             default:
                                 end_script();
@@ -687,10 +687,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No me hace falta");
+                                script_say("No, I don't need it.");
                             break;
                             case 1:
-                                script_say("Yo ya me pas‚ a programar en C");
+                                script_say("I've already started programming in C");
                             break;
                             default:
                                 end_script();
@@ -707,7 +707,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Parece que est  jugando a alg£n tipo de juego de estrategia");
+                                script_say("Looks like he is playing some kind of strategy game");
                                 break;
                             default:
                                 end_script();
@@ -719,10 +719,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No puedo usarlo");
+                                script_say("I can't use it");
                             break;
                             case 1:
-                                script_say("El friki est  jugando");
+                                script_say("The nerd is playing");
                             break;
                             default:
                                 end_script();
@@ -740,21 +740,21 @@ void r08_update_room_script()
                             case 0:
                                 begin_script();
                                 if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
-                                    script_say("Supuestamente est  disfrazado de mi");
+                                    script_say("He's supposedly disguised as me");
                                 else
-                                    script_say("Este chaval es el rarito del instituto");
+                                    script_say("This kid is the high school weirdo");
                                 break;
                             case 1:
                                 if (is_game_flag(NERD_COSTUME_PLAYING_FLAG))
                                 {
-                                    script_say("Creo que esto va a ser material para mis pesadillas");
+                                    script_say("I think this is going to be material for my nightmares");
                                     end_script();
                                 }
                                 else
-                                script_say("Siempre esta metido en su mundo b‚lico y de juegos de rol");
+                                script_say("He is always involved in his world of books and role-playing games");
                             break;
                             case 2:
-                                script_say("No parece que tenga muchos amigos");
+                                script_say("Doesn't seem to have many friends");
                             break;
                             default:
                                 end_script();
@@ -770,7 +770,7 @@ void r08_update_room_script()
                                     script_move_player(214, 126);
                                 else
                                 {
-                                    script_say("Ya me ha sido de suficiente ayuda");
+                                    script_say("It's been helpful enough for me");
                                     end_script();
                                 }
                                 break;
@@ -794,11 +794,11 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("¨Y qu‚ hago con eso?", &r08_dialogActor);
+                                            script_say_actor("And what do I do with that?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("Podr¡a servir como pelo, pero el color es muy claro", &r08_dialogActor);
+                                            script_say_actor("It could serve as hair, but the color is very light", &r08_dialogActor);
                                     break;
                                     default:
                                         end_script();
@@ -812,7 +812,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            script_say_actor("Why are you giving me this?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -828,7 +828,7 @@ void r08_update_room_script()
                                         set_game_flag(BRAIN_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("­Perfecto! Usaremos esto para el disfraz", &r08_dialogActor);
+                                        script_say_actor("Perfect! We'll use this for the costume", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -845,7 +845,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            script_say_actor("Why are you giving me this?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -861,7 +861,7 @@ void r08_update_room_script()
                                         set_game_flag(SHIRT_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("­Muy bien! Esto servir  para el disfraz", &r08_dialogActor);
+                                        script_say_actor("All right! This will serve for the costume", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -878,7 +878,7 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("¨Para qu‚ me das esto?", &r08_dialogActor);
+                                            script_say_actor("Why are you giving me this?", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
@@ -894,7 +894,7 @@ void r08_update_room_script()
                                         set_game_flag(JEANS_COSTUME_FLAG);
                                     break;
                                     case 3:
-                                        script_say_actor("­Oh si! Esto nos vendr  bien para el disfraz", &r08_dialogActor);
+                                        script_say_actor("Oh yeah! This will do us good for the costume", &r08_dialogActor);
                                     break;
                                     case 4:
                                         start_script(R08_COSTUME_COMPLETE_SCRIPT);
@@ -911,11 +911,11 @@ void r08_update_room_script()
                                         begin_script();
                                         if (!is_game_flag(NERD_HELP_FLAG))
                                         {
-                                            script_say_actor("Oye, no me molestes", &r08_dialogActor);
+                                            script_say_actor("Don't bother me", &r08_dialogActor);
                                             end_script();
                                         }
                                         else
-                                            script_say_actor("Mmm. Se parece un poco a tu camiseta pero no lo suficiente", &r08_dialogActor);
+                                            script_say_actor("Hmm. Looks a little like your t-shirt but not enough", &r08_dialogActor);
                                     break;
                                     default:
                                         end_script();
@@ -927,19 +927,19 @@ void r08_update_room_script()
                                 switch (rand() % 4)
                                 {
                                     case 0:
-                                        script_say_actor("No me interrumpas. Estoy jugando", &r08_dialogActor);
+                                        script_say_actor("Don't interrupt me. I'm playing", &r08_dialogActor);
                                     break;
                                     case 1:
-                                        script_say_actor("No quiero eso", &r08_dialogActor);
+                                        script_say_actor("I don't want that ", &r08_dialogActor);
                                     break;
                                     case 2:
-                                        script_say_actor("Me est s desconcentrando", &r08_dialogActor);
+                                        script_say_actor("You are deconcentrating me", &r08_dialogActor);
                                     break;
                                     case 3:
-                                        script_say_actor("No me des tus trastos", &r08_dialogActor);
+                                        script_say_actor("Don't give me your junk", &r08_dialogActor);
                                     break;
                                     case 4:
-                                        script_say_actor("D‚jame. Estoy concentrado en el juego", &r08_dialogActor);
+                                        script_say_actor("Leave me alone. I'm focused on the game", &r08_dialogActor);
                                     break;
                                 }
                                 end_script();
@@ -956,10 +956,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("­Vaya! ­Si tambi‚n hay un 386!");
+                                script_say("Wow! If there is also a 386!");
                                 break;
                             case 1:
-                                script_say("­Viva la educaci¢n p£blica!");
+                                script_say("Long live public education!");
                             break;
                             default:
                                 end_script();
@@ -971,10 +971,10 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Mmmm, no");
+                                script_say("Mmmm... no. ");
                                 break;
                             case 1:
-                                script_say("Despu‚s de tener un Pentium en casa un 386 se me hace tortuga");
+                                script_say("After having a Pentium at home, a 386 feels like a turtle");
                             break;
                             default:
                                 end_script();
@@ -991,7 +991,7 @@ void r08_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("àjala en el futuro hagan sillas de ordenador m s c¢modas y que sirvan para largas sesiones de juego");
+                                script_say("Hopefully in the future make computer chairs more fashionable and that they serve for long gaming sessions");
                                 break;
                             default:
                                 end_script();
@@ -1010,13 +1010,13 @@ void r08_update_room_script()
                             )
                         {
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("Creo que ya tengo todo lo que necesito", &r08_dialogActor);
+                            script_say_actor("I already have everything I need.", &r08_dialogActor);
                         }
                         else
                             end_script();
                     break;
                     case 1:
-                        script_say_actor("Voy a prepararme el disfraz y me presentar‚ a tu examen", &r08_dialogActor);
+                        script_say_actor("I'm going to prepare the costume and take your exam", &r08_dialogActor);
                     break;
                     case 2:
                         game_fade_out(FADE_SLOW_SPEED);
@@ -1034,30 +1034,30 @@ void r08_update_room_script()
                         script_wait(10);
                     break;
                     case 5:
-                        script_say_actor("­Ha estado chupado!", &r08_dialogActor);
+                        script_say_actor("Piece of cake!", &r08_dialogActor);
                     break;
                     case 6:
                         script_wait(6);
                     break;
                     case 7:
-                        script_say_actor("Disfrazado as¡, nadie se ha dado cuenta de que no eras t£", &r08_dialogActor);
+                        script_say_actor("Disguised like you, no one has noticed", &r08_dialogActor);
                     break;
                     case 8:
-                        script_say("Salta a la vista");
+                        script_say("Who would say");
                     break;
                     case 9:
                         script_play_sound(sd_approved);
                     break;
                     case 10:
-                        script_say_actor("­Tienes la asignatura aprobada!", &r08_dialogActor);
+                        script_say_actor("You have approved the subject!", &r08_dialogActor);
                         set_game_flag(HISTORY_APPROVED_FLAG);
                     break;
                     case 11:
                         stop_player_animation();
-                        script_say("Emm...");
+                        script_say("Umm... ");
                     break;
                     case 12:
-                        script_say("Gracias");
+                        script_say("Thank you");
                     break;
                     case 13:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
@@ -1066,13 +1066,13 @@ void r08_update_room_script()
                     break;
                     case 14:
                         if (is_game_flag(MATH_APPROVED_FLAG) && is_game_flag(HISTORY_APPROVED_FLAG) && is_game_flag(PE_APPROVED_FLAG))
-                            script_say("­Genial! ­Ya he aprobado todo!");
+                            script_say("Great! I've already passed everything!");
                         else
                             roomScript.step++;
                     break;
                     case 15:
                         change_player_dir(DIR_RIGHT);
-                        script_say("Casi que me voy de aqu¡ antes de que esto se ponga raro");
+                        script_say("I'm almost out of here before this gets weird!");
                     break;
                     case 16:
                         script_move_player(320, 104);
@@ -1093,49 +1093,49 @@ void r08_update_room_script()
                 {
                     case 0:
                         begin_script();
-                        script_say_actor("­Vamos!", &r08_dialogActor);
+                        script_say_actor("Come on!", &r08_dialogActor);
                     break;
                     case 1:
                         script_wait(10);
                     break;
                     case 2:
                         begin_script();
-                        script_say_actor("­Morid malditos!", &r08_dialogActor);
+                        script_say_actor("Die damned!", &r08_dialogActor);
                     break;
                     case 3:
                         script_wait(10);
                     break;
                     case 4:
                         begin_script();
-                        script_say_actor("Odio a todos mis enemigos", &r08_dialogActor);
+                        script_say_actor("I hate all my enemies", &r08_dialogActor);
                     break;
                     case 5:
                         script_wait(10);
                     break;
                     case 6:
                         begin_script();
-                        script_say_actor("Os odio tanto como a mis compa¤eros de clase", &r08_dialogActor);
+                        script_say_actor("I hate you as much as I hate my classmates", &r08_dialogActor);
                     break;
                     case 7:
                         script_wait(5);
                     break;
                     case 8:
                         begin_script();
-                        script_say_actor("Y odio a los profesores...", &r08_dialogActor);
+                        script_say_actor("And I hate teachers...", &r08_dialogActor);
                     break;
                     case 9:
                         script_wait(5);
                     break;
                     case 10:
                         begin_script();
-                        script_say_actor("Y odio a aquella chica que me llam¢ raro", &r08_dialogActor);
+                        script_say_actor("And I hate that girl who called me weird", &r08_dialogActor);
                     break;
                     case 11:
                         script_wait(5);
                     break;
                     case 12:
                         begin_script();
-                        script_say_actor("Un dia voy a llevar un fusil al instituto y voy a...", &r08_dialogActor);
+                        script_say_actor("One day I'm going to take a rifle to school and I'm going to...", &r08_dialogActor);
                     break;
                     case 13:
                         set_game_flag(NERD_ERROR_FLAG);
@@ -1149,7 +1149,7 @@ void r08_update_room_script()
                         script_wait(5);
                     break;
                     case 16:
-                        script_say_actor("Pero sobretodo odio Windows", &r08_dialogActor);
+                        script_say_actor("But most of all I hate Windows", &r08_dialogActor);
                     break;
                     case 17:
                         script_wait(20);

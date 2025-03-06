@@ -28,28 +28,28 @@ void r03_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "");
             //break;
         case r03_closet:
-                strcpy(s, "Armario");
+                strcpy(s, "Closet");
             break;
         case r03_washbowl:
-                strcpy(s, "Lavabo");
+                strcpy(s, "Sink");
             break;
         case r03_mirror:
-                strcpy(s, "Espejo");
+                strcpy(s, "Mirror");
             break;
         case r03_towel:
-                strcpy(s, "Toalla");
+                strcpy(s, "Towel");
             break;
         case r03_bathMat:
             if (r03_object[R03_BATHMAT_OBJ_ID].active)
-                strcpy(s, "Alfombrilla");
+                strcpy(s, "Bath Mat");
             else
                 strcpy(s, "");
             break;
         case r03_switch:
-                strcpy(s, "Interruptor");
+                strcpy(s, "Switch");
             break;
         case r03_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         default:
             strcpy(s, "");
@@ -165,10 +165,10 @@ void r03_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("Un bote de gel de ducha");
+                                    script_say("A bottle of shower gel");
                                     break;
                                 case 1:
-                                    script_say("Parece muy viscoso...");
+                                    script_say("It looks very viscous...");
                                 default:
                                     end_script();
                                     break;
@@ -199,7 +199,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("El cl sico armario del ba¤o donde acabas acumulando cientos de productos");
+                                script_say("The classic closet of the bathroom where you end up accumulating hundreds of products");
                                 break;
                             default:
                                 end_script();
@@ -213,7 +213,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (is_game_flag(BATH_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  abierto");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 else                                
@@ -241,7 +241,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_CLOSET_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  cerrado");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 else                                
@@ -272,7 +272,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No olviden lavarse las manos antes de reincorporarse al trabajo...");
+                                script_say("Don't forget to wash your hands before returning to work...");
                                 break;
                             default:
                                 end_script();
@@ -285,7 +285,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No tengo las manos sucias");
+                                script_say("I don't have dirty hands");
                                 break;
                             default:
                                 end_script();
@@ -300,10 +300,10 @@ void r03_update_room_script()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("No deberia mojar los granos de avena con agua");
+                                        script_say("You should not wet oat grains with water");
                                         break;
                                     default:
-                                        script_say("Deber¡a usar algo mas viscoso");
+                                        script_say("You should use something more viscous");
                                         end_script();
                                         break;
                                 }
@@ -328,13 +328,13 @@ void r03_update_room_script()
                                 switch (get_game_var(MIRROR_MSG_COUNT_VAR))
                                 {
                                     case 1:
-                                        script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
+                                        script_say("The game programmer has been so lazy as not to program the reflexes...");
                                         break;
                                     case 2:
-                                        script_say("Otro espejo con reflejo sin programar...");
+                                        script_say("Another mirror with unprogrammed reflection...");
                                         break;
                                     case 3:
-                                        script_say("Con lo poco que cuesta programar los reflejos...");
+                                        script_say("With how little it costs to program the reflexes...");
                                         break;
                                 }
                                 break;
@@ -353,10 +353,10 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Esta toalla lleva en la familia muchos a¤os");
+                                script_say("This towel has been in the family for many years");
                                 break;
                             case 1:
-                                script_say("Deberiamos pensar en lavarla...");
+                                script_say("We should think about washing it...");
                             default:
                                 end_script();
                                 break;
@@ -372,10 +372,10 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La alfombrilla para secarte los pies despu‚s de la ducha");
+                                script_say("The mat to dry your feet after the shower");
                                 break;
                             case 1:
-                                script_say("Tambi‚n es un nido de microbios y moho");
+                                script_say("It's also a nest of microbes and mold");
                             default:
                                 end_script();
                                 break;
@@ -405,7 +405,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Hay algo placentero en el sonido de un interruptor accion ndose");
+                                script_say("There is something pleasurable about the sound of an actuating switch being");
                                 break;
                             default:
                                 end_script();
@@ -447,7 +447,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("La puerta est  cerrada");
+                                    script_say("The door is closed");
                                     end_script();
                                 }
                                 else
@@ -466,7 +466,7 @@ void r03_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La puerta del ba¤o que da al pasillo");
+                                script_say("The bathroom door leading to the corridor");
                                 break;
                             default:
                                 end_script();
@@ -480,7 +480,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  abierta");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 else                                
@@ -502,7 +502,7 @@ void r03_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  cerrada");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 else                                

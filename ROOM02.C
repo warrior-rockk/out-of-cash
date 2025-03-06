@@ -19,34 +19,34 @@ void r02_get_hotspot_name(uint8_t colorCode, char *s)
     switch(colorCode)
     {
         case r02_mirror:
-                strcpy(s, "Espejo");
+                strcpy(s, "Mirror");
             break;
         case r02_bathDoor:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r02_flowers:
-                strcpy(s, "Flores");
+                strcpy(s, "Flowers");
             break;
         case r02_elephant:
-                strcpy(s, "Figura");
+                strcpy(s, "Figure");
             break;
         case r02_kitchen:
-                strcpy(s, "Cocina");
+                strcpy(s, "Kitchen");
             break;
         case r02_door:
-                strcpy(s, "Puerta");
+                strcpy(s, "Door");
             break;
         case r02_picture:
-                strcpy(s, "Cuadro");
+                strcpy(s, "Picture");
             break;
         case r02_bedRoomDoor:
-                strcpy(s, "Habitaci¢n");
+                strcpy(s, "Room");
             break;
         case r02_street:
-                strcpy(s, "Calle");
+                strcpy(s, "Street");
             break;
         case r02_lamp:
-                strcpy(s, "L mpara");
+                strcpy(s, "Lamp");
             break;
         default:
             strcpy(s, "");
@@ -164,13 +164,13 @@ void r02_update_room_script()
                                 switch (get_game_var(MIRROR_MSG_COUNT_VAR))
                                 {
                                     case 1:
-                                        script_say("El programador del juego ha sido tan vago como para no programar los reflejos...");
+                                        script_say("The game programmer has been so lazy as not to program the reflexes...");
                                         break;
                                     case 2:
-                                        script_say("Otro espejo con reflejo sin programar...");
+                                        script_say("Another mirror with unprogrammed reflection...");
                                         break;
                                     case 3:
-                                        script_say("Con lo poco que cuesta programar los reflejos...");
+                                        script_say("With how little it costs to program the reflexes...");
                                         break;
                                 }
                                 break;
@@ -191,7 +191,7 @@ void r02_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("La puerta est  cerrada");
+                                    script_say("The door is closed");
                                     end_script();
                                 }
                                 else
@@ -210,7 +210,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la puerta que da al ba¤o");
+                                script_say("ItÂ´s the door that leads to the bathroom");
                                 break;
                             default:
                                 end_script();
@@ -225,7 +225,7 @@ void r02_update_room_script()
                                 begin_script();
                                 if (is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  abierta");
+                                    script_say("Already open");
                                     end_script();
                                 }
                                 else                                
@@ -247,7 +247,7 @@ void r02_update_room_script()
                                 begin_script();
                                 if (!is_game_flag(BATH_DOOR_OPEN_FLAG))
                                 {
-                                    script_say("Ya est  cerrada");
+                                    script_say("Already closed");
                                     end_script();
                                 }
                                 else                                
@@ -273,7 +273,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un jarr¢n con flores cuya fragancia se existingu¢ hace mucho tiempo");
+                                script_say("A vase with flowers whose fragrance existed a long time ago");
                                 break;
                             default:
                                 end_script();
@@ -290,18 +290,18 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es una figura de un elefante");
+                                script_say("ItÂ´s a figure of an elephant");
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("Mi madre siempre decia que tener un elefante con la trompa orientada a la entrada, atra¡a el dinero");
+                                script_say("My mother always said that having an elephant with its trunk facing the entrance, attracts money");
                                 break;
                             case 2:
                                 script_wait(10);
                                 break;
                             case 3:
                                 begin_script();
-                                script_say("Y aqu¡ me tienes... Sin dinero para el concierto...");
+                                script_say("And here you have me... With no money for the concert...");
                                 break;
                             default:
                                 end_script();
@@ -318,7 +318,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la cocina");
+                                script_say("This is the kitchen");
                                 break;
                             default:
                                 end_script();
@@ -352,7 +352,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Puede parecer extra¤o, pero llevo en esta casa toda mi vida y no s‚ a donde lleva esa puerta");
+                                script_say("It may seem strange, but I've been in this house my whole life and I don't know where that door leads");
                                 break;
                             default:
                                 end_script();
@@ -365,7 +365,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No se puede abrir. Siempre ha estado cerrada");
+                                script_say("Cannot open. It has always been closed");
                                 break;
                             default:
                                 end_script();
@@ -382,10 +382,10 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Este cuadro es la £nica cosa de valor en toda la casa");
+                                script_say("This painting is the only thing of value in the whole house");
                                 break;
                             case 1:
-                                script_say("Creo que lo pint¢ mi padre");
+                                script_say("I think my father painted it");
                                 break;
                             default:
                                 end_script();
@@ -402,7 +402,7 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La puerta que da a la habitaci¢n");
+                                script_say("The door to the bedroom");
                                 break;
                             default:
                                 end_script();
@@ -432,10 +432,10 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La puerta que da a la calle");
+                                script_say("The door to the street");
                                 break;
                             case 1:
-                                script_say("­­A la libertad!!");
+                                script_say("Â­Â­To freedom!!");
                                 break;
                             default:
                                 end_script();
@@ -454,7 +454,7 @@ void r02_update_room_script()
                                     script_move_player_no_clip(roomScript.hsX, 230);
                                 else
                                 {
-                                    script_say("Deber¡a pensar en como conseguir el dinero del concierto antes de irme de casa");
+                                    script_say("I should think about how to get the concert money before I leave home");
                                     end_script();
                                 }
                                 break;
@@ -474,10 +474,10 @@ void r02_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una l mpara para crear un rinc¢n acogedor");
+                                script_say("A lamp to create a cozy corner");
                                 break;
                             case 1:
-                                script_say("Nunca la encendemos");
+                                script_say("We never turn it on");
                             default:
                                 end_script();
                                 break;

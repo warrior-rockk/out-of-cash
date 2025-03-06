@@ -78,16 +78,16 @@ enum verbs {
 //Global variables
 extern bool gameTick;
 static const char verbName[NUM_VERBS][10] = {
-    "Ir a",
-    "Coger",
-    "Mover",
-    "Mirar",
-    "Usar",
-    "Dar",
-    "Abrir",
-    "Cerrar",
-    "Hablar a",
-    "Usar" //USE_WITH
+    "Go",
+    "Take",
+    "Move",
+    "Look",
+    "Use",
+    "Give",
+    "Open",
+    "Close",
+    "Talk To",
+    "Use" //USE_WITH
 };
 
 //global room script structure

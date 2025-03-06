@@ -71,7 +71,7 @@ void inventory_add(uint8_t numObject)
     }
     else
         //this should not happen...
-        say("No me caben mas objetos\n en el inventario...");
+        say("I can't fit any more items\n in the inventory...");
 }
 
 //remove object to inventory
@@ -180,103 +180,103 @@ void get_inv_obj_name(uint8_t objIndex, char *s)
         switch (inventory.objIndex[objIndex - 1] - 1)
         {
             case id_answers:
-                strcpy(s, "Hoja respuestas");
+                strcpy(s, "Answers sheet");
             break;
             case id_bathMat             :
-                strcpy(s, "Alfombrilla");
+                strcpy(s, "Bath Mat");
             break;
             case id_blackBrain          :
-                    strcpy(s, "Cerebro Negro");
+                    strcpy(s, "Black Brain");
                 break;
             case id_blackStarClock      :
-                    strcpy(s, "Reloj Negro");
+                    strcpy(s, "Black Clock");
                 break;
             case id_book                :
-                    strcpy(s, "Libro");
+                    strcpy(s, "Book");
                 break;
             case id_bookSheets          :
-                    strcpy(s, "Hojas libro");
+                    strcpy(s, "Book sheets");
                 break;
             case id_brain               :
-                    strcpy(s, "Cerebro");
+                    strcpy(s, "Brain");
                 break;
             case id_califications       :
-                    strcpy(s, "Notas");
+                    strcpy(s, "Califications");
                 break;
             case id_cassette            :
-                    strcpy(s, "Casete");
+                    strcpy(s, "Cassette");
                 break;
             case id_coin                :
-                    strcpy(s, "Moneda");
+                    strcpy(s, "Quarter");
                 break;
             case id_emptyCartridge      :
-                    strcpy(s, "Cartucho vac°o");
+                    strcpy(s, "Empty cartridge");
                 break;
             case id_folder              :
-                    strcpy(s, "Carpeta");
+                    strcpy(s, "Folder");
                 break;
             case id_fullCartridge       :
-                    strcpy(s, "Cartucho lleno");
+                    strcpy(s, "Cartridge full");
                 break;
             case id_fullFolder          :
-                    strcpy(s, "Carpeta llena");
+                    strcpy(s, "Folder llena");
                 break;
             case id_gel                 :
                     strcpy(s, "Gel");
                 break;
             case id_guitar              :
-                    strcpy(s, "Guitarra");
+                    strcpy(s, "Guitar");
                 break;
             case id_jeans               :
-                    strcpy(s, "Pantalones");
+                    strcpy(s, "Jeans");
                 break;
             case id_key                 :
-                    strcpy(s, "Llave");
+                    strcpy(s, "Key");
                 break;
             case id_knife               :
-                    strcpy(s, "Escalpelo");
+                    strcpy(s, "Scalpel");
                 break;
             case id_money               :
-                    strcpy(s, "Dinero");
+                    strcpy(s, "Money");
                 break;
             case id_oat                 :
-                    strcpy(s, "Avena");
+                    strcpy(s, "Oat");
                 break;
             case id_openedEmptyCartridge:
-                    strcpy(s, "Cartucho vac°o");
+                    strcpy(s, "Empty cartridge");
                 break;
             case id_openedFullCartridge :
-                    strcpy(s, "Cartucho lleno");
+                    strcpy(s, "Cartridge full");
                 break;
             case id_paintBucket         :
-                    strcpy(s, "Bote pintura");
+                    strcpy(s, "Paint bucket");
                 break;
             case id_photocopy           :
-                    strcpy(s, "Fotocopia");
+                    strcpy(s, "Photocopy");
                 break;
             case id_photocopySchedule   :
-                    strcpy(s, "Fotocopia");
+                    strcpy(s, "Photocopy");
                 break;
             case id_schedule            :
-                    strcpy(s, "Horario");
+                    strcpy(s, "Schedule");
                 break;
             case id_sheet               :
-                    strcpy(s, "Hoja");
+                    strcpy(s, "Sheet");
                 break;
             case id_shirt               :
-                    strcpy(s, "Camiseta");
+                    strcpy(s, "T-shirt");
                 break;
             case id_spatula             :
-                    strcpy(s, "Esp†tula");
+                    strcpy(s, "Spatula");
                 break;
             case id_starClock           :
-                    strcpy(s, "Reloj");
+                    strcpy(s, "Clock");
                 break;
             case id_starShirt           :
-                    strcpy(s, "Camiseta");
+                    strcpy(s, "T-shirt");
                 break;
             case id_oatMixed:
-                    strcpy(s, "Avena viscosa");
+                    strcpy(s, "Oat viscosa");
                 break;
             default:
                 strcpy(s, "");
@@ -302,7 +302,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son las respuestas del examen de matem†ticas");
+                                script_say("They are the answers to the mathematics exam");
                                 break;
                             default:
                                 end_script();
@@ -319,7 +319,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es la alfombrilla del ba§o");
+                                script_say("It's the mat of the bathroom");
                                 break;
                             default:
                                 end_script();
@@ -336,7 +336,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cerebro pintado de negro");
+                                script_say("A black painted brain");
                                 break;
                             default:
                                 end_script();
@@ -353,10 +353,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("El reloj de cocina en forma de estrella pintado de negro");
+                                script_say("The star-shaped kitchen clock painted black");
                                 break;
                             case 1:
-                                script_say("A£n gotea la pintura");
+                                script_say("Drips paint yet");
                                 break;
                             default:
                                 end_script();
@@ -382,7 +382,7 @@ void inventory_update()
                             case 0:
                                 begin_script();
                                 if (get_game_var(SPORT_BOOK_VAR) == 0)
-                                    script_say("\"Del deporte tambiÇn se sale\"");
+                                    script_say("\"You also get out of the sport\"");
                                 else
                                     roomScript.step++;
                             break;
@@ -390,13 +390,13 @@ void inventory_update()
                                 switch (get_game_var(SPORT_BOOK_VAR))
                                 {
                                     case 0:
-                                        script_say("Cap°tulo 1: La pereza es tu aliada");
+                                        script_say("Chapter 1: Laziness is your ally");
                                     break;
                                     case 1:
-                                        script_say("Cap°tulo 2: Cuida tus rodillas");
+                                        script_say("Chapter 2: Take Care of Your Knees");
                                     break;
                                     case 2:
-                                        script_say("Cap°tulo 3: Enfermedades deportivas");
+                                        script_say("Chapter 3: Sports Diseases");
                                     break;
                                 }
                             break;
@@ -404,13 +404,13 @@ void inventory_update()
                                 switch (get_game_var(SPORT_BOOK_VAR))
                                 {
                                     case 0:
-                                        script_say("Todo aquello que supone un esfuerzo es susceptible de aplazarlo");
+                                        script_say("Everything that involves an effort can be postponed");
                                     break;
                                     case 1:
-                                        script_say("Recientes estudios demuestran la relaci¢n entre hacer deporte y el deterioro de tus rodillas");
+                                        script_say("Recent studies show the relationship between playing sports and the deterioration of your knees");
                                     break;
                                     case 2:
-                                        script_say("La mejor manera de librarse del deporte es con una enfermedad que te impida realizarla");
+                                        script_say("The best way to get rid of sport is with an illness that prevents you from doing it");
                                     break;
                                 }
                             break;
@@ -418,13 +418,13 @@ void inventory_update()
                                 switch (get_game_var(SPORT_BOOK_VAR))
                                 {
                                     case 0:
-                                        script_say("Deja para ma§ana lo que no quieras hacer hoy");
+                                        script_say("Leave for tomorrow what you don't want to do today");
                                     break;
                                     case 1:
-                                        script_say("Un cuerpo sano es un cuerpo descansado");
+                                        script_say("A healthy body is a rested body");
                                     break;
                                     case 2:
-                                        script_say("Las enfermedades de la piel pueden presentar una textura grumosa y en algunos casos viscosa");
+                                        script_say("Skin diseases can have a lumpy and in some cases viscous texture");
                                     break;
                                 }
                             break;
@@ -450,7 +450,7 @@ void inventory_update()
                                 play_sound(sd_paper);
                                 break;
                             case 2:
-                                script_say("He arrancado las hojas del libro que me parec°an interesantes");
+                                script_say("I have torn out the sheets of the book that I found interesting");
                                 break;
                             default:
                                 end_script();
@@ -467,7 +467,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son las hojas arrancadas del libro de deporte");
+                                script_say("They are the sheets torn from the sports book");
                                 break;
                             default:
                                 end_script();
@@ -492,7 +492,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("®Ser† este cerebro de alg£n antiguo alumno?");
+                                script_say("Could this be the brain of some former student?");
                                 break;
                             default:
                                 end_script();
@@ -510,10 +510,10 @@ void inventory_update()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("Puede ser buena idea pintar el cerebro");
+                                        script_say("It may be a good idea to paint the brain");
                                     break;
                                     case 1:
-                                        script_say("Pero en el cartucho no hay suficiente pintura para pintarlo");
+                                        script_say("But there's not enough paint on the cartridge to paint it");
                                     break;
                                     default:
                                         end_script();
@@ -532,30 +532,30 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son mis notas del instituto");
+                                script_say("These are my high school califications");
                                 break;
                             case 1:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) &&
                                     is_game_flag(MATH_APPROVED_FLAG) &&
                                     is_game_flag(PE_APPROVED_FLAG))
                                 {
-                                    script_say("≠He aprobado todo!");
+                                    script_say("I have approved everything!");
                                     end_script();
                                 }
                                 else
-                                    script_say("He suspendido Matem†ticas, Historia y Educaci¢n F°sica");
+                                    script_say("He suspendido Mathematics, History and Physical Education");
                                 break;
                             case 2:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) ||
                                     is_game_flag(MATH_APPROVED_FLAG) ||
                                     is_game_flag(PE_APPROVED_FLAG))
-                                    script_say("Pero ya he aprobado:");
+                                    script_say("But I've already passed:");
                                 else
                                     end_script();
                                 break;    
                             case 3:
                                 if (is_game_flag(MATH_APPROVED_FLAG))
-                                    script_say("Matem†ticas");
+                                    script_say("Mathematics");
                                 else
                                     roomScript.step++;
                                 break;
@@ -563,11 +563,11 @@ void inventory_update()
                                 if (is_game_flag(HISTORY_APPROVED_FLAG))
                                 {
                                     if (is_game_flag(PE_APPROVED_FLAG))
-                                        script_say("Historia");
+                                        script_say("History");
                                     else if (is_game_flag(MATH_APPROVED_FLAG))
-                                        script_say("e Historia");
+                                        script_say("e History");
                                     else
-                                        script_say("Historia");
+                                        script_say("History");
                                 }
                                 else
                                     roomScript.step++;
@@ -576,9 +576,9 @@ void inventory_update()
                                 if (is_game_flag(PE_APPROVED_FLAG))
                                 {
                                     if (is_game_flag(MATH_APPROVED_FLAG) || is_game_flag(HISTORY_APPROVED_FLAG))
-                                        script_say("y Educaci¢n F°sica");
+                                        script_say("and Physical Education");
                                     else
-                                        script_say("Educaci¢n F°sica");
+                                        script_say("Physical Education");
                                 }
                                 else
                                     roomScript.step++;
@@ -598,7 +598,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un casete del £ltimo disco de \"Reincidientes\"");
+                                script_say("A cassette of the last \"The Repeat Offenders\" record");
                                 break;
                             default:
                                 end_script();
@@ -615,10 +615,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una moneda de 100 pesetas");
+                                script_say("A one quarter coin");
                                 break;
                             case 1:
-                                script_say("No es una fortuna pero por algo se empieza");
+                                script_say("It's not a fortune but it's a start");
                                 break;
                             default:
                                 end_script();
@@ -652,7 +652,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cartucho de tinta de impresora vac°o");
+                                script_say("An empty printer ink cartridge");
                                 break;
                             default:
                                 end_script();
@@ -677,7 +677,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una carpeta verde muy bonita");
+                                script_say("A very nice green folder");
                                 break;
                             default:
                                 end_script();
@@ -702,10 +702,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cartucho de tinta de impresora");
+                                script_say("A printer ink cartridge");
                                 break;
                             case 1:
-                                script_say("Parece que a£n tiene tinta");
+                                script_say("Looks like it has ink yet");
                                 break;
                             default:
                                 end_script();
@@ -717,10 +717,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Est† muy duro. No puedo con las manos");
+                                script_say("It's very solid. I can't with my hands");
                                 break;
                             case 1:
-                                script_say("Necesitar°a utilizar algo");
+                                script_say("I would need to use something");
                                 break;
                             default:
                                 end_script();
@@ -735,7 +735,7 @@ void inventory_update()
                             break;
                             case id_starClock:
                                 begin_script();
-                                script_say("Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro");
+                                script_say("I would have to open the cartridge somehow to be able to use the ink inside");
                                 end_script();
                             break;
                         }
@@ -750,7 +750,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La carpeta est† llena de las hojas del libro de deporte");
+                                script_say("The folder is filled with the sheets of the sports book");
                                 break;
                             default:
                                 end_script();
@@ -767,10 +767,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un bote lleno de gel de ducha");
+                                script_say("A bottle full of shower gel");
                                 break;
                             case 1:
-                                script_say("Parece bastante viscoso");
+                                script_say("Looks pretty slimy");
                                 break;
                             default:
                                 end_script();
@@ -795,7 +795,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Guitarra");
+                                script_say("Guitar");
                                 break;
                             default:
                                 end_script();
@@ -812,7 +812,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Espero que nadie necesitara estos pantalones...");
+                                script_say("I hope no one needed these pants...");
                                 break;
                             default:
                                 end_script();
@@ -829,7 +829,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("La llave del almacÇn de mantenimiento");
+                                script_say("The key to the maintenance warehouse");
                                 break;
                             default:
                                 end_script();
@@ -846,7 +846,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un escalpelo afilado");
+                                script_say("A sharp scalpel");
                                 break;
                             default:
                                 end_script();
@@ -874,10 +874,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("4900 pelas que mi padre me ha dado por aprobar las asignaturas");
+                                script_say("29 bucks and 75 pennies that my father has given me for passing the subjects");
                                 break;
                             case 1:
-                                script_say("≠Me faltan 100 pesetas para poder comprar la entrada!");
+                                script_say("I'm one quarter away from being able to buy the concert ticket!");
                                 break;
                             default:
                                 end_script();
@@ -911,10 +911,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una caja de copos de avena");
+                                script_say("A box of oat flakes");
                                 break;
                             case 1:
-                                script_say("Pone que son copos pero a mi me parecen granos");
+                                script_say("It says that they are flakes but to me they look like grains");
                                 break;
                             default:
                                 end_script();
@@ -926,10 +926,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Estos granos de avena est†n un poco secos");
+                                script_say("These oat grains are a little dry");
                                 break;
                             case 1:
-                                script_say("Deber°a mezclarlos con algo");
+                                script_say("I should mix them with something");
                                 break;
                             default:
                                 end_script();
@@ -953,7 +953,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cartucho de tinta de impresora vac°o y abierto");
+                                script_say("An empty printer ink cartridge y abierto");
                                 break;
                             default:
                                 end_script();
@@ -965,7 +965,7 @@ void inventory_update()
                         {
                             case id_starClock:
                                 begin_script();
-                                script_say("El cartucho no tiene tinta para pintarlo");
+                                script_say("Cartridge has no ink to paint it");
                                 end_script();
                             break;
                         }
@@ -980,7 +980,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un cartucho de tinta de impresora abierto y con tinta");
+                                script_say("A printer ink cartridge abierto y con tinta");
                                 break;
                             default:
                                 end_script();
@@ -998,10 +998,10 @@ void inventory_update()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("Puede ser buena idea pintar el cerebro");
+                                        script_say("It may be a good idea to paint the brain");
                                     break;
                                     case 1:
-                                        script_say("Pero en el cartucho no hay suficiente pintura para pintarlo");
+                                        script_say("But there's not enough paint on the cartridge to paint it");
                                     break;
                                     default:
                                         end_script();
@@ -1020,7 +1020,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es un bote de pintura negra");
+                                script_say("It's a bucket of black paint");
                                 break;
                             default:
                                 end_script();
@@ -1038,10 +1038,10 @@ void inventory_update()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("La idea de pintar el reloj en forma de estrella no es mala");
+                                        script_say("The idea of painting the star clock is not a bad one");
                                     break;
                                     case 1:
-                                        script_say("Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa");
+                                        script_say("But I don't need as much paint for it and I'm sure I need it for something else");
                                     break;
                                     default:
                                         end_script();
@@ -1060,10 +1060,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una fotocopia de la serie Dragon Ball");
+                                script_say("A photocopy of the Dragon Ball series");
                                 break;
                             case 1:
-                                script_say("≠Ademas creo que es de Goku!");
+                                script_say("And I think it's Goku's!");
                                 break;
                             default:
                                 end_script();
@@ -1080,7 +1080,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es una fotocopia de Dragon Ball con el horario del instituto impreso por encima");
+                                script_say("It's a photocopy of Dragon Ball with the high school schedule printed above");
                                 break;
                             default:
                                 end_script();
@@ -1097,10 +1097,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Es el horario del instituto impreso por ambas caras");
+                                script_say("It is the high school schedule printed on both sides");
                                 break;
                             case 1:
-                                script_say("No sÇ para que lo quiero. No pienso ir a clase");
+                                script_say("Not that I want it. I'm not going to class");
                             break;
                             default:
                                 end_script();
@@ -1117,7 +1117,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una hoja vac°a");
+                                script_say("An empty sheet");
                                 break;
                             default:
                                 end_script();
@@ -1134,7 +1134,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Yo tengo una camiseta del mismo color");
+                                script_say("I have a t-shirt of the same color");
                                 break;
                             default:
                                 end_script();
@@ -1153,34 +1153,34 @@ void inventory_update()
                                     case 0:
                                         begin_script();
                                         change_player_dir(DIR_FRONT);
-                                        script_say("®Ya est†?");
+                                        script_say("That's it?");
                                     break;
                                     case 1:
-                                        script_say("®Eso es lo que se te ocurre?");
+                                        script_say("Is that what you think?‚Äù");
                                     break;
                                     case 2:
                                         script_wait(5);
                                     break;
                                     case 3:
-                                        script_say("®Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
+                                        script_say("Did you expect that by pairing a watch with a t-shirt it would become a star t-shirt?");
                                     break;
                                     case 4:
                                         script_wait(5);
                                     break;
                                     case 5:
-                                        script_say("®Asi por arte de magia?");
+                                        script_say("Like some kind of magic?");
                                     break;
                                     case 6:
                                         script_wait(5);
                                     break;
                                     case 7:
-                                        script_say("®Que por acercarlo se transfiera su silueta?");
+                                        script_say("That by bringing it closer, his silhouette is transferred?");
                                     break;
                                     case 8:
                                         script_wait(5);
                                     break;
                                     case 9:
-                                        script_say("Creo que no");
+                                        script_say("I don't think so ");
                                     break;
                                     default:
                                         change_player_dir(DIR_RIGHT);
@@ -1200,10 +1200,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una esp†tula de cocina para aplicar mejunges");
+                                script_say("A kitchen spatula for applying concoctions");
                             break;
                             case 1:
-                                script_say("O cualquier cosa viscosa");
+                                script_say("Or anything viscous");
                             break;
                             default:
                                 end_script();
@@ -1228,7 +1228,7 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Un est£pido reloj de cocina en forma de estrella");
+                                script_say("A stupid star-shaped kitchen clock ");
                                 break;
                             default:
                                 end_script();
@@ -1243,17 +1243,17 @@ void inventory_update()
                             break;
                             case id_shirt:
                                 begin_script();
-                                script_say("®Esperabas que por juntar un reloj con una camiseta se convierta en una camiseta con estrella?");
+                                script_say("Did you expect that by pairing a watch with a t-shirt it would become a star t-shirt?");
                                 end_script();
                             break;
                             case id_fullCartridge:
                                 begin_script();
-                                script_say("Deberia abrir de alguna forma el cartucho para poder usar la tinta de dentro");
+                                script_say("I would have to open the cartridge somehow to be able to use the ink inside");
                                 end_script();
                             break;
                             case id_openedEmptyCartridge:
                                 begin_script();
-                                script_say("El cartucho no tiene tinta para pintarlo");
+                                script_say("Cartridge has no ink to paint it");
                                 end_script();
                             break;
                             case id_paintBucket:
@@ -1261,10 +1261,10 @@ void inventory_update()
                                 {
                                     case 0:
                                         begin_script();
-                                        script_say("La idea de pintar el reloj en forma de estrella no es mala");
+                                        script_say("The idea of painting the star clock is not a bad one");
                                     break;
                                     case 1:
-                                        script_say("Pero no necesito tanta pintura para ello y seguro que me hace falta para otra cosa");
+                                        script_say("But I don't need as much paint for it and I'm sure I need it for something else");
                                     break;
                                     default:
                                         end_script();
@@ -1283,10 +1283,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Una camiseta con una estrella negra impresa en medio");
+                                script_say("A t-shirt with a black star printed in the middle");
                                 break;
                             case 1:
-                                script_say("Ahora si que es clavadita a la m°a");
+                                script_say("Now it is nailed to mine");
                                 break;
                             default:
                                 end_script();
@@ -1303,10 +1303,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Son los copos de avena mezclados con el gel de ducha");
+                                script_say("It's the oat flakes mixed with the shower gel");
                                 break;
                             case 1:
-                                script_say("Han formado una masa viscosa grumosa");
+                                script_say("They have formed a lumpy viscous mass");
                                 break;
                             default:
                                 end_script();
@@ -1318,10 +1318,10 @@ void inventory_update()
                         {
                             case 0:
                                 begin_script();
-                                script_say("No querr°a tocar esta masa con las manos");
+                                script_say("You don't want to touch this dough with your hands");
                                 break;
                             case 1:
-                                script_say("Necesitar°a algo con lo que aplicarlo");
+                                script_say("Need something to apply it to");
                                 break;
                             default:
                                 end_script();
@@ -1347,7 +1347,7 @@ void inventory_update()
                         script_combine_inv_object(id_brain, id_paintBucket, id_blackBrain);
                     break;
                     case 1:
-                        script_say("Ahora tengo un bonito cerebro pintado de negro");
+                        script_say("Now I have a nice brain painted black");
                     break;
                     default:
                         end_script();
@@ -1363,10 +1363,10 @@ void inventory_update()
                         script_combine_inv_object(id_starClock, id_openedFullCartridge, id_blackStarClock);
                     break;
                     case 1:
-                        script_say("El reloj con forma de estrella ahora est† cubierto de pintura negra");
+                        script_say("The star-shaped clock is now covered in black paint");
                     break;
                     case 3:
-                        script_say("Y la pintura a£n mancha...");
+                        script_say("And the paint stains yet...");
                     break;
                     default:
                         end_script();
@@ -1381,7 +1381,7 @@ void inventory_update()
                         script_combine_inv_object(id_fullCartridge, 0, id_openedFullCartridge);
                     break;
                     case 1:
-                        script_say("He podido abrir el cartucho y est† lleno de tinta negra");
+                        script_say("I was able to open the cartridge and it is full of black ink");
                     break;
                     default:
                         end_script();
@@ -1397,7 +1397,7 @@ void inventory_update()
                         script_combine_inv_object(id_shirt, id_blackStarClock, id_starShirt);
                     break;
                     case 1:
-                        script_say("El reloj cubierto de tinta ha dejado una mancha en la camiseta en forma de estrella");
+                        script_say("The ink-covered clock has left a star-shaped stain on the t-shirt");
                     break;
                     default:
                         end_script();
@@ -1413,7 +1413,7 @@ void inventory_update()
                         script_combine_inv_object(id_gel, id_oat, id_oatMixed);
                     break;
                     case 1:
-                        script_say("Los copos de avena mezclados con el gel han formado una masa viscosa y grumosa");
+                        script_say("The oat flakes mixed with the gel have formed a viscous lumpy mass");
                     break;
                     default:
                         end_script();
@@ -1429,7 +1429,7 @@ void inventory_update()
                         play_sound(sd_paper);
                     break;
                     case 1:
-                        script_say("He metido las hojas del libro de deporte en la carpeta");
+                        script_say("I have put the sheets of the sports book in the folder");
                     break;
                     default:
                         end_script();
@@ -1443,19 +1443,19 @@ void inventory_update()
                         begin_script();
                         if (!is_game_flag(INFO_SPORT_WORK_FLAG))
                         {
-                            script_say("La idea de pringarme con avena no es mala pero, ®cual es el motivo de hacerlo?");
+                            script_say("The idea of stuffing myself with oats is not bad but, what is the reason for doing it?");
                             end_script();
                         }
                         else if (get_actual_room() != PE_OFFICE_ROOM_NUM)
                         {
-                            script_say("Si me pongo esta masa grumosa en el cuerpo quiz†s pueda simular una enfermedad");
+                            script_say("If I put this lumpy mass on my body, maybe I can simulate a disease");
                         }
                         else
                             script_remove_inv_object(id_oatMixed);
                     break;
                     case 1:
                         if (get_actual_room() != PE_OFFICE_ROOM_NUM)
-                            script_say("Pero no deber°a hacer esto aqu°");
+                            script_say("But I shouldn't do this here");
                         else
                             script_move_player(200, 142);
                     break;
@@ -1493,10 +1493,10 @@ void inventory_update()
                         script_combine_inv_object(id_money, id_coin, id_guitar);
                     break;
                     case 1:
-                        script_say("≠POR FIN!");
+                        script_say("AT LAST!");
                     break;
                     case 2:
-                        script_say("≠YA TENGO EL DINERO PARA LA ENTRADA!");
+                        script_say("I ALREADY HAVE THE MONEY FOR THE TICKET!");
                     break;
                     case 3:
                         set_game_flag(GAME_END_FLAG);
@@ -1515,10 +1515,10 @@ void inventory_update()
                         script_combine_inv_object(id_emptyCartridge, 0, id_openedEmptyCartridge);
                     break;
                     case 1:
-                        script_say("He podido abrir el cartucho pero no tiene tinta");
+                        script_say("I was able to open the cartridge but it has no ink");
                     break;
                     case 2:
-                        script_say("No creo que me sirva de mucho");
+                        script_say("I don't think it helps me much");
                     break;
                     default:
                         end_script();
