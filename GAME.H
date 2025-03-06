@@ -9,7 +9,7 @@
 
 //Definitions
 #define MAJOR_VERSION   1
-#define MINOR_VERSION   1
+#define MINOR_VERSION   2
 
 //Screen
 #define RES_X  320

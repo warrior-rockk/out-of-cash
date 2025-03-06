@@ -118,6 +118,9 @@ enum gameFlags{
     BATHROOM_DOOR_OPEN_FLAG,
     LOCKER_DOOR_OPEN_FLAG,
     PEOFFICE_DOOR_OPEN_FLAG,
+
+    //v1.2 flags
+    OPENED_EMPTY_CARTRIDGE_FLAG,
 };
 
 //definition of global game numeric vars index
