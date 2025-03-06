@@ -2486,15 +2486,15 @@ void credits_init()
     strcpy(credits.line[10], "Executive producer");
     strcpy(credits.line[11], "Emm... Warrior");
     strcpy(credits.line[12], "Associate Producer");
-    strcpy(credits.line[13], "Umm ¨Warrior?");
+    strcpy(credits.line[13], "Umm Warrior?");
     strcpy(credits.line[14], "Marketing");
-    strcpy(credits.line[15], "-Ah yes! Warrior");
+    strcpy(credits.line[15], "Ah yes! Warrior");
     strcpy(credits.line[16], "Accounting");
     strcpy(credits.line[17], "CASIO calculator");
     strcpy(credits.line[18], "Quality control");
-    strcpy(credits.line[19], "Control de...¨qu?");
+    strcpy(credits.line[19], "Quality Whaat?");
     strcpy(credits.line[20], "Special thanks");
-    strcpy(credits.line[21], "Cris Cros\nProfesor P¡xel\nJota\nMeraki\nLuqquino");
+    strcpy(credits.line[21], "Cris Cros\nProfesor PÂ¡xel\nJota\nMeraki\nLuqquino");
     
     strcpy(credits.line[22], "Thanks for playing!");
 

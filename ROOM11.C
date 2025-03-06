@@ -141,7 +141,7 @@ void r11_update_dialog_selection()
                         dialog_add("10 laps? Who do you think I am, Aquaman?",2);
                         dialog_add("Ah but, Do we have a pool in this school?", 2);
                         if (!is_game_flag(INFO_SPORT_WORK_FLAG))
-                            dialog_add("And there's nothing else I can do to pass?”", 2);
+                            dialog_add("And there's nothing else I can do to pass?", 2);
                         else
                             dialog_add("What about the skin disease?", 2);
                         dialog_add("So, Do I have to pass an arcade swimming test?", 2);
@@ -413,7 +413,7 @@ void r11_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Stuff varias que pertenecen al profesor de educaci¢n f¡sica");
+                                script_say("Stuff varias que pertenecen al profesor de educaciÂ¢n fÂ¡sica");
                                 break;
                             default:
                                 end_script();
@@ -496,7 +496,7 @@ void r11_update_room_script()
                             break;
                             case 1:
                                 change_player_dir(DIR_RIGHT);
-                                script_say("Excuse me, professor…");
+                                script_say("Excuse me, teacher");
                             break;
                             case 2:
                                 script_start_dialog(1);
@@ -540,7 +540,7 @@ void r11_update_room_script()
                                     break;
                                     case 1:
                                         change_player_dir(DIR_RIGHT);
-                                        script_say("Excuse me, professor…");
+                                        script_say("Excuse me, teacher");
                                     break;
                                     case 2:
                                         script_say("Here 's the work about the sport");
@@ -562,7 +562,7 @@ void r11_update_room_script()
                                         roomScript.step++;
                                     break;
                                     case 8:
-                                        script_say_actor("All rightm, Good job", &r11_dialogActor);
+                                        script_say_actor("All right, Good job", &r11_dialogActor);
                                     break;
                                     case 9:
                                         script_say_actor("You have the subject approved", &r11_dialogActor);
@@ -620,7 +620,7 @@ void r11_update_room_script()
                         begin_script();
                         object_pos_on_player(&r11_object[R11_PLY_BACK_OAT_OBJ_ID]);
                         change_player_dir(DIR_BACK);
-                        script_say("Emm... ¨Teacher?");
+                        script_say("Emm... Teacher?");
                     break;
                     case 1:
                         script_say("I'm afraid I won't be able to do the swim test");

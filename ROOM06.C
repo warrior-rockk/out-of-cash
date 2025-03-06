@@ -621,7 +621,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It´s the door to the computers classroom");
+                                script_say("ItÂ´s the door to the computers classroom");
                                 break;
                             default:
                                 end_script();
@@ -663,7 +663,7 @@ void r06_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It´s the window of the computers classroom");
+                                script_say("ItÂ´s the window of the computers classroom");
                                 break;
                             default:
                                 script_say("So you can see if there is any computer available");
@@ -843,7 +843,7 @@ void r06_update_room_script()
                                 script_say("It is the school photograph of the 57th generation of teachers");
                                 break;
                             default:
-                                script_say("A herd of dinosaurs is what they are…");
+                                script_say("A herd of dinosaurs is what they are¦");
                                 end_script();
                                 break;
                         }

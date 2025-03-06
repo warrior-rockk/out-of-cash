@@ -152,7 +152,7 @@ void r12_update_dialog_selection()
                         dialog_add("How I can trust that the answers are correct?",2);
                         dialog_add("Terrific! I need the answers of Maths of first grade", 3);
                         if (!is_game_flag(HISTORY_APPROVED_FLAG))
-                            dialog_add("­Perfecto! I need first grade History answers", 2);
+                            dialog_add("Terrific! I need first grade History answers", 2);
                         dialog_add("Thanks, but no thanks.", 1);
                     break;
                     case 3:
@@ -333,7 +333,7 @@ void r12_update_room_script()
                         switch (roomScript.step)
                         {
                             case 1:
-                                script_say_actor("Hmmm…", &r12_dialogActor);
+                                script_say_actor("Hmmm", &r12_dialogActor);
                             break;
                             case 2:
                                 script_say_actor("You know, my main motivation is money", &r12_dialogActor);
@@ -655,7 +655,7 @@ void r12_update_room_script()
                             case id_photocopy:
                                 if (!is_game_flag(INFO_ANIME_FLAG))
                                 {
-                                    script_say("¨Why should I give him this photocopy of Dragon Ball?");
+                                    script_say("Â¨Why should I give him this photocopy of Dragon Ball?");
                                     end_script();
                                 }
                                 else

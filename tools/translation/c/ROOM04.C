@@ -195,7 +195,7 @@ void r04_update_dialog_selection()
                     case 4:
                         dialog_add("But it's just that mathematics is very difficult!", 4);
                         dialog_add("But history sucks!", 4);
-                        dialog_add("Physical Education? What it's usefulness?"", 4);
+                        dialog_add("Physical Education? What it's usefulness?", 4);
                         dialog_add("Fuck...", 1);
                     break;
                 }

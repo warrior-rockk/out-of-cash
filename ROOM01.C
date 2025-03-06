@@ -557,7 +557,7 @@ void r01_update_room_script()
                                 break;
                             case 1:
                                 begin_script();
-                                script_say("It's very glued to the floor");
+                                script_say("It's very glued to the floor");
                                 break;
                             default:
                                 end_script();
@@ -891,10 +891,10 @@ void r01_update_room_script()
                             {
                                 case 0:
                                     begin_script();
-                                    script_say("It´s the ink cartridge of the printer");
+                                    script_say("ItÂ´s the ink cartridge of the printer");
                                 break;
                                 case 1:
-                                    script_say("But it´s empty");
+                                    script_say("But itÂ´s empty");
                                 break;
                                 default:
                                     end_script();

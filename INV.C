@@ -543,7 +543,7 @@ void inventory_update()
                                     end_script();
                                 }
                                 else
-                                    script_say("He suspendido Mathematics, History and Physical Education");
+                                    script_say("He failed Mathematics, History and Physical Education");
                                 break;
                             case 2:
                                 if (is_game_flag(HISTORY_APPROVED_FLAG) ||
@@ -1156,7 +1156,7 @@ void inventory_update()
                                         script_say("That's it?");
                                     break;
                                     case 1:
-                                        script_say("Is that what you think?”");
+                                        script_say("Is that what you think?");
                                     break;
                                     case 2:
                                         script_wait(5);

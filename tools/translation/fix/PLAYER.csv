@@ -1,0 +1,8 @@
+sp;eng
+player.h;player.h
+game.h;game.h
+engine.h;engine.h
+utils.h;utils.h
+Destroy PLAYER system\n;Destroy PLAYER system\n
+PLAYER system destroyed\n;PLAYER system destroyed\n
+Draw player with frame %i\n;Draw player with frame %i\n

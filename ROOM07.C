@@ -170,7 +170,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It´s the door that leads to the high school hallway");
+                                script_say("ItÂ´s the door that leads to the high school hallway");
                                 break;
                             default:
                                 end_script();
@@ -323,7 +323,7 @@ void r07_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("Sheets y hojas llenadas de garabatos que significaran algo para alguien");
+                                script_say("Sheets and sheets filled with scribbles that would mean something to someone");
                                 break;
                             default:
                                 end_script();

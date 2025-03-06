@@ -1,0 +1,169 @@
+sp;eng
+allegro.h;allegro.h
+engine.h;engine.h
+game.h;game.h
+rooms.h;rooms.h
+inv.h;inv.h
+player.h;player.h
+utils.h;utils.h
+GDATA.H;GDATA.H
+IDATA.H;IDATA.H
+SDATA.H;SDATA.H
+MDATA.H;MDATA.H
+WARCOM SOFT 2025;WARCOM SOFT 2025
+Long time ago, on the year 1995 in a vulgar city;Long time ago, on the year 1995 in a vulgar city
+Our protagonist walks carefree\nin the street like any other day;Our protagonist walks carefree\nin the street like any other day
+Nothing seems to worry him in life until\na poster powerfully calls his attention;Nothing seems to worry him in life until\na poster powerfully calls his attention
+(SIN BLANCA);(SIN BLANCA)
+Click to start;Click to start
+GAME IS PAUSED;GAME IS PAUSED
+ALLEGRO_TRACE;ALLEGRO_TRACE
+GAME.LOG;GAME.LOG
+Outcash version %i.%i\n;Outcash version %i.%i\n
+Initializing systems and modules\n;Initializing systems and modules\n
+Starting Out of Cash v%i.%i\n;Starting Out of Cash v%i.%i\n
+Error iniciando el modulo timer;Error iniciando el modulo timer
+Error iniciando el mouse;Error iniciando el mouse
+Error iniciando el teclado;Error iniciando el teclado
+Error iniciando el sonido;Error iniciando el sonido
+All system and modules initialized\n;All system and modules initialized\n
+Error seteando modo grafico;Error seteando modo grafico
+X;X
+Y;Y
+Player x;Player x
+Player y;Player y
+Script.step;Script.step
+FPS;FPS
+Loading game resources\n;Loading game resources\n
+\rLoading game resources.;\rLoading game resources.
+GDATA.DAT;GDATA.DAT
+Archivo GDATA.DAT invalido o inexistente;Archivo GDATA.DAT invalido o inexistente
+\rLoading game resources..;\rLoading game resources..
+PDATA.DAT;PDATA.DAT
+Archivo PDATA.DAT invalido o inexistente;Archivo PDATA.DAT invalido o inexistente
+\rLoading game resources...;\rLoading game resources...
+IDATA.DAT;IDATA.DAT
+Archivo IDATA.DAT invalido o inexistente;Archivo IDATA.DAT invalido o inexistente
+\rLoading game resources....;\rLoading game resources....
+MDATA.DAT;MDATA.DAT
+Archivo MDATA.DAT invalido o inexistente;Archivo MDATA.DAT invalido o inexistente
+\rLoading game resources.....;\rLoading game resources.....
+SDATA.DAT;SDATA.DAT
+Archivo SDATA.DAT invalido o inexistente;Archivo SDATA.DAT invalido o inexistente
+\rLoading game resources......;\rLoading game resources......
+verdana8;verdana8
+GDATA.DAT;GDATA.DAT
+verdana8Bold;verdana8Bold
+GDATA.DAT;GDATA.DAT
+verdana9;verdana9
+GDATA.DAT;GDATA.DAT
+verdana9Bold;verdana9Bold
+GDATA.DAT;GDATA.DAT
+gameFont;gameFont
+GDATA.DAT;GDATA.DAT
+\nGame resources loaded\n;\nGame resources loaded\n
+Game resources loaded\n;Game resources loaded\n
+Freeing game resources\n;Freeing game resources\n
+Destroying data file index\n;Destroying data file index\n
+Unloading data files\n;Unloading data files\n
+Unloading fonts\n;Unloading fonts\n
+Unload music data file object\n;Unload music data file object\n
+Game resources free completed\n;Game resources free completed\n
+Game initialized\n;Game initialized\n
+midi pos %ld\n;midi pos %ld\n
+Change game state from %i to %i\n;Change game state from %i to %i\n
+Object %i Position x: %i Position y: %i\n;Object %i Position x: %i Position y: %i\n
+\n;\n
+%s;%s
+%s;%s
+%s;%s
+%s;%s
+%s;%s
+\n;\n
+savegame.00%i;savegame.00%i
+rb;rb
+\0;\0
+\0;\0
+no read;no read
+\0;\0
+error version;error version
+\0;\0
+savegame.00%i;savegame.00%i
+wb;wb
+Unable to create save file;Unable to create save file
+Error writing save file;Error writing save file
+Saved game on slot %i with date: %s\n;Saved game on slot %i with date: %s\n
+savegame.00%i;savegame.00%i
+rb;rb
+Unable to open save file;Unable to open save file
+Error reading save file;Error reading save file
+Incompatible save file version;Incompatible save file version
+Loaded game from slot %i with date: %s\n;Loaded game from slot %i with date: %s\n
+Game saved play time: %02dh %02dm\n;Game saved play time: %02dh %02dm\n
+Change from room %i to room %i\n;Change from room %i to room %i\n
+Exiting game\n;Exiting game\n
+Quit allegro modules\n;Quit allegro modules\n
+Game played for: %02dh %02dm\n;Game played for: %02dh %02dm\n
+Thanks for playing Out of Cash!\n;Thanks for playing Out of Cash!\n
+Game played for: %02dhours and %02dminutes\n;Game played for: %02dhours and %02dminutes\n
+Color hud;Color hud
+Color menu;Color menu
+Color room;Color room
+Color dialog;Color dialog
+%s: %i;%s: %i
+%s %s con %s;%s %s con %s
+%s %s a %s;%s %s a %s
+%s %s;%s %s
+\n;\n
+\n;\n
+R%02dDATA.DAT;R%02dDATA.DAT
+Load room datafile: %s\n;Load room datafile: %s\n
+Invalid or non-existent %s file;Invalid or non-existent %s file
+    Script step from %i to %i\n;    Script step from %i to %i\n
+Free actual room datafile resources\n;Free actual room datafile resources\n
+Error loading hotspot room image\n;Error loading hotspot room image\n
+Error accessing non-existent object index;Error accessing non-existent object index
+Destroy GUI system\n;Destroy GUI system\n
+Destroy GUI system\n;Destroy GUI system\n
+%i.%s;%i.%s
+%i.%s;%i.%s
+%i.%s;%i.%s
+%i.%s;%i.%s
+Out Of Cash\n \nProgrammed by Warrior\n \nWarcom Soft.2025;Out Of Cash\n \nProgrammed by Warrior\n \nWarcom Soft.2025
+v%i.%i;v%i.%i
+%s;%s
+%s;%s
+SFX voice %i allocated to soundcard voice %i\n;SFX voice %i allocated to soundcard voice %i\n
+SFX system initialized\n;SFX system initialized\n
+Destroy SFX system\n;Destroy SFX system\n
+SFX system destroyed\n;SFX system destroyed\n
+Original freq: %iHz | ;Original freq: %iHz | 
+Variation: -%i%% | ;Variation: -%i%% | 
+Variation: +%i%% | ;Variation: +%i%% | 
+New freq: %iHz\n;New freq: %iHz\n
+Load music data file object\n;Load music data file object\n
+Play midi music\n;Play midi music\n
+Stopping midi\n;Stopping midi\n
+A game by;A game by
+Warrior;Warrior
+Programming;Programming
+Warrior;Warrior
+Graphics;Graphics
+Warrior;Warrior
+Music;Music
+Warrior;Warrior
+Sound ;Sound 
+Warrior;Warrior
+Executive producer;Executive producer
+Emm... Warrior;Emm... Warrior
+Associate Producer;Associate Producer
+Umm Â¨Warrior?;Umm Warrior?
+Marketing;Marketing
+-Ah yes! Warrior;Ah yes! Warrior
+Accounting;Accounting
+CASIO calculator;CASIO calculator
+Quality control;Quality control
+Control de...Â¨quÂ?;Quality Whaat?
+Special thanks;Special thanks
+Cris Cros\nProfesor PÂ¡xel\nJota\nMeraki\nLuqquino;Cris Cros\nProfesor PÂ¡xel\nJota\nMeraki\nLuqquino
+Thanks for playing!;Thanks for playing!

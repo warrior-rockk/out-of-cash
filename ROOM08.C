@@ -328,7 +328,7 @@ void r08_update_room_script()
                             script_wait(2);
                         break;
                         case 3:
-                            script_say("Touché");
+                            script_say("TouchÃÂ©");
                         break;
                         default:
                             script_next_dialog_node();
@@ -483,7 +483,7 @@ void r08_update_room_script()
                     {
                         case 1:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("­Oh! Really?", &r08_dialogActor);
+                            script_say_actor("ÃOh! Really?", &r08_dialogActor);
                         break;
                         case 2:
                             script_say_actor("Okay, I will help you!", &r08_dialogActor);

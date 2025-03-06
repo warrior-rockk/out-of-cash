@@ -435,7 +435,7 @@ void r02_update_room_script()
                                 script_say("The door to the street");
                                 break;
                             case 1:
-                                script_say("­­To freedom!!");
+                                script_say("To freedom!!");
                                 break;
                             default:
                                 end_script();

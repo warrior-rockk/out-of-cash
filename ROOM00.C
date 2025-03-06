@@ -317,7 +317,7 @@ void r00_update_room_script()
                         script_say("Introducing new album");
                     break;
                     case 9:
-                        script_say("­Cool!!");
+                        script_say("Cool!!");
                     break;
                     case 10:
                         script_say("30 bucks for ticket");
@@ -327,7 +327,7 @@ void r00_update_room_script()
                         script_say("Not cool!");
                     break;
                     case 12:
-                        script_say("¨30 bucks for ticket? Yo no tengo tanto dinero");
+                        script_say("30 bucks for ticket? I don't have that much money");
                     break;
                     case 13:
                         script_wait(2);
@@ -339,7 +339,7 @@ void r00_update_room_script()
                         script_say("But I have to go to that concert at all costs");
                     break;
                     case 16:
-                        script_say("­I have to get the money somehow!");
+                        script_say("I have to get the money somehow!");
                     break;
                     default:
                         clear_game_flag(INTRO_FLAG);

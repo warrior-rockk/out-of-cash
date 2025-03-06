@@ -195,7 +195,7 @@ void r10_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("What is the function of this switch?"");
+                                script_say("What is the function of this switch?");
                                 break;
                             default:
                                 end_script();

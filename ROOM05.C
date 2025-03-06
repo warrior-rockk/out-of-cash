@@ -199,7 +199,7 @@ void r05_update_dialog_selection()
                             dialog_add("What is the printer for?",1);
                         else
                             dialog_add("Can you print me a schedule?",0);
-                        dialog_add("I don’t need anything, thanks.",0);
+                        dialog_add("I don't need anything, thanks.",0);
                     break;
                     case 3:
                         dialog_add("I like to take a Dragon Ball photocopy",4);
@@ -333,7 +333,7 @@ void r05_update_room_script()
                            break;
                            case 5:
                                if (is_game_flag(PRINTED_SCHOOL_SCHEDULE_FLAG) || is_game_flag(PRINTED_SCHOOL_SCHEDULE_PHOTO_FLAG) || is_game_flag(PRINTED_PHOTOCOPY_FLAG))
-                                   script_say_actor("­Oh wow! I think there's already a printed schedule from before", &r05_dialogActor);
+                                   script_say_actor("Oh wow! I think there's already a printed schedule from before", &r05_dialogActor);
                                else if (is_game_flag(SHEETS_NOT_ON_PRINTER_FLAG) && !is_game_flag(PHOTOCOPY_ON_PRINTER_FLAG))
                                    script_say_actor("Ummm... sorry, I ran out of sheets in the printer", &r05_dialogActor);
                                else if (is_game_flag(FULL_CARTRIDGE_NOT_ON_PRINTER_FLAG) && !is_game_flag(EMPTY_CARTRIDGE_ON_PRINTER_FLAG))
@@ -998,7 +998,7 @@ void r05_update_room_script()
                                 switch (rand() % 4)
                                 {
                                     case 0:
-                                        script_say_actor("Oh...Thank you, pero no sabr¡a que hacer con esto", &r05_dialogActor);
+                                        script_say_actor("Oh...Thank you, pero no sabrÂ¡a que hacer con esto", &r05_dialogActor);
                                     break;
                                     case 1:
                                         script_say_actor("Very kind, but I don't need it", &r05_dialogActor);

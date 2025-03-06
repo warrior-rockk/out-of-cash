@@ -443,7 +443,7 @@ void r08_update_room_script()
                         break;
                         case 4:
                             set_game_flag(NERD_SIDE_FLAG);
-                            script_say_actor("What do you mean?"", &r08_dialogActor);
+                            script_say_actor("What do you mean?", &r08_dialogActor);
                         break;
                         case 5:
                             script_say("I was thinking about you taking the exam for me");
@@ -452,7 +452,7 @@ void r08_update_room_script()
                             script_wait(20);
                         break;
                         case 7:
-                            script_say_actor("But…", &r08_dialogActor);
+                            script_say_actor("But...", &r08_dialogActor);
                         break;
                         case 8:
                             script_wait(10);

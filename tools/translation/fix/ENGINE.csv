@@ -1,0 +1,66 @@
+sp;eng
+engine.h;engine.h
+utils.h;utils.h
+game.h;game.h
+inv.h;inv.h
+player.h;player.h
+use with;use with
+give x to;give x to
+Nothing remarkable;Nothing remarkable
+I can't see anything.;I can't see anything.
+Nothing special.;Nothing special.
+Nothing of interest;Nothing of interest
+No interest;No interest
+Nothing to see here;Nothing to see here
+Not needed;Not needed
+It's good where it is;It's good where it is
+I'm not going to fill the inventory with useless junk either;I'm not going to fill the inventory with useless junk either
+I don't want to take it;I don't want to take it
+It's better than not;It's better than not
+I don't want to accumulate junk;I don't want to accumulate junk
+It's fine as it is;It's fine as it is
+Not for opening;Not for opening
+No need to open it;No need to open it
+No need to open it;No need to open it
+It's fine as it is;It's fine as it is
+Not to close;Not to close
+No need to close it;No need to close it
+No need to close it;No need to close it
+Doesn't seem to work;Doesn't seem to work
+It doesn't go well together;It doesn't go well together
+Does nothing;Does nothing
+Those things don't go together;Those things don't go together
+I prefer to keep it;I prefer to keep it
+I'd better keep it;I'd better keep it
+He doesnât want itâ¦;He doesn't want it
+I don't know if he want to talk;I don't know if he want to talk
+Better to be quiet;Better to be quiet
+I think that doesn't speak;I think that doesn't speak
+I've run out of words.;I've run out of words.
+I don't think he'll answer;I don't think he'll answer
+Things don't talk;Things don't talk
+I have nothing to say to him.;I have nothing to say to him.
+I don't need to move it;I don't need to move it
+It's okay like that!;It's okay like that!
+I don't feel like moving it;I don't feel like moving it
+No need to move;No need to move
+Better be still;Better be still
+No;No
+I don't think it's moving;I don't think it's moving
+It isn't necessary;It isn't necessary
+I don't have anything programmed;I don't have anything programmed
+I prefer not;I prefer not
+I don't know what you intend to happen;I don't know what you intend to happen
+I think that doesn't work;I think that doesn't work
+I don't have to do everything you say either...;I don't have to do everything you say either...
+Begin Script\n;Begin Script\n
+    Script Object:%i\n;    Script Object:%i\n
+    Script InvObject:%i\n;    Script InvObject:%i\n
+    Script Verb:%i\n;    Script Verb:%i\n
+    Script Type:%i\n;    Script Type:%i\n
+End Script\n;End Script\n
+Begin Script\n;Begin Script\n
+    Script Object:%i\n;    Script Object:%i\n
+    Script InvObject:%i\n;    Script InvObject:%i\n
+    Script Verb:%i\n;    Script Verb:%i\n
+    Script Type:%i\n;    Script Type:%i\n

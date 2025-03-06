@@ -437,7 +437,7 @@ void r01_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("It's a cassette of the last album that\ "The Repeaters Offenders\" has taken out");
+                                script_say("It's a cassette of the last album that \"The Repeaters Offenders\" has taken out");
                                 break;
                             case 1:
                                 begin_script();

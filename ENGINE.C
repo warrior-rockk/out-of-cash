@@ -511,7 +511,7 @@ void default_verb_action(enum verbs roomVerb)
                     say("I'd better keep it");
                     break;
                 default:
-                    say("He doesn’t want it…");
+                    say("He doesn't want it");
                     break;
             }
             break;

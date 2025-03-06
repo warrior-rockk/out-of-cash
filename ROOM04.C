@@ -180,7 +180,7 @@ void r04_update_dialog_selection()
                             dialog_add("What did I have to do to give me the money?", 4);
                         else
                             dialog_add("I HAVE ALREADY APPROVED EVERYTHING!", 0);
-                        dialog_add("Da igual...", 0);
+                        dialog_add("Whatever...", 0);
                     break;
                     case 2:
                         dialog_add("There's a concert I want to go to...", 3);
@@ -264,7 +264,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I’m not hungry ");
+                                script_say("I'm not hungry ");
                                 break;
                             default:
                                 end_script();
@@ -281,7 +281,7 @@ void r04_update_room_script()
                         {
                             case 0:
                                 begin_script();
-                                script_say("I think I have more memories of my father reading the newspaperthan than playing with me");
+                                script_say("I think I have more memories of my father reading the newspaper than than playing with me");
                                 break;
                             default:
                                 end_script();
@@ -303,7 +303,7 @@ void r04_update_room_script()
                                 break;
                             case 1:
                                 change_player_dir(DIR_RIGHT);
-                                script_say("Ejem... ¨Dad?");
+                                script_say("Ejem... Dad?");
                             break;
                             default:
                                 script_start_dialog(1);                                
@@ -769,7 +769,7 @@ void r04_update_room_script()
                                 script_say_actor("Until I see your califications don't believe it", &r04_dialogActor);
                             }
                             else if (is_game_flag(FATHER_SAY_MONEY_FLAG))
-                                script_say_actor("Aprueba Mathematics, History y Physical education y te dar el dinero", &r04_dialogActor);
+                                script_say_actor("Pass Mathematics, History y Physical education and I will give you the money", &r04_dialogActor);
                             else
                                 roomScript.step++;
                         break;
@@ -830,7 +830,7 @@ void r04_update_room_script()
                             script_say_actor("If you pass the subjects you failed, I will give you the money", &r04_dialogActor);
                         break;
                         case 4:
-                            script_say_actor("Para ello tendr s que aprobar Mathematics, History y Educaci¢n F¡sica", &r04_dialogActor);
+                            script_say_actor("You must pass Mathematics, History and Physical Education", &r04_dialogActor);
                             set_game_flag(FATHER_SAY_MONEY_FLAG);
                         break;
                         default:
@@ -843,7 +843,7 @@ void r04_update_room_script()
                     switch (roomScript.step)
                     {
                         case 1:
-                            script_say_actor("Es tu obligaci¢n aprender las Mathematics", &r04_dialogActor);
+                            script_say_actor("It is your obligation to learn mathematics", &r04_dialogActor);
                         break;
                         default:
                             script_next_dialog_node();
