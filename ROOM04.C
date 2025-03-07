@@ -684,7 +684,7 @@ void r04_update_room_script()
                         script_combine_inv_object(id_califications, 0, id_money);
                     break;
                     case 4:
-                        script_say("But, Dad, there are only 29 bucks here");
+                        script_say("But, Dad, there are only 29 bucks and 75 pennies here");
                     break;
                     case 5:
                         script_say("The concert ticket is worth 30!");

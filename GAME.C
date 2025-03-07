@@ -70,10 +70,10 @@ int main()
                 switch (seq.step)
                 {
                     case 0:
-                        game_write("Long time ago, on the year 1995 in a vulgar city", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                        game_write("Long time ago, on the year 1995 in any city", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 1:
-                        game_write("Our protagonist walks carefree\nin the street like any other day", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
+                        game_write("Our protagonist walks carefree\ndown the street like any other day", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
                     break;
                     case 2:
                         game_write("Nothing seems to worry him in life until\na poster powerfully calls his attention", C_X, C_Y, 2, makecol(GAME_TEXT_COLOR), BLACK_COLOR);
@@ -105,7 +105,7 @@ int main()
 
                 //draw game title
                 draw_sprite(buffer, (BITMAP *)gameDataFile[gd_title].dat, (C_X) - (((BITMAP *)gameDataFile[gd_title].dat)->w>>1), (GAME_TITLE_POS_Y) - (((BITMAP *)gameDataFile[gd_title].dat)->h>>1));
-                game_write("(SIN BLANCA)", C_X, GAME_TITLE_ESP_POS_Y, 2, WHITE_COLOR, 0);
+                game_write("", C_X, GAME_TITLE_ESP_POS_Y, 2, WHITE_COLOR, 0);
                 game_write("Click to start", C_X, GAME_TITLE_FOOTER_POS_Y, 2, makecol(255,233,12), 0);
                 cursor_draw();
                 
@@ -2494,7 +2494,7 @@ void credits_init()
     strcpy(credits.line[18], "Quality control");
     strcpy(credits.line[19], "Quality Whaat?");
     strcpy(credits.line[20], "Special thanks");
-    strcpy(credits.line[21], "Cris Cros\nProfesor PÂ¡xel\nJota\nMeraki\nLuqquino");
+    strcpy(credits.line[21], "Cris Cros\nProfesor PÃÂ¡xel\nJota\nMeraki\nLuqquino");
     
     strcpy(credits.line[22], "Thanks for playing!");
 
