@@ -63,3 +63,16 @@ ESC key during gameplay:
 SPACE key during gameplay:
 
 -Pauses the game
+
+Quick access key to select verbs:
+	-During gameplay, you can press these keys to select verbs without down to selection verb area:
+	
+	-Key Q: Selects GO
+	-Key W: Selects LOOK
+	-Key E: Selects OPEN
+	-Key A: Selects TAKE
+	-Key S: Selects USE
+	-Key D: Selects CLOSE
+	-Key Z: Selects MOVE
+	-Key X: Selects GIVE
+	-Key C: Selects TALK

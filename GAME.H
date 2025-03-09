@@ -9,7 +9,7 @@
 
 //Definitions
 #define MAJOR_VERSION   1
-#define MINOR_VERSION   2
+#define MINOR_VERSION   3
 
 //Screen
 #define RES_X  320
@@ -316,7 +316,7 @@ typedef struct tKey{
     bool memPressed;
 } tKey;
 
-#define GAME_KEYS_NUM 12
+#define GAME_KEYS_NUM 19
 static tKey gameKeys[GAME_KEYS_NUM] =
 {
     #define G_KEY_PAUSE     0
@@ -331,7 +331,14 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     #define G_KEY_D         9
     #define G_KEY_I         10
     #define G_KEY_F         11
-    
+    #define G_KEY_Q         12
+    #define G_KEY_E         13
+    #define G_KEY_A         14
+    #define G_KEY_S         15
+    #define G_KEY_Z         16
+    #define G_KEY_X         17
+    #define G_KEY_C         18
+
     {KEY_SPACE, false, false},
     {KEY_ESC, false, false},
     {KEY_W, false, false},
@@ -344,6 +351,13 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_D, false, false},
     {KEY_I, false, false},
     {KEY_F, false, false},
+    {KEY_Q, false, false},
+    {KEY_E, false, false},
+    {KEY_A, false, false},
+    {KEY_S, false, false},
+    {KEY_Z, false, false},
+    {KEY_X, false, false},
+    {KEY_C, false, false},
 };
 
 //sfx voices structure
@@ -442,6 +456,7 @@ void cursor_action_room();
 void cursor_action_HUD();
 void cursor_action_menu();
 void cursor_action_dialog();
+void cursor_select_verb(enum verbs selectedVerb);
 
 void tick_init();
 void tick_update();
