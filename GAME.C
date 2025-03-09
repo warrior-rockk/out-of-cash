@@ -581,6 +581,25 @@ void game_update()
             else
             {
                 check_room_changed();
+                //quick access keys to select verbs
+                if (gameKeys[G_KEY_Q].pressed)
+                    cursor_select_verb(GO);
+                if (gameKeys[G_KEY_W].pressed)
+                    cursor_select_verb(LOOK);
+                if (gameKeys[G_KEY_E].pressed)
+                    cursor_select_verb(OPEN);
+                if (gameKeys[G_KEY_A].pressed)
+                    cursor_select_verb(TAKE);
+                if (gameKeys[G_KEY_S].pressed)
+                    cursor_select_verb(USE);
+                if (gameKeys[G_KEY_D].pressed)
+                    cursor_select_verb(CLOSE);
+                if (gameKeys[G_KEY_Z].pressed)
+                    cursor_select_verb(MOVE);
+                if (gameKeys[G_KEY_X].pressed)
+                    cursor_select_verb(GIVE);
+                if (gameKeys[G_KEY_C].pressed)
+                    cursor_select_verb(TALK);
             }
         break;
         case PAUSE_STATE:
@@ -1214,6 +1233,15 @@ void cursor_update()
     }
 }
 
+//function to select verb on cursor
+void cursor_select_verb(enum verbs selectedVerb)
+{
+    cursor.selectedVerb = selectedVerb;
+    //clear cursor inventory vars
+    cursor.invObject = 0;
+    strcpy(cursor.invObjName,"");
+}
+
 //function that handles action of cursor on HUD
 void cursor_action_HUD()
 {
@@ -1227,21 +1255,11 @@ void cursor_action_HUD()
 
         //if mouse click and action is valid
         if (cursor.click && hsColor > 0 && hsColor <= NUM_VERBS)
-        {
-            cursor.selectedVerb = hsColor - 1;
-            //clear cursor inventory vars
-            cursor.invObject = 0;
-            strcpy(cursor.invObjName,"");
-        }
+            cursor_select_verb(hsColor - 1);
 
         //if mouse left on hud: default verb
         if (cursor.rightClick)
-        {
-            cursor.selectedVerb = GO;
-            //clear cursor inventory vars
-            cursor.invObject = 0;
-            strcpy(cursor.invObjName,"");
-        }
+            cursor_select_verb(GO);
     }
     else if (mouse_x < HUD_INVENTORY_X)
     {

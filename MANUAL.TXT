@@ -53,3 +53,16 @@ Tecla ESC durante la partida:
 Tecla ESPACIO durante la partida:
 	
 	-Pausa el juego
+
+Teclas acceso directo a los verbos:
+	-Durante el juego, puedes pulsar las siguientes teclas para seleccionar los verbos sin tener que bajar a la zona de seleccion de verbos:
+
+	-Tecla Q: Selecciona IR
+	-Tecla W: Selecciona MIRAR
+	-Tecla E: Selecciona ABRIR
+	-Tecla A: Selecciona COGER
+	-Tecla S: Selecciona USAR
+	-Tecla D: Selecciona CERRAR
+	-Tecla Z: Selecciona MOVER
+	-Tecla X: Selecciona DAR
+	-Tecla C: Selecciona HABLAR

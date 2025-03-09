@@ -1,8 +1,7 @@
 # TO-DO
 
 - [ ] Gameplay:
-    * more look descriptions on stationery?
-    * more dialog lines on actors
+    * puzzle with corridor elephant, flower, lamp to open door and gag:s Unbelieve!
     * open oven and fridge kitchen?
 
 - [ ] Funtion to move player to specific velocity?
