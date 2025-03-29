@@ -67,7 +67,7 @@ void r01_get_hotspot_name(uint8_t colorCode, char *s)
                 strcpy(s, "Figures");
             break;
         case r01_cartridge:
-            if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+            if (r01_object[R01_CARTRIDGE_OBJ_ID].active)
             {
                 strcpy(s, "Empty cartridge");
                 break;
@@ -147,7 +147,7 @@ enum verbs r01_get_default_hotspot_verb(uint8_t colorCode)
             return LOOK;
             break;
         case r01_cartridge:
-            if (is_game_flag(r01_object[R01_CARTRIDGE_OBJ_ID].active))
+            if (r01_object[R01_CARTRIDGE_OBJ_ID].active)
             {
                 return LOOK;
                 break;
