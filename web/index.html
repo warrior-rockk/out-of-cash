@@ -1,34 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Out of Cash (Sin Blanca) v1.3</title>
-
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        #dos {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
-    <!-- js-dos style sheet -->
-    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-
-    <!-- js-dos -->
-    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out of Cash (Sin blanca)</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script type="module" crossorigin src="js-dos.js"></script>
+  <link rel="stylesheet" crossorigin href="js-dos.css">
 </head>
+
 <body>
-
-    <div id="dos" style="width: 100%; height: 100%"></div>
-
-    <script>
-        Dos(document.getElementById("dos"), {
-            url: "Out-of-cash.jsdos",
+  <div id="app"></div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    document.addEventListener("DOMContentLoaded", () => {
+      const props = Dos(document.getElementById("app"),
+        {
+          url: "out-of-cash.jsdos",		            
+          autoStart: true,
+          // kiosk: true,
+          //background: "https://dos.zone/images/http/original/2X/f/f833b147609640191342f555d70eb07261f53c03.png/0a94af564ab81a14a27d6a67671e5416.webp",
+          pathPrefix: "emulators/",
+          ipxBackend: params.get("ipxBackend"),
+          room: params.get("room"),          
+          noNetworking: false,
+          noCursor: true,		  
+          renderAspect: "AsIs",
+          // renderBackend: "webgl",
+          imageRendering: "pixelated",
+		  backend: "dosboxX",
+		  backendLocked: true,
+		  softkeyboardlayout: [
+            [
+              [
+                "{layout} {up}",
+              ],
+            ],
+            [
+              [
+                "{layout} {down}",
+              ],
+            ],
+          ],
+          // key: "-----",
+          onEvent: (event, arg) => {
+            console.log("Event", event, arg);
+            if (event === "ci-ready") {
+              console.log("js-dos version:", props.getVersion());
+              window.ci = arg;
+              // props.setFrame("network");
+              // props.setFullScreen(true);
+            }
+          },          
+		   // dosboxConf: `
+          //   [autoexec]
+          //   mount c .
+          //   c:
+          // `,
+          // jsdosConf: {
+          //   "layersConfig": {
+          //     "version": 2,
+          //     "layers": [
+          //       {
+          //         "grid": "honeycomb",
+          //         "title": "Layer#0",
+          //         "controls": [
+          //           {
+          //             "row": 0,
+          //             "column": 0,
+          //             "symbol": "↑",
+          //             "type": "Key",
+          //             "mapTo": [
+          //               265
+          //             ]
+          //           }
+          //         ]
+          //       }
+          //     ]
+          //   }
+          // },
+          // dosboxConf: diabloConf,
+          // loginUrl: "http://localhost:8080/subscription.html",
+		  // ipx: [{
+          //     name: "my-ipx-server",
+          //     host: "wss://some.url",
+          //   }, {
+          //     name: "dos.zone",
+          //     host: "wss://netherlands.dos.zone",
+          //   }
+          // ],
+          // backendHardware: (backend) => {
+          //  console.log("Hardware backend for", backend);
+          //  return Promise.resolve("ws://127.0.0.1:8888");
+          // },
+          // backendHardware: window.backendHardware,
+          // sockdriveBackend: {
+          //   name: "makevm",
+          //   host: "backend.make-vm.com:8001",
+          // },
+		  // noCloud: true,
+          // softKeyboardLayout: [
+          //   "q w e r t",
+          //   "{up} {down}",
+          //   "{left} {right}",
+          //   "{symbols}"
+          // ],
+          // softKeyboardSymbols: [
+          //   {
+          //       "{up}": "↑",
+          //       "{down}": "↓",
+          //       "{left}": "←",
+          //       "{right}": "→",
+          //   },
+          //   {
+          //       "{up}": "↑",
+          //       "{down}": "↓",
+          //       "{left}": "←",
+          //       "{right}": "→",
+          //       "q": "й", "w": "ц", "e": "у", "r": "к", "t": "е",
+          //   },
+          // ], 
+          // softKeyboardLayout: [
+          //   [
+          //     [
+          //       "{up}",
+          //     ],
+          //     [
+          //       "{left} {right}",
+          //     ],
+          //     [
+          //       "{down}",
+          //     ]
+          //   ],
+          // ],
+          // softFullscreen: true,
         });
-    </script>
+
+      window.props = props;
+    });   
+  </script>
 </body>
+
 </html>
