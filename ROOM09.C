@@ -350,44 +350,6 @@ void r09_update_room_script()
                     }
                     break;
                 }
-                else
-                {
-                    begin_script();
-                    roomScript.object = r09_locker1;
-                    break;
-                }
-            case r09_books:
-                if (is_game_flag(LOCKER_1_OPEN_FLAG))
-                {
-                    switch(roomScript.verb)
-                    {
-                        case LOOK:
-                            switch (roomScript.step)
-                            {
-                                case 0:
-                                    begin_script();
-                                    script_say("They look like books of some subjects");
-                                    break;
-                                default:
-                                    end_script();
-                                    break;
-                            }
-                        break;
-                        case TAKE:
-                            switch (roomScript.step)
-                            {
-                                case 0:
-                                    begin_script();
-                                    script_say("I have no interest in having those books");
-                                    break;
-                                default:
-                                    end_script();
-                                    break;
-                            }
-                        break;
-                    }
-                    break;
-                }    
             case r09_locker1:
                 switch(roomScript.verb)
                 {
@@ -454,6 +416,38 @@ void r09_update_room_script()
                     break;
                 }
                 break;            
+            case r09_books:
+                if (is_game_flag(LOCKER_1_OPEN_FLAG))
+                {
+                    switch(roomScript.verb)
+                    {
+                        case LOOK:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("They look like books of some subjects");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                        case TAKE:
+                            switch (roomScript.step)
+                            {
+                                case 0:
+                                    begin_script();
+                                    script_say("I have no interest in having those books");
+                                    break;
+                                default:
+                                    end_script();
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
+                }    
             case r09_poster:
                 if (is_game_flag(LOCKER_2_OPEN_FLAG))
                 {
