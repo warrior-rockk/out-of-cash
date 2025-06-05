@@ -41,9 +41,9 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=alleg alld
+LIBS=alleg alld emu
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=-fgnu89-inline -DDEBUGMODE
+C_EXTRA_FLAGS=-fgnu89-inline
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
