@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp/bin/i586-pc-msdosdjgpp-gcc.exe",
+            "cStandard": "c89",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x86",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/warrior/Downloads/allegro-xc/allegro-4.2.2-xc/include/**"
+            ],
+            "defines": [],
+            "cStandard": "c89",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-gcc-x86",
+            "compilerPath": "/Users/warrior/Downloads/djgpp/bin/i586-pc-msdosdjgpp-gcc"
+        }
+    ],
+    "version": 4
+}
