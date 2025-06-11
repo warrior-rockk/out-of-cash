@@ -1,5 +1,6 @@
 *.exe
 *.O
 .DS_Store
-.vscode
 *.reapeaks
+!static/CWSDPMI.EXE
+build/
