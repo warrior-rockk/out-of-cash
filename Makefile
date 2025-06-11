@@ -40,7 +40,7 @@ RELEASE_OBJS_DIR  	:= ${BUILD_DIR}release/obj/
 RELEASE_RES_DIR		:= ${RELEASE_BIN_DIR}/
 #objects
 SRCS  				:= $(wildcard ${SRC_DIR}*.${SRC_EXT})
-RESOURCES			:= $(wildcard ${RESOURCES_DIR}*.DAT)
+RESOURCES			:= $(wildcard ${RESOURCES_DIR}*.DAT) $(wildcard ${RESOURCES_DIR}*.TXT)
 DEBUG_OBJS 			:= $(patsubst ${SRC_DIR}%.${SRC_EXT}, ${DEBUG_OBJS_DIR}%.o, ${SRCS})
 DEBUG_RESOURCES		:= ${patsubst ${RESOURCES_DIR}%, ${DEBUG_RES_DIR}%,${RESOURCES}}
 RELEASE_OBJS 		:= $(patsubst ${SRC_DIR}%.${SRC_EXT}, ${RELEASE_OBJS_DIR}%.o, ${SRCS})
