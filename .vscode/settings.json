@@ -1,7 +1,7 @@
 {    
     "files.associations": {
-        "allegro.h": "c",
-        "ALLEGRO.H": "cpp"
-    }
-    
+        "*.h": "c",
+        "*.C": "c"
+    },
+    "files.encoding": "cp437"
 }
