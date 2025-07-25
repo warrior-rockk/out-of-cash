@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <pc.h>
+#include <keys.h>
 #include "allegro.h"
 #include "engine.h"
 #include "game.h"
@@ -11,11 +13,58 @@
 #include "inv.h"
 #include "player.h"
 #include "utils.h"
+#include "PCSPEAKER.h"
+
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
 #include "SDATA.H"
 #include "MDATA.H"
+#include "SPSONGS.H"
+
+static bool pcspeaker = false;
+
+//songs to arrays
+int8_t* songs_notes[] = {
+    _warcom_notes , 
+    _Foxtrot_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes , 
+    _warcom_notes ,
+    _title2_notes
+};
+
+uint16_t* songs_durations[] = {
+    _warcom_durations , 
+    _Foxtrot_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _warcom_durations , 
+    _title2_durations
+};
+
+
+long music_get_pos()
+{
+    if (!pcspeaker)
+        return midi_pos;
+    else
+        return pc_speaker_song_pos;
+}
 
 int main()
 {
@@ -25,8 +74,8 @@ int main()
     game_fade_out(FADE_SLOW_SPEED);
 
     #ifdef DEBUGMODE
-        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        game.state = PLAYING_STATE;
+        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        //game.state = PLAYING_STATE;
     #endif
 
     play_music(md_warcomLogo, 0);
@@ -227,6 +276,31 @@ void main_init()
     //set unicode format
     set_uformat(U_ASCII);
 
+    printf("Starting Out of Cash v%i.%i\n\n", MAJOR_VERSION, MINOR_VERSION);      
+    printf("Select sound system:\n\n");
+    printf("1. Sound Blaster and compatible\n");
+    printf("2. PC Speaker\n");
+    printf("3. No sound\n\n");
+
+    printf("Enter choice: ");
+        switch (getkey())
+    {
+        case 0x31:
+            TRACE("Sound option selected: SBlaster\n");
+            break;
+        case 0x32:
+            TRACE("Sound option selected: Speaker\n");
+            pcspeaker = true;
+            //inits pc speaker
+    
+            break;
+        case 0x33:
+            TRACE("Sound option selected: None\n");
+            break;
+        default:
+            exit(-1);
+    }
+
     printf("Starting Out of Cash v%i.%i\n", MAJOR_VERSION, MINOR_VERSION);
     
     //initialize and install modules
@@ -241,6 +315,8 @@ void main_init()
         abort_on_error("Error iniciando el sonido");
 
     TRACE("All system and modules initialized\n");
+    if (pcspeaker)
+        pc_speaker_init(10);
 
     //load game resources
     game_load_resources();
@@ -317,6 +393,7 @@ static void update_fps(void)
     frameCount = 0;
 }
 END_OF_FUNCTION(update_fps);
+
 
 //function to load game resources
 void game_load_resources()
@@ -472,7 +549,7 @@ void game_update()
     switch (game.state)
     {
         case LOGO_STATE:
-            if (midi_pos < 0 || gameKeys[G_KEY_EXIT].pressed)
+            if (music_get_pos() < 0 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 seq.step = 0;
@@ -641,9 +718,9 @@ void game_update()
                         set_game_flag(END_CREDITS_FLAG);
                     break;
                 }
-                if (midi_pos >= 218)
+                if (music_get_pos() >= 218)
                     set_game_flag(END_STOP_GUITARS_FLAG);
-                if (midi_pos >= 225)
+                if (music_get_pos() >= 225)
                     set_game_flag(END_STOP_DRUMS_FLAG);
                 //TRACE("midi pos %ld\n", midi_pos);
                 
@@ -879,7 +956,7 @@ void game_save(uint8_t slot)
     get_actual_date(savegame.saveDate);
     savegame.playTime       = playTime;
     savegame.gameConfigData = gameConfig;
-    game.roomMusicPos       = midi_pos;
+    game.roomMusicPos       = music_get_pos();
     savegame.gameData       = game;
     savegame.invData        = inventory;
     savegame.cursorData     = cursor;
@@ -2477,7 +2554,11 @@ void play_music(uint16_t musicId, int loop)
     
     //play midi
     TRACE("Play midi music\n");
-    play_midi((MIDI *)actualRoom.musicDataFile[0].dat, loop);
+    if (!pcspeaker)
+        play_midi((MIDI *)actualRoom.musicDataFile[0].dat, loop);
+    else   
+        //pc_speaker_play_song(_warcom_notes, _warcom_durations, loop);
+        pc_speaker_play_song(songs_notes[musicId], songs_durations[musicId], loop); 
 }
 
 //function to stop midi music
@@ -2485,7 +2566,10 @@ void stop_music()
 {
     //stop actual music
     TRACE("Stopping midi\n");
-    stop_midi();
+    if (!pcspeaker)
+        stop_midi();
+    else
+        pc_speaker_stop_song();
 }
 
 //function to init credits
