@@ -1,10 +1,7 @@
 {    
     "files.associations": {
         "*.h": "c",
-        "allegro.h": "c",
-        "ALLEGRO.H": "cpp",
-        "GAME.C": "cpp",
-        "ENGINE.C": "cpp"
+        "*.C": "c"
     },
-    "files.encoding": "cp437"    
+    "files.encoding": "cp437"
 }
