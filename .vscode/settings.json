@@ -4,7 +4,9 @@
         "*.C": "c",
         "SOUND.H": "cpp",
         "GAME.H": "cpp",
-        "ENGINE.H": "cpp"
+        "ENGINE.H": "cpp",
+        "MDATA.H": "cpp",
+        "SPSONGS.H": "cpp"
     },
     "files.encoding": "cp437"
 }

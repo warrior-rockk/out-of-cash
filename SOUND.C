@@ -16,36 +16,38 @@ static uint8_t soundMode;
 
 //pc speaker songs to array
 int8_t* songs_notes[] = {
-    _warcom_notes , 
     _Foxtrot_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
     _warcom_notes ,
-    _title2_notes
+    _title2_notes,
+    NULL
 };
 
 //pc speaker song durations to array
 uint16_t* songs_durations[] = {
-    _warcom_durations , 
-    _Foxtrot_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _title2_durations
+    _Foxtrot_durations, 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    NULL , 
+    _warcom_durations ,
+    _title2_durations,
+    NULL
 };
 
 //inits sound system
@@ -102,9 +104,12 @@ void play_music(uint16_t musicId, int loop)
     }
     else if(soundMode == PC_SPEAKER_SND_MODE)
     {
-        //play pcspeaker
-        TRACE("Play pc speaker music\n");
-        pc_speaker_play_song(songs_notes[musicId], songs_durations[musicId], loop); 
+        if (songs_notes[musicId] && songs_durations[musicId])
+        {
+            //play pcspeaker
+            TRACE("Play pc speaker music\n");
+            pc_speaker_play_song(songs_notes[musicId], songs_durations[musicId], loop); 
+        }
     }
 }
 
