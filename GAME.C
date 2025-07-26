@@ -13,58 +13,13 @@
 #include "inv.h"
 #include "player.h"
 #include "utils.h"
-#include "PCSPEAKER.h"
+#include "SOUND.H"
 
 //game data resources
 #include "GDATA.H"
 #include "IDATA.H"
 #include "SDATA.H"
 #include "MDATA.H"
-#include "SPSONGS.H"
-
-static bool pcspeaker = false;
-
-//songs to arrays
-int8_t* songs_notes[] = {
-    _warcom_notes , 
-    _Foxtrot_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes , 
-    _warcom_notes ,
-    _title2_notes
-};
-
-uint16_t* songs_durations[] = {
-    _warcom_durations , 
-    _Foxtrot_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _warcom_durations , 
-    _title2_durations
-};
-
-
-long music_get_pos()
-{
-    if (!pcspeaker)
-        return midi_pos;
-    else
-        return pc_speaker_song_pos;
-}
 
 int main()
 {
@@ -276,6 +231,7 @@ void main_init()
     //set unicode format
     set_uformat(U_ASCII);
 
+    //prompt for sound driver
     printf("Starting Out of Cash v%i.%i\n\n", MAJOR_VERSION, MINOR_VERSION);      
     printf("Select sound system:\n\n");
     printf("1. Sound Blaster and compatible\n");
@@ -286,16 +242,16 @@ void main_init()
         switch (getkey())
     {
         case 0x31:
-            TRACE("Sound option selected: SBlaster\n");
+            TRACE("Sound option selected: Sound Blaster\n");
+            sound_set_mode(SB_SND_MODE);
             break;
         case 0x32:
             TRACE("Sound option selected: Speaker\n");
-            pcspeaker = true;
-            //inits pc speaker
-    
+            sound_set_mode(PC_SPEAKER_SND_MODE);    
             break;
         case 0x33:
             TRACE("Sound option selected: None\n");
+            sound_set_mode(NO_SOUND_SND_MODE);
             break;
         default:
             exit(-1);
@@ -311,12 +267,10 @@ void main_init()
         abort_on_error("Error iniciando el mouse");
     if (install_keyboard() != 0)
         abort_on_error("Error iniciando el teclado");
-    if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, 0) != 0)
+    if (sound_init() != 0)
         abort_on_error("Error iniciando el sonido");
 
     TRACE("All system and modules initialized\n");
-    if (pcspeaker)
-        pc_speaker_init(10);
 
     //load game resources
     game_load_resources();
@@ -639,7 +593,7 @@ void game_update()
             if (gameKeys[G_KEY_PAUSE].pressed)
             {
                 game.state = PAUSE_STATE;
-                midi_pause();
+                pause_music();
                 pause_sound();
             }
             else if (gameKeys[G_KEY_EXIT].pressed)
@@ -684,7 +638,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 resume_sound();
-                midi_resume();
+                resume_music();
             }
         break;
         case MENU_STATE:
@@ -1029,7 +983,7 @@ void game_load(uint8_t slot)
     calculate_image_borders(actualRoom.hsImage, &actualRoom.hsWalkBorders);
 
     //seeks room music to saved position
-    midi_seek(game.roomMusicPos);
+    music_seek(game.roomMusicPos);
     //allocates and seeks sound to saved position
     reallocate_voice(SFX_ROOM_VOICE, (SAMPLE*)soundDataFile[sfx[SFX_ROOM_VOICE].sampleId].dat);
     voice_set_position(SFX_ROOM_VOICE, sfx[SFX_ROOM_VOICE].position);
@@ -2540,36 +2494,6 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
     //set flag
     sfx[voice].playing = true;
     sfx[voice].finished = false;
-}
-
-//function to play midi music
-void play_music(uint16_t musicId, int loop)
-{
-    //stop actual music
-    stop_music();
-
-    //load index music index
-    TRACE("Load music data file object\n");
-    actualRoom.musicDataFile  = load_datafile_object_indexed(actualRoom.musicDataFileIndex, musicId);
-    
-    //play midi
-    TRACE("Play midi music\n");
-    if (!pcspeaker)
-        play_midi((MIDI *)actualRoom.musicDataFile[0].dat, loop);
-    else   
-        //pc_speaker_play_song(_warcom_notes, _warcom_durations, loop);
-        pc_speaker_play_song(songs_notes[musicId], songs_durations[musicId], loop); 
-}
-
-//function to stop midi music
-void stop_music()
-{
-    //stop actual music
-    TRACE("Stopping midi\n");
-    if (!pcspeaker)
-        stop_midi();
-    else
-        pc_speaker_stop_song();
 }
 
 //function to init credits

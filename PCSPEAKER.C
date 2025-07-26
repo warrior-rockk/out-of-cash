@@ -129,3 +129,8 @@ void pc_speaker_resume_song()
 {
     _play = 1;    
 }
+
+void pc_speaker_seek_song(int position)
+{
+    _music_pos = position;
+}

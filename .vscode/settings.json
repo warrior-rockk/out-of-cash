@@ -1,7 +1,10 @@
 {    
     "files.associations": {
         "*.h": "c",
-        "*.C": "c"
+        "*.C": "c",
+        "SOUND.H": "cpp",
+        "GAME.H": "cpp",
+        "ENGINE.H": "cpp"
     },
     "files.encoding": "cp437"
 }

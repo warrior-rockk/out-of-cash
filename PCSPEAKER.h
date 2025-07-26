@@ -21,5 +21,7 @@ void pc_speaker_stop_song();
 void pc_speaker_pause_song();
 //resumens song paused on pc speaker
 void pc_speaker_resume_song();
+//seeks song to position
+void pc_speaker_seek_song(int position);
 
 #endif
