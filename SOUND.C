@@ -17,7 +17,7 @@ static uint8_t soundMode;
 //pc speaker songs to array
 int8_t* songs_notes[] = {
     _Foxtrot_notes , 
-    NULL , 
+    _intro_notes , 
     NULL , 
     NULL , 
     NULL , 
@@ -35,6 +35,7 @@ int8_t* songs_notes[] = {
 //pc speaker song durations to array
 uint16_t* songs_durations[] = {
     _Foxtrot_durations, 
+    _intro_durations , 
     NULL , 
     NULL , 
     NULL , 
@@ -43,8 +44,7 @@ uint16_t* songs_durations[] = {
     NULL , 
     NULL , 
     NULL , 
-    NULL , 
-    NULL , 
+    NULL ,
     _warcom_durations ,
     _title2_durations,
     NULL
