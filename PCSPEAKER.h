@@ -24,4 +24,6 @@ void pc_speaker_resume_song();
 //seeks song to position
 void pc_speaker_seek_song(int position);
 
+void pc_speaker_play_sfx(int8_t *sfx_notes, uint16_t *sfx_durations);
+
 #endif

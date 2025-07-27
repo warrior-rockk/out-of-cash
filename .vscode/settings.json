@@ -6,7 +6,8 @@
         "GAME.H": "cpp",
         "ENGINE.H": "cpp",
         "MDATA.H": "cpp",
-        "SPSONGS.H": "cpp"
+        "SPSONGS.H": "cpp",
+        "SDATA.H": "cpp"
     },
     "files.encoding": "cp437"
 }

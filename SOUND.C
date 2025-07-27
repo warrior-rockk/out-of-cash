@@ -270,44 +270,52 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
     ASSERT(voice < SFX_NUM_VOICES);
     ASSERT(soundId < sd_COUNT);
 
-    //reallocate the sample on select voice of selected channel
-    reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
-    sfx[voice].sampleId = soundId;
-
-    //randomize frequency
-    if (rndFreq)
+    switch (soundMode)
     {
-        //get a random percent variation from twice of SFX_FREQ_RND_PERCENT (half for negative, half for positive)
-        int freqVariation = (rand() % (SFX_FREQ_RND_PERCENT * 2));
+        case SB_SND_MODE:
+            //reallocate the sample on select voice of selected channel
+            reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
+            sfx[voice].sampleId = soundId;
 
-        //get sample original frequency
-        int sampleFreq = voice_get_frequency(voice);
-        TRACE("Original freq: %iHz | ", sampleFreq);
+            //randomize frequency
+            if (rndFreq)
+            {
+                //get a random percent variation from twice of SFX_FREQ_RND_PERCENT (half for negative, half for positive)
+                int freqVariation = (rand() % (SFX_FREQ_RND_PERCENT * 2));
 
-        //calculate new frequency
-        fixed newFreq;
-        //if variation is below half
-        if (freqVariation < SFX_FREQ_RND_PERCENT)
-        {
-            //sub the percentage variation to original freq
-            newFreq = itofix(sampleFreq) - fixmul(itofix(sampleFreq),(fixdiv(itofix(freqVariation),itofix(100))));
-            TRACE("Variation: -%i%% | ", freqVariation);
-        }
-        else
-        {
-            //add the percentage variation to original freq
-            newFreq = fixmul(itofix(sampleFreq), fixdiv(itofix(freqVariation - SFX_FREQ_RND_PERCENT), itofix(100.0))) + itofix(sampleFreq);
-            TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
-        }
+                //get sample original frequency
+                int sampleFreq = voice_get_frequency(voice);
+                TRACE("Original freq: %iHz | ", sampleFreq);
 
-        //set the new frequency
-        voice_set_frequency(voice, fixtoi(newFreq));
-        TRACE("New freq: %iHz\n", fixtoi(newFreq));
-        
+                //calculate new frequency
+                fixed newFreq;
+                //if variation is below half
+                if (freqVariation < SFX_FREQ_RND_PERCENT)
+                {
+                    //sub the percentage variation to original freq
+                    newFreq = itofix(sampleFreq) - fixmul(itofix(sampleFreq),(fixdiv(itofix(freqVariation),itofix(100))));
+                    TRACE("Variation: -%i%% | ", freqVariation);
+                }
+                else
+                {
+                    //add the percentage variation to original freq
+                    newFreq = fixmul(itofix(sampleFreq), fixdiv(itofix(freqVariation - SFX_FREQ_RND_PERCENT), itofix(100.0))) + itofix(sampleFreq);
+                    TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
+                }
+
+                //set the new frequency
+                voice_set_frequency(voice, fixtoi(newFreq));
+                TRACE("New freq: %iHz\n", fixtoi(newFreq));
+                
+            }
+            
+            //start sample allocated on voice channel
+            voice_start(voice);
+        break;
+        case PC_SPEAKER_SND_MODE:
+            pc_speaker_play_song(_sfx_notes, _sfx_durations, 0);
+        break;
     }
-    
-    //start sample allocated on voice channel
-    voice_start(voice);
 
     //set flag
     sfx[voice].playing = true;

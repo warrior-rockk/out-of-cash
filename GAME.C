@@ -29,8 +29,8 @@ int main()
     game_fade_out(FADE_SLOW_SPEED);
 
     #ifdef DEBUGMODE
-        //change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
-        //game.state = PLAYING_STATE;
+        change_room_pos(BEDROOM_ROOM_NUM, 170, 100);
+        game.state = PLAYING_STATE;
     #endif
 
     play_music(md_warcomLogo, 0);
