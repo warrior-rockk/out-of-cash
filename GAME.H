@@ -6,6 +6,7 @@
 #include "engine.h"
 #include "inv.h"
 #include "player.h"
+#include "sound.h"
 
 //Definitions
 #define MAJOR_VERSION   1
@@ -124,12 +125,6 @@
 //Debug
 #define DEBUG_Y                 10
 #define DEBUG_FONT_HEIGHT       8
-
-//Sfx
-#define SFX_FREQ_RND_PERCENT    20 //(+/- % freq variation)
-#define SFX_GAME_VOICE          0
-#define SFX_ROOM_VOICE          1
-#define SFX_NUM_VOICES          2
 
 //enums
 
@@ -360,18 +355,6 @@ static tKey gameKeys[GAME_KEYS_NUM] =
     {KEY_C, false, false},
 };
 
-//sfx voices structure
-typedef struct tSfx
-{
-    int position;
-    int sampleId;
-    bool playing;
-    bool paused;
-    bool finished;
-    bool stop;
-    bool pause;
-} tSfx;
-
 //savegame structure
 struct savegame
 {
@@ -425,7 +408,6 @@ DATAFILE *playerDataFile;
 DATAFILE *inventoryDataFile;
 DATAFILE *soundDataFile;
 bool gameTick;
-tSfx sfx[SFX_NUM_VOICES];
 
 //function declarations
 void main_init();
@@ -491,10 +473,7 @@ void gui_draw();
 void dialog_init();
 void dialog_draw();
 
-void sfx_init();
-void sfx_destroy();
-void sfx_update();
-void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq);
+
 
 void play_music(uint16_t musicId, int loop);
 void stop_music();

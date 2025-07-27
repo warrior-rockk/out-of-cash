@@ -522,7 +522,7 @@ void game_update()
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = PROLOGUE_STATE;
-                sfx[SFX_GAME_VOICE].stop = true;
+                sfx_stop(SFX_GAME_VOICE);
                 play_music(md_intro, -1);
                 actualRoom.musicId = md_intro;
             }
@@ -647,7 +647,7 @@ void game_update()
             {
                 game.state = PLAYING_STATE;
                 resume_sound();
-                sfx[SFX_GAME_VOICE].stop = true;
+                sfx_stop(SFX_GAME_VOICE);
                 //midi_resume();
             }
         break;
@@ -917,7 +917,7 @@ void game_save(uint8_t slot)
     savegame.roomScriptData = roomScript;
     savegame.msgData        = msg;
     savegame.playerData     = player;
-    savegame.sfx            = sfx[SFX_ROOM_VOICE];
+    savegame.sfx            = sfx_get_voice_data(SFX_ROOM_VOICE);
 
     //write the savegame file
     if (!fwrite(&savegame, sizeof(struct savegame), 1, saveFile))
@@ -968,8 +968,8 @@ void game_load(uint8_t slot)
     roomScript  = savegame.roomScriptData;
     msg         = savegame.msgData;
     player      = savegame.playerData;
-    sfx[SFX_ROOM_VOICE]  = savegame.sfx;
-
+    sfx_set_voice_data(SFX_ROOM_VOICE, savegame.sfx);
+    
     //sets audio config
     set_hardware_volume(gameConfig.soundVolume, gameConfig.musicVolume);
     set_volume(gameConfig.soundVolume, gameConfig.musicVolume);
@@ -985,8 +985,9 @@ void game_load(uint8_t slot)
     //seeks room music to saved position
     music_seek(game.roomMusicPos);
     //allocates and seeks sound to saved position
-    reallocate_voice(SFX_ROOM_VOICE, (SAMPLE*)soundDataFile[sfx[SFX_ROOM_VOICE].sampleId].dat);
-    voice_set_position(SFX_ROOM_VOICE, sfx[SFX_ROOM_VOICE].position);
+    sfx_voice_reallocate(SFX_ROOM_VOICE);
+    sfx_voice_set_position(SFX_ROOM_VOICE, savegame.sfx.position);
+    //voice_set_position(SFX_ROOM_VOICE, sfx[SFX_ROOM_VOICE].position);
 
     //forces refresh room_init
     roomData[game.actualRoom].room_init();
@@ -2138,7 +2139,7 @@ void gui_update()
             game.state = RESTART_STATE;
             stop_music();
             stop_sound();
-            sfx[SFX_GAME_VOICE].stop = true;
+            sfx_stop(SFX_GAME_VOICE);
             game_fade_out(FADE_DEFAULT_SPEED);
             break;
         case GUI_EXIT_DOS_STATE:
@@ -2344,157 +2345,6 @@ void dialog_draw()
     }
 }
 
-//function to init sfx sound system
-void sfx_init()
-{
-    //init all sfx voices
-    for (int i = 0; i < SFX_NUM_VOICES; i++)
-    {
-        //get soundcard voice (reallocate if exists)
-        if (!voice_check(i))
-        {
-            int voice = allocate_voice((SAMPLE*)soundDataFile[sd_take].dat);
-            TRACE("SFX voice %i allocated to soundcard voice %i\n", i, voice);
-        }
-        else
-            reallocate_voice(i, (SAMPLE*)soundDataFile[sd_take].dat);
-
-        sfx[i].sampleId = sd_take;
-
-        //init channel flags
-        sfx[i].playing     = false;
-        sfx[i].paused      = false;
-        sfx[i].pause       = false;
-        sfx[i].stop        = false;
-        sfx[i].finished    = false;
-        sfx[i].position    = -1;
-    }
-
-    TRACE("SFX system initialized\n");
-}
-
-//function to destroy sfx system (free resources)
-void sfx_destroy()
-{
-    TRACE("Destroy SFX system\n");
-    
-    //free all sfx voices
-    for (int i = 0; i < SFX_NUM_VOICES; i++)
-    {
-        //get soundcard voice (reallocate if exists)
-        if (!voice_check(i))
-            deallocate_voice(i);
-    }
-
-    TRACE("SFX system destroyed\n");
-}
-
-//function to update sfx sound system
-void sfx_update()
-{
-    for (int i = 0; i < SFX_NUM_VOICES; i++)
-    {
-        //handles sound pause
-        if (sfx[i].pause)
-        {
-            if (sfx[i].playing)
-            {
-                //do the stop/pause
-                voice_stop(i);
-                //set flag
-                sfx[i].paused = true;
-            }
-            else
-                //clear flag
-                sfx[i].pause = false;
-        }
-    
-        //handles sound resume
-        if (!sfx[i].pause && sfx[i].paused)
-        {
-            //resume sound if was started
-            if (sfx[i].position >= 0)
-                voice_start(i);
-            //clear flag
-            sfx[i].paused = false;
-        }
-    
-        //handles sound stop
-        if (sfx[i].stop)
-        {
-            if (sfx[i].playing)
-                //do sound stop
-                voice_stop(i);
-            //clear flag
-            sfx[i].stop = false;
-            //set flag
-            sfx[i].finished = true;
-        }
-    
-        //handles clear sound playing flag
-        if (sfx[i].playing && !sfx[i].paused)
-        {
-            //stores sound position
-            sfx[i].position = voice_get_position(i);
-            //clear flag when sound finished
-            if (sfx[i].position == -1)
-            {
-                sfx[i].playing = false;
-                sfx[i].finished = true;
-            }
-        }
-    }
-}
-
-//function to play a sound
-void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
-{
-    ASSERT(voice < SFX_NUM_VOICES);
-    ASSERT(soundId < sd_COUNT);
-
-    //reallocate the sample on select voice of selected channel
-    reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
-    sfx[voice].sampleId = soundId;
-
-    //randomize frequency
-    if (rndFreq)
-    {
-        //get a random percent variation from twice of SFX_FREQ_RND_PERCENT (half for negative, half for positive)
-        int freqVariation = (rand() % (SFX_FREQ_RND_PERCENT * 2));
-
-        //get sample original frequency
-        int sampleFreq = voice_get_frequency(voice);
-        TRACE("Original freq: %iHz | ", sampleFreq);
-
-        //calculate new frequency
-        fixed newFreq;
-        //if variation is below half
-        if (freqVariation < SFX_FREQ_RND_PERCENT)
-        {
-            //sub the percentage variation to original freq
-            newFreq = itofix(sampleFreq) - fixmul(itofix(sampleFreq),(fixdiv(itofix(freqVariation),itofix(100))));
-            TRACE("Variation: -%i%% | ", freqVariation);
-        }
-        else
-        {
-            //add the percentage variation to original freq
-            newFreq = fixmul(itofix(sampleFreq), fixdiv(itofix(freqVariation - SFX_FREQ_RND_PERCENT), itofix(100.0))) + itofix(sampleFreq);
-            TRACE("Variation: +%i%% | ", (freqVariation - SFX_FREQ_RND_PERCENT));
-        }
-
-        //set the new frequency
-        voice_set_frequency(voice, fixtoi(newFreq));
-        TRACE("New freq: %iHz\n", fixtoi(newFreq));
-        
-    }
-    
-    //start sample allocated on voice channel
-    voice_start(voice);
-
-    //set flag
-    sfx[voice].playing = true;
-    sfx[voice].finished = false;
-}
 
 //function to init credits
 void credits_init()

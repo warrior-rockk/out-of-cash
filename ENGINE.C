@@ -7,6 +7,7 @@
 #include "game.h"
 #include "inv.h"
 #include "player.h"
+#include "sound.h"
 
 //initialize roomScript struct
 void init_room_script()
@@ -267,17 +268,17 @@ void script_play_sound_rnd(int16_t soundId)
 //function to play game sound and wait for finish
 void script_play_sound_wait(int16_t soundId)
 {
-    if (sfx[SFX_ROOM_VOICE].finished)
+    if (sfx_voice_finished(SFX_ROOM_VOICE))
     {
-        if (sfx[SFX_ROOM_VOICE].sampleId == soundId)
+        if (sfx_get_voice_sample_id(SFX_ROOM_VOICE) == soundId)
         {
             roomScript.step++;
-            sfx[SFX_ROOM_VOICE].finished = false;
+            sfx_voice_clear_finished(SFX_ROOM_VOICE);
         }
         else
-            sfx[SFX_ROOM_VOICE].finished = false;
+            sfx_voice_clear_finished(SFX_ROOM_VOICE);
     }
-    else if (!sfx[SFX_ROOM_VOICE].playing)
+    else if (!sfx_voice_is_playing(SFX_ROOM_VOICE))
         sfx_play(soundId, SFX_ROOM_VOICE , false);
 }
 
@@ -852,17 +853,17 @@ void play_sound_rnd(uint16_t soundId)
 //function to stop sound
 void stop_sound()
 {
-    sfx[SFX_ROOM_VOICE].stop = true;
+    sfx_stop(SFX_ROOM_VOICE);
 }
 
 //function to pause sound
 void pause_sound()
 {
-    sfx[SFX_ROOM_VOICE].pause = true;
+    sfx_pause(SFX_ROOM_VOICE);
 }
 
 //function to resume sound
 void resume_sound()
 {
-    sfx[SFX_ROOM_VOICE].pause = false;
+    sfx_resume(SFX_ROOM_VOICE);
 }
