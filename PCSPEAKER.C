@@ -24,6 +24,7 @@ static long _timeResolution = 0;
 static int _saved_pos = 0;
 static int _saved_prev_note = 0;
 static int _saved_duration = 0;
+static uint8_t _saved_loop = 0;
 
 static uint8_t _sfx_play = 0;
 
@@ -49,6 +50,7 @@ void restore_song_data()
     _prev_note = _saved_prev_note;
     _music_duration = _saved_duration;
 
+    _loop = _saved_loop;
     _play = 1;
 }
 
@@ -95,19 +97,17 @@ static void pc_speaker_update()
             //end of song
             nosound(); 
             //check loop
-            if (_loop)
+            if (_loop > 1 || _loop == 0)
             {
-                //reset song
+                //restart song
                 _music_pos = 0;
                 _prev_note = 0;
-                _music_duration = 0;   
-                //if (_sfx_play)
-                    restore_song_data();
+                _music_duration = 0;    
             }
             else
             {
                 pc_speaker_song_pos = -1;
-                //if (_sfx_play)
+                if (_sfx_play)
                     restore_song_data();
             }
         }
@@ -165,6 +165,11 @@ void pc_speaker_seek_song(int position)
     _music_pos = position;
 }
 
+int pc_speaker_get_position()
+{
+    return _music_pos;
+}
+
 void pc_speaker_play_sfx(int8_t *sfx_notes, uint16_t *sfx_durations)
 {
     //if playing song, save notes and durations
@@ -173,6 +178,7 @@ void pc_speaker_play_sfx(int8_t *sfx_notes, uint16_t *sfx_durations)
         _saved_notes = _notes;
         _saved_durations = _durations;
 
+        _saved_loop = _loop;
         _saved_pos = _music_pos;
         _saved_prev_note = _prev_note;
         _saved_duration = _music_duration;
@@ -185,7 +191,7 @@ void pc_speaker_play_sfx(int8_t *sfx_notes, uint16_t *sfx_durations)
     _music_pos = 0;
     _prev_note = 0;
     _music_duration = 0;
-    _loop = -1;
+    _loop = 1;
     _play = 1;    
     _sfx_play = 1;
 }

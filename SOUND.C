@@ -253,7 +253,16 @@ void sfx_update()
         if (sfx[i].playing && !sfx[i].paused)
         {
             //stores sound position
-            sfx[i].position = voice_get_position(i);
+            switch (soundMode)
+            {
+                case SB_SND_MODE:
+                    sfx[i].position = voice_get_position(i);
+                break;
+                case PC_SPEAKER_SND_MODE:
+                    sfx[i].position = (int)pc_speaker_song_pos;
+                break;
+            }
+            
             //clear flag when sound finished
             if (sfx[i].position == -1)
             {
@@ -270,12 +279,13 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
     ASSERT(voice < SFX_NUM_VOICES);
     ASSERT(soundId < sd_COUNT);
 
+    sfx[voice].sampleId = soundId;
+    
     switch (soundMode)
     {
         case SB_SND_MODE:
             //reallocate the sample on select voice of selected channel
             reallocate_voice(voice, (SAMPLE*)soundDataFile[soundId].dat);
-            sfx[voice].sampleId = soundId;
 
             //randomize frequency
             if (rndFreq)
@@ -313,7 +323,7 @@ void sfx_play(uint16_t soundId, uint8_t voice, bool rndFreq)
             voice_start(voice);
         break;
         case PC_SPEAKER_SND_MODE:
-            pc_speaker_play_song(_sfx_notes, _sfx_durations, 0);
+            pc_speaker_play_sfx(_sfx_notes, _sfx_durations);
         break;
     }
 
