@@ -7,7 +7,10 @@
         "ENGINE.H": "cpp",
         "MDATA.H": "cpp",
         "SPSONGS.H": "cpp",
-        "SDATA.H": "cpp"
+        "SDATA.H": "cpp",
+        "R01DATA.H": "cpp",
+        "ROOM04.H": "cpp",
+        "MOUSE.H": "cpp"
     },
     "files.encoding": "cp437"
 }
