@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>js-dos digger 8.xx</title>
+    <title>Out of Cash (Sin blanca)</title>
 
     <style>
         html, body {
@@ -27,19 +27,22 @@
 
     <script>
         Dos(document.getElementById("dos"), {
-            url: "./out-of-cash.jsdos",
-			background: "title.png",
+              url: "./out-of-cash.jsdos",	//bundle file
+			  background: "title.png",		//background title image
 			  noNetworking: false,
-			  noCursor: true,		  
-			  renderAspect: "AsIs",
-			  // renderBackend: "webgl",
+			  noCursor: true,		  		//hide system cursor
+			  renderAspect: "AsIs",			  
 			  imageRendering: "pixelated",
-			  mouseCapture: true,
-			  mouseSensitivity: 0.5,
-			  backend: "dosboxX",
-			  backendLocked: true,
+			  mouseCapture: true,			//better for mouse games
+			  mouseSensitivity: 0.5,		
+			  backend: "dosboxX",			//dosbox-x works better
+			  backendLocked: true,			//disable backend change
 			  theme: "dark",
-			  autoStart: true,
+			  autoStart: true,			  
+			  thinSidebar: true,			//dosplayer UI minimized
+			  // renderBackend: "webgl",			  
+			  //kiosk: true,				//dosplayer UI hide
+			  //fullScreen: true,			//put game on fullscreen			  
         });
     </script>
 </body>
