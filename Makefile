@@ -4,8 +4,8 @@ rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(su
 #detect SO
 ifeq ($(OS),Windows_NT)
 	OS := Windows_NT
-	OS_INC_DIR := 'D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp/include'
-	OS_GCC	   := 'D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp/bin/i586-pc-msdosdjgpp-gcc'	
+	OS_INC_DIR := 'D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp550/djgpp/include'
+	OS_GCC	   := 'D:/Instalables/Proyectos/Programacion DOS/cross-compile/djgpp550/djgpp/bin/i586-pc-msdosdjgpp-gcc'	
 	OS_LIB_DIR := ./
 	OS_DOSBOX  := 'D:/Instalables/Proyectos/Old Days/bin/DOSBox/DosBox.exe'
 else
