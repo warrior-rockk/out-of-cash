@@ -15,9 +15,9 @@ else
     endif
     ifeq ($(UNAME_S),Darwin)
         OS := Mac
-		OS_INC_DIR := /Users/warrior/Downloads/allegro-xc/allegro-4.2.2-xc/include
-		OS_GCC	   := /Users/warrior/Downloads/djgpp/bin/i586-pc-msdosdjgpp-gcc	
-		OS_LIB_DIR := /Users/warrior/Downloads/allegro-xc/allegro-4.2.2-xc/lib/djgpp
+		OS_INC_DIR := /Users/warrior/code/dos/libs/allegro-xc/allegro-4.2.2-xc/include
+		OS_GCC	   := /Users/warrior/code/dos/compilers/djgpp-xc/djgppv5/bin/i586-pc-msdosdjgpp-gcc	
+		OS_LIB_DIR := /Users/warrior/code/dos/libs/allegro-xc/allegro-4.2.2-xc/lib/djgpp
 		OS_DOSBOX  := /Applications/dosbox-x.app/Contents/MacOS/dosbox-x --fastbioslogo
     endif
 endif
