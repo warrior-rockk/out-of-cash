@@ -478,20 +478,21 @@ void game_update()
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = DOS_LOGO_STATE;
-                sfx_play(sd_msDosJingle, SFX_GAME_VOICE , false);
                 stop_music();
+                play_music(md_dosClub, 0);                
             }
         break;
         case DOS_LOGO_STATE:
             if (gameTick)
                 seq.timeCounter++;
-            if (seq.timeCounter >= 60 || gameKeys[G_KEY_EXIT].pressed)
+            if (midi_pos < 0 || seq.timeCounter >= 60 || gameKeys[G_KEY_EXIT].pressed)
             {
                 seq.timeCounter = 0;
                 seq.step = 0;
                 game_fade_out(FADE_SLOW_SPEED);
                 game.state = PROLOGUE_STATE;
                 sfx[SFX_GAME_VOICE].stop = true;
+                stop_music();
                 play_music(md_intro, -1);
                 actualRoom.musicId = md_intro;
             }

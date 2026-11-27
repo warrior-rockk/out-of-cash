@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by grabber v4.2.1, MSVC */
-/* Datafile: d:\Instalables\Proyectos\Programacion DOS\entorno DGK4DOS\env\code\game\MDATA.DAT */
-/* Date: Fri Jan 31 13:11:21 2025 */
+/* Datafile: d:\Instalables\Proyectos\Programacion DOS\proyectos\out-of-cash\MDATA.DAT */
+/* Date: Fri Nov 27 15:32:12 2026 */
 /* Do not hand edit! */
 
 #define md_foxtrot                       0        /* MIDI */
@@ -17,5 +17,6 @@
 #define md_warcomLogo                    11       /* MIDI */
 #define md_title                         12       /* MIDI */
 #define md_concert                       13       /* MIDI */
-#define md_COUNT                         14
+#define md_dosClub                       14       /* MIDI */
+#define md_COUNT                         15
 
